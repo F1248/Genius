@@ -47,10 +47,18 @@
 		A42B353F2BA2185B009E81AD /* OpenMacHelper */ = {
 			isa = PBXGroup;
 			children = (
-				A42B35422BA2185B009E81AD /* ContentView.swift */,
+				A4510EF02BA23BD300AB25E8 /* Views */,
 				A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */,
 			);
 			path = OpenMacHelper;
+			sourceTree = "<group>";
+		};
+		A4510EF02BA23BD300AB25E8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A42B35422BA2185B009E81AD /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
