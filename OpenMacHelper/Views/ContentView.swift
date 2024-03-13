@@ -9,10 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
 
+    @AppStorage("userMode")
+    var userMode: UserMode = .averageUser
+    
     var body: some View {
-        Text("OpenMacHelper")
-            .font(.title)
-            .frame(minWidth: 256, minHeight: 128)
+        VStack {
+            Text("OpenMacHelper")
+                .font(.title)
+            Text(userMode.rawValue)
+                .font(.caption)
+        }
+        .frame(minWidth: 256, minHeight: 128)
     }
 }
 

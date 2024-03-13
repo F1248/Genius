@@ -14,5 +14,8 @@ struct OpenMacHelperApp: App {
         WindowGroup {
             ContentView()
         }
+        Settings {
+            SettingsView()
+        }
     }
 }
