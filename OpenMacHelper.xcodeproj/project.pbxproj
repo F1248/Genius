@@ -47,8 +47,8 @@
 		A42B353F2BA2185B009E81AD /* OpenMacHelper */ = {
 			isa = PBXGroup;
 			children = (
-				A4510EF02BA23BD300AB25E8 /* Views */,
 				A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */,
+				A4510EF02BA23BD300AB25E8 /* Views */,
 			);
 			path = OpenMacHelper;
 			sourceTree = "<group>";
