@@ -11,20 +11,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                NavigationLink {
-                    HomeView()
-                } label: {
-                    Label("Home", systemImage: "house")
-                }
-                .keyboardShortcut("h", modifiers: [.command, .shift])
-                NavigationLink {
-                    SettingsView()
-                } label: {
-                    Label("Settings", systemImage:"gear")
-                }
-                .keyboardShortcut(",", modifiers: [.command])
-            }
+            SidebarView()
         }
         .frame(minWidth: 512, minHeight: 256)
     }
