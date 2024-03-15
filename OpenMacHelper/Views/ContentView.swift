@@ -13,13 +13,23 @@ struct ContentView: View {
     var userMode: UserMode = .averageUser
     
     var body: some View {
-        VStack {
-            Text("OpenMacHelper")
-                .font(.title)
-            Text(userMode.rawValue)
-                .font(.caption)
+        NavigationView {
+            List {
+                NavigationLink {
+                    HomeView()
+                } label: {
+                    Label("Home", systemImage: "house")
+                }
+                .keyboardShortcut("h", modifiers: [.command, .shift])
+                NavigationLink {
+                    SettingsView()
+                } label: {
+                    Label("Settings", systemImage:"gear")
+                }
+                .keyboardShortcut(",", modifiers: [.command])
+            }
         }
-        .frame(minWidth: 256, minHeight: 128)
+        .frame(minWidth: 512, minHeight: 256)
     }
 }
 

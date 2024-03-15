@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A42B35412BA2185B009E81AD /* OpenMacHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */; };
 		A42B35432BA2185B009E81AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B35422BA2185B009E81AD /* ContentView.swift */; };
+		A42B3B7B2BA37D4B004760D5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B3B7A2BA37D4B004760D5 /* HomeView.swift */; };
 		A48985D92BA23F7200B6902A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48985D82BA23F7200B6902A /* Settings.swift */; };
 		A48985DB2BA23F9E00B6902A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48985DA2BA23F9E00B6902A /* SettingsView.swift */; };
 /* End PBXBuildFile section */
@@ -17,6 +18,7 @@
 		A42B353D2BA2185B009E81AD /* OpenMacHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenMacHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMacHelperApp.swift; sourceTree = "<group>"; };
 		A42B35422BA2185B009E81AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A42B3B7A2BA37D4B004760D5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A48985D82BA23F7200B6902A /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A48985DA2BA23F9E00B6902A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,6 +65,7 @@
 			children = (
 				A42B35422BA2185B009E81AD /* ContentView.swift */,
 				A48985DA2BA23F9E00B6902A /* SettingsView.swift */,
+				A42B3B7A2BA37D4B004760D5 /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 				A48985DB2BA23F9E00B6902A /* SettingsView.swift in Sources */,
 				A42B35432BA2185B009E81AD /* ContentView.swift in Sources */,
 				A42B35412BA2185B009E81AD /* OpenMacHelperApp.swift in Sources */,
+				A42B3B7B2BA37D4B004760D5 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
