@@ -9,9 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @AppStorage("userMode")
-    var userMode: UserMode = .averageUser
-    
     var body: some View {
         NavigationView {
             List {
