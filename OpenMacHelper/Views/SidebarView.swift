@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct SidebarView: View {
+    @State private var selectedView: String? = "Home"
+
 
     var body: some View {
-        List {
+        List(selection: $selectedView) {
             NavigationLink {
                 HomeView()
             } label: {
                 Label("Home", systemImage: "house")
             }
+            .tag("Home")
             .keyboardShortcut("h", modifiers: [.command, .shift])
             NavigationLink {
                 SettingsView()
