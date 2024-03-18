@@ -55,8 +55,8 @@
 		A42B353F2BA2185B009E81AD /* OpenMacHelper */ = {
 			isa = PBXGroup;
 			children = (
+				A4B6A8512BA8C6BD0050FF18 /* DataTypes */,
 				A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */,
-				A48985D82BA23F7200B6902A /* Settings.swift */,
 				A4510EF02BA23BD300AB25E8 /* Views */,
 			);
 			path = OpenMacHelper;
@@ -71,6 +71,14 @@
 				A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A4B6A8512BA8C6BD0050FF18 /* DataTypes */ = {
+			isa = PBXGroup;
+			children = (
+				A48985D82BA23F7200B6902A /* Settings.swift */,
+			);
+			path = DataTypes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
