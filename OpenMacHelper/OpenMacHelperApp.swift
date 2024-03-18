@@ -13,6 +13,9 @@ struct OpenMacHelperApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear {
+                    NSWindow.allowsAutomaticWindowTabbing = false
+                }
         }
     }
 }
