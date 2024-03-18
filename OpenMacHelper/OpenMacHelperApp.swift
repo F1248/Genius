@@ -17,5 +17,8 @@ struct OpenMacHelperApp: App {
                     NSWindow.allowsAutomaticWindowTabbing = false
                 }
         }
+        .commands {
+            CommandGroup(replacing: .newItem, addition: { })
+        }
     }
 }
