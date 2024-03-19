@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct SettingsView: View {
-    
+
     @AppStorage("userMode")
     var userMode: UserMode = .averageUser
-    
+
     var body: some View {
         Form {
             Picker("User Mode:", selection: $userMode) {
