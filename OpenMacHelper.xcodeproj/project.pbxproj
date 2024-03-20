@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A41BB1ED2BAB660900DC881C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A41BB1EC2BAB660900DC881C /* Localizable.xcstrings */; };
 		A42B35412BA2185B009E81AD /* OpenMacHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */; };
 		A42B35432BA2185B009E81AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B35422BA2185B009E81AD /* ContentView.swift */; };
 		A42B3B7B2BA37D4B004760D5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B3B7A2BA37D4B004760D5 /* HomeView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A41BB1EC2BAB660900DC881C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		A42B353D2BA2185B009E81AD /* OpenMacHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenMacHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMacHelperApp.swift; sourceTree = "<group>"; };
 		A42B35422BA2185B009E81AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		A42B353F2BA2185B009E81AD /* OpenMacHelper */ = {
 			isa = PBXGroup;
 			children = (
+				A41BB1EC2BAB660900DC881C /* Localizable.xcstrings */,
 				A4B6A8512BA8C6BD0050FF18 /* DataTypes */,
 				A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */,
 				A4510EF02BA23BD300AB25E8 /* Views */,
@@ -122,7 +125,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				de,
 			);
 			mainGroup = A42B35342BA2185B009E81AD;
 			productRefGroup = A42B353E2BA2185B009E81AD /* Products */;
@@ -139,6 +142,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A41BB1ED2BAB660900DC881C /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

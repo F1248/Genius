@@ -15,7 +15,7 @@ struct HomeView: View {
     var body: some View {
         Text("OpenMacHelper")
             .font(.largeTitle)
-        Text(userMode.rawValue)
+        Text(LocalizedStringKey(userMode.rawValue))
             .font(.subheadline)
     }
 }

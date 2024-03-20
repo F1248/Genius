@@ -16,7 +16,7 @@ struct SettingsView: View {
         Form {
             Picker("User Mode:", selection: $userMode) {
                 ForEach(UserMode.allCases) { mode in
-                    Text(mode.rawValue)
+                    Text(LocalizedStringKey(mode.rawValue))
                 }
             }
             .pickerStyle(.inline)
