@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct SidebarView: View {
-    @State private var selectedView: String? = "Home"
 
+    @State private var selectedView: String? = "Home"
 
     var body: some View {
         List(selection: $selectedView) {
