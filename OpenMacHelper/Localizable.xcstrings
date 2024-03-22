@@ -84,18 +84,18 @@
         }
       }
     },
-    "OpenMacHelper Settings" : {
+    "OpenMacHelper - Settings" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "OpenMacHelper Einstellungen"
+            "value" : "OpenMacHelper - Einstellungen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "OpenMacHelper Settings"
+            "value" : "OpenMacHelper - Settings"
           }
         }
       }
