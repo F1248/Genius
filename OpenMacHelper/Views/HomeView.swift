@@ -13,10 +13,12 @@ struct HomeView: View {
     var userMode: UserMode = .averageUser
 
     var body: some View {
-        Text("OpenMacHelper")
-            .font(.largeTitle)
-        Text(LocalizedStringKey(userMode.rawValue))
-            .font(.subheadline)
+        VStack {
+            Text("OpenMacHelper")
+                .font(.largeTitle)
+            Text(LocalizedStringKey(userMode.rawValue))
+                .font(.subheadline)
+        }
     }
 }
 
