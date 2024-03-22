@@ -14,6 +14,7 @@
 		A467E0FF2BA4B3F6005F6258 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */; };
 		A48985D92BA23F7200B6902A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48985D82BA23F7200B6902A /* Settings.swift */; };
 		A48985DB2BA23F9E00B6902A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48985DA2BA23F9E00B6902A /* SettingsView.swift */; };
+		A4A04A182BA4B536001F6563 /* SystemInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A04A172BA4B536001F6563 /* SystemInformationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		A48985D82BA23F7200B6902A /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A48985DA2BA23F9E00B6902A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A4A04A172BA4B536001F6563 /* SystemInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInformationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				A42B3B7A2BA37D4B004760D5 /* HomeView.swift */,
 				A48985DA2BA23F9E00B6902A /* SettingsView.swift */,
 				A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */,
+				A4A04A172BA4B536001F6563 /* SystemInformationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				A48985D92BA23F7200B6902A /* Settings.swift in Sources */,
 				A48985DB2BA23F9E00B6902A /* SettingsView.swift in Sources */,
 				A42B35432BA2185B009E81AD /* ContentView.swift in Sources */,
+				A4A04A182BA4B536001F6563 /* SystemInformationView.swift in Sources */,
 				A467E0FF2BA4B3F6005F6258 /* SidebarView.swift in Sources */,
 				A42B35412BA2185B009E81AD /* OpenMacHelperApp.swift in Sources */,
 				A42B3B7B2BA37D4B004760D5 /* HomeView.swift in Sources */,

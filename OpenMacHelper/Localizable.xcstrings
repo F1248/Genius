@@ -100,6 +100,22 @@
         }
       }
     },
+    "OpenMacHelper - System Information" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OpenMacHelper - Systeminformationen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OpenMacHelper - System Information"
+          }
+        }
+      }
+    },
     "Power User" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -129,6 +145,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Settings"
+          }
+        }
+      }
+    },
+    "System Information" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systeminformationen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System Information"
           }
         }
       }

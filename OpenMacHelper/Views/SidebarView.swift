@@ -21,6 +21,12 @@ struct SidebarView: View {
             .tag("Home")
             .keyboardShortcut("h", modifiers: [.command, .shift])
             NavigationLink {
+                SystemInformationView()
+            } label: {
+                Label("System Information", systemImage:"info.circle")
+            }
+            .keyboardShortcut("i", modifiers: [.command])
+            NavigationLink {
                 SettingsView()
             } label: {
                 Label("Settings", systemImage:"gear")
