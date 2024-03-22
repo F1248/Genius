@@ -23,7 +23,7 @@ struct SettingsView: View {
             }
             .pickerStyle(.inline)
         }
-        .navigationTitle("OpenMacHelper Settings")
+        .navigationTitle("OpenMacHelper - Settings")
     }
 }
 
