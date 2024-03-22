@@ -51,6 +51,22 @@
         }
       }
     },
+    "Information" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informationen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information"
+          }
+        }
+      }
+    },
     "Novice User" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -80,6 +96,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "OpenMacHelper"
+          }
+        }
+      }
+    },
+    "OpenMacHelper - Information" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OpenMacHelper - Informationen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OpenMacHelper - Information"
           }
         }
       }
