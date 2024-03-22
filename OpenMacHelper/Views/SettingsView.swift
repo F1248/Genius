@@ -13,6 +13,8 @@ struct SettingsView: View {
     var userMode: UserMode = .averageUser
 
     var body: some View {
+        Text("Settings")
+            .font(.largeTitle)
         Form {
             Picker("User Mode:", selection: $userMode) {
                 ForEach(UserMode.allCases) { mode in
