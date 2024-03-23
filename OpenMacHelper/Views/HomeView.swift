@@ -19,6 +19,7 @@ struct HomeView: View {
             Text(LocalizedStringKey(userMode.rawValue))
                 .font(.subheadline)
         }
+        .frame(minWidth: 320)
     }
 }
 

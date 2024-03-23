@@ -25,6 +25,7 @@ struct SettingsView: View {
                 .pickerStyle(.inline)
             }
         }
+        .frame(minWidth: 320)
         .navigationTitle("OpenMacHelper - Settings")
     }
 }

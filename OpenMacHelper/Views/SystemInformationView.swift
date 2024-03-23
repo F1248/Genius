@@ -17,6 +17,7 @@ struct SystemInformationView: View {
             Text(userMode == .noviceUser ? "Information" : "System Information")
                 .font(.largeTitle)
         }
+        .frame(minWidth: 320)
         .navigationTitle(userMode == .noviceUser ? "OpenMacHelper - Information" : "OpenMacHelper - System Information")
     }
 }
