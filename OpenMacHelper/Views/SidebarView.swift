@@ -20,6 +20,8 @@ struct SidebarView: View {
                 HomeView()
             } label: {
                 Label("Home", systemImage: "house")
+                    .font(.title2)
+                    .padding(4)
             }
             .tag("Home")
             .keyboardShortcut("h", modifiers: [.command, .shift])
@@ -27,12 +29,16 @@ struct SidebarView: View {
                 SystemInformationView()
             } label: {
                 Label(userMode == .noviceUser ? "Information" : "System Information", systemImage:"info.circle")
+                    .font(.title2)
+                    .padding(4)
             }
             .keyboardShortcut("i", modifiers: [.command])
             NavigationLink {
                 SettingsView()
             } label: {
                 Label("Settings", systemImage:"gear")
+                    .font(.title2)
+                    .padding(4)
             }
             .keyboardShortcut(",", modifiers: [.command])
         }
