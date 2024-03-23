@@ -5,13 +5,14 @@
 //  Created by F1248.
 //
 
-enum UserMode: String, CaseIterable, Identifiable {
-    case noviceUser = "Novice User"
-    case averageUser = "Average User"
-    case advancedUser = "Advanced User"
+enum InterfaceMode: String, CaseIterable, Identifiable {
+    case verySimple = "Very simple"
+    case simple = "Simple"
+    case normal = "Normal"
+    case advanced = "Advanced"
     case powerUser = "Power User"
 
-    var id: UserMode {
+    var id: InterfaceMode {
         return self
     }
 }

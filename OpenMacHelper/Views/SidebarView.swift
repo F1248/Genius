@@ -11,8 +11,8 @@ struct SidebarView: View {
 
     @State private var selectedView: String? = "Home"
 
-    @AppStorage("userMode")
-    var userMode: UserMode = .averageUser
+    @AppStorage("interfaceMode")
+    var interfaceMode: InterfaceMode = .normal
 
     var body: some View {
         List(selection: $selectedView) {
@@ -28,7 +28,7 @@ struct SidebarView: View {
             NavigationLink {
                 SystemInformationView()
             } label: {
-                Label(userMode == .noviceUser ? "Information" : "System Information", systemImage:"info.circle")
+                Label(interfaceMode == .verySimple ? "Information" : "System Information", systemImage:"info.circle")
                     .font(.title2)
                     .padding(4)
             }

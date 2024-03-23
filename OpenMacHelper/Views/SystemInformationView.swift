@@ -9,16 +9,16 @@ import SwiftUI
 
 struct SystemInformationView: View {
 
-    @AppStorage("userMode")
-    var userMode: UserMode = .averageUser
+    @AppStorage("interfaceMode")
+    var interfaceMode: InterfaceMode = .normal
 
     var body: some View {
         VStack {
-            Text(userMode == .noviceUser ? "Information" : "System Information")
+            Text(interfaceMode == .verySimple ? "Information" : "System Information")
                 .font(.largeTitle)
         }
         .frame(minWidth: 320)
-        .navigationTitle(userMode == .noviceUser ? "OpenMacHelper - Information" : "OpenMacHelper - System Information")
+        .navigationTitle(interfaceMode == .verySimple ? "OpenMacHelper - Information" : "OpenMacHelper - System Information")
     }
 }
 

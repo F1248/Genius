@@ -9,16 +9,16 @@ import SwiftUI
 
 struct SettingsView: View {
 
-    @AppStorage("userMode")
-    var userMode: UserMode = .averageUser
+    @AppStorage("interfaceMode")
+    var interfaceMode: InterfaceMode = .normal
 
     var body: some View {
         VStack {
             Text("Settings")
                 .font(.largeTitle)
             Form {
-                Picker("User Mode:", selection: $userMode) {
-                    ForEach(UserMode.allCases) { mode in
+                Picker("Interface Mode:", selection: $interfaceMode) {
+                    ForEach(InterfaceMode.allCases) { mode in
                         Text(LocalizedStringKey(mode.rawValue))
                     }
                 }

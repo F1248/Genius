@@ -9,14 +9,14 @@ import SwiftUI
 
 struct HomeView: View {
 
-    @AppStorage("userMode")
-    var userMode: UserMode = .averageUser
+    @AppStorage("interfaceMode")
+    var interfaceMode: InterfaceMode = .normal
 
     var body: some View {
         VStack {
             Text("OpenMacHelper")
                 .font(.largeTitle)
-            Text(LocalizedStringKey(userMode.rawValue))
+            Text("Interface Mode: ") + Text(LocalizedStringKey(interfaceMode.rawValue))
                 .font(.subheadline)
         }
         .frame(minWidth: 320)

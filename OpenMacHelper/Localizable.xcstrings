@@ -1,36 +1,19 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Advanced User" : {
+    "Advanced" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fortgeschrittener Benutzer"
+            "value" : "Erweitert"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Advanced User"
-          }
-        }
-      }
-    },
-    "Average User" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Durchschnittlicher Benutzer"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Average User"
+            "value" : "Advanced"
           }
         }
       }
@@ -67,19 +50,51 @@
         }
       }
     },
-    "Novice User" : {
-      "extractionState" : "manual",
+    "Interface Mode:" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unerfahrener Benutzer"
+            "value" : "Oberflächenmodus:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Novice User"
+            "value" : "Interface Mode:"
+          }
+        }
+      }
+    },
+    "Interface Mode: " : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oberflächenmodus: "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interface Mode: "
+          }
+        }
+      }
+    },
+    "Normal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Normal"
           }
         }
       }
@@ -181,6 +196,23 @@
         }
       }
     },
+    "Simple" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einfach"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simple"
+          }
+        }
+      }
+    },
     "System Information" : {
       "localizations" : {
         "de" : {
@@ -197,18 +229,19 @@
         }
       }
     },
-    "User Mode:" : {
+    "Very simple" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Benutzermodus:"
+            "value" : "Sehr einfach"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "User Mode:"
+            "value" : "Very simple"
           }
         }
       }
