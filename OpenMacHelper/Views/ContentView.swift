@@ -16,12 +16,12 @@ struct ContentView: View {
             } detail: {
                 EmptyView()
             }
-            .frame(minWidth: 512, minHeight: 256)
+            .frame(minWidth: 768, minHeight: 384)
         } else {
             NavigationView {
                 SidebarView()
             }
-            .frame(minWidth: 512, minHeight: 256)
+            .frame(minWidth: 768, minHeight: 384)
         }
     }
 }
