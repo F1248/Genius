@@ -28,7 +28,7 @@ struct SidebarView: View {
             NavigationLink {
                 SystemInformationView()
             } label: {
-                Label(interfaceMode == .verySimple ? "Information" : "System Information", systemImage:"info.circle")
+                Label(interfaceMode.isAtLeast(.simple) ? "System Information" : "Information", systemImage:"info.circle")
                     .font(.title2)
                     .padding(4)
             }

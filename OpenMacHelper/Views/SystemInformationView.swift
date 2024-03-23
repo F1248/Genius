@@ -14,11 +14,11 @@ struct SystemInformationView: View {
 
     var body: some View {
         VStack {
-            Text(interfaceMode == .verySimple ? "Information" : "System Information")
+            Text(interfaceMode.isAtLeast(.simple) ? "System Information" : "Information")
                 .font(.largeTitle)
         }
         .frame(minWidth: 320)
-        .navigationTitle(interfaceMode == .verySimple ? "OpenMacHelper - Information" : "OpenMacHelper - System Information")
+        .navigationTitle(interfaceMode.isAtLeast(.verySimple) ? "OpenMacHelper - System Information" : "OpenMacHelper - Information")
     }
 }
 
