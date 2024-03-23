@@ -16,7 +16,7 @@ struct HomeView: View {
         VStack {
             Text("OpenMacHelper")
                 .font(.largeTitle)
-            Text("Interface Mode: ") + Text(LocalizedStringKey(interfaceMode.rawValue))
+            Text("Interface Mode: ") + Text(interfaceMode.localized)
                 .font(.subheadline)
         }
         .frame(minWidth: 320)

@@ -19,7 +19,7 @@ struct SettingsView: View {
             Form {
                 Picker("Interface Mode:", selection: $interfaceMode) {
                     ForEach(InterfaceMode.allCases) { mode in
-                        Text(LocalizedStringKey(mode.rawValue))
+                        Text(mode.localized)
                     }
                 }
                 .pickerStyle(.inline)
