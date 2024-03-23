@@ -42,6 +42,7 @@ struct SidebarView: View {
             }
             .keyboardShortcut(",", modifiers: [.command])
         }
+        .frame(minWidth: 256)
     }
 }
 
