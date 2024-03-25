@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        if #available(macOS 13.0, *) {
+        if #available(macOS 13, *) {
             NavigationSplitView {
                 SidebarView()
             } detail: {
