@@ -24,7 +24,7 @@ struct SidebarView: View {
                     .padding(4)
             }
             .tag("Home")
-            .keyboardShortcut("h", modifiers: [.command, .shift])
+            .keyboardShortcut("0", modifiers: [.command])
             NavigationLink {
                 SystemInformationView()
             } label: {
@@ -32,7 +32,7 @@ struct SidebarView: View {
                     .font(.title2)
                     .padding(4)
             }
-            .keyboardShortcut("i", modifiers: [.command])
+            .keyboardShortcut("1", modifiers: [.command])
             NavigationLink {
                 SettingsView()
             } label: {
