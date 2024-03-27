@@ -59,8 +59,8 @@
 		A42B353F2BA2185B009E81AD /* OpenMacHelper */ = {
 			isa = PBXGroup;
 			children = (
-				A41BB1EC2BAB660900DC881C /* Localizable.xcstrings */,
 				A4B6A8512BA8C6BD0050FF18 /* DataTypes */,
+				A41BB1EC2BAB660900DC881C /* Localizable.xcstrings */,
 				A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */,
 				A4510EF02BA23BD300AB25E8 /* Views */,
 			);
