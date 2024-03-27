@@ -82,6 +82,22 @@
         }
       }
     },
+    "Maintenance" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wartung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintenance"
+          }
+        }
+      }
+    },
     "Normal" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -127,6 +143,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "OpenMacHelper - Information"
+          }
+        }
+      }
+    },
+    "OpenMacHelper - Maintenance" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OpenMacHelper - Wartung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OpenMacHelper - Maintenance"
           }
         }
       }

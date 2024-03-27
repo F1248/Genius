@@ -34,6 +34,14 @@ struct SidebarView: View {
             }
             .keyboardShortcut("1", modifiers: [.command])
             NavigationLink {
+                MaintenanceView()
+            } label: {
+                Label("Maintenance", systemImage:"checkmark.circle")
+                    .font(.title2)
+                    .padding(4)
+            }
+            .keyboardShortcut("2", modifiers: [.command])
+            NavigationLink {
                 SettingsView()
             } label: {
                 Label("Settings", systemImage:"gear")
