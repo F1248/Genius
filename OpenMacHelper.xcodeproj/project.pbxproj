@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A405FC162BB5926C006B8CF7 /* SidebarElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405FC152BB5926C006B8CF7 /* SidebarElement.swift */; };
 		A41BB1ED2BAB660900DC881C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A41BB1EC2BAB660900DC881C /* Localizable.xcstrings */; };
 		A42B35412BA2185B009E81AD /* OpenMacHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */; };
 		A42B35432BA2185B009E81AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B35422BA2185B009E81AD /* ContentView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A405FC152BB5926C006B8CF7 /* SidebarElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarElement.swift; sourceTree = "<group>"; };
 		A41BB1EC2BAB660900DC881C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		A42B353D2BA2185B009E81AD /* OpenMacHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenMacHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMacHelperApp.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				A48985D82BA23F7200B6902A /* Settings.swift */,
+				A405FC152BB5926C006B8CF7 /* SidebarElement.swift */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				A48985DB2BA23F9E00B6902A /* SettingsView.swift in Sources */,
 				A42B35432BA2185B009E81AD /* ContentView.swift in Sources */,
 				A4A04A182BA4B536001F6563 /* SystemInformationView.swift in Sources */,
+				A405FC162BB5926C006B8CF7 /* SidebarElement.swift in Sources */,
 				A467E0FF2BA4B3F6005F6258 /* SidebarView.swift in Sources */,
 				A42B35412BA2185B009E81AD /* OpenMacHelperApp.swift in Sources */,
 				A42B3B7B2BA37D4B004760D5 /* HomeView.swift in Sources */,
