@@ -18,7 +18,7 @@ struct SystemInformationView: View {
                 .font(.largeTitle)
         }
         .frame(minWidth: 320)
-        .navigationTitle(interfaceMode.isAtLeast(.verySimple) ? "OpenMacHelper - System Information" : "OpenMacHelper - Information")
+        .navigationTitle(interfaceMode.isAtLeast(.simple) ? "OpenMacHelper - System Information" : "OpenMacHelper - Information")
     }
 }
 
