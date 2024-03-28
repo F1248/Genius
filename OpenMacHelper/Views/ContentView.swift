@@ -10,19 +10,20 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        if #available(macOS 13, *) {
-            NavigationSplitView {
-                SidebarView()
-            } detail: {
-                EmptyView()
+        VStack {
+            if #available(macOS 13, *) {
+                NavigationSplitView {
+                    SidebarView()
+                } detail: {
+                    EmptyView()
+                }
+            } else {
+                NavigationView {
+                    SidebarView()
+                }
             }
-            .frame(minWidth: 768, minHeight: 384)
-        } else {
-            NavigationView {
-                SidebarView()
-            }
-            .frame(minWidth: 768, minHeight: 384)
         }
+        .frame(minWidth: 768, minHeight: 384)
     }
 }
 
