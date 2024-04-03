@@ -44,6 +44,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A42800DA2BBD820800020C13 /* SystemInformation */ = {
+			isa = PBXGroup;
+			children = (
+				A4A04A172BA4B536001F6563 /* SystemInformationView.swift */,
+			);
+			path = SystemInformation;
+			sourceTree = "<group>";
+		};
+		A42800DB2BBD821E00020C13 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A48985DA2BA23F9E00B6902A /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A42800DC2BBD822A00020C13 /* Maintenance */ = {
+			isa = PBXGroup;
+			children = (
+				A44BBF032BB213EE001072CC /* MaintenanceView.swift */,
+			);
+			path = Maintenance;
+			sourceTree = "<group>";
+		};
+		A42800DD2BBD823600020C13 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A42B3B7A2BA37D4B004760D5 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		A42B35342BA2185B009E81AD = {
 			isa = PBXGroup;
 			children = (
@@ -75,11 +107,11 @@
 			isa = PBXGroup;
 			children = (
 				A42B35422BA2185B009E81AD /* ContentView.swift */,
-				A42B3B7A2BA37D4B004760D5 /* HomeView.swift */,
-				A44BBF032BB213EE001072CC /* MaintenanceView.swift */,
-				A48985DA2BA23F9E00B6902A /* SettingsView.swift */,
+				A42800DD2BBD823600020C13 /* Home */,
+				A42800DC2BBD822A00020C13 /* Maintenance */,
+				A42800DB2BBD821E00020C13 /* Settings */,
 				A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */,
-				A4A04A172BA4B536001F6563 /* SystemInformationView.swift */,
+				A42800DA2BBD820800020C13 /* SystemInformation */,
 			);
 			path = Views;
 			sourceTree = "<group>";
