@@ -28,7 +28,7 @@ struct SidebarView: View {
             NavigationLink {
                 SystemInformationView()
             } label: {
-                Label(interfaceMode.isAtLeast(.simple) ? "System Information" : "Information", systemImage:"info.circle")
+                Label(interfaceMode.isAtLeast(.simple) ? "System Information" : "Information", systemImage: "info.circle")
                     .font(.title2)
                     .padding(4)
             }
@@ -37,7 +37,7 @@ struct SidebarView: View {
             NavigationLink {
                 MaintenanceView()
             } label: {
-                Label("Maintenance", systemImage:"checkmark.circle")
+                Label("Maintenance", systemImage: "checkmark.circle")
                     .font(.title2)
                     .padding(4)
             }
@@ -46,7 +46,7 @@ struct SidebarView: View {
             NavigationLink {
                 SettingsView()
             } label: {
-                Label("Settings", systemImage:"gear")
+                Label("Settings", systemImage: "gear")
                     .font(.title2)
                     .padding(4)
             }
