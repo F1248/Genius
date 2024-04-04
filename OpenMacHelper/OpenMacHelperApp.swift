@@ -18,7 +18,7 @@ struct OpenMacHelperApp: App {
                 }
         }
         .commands {
-            CommandGroup(replacing: .newItem, addition: { })
+            CommandGroup(replacing: .newItem) {}
             SidebarCommands()
         }
     }
