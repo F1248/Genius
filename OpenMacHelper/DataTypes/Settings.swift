@@ -15,18 +15,18 @@ enum InterfaceMode: String, CaseIterable, Identifiable {
     case powerUser = "Power User"
 
     var id: InterfaceMode {
-        return self
+        self
     }
 
     var localized: LocalizedStringKey {
-        return LocalizedStringKey(self.rawValue)
+        LocalizedStringKey(self.rawValue)
     }
 
     func index(_ mode: InterfaceMode) -> Int {
-        return InterfaceMode.allCases.firstIndex(of: mode)!
+        InterfaceMode.allCases.firstIndex(of: mode)!
     }
 
     func isAtLeast(_ mode: InterfaceMode) -> Bool {
-        return index(self) >= index(mode)
+        index(self) >= index(mode)
     }
 }
