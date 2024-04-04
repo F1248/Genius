@@ -14,6 +14,7 @@
 		A42B3B7B2BA37D4B004760D5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B3B7A2BA37D4B004760D5 /* HomeView.swift */; };
 		A44BBF042BB213EE001072CC /* MaintenanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44BBF032BB213EE001072CC /* MaintenanceView.swift */; };
 		A467E0FF2BA4B3F6005F6258 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */; };
+		A46C89692BBF1CCE00ED1003 /* NavigationLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C89682BBF1CCE00ED1003 /* NavigationLinkView.swift */; };
 		A48985D92BA23F7200B6902A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48985D82BA23F7200B6902A /* Settings.swift */; };
 		A48985DB2BA23F9E00B6902A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48985DA2BA23F9E00B6902A /* SettingsView.swift */; };
 		A4A04A182BA4B536001F6563 /* SystemInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A04A172BA4B536001F6563 /* SystemInformationView.swift */; };
@@ -28,6 +29,7 @@
 		A42B3B7A2BA37D4B004760D5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A44BBF032BB213EE001072CC /* MaintenanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceView.swift; sourceTree = "<group>"; };
 		A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		A46C89682BBF1CCE00ED1003 /* NavigationLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkView.swift; sourceTree = "<group>"; };
 		A48985D82BA23F7200B6902A /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A48985DA2BA23F9E00B6902A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A4A04A172BA4B536001F6563 /* SystemInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInformationView.swift; sourceTree = "<group>"; };
@@ -110,10 +112,19 @@
 				A42800DD2BBD823600020C13 /* Home */,
 				A42800DC2BBD822A00020C13 /* Maintenance */,
 				A42800DB2BBD821E00020C13 /* Settings */,
-				A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */,
+				A46C89672BBF1C9000ED1003 /* Sidebar */,
 				A42800DA2BBD820800020C13 /* SystemInformation */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A46C89672BBF1C9000ED1003 /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				A46C89682BBF1CCE00ED1003 /* NavigationLinkView.swift */,
+				A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */,
+			);
+			path = Sidebar;
 			sourceTree = "<group>";
 		};
 		A4B6A8512BA8C6BD0050FF18 /* DataTypes */ = {
@@ -200,6 +211,7 @@
 				A42B35432BA2185B009E81AD /* ContentView.swift in Sources */,
 				A4A04A182BA4B536001F6563 /* SystemInformationView.swift in Sources */,
 				A405FC162BB5926C006B8CF7 /* SidebarElement.swift in Sources */,
+				A46C89692BBF1CCE00ED1003 /* NavigationLinkView.swift in Sources */,
 				A467E0FF2BA4B3F6005F6258 /* SidebarView.swift in Sources */,
 				A42B35412BA2185B009E81AD /* OpenMacHelperApp.swift in Sources */,
 				A42B3B7B2BA37D4B004760D5 /* HomeView.swift in Sources */,

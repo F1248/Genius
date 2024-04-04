@@ -19,6 +19,7 @@
       }
     },
     "Home" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
