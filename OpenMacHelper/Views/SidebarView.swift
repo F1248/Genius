@@ -12,7 +12,7 @@ struct SidebarView: View {
     @State private var selectedSidebarElement: SidebarElement? = .home
 
     @AppStorage("interfaceMode")
-    var interfaceMode: InterfaceMode = .normal
+    var interfaceMode: Settings.InterfaceMode = .normal
 
     var body: some View {
         List(selection: $selectedSidebarElement) {

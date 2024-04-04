@@ -7,16 +7,19 @@
 
 import SwiftUI
 
-enum InterfaceMode: String, CaseIterable, Identifiable {
-    case verySimple = "Very simple"
-    case simple = "Simple"
-    case normal = "Normal"
-    case advanced = "Advanced"
-    case powerUser = "Power User"
+enum Settings {
 
-    var id: InterfaceMode { self }
-    var localized: LocalizedStringKey { LocalizedStringKey(self.rawValue) }
+    enum InterfaceMode: String, CaseIterable, Identifiable {
+        case verySimple = "Very simple"
+        case simple = "Simple"
+        case normal = "Normal"
+        case advanced = "Advanced"
+        case powerUser = "Power User"
 
-    func index(_ mode: InterfaceMode) -> Int { InterfaceMode.allCases.firstIndex(of: mode)! }
-    func isAtLeast(_ mode: InterfaceMode) -> Bool { index(self) >= index(mode) }
+        var id: InterfaceMode { self }
+        var localized: LocalizedStringKey { LocalizedStringKey(self.rawValue) }
+
+        func index(_ mode: InterfaceMode) -> Int { InterfaceMode.allCases.firstIndex(of: mode)! }
+        func isAtLeast(_ mode: InterfaceMode) -> Bool { index(self) >= index(mode) }
+    }
 }

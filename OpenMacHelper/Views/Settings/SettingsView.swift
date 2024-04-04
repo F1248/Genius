@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingsView: View {
 
     @AppStorage("interfaceMode")
-    var interfaceMode: InterfaceMode = .normal
+    var interfaceMode: Settings.InterfaceMode = .normal
 
     var body: some View {
         VStack {
@@ -18,7 +18,7 @@ struct SettingsView: View {
                 .font(.largeTitle)
             Form {
                 Picker("Interface Mode:", selection: $interfaceMode) {
-                    ForEach(InterfaceMode.allCases) { mode in
+                    ForEach(Settings.InterfaceMode.allCases) { mode in
                         Text(mode.localized)
                     }
                 }
