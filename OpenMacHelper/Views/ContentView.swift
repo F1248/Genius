@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
 
+    @StateObject private var systemInformation = SystemInformation()
+
     var body: some View {
         VStack {
             if #available(macOS 13, *) {
@@ -24,6 +26,7 @@ struct ContentView: View {
             }
         }
         .frame(minWidth: 768, minHeight: 384)
+        .environmentObject(systemInformation)
     }
 }
 
