@@ -16,10 +16,10 @@ enum Settings {
         case advanced = "Advanced"
         case powerUser = "Power User"
 
-        var id: InterfaceMode { self }
+        var id: Self { self }
         var localized: LocalizedStringKey { LocalizedStringKey(self.rawValue) }
 
-        func index(_ mode: InterfaceMode) -> Int { InterfaceMode.allCases.firstIndex(of: mode)! }
-        func isAtLeast(_ mode: InterfaceMode) -> Bool { index(self) >= index(mode) }
+        func index(_ mode: Self) -> Int { Self.allCases.firstIndex(of: mode)! }
+        func isAtLeast(_ mode: Self) -> Bool { index(self) >= index(mode) }
     }
 }
