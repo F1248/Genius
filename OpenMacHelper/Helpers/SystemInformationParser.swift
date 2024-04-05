@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-func getSystemImage(modelName: String, modelIdentifier: String) -> String {
+func getSystemImage(modelName: String?, modelIdentifier: String?) -> String {
     switch modelName {
-    case _ where modelName.contains("MacBook"):
+    case _ where modelName?.contains("MacBook") ?? Bool():
         switch modelIdentifier {
         case "Mac14,7": "macbook.gen1"
-        case _ where modelIdentifier.contains("MacBookPro18"): "macbook.gen2"
-        default: modelIdentifier.contains("MacBook") ? "macbook.gen1" : "macbook.gen2"
+        case _ where modelIdentifier?.contains("MacBookPro18") ?? Bool(): "macbook.gen2"
+        default: modelIdentifier?.contains("MacBook") ?? Bool() ? "macbook.gen1" : "macbook.gen2"
         }
     case "Mac mini": "macmini"
     case "Mac Studio": "macstudio"
@@ -28,6 +28,6 @@ func getSystemImage(modelName: String, modelIdentifier: String) -> String {
     }
 }
 
-func parseBool(_ bool: String) -> Bool { bool.contains("enabled") }
+func parseBool(_ bool: String?) -> Bool? { bool?.contains("enabled") }
 
-func parseVersionNumber(_ versionNumber: String) -> [Int] { versionNumber.components(separatedBy: ".").compactMap { Int($0) } }
+func parseVersionNumber(_ versionNumber: String?) -> [Int]? { versionNumber?.components(separatedBy: ".").compactMap { Int($0) } }
