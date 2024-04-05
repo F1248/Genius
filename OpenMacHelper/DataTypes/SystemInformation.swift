@@ -81,12 +81,8 @@ class SystemInformation: ObservableObject {
 
         var user = User()
         struct User {
-            var name: String = String(
-                SystemProfiler.software["user_name"]!.prefix(upTo: SystemProfiler.software["user_name"]!.lastIndex(of: " ")!)
-            )
-            var accountName: String = String(
-                SystemProfiler.software["user_name"]!.components(separatedBy: " ").last!.dropFirst().dropLast()
-            )
+            var name: String = String(SystemProfiler.software["user_name"]!.prefix(upTo: SystemProfiler.software["user_name"]!.lastIndex(of: " ")!))
+            var accountName: String = String(SystemProfiler.software["user_name"]!.components(separatedBy: " ").last!.dropFirst().dropLast())
         }
 
         var security = Security()
