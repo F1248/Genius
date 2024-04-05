@@ -28,10 +28,6 @@ func getSystemImage(modelName: String, modelIdentifier: String) -> String {
     }
 }
 
-func parseBool(_ bool: String) -> Bool {
-    bool.contains("enabled")
-}
+func parseBool(_ bool: String) -> Bool { bool.contains("enabled") }
 
-func parseVersionNumber(_ versionNumber: String) -> [Int] {
-    versionNumber.components(separatedBy: ".").compactMap { Int($0) }
-}
+func parseVersionNumber(_ versionNumber: String) -> [Int] { versionNumber.components(separatedBy: ".").compactMap { Int($0) } }
