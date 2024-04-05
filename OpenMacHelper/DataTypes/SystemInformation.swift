@@ -87,6 +87,7 @@ class SystemInformation: ObservableObject {
 
         var security = Security()
         struct Security {
+            var activationLock: Bool? = parseBool(SystemProfiler.hardware["activation_lock_status"])
             var secureVirtualMemory: Bool? = parseBool(SystemProfiler.software["secure_vm"])
             var systemIntegrityProtection: Bool? = parseBool(SystemProfiler.software["system_integrity"])
         }
