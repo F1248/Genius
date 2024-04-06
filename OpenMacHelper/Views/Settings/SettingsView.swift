@@ -16,6 +16,7 @@ struct SettingsView: View {
         VStack {
             Text("Settings")
                 .font(.largeTitle)
+                .padding()
             Form {
                 Picker("Interface Mode:", selection: $interfaceMode) {
                     ForEach(Settings.InterfaceMode.allCases) { mode in

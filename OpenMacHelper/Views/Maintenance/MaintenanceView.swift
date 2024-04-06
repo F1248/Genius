@@ -13,6 +13,7 @@ struct MaintenanceView: View {
         VStack {
             Text("Maintenance")
                 .font(.largeTitle)
+                .padding()
         }
         .frame(minWidth: 309)
         .navigationTitle("OpenMacHelper - Maintenance")

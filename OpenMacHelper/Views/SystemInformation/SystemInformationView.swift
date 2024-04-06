@@ -16,6 +16,7 @@ struct SystemInformationView: View {
         VStack {
             Text(interfaceMode.isAtLeast(.simple) ? "System Information" : "Information")
                 .font(.largeTitle)
+                .padding()
         }
         .frame(minWidth: 309)
         .navigationTitle(interfaceMode.isAtLeast(.simple) ? "OpenMacHelper - System Information" : "OpenMacHelper - Information")
