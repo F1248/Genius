@@ -169,6 +169,7 @@
 				A42B35392BA2185B009E81AD /* Sources */,
 				A42B353A2BA2185B009E81AD /* Frameworks */,
 				A42B353B2BA2185B009E81AD /* Resources */,
+				A49F8CB12BBDC90A004957CC /* SwiftLint */,
 			);
 			buildRules = (
 			);
