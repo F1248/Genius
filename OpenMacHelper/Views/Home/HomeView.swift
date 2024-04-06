@@ -19,7 +19,7 @@ struct HomeView: View {
             Text("Interface Mode: ") + Text(interfaceMode.localized)
                 .font(.subheadline)
         }
-        .frame(minWidth: 320)
+        .frame(minWidth: 309)
     }
 }
 

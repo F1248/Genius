@@ -14,7 +14,7 @@ struct MaintenanceView: View {
             Text("Maintenance")
                 .font(.largeTitle)
         }
-        .frame(minWidth: 320)
+        .frame(minWidth: 309)
         .navigationTitle("OpenMacHelper - Maintenance")
     }
 }

@@ -21,7 +21,7 @@ struct SidebarView: View {
             NavigationLinkView(destination: MaintenanceView(), title: "Maintenance", systemImage: "checkmark.circle", tag: .maintenance, keyboardShortcutKey: "2")
             NavigationLinkView(destination: SettingsView(), title: "Settings", systemImage: "gear", tag: .settings, keyboardShortcutKey: ",")
         }
-        .frame(minWidth: 256)
+        .frame(minWidth: 230)
     }
 }
 

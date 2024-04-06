@@ -25,7 +25,7 @@ struct ContentView: View {
                 }
             }
         }
-        .frame(minWidth: 768, minHeight: 384)
+        .frame(minWidth: 539, minHeight: 256)
         .environmentObject(systemInformation)
     }
 }
