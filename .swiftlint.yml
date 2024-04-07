@@ -25,6 +25,8 @@ identifier_name:
 line_length: 256
 nesting:
   type_level: 3
+number_separator:
+  minimum_length: 7
 trailing_whitespace:
   ignores_comments: false
 type_name:
