@@ -19,11 +19,11 @@ class SystemInformation: ObservableObject {
 
         var model = Model()
         struct Model {
-            var isLaptop: Bool = SystemProfiler.hardware["machine_name"]?.contains("MacBook") ?? Bool()
-            var systemImage: String = getSystemImage(modelName: SystemProfiler.hardware["machine_name"], modelIdentifier: SystemProfiler.hardware["machine_model"])
             var name: String? = SystemProfiler.hardware["machine_name"]
             var identifier: String? = SystemProfiler.hardware["machine_model"]
             var number: String? = SystemProfiler.hardware["model_number"]
+            var isLaptop: Bool = SystemProfiler.hardware["machine_name"]?.contains("MacBook") ?? Bool()
+            var systemImage: String = getSystemImage(modelName: SystemProfiler.hardware["machine_name"], modelIdentifier: SystemProfiler.hardware["machine_model"])
         }
 
         var specifications = Specifications()
