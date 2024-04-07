@@ -54,6 +54,7 @@ class SystemInformation: ObservableObject {
         struct OS {
             var name: String? = SystemProfiler.software["os_version"]?.components(separatedBy: " ")[0]
             var version: [Int]? = parseVersionNumber(SystemProfiler.software["os_version"]?.components(separatedBy: " ")[1])
+            var marketingName: String? = getOSMarketingName(parseVersionNumber(SystemProfiler.software["os_version"]?.components(separatedBy: " ")[1]))
             var build: String? = (SystemProfiler.software["os_version"]?.components(separatedBy: " ").last?.dropFirst().dropLast()).map(String.init)
             var loaderVersion: [Int]? = parseVersionNumber(SystemProfiler.hardware["os_loader_version"])
         }

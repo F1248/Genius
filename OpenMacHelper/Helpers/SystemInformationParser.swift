@@ -36,6 +36,16 @@ func getModelMarketingName(_ serialNumber: String?) -> String? {
     return output.components(separatedBy: "<configCode>").last?.components(separatedBy: "</configCode>").first
 }
 
+func getOSMarketingName(_ osVersion: [Int]?) -> String? {
+    switch osVersion?[0] {
+    case 11: "Big Sur"
+    case 12: "Monterey"
+    case 13: "Ventura"
+    case 14: "Sonoma"
+    default: nil
+    }
+}
+
 func parseBool(_ bool: String?) -> Bool? { bool?.contains("enabled") }
 
 func parseVersionNumber(_ versionNumber: String?) -> [Int]? { versionNumber?.components(separatedBy: ".").compactMap { Int($0) } }
