@@ -28,6 +28,14 @@ func getSystemImage(modelName: String?, modelIdentifier: String?) -> String {
     }
 }
 
+func getModelMarketingName(_ serialNumber: String?) -> String? {
+    guard let serialNumber = serialNumber else { return nil }
+    let url: String = "https://support-sp.apple.com/sp/product?cc=\(serialNumber.dropFirst(8))"
+    let output: String = runProcess(["/usr/bin/curl", "-s", url])
+    if !output.contains("<configCode>") { return nil }
+    return output.components(separatedBy: "<configCode>").last?.components(separatedBy: "</configCode>").first
+}
+
 func parseBool(_ bool: String?) -> Bool? { bool?.contains("enabled") }
 
 func parseVersionNumber(_ versionNumber: String?) -> [Int]? { versionNumber?.components(separatedBy: ".").compactMap { Int($0) } }
