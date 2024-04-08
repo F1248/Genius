@@ -22,6 +22,8 @@ explicit_type_interface:
   allow_redundancy: true
 identifier_name:
   min_length: 2
+indentation_width:
+  include_comments: false
 line_length: 256
 nesting:
   type_level: 3
