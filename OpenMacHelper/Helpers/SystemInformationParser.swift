@@ -28,12 +28,13 @@ func getSystemImage(modelName: String?, modelIdentifier: String?) -> String {
     }
 }
 
-func getModelMarketingName(_ serialNumber: String?) -> String? {
+func getModelMarketingName(_ serialNumber: String?) -> LocalizedStringKey? {
     guard let serialNumber = serialNumber else { return nil }
-    let url: String = "https://support-sp.apple.com/sp/product?cc=\(serialNumber.dropFirst(8))"
+    let url: String = "https://support-sp.apple.com/sp/product?cc=\(serialNumber.dropFirst(8))&lang=\(Locale.current.identifier)"
     let output: String = runProcess(["/usr/bin/curl", "-s", url])
     if !output.contains("<configCode>") { return nil }
-    return output.components(separatedBy: "<configCode>").last?.components(separatedBy: "</configCode>").first
+    guard let marketingName: String = output.components(separatedBy: "<configCode>").last?.components(separatedBy: "</configCode>").first else { return nil }
+    return LocalizedStringKey(marketingName)
 }
 
 func getOSMarketingName(_ osVersion: [Int]?) -> String? {

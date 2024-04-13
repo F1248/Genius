@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum SystemProfiler {
     static let hardware: [String: String] = getSystemProfiler("SPHardwareDataType")
@@ -24,7 +25,7 @@ class SystemInformation: ObservableObject {
             var number: String? = SystemProfiler.hardware["model_number"]
             var isLaptop: Bool = SystemProfiler.hardware["machine_name"]?.contains("MacBook") ?? Bool()
             var systemImage: String = getSystemImage(modelName: SystemProfiler.hardware["machine_name"], modelIdentifier: SystemProfiler.hardware["machine_model"])
-            var marketingName: String? = getModelMarketingName(SystemProfiler.hardware["serial_number"])
+            var marketingName: LocalizedStringKey? = getModelMarketingName(SystemProfiler.hardware["serial_number"])
         }
 
         var specifications = Specifications()
