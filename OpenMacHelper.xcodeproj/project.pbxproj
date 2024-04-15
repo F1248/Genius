@@ -43,6 +43,7 @@
 		A48985D82BA23F7200B6902A /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A48985DA2BA23F9E00B6902A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A4A04A172BA4B536001F6563 /* SystemInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInformationView.swift; sourceTree = "<group>"; };
+		A4EB1C9A2BCC3F8200DF01A6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +95,7 @@
 				A4528F1F2BCD9B400092CBB8 /* .gitignore */,
 				A452AFF22BBF2CAB00760569 /* .swiftlint.yml */,
 				A42B353F2BA2185B009E81AD /* OpenMacHelper */,
+				A4EB1C9A2BCC3F8200DF01A6 /* README.md */,
 				A42B353E2BA2185B009E81AD /* Products */,
 			);
 			sourceTree = "<group>";
