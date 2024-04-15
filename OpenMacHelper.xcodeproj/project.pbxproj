@@ -17,7 +17,6 @@
 		A452AFE82BBF2BF500760569 /* ProcessHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE42BBF2BF500760569 /* ProcessHandler.swift */; };
 		A452AFE92BBF2BF500760569 /* SystemInformationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE52BBF2BF500760569 /* SystemInformationParser.swift */; };
 		A452AFEA2BBF2BF500760569 /* SystemProfilerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE62BBF2BF500760569 /* SystemProfilerHandler.swift */; };
-		A452AFF32BBF2CAB00760569 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A452AFF22BBF2CAB00760569 /* .swiftlint.yml */; };
 		A467E0FF2BA4B3F6005F6258 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */; };
 		A46C89692BBF1CCE00ED1003 /* NavigationLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C89682BBF1CCE00ED1003 /* NavigationLinkView.swift */; };
 		A48985D92BA23F7200B6902A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48985D82BA23F7200B6902A /* Settings.swift */; };
@@ -220,7 +219,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A452AFF32BBF2CAB00760569 /* .swiftlint.yml in Resources */,
 				A41BB1ED2BAB660900DC881C /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
