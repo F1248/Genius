@@ -23,6 +23,7 @@ class SystemInformation: ObservableObject {
             var name: String? = SystemProfiler.hardware["machine_name"]
             var identifier: String? = SystemProfiler.hardware["machine_model"]
             var number: String? = SystemProfiler.hardware["model_number"]
+            var isAppleSilicon: Bool = SystemProfiler.hardware["chip_type"] != nil
             var isLaptop: Bool
             var systemImage: String
             var marketingName: LocalizedStringKey? = getModelMarketingName(SystemProfiler.hardware["serial_number"])
