@@ -49,4 +49,6 @@ func getOSMarketingName(_ osVersion: [Int]?) -> String? {
 
 func parseBool(_ bool: String?) -> Bool? { bool?.contains("enabled") }
 
+func parseInt(_ int: String?) -> Int? { Int( int ?? String()) }
+
 func parseVersionNumber(_ versionNumber: String?) -> [Int]? { versionNumber?.components(separatedBy: ".").compactMap { Int($0) } }
