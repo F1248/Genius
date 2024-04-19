@@ -3,17 +3,20 @@ strict: true
 opt_in_rules: all
 
 disabled_rules:
+  - anyobject_protocol
   - conditional_returns_on_newline
   - discouraged_optional_boolean
   - discouraged_optional_collection
   - explicit_acl
   - explicit_top_level_acl
+  - inert_defer
   - let_var_whitespace
   - no_magic_numbers
   - required_deinit
   - sorted_enum_cases
   - switch_case_on_newline
   - type_contents_order
+  - unused_capture_list
   - vertical_whitespace_opening_braces
 
 closure_body_length: 64
