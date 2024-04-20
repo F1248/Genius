@@ -35,7 +35,7 @@ class SystemInformation: ObservableObject {
 
         var specifications = Specifications()
         struct Specifications {
-            var chip: String? = SystemProfiler.hardware["chip_type"]
+            var cpu: String? = SystemProfiler.hardware["chip_type"] ?? SystemProfiler.hardware["cpu_type"]
             var cores = Cores()
             struct Cores {
                 var total: Int?, performance: Int?, efficiency: Int?
