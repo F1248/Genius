@@ -117,6 +117,7 @@ class SystemInformation: ObservableObject {
             var activationLock: Bool? = parseBool(SystemProfiler.hardware["activation_lock_status"])
             var secureVirtualMemory: Bool? = parseBool(SystemProfiler.software["secure_vm"])
             var systemIntegrityProtection: Bool? = parseBool(SystemProfiler.software["system_integrity"])
+            var hyperThreading: Bool? = parseBool(SystemProfiler.hardware["platform_cpu_htt"])
         }
     }
 }
