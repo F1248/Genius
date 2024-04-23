@@ -49,11 +49,9 @@ func getOSMarketingName(_ osVersion: [Int]?) -> String? {
 
 func parseBool(_ bool: String?) -> Bool? {
     guard let bool = bool else { return nil }
-    switch bool {
-    case _ where bool.contains("enabled"): return true
-    case _ where bool.contains("disabled"): return false
-    default: return nil
-    }
+    if bool.contains("enabled") { return true }
+    if bool.contains("disabled") { return false }
+    return nil
 }
 
 func parseInt(_ int: String?) -> Int? { Int(int ?? String()) }
