@@ -4,6 +4,7 @@ opt_in_rules: all
 
 disabled_rules:
   - anyobject_protocol
+  - closure_body_length
   - conditional_returns_on_newline
   - discouraged_optional_boolean
   - discouraged_optional_collection
@@ -19,7 +20,6 @@ disabled_rules:
   - unused_capture_list
   - vertical_whitespace_opening_braces
 
-closure_body_length: 64
 cyclomatic_complexity:
   ignores_case_statements: true
 explicit_type_interface:
