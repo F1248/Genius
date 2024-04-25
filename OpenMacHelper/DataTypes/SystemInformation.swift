@@ -119,6 +119,7 @@ class SystemInformation: ObservableObject {
             var hyperThreading: Bool? = parseBool(SystemProfiler.hardware["platform_cpu_htt"])
             var secureVirtualMemory: Bool? = parseBool(SystemProfiler.software["secure_vm"])
             var systemIntegrityProtection: Bool? = parseBool(SystemProfiler.software["system_integrity"])
+            var fileVault: Bool? = parseBool(runProcess(["/usr/bin/fdesetup", "isactive"]))
         }
     }
 }
