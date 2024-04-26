@@ -40,9 +40,12 @@ class SystemInformation: ObservableObject {
             struct Cores {
                 var total: Int?, performance: Int?, efficiency: Int?
                 init() {
-                    let components = (SystemProfiler.hardware["number_processors"] as? String)?.replacingOccurrences(of: "proc ", with: "").components(separatedBy: ":")
-                    total = parseInt(components?[0])
-                    if components?.count == 3 { (performance, efficiency) = (parseInt(components?[1]), parseInt(components?[2])) }
+                    if SystemProfiler.hardware["number_processors"] is Int {
+                        total = SystemProfiler.hardware["number_processors"] as? Int
+                    } else {
+                        let components = (SystemProfiler.hardware["number_processors"] as? String)?.replacingOccurrences(of: "proc ", with: "").components(separatedBy: ":")
+                        (total, performance, efficiency) = (parseInt(components?[0]), parseInt(components?[1]), parseInt(components?[2]))
+                    }
                 }
             }
             var memory: String? = SystemProfiler.hardware["physical_memory"] as? String
