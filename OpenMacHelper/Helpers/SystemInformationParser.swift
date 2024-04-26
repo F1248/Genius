@@ -30,6 +30,7 @@ func getSystemImage(modelName: String?, modelIdentifier: String?) -> String {
 
 func getModelMarketingName(_ serialNumber: String?) -> LocalizedStringKey? {
     guard let serialNumber = serialNumber else { return nil }
+    if ![11, 12].contains(serialNumber.count) { return nil }
     let url: String = "https://support-sp.apple.com/sp/product?cc=\(serialNumber.dropFirst(8))&lang=\(Locale.current.identifier)"
     let output: String = runProcess(["/usr/bin/curl", "-s", url])
     if !output.contains("<configCode>") { return nil }
