@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 enum SystemProfiler {
-    static let hardware: [String: String] = getSystemProfiler("SPHardwareDataType")
-    static let software: [String: String] = getSystemProfiler("SPSoftwareDataType")
+    static let hardware = getSystemProfiler("SPHardwareDataType")
+    static let software = getSystemProfiler("SPSoftwareDataType")
 }
 
 class SystemInformation: ObservableObject {
