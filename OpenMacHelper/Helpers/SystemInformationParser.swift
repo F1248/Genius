@@ -28,8 +28,8 @@ func getSystemImage(modelName: String?, modelIdentifier: String?) -> String {
     }
 }
 
-func getModelMarketingName(_ serialNumber: String?) -> LocalizedStringKey? {
-    guard let serialNumber = serialNumber else { return nil }
+func getModelMarketingName(_ serialNumber: Any?) -> LocalizedStringKey? {
+    guard let serialNumber = serialNumber as? String else { return nil }
     if ![11, 12].contains(serialNumber.count) { return nil }
     let url: String = "https://support-sp.apple.com/sp/product?cc=\(serialNumber.dropFirst(8))&lang=\(Locale.current.identifier)"
     let output: String = runProcess(["/usr/bin/curl", "-s", url])
@@ -48,8 +48,8 @@ func getOSMarketingName(_ osVersion: [Int]?) -> String? {
     }
 }
 
-func parseBool(_ bool: String?) -> Bool? {
-    guard let bool = bool else { return nil }
+func parseBool(_ bool: Any?) -> Bool? {
+    guard let bool = bool as? String else { return nil }
     if bool.contains("enabled") || bool.contains("true") { return true }
     if bool.contains("disabled") || bool.contains("false") { return false }
     return nil
@@ -57,4 +57,4 @@ func parseBool(_ bool: String?) -> Bool? {
 
 func parseInt(_ int: String?) -> Int? { Int(int ?? String()) }
 
-func parseVersionNumber(_ versionNumber: String?) -> [Int]? { versionNumber?.components(separatedBy: ".").compactMap { Int($0) } }
+func parseVersionNumber(_ versionNumber: Any?) -> [Int]? { (versionNumber as? String)?.components(separatedBy: ".").compactMap { Int($0) } }

@@ -20,9 +20,9 @@ class SystemInformation: ObservableObject {
 
         var model = Model()
         struct Model {
-            var name: String? = SystemProfiler.hardware["machine_name"]
-            var identifier: String? = SystemProfiler.hardware["machine_model"]
-            var number: String? = SystemProfiler.hardware["model_number"]
+            var name: String? = SystemProfiler.hardware["machine_name"] as? String
+            var identifier: String? = SystemProfiler.hardware["machine_model"] as? String
+            var number: String? = SystemProfiler.hardware["model_number"] as? String
             var isAppleSilicon: Bool = SystemProfiler.hardware["chip_type"] != nil
             var isLaptop: Bool
             var systemImage: String
@@ -35,24 +35,24 @@ class SystemInformation: ObservableObject {
 
         var specifications = Specifications()
         struct Specifications {
-            var cpu: String? = SystemProfiler.hardware["chip_type"] ?? SystemProfiler.hardware["cpu_type"]
+            var cpu: String? = SystemProfiler.hardware["chip_type"] as? String ?? SystemProfiler.hardware["cpu_type"] as? String
             var cores = Cores()
             struct Cores {
                 var total: Int?, performance: Int?, efficiency: Int?
                 init() {
-                    let components = SystemProfiler.hardware["number_processors"]?.replacingOccurrences(of: "proc ", with: "").components(separatedBy: ":")
+                    let components = (SystemProfiler.hardware["number_processors"] as? String)?.replacingOccurrences(of: "proc ", with: "").components(separatedBy: ":")
                     total = parseInt(components?[0])
                     if components?.count == 3 { (performance, efficiency) = (parseInt(components?[1]), parseInt(components?[2])) }
                 }
             }
-            var memory: String? = SystemProfiler.hardware["physical_memory"]
+            var memory: String? = SystemProfiler.hardware["physical_memory"] as? String
         }
 
         var machine = Machine()
         struct Machine {
-            var serialNumber: String? = SystemProfiler.hardware["serial_number"]
-            var hardwareUUID: String? = SystemProfiler.hardware["platform_UUID"]
-            var provisioningUDID: String? = SystemProfiler.hardware["provisioning_UDID"]
+            var serialNumber: String? = SystemProfiler.hardware["serial_number"] as? String
+            var hardwareUUID: String? = SystemProfiler.hardware["platform_UUID"] as? String
+            var provisioningUDID: String? = SystemProfiler.hardware["provisioning_UDID"] as? String
         }
     }
 
@@ -67,7 +67,7 @@ class SystemInformation: ObservableObject {
             var build: String?
             var loaderVersion: [Int]? = parseVersionNumber(SystemProfiler.hardware["os_loader_version"])
             init() {
-                let components = SystemProfiler.software["os_version"]?.components(separatedBy: " ")
+                let components = (SystemProfiler.software["os_version"] as? String)?.components(separatedBy: " ")
                 name = components?[0]
                 version = parseVersionNumber(components?[1])
                 marketingName = getOSMarketingName(version)
@@ -80,7 +80,7 @@ class SystemInformation: ObservableObject {
             var name: String?
             var version: [Int]?
             init() {
-                let components = SystemProfiler.software["kernel_version"]?.components(separatedBy: " ")
+                let components = (SystemProfiler.software["kernel_version"] as? String)?.components(separatedBy: " ")
                 name = components?[0]
                 version = parseVersionNumber(components?[1])
             }
@@ -93,13 +93,13 @@ class SystemInformation: ObservableObject {
 
         var boot = Boot()
         struct Boot {
-            var volume: String? = SystemProfiler.software["boot_volume"]
-            var mode: String? = SystemProfiler.software["boot_mode"]
+            var volume: String? = SystemProfiler.software["boot_volume"] as? String
+            var mode: String? = SystemProfiler.software["boot_mode"] as? String
         }
 
         var computer = Computer()
         struct Computer {
-            var name: String? = SystemProfiler.software["local_host_name"]
+            var name: String? = SystemProfiler.software["local_host_name"] as? String
         }
 
         var user = User()
@@ -107,7 +107,7 @@ class SystemInformation: ObservableObject {
             var name: String?
             var accountName: String?
             init() {
-                let components = SystemProfiler.software["user_name"]?.components(separatedBy: " ")
+                let components = (SystemProfiler.software["user_name"] as? String)?.components(separatedBy: " ")
                 name = components?.dropLast().joined(separator: " ")
                 accountName = (components?.last?.dropFirst().dropLast()).map(String.init)
             }
