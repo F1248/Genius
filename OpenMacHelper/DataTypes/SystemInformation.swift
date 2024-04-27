@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 enum SystemProfiler {
+    static let firewall = getSystemProfiler("Firewall")
     static let hardware = getSystemProfiler("Hardware")
     static let software = getSystemProfiler("Software")
 }
@@ -123,6 +124,7 @@ class SystemInformation: ObservableObject {
             let secureVirtualMemory: Bool? = parseBool(SystemProfiler.software["secure_vm"])
             let systemIntegrityProtection: Bool? = parseBool(SystemProfiler.software["system_integrity"])
             let fileVault: Bool? = parseBool(runProcess(["/usr/bin/fdesetup", "isactive"]))
+            let firewall: Bool? = parseBool(SystemProfiler.firewall["spfirewall_globalstate"])
         }
     }
 }

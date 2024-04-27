@@ -50,8 +50,8 @@ func getOSMarketingName(_ osVersion: [Int]?) -> String? {
 
 func parseBool(_ bool: Any?) -> Bool? {
     guard let bool = bool as? String else { return nil }
-    if bool.contains(["enabled", "true"]) { return true }
-    if bool.contains(["disabled", "false"]) { return false }
+    if bool.contains(["enabled", "true", "limit", "block"]) { return true }
+    if bool.contains(["disabled", "false", "allow"]) { return false }
     return nil
 }
 
