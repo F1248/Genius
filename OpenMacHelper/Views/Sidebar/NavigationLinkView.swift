@@ -9,11 +9,11 @@ import SwiftUI
 
 struct NavigationLinkView<Destination: View>: View {
 
-    var destination: Destination
-    var title: String
-    var systemImage: String
-    var tag: SidebarElement
-    var keyboardShortcutKey: KeyEquivalent
+    let destination: Destination
+    let title: String
+    let systemImage: String
+    let tag: SidebarElement
+    let keyboardShortcutKey: KeyEquivalent
 
     var body: some View {
         NavigationLink {

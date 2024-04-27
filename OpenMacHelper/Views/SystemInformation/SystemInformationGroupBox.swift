@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SystemInformationGroupBox: View {
 
-    var label: String?
-    var contents: [(String, Any?)]
+    let label: String?
+    let contents: [(String, Any?)]
 
     var body: some View {
         GroupBox(
