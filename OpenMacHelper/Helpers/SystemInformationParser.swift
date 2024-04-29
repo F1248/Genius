@@ -32,9 +32,9 @@ func getModelMarketingName(_ serialNumber: Any?) -> LocalizedStringKey? {
     guard let serialNumber = serialNumber as? String else { return nil }
     if ![11, 12].contains(serialNumber.count) { return nil }
     let url: String = "https://support-sp.apple.com/sp/product?cc=\(serialNumber.dropFirst(8))&lang=\(Locale.current.identifier)"
-    let output: String = runProcess(["/usr/bin/curl", "-s", url])
+    let output = runProcess(["/usr/bin/curl", "-s", url])
     if !output.contains("<configCode>") { return nil }
-    guard let marketingName: String = output.components(separatedBy: "<configCode>").last?.components(separatedBy: "</configCode>").first else { return nil }
+    guard let marketingName = output.components(separatedBy: "<configCode>").last?.components(separatedBy: "</configCode>").first else { return nil }
     return LocalizedStringKey(marketingName)
 }
 
