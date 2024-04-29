@@ -21,13 +21,13 @@ class SystemInformation: ObservableObject {
 
         let model = Model()
         struct Model {
-            let name: String? = SystemProfiler.hardware["machine_name"] as? String
-            let identifier: String? = SystemProfiler.hardware["machine_model"] as? String
-            let number: String? = SystemProfiler.hardware["model_number"] as? String
-            let isAppleSilicon: Bool = SystemProfiler.hardware["chip_type"] != nil
+            let name: String? = SystemProfiler.hardware?["machine_name"] as? String
+            let identifier: String? = SystemProfiler.hardware?["machine_model"] as? String
+            let number: String? = SystemProfiler.hardware?["model_number"] as? String
+            let isAppleSilicon: Bool = SystemProfiler.hardware?["chip_type"] != nil
             let isLaptop: Bool
             let systemImage: String
-            let marketingName: LocalizedStringKey? = getModelMarketingName(SystemProfiler.hardware["serial_number"])
+            let marketingName: LocalizedStringKey? = getModelMarketingName(SystemProfiler.hardware?["serial_number"])
             init() {
                 isLaptop = name?.starts(with: "MacBook") ?? Bool()
                 systemImage = getSystemImage(modelName: name, modelIdentifier: identifier)
@@ -36,27 +36,27 @@ class SystemInformation: ObservableObject {
 
         let specifications = Specifications()
         struct Specifications {
-            let cpu: String? = SystemProfiler.hardware["chip_type"] as? String ?? SystemProfiler.hardware["cpu_type"] as? String
+            let cpu: String? = SystemProfiler.hardware?["chip_type"] as? String ?? SystemProfiler.hardware?["cpu_type"] as? String
             let cores = Cores()
             struct Cores {
                 let total: Int?, performance: Int?, efficiency: Int?
                 init() {
-                    if SystemProfiler.hardware["number_processors"] is Int {
-                        (total, performance, efficiency) = (SystemProfiler.hardware["number_processors"] as? Int, nil, nil)
+                    if SystemProfiler.hardware?["number_processors"] is Int {
+                        (total, performance, efficiency) = (SystemProfiler.hardware?["number_processors"] as? Int, nil, nil)
                     } else {
-                        let components = (SystemProfiler.hardware["number_processors"] as? String)?.replacingOccurrences(of: "proc ", with: "").components(separatedBy: ":")
-                        (total, performance, efficiency) = (parseInt(components?[0]), parseInt(components?[1]), parseInt(components?[2]))
+                        let components = (SystemProfiler.hardware?["number_processors"] as? String)?.replacingOccurrences(of: "proc ", with: "").components(separatedBy: ":")
+                        (total, performance, efficiency) = (parseInt(components?[safe: 0]), parseInt(components?[safe: 1]), parseInt(components?[safe: 2]))
                     }
                 }
             }
-            let memory: String? = SystemProfiler.hardware["physical_memory"] as? String
+            let memory: String? = SystemProfiler.hardware?["physical_memory"] as? String
         }
 
         let machine = Machine()
         struct Machine {
-            let serialNumber: String? = SystemProfiler.hardware["serial_number"] as? String
-            let hardwareUUID: String? = SystemProfiler.hardware["platform_UUID"] as? String
-            let provisioningUDID: String? = SystemProfiler.hardware["provisioning_UDID"] as? String
+            let serialNumber: String? = SystemProfiler.hardware?["serial_number"] as? String
+            let hardwareUUID: String? = SystemProfiler.hardware?["platform_UUID"] as? String
+            let provisioningUDID: String? = SystemProfiler.hardware?["provisioning_UDID"] as? String
         }
     }
 
@@ -69,11 +69,11 @@ class SystemInformation: ObservableObject {
             let version: [Int]?
             let marketingName: String?
             let build: String?
-            let loaderVersion: [Int]? = parseVersionNumber(SystemProfiler.hardware["os_loader_version"])
+            let loaderVersion: [Int]? = parseVersionNumber(SystemProfiler.hardware?["os_loader_version"])
             init() {
-                let components = (SystemProfiler.software["os_version"] as? String)?.components(separatedBy: " ")
-                name = components?[0]
-                version = parseVersionNumber(components?[1])
+                let components = (SystemProfiler.software?["os_version"] as? String)?.components(separatedBy: " ")
+                name = components?[safe: 0]
+                version = parseVersionNumber(components?[safe: 1])
                 marketingName = getOSMarketingName(version)
                 build = (components?.last?.dropFirst().dropLast()).map(String.init)
             }
@@ -84,26 +84,26 @@ class SystemInformation: ObservableObject {
             let name: String?
             let version: [Int]?
             init() {
-                let components = (SystemProfiler.software["kernel_version"] as? String)?.components(separatedBy: " ")
-                name = components?[0]
-                version = parseVersionNumber(components?[1])
+                let components = (SystemProfiler.software?["kernel_version"] as? String)?.components(separatedBy: " ")
+                name = components?[safe: 0]
+                version = parseVersionNumber(components?[safe: 1])
             }
         }
 
         let firmware = Firmware()
         struct Firmware {
-            let version: [Int]? = parseVersionNumber(SystemProfiler.hardware["boot_rom_version"])
+            let version: [Int]? = parseVersionNumber(SystemProfiler.hardware?["boot_rom_version"])
         }
 
         let boot = Boot()
         struct Boot {
-            let volume: String? = SystemProfiler.software["boot_volume"] as? String
-            let mode: String? = SystemProfiler.software["boot_mode"] as? String
+            let volume: String? = SystemProfiler.software?["boot_volume"] as? String
+            let mode: String? = SystemProfiler.software?["boot_mode"] as? String
         }
 
         let computer = Computer()
         struct Computer {
-            let name: String? = SystemProfiler.software["local_host_name"] as? String
+            let name: String? = SystemProfiler.software?["local_host_name"] as? String
         }
 
         let user = User()
@@ -111,7 +111,7 @@ class SystemInformation: ObservableObject {
             let name: String?
             let accountName: String?
             init() {
-                let components = (SystemProfiler.software["user_name"] as? String)?.components(separatedBy: " ")
+                let components = (SystemProfiler.software?["user_name"] as? String)?.components(separatedBy: " ")
                 name = components?.dropLast().joined(separator: " ")
                 accountName = (components?.last?.dropFirst().dropLast()).map(String.init)
             }
@@ -119,12 +119,12 @@ class SystemInformation: ObservableObject {
 
         let security = Security()
         struct Security {
-            let activationLock: Bool? = parseBool(SystemProfiler.hardware["activation_lock_status"])
-            let hyperThreading: Bool? = parseBool(SystemProfiler.hardware["platform_cpu_htt"])
-            let secureVirtualMemory: Bool? = parseBool(SystemProfiler.software["secure_vm"])
-            let systemIntegrityProtection: Bool? = parseBool(SystemProfiler.software["system_integrity"])
+            let activationLock: Bool? = parseBool(SystemProfiler.hardware?["activation_lock_status"])
+            let hyperThreading: Bool? = parseBool(SystemProfiler.hardware?["platform_cpu_htt"])
+            let secureVirtualMemory: Bool? = parseBool(SystemProfiler.software?["secure_vm"])
+            let systemIntegrityProtection: Bool? = parseBool(SystemProfiler.software?["system_integrity"])
             let fileVault: Bool? = parseBool(runProcess(["/usr/bin/fdesetup", "isactive"]))
-            let firewall: Bool? = parseBool(SystemProfiler.firewall["spfirewall_globalstate"])
+            let firewall: Bool? = parseBool(SystemProfiler.firewall?["spfirewall_globalstate"])
         }
     }
 }

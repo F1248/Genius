@@ -7,12 +7,13 @@
 
 import Foundation
 
-func runProcess(_ arguments: [String]) -> String {
+func runProcess(_ arguments: [String]) -> String? {
     let process = Process()
-    process.executableURL = URL(fileURLWithPath: arguments.first!) // swiftlint:disable:this force_unwrapping
+    guard let executableURL = arguments.first else { return nil }
+    process.executableURL = URL(fileURLWithPath: executableURL)
     process.arguments = Array(arguments.dropFirst())
     let output = Pipe()
     process.standardOutput = output
-    try! process.run() // swiftlint:disable:this force_try
+    try? process.run()
     return String(decoding: output.fileHandleForReading.readDataToEndOfFile(), as: UTF8.self)
 }

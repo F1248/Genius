@@ -33,13 +33,13 @@ func getModelMarketingName(_ serialNumber: Any?) -> LocalizedStringKey? {
     if ![11, 12].contains(serialNumber.count) { return nil }
     let url: String = "https://support-sp.apple.com/sp/product?cc=\(serialNumber.dropFirst(8))&lang=\(Locale.current.identifier)"
     let output = runProcess(["/usr/bin/curl", "-s", url])
-    if !output.contains("<configCode>") { return nil }
-    guard let marketingName = output.components(separatedBy: "<configCode>").last?.components(separatedBy: "</configCode>").first else { return nil }
+    if !(output?.contains("<configCode>") ?? Bool()) { return nil }
+    guard let marketingName = output?.components(separatedBy: "<configCode>").last?.components(separatedBy: "</configCode>").first else { return nil }
     return LocalizedStringKey(marketingName)
 }
 
 func getOSMarketingName(_ osVersion: [Int]?) -> String? {
-    switch osVersion?[0] {
+    switch osVersion?.first {
     case 11: "Big Sur"
     case 12: "Monterey"
     case 13: "Ventura"
