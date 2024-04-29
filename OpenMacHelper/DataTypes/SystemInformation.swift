@@ -63,6 +63,28 @@ class SystemInformation: ObservableObject {
     @Published var software = Software()
     struct Software {
 
+        let firmware = Firmware()
+        struct Firmware {
+            let version: [Int]? = parseVersionNumber(SystemProfiler.hardware?["boot_rom_version"])
+        }
+
+        let kernel = Kernel()
+        struct Kernel {
+            let name: String?
+            let version: [Int]?
+            init() {
+                let components = (SystemProfiler.software?["kernel_version"] as? String)?.components(separatedBy: " ")
+                name = components?[safe: 0]
+                version = parseVersionNumber(components?[safe: 1])
+            }
+        }
+
+        let boot = Boot()
+        struct Boot {
+            let volume: String? = SystemProfiler.software?["boot_volume"] as? String
+            let mode: String? = SystemProfiler.software?["boot_mode"] as? String
+        }
+
         let os = OS()
         struct OS {
             let name: String?
@@ -77,28 +99,6 @@ class SystemInformation: ObservableObject {
                 marketingName = getOSMarketingName(version)
                 build = (components?.last?.dropFirst().dropLast()).map(String.init)
             }
-        }
-
-        let kernel = Kernel()
-        struct Kernel {
-            let name: String?
-            let version: [Int]?
-            init() {
-                let components = (SystemProfiler.software?["kernel_version"] as? String)?.components(separatedBy: " ")
-                name = components?[safe: 0]
-                version = parseVersionNumber(components?[safe: 1])
-            }
-        }
-
-        let firmware = Firmware()
-        struct Firmware {
-            let version: [Int]? = parseVersionNumber(SystemProfiler.hardware?["boot_rom_version"])
-        }
-
-        let boot = Boot()
-        struct Boot {
-            let volume: String? = SystemProfiler.software?["boot_volume"] as? String
-            let mode: String? = SystemProfiler.software?["boot_mode"] as? String
         }
 
         let computer = Computer()
