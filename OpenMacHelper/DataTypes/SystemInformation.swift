@@ -63,6 +63,11 @@ class SystemInformation: ObservableObject {
     @Published var software = Software()
     struct Software {
 
+        let smc = SMC()
+        struct SMC {
+            let version: String? = SystemProfiler.hardware?["SMC_version_system"] as? String
+        }
+
         let firmware = Firmware()
         struct Firmware {
             let version: [Int]? = parseVersionNumber(SystemProfiler.hardware?["boot_rom_version"])
