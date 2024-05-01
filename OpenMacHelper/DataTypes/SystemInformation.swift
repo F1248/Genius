@@ -128,14 +128,26 @@ class SystemInformation: ObservableObject {
                 accountName = (components?.last?.dropFirst().dropLast()).map(String.init)
             }
         }
+    }
 
-        let security = Security()
-        struct Security {
+    let maintenanceChecks = MaintenanceChecks()
+    struct MaintenanceChecks {
+
+        let theftProtection = TheftProtection()
+        struct TheftProtection {
             let activationLock: Bool? = parseBool(SystemProfiler.hardware?["activation_lock_status"])
+        }
+
+        let dataSecurity = DataSecurity()
+        struct DataSecurity {
+            let fileVault: Bool? = parseBool(runProcess(["/usr/bin/fdesetup", "isactive"]))
+        }
+
+        let malwareProtection = MalwareProtection()
+        struct MalwareProtection {
             let hyperThreading: Bool? = parseBool(SystemProfiler.hardware?["platform_cpu_htt"])
             let secureVirtualMemory: Bool? = parseBool(SystemProfiler.software?["secure_vm"])
             let systemIntegrityProtection: Bool? = parseBool(SystemProfiler.software?["system_integrity"])
-            let fileVault: Bool? = parseBool(runProcess(["/usr/bin/fdesetup", "isactive"]))
             let firewall: Bool? = parseBool(SystemProfiler.firewall?["spfirewall_globalstate"])
         }
     }
