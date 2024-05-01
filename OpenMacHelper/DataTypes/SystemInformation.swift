@@ -52,7 +52,7 @@ class SystemInformation: ObservableObject {
                 }
             }
 
-            let memory: String? = SystemProfiler.hardware?["physical_memory"] as? String
+            let memory: Measurement<UnitInformationStorage>? = parseBytes(SystemProfiler.hardware?["physical_memory"])
         }
 
         let machine = Machine()

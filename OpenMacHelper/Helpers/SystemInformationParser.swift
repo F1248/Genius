@@ -58,3 +58,21 @@ func parseBool(_ bool: Any?) -> Bool? {
 func parseInt(_ int: String?) -> Int? { Int(int ?? String()) }
 
 func parseVersionNumber(_ versionNumber: Any?) -> [Int]? { (versionNumber as? String)?.components(separatedBy: ".").compactMap { Int($0) } }
+
+func parseBytes(_ bytes: Any?) -> Measurement<UnitInformationStorage>? {
+    guard let components = (bytes as? String)?.components(separatedBy: " ") else { return nil }
+    guard components.count == 2 else { return nil }
+    guard let firstComponent = components.first else { return nil }
+    guard let value = Double(firstComponent) else { return nil }
+    guard let unit: UnitInformationStorage = {
+        switch components.last {
+        case "B": .bytes
+        case "KB": .kilobytes
+        case "MB": .megabytes
+        case "GB": .gigabytes
+        case "TB": .terabytes
+        default: nil
+        }
+    }() else { return nil }
+    return Measurement(value: value, unit: unit)
+}
