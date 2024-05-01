@@ -59,6 +59,23 @@ func parseInt(_ int: String?) -> Int? { Int(int ?? String()) }
 
 func parseVersionNumber(_ versionNumber: Any?) -> [Int]? { (versionNumber as? String)?.components(separatedBy: ".").compactMap { Int($0) } }
 
+func parseFrequency(_ frequency: Any?) -> Measurement<UnitFrequency>? {
+    guard let components = (frequency as? String)?.components(separatedBy: " ") else { return nil }
+    guard components.count == 2 else { return nil }
+    guard let firstComponent = components.first else { return nil }
+    guard let value = Double(firstComponent.replacingOccurrences(of: ",", with: ".")) else { return nil }
+    guard let unit: UnitFrequency = {
+        switch components.last {
+        case "Hz": .hertz
+        case "kHz": .kilohertz
+        case "MHz": .megahertz
+        case "GHz": .gigahertz
+        default: nil
+        }
+    }() else { return nil }
+    return Measurement(value: value, unit: unit)
+}
+
 func parseBytes(_ bytes: Any?) -> Measurement<UnitInformationStorage>? {
     guard let components = (bytes as? String)?.components(separatedBy: " ") else { return nil }
     guard components.count == 2 else { return nil }

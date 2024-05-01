@@ -37,7 +37,11 @@ class SystemInformation: ObservableObject {
         let specifications = Specifications()
         struct Specifications {
 
-            let cpu: String? = SystemProfiler.hardware?["chip_type"] as? String ?? SystemProfiler.hardware?["cpu_type"] as? String
+            let cpu = CPU()
+            struct CPU {
+                let type: String? = SystemProfiler.hardware?["chip_type"] as? String ?? SystemProfiler.hardware?["cpu_type"] as? String
+                let speed: Measurement<UnitFrequency>? = parseFrequency(SystemProfiler.hardware?["current_processor_speed"])
+            }
 
             let cores = Cores()
             struct Cores {
