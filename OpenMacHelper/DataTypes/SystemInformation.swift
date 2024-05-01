@@ -36,7 +36,9 @@ class SystemInformation: ObservableObject {
 
         let specifications = Specifications()
         struct Specifications {
+
             let cpu: String? = SystemProfiler.hardware?["chip_type"] as? String ?? SystemProfiler.hardware?["cpu_type"] as? String
+
             let cores = Cores()
             struct Cores {
                 let total: Int?, performance: Int?, efficiency: Int?
@@ -49,6 +51,7 @@ class SystemInformation: ObservableObject {
                     }
                 }
             }
+
             let memory: String? = SystemProfiler.hardware?["physical_memory"] as? String
         }
 
