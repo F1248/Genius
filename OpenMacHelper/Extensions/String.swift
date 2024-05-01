@@ -6,5 +6,7 @@
 //
 
 extension String {
-    func contains(_ strings: [String]) -> Bool { strings.contains { contains($0) } }
+    func contains(_ strings: [String]) -> Bool {
+        strings.contains { contains($0) }
+    }
 }

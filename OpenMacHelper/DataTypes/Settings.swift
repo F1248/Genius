@@ -17,9 +17,13 @@ enum Settings {
         case powerUser = "Power User"
 
         var id: Self { self }
-        var localized: LocalizedStringKey { LocalizedStringKey(self.rawValue) }
+        var localized: LocalizedStringKey {
+            LocalizedStringKey(self.rawValue)
+        }
 
-        func index(_ mode: Self) -> Int { Self.allCases.firstIndex(of: mode) ?? Int() }
+        func index(_ mode: Self) -> Int {
+            Self.allCases.firstIndex(of: mode) ?? Int()
+        }
         func isAtLeast(_ mode: Self) -> Bool { index(self) >= index(mode) }
     }
 }

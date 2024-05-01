@@ -57,7 +57,9 @@ func parseBool(_ bool: Any?) -> Bool? {
 
 func parseInt(_ int: String?) -> Int? { Int(int ?? String()) }
 
-func parseVersionNumber(_ versionNumber: Any?) -> [Int]? { (versionNumber as? String)?.components(separatedBy: ".").compactMap { Int($0) } }
+func parseVersionNumber(_ versionNumber: Any?) -> [Int]? {
+    (versionNumber as? String)?.components(separatedBy: ".").compactMap { Int($0) }
+}
 
 func parseFrequency(_ frequency: Any?) -> Measurement<UnitFrequency>? {
     guard let components = (frequency as? String)?.components(separatedBy: " ") else { return nil }
