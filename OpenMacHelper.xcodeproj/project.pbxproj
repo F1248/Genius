@@ -16,7 +16,7 @@
 		A452AFE32BBF2BEC00760569 /* SystemInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE22BBF2BEC00760569 /* SystemInformation.swift */; };
 		A452AFE82BBF2BF500760569 /* ProcessHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE42BBF2BF500760569 /* ProcessHandler.swift */; };
 		A452AFE92BBF2BF500760569 /* SystemInformationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE52BBF2BF500760569 /* SystemInformationParser.swift */; };
-		A452AFEA2BBF2BF500760569 /* SystemProfilerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE62BBF2BF500760569 /* SystemProfilerHandler.swift */; };
+		A452AFEA2BBF2BF500760569 /* SystemProfilerFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE62BBF2BF500760569 /* SystemProfilerFetcher.swift */; };
 		A467E0FF2BA4B3F6005F6258 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */; };
 		A46C89692BBF1CCE00ED1003 /* NavigationLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C89682BBF1CCE00ED1003 /* NavigationLinkView.swift */; };
 		A4734CF32BDF981D007579D0 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4734CF22BDF981D007579D0 /* Array.swift */; };
@@ -38,7 +38,7 @@
 		A452AFE22BBF2BEC00760569 /* SystemInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInformation.swift; sourceTree = "<group>"; };
 		A452AFE42BBF2BF500760569 /* ProcessHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessHandler.swift; sourceTree = "<group>"; };
 		A452AFE52BBF2BF500760569 /* SystemInformationParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInformationParser.swift; sourceTree = "<group>"; };
-		A452AFE62BBF2BF500760569 /* SystemProfilerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemProfilerHandler.swift; sourceTree = "<group>"; };
+		A452AFE62BBF2BF500760569 /* SystemProfilerFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemProfilerFetcher.swift; sourceTree = "<group>"; };
 		A452AFF22BBF2CAB00760569 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		A46C89682BBF1CCE00ED1003 /* NavigationLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkView.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 			children = (
 				A452AFE42BBF2BF500760569 /* ProcessHandler.swift */,
 				A452AFE52BBF2BF500760569 /* SystemInformationParser.swift */,
-				A452AFE62BBF2BF500760569 /* SystemProfilerHandler.swift */,
+				A452AFE62BBF2BF500760569 /* SystemProfilerFetcher.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -271,7 +271,7 @@
 				A4734CF32BDF981D007579D0 /* Array.swift in Sources */,
 				A452AFE32BBF2BEC00760569 /* SystemInformation.swift in Sources */,
 				A48985D92BA23F7200B6902A /* Settings.swift in Sources */,
-				A452AFEA2BBF2BF500760569 /* SystemProfilerHandler.swift in Sources */,
+				A452AFEA2BBF2BF500760569 /* SystemProfilerFetcher.swift in Sources */,
 				A44BBF042BB213EE001072CC /* MaintenanceView.swift in Sources */,
 				A48985DB2BA23F9E00B6902A /* SettingsView.swift in Sources */,
 				A42B35432BA2185B009E81AD /* ContentView.swift in Sources */,
