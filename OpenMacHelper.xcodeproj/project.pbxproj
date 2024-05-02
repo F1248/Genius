@@ -115,8 +115,8 @@
 		A42B353F2BA2185B009E81AD /* OpenMacHelper */ = {
 			isa = PBXGroup;
 			children = (
-				A48EDF242BDD67C800CDB724 /* Extensions */,
 				A4B6A8512BA8C6BD0050FF18 /* DataTypes */,
+				A48EDF242BDD67C800CDB724 /* Extensions */,
 				A452AFE72BBF2BF500760569 /* Helpers */,
 				A41BB1EC2BAB660900DC881C /* Localizable.xcstrings */,
 				A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */,
@@ -160,8 +160,8 @@
 		A48EDF242BDD67C800CDB724 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A48EDF252BDD67DD00CDB724 /* String.swift */,
 				A4734CF22BDF981D007579D0 /* Array.swift */,
+				A48EDF252BDD67DD00CDB724 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
