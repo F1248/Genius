@@ -41,17 +41,16 @@ class SystemInformation: ObservableObject {
             struct CPU {
                 let type: String? = SystemProfiler.hardware?["chip_type"] as? String ?? SystemProfiler.hardware?["cpu_type"] as? String
                 let speed: Measurement<UnitFrequency>? = parseFrequency(SystemProfiler.hardware?["current_processor_speed"])
-            }
-
-            let cores = Cores()
-            struct Cores {
-                let total: Int?, performance: Int?, efficiency: Int?
-                init() {
-                    if SystemProfiler.hardware?["number_processors"] is Int {
-                        (total, performance, efficiency) = (SystemProfiler.hardware?["number_processors"] as? Int, nil, nil)
-                    } else {
-                        let components = (SystemProfiler.hardware?["number_processors"] as? String)?.replacingOccurrences(of: "proc ", with: String()).components(separatedBy: ":")
-                        (total, performance, efficiency) = (parseInt(components?[safe: 0]), parseInt(components?[safe: 1]), parseInt(components?[safe: 2]))
+                let cores = Cores()
+                struct Cores {
+                    let total: Int?, performance: Int?, efficiency: Int?
+                    init() {
+                        if SystemProfiler.hardware?["number_processors"] is Int {
+                            (total, performance, efficiency) = (SystemProfiler.hardware?["number_processors"] as? Int, nil, nil)
+                        } else {
+                            let components = (SystemProfiler.hardware?["number_processors"] as? String)?.replacingOccurrences(of: "proc ", with: String()).components(separatedBy: ":")
+                            (total, performance, efficiency) = (parseInt(components?[safe: 0]), parseInt(components?[safe: 1]), parseInt(components?[safe: 2]))
+                        }
                     }
                 }
             }

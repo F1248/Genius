@@ -12,6 +12,7 @@ disabled_rules:
   - explicit_top_level_acl
   - inert_defer
   - let_var_whitespace
+  - nesting
   - no_magic_numbers
   - required_deinit
   - sorted_enum_cases
@@ -29,8 +30,6 @@ identifier_name:
 indentation_width:
   include_comments: false
 line_length: 256
-nesting:
-  type_level: 3
 number_separator:
   minimum_length: 7
 trailing_whitespace:
