@@ -1,5 +1,5 @@
 //
-//  SystemProfilerHandler.swift
+//  SystemProfilerFetcher.swift
 //  OpenMacHelper
 //
 //  Created by F1248.
