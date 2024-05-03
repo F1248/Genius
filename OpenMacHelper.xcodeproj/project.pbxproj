@@ -12,6 +12,7 @@
 		A42B35412BA2185B009E81AD /* OpenMacHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */; };
 		A42B35432BA2185B009E81AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B35422BA2185B009E81AD /* ContentView.swift */; };
 		A42B3B7B2BA37D4B004760D5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B3B7A2BA37D4B004760D5 /* HomeView.swift */; };
+		A43FD4CE2BD52AA9008C3B19 /* AvailabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43FD4CD2BD52AA9008C3B19 /* AvailabilityManager.swift */; };
 		A44BBF042BB213EE001072CC /* MaintenanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44BBF032BB213EE001072CC /* MaintenanceView.swift */; };
 		A452AFE32BBF2BEC00760569 /* SystemInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE22BBF2BEC00760569 /* SystemInformation.swift */; };
 		A452AFE82BBF2BF500760569 /* ProcessHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE42BBF2BF500760569 /* ProcessHandler.swift */; };
@@ -33,6 +34,7 @@
 		A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMacHelperApp.swift; sourceTree = "<group>"; };
 		A42B35422BA2185B009E81AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A42B3B7A2BA37D4B004760D5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A43FD4CD2BD52AA9008C3B19 /* AvailabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityManager.swift; sourceTree = "<group>"; };
 		A44BBF032BB213EE001072CC /* MaintenanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceView.swift; sourceTree = "<group>"; };
 		A4528F1F2BCD9B400092CBB8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A452AFE22BBF2BEC00760569 /* SystemInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInformation.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		A452AFE72BBF2BF500760569 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A43FD4CD2BD52AA9008C3B19 /* AvailabilityManager.swift */,
 				A452AFE42BBF2BF500760569 /* ProcessHandler.swift */,
 				A452AFE52BBF2BF500760569 /* SystemInformationParser.swift */,
 				A452AFE62BBF2BF500760569 /* SystemProfilerFetcher.swift */,
@@ -270,6 +273,7 @@
 				A48EDF272BDD6C4800CDB724 /* String.swift in Sources */,
 				A4734CF32BDF981D007579D0 /* Array.swift in Sources */,
 				A452AFE32BBF2BEC00760569 /* SystemInformation.swift in Sources */,
+				A43FD4CE2BD52AA9008C3B19 /* AvailabilityManager.swift in Sources */,
 				A48985D92BA23F7200B6902A /* Settings.swift in Sources */,
 				A452AFEA2BBF2BF500760569 /* SystemProfilerFetcher.swift in Sources */,
 				A44BBF042BB213EE001072CC /* MaintenanceView.swift in Sources */,
