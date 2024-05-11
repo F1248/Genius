@@ -14,6 +14,7 @@ disabled_rules:
   - let_var_whitespace
   - nesting
   - no_magic_numbers
+  - one_declaration_per_file
   - required_deinit
   - sorted_enum_cases
   - switch_case_on_newline
