@@ -24,7 +24,7 @@ class SystemInformation: ObservableObject {
             let name: String? = SystemProfiler.hardware?["machine_name"] as? String
             let identifier: String? = SystemProfiler.hardware?["machine_model"] as? String
             let number: String? = SystemProfiler.hardware?["model_number"] as? String
-            let isAppleSilicon: Bool = SystemProfiler.hardware?["chip_type"] != nil
+            let isAppleSilicon: Bool? = SystemProfiler.hardware?["chip_type"] != nil ? true : (SystemProfiler.hardware?["cpu_type"] != nil ? false : nil)
             let isLaptop: Bool
             let systemImage: String
             let marketingName: LocalizedStringKey? = getModelMarketingName(SystemProfiler.hardware?["serial_number"])
