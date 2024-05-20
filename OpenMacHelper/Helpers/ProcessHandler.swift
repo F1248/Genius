@@ -15,5 +15,6 @@ func runProcess(_ arguments: [String]) -> String? {
     let output = Pipe()
     process.standardOutput = output
     try? process.run()
+    process.waitUntilExit()
     return String(decoding: output.fileHandleForReading.readDataToEndOfFile(), as: UTF8.self)
 }
