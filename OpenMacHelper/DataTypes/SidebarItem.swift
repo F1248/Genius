@@ -1,11 +1,11 @@
 //
-//  SidebarElements.swift
+//  SidebarItem.swift
 //  OpenMacHelper
 //
 //  Created by F1248.
 //
 
-enum SidebarElement {
+enum SidebarItem {
     case home
     case systemInformation
     case maintenance

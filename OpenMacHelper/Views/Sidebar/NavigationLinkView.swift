@@ -12,7 +12,7 @@ struct NavigationLinkView<Destination: View>: View {
     let destination: Destination
     let title: String
     let systemImage: String
-    let tag: SidebarElement
+    let tag: SidebarItem
     let keyboardShortcutKey: KeyEquivalent
 
     var body: some View {

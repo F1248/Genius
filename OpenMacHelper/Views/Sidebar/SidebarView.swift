@@ -9,13 +9,13 @@ import SwiftUI
 
 struct SidebarView: View {
 
-    @State private var selectedSidebarElement: SidebarElement? = .home
+    @State private var selectedSidebarItem: SidebarItem? = .home
 
     @AppStorage("interfaceMode")
     var interfaceMode: Settings.InterfaceMode = .normal
 
     var body: some View {
-        List(selection: $selectedSidebarElement) {
+        List(selection: $selectedSidebarItem) {
             NavigationLinkView(destination: HomeView(), title: "Home", systemImage: "house", tag: .home, keyboardShortcutKey: "0")
             NavigationLinkView(destination: SystemInformationView(), title: interfaceMode.isAtLeast(.simple) ? "System Information" : "Information", systemImage: "info.circle", tag: .systemInformation, keyboardShortcutKey: "1")
             NavigationLinkView(destination: MaintenanceView(), title: "Maintenance", systemImage: "gear.badge.checkmark", tag: .maintenance, keyboardShortcutKey: "2")

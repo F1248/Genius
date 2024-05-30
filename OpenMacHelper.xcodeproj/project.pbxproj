@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A405FC162BB5926C006B8CF7 /* SidebarElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405FC152BB5926C006B8CF7 /* SidebarElement.swift */; };
+		A405FC162BB5926C006B8CF7 /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405FC152BB5926C006B8CF7 /* SidebarItem.swift */; };
 		A41BB1ED2BAB660900DC881C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A41BB1EC2BAB660900DC881C /* Localizable.xcstrings */; };
 		A42B1BBB2BE2C69E001AC146 /* DefaultsReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B1BBA2BE2C69E001AC146 /* DefaultsReader.swift */; };
 		A42B35412BA2185B009E81AD /* OpenMacHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */; };
@@ -29,7 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A405FC152BB5926C006B8CF7 /* SidebarElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarElement.swift; sourceTree = "<group>"; };
+		A405FC152BB5926C006B8CF7 /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		A41BB1EC2BAB660900DC881C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		A42B1BBA2BE2C69E001AC146 /* DefaultsReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsReader.swift; sourceTree = "<group>"; };
 		A42B353D2BA2185B009E81AD /* OpenMacHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenMacHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,7 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				A48985D82BA23F7200B6902A /* Settings.swift */,
-				A405FC152BB5926C006B8CF7 /* SidebarElement.swift */,
+				A405FC152BB5926C006B8CF7 /* SidebarItem.swift */,
 				A452AFE22BBF2BEC00760569 /* SystemInformation.swift */,
 			);
 			path = DataTypes;
@@ -284,7 +284,7 @@
 				A48985DB2BA23F9E00B6902A /* SettingsView.swift in Sources */,
 				A42B35432BA2185B009E81AD /* ContentView.swift in Sources */,
 				A4A04A182BA4B536001F6563 /* SystemInformationView.swift in Sources */,
-				A405FC162BB5926C006B8CF7 /* SidebarElement.swift in Sources */,
+				A405FC162BB5926C006B8CF7 /* SidebarItem.swift in Sources */,
 				A46C89692BBF1CCE00ED1003 /* NavigationLinkView.swift in Sources */,
 				A452AFE82BBF2BF500760569 /* ProcessHandler.swift in Sources */,
 				A467E0FF2BA4B3F6005F6258 /* SidebarView.swift in Sources */,
