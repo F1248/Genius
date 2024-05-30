@@ -1,5 +1,5 @@
 //
-//  NavigationLinkView.swift
+//  SidebarItemView.swift
 //  OpenMacHelper
 //
 //  Created by F1248.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NavigationLinkView<Destination: View>: View {
+struct SidebarItemView<Destination: View>: View {
 
     let destination: Destination
     let title: String
@@ -29,5 +29,5 @@ struct NavigationLinkView<Destination: View>: View {
 }
 
 #Preview {
-    NavigationLinkView(destination: HomeView(), title: "Home", systemImage: "house", tag: .home, keyboardShortcutKey: "0")
+    SidebarItemView(destination: HomeView(), title: "Home", systemImage: "house", tag: .home, keyboardShortcutKey: "0")
 }

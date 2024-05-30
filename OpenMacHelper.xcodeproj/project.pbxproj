@@ -20,7 +20,7 @@
 		A452AFE92BBF2BF500760569 /* SystemInformationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE52BBF2BF500760569 /* SystemInformationParser.swift */; };
 		A452AFEA2BBF2BF500760569 /* SystemProfilerFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE62BBF2BF500760569 /* SystemProfilerFetcher.swift */; };
 		A467E0FF2BA4B3F6005F6258 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */; };
-		A46C89692BBF1CCE00ED1003 /* NavigationLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C89682BBF1CCE00ED1003 /* NavigationLinkView.swift */; };
+		A46C89692BBF1CCE00ED1003 /* SidebarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C89682BBF1CCE00ED1003 /* SidebarItemView.swift */; };
 		A4734CF32BDF981D007579D0 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4734CF22BDF981D007579D0 /* Array.swift */; };
 		A48985D92BA23F7200B6902A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48985D82BA23F7200B6902A /* Settings.swift */; };
 		A48985DB2BA23F9E00B6902A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48985DA2BA23F9E00B6902A /* SettingsView.swift */; };
@@ -45,7 +45,7 @@
 		A452AFE62BBF2BF500760569 /* SystemProfilerFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemProfilerFetcher.swift; sourceTree = "<group>"; };
 		A452AFF22BBF2CAB00760569 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
-		A46C89682BBF1CCE00ED1003 /* NavigationLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkView.swift; sourceTree = "<group>"; };
+		A46C89682BBF1CCE00ED1003 /* SidebarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemView.swift; sourceTree = "<group>"; };
 		A4734CF22BDF981D007579D0 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		A48985D82BA23F7200B6902A /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A48985DA2BA23F9E00B6902A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 		A46C89672BBF1C9000ED1003 /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
-				A46C89682BBF1CCE00ED1003 /* NavigationLinkView.swift */,
+				A46C89682BBF1CCE00ED1003 /* SidebarItemView.swift */,
 				A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */,
 			);
 			path = Sidebar;
@@ -285,7 +285,7 @@
 				A42B35432BA2185B009E81AD /* ContentView.swift in Sources */,
 				A4A04A182BA4B536001F6563 /* SystemInformationView.swift in Sources */,
 				A405FC162BB5926C006B8CF7 /* SidebarItem.swift in Sources */,
-				A46C89692BBF1CCE00ED1003 /* NavigationLinkView.swift in Sources */,
+				A46C89692BBF1CCE00ED1003 /* SidebarItemView.swift in Sources */,
 				A452AFE82BBF2BF500760569 /* ProcessHandler.swift in Sources */,
 				A467E0FF2BA4B3F6005F6258 /* SidebarView.swift in Sources */,
 				A42B35412BA2185B009E81AD /* OpenMacHelperApp.swift in Sources */,
