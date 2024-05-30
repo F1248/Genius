@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A405FC162BB5926C006B8CF7 /* SidebarElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405FC152BB5926C006B8CF7 /* SidebarElement.swift */; };
 		A41BB1ED2BAB660900DC881C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A41BB1EC2BAB660900DC881C /* Localizable.xcstrings */; };
+		A42B1BBB2BE2C69E001AC146 /* DefaultsReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B1BBA2BE2C69E001AC146 /* DefaultsReader.swift */; };
 		A42B35412BA2185B009E81AD /* OpenMacHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */; };
 		A42B35432BA2185B009E81AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B35422BA2185B009E81AD /* ContentView.swift */; };
 		A42B3B7B2BA37D4B004760D5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B3B7A2BA37D4B004760D5 /* HomeView.swift */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		A405FC152BB5926C006B8CF7 /* SidebarElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarElement.swift; sourceTree = "<group>"; };
 		A41BB1EC2BAB660900DC881C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		A42B1BBA2BE2C69E001AC146 /* DefaultsReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsReader.swift; sourceTree = "<group>"; };
 		A42B353D2BA2185B009E81AD /* OpenMacHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenMacHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMacHelperApp.swift; sourceTree = "<group>"; };
 		A42B35422BA2185B009E81AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				A43FD4CD2BD52AA9008C3B19 /* AvailabilityManager.swift */,
+				A42B1BBA2BE2C69E001AC146 /* DefaultsReader.swift */,
 				A452AFE42BBF2BF500760569 /* ProcessHandler.swift */,
 				A452AFE52BBF2BF500760569 /* SystemInformationParser.swift */,
 				A452AFE62BBF2BF500760569 /* SystemProfilerFetcher.swift */,
@@ -274,6 +277,7 @@
 				A4734CF32BDF981D007579D0 /* Array.swift in Sources */,
 				A452AFE32BBF2BEC00760569 /* SystemInformation.swift in Sources */,
 				A43FD4CE2BD52AA9008C3B19 /* AvailabilityManager.swift in Sources */,
+				A42B1BBB2BE2C69E001AC146 /* DefaultsReader.swift in Sources */,
 				A48985D92BA23F7200B6902A /* Settings.swift in Sources */,
 				A452AFEA2BBF2BF500760569 /* SystemProfilerFetcher.swift in Sources */,
 				A44BBF042BB213EE001072CC /* MaintenanceView.swift in Sources */,
