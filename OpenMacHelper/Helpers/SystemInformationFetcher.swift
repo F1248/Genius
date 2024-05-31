@@ -1,5 +1,5 @@
 //
-//  SystemProfilerFetcher.swift
+//  SystemInformationFetcher.swift
 //  OpenMacHelper
 //
 //  Created by F1248.
@@ -12,4 +12,8 @@ func getSystemProfiler(_ dataType: String) -> [String: Any]? {
     guard let outputData = runProcess(["/usr/sbin/system_profiler", "-json", dataType])?.data(using: .utf8) else { return nil }
     let systemProfiler: [String: [[String: Any]]]? = try? JSONSerialization.jsonObject(with: outputData) as? [String: [[String: Any]]]
     return systemProfiler?[dataType]?.first
+}
+
+func readDefault(_ domain: String, _ key: String) -> String? {
+    runProcess(["/usr/bin/defaults", "read", domain, key])
 }
