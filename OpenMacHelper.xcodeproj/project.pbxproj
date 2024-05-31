@@ -145,8 +145,8 @@
 			children = (
 				A43FD4CD2BD52AA9008C3B19 /* AvailabilityManager.swift */,
 				A452AFE42BBF2BF500760569 /* ProcessHandler.swift */,
-				A452AFE52BBF2BF500760569 /* SystemInformationParser.swift */,
 				A452AFE62BBF2BF500760569 /* SystemInformationFetcher.swift */,
+				A452AFE52BBF2BF500760569 /* SystemInformationParser.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
