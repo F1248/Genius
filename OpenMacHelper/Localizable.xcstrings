@@ -232,6 +232,7 @@
       }
     },
     "Unknown" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
