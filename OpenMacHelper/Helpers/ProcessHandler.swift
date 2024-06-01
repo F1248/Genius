@@ -22,7 +22,11 @@ func runProcess(_ arguments: [String], asRoot: Bool = false) -> String? {
     }
     let output = Pipe()
     process.standardOutput = output
-    try? process.run()
+    do {
+        try process.run()
+    } catch {
+        return nil
+    }
     process.waitUntilExit()
     return String(decoding: output.fileHandleForReading.readDataToEndOfFile(), as: UTF8.self)
 }
