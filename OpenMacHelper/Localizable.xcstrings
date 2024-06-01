@@ -196,6 +196,23 @@
         }
       }
     },
+    "OpenMacHelper requires administrator privileges." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OpenMacHelper benötigt Administratorrechte."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OpenMacHelper requires administrator privileges."
+          }
+        }
+      }
+    },
     "Power User" : {
       "extractionState" : "manual",
       "localizations" : {

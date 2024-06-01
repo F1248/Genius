@@ -12,6 +12,8 @@ disabled_rules:
   - let_var_whitespace
   - nesting
   - no_magic_numbers
+  - nslocalizedstring_key
+  - nslocalizedstring_require_bundle
   - one_declaration_per_file
   - required_deinit
   - sorted_enum_cases

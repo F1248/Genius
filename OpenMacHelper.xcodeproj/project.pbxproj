@@ -25,6 +25,7 @@
 		A48985DB2BA23F9E00B6902A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48985DA2BA23F9E00B6902A /* SettingsView.swift */; };
 		A48EDF272BDD6C4800CDB724 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EDF252BDD67DD00CDB724 /* String.swift */; };
 		A4A04A182BA4B536001F6563 /* SystemInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A04A172BA4B536001F6563 /* SystemInformationView.swift */; };
+		A4EAA9852C0A04CD0057A39E /* LocalizedStringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EAA9842C0A04CD0057A39E /* LocalizedStringKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		A48985DA2BA23F9E00B6902A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A48EDF252BDD67DD00CDB724 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		A4A04A172BA4B536001F6563 /* SystemInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInformationView.swift; sourceTree = "<group>"; };
+		A4EAA9842C0A04CD0057A39E /* LocalizedStringKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStringKey.swift; sourceTree = "<group>"; };
 		A4EB1C9A2BCC3F8200DF01A6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				A4734CF22BDF981D007579D0 /* Array.swift */,
+				A4EAA9842C0A04CD0057A39E /* LocalizedStringKey.swift */,
 				A48EDF252BDD67DD00CDB724 /* String.swift */,
 			);
 			path = Extensions;
@@ -280,6 +283,7 @@
 				A48985DB2BA23F9E00B6902A /* SettingsView.swift in Sources */,
 				A42B35432BA2185B009E81AD /* ContentView.swift in Sources */,
 				A4A04A182BA4B536001F6563 /* SystemInformationView.swift in Sources */,
+				A4EAA9852C0A04CD0057A39E /* LocalizedStringKey.swift in Sources */,
 				A405FC162BB5926C006B8CF7 /* SidebarItem.swift in Sources */,
 				A46C89692BBF1CCE00ED1003 /* SidebarItemView.swift in Sources */,
 				A452AFE82BBF2BF500760569 /* ProcessHandler.swift in Sources */,
