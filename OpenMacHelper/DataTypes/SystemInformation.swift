@@ -151,11 +151,11 @@ class SystemInformation: ObservableObject {
             let gatekeeper: Bool? = parseBool(runProcess(["/usr/sbin/spctl", "--status"]))
         }
 
-        let updates = Updates()
-        struct Updates {
-            let automaticCheck: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled"))
-            let automaticDownload: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))
-            let automaticInstallation: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates"))
+        let automaticUpdates = AutomaticUpdates()
+        struct AutomaticUpdates {
+            let checkMacOSUpdates: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled"))
+            let downloadMacOSUpdates: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))
+            let installMacOSUpdates: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates"))
             let installConfigData: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"))
             let installCriticalUpdates: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"))
         }
