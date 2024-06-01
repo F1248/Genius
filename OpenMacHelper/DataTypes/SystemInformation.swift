@@ -158,6 +158,7 @@ class SystemInformation: ObservableObject {
             let installMacOSUpdates: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates"))
             let installCriticalUpdates: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"))
             let installConfigData: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"))
+            let installAppStoreUpdates: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.commerce", "AutoUpdate"))
         }
     }
 }
