@@ -132,66 +132,18 @@
         }
       }
     },
-    "OpenMacHelper - Information" : {
+    "OpenMacHelper - %@" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "OpenMacHelper - Informationen"
+            "value" : "OpenMacHelper - %@"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "OpenMacHelper - Information"
-          }
-        }
-      }
-    },
-    "OpenMacHelper - Maintenance" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OpenMacHelper - Wartung"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OpenMacHelper - Maintenance"
-          }
-        }
-      }
-    },
-    "OpenMacHelper - Settings" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OpenMacHelper - Einstellungen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OpenMacHelper - Settings"
-          }
-        }
-      }
-    },
-    "OpenMacHelper - System Information" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OpenMacHelper - Systeminformationen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OpenMacHelper - System Information"
+            "value" : "OpenMacHelper - %@"
           }
         }
       }

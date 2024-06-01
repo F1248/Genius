@@ -19,7 +19,7 @@ struct SystemInformationView: View {
                 .padding()
         }
         .frame(minWidth: 309)
-        .navigationTitle(interfaceMode.isAtLeast(.simple) ? "OpenMacHelper - System Information" : "OpenMacHelper - Information")
+        .navigationTitle("OpenMacHelper - \((interfaceMode.isAtLeast(.simple) ? "System Information" : "Information").localized)")
     }
 }
 

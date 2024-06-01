@@ -16,7 +16,7 @@ struct MaintenanceView: View {
                 .padding()
         }
         .frame(minWidth: 309)
-        .navigationTitle("OpenMacHelper - Maintenance")
+        .navigationTitle("OpenMacHelper - \("Maintenance".localized)")
     }
 }
 

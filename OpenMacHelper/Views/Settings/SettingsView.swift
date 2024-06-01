@@ -27,7 +27,7 @@ struct SettingsView: View {
             }
         }
         .frame(minWidth: 309)
-        .navigationTitle("OpenMacHelper - Settings")
+        .navigationTitle("OpenMacHelper - \("Settings".localized)")
     }
 }
 
