@@ -30,7 +30,7 @@ func runProcess(_ arguments: [String], asRoot: Bool = false) -> String? {
         return nil
     }
     process.waitUntilExit()
-    if errorPipe.string != String() {
+    guard errorPipe.string == String() else {
         return nil
     }
     return outputPipe.string
