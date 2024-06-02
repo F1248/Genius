@@ -8,6 +8,7 @@
 import SwiftUI
 
 extension LocalizedStringKey {
+
     var string: String {
         NSLocalizedString(Mirror(reflecting: self).children.first { $0.label == "key" }?.value as? String ?? "Unknown".localized, comment: String())
     }
