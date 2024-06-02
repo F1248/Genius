@@ -29,7 +29,7 @@ class SystemInformation: ObservableObject {
             let systemImage: String
             let marketingName: LocalizedStringKey? = getModelMarketingName(SystemProfiler.hardware?["serial_number"])
             init() {
-                isLaptop = name?.starts(with: "MacBook") ?? Bool()
+                isLaptop = name.hasPrefix("MacBook")
                 systemImage = getSystemImage(modelName: name, modelIdentifier: identifier)
             }
         }

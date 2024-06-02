@@ -9,11 +9,11 @@ import SwiftUI
 
 func getSystemImage(modelName: String?, modelIdentifier: String?) -> String {
     switch modelName {
-    case _ where modelName?.starts(with: "MacBook") ?? Bool():
+    case _ where modelName.hasPrefix("MacBook"):
         switch modelIdentifier {
         case "Mac14,7": "macbook.gen1"
-        case _ where modelIdentifier?.starts(with: "MacBookPro18") ?? Bool(): "macbook.gen2"
-        default: modelIdentifier?.starts(with: "MacBook") ?? Bool() ? "macbook.gen1" : "macbook.gen2"
+        case _ where modelIdentifier.hasPrefix("MacBookPro18"): "macbook.gen2"
+        default: modelIdentifier.hasPrefix("MacBook") ? "macbook.gen1" : "macbook.gen2"
         }
     case "Mac mini": "macmini"
     case "Mac Studio": "macstudio"

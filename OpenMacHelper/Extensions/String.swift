@@ -48,4 +48,9 @@ extension Optional where Wrapped == String {
         }
         return self.url
     }
+
+    func hasPrefix(_ prefix: String) -> Bool {
+        guard let self else { return false }
+        return self.hasPrefix(prefix)
+    }
 }
