@@ -21,12 +21,17 @@ func runProcess(_ arguments: [String], asRoot: Bool = false) -> String? {
         process.arguments = Array(arguments.dropFirst())
     }
     let outputPipe = Pipe()
+    let errorPipe = Pipe()
     process.standardOutput = outputPipe
+    process.standardError = errorPipe
     do {
         try process.run()
     } catch {
         return nil
     }
     process.waitUntilExit()
+    if errorPipe.string != String() {
+        return nil
+    }
     return outputPipe.string
 }
