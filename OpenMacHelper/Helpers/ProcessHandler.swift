@@ -27,10 +27,13 @@ func runProcess(_ arguments: [String], asRoot: Bool = false) -> String? {
     do {
         try process.run()
     } catch {
+        process.logError(outputPipeData: outputPipe.read(), errorPipeData: errorPipe.read())
         return nil
     }
     process.waitUntilExit()
-    guard process.terminationStatus == 0, errorPipe.read() == String() else {
+    let errorPipeData = errorPipe.read()
+    guard process.terminationStatus == 0, errorPipeData == nil else {
+        process.logError(outputPipeData: outputPipe.read(), errorPipeData: errorPipeData)
         return nil
     }
     return outputPipe.read()
