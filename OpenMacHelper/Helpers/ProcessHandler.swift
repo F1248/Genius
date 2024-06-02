@@ -33,5 +33,5 @@ func runProcess(_ arguments: [String], asRoot: Bool = false) -> String? {
     guard process.terminationStatus == 0, errorPipe.string == String() else {
         return nil
     }
-    return outputPipe.string
+    return outputPipe.read
 }
