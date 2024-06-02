@@ -38,7 +38,7 @@ extension String {
 extension Optional where Wrapped == String {
 
     var debugText: String {
-        (self ?? String()).debugText
+        self?.debugText ?? "nil"
     }
 
     var url: URL? {
