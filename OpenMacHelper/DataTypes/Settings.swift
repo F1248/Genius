@@ -18,7 +18,7 @@ enum Settings {
 
         var id: Self { self }
         var localized: String {
-            self.rawValue.localized
+            rawValue.localized
         }
 
         func index(_ mode: Self) -> Int {

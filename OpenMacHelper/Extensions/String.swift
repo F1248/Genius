@@ -10,7 +10,7 @@ import SwiftUI
 extension String {
 
     func dropPrefix(_ prefix: String) -> String {
-        self.hasPrefix(prefix) ? String(self.dropFirst(prefix.count)) : self
+        hasPrefix(prefix) ? String(dropFirst(prefix.count)) : self
     }
 
     func contains(_ strings: [String]) -> Bool {
@@ -22,7 +22,7 @@ extension String {
     }
 
     var debugText: String {
-        self.isEmpty ? "None" : "\"\(self.trimmingCharacters(in: .whitespacesAndNewlines))\""
+        isEmpty ? "None" : "\"\(trimmingCharacters(in: .whitespacesAndNewlines))\""
     }
 }
 
