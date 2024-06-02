@@ -8,7 +8,7 @@
 import Foundation
 
 extension Pipe {
-    var read: String? {
+    func read() -> String? {
         guard let data = try? self.fileHandleForReading.readToEnd() else { return nil }
         return String(decoding: data, as: UTF8.self)
     }
