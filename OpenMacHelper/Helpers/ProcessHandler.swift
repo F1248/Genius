@@ -28,5 +28,5 @@ func runProcess(_ arguments: [String], asRoot: Bool = false) -> String? {
         return nil
     }
     process.waitUntilExit()
-    return String(decoding: outputPipe.fileHandleForReading.readDataToEndOfFile(), as: UTF8.self)
+    return outputPipe.string
 }
