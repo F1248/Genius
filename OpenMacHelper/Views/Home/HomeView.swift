@@ -17,7 +17,7 @@ struct HomeView: View {
             Text("OpenMacHelper")
                 .font(.largeTitle)
                 .padding()
-            Text("Interface Mode: ") + Text(interfaceMode.localized)
+            Text("Interface Mode: \(interfaceMode.localized)")
                 .font(.subheadline)
         }
         .frame(minWidth: 309)

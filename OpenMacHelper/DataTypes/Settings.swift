@@ -17,8 +17,8 @@ enum Settings {
         case powerUser = "Power User"
 
         var id: Self { self }
-        var localized: LocalizedStringKey {
-            LocalizedStringKey(self.rawValue)
+        var localized: String {
+            self.rawValue.localized
         }
 
         func index(_ mode: Self) -> Int {
