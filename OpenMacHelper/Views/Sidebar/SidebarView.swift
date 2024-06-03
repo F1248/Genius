@@ -7,9 +7,19 @@
 
 import SwiftUI
 
+enum SidebarItem {
+
+    case home
+    case systemInformation
+    case maintenance
+    case settings
+
+    init?() { self = .home }
+}
+
 struct SidebarView: View {
 
-    @State private var selectedSidebarItem: SidebarItem? = .home
+    @State private var selectedSidebarItem = SidebarItem()
 
     @AppStorage("interfaceMode")
     var interfaceMode: Settings.InterfaceMode = .normal
