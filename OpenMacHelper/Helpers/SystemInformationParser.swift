@@ -5,6 +5,7 @@
 //  Created by F1248.
 //
 
+import Foundation
 import SwiftUI
 
 func getSystemImage(modelName: String?, modelIdentifier: String?) -> String {
@@ -31,7 +32,7 @@ func getSystemImage(modelName: String?, modelIdentifier: String?) -> String {
 func getModelMarketingName(_ serialNumber: Any?) -> LocalizedStringKey? {
     guard let serialNumber = serialNumber as? String else { return nil }
     guard [11, 12].contains(serialNumber.count) else { return nil }
-    let url: String = "https://support-sp.apple.com/sp/product?cc=\(serialNumber.dropFirst(8))&lang=\(languageCode ?? String())"
+    let url: String = "https://support-sp.apple.com/sp/product?cc=\(serialNumber.dropFirst(8))&lang=\(Locale.currentLanguageCode ?? String())"
     guard let output = runProcess(["/usr/bin/curl", "-s", url]) else { return nil }
     guard output.contains("<configCode>") else { return nil }
     guard let marketingName = output.components(separatedBy: "<configCode>").last?.components(separatedBy: "</configCode>").first else { return nil }
