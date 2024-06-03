@@ -5,7 +5,6 @@
 //  Created by F1248.
 //
 
-import os
 import SwiftUI
 
 extension String {
@@ -16,14 +15,6 @@ extension String {
 
     var localized: String {
         LocalizedStringKey(self).string
-    }
-
-    var url: URL? {
-        guard FileManager.default.fileExists(atPath: self) else {
-            Logger().error("URL does not exist: \(debugText)")
-            return nil
-        }
-        return URL(fileURLWithPath: self)
     }
 
     func contains(_ strings: [String]) -> Bool {
@@ -39,14 +30,6 @@ extension Optional where Wrapped == String {
 
     var debugText: String {
         self?.debugText ?? "nil"
-    }
-
-    var url: URL? {
-        guard let self else {
-            Logger().error("URL is nil")
-            return nil
-        }
-        return self.url
     }
 
     func hasPrefix(_ prefix: String) -> Bool {

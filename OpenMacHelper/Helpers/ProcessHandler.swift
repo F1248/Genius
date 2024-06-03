@@ -10,14 +10,14 @@ import Foundation
 func runProcess(_ arguments: [String], asRoot: Bool = false) -> String? {
     let process = Process()
     if asRoot {
-        guard let executableURL = "/usr/bin/osascript".url else { return nil }
+        guard let executableURL = URL("/usr/bin/osascript") else { return nil }
         process.executableURL = executableURL
         process.arguments = [
             "-e",
             "do shell script \"\(arguments.joined(separator: " "))\" with prompt \"\("OpenMacHelper requires administrator privileges.".localized)\" with administrator privileges"
         ]
     } else {
-        guard let executableURL = arguments.first.url else { return nil }
+        guard let executableURL = URL(arguments.first) else { return nil }
         process.executableURL = executableURL
         process.arguments = Array(arguments.dropFirst())
     }
