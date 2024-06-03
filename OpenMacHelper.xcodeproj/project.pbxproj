@@ -171,8 +171,8 @@
 		A48EDF242BDD67C800CDB724 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A4D39F132C0E04B100E810E3 /* Bool.swift */,
 				A4734CF22BDF981D007579D0 /* Array.swift */,
+				A4D39F132C0E04B100E810E3 /* Bool.swift */,
 				A44F3D4F2C0DF065002823B8 /* Int.swift */,
 				A4CB9B9F2C0BA81900E5DFCE /* Pipe.swift */,
 				A4CB9BA12C0BAF5900E5DFCE /* Process.swift */,
