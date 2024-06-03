@@ -22,7 +22,7 @@ enum Settings {
         var id: Self { self }
         var localized: String { rawValue.localized }
 
-        func index(_ mode: Self) -> Int { Self.allCases.firstIndex(of: mode) ?? Int() }
+        func index(_ mode: Self) -> Int { Self.allCases.firstIndex(of: mode)! } // swiftlint:disable:this force_unwrapping
         func isAtLeast(_ mode: Self) -> Bool { index(self) >= index(mode) }
     }
 }
