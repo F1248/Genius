@@ -49,7 +49,7 @@ class SystemInformation: ObservableObject {
                             (total, performance, efficiency) = (SystemProfiler.hardware?["number_processors"] as? Int, 0, 0)
                         } else {
                             let components = (SystemProfiler.hardware?["number_processors"] as? String)?.replacingOccurrences(of: "proc ", with: String()).components(separatedBy: ":")
-                            (total, performance, efficiency) = (parseInt(components?[safe: 0]), parseInt(components?[safe: 1]), parseInt(components?[safe: 2]))
+                            (total, performance, efficiency) = (Int(components?[safe: 0]), Int(components?[safe: 1]), Int(components?[safe: 2]))
                         }
                     }
                 }

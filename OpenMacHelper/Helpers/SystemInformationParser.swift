@@ -55,11 +55,6 @@ func parseBool(_ bool: Any?) -> Bool? {
     return nil
 }
 
-func parseInt(_ int: String?) -> Int? {
-    guard let int else { return nil }
-    return Int(int)
-}
-
 func parseVersionNumber(_ versionNumber: Any?) -> [Int]? {
     (versionNumber as? String)?.components(separatedBy: ".").compactMap { Int($0) }
 }
