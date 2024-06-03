@@ -7,8 +7,8 @@
 
 extension Int {
 
-    init?(_ description: String?) {
-        guard let description else { return nil }
-        self.init(description)
+    init?(_ string: String?) {
+        guard let string else { return nil }
+        self.init(string)
     }
 }
