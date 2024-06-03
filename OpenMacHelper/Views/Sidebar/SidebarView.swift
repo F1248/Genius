@@ -22,7 +22,7 @@ struct SidebarView: View {
     @State private var selectedSidebarItem = SidebarItem()
 
     @AppStorage("interfaceMode")
-    var interfaceMode: Settings.InterfaceMode = .normal
+    var interfaceMode = Settings.InterfaceMode()
 
     var body: some View {
         List(selection: $selectedSidebarItem) {

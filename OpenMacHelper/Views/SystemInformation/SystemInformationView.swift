@@ -10,7 +10,7 @@ import SwiftUI
 struct SystemInformationView: View {
 
     @AppStorage("interfaceMode")
-    var interfaceMode: Settings.InterfaceMode = .normal
+    var interfaceMode = Settings.InterfaceMode()
 
     var body: some View {
         VStack {
