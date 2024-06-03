@@ -134,31 +134,31 @@ class SystemInformation: ObservableObject {
 
         let theftProtection = TheftProtection()
         struct TheftProtection {
-            let activationLock: Bool? = parseBool(SystemProfiler.hardware?["activation_lock_status"])
+            let activationLock: Bool? = Bool(SystemProfiler.hardware?["activation_lock_status"])
         }
 
         let dataSecurity = DataSecurity()
         struct DataSecurity {
-            let fileVault: Bool? = parseBool(runProcess(["/usr/bin/fdesetup", "isactive"]))
+            let fileVault: Bool? = Bool(runProcess(["/usr/bin/fdesetup", "isactive"]))
         }
 
         let malwareProtection = MalwareProtection()
         struct MalwareProtection {
-            let hyperThreading: Bool? = parseBool(SystemProfiler.hardware?["platform_cpu_htt"])
-            let secureVirtualMemory: Bool? = parseBool(SystemProfiler.software?["secure_vm"])
-            let systemIntegrityProtection: Bool? = parseBool(SystemProfiler.software?["system_integrity"])
-            let firewall: Bool? = parseBool(SystemProfiler.firewall?["spfirewall_globalstate"])
-            let gatekeeper: Bool? = parseBool(runProcess(["/usr/sbin/spctl", "--status"]))
+            let hyperThreading: Bool? = Bool(SystemProfiler.hardware?["platform_cpu_htt"])
+            let secureVirtualMemory: Bool? = Bool(SystemProfiler.software?["secure_vm"])
+            let systemIntegrityProtection: Bool? = Bool(SystemProfiler.software?["system_integrity"])
+            let firewall: Bool? = Bool(SystemProfiler.firewall?["spfirewall_globalstate"])
+            let gatekeeper: Bool? = Bool(runProcess(["/usr/sbin/spctl", "--status"]))
         }
 
         let automaticUpdates = AutomaticUpdates()
         struct AutomaticUpdates {
-            let checkMacOSUpdates: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled"))
-            let downloadMacOSUpdates: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))
-            let installMacOSUpdates: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates"))
-            let installCriticalUpdates: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"))
-            let installConfigData: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"))
-            let installAppStoreUpdates: Bool? = parseBool(readDefault("/Library/Preferences/com.apple.commerce", "AutoUpdate"))
+            let checkMacOSUpdates: Bool? = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled"))
+            let downloadMacOSUpdates: Bool? = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))
+            let installMacOSUpdates: Bool? = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates"))
+            let installCriticalUpdates: Bool? = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"))
+            let installConfigData: Bool? = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"))
+            let installAppStoreUpdates: Bool? = Bool(readDefault("/Library/Preferences/com.apple.commerce", "AutoUpdate"))
         }
     }
 }
