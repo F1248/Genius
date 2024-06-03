@@ -9,7 +9,7 @@ extension Array where Element == Int {
 
     init?(versionNumber: Any?) {
         guard let versionNumber = versionNumber as? String else { return nil }
-        self.init(versionNumber.components(separatedBy: ".").compactMap { Int($0) })
+        self = versionNumber.components(separatedBy: ".").compactMap { Int($0) }
     }
 }
 
