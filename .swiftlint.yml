@@ -1,39 +1,39 @@
 opt_in_rules: all
 
 disabled_rules:
-  - anyobject_protocol
-  - closure_body_length
-  - conditional_returns_on_newline
-  - discouraged_optional_boolean
-  - discouraged_optional_collection
-  - explicit_acl
-  - explicit_top_level_acl
-  - inert_defer
-  - let_var_whitespace
-  - nesting
-  - no_magic_numbers
-  - nslocalizedstring_key
-  - nslocalizedstring_require_bundle
-  - one_declaration_per_file
-  - required_deinit
-  - sorted_enum_cases
-  - switch_case_on_newline
-  - type_contents_order
-  - unused_capture_list
-  - vertical_whitespace_opening_braces
+    - anyobject_protocol
+    - closure_body_length
+    - conditional_returns_on_newline
+    - discouraged_optional_boolean
+    - discouraged_optional_collection
+    - explicit_acl
+    - explicit_top_level_acl
+    - inert_defer
+    - let_var_whitespace
+    - nesting
+    - no_magic_numbers
+    - nslocalizedstring_key
+    - nslocalizedstring_require_bundle
+    - one_declaration_per_file
+    - required_deinit
+    - sorted_enum_cases
+    - switch_case_on_newline
+    - type_contents_order
+    - unused_capture_list
+    - vertical_whitespace_opening_braces
 
 cyclomatic_complexity:
-  ignores_case_statements: true
+    ignores_case_statements: true
 explicit_type_interface:
-  allow_redundancy: true
+    allow_redundancy: true
 identifier_name:
-  min_length: 2
+    min_length: 2
 indentation_width:
-  include_comments: false
+    include_comments: false
 line_length: 256
 number_separator:
-  minimum_length: 7
+    minimum_length: 7
 trailing_whitespace:
-  ignores_comments: false
+    ignores_comments: false
 type_name:
-  min_length: 2
+    min_length: 2
