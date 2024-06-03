@@ -10,20 +10,12 @@ import SwiftUI
 
 extension String {
 
-    func dropPrefix(_ prefix: String) -> String {
-        hasPrefix(prefix) ? String(dropFirst(prefix.count)) : self
-    }
-
-    func contains(_ strings: [String]) -> Bool {
-        strings.contains { contains($0) }
+    var debugText: String {
+        isEmpty ? "None" : "\"\(trimmingCharacters(in: .whitespacesAndNewlines))\""
     }
 
     var localized: String {
         LocalizedStringKey(self).string
-    }
-
-    var debugText: String {
-        isEmpty ? "None" : "\"\(trimmingCharacters(in: .whitespacesAndNewlines))\""
     }
 
     var url: URL? {
@@ -32,6 +24,14 @@ extension String {
             return nil
         }
         return URL(fileURLWithPath: self)
+    }
+
+    func contains(_ strings: [String]) -> Bool {
+        strings.contains { contains($0) }
+    }
+
+    func dropPrefix(_ prefix: String) -> String {
+        hasPrefix(prefix) ? String(dropFirst(prefix.count)) : self
     }
 }
 
