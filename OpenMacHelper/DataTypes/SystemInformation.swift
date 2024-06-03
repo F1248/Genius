@@ -76,7 +76,7 @@ class SystemInformation: ObservableObject {
 
         let firmware = Firmware()
         struct Firmware {
-            let version: [Int]? = parseVersionNumber(SystemProfiler.hardware?["boot_rom_version"])
+            let version: [Int]? = Array(versionNumber: SystemProfiler.hardware?["boot_rom_version"])
         }
 
         let kernel = Kernel()
@@ -86,7 +86,7 @@ class SystemInformation: ObservableObject {
             init() {
                 let components = (SystemProfiler.software?["kernel_version"] as? String)?.components(separatedBy: " ")
                 name = components?[safe: 0]
-                version = parseVersionNumber(components?[safe: 1])
+                version = Array(versionNumber: components?[safe: 1])
             }
         }
 
@@ -102,11 +102,11 @@ class SystemInformation: ObservableObject {
             let version: [Int]?
             let marketingName: String?
             let build: String?
-            let loaderVersion: [Int]? = parseVersionNumber(SystemProfiler.hardware?["os_loader_version"])
+            let loaderVersion: [Int]? = Array(versionNumber: SystemProfiler.hardware?["os_loader_version"])
             init() {
                 let components = (SystemProfiler.software?["os_version"] as? String)?.components(separatedBy: " ")
                 name = components?[safe: 0]
-                version = parseVersionNumber(components?[safe: 1])
+                version = Array(versionNumber: components?[safe: 1])
                 marketingName = getOSMarketingName(version)
                 build = (components?.last?.dropFirst().dropLast()).map(String.init)
             }

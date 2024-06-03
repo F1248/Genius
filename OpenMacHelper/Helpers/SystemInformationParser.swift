@@ -48,10 +48,6 @@ func getOSMarketingName(_ osVersion: [Int]?) -> String? {
     }
 }
 
-func parseVersionNumber(_ versionNumber: Any?) -> [Int]? {
-    (versionNumber as? String)?.components(separatedBy: ".").compactMap { Int($0) }
-}
-
 func parseFrequency(_ frequency: Any?) -> Measurement<UnitFrequency>? {
     guard let components = (frequency as? String)?.components(separatedBy: " ") else { return nil }
     guard components.count == 2 else { return nil }
