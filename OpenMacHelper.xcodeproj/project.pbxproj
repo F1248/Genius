@@ -28,7 +28,6 @@
 		A4A1EB172C0CEBA100C8C811 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A1EB162C0CEBA100C8C811 /* URL.swift */; };
 		A4CB9BA02C0BA81900E5DFCE /* Pipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CB9B9F2C0BA81900E5DFCE /* Pipe.swift */; };
 		A4CB9BA22C0BAF5900E5DFCE /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CB9BA12C0BAF5900E5DFCE /* Process.swift */; };
-		A4EAA9852C0A04CD0057A39E /* LocalizedStringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EAA9842C0A04CD0057A39E /* LocalizedStringKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +55,6 @@
 		A4A1EB162C0CEBA100C8C811 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		A4CB9B9F2C0BA81900E5DFCE /* Pipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pipe.swift; sourceTree = "<group>"; };
 		A4CB9BA12C0BAF5900E5DFCE /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
-		A4EAA9842C0A04CD0057A39E /* LocalizedStringKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStringKey.swift; sourceTree = "<group>"; };
 		A4EB1C9A2BCC3F8200DF01A6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				A4734CF22BDF981D007579D0 /* Array.swift */,
-				A4EAA9842C0A04CD0057A39E /* LocalizedStringKey.swift */,
 				A44F3D4F2C0DF065002823B8 /* Int.swift */,
 				A4CB9B9F2C0BA81900E5DFCE /* Pipe.swift */,
 				A4CB9BA12C0BAF5900E5DFCE /* Process.swift */,
@@ -294,7 +291,6 @@
 				A4CB9BA02C0BA81900E5DFCE /* Pipe.swift in Sources */,
 				A42B35432BA2185B009E81AD /* ContentView.swift in Sources */,
 				A4A04A182BA4B536001F6563 /* SystemInformationView.swift in Sources */,
-				A4EAA9852C0A04CD0057A39E /* LocalizedStringKey.swift in Sources */,
 				A44F3D502C0DF065002823B8 /* Int.swift in Sources */,
 				A46C89692BBF1CCE00ED1003 /* SidebarItemView.swift in Sources */,
 				A452AFE82BBF2BF500760569 /* ProcessHandler.swift in Sources */,
