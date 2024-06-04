@@ -5,18 +5,18 @@
 //  Created by F1248.
 //
 
+extension Array {
+
+    subscript(safe index: Index) -> Element? {
+        indices.contains(index) ? self[index] : nil
+    }
+}
+
 extension Array where Element == Int {
 
     init?(versionNumber: Any?) {
         guard let versionNumber = versionNumber as? String else { return nil }
         self = versionNumber.components(separatedBy: ".").compactMap { Int($0) }
-    }
-}
-
-extension Array {
-
-    subscript(safe index: Index) -> Element? {
-        indices.contains(index) ? self[index] : nil
     }
 }
 
