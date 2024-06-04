@@ -1,0 +1,14 @@
+//
+//  Double.swift
+//  OpenMacHelper
+//
+//  Created by F1248.
+//
+
+extension Double {
+
+    init?(_ string: String?) {
+        guard let string else { return nil }
+        self.init(string.replacingOccurrences(of: ",", with: "."))
+    }
+}

@@ -46,38 +46,3 @@ func getOSMarketingName(_ osVersion: [Int]?) -> String? {
     default: nil
     }
 }
-
-func parseFrequency(_ frequency: Any?) -> Measurement<UnitFrequency>? {
-    guard let components = (frequency as? String)?.components(separatedBy: " ") else { return nil }
-    guard components.count == 2 else { return nil }
-    guard let firstComponent = components.first else { return nil }
-    guard let value = Double(firstComponent.replacingOccurrences(of: ",", with: ".")) else { return nil }
-    guard let unit: UnitFrequency = {
-        switch components.last {
-        case "Hz": .hertz
-        case "kHz": .kilohertz
-        case "MHz": .megahertz
-        case "GHz": .gigahertz
-        default: nil
-        }
-    }() else { return nil }
-    return Measurement(value: value, unit: unit)
-}
-
-func parseBytes(_ bytes: Any?) -> Measurement<UnitInformationStorage>? {
-    guard let components = (bytes as? String)?.components(separatedBy: " ") else { return nil }
-    guard components.count == 2 else { return nil }
-    guard let firstComponent = components.first else { return nil }
-    guard let value = Double(firstComponent) else { return nil }
-    guard let unit: UnitInformationStorage = {
-        switch components.last {
-        case "B": .bytes
-        case "KB": .kilobytes
-        case "MB": .megabytes
-        case "GB": .gigabytes
-        case "TB": .terabytes
-        default: nil
-        }
-    }() else { return nil }
-    return Measurement(value: value, unit: unit)
-}
