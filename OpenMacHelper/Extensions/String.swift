@@ -30,7 +30,7 @@ extension String {
     }
 }
 
-extension Optional where Wrapped == String {
+extension String? {
 
     var debugText: String {
         self?.debugText ?? "nil"

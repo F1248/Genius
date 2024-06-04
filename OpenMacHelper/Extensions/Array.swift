@@ -12,7 +12,7 @@ extension Array {
     }
 }
 
-extension Array where Element == Int {
+extension [Int] {
 
     init?(versionNumber: Any?) {
         guard let versionNumber = versionNumber as? String else { return nil }
@@ -20,7 +20,7 @@ extension Array where Element == Int {
     }
 }
 
-extension Optional where Wrapped == [String] {
+extension [String]? {
 
     var debugText: String {
         (self?.joined(separator: "\", \"")).debugText

@@ -23,7 +23,7 @@ extension URL {
     }
 }
 
-extension Optional where Wrapped == URL {
+extension URL? {
 
     var debugText: String {
         (self?.absoluteString.dropPrefix("file://")).debugText
