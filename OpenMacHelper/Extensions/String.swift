@@ -28,6 +28,10 @@ extension String {
     func dropPrefix(_ prefix: String) -> String {
         hasPrefix(prefix) ? String(dropFirst(prefix.count)) : self
     }
+
+    func remove(_ string: String) -> String {
+        replacingOccurrences(of: string, with: String())
+    }
 }
 
 extension String? {
