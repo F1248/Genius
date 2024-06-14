@@ -43,6 +43,7 @@ func getOSMarketingName(_ osVersion: [Int]?) -> String? {
     case 12: "Monterey"
     case 13: "Ventura"
     case 14: "Sonoma"
+    case 15: "Sequoia"
     default: nil
     }
 }
