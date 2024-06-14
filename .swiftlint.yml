@@ -8,6 +8,7 @@ disabled_rules:
     - discouraged_optional_collection
     - explicit_acl
     - explicit_top_level_acl
+    - file_name
     - inert_defer
     - let_var_whitespace
     - nesting

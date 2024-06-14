@@ -15,8 +15,9 @@
 		A44F3D502C0DF065002823B8 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44F3D4F2C0DF065002823B8 /* Int.swift */; };
 		A452AFE32BBF2BEC00760569 /* SystemInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE22BBF2BEC00760569 /* SystemInformation.swift */; };
 		A452AFE82BBF2BF500760569 /* ProcessHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE42BBF2BF500760569 /* ProcessHandler.swift */; };
-		A452AFE92BBF2BF500760569 /* SystemInformationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE52BBF2BF500760569 /* SystemInformationParser.swift */; };
 		A452AFEA2BBF2BF500760569 /* SystemInformationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE62BBF2BF500760569 /* SystemInformationFetcher.swift */; };
+		A460CBCF2C1CF6DC0075195D /* SystemInformation.Software.swift in Sources */ = {isa = PBXBuildFile; fileRef = A460CBCE2C1CF6DC0075195D /* SystemInformation.Software.swift */; };
+		A460CBD12C1CF7410075195D /* SystemInformation.MaintenanceChecks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A460CBD02C1CF7410075195D /* SystemInformation.MaintenanceChecks.swift */; };
 		A467E0FF2BA4B3F6005F6258 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */; };
 		A46C65E62C0E557000A91C16 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C65E52C0E557000A91C16 /* Measurement.swift */; };
 		A46C65E82C0E627F00A91C16 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C65E72C0E627F00A91C16 /* Double.swift */; };
@@ -27,6 +28,7 @@
 		A48EDF272BDD6C4800CDB724 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48EDF252BDD67DD00CDB724 /* String.swift */; };
 		A4A04A182BA4B536001F6563 /* SystemInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A04A172BA4B536001F6563 /* SystemInformationView.swift */; };
 		A4A1EB172C0CEBA100C8C811 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A1EB162C0CEBA100C8C811 /* URL.swift */; };
+		A4BC781C2C10E5FE00999E66 /* SystemInformation.Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BC781B2C10E5FE00999E66 /* SystemInformation.Hardware.swift */; };
 		A4CB9BA02C0BA81900E5DFCE /* Pipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CB9B9F2C0BA81900E5DFCE /* Pipe.swift */; };
 		A4CB9BA22C0BAF5900E5DFCE /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CB9BA12C0BAF5900E5DFCE /* Process.swift */; };
 		A4D39F142C0E04B100E810E3 /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D39F132C0E04B100E810E3 /* Bool.swift */; };
@@ -44,9 +46,10 @@
 		A4528F1F2BCD9B400092CBB8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A452AFE22BBF2BEC00760569 /* SystemInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInformation.swift; sourceTree = "<group>"; };
 		A452AFE42BBF2BF500760569 /* ProcessHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessHandler.swift; sourceTree = "<group>"; };
-		A452AFE52BBF2BF500760569 /* SystemInformationParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInformationParser.swift; sourceTree = "<group>"; };
 		A452AFE62BBF2BF500760569 /* SystemInformationFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInformationFetcher.swift; sourceTree = "<group>"; };
 		A452AFF22BBF2CAB00760569 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		A460CBCE2C1CF6DC0075195D /* SystemInformation.Software.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInformation.Software.swift; sourceTree = "<group>"; };
+		A460CBD02C1CF7410075195D /* SystemInformation.MaintenanceChecks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInformation.MaintenanceChecks.swift; sourceTree = "<group>"; };
 		A467E0FE2BA4B3F6005F6258 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		A46C65E52C0E557000A91C16 /* Measurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
 		A46C65E72C0E627F00A91C16 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
@@ -57,6 +60,7 @@
 		A48EDF252BDD67DD00CDB724 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		A4A04A172BA4B536001F6563 /* SystemInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInformationView.swift; sourceTree = "<group>"; };
 		A4A1EB162C0CEBA100C8C811 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		A4BC781B2C10E5FE00999E66 /* SystemInformation.Hardware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInformation.Hardware.swift; sourceTree = "<group>"; };
 		A4CB9B9F2C0BA81900E5DFCE /* Pipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pipe.swift; sourceTree = "<group>"; };
 		A4CB9BA12C0BAF5900E5DFCE /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 		A4D39F132C0E04B100E810E3 /* Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
@@ -157,9 +161,18 @@
 			children = (
 				A452AFE42BBF2BF500760569 /* ProcessHandler.swift */,
 				A452AFE62BBF2BF500760569 /* SystemInformationFetcher.swift */,
-				A452AFE52BBF2BF500760569 /* SystemInformationParser.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A460CBCD2C1CF6CB0075195D /* SystemInformation */ = {
+			isa = PBXGroup;
+			children = (
+				A4BC781B2C10E5FE00999E66 /* SystemInformation.Hardware.swift */,
+				A460CBD02C1CF7410075195D /* SystemInformation.MaintenanceChecks.swift */,
+				A460CBCE2C1CF6DC0075195D /* SystemInformation.Software.swift */,
+			);
+			path = SystemInformation;
 			sourceTree = "<group>";
 		};
 		A46C89672BBF1C9000ED1003 /* Sidebar */ = {
@@ -288,11 +301,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A460CBCF2C1CF6DC0075195D /* SystemInformation.Software.swift in Sources */,
 				A48EDF272BDD6C4800CDB724 /* String.swift in Sources */,
 				A4734CF32BDF981D007579D0 /* Array.swift in Sources */,
 				A452AFE32BBF2BEC00760569 /* SystemInformation.swift in Sources */,
 				A4CB9BA22C0BAF5900E5DFCE /* Process.swift in Sources */,
 				A46C65E82C0E627F00A91C16 /* Double.swift in Sources */,
+				A4BC781C2C10E5FE00999E66 /* SystemInformation.Hardware.swift in Sources */,
 				A48985D92BA23F7200B6902A /* Settings.swift in Sources */,
 				A4D39F182C0E1E8000E810E3 /* Locale.swift in Sources */,
 				A452AFEA2BBF2BF500760569 /* SystemInformationFetcher.swift in Sources */,
@@ -300,6 +315,7 @@
 				A48985DB2BA23F9E00B6902A /* SettingsView.swift in Sources */,
 				A4CB9BA02C0BA81900E5DFCE /* Pipe.swift in Sources */,
 				A42B35432BA2185B009E81AD /* ContentView.swift in Sources */,
+				A460CBD12C1CF7410075195D /* SystemInformation.MaintenanceChecks.swift in Sources */,
 				A4A04A182BA4B536001F6563 /* SystemInformationView.swift in Sources */,
 				A44F3D502C0DF065002823B8 /* Int.swift in Sources */,
 				A46C89692BBF1CCE00ED1003 /* SidebarItemView.swift in Sources */,
@@ -309,7 +325,6 @@
 				A42B35412BA2185B009E81AD /* OpenMacHelperApp.swift in Sources */,
 				A42B3B7B2BA37D4B004760D5 /* HomeView.swift in Sources */,
 				A46C65E62C0E557000A91C16 /* Measurement.swift in Sources */,
-				A452AFE92BBF2BF500760569 /* SystemInformationParser.swift in Sources */,
 				A4A1EB172C0CEBA100C8C811 /* URL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
