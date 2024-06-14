@@ -5,8 +5,6 @@
 //  Created by F1248.
 //
 
-import SwiftUI
-
 enum Settings {
 
     enum InterfaceMode: String, CaseIterable, Identifiable {
