@@ -8,12 +8,6 @@
 import Foundation
 import SwiftUI
 
-enum SystemProfiler {
-    nonisolated(unsafe) static let firewall = getSystemProfiler("Firewall")
-    nonisolated(unsafe) static let hardware = getSystemProfiler("Hardware")
-    nonisolated(unsafe) static let software = getSystemProfiler("Software")
-}
-
 class SystemInformation: ObservableObject {
 
     @Published var hardware = Hardware()
