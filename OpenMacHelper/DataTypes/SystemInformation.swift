@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 enum SystemProfiler {
-    static let firewall = getSystemProfiler("Firewall")
-    static let hardware = getSystemProfiler("Hardware")
-    static let software = getSystemProfiler("Software")
+    nonisolated(unsafe) static let firewall = getSystemProfiler("Firewall")
+    nonisolated(unsafe) static let hardware = getSystemProfiler("Hardware")
+    nonisolated(unsafe) static let software = getSystemProfiler("Software")
 }
 
 class SystemInformation: ObservableObject {
