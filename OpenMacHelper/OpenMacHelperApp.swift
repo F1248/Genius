@@ -10,6 +10,8 @@ import SwiftUI
 @main
 struct OpenMacHelperApp: App {
 
+    @NSApplicationDelegateAdaptor var appDelegate: AppDelegate
+
     var body: some Scene {
         WindowGroup {
             ContentView()

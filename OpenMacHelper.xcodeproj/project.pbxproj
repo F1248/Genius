@@ -11,6 +11,7 @@
 		A42B35412BA2185B009E81AD /* OpenMacHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */; };
 		A42B35432BA2185B009E81AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B35422BA2185B009E81AD /* ContentView.swift */; };
 		A42B3B7B2BA37D4B004760D5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B3B7A2BA37D4B004760D5 /* HomeView.swift */; };
+		A431C47B2C1DF1A40045FC0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A431C47A2C1DF1A40045FC0B /* AppDelegate.swift */; };
 		A44BBF042BB213EE001072CC /* MaintenanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44BBF032BB213EE001072CC /* MaintenanceView.swift */; };
 		A44F3D502C0DF065002823B8 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44F3D4F2C0DF065002823B8 /* Int.swift */; };
 		A452AFE32BBF2BEC00760569 /* SystemInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A452AFE22BBF2BEC00760569 /* SystemInformation.swift */; };
@@ -41,6 +42,7 @@
 		A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMacHelperApp.swift; sourceTree = "<group>"; };
 		A42B35422BA2185B009E81AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A42B3B7A2BA37D4B004760D5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A431C47A2C1DF1A40045FC0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A44BBF032BB213EE001072CC /* MaintenanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceView.swift; sourceTree = "<group>"; };
 		A44F3D4F2C0DF065002823B8 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		A4528F1F2BCD9B400092CBB8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		A42B353F2BA2185B009E81AD /* OpenMacHelper */ = {
 			isa = PBXGroup;
 			children = (
+				A431C47A2C1DF1A40045FC0B /* AppDelegate.swift */,
 				A4B6A8512BA8C6BD0050FF18 /* DataTypes */,
 				A48EDF242BDD67C800CDB724 /* Extensions */,
 				A452AFE72BBF2BF500760569 /* Helpers */,
@@ -319,6 +322,7 @@
 				A4A04A182BA4B536001F6563 /* SystemInformationView.swift in Sources */,
 				A44F3D502C0DF065002823B8 /* Int.swift in Sources */,
 				A46C89692BBF1CCE00ED1003 /* SidebarItemView.swift in Sources */,
+				A431C47B2C1DF1A40045FC0B /* AppDelegate.swift in Sources */,
 				A452AFE82BBF2BF500760569 /* ProcessHandler.swift in Sources */,
 				A4D39F142C0E04B100E810E3 /* Bool.swift in Sources */,
 				A467E0FF2BA4B3F6005F6258 /* SidebarView.swift in Sources */,
