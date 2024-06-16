@@ -40,7 +40,7 @@ extension SystemInformation.Hardware.Model {
         marketingName = {
             guard let serialNumber = SystemProfiler.hardware?["serial_number"] as? String, [11, 12].contains(serialNumber.count) else { return nil }
             let url: String = "https://support-sp.apple.com/sp/product?cc=\(serialNumber.dropFirst(8))&lang=\(Locale.currentLanguageCode ?? String())"
-            guard let output = runProcess(["/usr/bin/curl", "-s", url]), output.contains("<configCode>") else { return nil }
+            guard let output = transferURL(url), output.contains("<configCode>") else { return nil }
             guard let marketingName = output.components(separatedBy: "<configCode>").last?.components(separatedBy: "</configCode>").first else { return nil }
             return LocalizedStringKey(marketingName)
         }()
