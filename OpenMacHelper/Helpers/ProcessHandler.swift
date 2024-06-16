@@ -33,9 +33,10 @@ func runProcess(_ arguments: [String], asRoot: Bool = false) -> String? {
     }
     process.waitUntilExit()
     let errorPipeData = errorPipe.read()
-    guard process.terminationStatus == 0, errorPipeData == nil else {
-        process.logError(outputPipeData: outputPipe.read(), errorPipeData: errorPipeData)
+    let outputPipeData = outputPipe.read()
+    guard process.terminationStatus == 0, errorPipeData == nil, let outputPipeData else {
+        process.logError(outputPipeData: outputPipeData, errorPipeData: errorPipeData)
         return nil
     }
-    return outputPipe.read()
+    return outputPipeData
 }
