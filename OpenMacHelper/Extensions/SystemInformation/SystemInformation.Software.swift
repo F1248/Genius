@@ -13,7 +13,7 @@ extension SystemInformation.Software.SMC {
 
 extension SystemInformation.Software.Firmware {
     init() {
-        version = Array(versionNumber: SystemProfiler.hardware?["boot_rom_version"])
+        version = [Int](versionNumber: SystemProfiler.hardware?["boot_rom_version"])
     }
 }
 
@@ -21,7 +21,7 @@ extension SystemInformation.Software.Kernel {
     init() {
         let components = (SystemProfiler.software?["kernel_version"] as? String)?.components(separatedBy: " ")
         name = components?[safe: 0]
-        version = Array(versionNumber: components?[safe: 1])
+        version = [Int](versionNumber: components?[safe: 1])
     }
 }
 
@@ -36,7 +36,7 @@ extension SystemInformation.Software.OS {
     init() {
         let components = (SystemProfiler.software?["os_version"] as? String)?.components(separatedBy: " ")
         name = components?[safe: 0]
-        version = Array(versionNumber: components?[safe: 1])
+        version = [Int](versionNumber: components?[safe: 1])
         marketingName = switch version?.first {
         case 11: "Big Sur"
         case 12: "Monterey"
@@ -46,7 +46,7 @@ extension SystemInformation.Software.OS {
         default: nil
         }
         build = (components?.last?.dropFirst().dropLast()).map(String.init)
-        loaderVersion = Array(versionNumber: SystemProfiler.hardware?["os_loader_version"])
+        loaderVersion = [Int](versionNumber: SystemProfiler.hardware?["os_loader_version"])
     }
 }
 
