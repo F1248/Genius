@@ -10,7 +10,7 @@ import SwiftUI
 
 class SystemInformation: ObservableObject {
 
-    @Published var hardware = Hardware()
+    let hardware = Hardware()
     struct Hardware {
 
         let model = Model()
@@ -44,7 +44,7 @@ class SystemInformation: ObservableObject {
         }
     }
 
-    @Published var software = Software()
+    let software = Software()
     struct Software {
 
         let smc = SMC()
