@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import os
 
 extension Process {
 
     func logError(outputPipeData: String?, errorPipeData: String?) {
-        Logger().error("""
+        logger.error("""
 Process failed:
     Executable: \(self.executableURL.debugText)
     Arguments: \(self.arguments.debugText)

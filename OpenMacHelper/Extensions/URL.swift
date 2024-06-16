@@ -12,11 +12,11 @@ extension URL {
 
     init?(_ path: String?) {
         guard let path else {
-            Logger().error("Path is nil")
+            logger.error("Path is nil")
             return nil
         }
         guard FileManager.default.fileExists(atPath: path) else {
-            Logger().error("Path does not exist: \(path.debugText)")
+            logger.error("Path does not exist: \(path.debugText)")
             return nil
         }
         self.init(fileURLWithPath: path)

@@ -16,6 +16,7 @@ disabled_rules:
     - nslocalizedstring_key
     - nslocalizedstring_require_bundle
     - one_declaration_per_file
+    - prefixed_toplevel_constant
     - required_deinit
     - sorted_enum_cases
     - switch_case_on_newline
