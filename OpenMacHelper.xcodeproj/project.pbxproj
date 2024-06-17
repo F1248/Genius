@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A41B31692C1F6D52000191DD /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41B31682C1F6D52000191DD /* Logger.swift */; };
+		A41B316B2C1F7A51000191DD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41B316A2C1F7A51000191DD /* Data.swift */; };
 		A41BB1ED2BAB660900DC881C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A41BB1EC2BAB660900DC881C /* Localizable.xcstrings */; };
 		A42B35412BA2185B009E81AD /* OpenMacHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */; };
 		A42B35432BA2185B009E81AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42B35422BA2185B009E81AD /* ContentView.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		A41B31682C1F6D52000191DD /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		A41B316A2C1F7A51000191DD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		A41BB1EC2BAB660900DC881C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		A42B353D2BA2185B009E81AD /* OpenMacHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenMacHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A42B35402BA2185B009E81AD /* OpenMacHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMacHelperApp.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			children = (
 				A4734CF22BDF981D007579D0 /* Array.swift */,
 				A4D39F132C0E04B100E810E3 /* Bool.swift */,
+				A41B316A2C1F7A51000191DD /* Data.swift */,
 				A46C65E72C0E627F00A91C16 /* Double.swift */,
 				A44F3D4F2C0DF065002823B8 /* Int.swift */,
 				A4D39F172C0E1E8000E810E3 /* Locale.swift */,
@@ -311,6 +314,7 @@
 				A48EDF272BDD6C4800CDB724 /* String.swift in Sources */,
 				A4734CF32BDF981D007579D0 /* Array.swift in Sources */,
 				A452AFE32BBF2BEC00760569 /* SystemInformation.swift in Sources */,
+				A41B316B2C1F7A51000191DD /* Data.swift in Sources */,
 				A4CB9BA22C0BAF5900E5DFCE /* Process.swift in Sources */,
 				A41B31692C1F6D52000191DD /* Logger.swift in Sources */,
 				A46C65E82C0E627F00A91C16 /* Double.swift in Sources */,
