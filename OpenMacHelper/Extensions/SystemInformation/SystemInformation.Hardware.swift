@@ -60,11 +60,12 @@ extension SystemInformation.Hardware.Specifications.CPU {
 
 extension SystemInformation.Hardware.Specifications.CPU.Cores {
     init() {
-        if let numberProcessors = SystemProfiler.hardware?["number_processors"] as? Int {
-            (total, performance, efficiency) = (numberProcessors, 0, 0)
-        } else if let components = [Int]((SystemProfiler.hardware?["number_processors"] as? String)?.remove("proc ").components(separatedBy: ":")) {
-            (total, performance, efficiency) = (components[safe: 0], components[safe: 1], components[safe: 2])
-        } else { (total, performance, efficiency) = (nil, nil, nil) }
+        if SystemProfiler.hardware?["chip_type"] != nil {
+            let components = [Int]((SystemProfiler.hardware?["number_processors"] as? String)?.remove("proc ").components(separatedBy: ":"))
+            (total, performance, efficiency) = (components?[safe: 0], components?[safe: 1], components?[safe: 2])
+        } else {
+            (total, performance, efficiency) = (SystemProfiler.hardware?["number_processors"] as? Int, 0, 0)
+        }
     }
 }
 
