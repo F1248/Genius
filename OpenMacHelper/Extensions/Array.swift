@@ -24,10 +24,3 @@ extension [Int] {
         self = versionNumber.components(separatedBy: ".").compactMap { Int($0) }
     }
 }
-
-extension [String]? {
-
-    var debugText: String {
-        (self?.joined(separator: "\", \"")).debugText
-    }
-}

@@ -12,14 +12,14 @@ extension Process {
     func logError(outputPipeData: String?, errorPipeData: String?) {
         logger.error("""
 Process failed:
-    Executable: \(self.executableURL.debugText)
-    Arguments: \(self.arguments.debugText)
+    Executable: \(self.executableURL.debugDescription)
+    Arguments: \(self.arguments.debugDescription)
     Termination status: \(self.terminationStatus)
     Termination reason: \(self.terminationReason.rawValue)
     Standard output:
-\(outputPipeData.debugText)
+\(outputPipeData.debugDescription)
     Standard error:
-\(errorPipeData.debugText)
+\(errorPipeData.debugDescription)
 """)
     }
 }

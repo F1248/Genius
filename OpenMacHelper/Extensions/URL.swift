@@ -16,16 +16,9 @@ extension URL {
             return nil
         }
         guard FileManager.default.fileExists(atPath: path) else {
-            logger.error("Initialization URL(String?) failed because path does not exist: path = \(path.debugText)")
+            logger.error("Initialization URL(String?) failed because path does not exist: path = \(path)")
             return nil
         }
         self.init(fileURLWithPath: path)
-    }
-}
-
-extension URL? {
-
-    var debugText: String {
-        (self?.absoluteString.dropPrefix("file://")).debugText
     }
 }

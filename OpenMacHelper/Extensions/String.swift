@@ -13,10 +13,6 @@ extension String {
         self = NSLocalizedString(Mirror(reflecting: localizedStringKey).children.first { $0.label == "key" }?.value as? String ?? "Unknown".localized, comment: String())
     }
 
-    var debugText: String {
-        isEmpty ? "None" : "\"\(trimmingCharacters(in: .whitespacesAndNewlines))\""
-    }
-
     var localized: String {
         String(LocalizedStringKey(self))
     }
@@ -35,10 +31,6 @@ extension String {
 }
 
 extension String? {
-
-    var debugText: String {
-        self?.debugText ?? "nil"
-    }
 
     func hasPrefix(_ prefix: String) -> Bool {
         guard let self else { return false }
