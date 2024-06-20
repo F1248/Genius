@@ -20,14 +20,16 @@ extension SystemInformation.Hardware.Model {
         isLaptop = name.hasPrefix("MacBook")
         systemImage = switch name {
         case _ where name.hasPrefix("MacBook"):
-            switch identifier {
-            case "Mac14,7": "macbook.gen1"
-            case _ where identifier.hasPrefix("MacBookPro18"): "macbook.gen2"
-            case _ where identifier.hasPrefix("MacBook"): "macbook.gen1"
-            default: "macbook.gen2"
-            }
+            if #available(macOS 14, *) {
+                switch identifier {
+                case "Mac14,7": "macbook.gen1"
+                case _ where identifier.hasPrefix("MacBookPro18"): "macbook.gen2"
+                case _ where identifier.hasPrefix("MacBook"): "macbook.gen1"
+                default: "macbook.gen2"
+                }
+            } else { "laptopcomputer" }
         case "Mac mini": "macmini"
-        case "Mac Studio": "macstudio"
+        case "Mac Studio": if #available(macOS 13, *) { "macstudio" } else { "macmini" }
         case "Mac Pro":
             switch identifier {
             case "MacPro3,1", "MacPro4,1", "MacPro5,1": "macpro.gen1"
