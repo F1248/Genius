@@ -25,7 +25,7 @@ struct SidebarView: View {
         List(selection: $selectedSidebarItem) {
             SidebarItemView(destination: HomeView(), title: "Home", systemImage: "house", tag: .home, keyboardShortcutKey: "0")
             SidebarItemView(destination: SystemInformationView(), title: interfaceMode.isAtLeast(.simple) ? "System Information" : "Information", systemImage: "info.circle", tag: .systemInformation, keyboardShortcutKey: "1")
-            SidebarItemView(destination: MaintenanceView(), title: "Maintenance", systemImage: "gear.badge.checkmark", tag: .maintenance, keyboardShortcutKey: "2")
+            SidebarItemView(destination: MaintenanceView(), title: "Maintenance", systemImage: "checkmark.seal", tag: .maintenance, keyboardShortcutKey: "2")
             SidebarItemView(destination: SettingsView(), title: "Settings", systemImage: "gear", tag: .settings, keyboardShortcutKey: ",")
         }
         .listStyle(SidebarListStyle())
