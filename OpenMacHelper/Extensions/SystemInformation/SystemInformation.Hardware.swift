@@ -37,7 +37,8 @@ extension SystemInformation.Hardware.Model {
             default: "macpro.gen3"
             }
         case "Xserve": "xserve"
-        default: "desktopcomputer"
+        case "iMac", "iMac Pro": "desktopcomputer"
+        default: if #available(macOS 15, *) { "desktopcomputer.and.macbook" } else { "desktopcomputer" }
         }
         marketingName = {
             guard let serialNumber = SystemProfiler.hardware?["serial_number"] as? String, [11, 12].contains(serialNumber.count) else { return nil }
