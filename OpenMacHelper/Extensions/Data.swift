@@ -11,7 +11,7 @@ extension Data {
 
     init?(_ string: String?) {
         guard let data = string?.data(using: .utf8) else {
-            logger.error("Initialization Data(String?) failed: string = \(string.debugDescription)")
+            logger.error("Data(\"\(string.debugDescription)\": String?) failed")
             return nil
         }
         self = data

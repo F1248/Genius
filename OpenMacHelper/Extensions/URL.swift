@@ -11,11 +11,11 @@ extension URL {
 
     init?(_ path: String?) {
         guard let path else {
-            logger.error("Initialization URL(String?) failed: path = nil")
+            logger.error("URL(\"\(path.debugDescription)\": String?) failed, path is nil")
             return nil
         }
         guard FileManager.default.fileExists(atPath: path) else {
-            logger.error("Initialization URL(String?) failed because path does not exist: path = \(path)")
+            logger.error("URL(\"\(path)\": String?) failed, path does not exist")
             return nil
         }
         self.init(fileURLWithPath: path)
