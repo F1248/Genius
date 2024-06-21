@@ -5,19 +5,19 @@
 //  Created by F1248.
 //
 
-extension SystemInformation.Software.SMC {
+extension Software.SMC {
     init() {
         version = SystemProfiler.hardware?["SMC_version_system"] as? String
     }
 }
 
-extension SystemInformation.Software.Firmware {
+extension Software.Firmware {
     init() {
         version = [Int](versionNumber: SystemProfiler.hardware?["boot_rom_version"])
     }
 }
 
-extension SystemInformation.Software.Kernel {
+extension Software.Kernel {
     init() {
         let components = (SystemProfiler.software?["kernel_version"] as? String)?.components(separatedBy: " ")
         name = components?[safe: 0]
@@ -25,14 +25,14 @@ extension SystemInformation.Software.Kernel {
     }
 }
 
-extension SystemInformation.Software.Boot {
+extension Software.Boot {
     init() {
         volume = SystemProfiler.software?["boot_volume"] as? String
         mode = SystemProfiler.software?["boot_mode"] as? String
     }
 }
 
-extension SystemInformation.Software.OS {
+extension Software.OS {
     init() {
         let components = (SystemProfiler.software?["os_version"] as? String)?.components(separatedBy: " ")
         name = components?[safe: 0]
@@ -50,13 +50,13 @@ extension SystemInformation.Software.OS {
     }
 }
 
-extension SystemInformation.Software.Computer {
+extension Software.Computer {
     init() {
         name = SystemProfiler.software?["local_host_name"] as? String
     }
 }
 
-extension SystemInformation.Software.User {
+extension Software.User {
     init() {
         let components = (SystemProfiler.software?["user_name"] as? String)?.components(separatedBy: " ")
         name = components?.dropLast().joined(separator: " ")

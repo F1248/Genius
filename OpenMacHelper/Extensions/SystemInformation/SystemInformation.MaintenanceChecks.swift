@@ -5,19 +5,19 @@
 //  Created by F1248.
 //
 
-extension SystemInformation.MaintenanceChecks.TheftProtection {
+extension MaintenanceChecks.TheftProtection {
     init() {
         activationLock = Bool(SystemProfiler.hardware?["activation_lock_status"])
     }
 }
 
-extension SystemInformation.MaintenanceChecks.DataSecurity {
+extension MaintenanceChecks.DataSecurity {
     init() {
         fileVault = Bool(runProcess(["/usr/bin/fdesetup", "isactive"]))
     }
 }
 
-extension SystemInformation.MaintenanceChecks.MalwareProtection {
+extension MaintenanceChecks.MalwareProtection {
     init() {
         hyperThreading = Bool(SystemProfiler.hardware?["platform_cpu_htt"])
         secureVirtualMemory = Bool(SystemProfiler.software?["secure_vm"])
@@ -27,7 +27,7 @@ extension SystemInformation.MaintenanceChecks.MalwareProtection {
     }
 }
 
-extension SystemInformation.MaintenanceChecks.AutomaticUpdates {
+extension MaintenanceChecks.AutomaticUpdates {
     init() {
         checkMacOSUpdates = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled"))
         downloadMacOSUpdates = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))

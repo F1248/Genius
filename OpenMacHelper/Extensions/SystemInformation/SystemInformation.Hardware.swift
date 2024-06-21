@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension SystemInformation.Hardware.Model {
+extension Hardware.Model {
     init() {
         name = SystemProfiler.hardware?["machine_name"] as? String
         identifier = SystemProfiler.hardware?["machine_model"] as? String
@@ -50,18 +50,18 @@ extension SystemInformation.Hardware.Model {
     }
 }
 
-extension SystemInformation.Hardware.Specifications {
+extension Hardware.Specifications {
     init() { memory = Measurement(SystemProfiler.hardware?["physical_memory"]) }
 }
 
-extension SystemInformation.Hardware.Specifications.CPU {
+extension Hardware.Specifications.CPU {
     init() {
         type = SystemProfiler.hardware?["chip_type"] as? String ?? SystemProfiler.hardware?["cpu_type"] as? String
         speed = Measurement(SystemProfiler.hardware?["current_processor_speed"])
     }
 }
 
-extension SystemInformation.Hardware.Specifications.CPU.Cores {
+extension Hardware.Specifications.CPU.Cores {
     init() {
         if SystemProfiler.hardware?["chip_type"] != nil {
             let components = [Int]((SystemProfiler.hardware?["number_processors"] as? String)?.remove("proc ").components(separatedBy: ":"))
@@ -72,7 +72,7 @@ extension SystemInformation.Hardware.Specifications.CPU.Cores {
     }
 }
 
-extension SystemInformation.Hardware.Machine {
+extension Hardware.Machine {
     init() {
         serialNumber = SystemProfiler.hardware?["serial_number"] as? String
         hardwareUUID = SystemProfiler.hardware?["platform_UUID"] as? String
