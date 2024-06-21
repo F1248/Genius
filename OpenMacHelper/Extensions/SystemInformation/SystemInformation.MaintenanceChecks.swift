@@ -8,7 +8,6 @@
 extension SystemInformation.MaintenanceChecks.TheftProtection {
     init() {
         activationLock = Bool(SystemProfiler.hardware?["activation_lock_status"])
-        firmwarePassword = SystemProfiler.hardware?["chip_type"] != nil ? nil : Bool(runProcess(["/usr/sbin/firmwarepasswd", "-check"], asRoot: true))
     }
 }
 
@@ -20,7 +19,6 @@ extension SystemInformation.MaintenanceChecks.DataSecurity {
 
 extension SystemInformation.MaintenanceChecks.MalwareProtection {
     init() {
-        fullBootSecurity = nil
         hyperThreading = Bool(SystemProfiler.hardware?["platform_cpu_htt"])
         secureVirtualMemory = Bool(SystemProfiler.software?["secure_vm"])
         systemIntegrityProtection = Bool(SystemProfiler.software?["system_integrity"])
