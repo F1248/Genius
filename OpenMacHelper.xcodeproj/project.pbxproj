@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 73;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -259,7 +259,6 @@
 				};
 			};
 			buildConfigurationList = A42B35382BA2185B009E81AD /* Build configuration list for PBXProject "OpenMacHelper" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -267,6 +266,7 @@
 				de,
 			);
 			mainGroup = A42B35342BA2185B009E81AD;
+			preferredProjectObjectVersion = 73;
 			productRefGroup = A42B353E2BA2185B009E81AD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
