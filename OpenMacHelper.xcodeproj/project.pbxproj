@@ -205,6 +205,7 @@
 				A4CB9B9F2C0BA81900E5DFCE /* Pipe.swift */,
 				A4CB9BA12C0BAF5900E5DFCE /* Process.swift */,
 				A48EDF252BDD67DD00CDB724 /* String.swift */,
+				A460CBCD2C1CF6CB0075195D /* SystemInformation */,
 				A4A1EB162C0CEBA100C8C811 /* URL.swift */,
 			);
 			path = Extensions;
