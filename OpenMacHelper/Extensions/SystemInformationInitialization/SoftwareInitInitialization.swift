@@ -20,8 +20,8 @@ extension Software.Firmware {
 extension Software.Kernel {
     init() {
         let components = (SystemProfiler.software?["kernel_version"] as? String)?.components(separatedBy: " ")
-        name = components?[safe: 0]
-        version = [Int](versionNumber: components?[safe: 1])
+        name = components?[0]
+        version = [Int](versionNumber: components?[1])
     }
 }
 
@@ -35,8 +35,8 @@ extension Software.Boot {
 extension Software.OS {
     init() {
         let components = (SystemProfiler.software?["os_version"] as? String)?.components(separatedBy: " ")
-        name = components?[safe: 0]
-        version = [Int](versionNumber: components?[safe: 1])
+        name = components?[0]
+        version = [Int](versionNumber: components?[1])
         marketingName = switch version?.first {
         case 11: "Big Sur"
         case 12: "Monterey"
