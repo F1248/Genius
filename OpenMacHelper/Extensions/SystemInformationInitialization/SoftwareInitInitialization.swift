@@ -60,6 +60,6 @@ extension Software.User {
     init() {
         let components = (SystemProfiler.software?["user_name"] as? String)?.components(separatedBy: " ")
         name = components?.dropLast().joined(separator: " ")
-        accountName = (components?.last?.dropFirst().dropLast()).map(String.init)
+        accountName = components?.last?.trimmingCharacters(in: .parentheses)
     }
 }
