@@ -1,5 +1,5 @@
 //
-//  SystemInformation.swift
+//  MaintenanceChecksInitialization.swift
 //  OpenMacHelper
 //
 //  Created by F1248.
