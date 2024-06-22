@@ -11,6 +11,7 @@ disabled_rules:
     - file_name
     - inert_defer
     - let_var_whitespace
+    - line_length
     - nesting
     - no_magic_numbers
     - nslocalizedstring_key
@@ -32,7 +33,6 @@ identifier_name:
     min_length: 2
 indentation_width:
     include_comments: false
-line_length: 256
 number_separator:
     minimum_length: 7
 trailing_whitespace:
