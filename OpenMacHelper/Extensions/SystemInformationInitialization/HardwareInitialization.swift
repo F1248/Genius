@@ -57,7 +57,7 @@ extension Hardware.Specifications {
 extension Hardware.Specifications.CPU {
     init() {
         type = SystemProfiler.hardware?["chip_type"] as? String ?? SystemProfiler.hardware?["cpu_type"] as? String
-        speed = SystemProfiler.hardware.containsKey("cpu_type") ? Measurement(SystemProfiler.hardware?["current_processor_speed"]) : nil
+        speed = SystemProfiler.hardware.contains(key: "cpu_type") ? Measurement(SystemProfiler.hardware?["current_processor_speed"]) : nil
     }
 }
 

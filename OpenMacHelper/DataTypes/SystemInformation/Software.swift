@@ -7,7 +7,7 @@
 
 struct Software {
 
-    let smc: SMC? = SystemProfiler.hardware.containsKey("cpu_type") ? SMC() : nil
+    let smc: SMC? = SystemProfiler.hardware.contains(key: "cpu_type") ? SMC() : nil
     struct SMC {
         let version: String?
     }

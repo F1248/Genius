@@ -9,7 +9,7 @@ import Foundation
 
 extension Optional {
 
-    func containsKey<Key: Hashable, Value>(_ key: Key) -> Bool where Wrapped == [Key: Value] {
-        self?.keys.contains(key) ?? Bool()
+    func contains<Key, Value>(key: Key) -> Bool where Wrapped == [Key: Value] {
+        self?.keys.contains(key) ?? false
     }
 }
