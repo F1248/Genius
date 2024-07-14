@@ -28,6 +28,7 @@ extension Hardware.Model {
                 default: "macbook.gen2"
                 }
             } else { "laptopcomputer" }
+        case "iMac", "iMac Pro": "desktopcomputer"
         case "Mac mini": "macmini"
         case "Mac Studio": if #available(macOS 13, *) { "macstudio" } else { "macmini" }
         case "Mac Pro":
@@ -37,7 +38,6 @@ extension Hardware.Model {
             default: "macpro.gen3"
             }
         case "Xserve": "xserve"
-        case "iMac", "iMac Pro": "desktopcomputer"
         default: if #available(macOS 15, *) { "desktopcomputer.and.macbook" } else { "desktopcomputer" }
         }
         marketingName = {
