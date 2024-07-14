@@ -38,6 +38,7 @@ extension Hardware.Model {
             default: "macpro.gen3"
             }
         case "Xserve": "xserve"
+        case _ where name.hasPrefix("Apple Virtual Machine"): "macwindow"
         default: if #available(macOS 15, *) { "desktopcomputer.and.macbook" } else { "desktopcomputer" }
         }
         marketingName = {
