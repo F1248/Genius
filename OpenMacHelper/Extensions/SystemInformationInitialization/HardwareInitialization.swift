@@ -28,7 +28,7 @@ extension Hardware.Model {
                 default: "macbook.gen2"
                 }
             } else { "laptopcomputer" }
-        case "iMac", "iMac Pro": "desktopcomputer"
+        case _ where name.hasPrefix("iMac"): "desktopcomputer"
         case "Mac mini": "macmini"
         case "Mac Studio": if #available(macOS 13, *) { "macstudio" } else { "macmini" }
         case "Mac Pro":
