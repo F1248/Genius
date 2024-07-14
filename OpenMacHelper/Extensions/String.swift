@@ -10,11 +10,11 @@ import SwiftUI
 extension String {
 
     init(_ localizedStringKey: LocalizedStringKey) {
-        self = NSLocalizedString(Mirror(reflecting: localizedStringKey).children.first { $0.label == "key" }?.value as? String ?? "Unknown".localized, comment: String())
+        self = (Mirror(reflecting: localizedStringKey).children.first { $0.label == "key" }?.value as? String ?? "Unknown").localized
     }
 
     var localized: String {
-        String(LocalizedStringKey(self))
+        NSLocalizedString(self, comment: String())
     }
 
     func contains(_ strings: [String]) -> Bool {
