@@ -14,13 +14,13 @@ struct Software {
 
     let firmware = Firmware()
     struct Firmware {
-        let version: [Int]?
+        let version: VersionNumber?
     }
 
     let kernel = Kernel()
     struct Kernel {
         let name: String?
-        let version: [Int]?
+        let version: VersionNumber?
     }
 
     let boot = Boot()
@@ -32,10 +32,10 @@ struct Software {
     let os = OS()
     struct OS {
         let name: String?
-        let version: [Int]?
+        let version: VersionNumber?
         let marketingName: String?
         let build: String?
-        let loaderVersion: [Int]?
+        let loaderVersion: VersionNumber?
     }
 
     let computer = Computer()
