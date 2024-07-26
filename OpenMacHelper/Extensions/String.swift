@@ -21,18 +21,18 @@ extension String {
         strings.contains { contains($0) }
     }
 
-    func dropPrefix(_ prefix: String) -> String {
+    func dropPrefix(_ prefix: any StringProtocol) -> String {
         hasPrefix(prefix) ? String(dropFirst(prefix.count)) : self
     }
 
-    func remove(_ string: String) -> String {
+    func remove(_ string: any StringProtocol) -> String {
         replacingOccurrences(of: string, with: String())
     }
 }
 
 extension String? {
 
-    func hasPrefix(_ prefix: String) -> Bool {
+    func hasPrefix(_ prefix: any StringProtocol) -> Bool {
         guard let self else { return false }
         return self.hasPrefix(prefix)
     }
