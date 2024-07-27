@@ -21,7 +21,6 @@ disabled_rules:
     - required_deinit
     - sorted_enum_cases
     - switch_case_on_newline
-    - type_contents_order
     - unused_capture_list
     - vertical_whitespace_opening_braces
 

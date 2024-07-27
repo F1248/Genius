@@ -9,6 +9,10 @@ import SwiftUI
 
 extension String {
 
+    var localized: String {
+        NSLocalizedString(self, comment: String())
+    }
+
     init?(_ string: (any StringProtocol)?) {
         guard let string else { return nil }
         self = String(string)
@@ -16,10 +20,6 @@ extension String {
 
     init(_ localizedStringKey: LocalizedStringKey) {
         self = (Mirror(reflecting: localizedStringKey).children.first { $0.label == "key" }?.value as? String ?? "Unknown").localized
-    }
-
-    var localized: String {
-        NSLocalizedString(self, comment: String())
     }
 
     func contains(_ strings: [any StringProtocol]) -> Bool {

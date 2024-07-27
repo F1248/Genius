@@ -10,7 +10,6 @@ import SwiftUI
 
 struct Hardware {
 
-    let model = Model()
     struct Model {
         let name: String?
         let identifier: String?
@@ -21,7 +20,6 @@ struct Hardware {
         let marketingName: LocalizedStringKey?
     }
 
-    let specifications = Specifications()
     struct Specifications {
         let cpu = CPU()
         struct CPU {
@@ -33,10 +31,13 @@ struct Hardware {
         let memory: Measurement<UnitInformationStorage>?
     }
 
-    let machine = Machine()
     struct Machine {
         let serialNumber: String?
         let hardwareUUID: String?
         let provisioningUDID: String?
     }
+
+    let model = Model()
+    let specifications = Specifications()
+    let machine = Machine()
 }

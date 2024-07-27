@@ -7,29 +7,24 @@
 
 struct Software {
 
-    let smc: SMC? = SystemProfiler.hardware.contains(key: "cpu_type") ? SMC() : nil
     struct SMC {
         let version: String?
     }
 
-    let firmware = Firmware()
     struct Firmware {
         let version: VersionNumber?
     }
 
-    let kernel = Kernel()
     struct Kernel {
         let name: String?
         let version: VersionNumber?
     }
 
-    let boot = Boot()
     struct Boot {
         let volume: String?
         let mode: String?
     }
 
-    let os = OS()
     struct OS {
         let name: String?
         let version: VersionNumber?
@@ -38,14 +33,20 @@ struct Software {
         let loaderVersion: VersionNumber?
     }
 
-    let computer = Computer()
     struct Computer {
         let name: String?
     }
 
-    let user = User()
     struct User {
         let name: String?
         let accountName: String?
     }
+
+    let smc: SMC? = SystemProfiler.hardware.contains(key: "cpu_type") ? SMC() : nil
+    let firmware = Firmware()
+    let kernel = Kernel()
+    let boot = Boot()
+    let os = OS()
+    let computer = Computer()
+    let user = User()
 }

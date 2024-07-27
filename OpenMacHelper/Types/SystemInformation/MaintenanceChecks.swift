@@ -7,17 +7,14 @@
 
 struct MaintenanceChecks {
 
-    let theftProtection = TheftProtection()
     struct TheftProtection {
         let activationLock: Bool?
     }
 
-    let dataSecurity = DataSecurity()
     struct DataSecurity {
         let fileVault: Bool?
     }
 
-    let malwareProtection = MalwareProtection()
     struct MalwareProtection {
         let hyperThreading: Bool?
         let secureVirtualMemory: Bool?
@@ -26,7 +23,6 @@ struct MaintenanceChecks {
         let gatekeeper: Bool?
     }
 
-    let automaticUpdates = AutomaticUpdates()
     struct AutomaticUpdates {
         let checkMacOSUpdates: Bool?
         let downloadMacOSUpdates: Bool?
@@ -35,4 +31,9 @@ struct MaintenanceChecks {
         let installConfigData: Bool?
         let installAppStoreUpdates: Bool?
     }
+
+    let theftProtection = TheftProtection()
+    let dataSecurity = DataSecurity()
+    let malwareProtection = MalwareProtection()
+    let automaticUpdates = AutomaticUpdates()
 }
