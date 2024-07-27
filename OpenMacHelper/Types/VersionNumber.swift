@@ -10,8 +10,8 @@ import SwiftUI
 struct VersionNumber {
 
     init?(_ versionNumber: Any?) {
-        guard let versionNumber = versionNumber as? String else { return nil }
-        let components = versionNumber.components(separatedBy: ".")
+        guard let versionNumber = versionNumber as? Substring else { return nil }
+        let components = versionNumber.split(separator: ".")
         guard !components.isEmpty else { return nil }
         self.versions = components.compactMap { Int($0) }
         guard self.versions.count == components.count else { return nil }

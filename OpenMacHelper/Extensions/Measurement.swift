@@ -10,7 +10,7 @@ import Foundation
 extension Measurement {
 
     init?(_ string: Any?) {
-        guard let components = (string as? String)?.components(separatedBy: " "), components.count == 2 else { return nil }
+        guard let components = (string as? String)?.split(separator: " "), components.count == 2 else { return nil }
         guard let value = Double(components.first) else { return nil }
         if let unit = UnitFrequency?(components.last) as? UnitType {
             self.init(value: value, unit: unit)
@@ -22,8 +22,8 @@ extension Measurement {
 
 extension UnitFrequency? {
 
-    init(_ string: String?) {
-        self = switch string {
+    init(_ substring: Substring?) {
+        self = switch substring {
         case "Hz": .hertz
         case "kHz": .kilohertz
         case "MHz": .megahertz
@@ -35,8 +35,8 @@ extension UnitFrequency? {
 
 extension UnitInformationStorage? {
 
-    init(_ string: String?) {
-        self = switch string {
+    init(_ substring: Substring?) {
+        self = switch substring {
         case "B": .bytes
         case "KB": .kilobytes
         case "MB": .megabytes

@@ -65,7 +65,7 @@ extension Hardware.Specifications.CPU {
 extension Hardware.Specifications.CPU.Cores {
     init() {
         if SystemProfiler.hardware?["chip_type"] != nil {
-            let components = [Int]((SystemProfiler.hardware?["number_processors"] as? String)?.remove("proc ").components(separatedBy: ":"))
+            let components = [Int]((SystemProfiler.hardware?["number_processors"] as? String)?.remove("proc ").split(separator: ":"))
             (total, performance, efficiency) = (components?[0], components?[1], components?[2])
         } else {
             (total, performance, efficiency) = (SystemProfiler.hardware?["number_processors"] as? Int, 0, 0)

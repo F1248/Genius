@@ -19,8 +19,8 @@ extension Software.Firmware {
 
 extension Software.Kernel {
     init() {
-        let components = (SystemProfiler.software?["kernel_version"] as? String)?.components(separatedBy: " ")
-        name = components?[0]
+        let components = (SystemProfiler.software?["kernel_version"] as? String)?.split(separator: " ")
+        name = String(components?[0])
         version = VersionNumber(components?[1])
     }
 }
@@ -34,8 +34,8 @@ extension Software.Boot {
 
 extension Software.OS {
     init() {
-        let components = (SystemProfiler.software?["os_version"] as? String)?.components(separatedBy: " ")
-        name = components?[0]
+        let components = (SystemProfiler.software?["os_version"] as? String)?.split(separator: " ")
+        name = String(components?[0])
         version = VersionNumber(components?[1])
         marketingName = switch version?.major {
         case 11: "Big Sur"
@@ -58,7 +58,7 @@ extension Software.Computer {
 
 extension Software.User {
     init() {
-        let components = (SystemProfiler.software?["user_name"] as? String)?.components(separatedBy: " ")
+        let components = (SystemProfiler.software?["user_name"] as? String)?.split(separator: " ")
         name = components?.dropLast().joined(separator: " ")
         accountName = components?.last?.trimmingCharacters(in: .parentheses)
     }

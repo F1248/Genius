@@ -9,6 +9,11 @@ import SwiftUI
 
 extension String {
 
+    init?(_ substring: Substring?) {
+        guard let substring else { return nil }
+        self = String(substring)
+    }
+
     init(_ localizedStringKey: LocalizedStringKey) {
         self = (Mirror(reflecting: localizedStringKey).children.first { $0.label == "key" }?.value as? String ?? "Unknown").localized
     }
