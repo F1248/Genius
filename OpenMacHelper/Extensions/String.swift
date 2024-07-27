@@ -9,9 +9,9 @@ import SwiftUI
 
 extension String {
 
-    init?(_ substring: Substring?) {
-        guard let substring else { return nil }
-        self = String(substring)
+    init?(_ string: (any StringProtocol)?) {
+        guard let string else { return nil }
+        self = String(string)
     }
 
     init(_ localizedStringKey: LocalizedStringKey) {
