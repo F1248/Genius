@@ -14,8 +14,9 @@ extension VersionNumber {
     init?(_ versionNumber: Any?) {
         guard let versionNumber = versionNumber as? String else { return nil }
         let components = versionNumber.components(separatedBy: ".")
+        guard !components.isEmpty else { return nil }
         self = components.compactMap { Int($0) }
-        guard !self.isEmpty, self.count == components.count else { return nil }
+        guard self.count == components.count else { return nil }
     }
 
     var localized: LocalizedStringKey {
