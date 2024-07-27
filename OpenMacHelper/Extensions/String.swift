@@ -17,7 +17,7 @@ extension String {
         NSLocalizedString(self, comment: String())
     }
 
-    func contains(_ strings: [String]) -> Bool {
+    func contains(_ strings: [any StringProtocol]) -> Bool {
         strings.contains { contains($0) }
     }
 

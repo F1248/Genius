@@ -14,7 +14,7 @@ extension Array {
 
 extension [Int] {
 
-    init?(_ strings: [String]?) {
+    init?(_ strings: [any StringProtocol]?) {
         guard let strings else { return nil }
         self = strings.compactMap { Int($0) }
     }
