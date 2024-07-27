@@ -37,7 +37,7 @@ extension Software.OS {
         let components = (SystemProfiler.software?["os_version"] as? String)?.components(separatedBy: " ")
         name = components?[0]
         version = VersionNumber(components?[1])
-        marketingName = switch version?.first {
+        marketingName = switch version?.major {
         case 11: "Big Sur"
         case 12: "Monterey"
         case 13: "Ventura"
