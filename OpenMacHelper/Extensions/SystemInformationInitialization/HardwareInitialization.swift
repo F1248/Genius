@@ -15,8 +15,8 @@ extension Hardware.Model {
         identifier = SystemProfiler.hardware?["machine_model"] as? String
         number = SystemProfiler.hardware?["model_number"] as? String
         isAppleSilicon = {
-            if SystemProfiler.hardware?["chip_type"] != nil { return true }
-            if SystemProfiler.hardware?["cpu_type"] != nil { return false }
+            if SystemProfiler.hardware.contains(key: "chip_type") { return true }
+            if SystemProfiler.hardware.contains(key: "cpu_type") { return false }
             return nil
         }()
         isLaptop = name.hasPrefix("MacBook")
@@ -66,7 +66,7 @@ extension Hardware.Specifications.CPU {
 
 extension Hardware.Specifications.CPU.Cores {
     init() {
-        if SystemProfiler.hardware?["chip_type"] != nil {
+        if SystemProfiler.hardware.contains(key: "chip_type") {
             let components = [Int]((SystemProfiler.hardware?["number_processors"] as? String)?.remove("proc ").split(separator: ":"))
             (total, performance, efficiency) = (components?[0], components?[1], components?[2])
         } else {
