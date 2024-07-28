@@ -7,16 +7,6 @@
 
 import SwiftUI
 
-enum SidebarItem {
-
-    case home
-    case systemInformation
-    case maintenance
-    case settings
-
-    init?() { self = .home }
-}
-
 struct SidebarView: View {
 
     @State private var selectedSidebarItem = SidebarItem()
