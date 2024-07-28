@@ -22,7 +22,7 @@ extension String {
         self = (Mirror(reflecting: localizedStringKey).children.first { $0.label == "key" }?.value as? String ?? "Unknown").localized
     }
 
-    func contains(_ strings: [any StringProtocol]) -> Bool {
+    func contained(_ strings: [any StringProtocol]) -> Bool {
         strings.contains { contains($0) }
     }
 
