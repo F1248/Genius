@@ -7,7 +7,7 @@
 
 enum Settings {
 
-    enum InterfaceMode: String, CaseIterable, Identifiable {
+    enum InterfaceMode: String, CaseIterable, Identifiable, Comparable {
 
         case verySimple = "Very simple"
         case simple = "Simple"
@@ -21,6 +21,8 @@ enum Settings {
         var localized: String { rawValue.localized }
 
         func index() -> Int { Self.allCases.firstIndex(of: self)! } // swiftlint:disable:this force_unwrapping
-        func isAtLeast(_ mode: Self) -> Bool { self.index() >= mode.index() }
+        static func < (lhs: Self, rhs: Self) -> Bool {
+            lhs.index() < rhs.index()
+        }
     }
 }
