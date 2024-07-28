@@ -2,7 +2,6 @@ opt_in_rules: all
 
 disabled_rules:
     - anyobject_protocol
-    - closure_body_length
     - conditional_returns_on_newline
     - discouraged_optional_boolean
     - discouraged_optional_collection
