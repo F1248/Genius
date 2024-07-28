@@ -19,11 +19,3 @@ func getSystemProfiler(_ dataType: String) -> [String: Any]? {
     let systemProfiler: [String: [[String: Any]]]? = try? JSONSerialization.jsonObject(with: outputData) as? [String: [[String: Any]]]
     return systemProfiler?[dataType]?.first
 }
-
-func readDefault(_ domain: String, _ key: String) -> String? {
-    runProcess(["/usr/bin/defaults", "read", domain, key])
-}
-
-func transferURL(_ url: String) -> String? {
-    runProcess(["/usr/bin/curl", "--silent", "--show-error", url])
-}
