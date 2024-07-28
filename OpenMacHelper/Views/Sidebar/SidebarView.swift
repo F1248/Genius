@@ -9,7 +9,10 @@ import SwiftUI
 
 enum SidebarItem {
 
-    case home, systemInformation, maintenance, settings
+    case home
+    case systemInformation
+    case maintenance
+    case settings
 
     init?() { self = .home }
 }
