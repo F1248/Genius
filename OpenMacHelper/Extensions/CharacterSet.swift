@@ -9,5 +9,5 @@ import Foundation
 
 extension CharacterSet {
 
-    static var parentheses: CharacterSet { CharacterSet(charactersIn: "()") }
+    static let parentheses = CharacterSet(charactersIn: "()")
 }
