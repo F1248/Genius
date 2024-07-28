@@ -30,8 +30,6 @@ identifier_name:
     min_length: 2
 indentation_width:
     include_comments: false
-number_separator:
-    minimum_length: 7
 trailing_whitespace:
     ignores_comments: false
 type_name:
