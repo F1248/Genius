@@ -13,7 +13,7 @@ struct VersionNumber {
     var major: Int? { versions.first }
 
     var localized: LocalizedStringKey {
-        LocalizedStringKey(self.versions.map(String.init).joined(separator: "."))
+        LocalizedStringKey(versions.map(String.init).joined(separator: "."))
     }
 
     init?(_ versionNumber: Any?) {
