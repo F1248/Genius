@@ -44,10 +44,21 @@ extension Hardware.Model {
         default: if #available(macOS 15, *) { "desktopcomputer.and.macbook" } else { "desktopcomputer" }
         }
         marketingName = {
-            guard let serialNumber = SystemProfiler.hardware?["serial_number"] as? String, [11, 12].contains(serialNumber.count) else { return nil }
-            let url: String = "https://support-sp.apple.com/sp/product?cc=\(serialNumber.dropFirst(8))&lang=\(Locale.currentLanguageCode ?? "")"
+            guard
+                let serialNumber = SystemProfiler.hardware?["serial_number"] as? String,
+                [11, 12].contains(serialNumber.count)
+            else { return nil }
+            let url: String = """
+            https://support-sp.apple.com/sp/product?\
+            cc=\(serialNumber.dropFirst(8))&\
+            lang=\(Locale.currentLanguageCode ?? "")
+            """
             guard let output = transferURL(url), output.contains("<configCode>") else { return nil }
-            guard let marketingName = output.components(separatedBy: "<configCode>").last?.components(separatedBy: "</configCode>").first else { return nil }
+            guard
+                let marketingName = output
+                    .components(separatedBy: "<configCode>").last?
+                    .components(separatedBy: "</configCode>").first
+            else { return nil }
             return LocalizedStringKey(marketingName)
         }()
     }
@@ -60,14 +71,18 @@ extension Hardware.Specifications {
 extension Hardware.Specifications.CPU {
     init() {
         type = SystemProfiler.hardware?["chip_type"] as? String ?? SystemProfiler.hardware?["cpu_type"] as? String
-        speed = SystemProfiler.hardware.contains(key: "cpu_type") ? Measurement(SystemProfiler.hardware?["current_processor_speed"]) : nil
+        speed = SystemProfiler.hardware.contains(key: "cpu_type") ?
+            Measurement(SystemProfiler.hardware?["current_processor_speed"]) :
+            nil
     }
 }
 
 extension Hardware.Specifications.CPU.Cores {
     init() {
         if SystemProfiler.hardware.contains(key: "chip_type") {
-            let components = [Int]((SystemProfiler.hardware?["number_processors"] as? String)?.remove("proc ").split(separator: ":"))
+            let components = [Int](
+                (SystemProfiler.hardware?["number_processors"] as? String)?.remove("proc ").split(separator: ":")
+            )
             (total, performance, efficiency) = (components?[0], components?[1], components?[2])
         } else {
             (total, performance, efficiency) = (SystemProfiler.hardware?["number_processors"] as? Int, 0, 0)

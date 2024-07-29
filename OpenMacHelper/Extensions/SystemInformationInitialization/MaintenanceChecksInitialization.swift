@@ -21,7 +21,9 @@ extension MaintenanceChecks.DataSecurity {
 
 extension MaintenanceChecks.MalwareProtection {
     init() {
-        hyperThreading = SystemProfiler.hardware.contains(key: "cpu_type") ? Bool(SystemProfiler.hardware?["platform_cpu_htt"]) : nil
+        hyperThreading = SystemProfiler.hardware.contains(key: "cpu_type") ?
+            Bool(SystemProfiler.hardware?["platform_cpu_htt"]) :
+            nil
         secureVirtualMemory = Bool(SystemProfiler.software?["secure_vm"])
         systemIntegrityProtection = Bool(SystemProfiler.software?["system_integrity"])
         firewall = Bool(SystemProfiler.firewall?["spfirewall_globalstate"])

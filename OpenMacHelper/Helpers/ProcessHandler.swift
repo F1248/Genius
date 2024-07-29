@@ -14,7 +14,11 @@ func runProcess(_ arguments: [String], asRoot: Bool = false) -> String? {
         process.executableURL = executableURL
         process.arguments = [
             "-e",
-            "do shell script \"\(arguments.joined(separator: " "))\" with prompt \"\("OpenMacHelper requires administrator privileges.".localized)\" with administrator privileges"
+            """
+            do shell script \"\(arguments.joined(separator: " "))\"\
+            with prompt \"\("OpenMacHelper requires administrator privileges.".localized)\"\
+            with administrator privileges
+            """
         ]
     } else {
         guard let executableURL = URL(arguments.first) else { return nil }

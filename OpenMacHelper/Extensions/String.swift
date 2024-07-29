@@ -19,7 +19,9 @@ extension String {
     }
 
     init(_ localizedStringKey: LocalizedStringKey) {
-        self = (Mirror(reflecting: localizedStringKey).children.first { $0.label == "key" }?.value as? String ?? "Unknown").localized
+        self = (
+            Mirror(reflecting: localizedStringKey).children.first { $0.label == "key" }?.value as? String ?? "Unknown"
+        ).localized
     }
 
     func containsAny(_ strings: [any StringProtocol]) -> Bool {
