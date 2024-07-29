@@ -24,12 +24,12 @@ struct MaintenanceChecks {
     }
 
     struct AutomaticUpdates {
-        let checkMacOSUpdates: Bool?
-        let downloadMacOSUpdates: Bool?
-        let installMacOSUpdates: Bool?
-        let installCriticalUpdates: Bool?
+        let checkMacOS: Bool?
+        let downloadMacOS: Bool?
+        let installMacOS: Bool?
+        let installCritical: Bool?
         let installConfigData: Bool?
-        let installAppStoreUpdates: Bool?
+        let installAppStore: Bool?
     }
 
     let theftProtection = TheftProtection()

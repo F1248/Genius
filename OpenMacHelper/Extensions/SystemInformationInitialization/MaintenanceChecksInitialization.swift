@@ -31,11 +31,11 @@ extension MaintenanceChecks.MalwareProtection {
 
 extension MaintenanceChecks.AutomaticUpdates {
     init() {
-        checkMacOSUpdates = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled"))
-        downloadMacOSUpdates = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))
-        installMacOSUpdates = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates"))
-        installCriticalUpdates = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"))
+        checkMacOS = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled"))
+        downloadMacOS = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))
+        installMacOS = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates"))
+        installCritical = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"))
         installConfigData = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"))
-        installAppStoreUpdates = Bool(readDefault("/Library/Preferences/com.apple.commerce", "AutoUpdate"))
+        installAppStore = Bool(readDefault("/Library/Preferences/com.apple.commerce", "AutoUpdate"))
     }
 }
