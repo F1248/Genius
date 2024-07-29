@@ -47,7 +47,7 @@ extension Software.OS {
         case 15: "Sequoia"
         default: nil
         }
-        build = (components?.last?.dropFirst().dropLast()).map(String.init)
+        build = String(components?.last?.dropFirst().dropLast())
         loaderVersion = VersionNumber(SystemProfiler.hardware?["os_loader_version"])
     }
 }
