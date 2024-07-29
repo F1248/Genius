@@ -65,7 +65,9 @@ extension Hardware.Model {
 }
 
 extension Hardware.Specifications {
-    init() { memory = Measurement(SystemProfiler.hardware?["physical_memory"]) }
+    init() {
+        memory = Measurement(SystemProfiler.hardware?["physical_memory"])
+    }
 }
 
 extension Hardware.Specifications.CPU {
