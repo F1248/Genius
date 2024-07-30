@@ -10,7 +10,7 @@ import SwiftUI
 extension String {
 
     var localized: String {
-        NSLocalizedString(self, comment: String())
+        NSLocalizedString(self, comment: "")
     }
 
     init?(_ string: (any StringProtocol)?) {
@@ -33,7 +33,7 @@ extension String {
     }
 
     func remove(_ string: any StringProtocol) -> String {
-        replacingOccurrences(of: string, with: String())
+        replacingOccurrences(of: string, with: "")
     }
 }
 
