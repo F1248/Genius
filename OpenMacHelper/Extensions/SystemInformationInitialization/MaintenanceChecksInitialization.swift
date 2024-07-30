@@ -10,6 +10,9 @@
 extension MaintenanceChecks.TheftProtection {
     init() {
         activationLock = Bool(SystemProfiler.hardware?["activation_lock_status"])
+        firmwarePassword = SystemProfiler.hardware.contains(key: "cpu_type") ?
+            Bool(runProcess(["/usr/sbin/firmwarepasswd", "-check"], asRoot: true)) :
+            nil
     }
 }
 

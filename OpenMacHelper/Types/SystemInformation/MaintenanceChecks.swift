@@ -9,6 +9,7 @@ struct MaintenanceChecks {
 
     struct TheftProtection {
         let activationLock: Bool?
+        let firmwarePassword: Bool?
     }
 
     struct DataSecurity {
