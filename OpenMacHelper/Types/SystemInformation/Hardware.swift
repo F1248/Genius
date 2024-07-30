@@ -26,7 +26,11 @@ struct Hardware {
             let type: String?
             let speed: Measurement<UnitFrequency>?
             let cores = Cores()
-            struct Cores { let total: Int?, performance: Int?, efficiency: Int? }
+            struct Cores {
+                let total: Int?
+                let performance: Int?
+                let efficiency: Int?
+            }
         }
         let memory: Measurement<UnitInformationStorage>?
     }
