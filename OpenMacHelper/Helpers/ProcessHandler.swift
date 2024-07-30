@@ -8,6 +8,7 @@
 import Foundation
 
 func runProcess(_ arguments: [String], asRoot: Bool = false) -> String? {
+    guard !arguments.isEmpty else { return nil }
     let process = Process()
     if asRoot {
         guard let executableURL = URL("/usr/bin/osascript") else { return nil }
