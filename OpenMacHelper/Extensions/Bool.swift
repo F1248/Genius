@@ -24,9 +24,6 @@ extension Bool {
             "spfirewall_globalstate_allow_all"
         ]) {
             self = false
-        } else {
-            logger.error("Bool(\"\(string)\": Any?) failed: unknown string")
-            return nil
-        }
+        } else { return nil }
     }
 }

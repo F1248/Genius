@@ -10,14 +10,8 @@ import Foundation
 extension URL {
 
     init?(_ path: String?) {
-        guard let path else {
-            logger.error("URL(\"\(path.debugDescription)\": String?) failed, path is nil")
-            return nil
-        }
-        guard FileManager.default.fileExists(atPath: path) else {
-            logger.error("URL(\"\(path)\": String?) failed, path does not exist")
-            return nil
-        }
+        guard let path else { return nil }
+        guard FileManager.default.fileExists(atPath: path) else { return nil }
         self.init(fileURLWithPath: path)
     }
 }
