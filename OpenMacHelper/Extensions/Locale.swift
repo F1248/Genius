@@ -9,11 +9,11 @@ import Foundation
 
 extension Locale {
 
-    static var currentLanguageCode: String? {
+    static let currentLanguageCode: String? = {
         if #available(macOS 13, *) {
             Locale.current.language.languageCode?.identifier
         } else {
             Locale.current.languageCode
         }
-    }
+    }()
 }
