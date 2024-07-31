@@ -19,8 +19,8 @@ struct SettingsView: View {
                 .padding()
             Form {
                 Picker("Interface Mode:", selection: $interfaceMode) {
-                    ForEach(Settings.InterfaceMode.allCases) { mode in
-                        Text(mode.localized)
+                    ForEach(Settings.InterfaceMode.allCases) { interfaceMode in
+                        Text(interfaceMode.localized)
                     }
                 }
                 .pickerStyle(.inline)
