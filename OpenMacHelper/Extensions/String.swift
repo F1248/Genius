@@ -28,10 +28,6 @@ extension String {
         strings.contains { contains($0) }
     }
 
-    func dropPrefix(_ prefix: any StringProtocol) -> String {
-        hasPrefix(prefix) ? String(dropFirst(prefix.count)) : self
-    }
-
     func remove(_ string: any StringProtocol) -> String {
         replacingOccurrences(of: string, with: "")
     }
