@@ -8,4 +8,4 @@
 import Foundation
 import SwiftUI
 
-class SystemInformation: ObservableObject {}
+enum SystemInformation {}
