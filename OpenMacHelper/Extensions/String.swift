@@ -28,6 +28,10 @@ extension String {
         strings.contains { contains($0) }
     }
 
+    func contains(all strings: [any StringProtocol]) -> Bool {
+        strings.allSatisfy { contains($0) }
+    }
+
     func remove(_ string: any StringProtocol) -> String {
         replacingOccurrences(of: string, with: "")
     }
