@@ -28,6 +28,7 @@ identifier_name:
     min_length: 2
 indentation_width:
     include_comments: false
+large_tuple: 3
 line_length: 128
 trailing_whitespace:
     ignores_comments: false

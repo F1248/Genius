@@ -5,36 +5,44 @@
 //  Created by F1248.
 //
 
-struct MaintenanceChecks {
+extension SystemInformation {
 
-    struct TheftProtection {
-        let activationLock: Bool?
-        let firmwarePassword: Bool?
+    enum MaintenanceChecks {
+
+        enum TheftProtection {
+
+            static let activationLock: Bool? = Bool(SystemProfiler.hardware?["activation_lock_status"])
+            static let firmwarePassword: Bool? =
+                Hardware.Model.isIntel ? Bool(runProcess(["/usr/sbin/firmwarepasswd", "-check"], asRoot: true)) : nil
+        }
+
+        enum DataSecurity {
+
+            static let fileVault: Bool? = Bool(runProcess(["/usr/bin/fdesetup", "isactive"]))
+        }
+
+        enum MalwareProtection {
+
+            static let hyperThreading: Bool? = Bool(SystemProfiler.hardware?["platform_cpu_htt"])
+            static let secureVirtualMemory: Bool? = Bool(SystemProfiler.software?["secure_vm"])
+            static let systemIntegrityProtection: Bool? = Bool(SystemProfiler.software?["system_integrity"])
+            static let firewall: Bool? = Bool(SystemProfiler.firewall?["spfirewall_globalstate"])
+            static let gatekeeper: Bool? = Bool(runProcess(["/usr/sbin/spctl", "--status"]))
+        }
+
+        enum AutomaticUpdates {
+
+            static let checkMacOS: Bool?
+                = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled"))
+            static let downloadMacOS: Bool?
+                = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))
+            static let installMacOS: Bool?
+                = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates"))
+            static let installCritical: Bool?
+                = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"))
+            static let installConfigData: Bool?
+                = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"))
+            static let installAppStore: Bool? = Bool(readDefault("/Library/Preferences/com.apple.commerce", "AutoUpdate"))
+        }
     }
-
-    struct DataSecurity {
-        let fileVault: Bool?
-    }
-
-    struct MalwareProtection {
-        let hyperThreading: Bool?
-        let secureVirtualMemory: Bool?
-        let systemIntegrityProtection: Bool?
-        let firewall: Bool?
-        let gatekeeper: Bool?
-    }
-
-    struct AutomaticUpdates {
-        let checkMacOS: Bool?
-        let downloadMacOS: Bool?
-        let installMacOS: Bool?
-        let installCritical: Bool?
-        let installConfigData: Bool?
-        let installAppStore: Bool?
-    }
-
-    let theftProtection = TheftProtection()
-    let dataSecurity = DataSecurity()
-    let malwareProtection = MalwareProtection()
-    let automaticUpdates = AutomaticUpdates()
 }
