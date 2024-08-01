@@ -28,12 +28,16 @@ extension String {
         strings.contains { contains($0) }
     }
 
-    func contains(all strings: [any StringProtocol]) -> Bool {
-        strings.allSatisfy { contains($0) }
-    }
-
     func remove(_ string: any StringProtocol) -> String {
         replacingOccurrences(of: string, with: "")
+    }
+
+    func between(start: String, end: String) -> String? {
+        guard
+            let startRange = range(of: start)?.upperBound,
+            let endRange = range(of: end, range: startRange..<endIndex)?.lowerBound
+        else { return nil }
+        return String(self[startRange..<endRange])
     }
 }
 

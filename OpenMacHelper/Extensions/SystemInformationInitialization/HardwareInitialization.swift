@@ -53,12 +53,7 @@ extension Hardware.Model {
             cc=\(serialNumber.dropFirst(8))&\
             lang=\(Locale.currentLanguageCode ?? "")
             """
-            guard let output = transferURL(url), output.contains(all: ["<configCode>", "</configCode>"]) else { return nil }
-            guard
-                let marketingName = output
-                    .components(separatedBy: "<configCode>").last?
-                    .components(separatedBy: "</configCode>").first
-            else { return nil }
+            guard let marketingName = transferURL(url)?.between(start: "<configCode>", end: "</configCode>") else { return nil }
             return LocalizedStringKey(marketingName)
         }()
     }
