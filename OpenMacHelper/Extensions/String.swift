@@ -24,7 +24,7 @@ extension String {
         ).localized
     }
 
-    func containsAny(_ strings: [any StringProtocol]) -> Bool {
+    func contains(any strings: [any StringProtocol]) -> Bool {
         strings.contains { contains($0) }
     }
 
