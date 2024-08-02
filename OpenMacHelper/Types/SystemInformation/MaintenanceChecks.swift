@@ -32,16 +32,16 @@ extension SystemInformation {
 
         enum AutomaticUpdates {
 
-            static let checkMacOS: Bool?
-                = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled"))
-            static let downloadMacOS: Bool?
-                = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))
-            static let installMacOS: Bool?
-                = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates"))
-            static let installCritical: Bool?
-                = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"))
-            static let installConfigData: Bool?
-                = Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"))
+            static let checkMacOS: Bool? =
+                Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled"))
+            static let downloadMacOS: Bool? =
+                Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))
+            static let installMacOS: Bool? =
+                Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates"))
+            static let installCritical: Bool? =
+                Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"))
+            static let installConfigData: Bool? =
+                Bool(readDefault("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"))
             static let installAppStore: Bool? = Bool(readDefault("/Library/Preferences/com.apple.commerce", "AutoUpdate"))
         }
     }
