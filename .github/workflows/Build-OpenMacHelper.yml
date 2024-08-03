@@ -29,7 +29,7 @@ jobs:
 
       - name: Build OpenMacHelper
         run: |
-          /usr/bin/sudo /usr/bin/xcode-select --switch /Applications/Xcode_16*.app
+          /usr/bin/sudo /usr/bin/xcode-select --switch /Applications/Xcode_16.0.app
           /usr/bin/xcodebuild build CODE_SIGNING_ALLOWED=NO
 
       - name: Upload OpenMacHelper
