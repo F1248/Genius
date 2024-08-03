@@ -5,8 +5,6 @@
 //  Created by F1248.
 //
 
-//This is a Comment Spacing Violation!
-
 import SwiftUI
 
 @main
