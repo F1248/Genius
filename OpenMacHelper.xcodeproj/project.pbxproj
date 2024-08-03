@@ -14,6 +14,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		A417A7ED2C5EC312001FD481 /* .github */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = .github; sourceTree = "<group>"; };
 		A47D8B992C26145300A0E4CF /* OpenMacHelper */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = OpenMacHelper; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -31,6 +32,7 @@
 		A42B35342BA2185B009E81AD = {
 			isa = PBXGroup;
 			children = (
+				A417A7ED2C5EC312001FD481 /* .github */,
 				A4528F1F2BCD9B400092CBB8 /* .gitignore */,
 				A452AFF22BBF2CAB00760569 /* .swiftlint.yml */,
 				A47D8B992C26145300A0E4CF /* OpenMacHelper */,
