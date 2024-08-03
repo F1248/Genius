@@ -35,4 +35,5 @@ jobs:
       - name: Upload OpenMacHelper
         uses: actions/upload-artifact@v4
         with:
+          name: OpenMacHelper.app.zip
           path: build/Release/OpenMacHelper.app
