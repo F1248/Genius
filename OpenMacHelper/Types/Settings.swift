@@ -18,11 +18,11 @@ enum Settings {
         init() { self = .normal }
 
         var id: Self { self }
+        var index: Int { Self.allCases.firstIndex(of: self)! } // swiftlint:disable:this force_unwrapping
         var localized: String { rawValue.localized }
 
-        func index() -> Int { Self.allCases.firstIndex(of: self)! } // swiftlint:disable:this force_unwrapping
         static func < (lhs: Self, rhs: Self) -> Bool {
-            lhs.index() < rhs.index()
+            lhs.index < rhs.index
         }
     }
 }
