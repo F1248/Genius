@@ -32,13 +32,14 @@ jobs:
           /usr/bin/sudo /usr/bin/xcode-select --switch /Applications/Xcode_16.0.app
           /usr/bin/xcodebuild build CODE_SIGNING_ALLOWED=NO
 
-      - name: Zip OpenMacHelper.app
-        run: |
-          /bin/mv build/Release/OpenMacHelper.app OpenMacHelper.app
-          /usr/bin/zip --recurse-paths OpenMacHelper.app.zip OpenMacHelper.app
+      - name: Install appdmg
+        run: /opt/homebrew/bin/npm install --global appdmg
 
-      - name: Upload OpenMacHelper.zip
+      - name: Create OpenMacHelper.dmg
+        run: /opt/homebrew/bin/appdmg appdmg.json OpenMacHelper.dmg
+
+      - name: Upload OpenMacHelper.dmg
         uses: actions/upload-artifact@v4
         with:
           name: OpenMacHelper
-          path: OpenMacHelper.app.zip
+          path: OpenMacHelper.dmg

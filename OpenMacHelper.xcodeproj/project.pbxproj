@@ -10,6 +10,7 @@
 		A42B353D2BA2185B009E81AD /* OpenMacHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenMacHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4528F1F2BCD9B400092CBB8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A452AFF22BBF2CAB00760569 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		A48CFCF92C601F7C0050800E /* appdmg.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = appdmg.json; sourceTree = "<group>"; };
 		A4EB1C9A2BCC3F8200DF01A6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -35,6 +36,7 @@
 				A417A7ED2C5EC312001FD481 /* .github */,
 				A4528F1F2BCD9B400092CBB8 /* .gitignore */,
 				A452AFF22BBF2CAB00760569 /* .swiftlint.yml */,
+				A48CFCF92C601F7C0050800E /* appdmg.json */,
 				A47D8B992C26145300A0E4CF /* OpenMacHelper */,
 				A4EB1C9A2BCC3F8200DF01A6 /* README.md */,
 				A42B353E2BA2185B009E81AD /* Products */,

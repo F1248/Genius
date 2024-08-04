@@ -1,0 +1,31 @@
+{
+    "title": "OpenMacHelper",
+    "icon-size": 128,
+    "window": {
+        "size": {
+            "width": 444,
+            "height": 238
+        }
+    },
+    "filesystem": "APFS",
+    "contents": [
+        {
+            "x": 0,
+            "y": 0,
+            "type": "file",
+            "path": "build/Release/OpenMacHelper.app"
+        },
+        {
+            "x": 256,
+            "y": 0,
+            "type": "link",
+            "path": "/Applications"
+        },
+        {
+            "x": 256,
+            "y": 0,
+            "type": "position",
+            "path": ".background"
+        }
+    ]
+}
