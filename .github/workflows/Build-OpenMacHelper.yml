@@ -27,18 +27,18 @@ jobs:
       - name: Run SwiftLint
         run: /usr/local/bin/swiftlint lint --strict --reporter github-actions-logging
 
-      - name: Build OpenMacHelper
+      - name: Build OpenMacHelper.app
         run: |
           /usr/bin/sudo /usr/bin/xcode-select --switch /Applications/Xcode_16.0.app
           /usr/bin/xcodebuild build CODE_SIGNING_ALLOWED=NO
 
-      - name: Zip OpenMacHelper
+      - name: Zip OpenMacHelper.app
         run: |
           /bin/mv build/Release/OpenMacHelper.app OpenMacHelper.app
           /usr/bin/zip --recurse-paths OpenMacHelper.app.zip OpenMacHelper.app
 
-      - name: Upload OpenMacHelper
+      - name: Upload OpenMacHelper.zip
         uses: actions/upload-artifact@v4
         with:
-          name: OpenMacHelper.app
+          name: OpenMacHelper
           path: OpenMacHelper.app.zip
