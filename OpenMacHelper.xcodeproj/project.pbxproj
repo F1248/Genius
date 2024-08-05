@@ -48,11 +48,11 @@
 			buildPhases = (
 				A42B35392BA2185B009E81AD /* Sources */,
 				A42B353B2BA2185B009E81AD /* Resources */,
-				A49F8CB12BBDC90A004957CC /* SwiftLint */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A4672DDB2C61207100C933CB /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				A47D8B992C26145300A0E4CF /* OpenMacHelper */,
@@ -84,6 +84,9 @@
 				de,
 			);
 			mainGroup = A42B35342BA2185B009E81AD;
+			packageReferences = (
+				A4672DD92C61205000C933CB /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+			);
 			preferredProjectObjectVersion = 73;
 			productRefGroup = A42B353E2BA2185B009E81AD /* Products */;
 			projectDirPath = "";
@@ -104,28 +107,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		A49F8CB12BBDC90A004957CC /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/zsh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n    if command -v swiftlint >/dev/null 2>&1\n    then\n        swiftlint\n    else\n        echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\n    fi\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		A42B35392BA2185B009E81AD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -135,6 +116,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A4672DDB2C61207100C933CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = A4672DDA2C61207100C933CB /* SwiftLintBuildToolPlugin */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A42B354C2BA2185C009E81AD /* Debug */ = {
@@ -198,6 +186,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
@@ -369,6 +358,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A4672DD92C61205000C933CB /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A4672DDA2C61207100C933CB /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4672DD92C61205000C933CB /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A42B35352BA2185B009E81AD /* Project object */;
 }
