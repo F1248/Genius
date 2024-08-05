@@ -18,16 +18,6 @@
 		A47D8B992C26145300A0E4CF /* OpenMacHelper */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = OpenMacHelper; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
-/* Begin PBXFrameworksBuildPhase section */
-		A42B353A2BA2185B009E81AD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
 /* Begin PBXGroup section */
 		A42B35342BA2185B009E81AD = {
 			isa = PBXGroup;
@@ -57,7 +47,6 @@
 			buildConfigurationList = A42B354E2BA2185C009E81AD /* Build configuration list for PBXNativeTarget "OpenMacHelper" */;
 			buildPhases = (
 				A42B35392BA2185B009E81AD /* Sources */,
-				A42B353A2BA2185B009E81AD /* Frameworks */,
 				A42B353B2BA2185B009E81AD /* Resources */,
 				A49F8CB12BBDC90A004957CC /* SwiftLint */,
 			);
