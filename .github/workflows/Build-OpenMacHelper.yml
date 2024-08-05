@@ -35,10 +35,10 @@ jobs:
       - name: Zip OpenMacHelper.app
         run: |
           /bin/mv build/Release/OpenMacHelper.app OpenMacHelper.app
-          /usr/bin/zip --recurse-paths OpenMacHelper.app.zip OpenMacHelper.app
+          /usr/bin/zip --recurse-paths OpenMacHelper.zip OpenMacHelper.app
 
       - name: Upload OpenMacHelper.zip
         uses: actions/upload-artifact@v4
         with:
           name: OpenMacHelper
-          path: OpenMacHelper.app.zip
+          path: OpenMacHelper.zip
