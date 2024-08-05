@@ -36,6 +36,7 @@
       }
     },
     "Information" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -52,6 +53,7 @@
       }
     },
     "Interface Mode:" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -133,6 +135,7 @@
       }
     },
     "OpenMacHelper - %@" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -216,6 +219,7 @@
       }
     },
     "System Information" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
