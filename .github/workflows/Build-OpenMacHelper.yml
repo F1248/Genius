@@ -19,6 +19,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install SwiftLint
+        run: |
+          /usr/bin/curl --location https://github.com/realm/SwiftLint/releases/latest/download/SwiftLint.pkg --output SwiftLint.pkg
+          /usr/bin/sudo /usr/sbin/installer -package SwiftLint.pkg -target /
+
+      - name: Run SwiftLint
+        run: /usr/local/bin/swiftlint lint --strict --reporter github-actions-logging
+
       - name: Build OpenMacHelper.app
         run: |
           /usr/bin/sudo /usr/bin/xcode-select --switch /Applications/Xcode_16.0.app
