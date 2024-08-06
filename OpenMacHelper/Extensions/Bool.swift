@@ -14,14 +14,14 @@ extension Bool {
             "true",
             "enabled",
             "spfirewall_globalstate_limit_connections",
-            "spfirewall_globalstate_block_all"
+            "spfirewall_globalstate_block_all",
         ]) {
             self = true
         } else if string.contains(any: [
             "0",
             "false",
             "disabled",
-            "spfirewall_globalstate_allow_all"
+            "spfirewall_globalstate_allow_all",
         ]) {
             self = false
         } else { return nil }

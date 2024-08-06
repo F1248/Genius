@@ -29,6 +29,8 @@ indentation_width:
     include_comments: false
 large_tuple: 3
 line_length: 128
+trailing_comma:
+    mandatory_comma: true
 trailing_whitespace:
     ignores_comments: false
 type_name:
