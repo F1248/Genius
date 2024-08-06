@@ -36,7 +36,6 @@
       }
     },
     "Information" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -53,7 +52,6 @@
       }
     },
     "Interface Mode:" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -119,37 +117,10 @@
       }
     },
     "OpenMacHelper" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OpenMacHelper"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OpenMacHelper"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "OpenMacHelper - %@" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OpenMacHelper - %@"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OpenMacHelper - %@"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "OpenMacHelper requires administrator privileges." : {
       "extractionState" : "manual",
@@ -219,7 +190,6 @@
       }
     },
     "System Information" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
