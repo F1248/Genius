@@ -3,6 +3,7 @@ opt_in_rules: all
 disabled_rules:
     - anyobject_protocol
     - conditional_returns_on_newline
+    - contrasted_opening_brace
     - discouraged_optional_boolean
     - discouraged_optional_collection
     - explicit_acl
@@ -17,6 +18,7 @@ disabled_rules:
     - sorted_enum_cases
     - switch_case_on_newline
     - unused_capture_list
+    - vertical_whitespace_between_cases
     - vertical_whitespace_opening_braces
 
 cyclomatic_complexity:
