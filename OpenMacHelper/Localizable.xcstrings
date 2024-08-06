@@ -252,7 +252,7 @@
         }
       }
     },
-    "Very simple" : {
+    "Very Simple" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -264,7 +264,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Very simple"
+            "value" : "Very Simple"
           }
         }
       }
