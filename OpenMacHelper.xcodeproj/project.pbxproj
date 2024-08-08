@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 73;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXFileReference section */
@@ -14,8 +14,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		A417A7ED2C5EC312001FD481 /* .github */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = .github; sourceTree = "<group>"; };
-		A47D8B992C26145300A0E4CF /* OpenMacHelper */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = OpenMacHelper; sourceTree = "<group>"; };
+		A417A7ED2C5EC312001FD481 /* .github */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = .github;
+			sourceTree = "<group>";
+		};
+		A47D8B992C26145300A0E4CF /* OpenMacHelper */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = OpenMacHelper;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXGroup section */
@@ -87,7 +95,7 @@
 			packageReferences = (
 				A4672DD92C61205000C933CB /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 			);
-			preferredProjectObjectVersion = 73;
+			preferredProjectObjectVersion = 77;
 			productRefGroup = A42B353E2BA2185B009E81AD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
