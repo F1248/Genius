@@ -15,13 +15,14 @@ struct OpenMacHelperApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .onAppear {
-                    NSWindow.allowsAutomaticWindowTabbing = false
-                }
         }
         .commands {
             CommandGroup(replacing: .newItem) {}
             SidebarCommands()
         }
+    }
+
+    init() {
+        NSWindow.allowsAutomaticWindowTabbing = false
     }
 }
