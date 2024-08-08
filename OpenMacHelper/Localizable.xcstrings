@@ -119,9 +119,6 @@
     "OpenMacHelper" : {
       "shouldTranslate" : false
     },
-    "OpenMacHelper - %@" : {
-      "shouldTranslate" : false
-    },
     "OpenMacHelper requires administrator privileges." : {
       "extractionState" : "manual",
       "localizations" : {

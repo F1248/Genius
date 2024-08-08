@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ContentViewLegacy.swift
 //  OpenMacHelper
 //
 //  Created by F1248.
@@ -7,24 +7,23 @@
 
 import SwiftUI
 
-@available(macOS 15, *)
-struct ContentView: View {
+struct ContentViewLegacy: View {
 
     @AppStorage("interfaceMode")
     var interfaceMode = Settings.InterfaceMode()
 
     var body: some View {
-        TabView {
-            Tab("Home") {
+        TabViewLegacy {
+            TabLegacy("Home") {
                 HomeView()
             }
-            Tab(interfaceMode >= .simple ? "System Information" : "Information") {
+            TabLegacy(interfaceMode >= .simple ? "System Information" : "Information") {
                 SystemInformationView()
             }
-            Tab("Maintenance") {
+            TabLegacy("Maintenance") {
                 MaintenanceView()
             }
-            Tab("Settings") {
+            TabLegacy("Settings") {
                 SettingsView()
             }
         }
@@ -32,7 +31,6 @@ struct ContentView: View {
     }
 }
 
-@available(macOS 15, *)
 #Preview {
-    ContentView()
+    ContentViewLegacy()
 }

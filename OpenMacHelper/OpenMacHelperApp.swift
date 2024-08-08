@@ -14,12 +14,16 @@ struct OpenMacHelperApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if #available(macOS 15, *) {
+                ContentView()
+            } else {
+                ContentViewLegacy()
+            }
         }
+        .windowToolbarStyle(.unified(showsTitle: false))
         .commands {
             CommandGroup(replacing: .newItem) {}
             CommandGroup(replacing: .help) {}
-            SidebarCommands()
         }
     }
 
