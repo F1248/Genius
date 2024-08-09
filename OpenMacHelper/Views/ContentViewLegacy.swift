@@ -13,7 +13,7 @@ struct ContentViewLegacy: View {
     var interfaceMode = Settings.InterfaceMode()
 
     var body: some View {
-        TabViewLegacy {
+        TabViewLegacy(entireWindow: true) {
             TabLegacy("Home") {
                 HomeView()
             }
