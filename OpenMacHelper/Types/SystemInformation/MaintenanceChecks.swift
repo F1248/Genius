@@ -5,6 +5,8 @@
 //  Created by F1248.
 //
 
+import Foundation
+
 extension SystemInformation {
 
     enum MaintenanceChecks {
@@ -12,13 +14,13 @@ extension SystemInformation {
         enum TheftProtection {
 
             static let activationLock: Bool? = Bool(SystemProfiler.hardware?["activation_lock_status"])
-            static let firmwarePassword: Bool? =
-                Hardware.Model.isIntel ? Bool(runProcess(["/usr/sbin/firmwarepasswd", "-check"], asRoot: true)) : nil
+            static let firmwarePassword: Bool? = Hardware.Model.isIntel ?
+                Bool(Process("/usr/sbin/firmwarepasswd", ["-check"], requiresRoot: true)?.runSafe()) : nil
         }
 
         enum DataSecurity {
 
-            static let fileVault: Bool? = Bool(runProcess(["/usr/bin/fdesetup", "isactive"]))
+            static let fileVault: Bool? = Bool(Process("/usr/bin/fdesetup", ["isactive"])?.runSafe())
         }
 
         enum MalwareProtection {
@@ -27,7 +29,7 @@ extension SystemInformation {
             static let secureVirtualMemory: Bool? = Bool(SystemProfiler.software?["secure_vm"])
             static let systemIntegrityProtection: Bool? = Bool(SystemProfiler.software?["system_integrity"])
             static let firewall: Bool? = Bool(SystemProfiler.firewall?["spfirewall_globalstate"])
-            static let gatekeeper: Bool? = Bool(runProcess(["/usr/sbin/spctl", "--status"]))
+            static let gatekeeper: Bool? = Bool(Process("/usr/sbin/spctl", ["--status"])?.runSafe())
         }
 
         enum AutomaticUpdates {

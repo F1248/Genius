@@ -10,6 +10,47 @@ import os
 
 extension Process {
 
+    convenience init?(_ executable: String, _ arguments: [String] = [], requiresRoot: Bool = false) {
+        self.init()
+        if requiresRoot {
+            guard let executableURL = URL("/usr/bin/osascript") else { return nil }
+            self.executableURL = executableURL
+            self.arguments = [
+                "-e",
+                """
+                do shell script \"\(executable) \(arguments.joined(separator: " "))\"\
+                with prompt \"\("OpenMacHelper requires administrator privileges.".localized)\"\
+                with administrator privileges
+                """,
+            ]
+        } else {
+            guard let executableURL = URL(executable) else { return nil }
+            self.executableURL = executableURL
+            self.arguments = arguments
+        }
+    }
+
+    func runSafe() -> String? {
+        let outputPipe = Pipe()
+        let errorPipe = Pipe()
+        standardOutput = outputPipe
+        standardError = errorPipe
+        do {
+            try run()
+        } catch {
+            logError(outputPipeData: outputPipe.read(), errorPipeData: errorPipe.read())
+            return nil
+        }
+        waitUntilExit()
+        let errorPipeData = errorPipe.read()
+        let outputPipeData = outputPipe.read()
+        guard terminationStatus == 0, errorPipeData == nil, let outputPipeData else {
+            logError(outputPipeData: outputPipeData, errorPipeData: errorPipeData)
+            return nil
+        }
+        return outputPipeData
+    }
+
     func logError(outputPipeData: String?, errorPipeData: String?) {
         Logger().error("""
         Process failed:

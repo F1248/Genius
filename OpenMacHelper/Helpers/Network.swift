@@ -5,6 +5,8 @@
 //  Created by F1248.
 //
 
+import Foundation
+
 func transferURL(_ url: String) -> String? {
-    runProcess(["/usr/bin/curl", "--silent", "--show-error", url])
+    Process("/usr/bin/curl", ["--silent", "--show-error", url])?.runSafe()
 }

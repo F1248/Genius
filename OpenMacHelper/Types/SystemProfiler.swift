@@ -15,7 +15,7 @@ enum SystemProfiler {
 
     static func get(_ dataType: String) -> [String: Any]? {
         let dataType: String = "SP\(dataType)DataType"
-        guard let outputData = Data(runProcess(["/usr/sbin/system_profiler", "-json", dataType])) else { return nil }
+        guard let outputData = Data(Process("/usr/sbin/system_profiler", ["-json", dataType])?.runSafe()) else { return nil }
         return (try? JSONSerialization.jsonObject(with: outputData) as? [String: [[String: Any]]])?[dataType]?.first
     }
 }
