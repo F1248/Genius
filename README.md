@@ -1,12 +1,12 @@
-# OpenMacHelper - The universal helper for macOS!
+# OpenMacHelper: The Universal Helper for macOS!
 
 
 ## Requirements:
 
-### Supported macOS versions
+### Supported macOS Versions
 * macOS Big Sur 11 and later
 
-### Supported models
+### Supported Models
 * Macs (including officially unsupported ones), Hackintoshes and virtual machines
 
 
