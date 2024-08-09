@@ -45,7 +45,7 @@ struct TabViewLegacy: View {
     }
 }
 
-#Preview {
+#Preview("TabViewLegacy in entire window") {
     TabViewLegacy(entireWindow: true) {
         TabLegacy("Preview Title 1") {
             Text("Preview content 1")
