@@ -15,7 +15,7 @@ extension String {
 
     init?(_ string: (any StringProtocol)?) {
         guard let string else { return nil }
-        self = String(string)
+        self.init(string)
     }
 
     init(_ localizedStringKey: LocalizedStringKey) {
