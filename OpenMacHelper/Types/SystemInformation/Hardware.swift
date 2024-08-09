@@ -50,7 +50,7 @@ extension SystemInformation {
                 lang=\(Locale.currentLanguageCode ?? "")
                 """
                 guard
-                    let marketingName = transferURL(url)?.between(start: "<configCode>", end: "</configCode>")
+                    let marketingName = Network.transferURL(url)?.between(start: "<configCode>", end: "</configCode>")
                 else { return nil }
                 return LocalizedStringKey(marketingName)
             }()
