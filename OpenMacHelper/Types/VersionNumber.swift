@@ -12,10 +12,6 @@ struct VersionNumber {
     let versions: [Int]
     var major: Int? { versions.first }
 
-    var localized: LocalizedStringKey {
-        LocalizedStringKey(versions.map(String.init).joined(separator: "."))
-    }
-
     init?(_ versionNumber: Any?) {
         guard let versionNumber = versionNumber as? Substring else { return nil }
         let components = versionNumber.split(separator: ".")
