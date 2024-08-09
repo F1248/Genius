@@ -24,6 +24,10 @@ extension String {
         ).localized
     }
 
+    init(_ data: Data) {
+        self.init(decoding: data, as: UTF8.self)
+    }
+
     func contains(any strings: [any StringProtocol]) -> Bool {
         strings.contains { contains($0) }
     }

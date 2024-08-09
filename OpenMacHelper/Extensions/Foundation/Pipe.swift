@@ -11,6 +11,6 @@ extension Pipe {
 
     func read() -> String? {
         guard let data = try? fileHandleForReading.readToEnd() else { return nil }
-        return String(decoding: data, as: UTF8.self)
+        return String(data)
     }
 }
