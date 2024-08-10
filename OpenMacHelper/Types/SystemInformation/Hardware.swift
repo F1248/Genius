@@ -16,8 +16,8 @@ extension SystemInformation {
             static let name: String? = SystemProfiler.hardware?["machine_name"] as? String
             static let identifier: String? = SystemProfiler.hardware?["machine_model"] as? String
             static let number: String? = SystemProfiler.hardware?["model_number"] as? String
-            static let isAppleSilicon: Bool = SystemProfiler.hardware.contains(key: "chip_type")
-            static let isIntel: Bool = SystemProfiler.hardware.contains(key: "cpu_type")
+            static let appleSiliconBased: Bool = SystemProfiler.hardware.contains(key: "chip_type")
+            static let intelBased: Bool = SystemProfiler.hardware.contains(key: "cpu_type")
             static let isLaptop: Bool = name.hasPrefix("MacBook")
             static let systemImage: String = switch name {
             case _ where name.hasPrefix("MacBook"):
@@ -70,14 +70,14 @@ extension SystemInformation {
                 enum Cores {
 
                     static let cores: (Int?, Int?, Int?)? = {
-                        if Model.isAppleSilicon {
+                        if Model.appleSiliconBased {
                             let components = [Int](
                                 (SystemProfiler.hardware?["number_processors"] as? String)?
                                     .remove("proc ").split(separator: ":")
                             )
                             return (components?[0], components?[1], components?[2])
                         }
-                        if Model.isIntel { return (SystemProfiler.hardware?["number_processors"] as? Int, nil, nil) }
+                        if Model.intelBased { return (SystemProfiler.hardware?["number_processors"] as? Int, nil, nil) }
                         return nil
                     }()
                     static let total: Int? = cores?.0
