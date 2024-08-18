@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//Test // swiftlint:disable:this comment_spacing
+
 @main
 struct OpenMacHelperApp: App {
 
