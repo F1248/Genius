@@ -2,7 +2,6 @@
 
 # OpenMacHelper: Der Universal-Helfer für macOS!
 
-
 ## Anforderungen:
 
 ### Unterstützte macOS-Versionen
@@ -10,7 +9,6 @@
 
 ### Unterstützte Modelle
 * Macs (inklusive offiziell nicht unterstützten), Hackintoshs und virtuelle Maschinen
-
 
 ## Installation:
 
