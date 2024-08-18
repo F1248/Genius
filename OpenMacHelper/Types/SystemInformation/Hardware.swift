@@ -78,7 +78,9 @@ extension SystemInformation {
                             )
                             return (components?[0], components?[1], components?[2])
                         }
-                        if Model.intelBased { return (SystemProfiler.hardware?["number_processors"] as? Int, nil, nil) }
+                        if Model.intelBased {
+                            return (SystemProfiler.hardware?["number_processors"] as? Int, nil, nil)
+                        }
                         return nil
                     }()
                     static let total: Int? = cores?.0
