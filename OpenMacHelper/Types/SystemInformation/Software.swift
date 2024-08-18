@@ -37,14 +37,15 @@ extension SystemInformation {
             static let components = (SystemProfiler.software?["os_version"] as? String)?.split(separator: " ")
             static let name: String? = String(components?[0])
             static let version: VersionNumber? = VersionNumber(components?[1])
-            static let marketingName: String? = switch version?.major {
-            case 11: "Big Sur"
-            case 12: "Monterey"
-            case 13: "Ventura"
-            case 14: "Sonoma"
-            case 15: "Sequoia"
-            default: nil
-            }
+            static let marketingName: String? =
+                switch version?.major {
+                case 11: "Big Sur"
+                case 12: "Monterey"
+                case 13: "Ventura"
+                case 14: "Sonoma"
+                case 15: "Sequoia"
+                default: nil
+                }
             static let build: String? = components?.last?.trimmingCharacters(in: .parentheses)
             static let loaderVersion: VersionNumber? = VersionNumber(SystemProfiler.hardware?["os_loader_version"])
         }

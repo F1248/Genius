@@ -23,26 +23,28 @@ extension Measurement {
 extension UnitFrequency? {
 
     init(_ substring: Substring?) {
-        self = switch substring {
-        case "Hz": .hertz
-        case "kHz": .kilohertz
-        case "MHz": .megahertz
-        case "GHz": .gigahertz
-        default: nil
-        }
+        self =
+            switch substring {
+            case "Hz": .hertz
+            case "kHz": .kilohertz
+            case "MHz": .megahertz
+            case "GHz": .gigahertz
+            default: nil
+            }
     }
 }
 
 extension UnitInformationStorage? {
 
     init(_ substring: Substring?) {
-        self = switch substring {
-        case "B": .bytes
-        case "KB": .kilobytes
-        case "MB": .megabytes
-        case "GB": .gigabytes
-        case "TB": .terabytes
-        default: nil
-        }
+        self =
+            switch substring {
+            case "B": .bytes
+            case "KB": .kilobytes
+            case "MB": .megabytes
+            case "GB": .gigabytes
+            case "TB": .terabytes
+            default: nil
+            }
     }
 }
