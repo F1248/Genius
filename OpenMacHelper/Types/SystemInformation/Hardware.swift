@@ -45,7 +45,8 @@ extension SystemInformation {
                 }
             nonisolated(unsafe) static let marketingName: LocalizedStringKey? = {
                 guard let serialNumber = Machine.serialNumber, [11, 12].contains(serialNumber.count) else { return nil }
-                let url: String = """
+                // swiftlint:disable:next explicit_type_interface
+                let url = """
                 https://support-sp.apple.com/sp/product?\
                 cc=\(serialNumber.dropFirst(8))&\
                 lang=\(Locale.currentLanguageCode ?? "")
