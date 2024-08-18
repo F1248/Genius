@@ -23,12 +23,15 @@ jobs:
         run: |
           /usr/bin/curl --location https://github.com/realm/SwiftLint/releases/latest/download/SwiftLint.pkg --output SwiftLint.pkg
           /usr/bin/sudo /usr/sbin/installer -package SwiftLint.pkg -target /
+          /bin/echo "SwiftLint $(/usr/local/bin/swiftlint version) installed"
 
       - name: Run SwiftLint
         run: /usr/local/bin/swiftlint lint --strict --reporter github-actions-logging
 
       - name: Select Xcode version
-        run: /usr/bin/sudo /usr/bin/xcode-select --switch /Applications/Xcode_16.0.app
+        run: |
+          /usr/bin/sudo /usr/bin/xcode-select --switch /Applications/Xcode_16.0.app
+          /bin/echo "$(/usr/bin/xcodebuild -version | /usr/bin/tr "\n" " ")selected" 
 
       - name: Build OpenMacHelper.app
         run: /usr/bin/xcodebuild build CODE_SIGNING_ALLOWED=NO
