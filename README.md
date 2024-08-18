@@ -1,3 +1,5 @@
+[Zu Deutsch wechseln](README_DE.md)
+
 # OpenMacHelper: The Universal Helper for macOS!
 
 
