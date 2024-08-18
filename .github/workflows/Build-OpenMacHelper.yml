@@ -27,10 +27,11 @@ jobs:
       - name: Run SwiftLint
         run: /usr/local/bin/swiftlint lint --strict --reporter github-actions-logging
 
+      - name: Select Xcode version
+        run: /usr/bin/sudo /usr/bin/xcode-select --switch /Applications/Xcode_16.0.app
+
       - name: Build OpenMacHelper.app
-        run: |
-          /usr/bin/sudo /usr/bin/xcode-select --switch /Applications/Xcode_16.0.app
-          /usr/bin/xcodebuild build CODE_SIGNING_ALLOWED=NO
+        run: /usr/bin/xcodebuild build CODE_SIGNING_ALLOWED=NO
 
       - name: Zip OpenMacHelper.app
         run: |
