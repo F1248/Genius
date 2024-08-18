@@ -1,0 +1,15 @@
+--enable \
+    acronyms,\
+    blankLinesBetweenImports,\
+    blockComments,\
+    docComments,\
+    isEmpty,\
+    markTypes,\
+    noExplicitOwnership,\
+    redundantProperty,\
+    sortSwitchCases,\
+    wrapEnumCases,\
+    wrapMultilineConditionalAssignment,\
+
+--nospaceoperators ..<
+--typeblanklines preserve

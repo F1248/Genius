@@ -19,6 +19,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install SwiftFormat
+        run: |
+          /usr/bin/curl --location https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip --output swiftformat.zip
+          /usr/bin/unzip swiftformat.zip
+          /usr/bin/sudo /bin/mv swiftformat /usr/local/bin
+          /bin/echo "SwiftFormat $(/usr/local/bin/swiftformat --version) installed"
+
+      - name: Run SwiftFormat
+        run: /usr/local/bin/swiftformat --lint . --reporter github-actions-log
+
       - name: Install SwiftLint
         run: |
           /usr/bin/curl --location https://github.com/realm/SwiftLint/releases/latest/download/SwiftLint.pkg --output SwiftLint.pkg
