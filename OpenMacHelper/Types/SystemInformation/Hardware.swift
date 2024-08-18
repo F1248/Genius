@@ -70,6 +70,10 @@ extension SystemInformation {
 
                 enum Cores {
 
+                    static let total: Int? = cores?.0
+                    static let performance: Int? = cores?.1
+                    static let efficiency: Int? = cores?.2
+
                     static let cores: (Int?, Int?, Int?)? = {
                         if Model.appleSiliconBased {
                             let components = [Int](
@@ -83,9 +87,6 @@ extension SystemInformation {
                         }
                         return nil
                     }()
-                    static let total: Int? = cores?.0
-                    static let performance: Int? = cores?.1
-                    static let efficiency: Int? = cores?.2
                 }
             }
         }
