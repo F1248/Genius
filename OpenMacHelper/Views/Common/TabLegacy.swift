@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TabLegacy: Identifiable, Hashable {
+struct TabLegacy: Hashable, Identifiable {
 
     let id = UUID()
     let title: Text
