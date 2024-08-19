@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Test 5
+# Test 6
 
 /bin/echo "
 Preparing..."

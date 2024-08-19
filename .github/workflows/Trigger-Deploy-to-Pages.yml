@@ -19,9 +19,8 @@ jobs:
 
       - name: Trigger Deploy to Pages
         uses: actions/github-script@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.TRIGGER_DEPLOY_TO_PAGES_TOKEN }}
         with:
+          github-token: ${{ secrets.TRIGGER_DEPLOY_TO_PAGES_TOKEN }}
           script: |
             await github.rest.actions.createWorkflowDispatch({
               owner: "F1248",
