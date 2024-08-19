@@ -60,14 +60,7 @@ extension SystemInformation {
 
         enum Specifications {
 
-            static let memory: Measurement<UnitInformationStorage>? = Measurement(SystemProfiler.hardware?["physical_memory"])
-
             enum CPU {
-
-                static let name: String? =
-                    SystemProfiler.hardware?["chip_type"] as? String ??
-                    SystemProfiler.hardware?["cpu_type"] as? String
-                static let speed: Measurement<UnitFrequency>? = Measurement(SystemProfiler.hardware?["current_processor_speed"])
 
                 enum Cores {
 
@@ -89,7 +82,14 @@ extension SystemInformation {
                         return nil
                     }()
                 }
+
+                static let name: String? =
+                    SystemProfiler.hardware?["chip_type"] as? String ??
+                    SystemProfiler.hardware?["cpu_type"] as? String
+                static let speed: Measurement<UnitFrequency>? = Measurement(SystemProfiler.hardware?["current_processor_speed"])
             }
+
+            static let memory: Measurement<UnitInformationStorage>? = Measurement(SystemProfiler.hardware?["physical_memory"])
         }
 
         enum Machine {

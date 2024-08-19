@@ -6,10 +6,13 @@
     isEmpty,\
     markTypes,\
     noExplicitOwnership,\
+    organizeDeclarations,\
     redundantProperty,\
     sortSwitchCases,\
     wrapEnumCases,\
     wrapMultilineConditionalAssignment,\
 
+--markcategories false
 --nospaceoperators ..<
+--organizationmode type
 --typeblanklines preserve

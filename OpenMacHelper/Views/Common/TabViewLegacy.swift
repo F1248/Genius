@@ -11,7 +11,16 @@ struct TabViewLegacy: View {
 
     let entireWindow: Bool
     let tabs: [TabLegacy]
+
     @State private var selectedTab: TabLegacy
+
+    // swiftlint:disable:next type_contents_order
+    init?(entireWindow: Bool = false, @TabContentBuilder content: () -> [TabLegacy]) {
+        self.entireWindow = entireWindow
+        tabs = content()
+        guard let firstTab = tabs.first else { return nil }
+        selectedTab = firstTab
+    }
 
     var picker: some View {
         Picker(selection: $selectedTab) {
@@ -35,13 +44,6 @@ struct TabViewLegacy: View {
                 .fixedSize()
             selectedTab.content
         }
-    }
-
-    init?(entireWindow: Bool = false, @TabContentBuilder content: () -> [TabLegacy]) {
-        self.entireWindow = entireWindow
-        tabs = content()
-        guard let firstTab = tabs.first else { return nil }
-        selectedTab = firstTab
     }
 }
 

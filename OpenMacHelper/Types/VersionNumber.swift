@@ -10,6 +10,7 @@ import SwiftUI
 struct VersionNumber {
 
     let versions: [Int]
+
     var major: Int? { versions.first }
 
     init?(_ versionNumber: Any?) {
