@@ -39,7 +39,7 @@ extension SystemInformation {
                     }
                 case "Xserve": "xserve"
                 case _ where name.hasPrefix("Apple Virtual Machine"): "macwindow"
-                default: if #available(macOS 15, *) { "desktopcomputer.and.macbook" } else { "desktopcomputer" }
+                default: "desktopcomputer.and.macbook"
                 }
             nonisolated(unsafe) static let marketingName: LocalizedStringKey? = {
                 guard let serialNumber = Machine.serialNumber, [11, 12].contains(serialNumber.count) else { return nil }

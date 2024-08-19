@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(macOS 15, *)
 struct ContentView: View {
 
     @AppStorage("interfaceMode")
@@ -32,7 +31,6 @@ struct ContentView: View {
     }
 }
 
-@available(macOS 15, *)
 #Preview {
     ContentView()
 }
