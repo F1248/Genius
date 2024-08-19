@@ -1,0 +1,28 @@
+name: Trigger Deploy to Pages
+
+on:
+  push: { paths: install.sh }
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  Trigger-Deploy-to-Pages:
+    name: Trigger Deploy to Pages
+    runs-on: macos-latest
+    steps:
+
+      - name: Trigger Deploy to Pages
+        uses: actions/github-script@main
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: "F1248",
+              repo: "f1248.github.io",
+              workflow_id: "Deploy-to-Pages.yml",
+              ref: "main",
+            });
