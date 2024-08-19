@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Test
+
 /bin/echo "
 Preparing..."
 cd /Applications
