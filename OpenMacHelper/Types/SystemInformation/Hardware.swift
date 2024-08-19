@@ -32,7 +32,7 @@ extension SystemInformation {
                     } else { "laptopcomputer" }
                 case "iMac", "iMac Pro": "desktopcomputer"
                 case "Mac mini": "macmini"
-                case "Mac Studio": if #available(macOS 13, *) { "macstudio" } else { "macmini" }
+                case "Mac Studio": "macstudio"
                 case "Mac Pro":
                     switch identifier {
                     case "MacPro3,1", "MacPro4,1", "MacPro5,1": "macpro.gen1"

@@ -9,10 +9,5 @@ import Foundation
 
 extension Locale {
 
-    static let currentLanguageCode: String? =
-        if #available(macOS 13, *) {
-            Locale.current.language.languageCode?.identifier
-        } else {
-            Locale.current.languageCode
-        }
+    static let currentLanguageCode: String? = Locale.current.language.languageCode?.identifier
 }
