@@ -22,14 +22,12 @@ extension SystemInformation {
             static let systemImage: String =
                 switch name {
                 case _ where name.hasPrefix("MacBook"):
-                    if #available(macOS 14, *) {
-                        switch identifier {
-                        case "Mac14,7": "macbook.gen1"
-                        case _ where identifier.hasPrefix("MacBookPro18"): "macbook.gen2"
-                        case _ where identifier.hasPrefix("MacBook"): "macbook.gen1"
-                        default: "macbook.gen2"
-                        }
-                    } else { "laptopcomputer" }
+                    switch identifier {
+                    case "Mac14,7": "macbook.gen1"
+                    case _ where identifier.hasPrefix("MacBookPro18"): "macbook.gen2"
+                    case _ where identifier.hasPrefix("MacBook"): "macbook.gen1"
+                    default: "macbook.gen2"
+                    }
                 case "iMac", "iMac Pro": "desktopcomputer"
                 case "Mac mini": "macmini"
                 case "Mac Studio": "macstudio"
