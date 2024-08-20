@@ -18,4 +18,4 @@
 4. Doppelklicke auf die App.
 5. Klicke auf `Abbrechen`.
 6. Rechtsklicke auf die App und wähle `Öffnen`.
-7. Klicke auf `Öffnen`.
+7. Klicke erneut auf `Öffnen`.

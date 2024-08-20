@@ -18,4 +18,4 @@
 4. Double-click the app.
 5. Click `Cancel`.
 6. Right-click the app and choose `Open`.
-7. Click `Open`.
+7. Click `Open` again.
