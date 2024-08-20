@@ -22,7 +22,7 @@
 On macOS Sequoia 15:
 
 5. Click `Done`.
-6. Open [`Privacy & Security` in System Settings](x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension), scroll to the message `“OpenMacHelper.app” was blocked to protect your Mac.` and click `Open Anyway`.
+6. Open [`Privacy & Security`](x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension) in System Settings, scroll to the message `“OpenMacHelper.app” was blocked to protect your Mac.` and click `Open Anyway`.
 7. Click `Open Anyway` again.
 8. Authenticate yourself.
 
