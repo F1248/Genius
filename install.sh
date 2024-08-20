@@ -4,6 +4,8 @@
 Preparing..."
 if [ ! -e /usr/bin/recoverydiagnose ]; then
    cd /Applications
+else
+   cd ~
 fi
 
 /bin/echo "Downloading..."
