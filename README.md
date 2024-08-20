@@ -13,7 +13,7 @@
 ## Installation:
 
 1. Download [the latest build](https://nightly.link/F1248/OpenMacHelper/workflows/Build-OpenMacHelper/main/OpenMacHelper.zip).
-2. Unzip `OpenMacHelper.zip`.
+2. If not already unzipped automatically, unzip `OpenMacHelper.zip`.
 3. Move `OpenMacHelper.app` into `/Applications`.
 4. Double-click the app.
 5. Click `Cancel`.
