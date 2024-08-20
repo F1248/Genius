@@ -3,7 +3,9 @@ name: Trigger Deploy to Pages
 on:
   push:
     branches: main
-    paths: install.sh
+    paths:
+      - .github/workflows/Trigger-Deploy-to-Pages.yml
+      - install.sh
   workflow_dispatch:
 
 concurrency:
