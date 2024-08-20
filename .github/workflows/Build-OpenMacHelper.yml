@@ -1,9 +1,23 @@
 name: Build OpenMacHelper
 
 on:
-  - push
-  - pull_request
-  - workflow_dispatch
+  push:
+    paths:
+      - .github/workflows/Build-OpenMacHelper.yml
+      - .swift-version
+      - .swiftformat
+      - .swiftlint.yml
+      - OpenMacHelper
+      - OpenMacHelper.xcodeproj
+  pull_request:
+    paths:
+      - .github/workflows/Build-OpenMacHelper.yml
+      - .swift-version
+      - .swiftformat
+      - .swiftlint.yml
+      - OpenMacHelper
+      - OpenMacHelper.xcodeproj
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
