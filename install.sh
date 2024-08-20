@@ -14,4 +14,7 @@ cd /Applications
 /bin/echo "Cleaning up..."
 /bin/rm OpenMacHelper.zip
 
+/bin/echo "Opening..."
+/usr/bin/open OpenMacHelper.app
+
 /bin/echo "Done."
