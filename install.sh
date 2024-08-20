@@ -22,6 +22,8 @@ fi
 if [ -e /usr/bin/open ]; then
    /usr/bin/open OpenMacHelper.app
 else
+   /bin/echo "
+export PATH=\"$HOME/OpenMacHelper.app/Contents/MacOS:\$PATH\"" >> ~/.bash_profile
    OpenMacHelper.app/Contents/MacOS/OpenMacHelper
 fi
 

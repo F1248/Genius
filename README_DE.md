@@ -34,6 +34,8 @@ Unter macOS Sonoma 14 und älter:
 
 ### Befehlszeilen-Installation:
 
-Füge diesen Befehl im Terminal ein und führe ihn aus:
+Füge den folgenden Befehl im Terminal ein und führe ihn aus. Beachte, dass in recoveryOS OpenMacHelper durch einen Neustart entfernt wird.
 
 `curl -L f1248.github.io | sh`
+
+Um OpenMacHelper in recoveryOS zu öffnen, führe einfach `OpenMacHelper` im Terminal aus.

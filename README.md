@@ -34,6 +34,8 @@ On macOS Sonoma 14 and older:
 
 ### Command Line Installation:
 
-Paste and run this command in Terminal:
+Paste and run the following command in Terminal. Note that in recoveryOS, OpenMacHelper will be removed by a reboot.
 
 `curl -L f1248.github.io | sh`
+
+To open OpenMacHelper in recoveryOS, simply run `OpenMacHelper` in Terminal.
