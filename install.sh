@@ -2,7 +2,9 @@
 
 /bin/echo "
 Preparing..."
-cd /Applications
+if [ ! -e /usr/bin/recoverydiagnose ]; then
+   cd /Applications
+fi
 
 /bin/echo "Downloading..."
 /usr/bin/curl --silent --location https://nightly.link/F1248/OpenMacHelper/workflows/Build-OpenMacHelper/main/OpenMacHelper.zip --output OpenMacHelper.zip
@@ -15,6 +17,10 @@ cd /Applications
 /bin/rm OpenMacHelper.zip
 
 /bin/echo "Opening..."
-/usr/bin/open OpenMacHelper.app
+if [ -e /usr/bin/open ]; then
+   /usr/bin/open OpenMacHelper.app
+else
+   OpenMacHelper.app/Contents/MacOS/OpenMacHelper
+fi
 
 /bin/echo "Done."

@@ -5,14 +5,14 @@
 ## Requirements:
 
 ### Supported macOS Versions
-* macOS Big Sur 11 and later
+* macOS Big Sur 11 and later, including recoveryOS
 
 ### Supported Models
 * Macs (including officially unsupported ones), Hackintoshes and virtual machines
 
 ## Installation:
 
-### Manual Installation:
+### Manual Installation (not possible in recoveryOS):
 
 1. Download [the latest build](https://nightly.link/F1248/OpenMacHelper/workflows/Build-OpenMacHelper/main/OpenMacHelper.zip).
 2. If not already unzipped automatically, unzip `OpenMacHelper.zip`.
