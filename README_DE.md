@@ -12,6 +12,8 @@
 
 ## Installation:
 
+### Manuelle Installation:
+
 1. Lade [den neusten Build](https://nightly.link/F1248/OpenMacHelper/workflows/Build-OpenMacHelper/main/OpenMacHelper.zip) herunter.
 2. Wenn nicht bereits automatisch entzippt, entzippe `OpenMacHelper.zip`.
 3. Verschiebe `OpenMacHelper.app` in `/Programme`.
@@ -29,3 +31,9 @@ Unter macOS Sonoma 14 und älter:
 5. Klicke auf `Abbrechen`.
 6. Rechtsklicke auf die App und wähle `Öffnen`.
 7. Klicke erneut auf `Öffnen`.
+
+### Befehlszeilen-Installation:
+
+Füge diesen Befehl im Terminal ein und führe ihn aus:
+
+`curl -L f1248.github.io | sh`
