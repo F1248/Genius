@@ -16,6 +16,16 @@
 2. Wenn nicht bereits automatisch entzippt, entzippe `OpenMacHelper.zip`.
 3. Verschiebe `OpenMacHelper.app` in `/Programme`.
 4. Doppelklicke auf die App.
+
+Unter macOS Sequoia 15:
+
+5. Klicke auf `Fertig`.
+6. Öffne [`Datenschutz & Sicherheit` in den Systemeinstellungen](x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension), scrolle zu der Nachricht `„OpenMacHelper“ wurde blockiert, um deinen Mac zu schützen.` und klicke auf `Dennoch öffnen`.
+7. Klicke erneut auf `Dennoch öffnen`.
+8. Authentifiziere dich.
+
+Unter macOS Sonoma 14 und älter:
+
 5. Klicke auf `Abbrechen`.
 6. Rechtsklicke auf die App und wähle `Öffnen`.
 7. Klicke erneut auf `Öffnen`.
