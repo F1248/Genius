@@ -36,7 +36,7 @@ On macOS Sonoma 14 and older:
 
 Paste and run the following command in Terminal. Note that in recoveryOS, OpenMacHelper will be removed by a reboot.
 
-````
+```
 curl -L f1248.github.io | sh
 ```
 
