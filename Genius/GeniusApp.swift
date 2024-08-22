@@ -18,8 +18,8 @@ struct GeniusApp: App {
         }
         .windowToolbarStyle(.unified(showsTitle: false))
         .commands {
-            CommandGroup(replacing: .newItem) {}
-            CommandGroup(replacing: .help) {}
+            CommandGroup(replacing: .newItem) { EmptyView() }
+            CommandGroup(replacing: .help) { EmptyView() }
         }
     }
 
