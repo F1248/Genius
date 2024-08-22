@@ -1,6 +1,6 @@
 [Switch to English](README.md)
 
-# OpenMacHelper: Der Universal-Helfer für macOS!
+# Genius: Der intelligente Universal-Helfer für macOS!
 
 ## Anforderungen:
 
@@ -14,15 +14,15 @@
 
 ### Manuelle Installation (in recoveryOS nicht möglich):
 
-1. Lade [den neusten Build](https://nightly.link/F1248/OpenMacHelper/workflows/Build-OpenMacHelper/main/OpenMacHelper.zip) herunter.
-2. Wenn nicht bereits automatisch entzippt, entzippe `OpenMacHelper.zip`.
-3. Verschiebe `OpenMacHelper.app` in `/Programme`.
+1. Lade [den neusten Build](https://nightly.link/F1248/Genius/workflows/Build-Genius/main/Genius.zip) herunter.
+2. Wenn nicht bereits automatisch entzippt, entzippe `Genius.zip`.
+3. Verschiebe `Genius.app` in `/Programme`.
 4. Doppelklicke auf die App.
 
 Unter macOS Sequoia 15:
 
 5. Klicke auf `Fertig`.
-6. Öffne [`Datenschutz & Sicherheit` in den Systemeinstellungen](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension), scrolle zu der Nachricht `„OpenMacHelper“ wurde blockiert, um deinen Mac zu schützen.` und klicke auf `Dennoch öffnen`.
+6. Öffne [`Datenschutz & Sicherheit` in den Systemeinstellungen](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension), scrolle zu der Nachricht `„Genius“ wurde blockiert, um deinen Mac zu schützen.` und klicke auf `Dennoch öffnen`.
 7. Klicke erneut auf `Dennoch öffnen`.
 8. Authentifiziere dich.
 
@@ -34,10 +34,10 @@ Unter macOS Sonoma 14 und älter:
 
 ### Befehlszeilen-Installation:
 
-Füge den folgenden Befehl im Terminal ein und führe ihn aus. Beachte, dass in recoveryOS OpenMacHelper durch einen Neustart entfernt wird.
+Füge den folgenden Befehl im Terminal ein und führe ihn aus. Beachte, dass in recoveryOS Genius durch einen Neustart entfernt wird.
 
 ```
 curl -L f1248.github.io | sh
 ```
 
-Um OpenMacHelper in recoveryOS zu öffnen, führe einfach `OpenMacHelper` im Terminal aus.
+Um Genius in recoveryOS zu öffnen, führe einfach `Genius` im Terminal aus.

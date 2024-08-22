@@ -9,22 +9,22 @@ else
 fi
 
 /bin/echo "Downloading..."
-/usr/bin/curl --silent --location https://nightly.link/F1248/OpenMacHelper/workflows/Build-OpenMacHelper/main/OpenMacHelper.zip --output OpenMacHelper.zip
+/usr/bin/curl --silent --location https://nightly.link/F1248/Genius/workflows/Build-Genius/main/Genius.zip --output Genius.zip
 
 /bin/echo "Installing..."
-/usr/bin/unzip -q -o OpenMacHelper.zip
-/usr/bin/unzip -q -o OpenMacHelper.zip
+/usr/bin/unzip -q -o Genius.zip
+/usr/bin/unzip -q -o Genius.zip
 
 /bin/echo "Cleaning up..."
-/bin/rm OpenMacHelper.zip
+/bin/rm Genius.zip
 
 /bin/echo "Opening..."
 if [ -e /usr/bin/open ]; then
-   /usr/bin/open OpenMacHelper.app
+   /usr/bin/open Genius.app
 else
    /bin/echo "
-export PATH=\"$HOME/OpenMacHelper.app/Contents/MacOS:\$PATH\"" >> ~/.bash_profile
-   OpenMacHelper.app/Contents/MacOS/OpenMacHelper
+export PATH=\"$HOME/Genius.app/Contents/MacOS:\$PATH\"" >> ~/.bash_profile
+   Genius.app/Contents/MacOS/Genius
 fi
 
 /bin/echo "Done."
