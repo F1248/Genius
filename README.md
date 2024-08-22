@@ -1,6 +1,6 @@
 [Zu Deutsch wechseln](README_DE.md)
 
-# Genius: The Intelligent Universal Helper for macOS!
+# Genius: The Intelligent Universal macOS Helper for Everyone!
 
 ## Requirements:
 
