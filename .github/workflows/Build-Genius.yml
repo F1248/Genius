@@ -1,0 +1,72 @@
+name: Build Genius
+
+on:
+  push:
+    paths:
+      - .github/workflows/Build-Genius.yml
+      - .swift-version
+      - .swiftformat
+      - .swiftlint.yml
+      - Genius
+      - Genius.xcodeproj
+  pull_request:
+    paths:
+      - .github/workflows/Build-Genius.yml
+      - .swift-version
+      - .swiftformat
+      - .swiftlint.yml
+      - Genius
+      - Genius.xcodeproj
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  Build-Genius:
+    name: Build Genius
+    runs-on: macos-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Install SwiftFormat
+        run: |
+          /usr/bin/curl --location https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip --output swiftformat.zip
+          /usr/bin/unzip swiftformat.zip
+          /usr/bin/sudo /bin/mv swiftformat /usr/local/bin
+          /bin/echo "SwiftFormat $(/usr/local/bin/swiftformat --version) installed"
+
+      - name: Run SwiftFormat
+        run: /usr/local/bin/swiftformat --lint . --reporter github-actions-log
+
+      - name: Install SwiftLint
+        run: |
+          /usr/bin/curl --location https://github.com/realm/SwiftLint/releases/latest/download/SwiftLint.pkg --output SwiftLint.pkg
+          /usr/bin/sudo /usr/sbin/installer -package SwiftLint.pkg -target /
+          /bin/echo "SwiftLint $(/usr/local/bin/swiftlint version) installed"
+
+      - name: Run SwiftLint
+        run: /usr/local/bin/swiftlint lint --strict --reporter github-actions-logging
+
+      - name: Select Xcode version
+        run: |
+          /usr/bin/sudo /usr/bin/xcode-select --switch /Applications/Xcode_16.0.app
+          /bin/echo "$(/usr/bin/xcodebuild -version | /usr/bin/tr "\n" " ")selected" 
+
+      - name: Build Genius.app
+        run: /usr/bin/xcodebuild build CODE_SIGNING_ALLOWED=NO
+
+      - name: Zip Genius.app
+        run: |
+          /bin/mv build/Release/Genius.app Genius.app
+          /usr/bin/zip --recurse-paths Genius.zip Genius.app
+
+      - name: Upload Genius.zip
+        uses: actions/upload-artifact@main
+        with:
+          name: Genius
+          path: Genius.zip
