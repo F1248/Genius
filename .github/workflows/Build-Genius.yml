@@ -7,16 +7,16 @@ on:
       - .swift-version
       - .swiftformat
       - .swiftlint.yml
-      - Genius
-      - Genius.xcodeproj
+      - Genius/**
+      - Genius.xcodeproj/**
   pull_request:
     paths:
       - .github/workflows/Build-Genius.yml
       - .swift-version
       - .swiftformat
       - .swiftlint.yml
-      - Genius
-      - Genius.xcodeproj
+      - Genius/**
+      - Genius.xcodeproj/**
   workflow_dispatch:
 
 concurrency:
