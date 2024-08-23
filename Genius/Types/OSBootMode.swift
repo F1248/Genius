@@ -14,7 +14,7 @@ enum OSBootMode {
     case recovery
 
     init?(_ osBootMode: Any?) {
-        if FileManager.default.fileExists(atPath: "/usr/bin/recoverydiagnose") {
+        if !FileManager.default.fileExists(atPath: "/System/Library/CoreServices/Finder.app") {
             self = .recovery
         } else {
             let osBootMode: Self? =
