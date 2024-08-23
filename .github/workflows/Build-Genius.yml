@@ -28,6 +28,11 @@ jobs:
   Build-Genius:
     name: Build Genius
     runs-on: macos-latest
+
+    permissions:
+      id-token: write
+      attestations: write
+
     steps:
 
       - name: Checkout
