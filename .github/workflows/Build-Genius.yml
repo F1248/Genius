@@ -63,6 +63,11 @@ jobs:
           /bin/mv build/Release/Genius.app Genius.app
           /usr/bin/zip --recurse-paths Genius.zip Genius.app
 
+      - name: Attest Build Provenance
+        uses: actions/attest-build-provenance@main
+        with:
+          subject-path: Genius.zip
+
       - name: Upload Genius
         uses: actions/upload-artifact@main
         with:
