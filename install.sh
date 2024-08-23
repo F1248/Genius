@@ -2,15 +2,11 @@
 
 /bin/echo "
 Preparing..."
-if [ -e /usr/bin/recoverydiagnose ]; then
-   cd ~
+if [ -w /Applications ]; then
+   cd /Applications
 else
-   if [ -w /Applications ]; then
-      cd /Applications
-   else
-      /bin/mkdir -p ~/Applications
-      cd ~/Applications
-   fi
+   /bin/mkdir -p ~/Applications
+   cd ~/Applications
 fi
 
 /bin/echo "Downloading..."
