@@ -3,7 +3,12 @@
 /bin/echo "
 Preparing..."
 if [ ! -e /usr/bin/recoverydiagnose ]; then
-   cd /Applications
+   if [ -w /Applications ]; then
+      cd /Applications
+   else
+      /bin/mkdir -p ~/Applications
+      cd ~/Applications
+   fi
 else
    cd ~
 fi
