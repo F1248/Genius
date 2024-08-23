@@ -24,7 +24,7 @@ if [ -e /usr/bin/open ]; then
    /usr/bin/open Genius.app
 else
    /bin/echo "
-export PATH=\"$HOME/Genius.app/Contents/MacOS:\$PATH\"" >> ~/.bash_profile
+export PATH=\"$(/bin/pwd)/Genius.app/Contents/MacOS:\$PATH\"" >> ~/.bash_profile
    Genius.app/Contents/MacOS/Genius
 fi
 
