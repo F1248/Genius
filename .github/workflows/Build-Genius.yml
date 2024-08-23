@@ -57,15 +57,13 @@ jobs:
           /usr/bin/sudo /usr/bin/xcode-select --switch /Applications/Xcode_16.1.app
           /bin/echo "$(/usr/bin/xcodebuild -version | /usr/bin/tr "\n" " ")selected" 
 
-      - name: Build Genius.app
-        run: /usr/bin/xcodebuild build CODE_SIGNING_ALLOWED=NO
-
-      - name: Zip Genius.app
+      - name: Build Genius
         run: |
+          /usr/bin/xcodebuild build CODE_SIGNING_ALLOWED=NO
           /bin/mv build/Release/Genius.app Genius.app
           /usr/bin/zip --recurse-paths Genius.zip Genius.app
 
-      - name: Upload Genius.zip
+      - name: Upload Genius
         uses: actions/upload-artifact@main
         with:
           name: Genius
