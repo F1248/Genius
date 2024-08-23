@@ -10,7 +10,6 @@ import Foundation
 extension Pipe {
 
     func read() -> String? {
-        guard let data = try? fileHandleForReading.readToEnd() else { return nil }
-        return String(data)
+        String(try? fileHandleForReading.readToEnd())
     }
 }

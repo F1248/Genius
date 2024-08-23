@@ -24,7 +24,8 @@ extension String {
         ).localized
     }
 
-    init(_ data: Data) {
+    init?(_ data: Data?) {
+        guard let data else { return nil }
         self.init(decoding: data, as: UTF8.self)
     }
 
