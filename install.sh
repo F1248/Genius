@@ -2,15 +2,11 @@
 
 /bin/echo "
 Preparing..."
-if [ -e /usr/bin/recoverydiagnose ]; then
-   cd ~
+if [ -w /Applications ]; then
+    cd /Applications
 else
-   if [ -w /Applications ]; then
-      cd /Applications
-   else
-      /bin/mkdir -p ~/Applications
-      cd ~/Applications
-   fi
+    /bin/mkdir -p ~/Applications
+    cd ~/Applications
 fi
 
 /bin/echo "Downloading..."
@@ -19,17 +15,19 @@ fi
 /bin/echo "Installing..."
 /usr/bin/unzip -q -o Genius.zip
 /usr/bin/unzip -q -o Genius.zip
+if [ ! -e /System/Library/CoreServices/Finder.app ]; then
+    /bin/echo "
+export PATH=\"$(/bin/pwd)/Genius.app/Contents/MacOS:\$PATH\"" >> ~/.bash_profile
+fi
 
 /bin/echo "Cleaning up..."
 /bin/rm Genius.zip
 
 /bin/echo "Opening..."
 if [ -e /usr/bin/open ]; then
-   /usr/bin/open Genius.app
+    /usr/bin/open Genius.app
 else
-   /bin/echo "
-export PATH=\"$HOME/Genius.app/Contents/MacOS:\$PATH\"" >> ~/.bash_profile
-   Genius.app/Contents/MacOS/Genius
+    Genius.app/Contents/MacOS/Genius
 fi
 
 /bin/echo "Done."
