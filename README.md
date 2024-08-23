@@ -1,6 +1,6 @@
 [Zu Deutsch wechseln](README_DE.md)
 
-# Genius: The Intelligent Universal Helper for macOS!
+# Genius: The Intelligent Universal macOS Helper for Everyone!
 
 ## Requirements:
 
@@ -15,9 +15,15 @@
 ### Manual Installation (not possible in recoveryOS):
 
 1. Download [the latest build](https://nightly.link/F1248/Genius/workflows/Build-Genius/main/Genius.zip).
-2. If not already unzipped automatically, unzip `Genius.zip`.
+2. If not already unzipped automatically, double-click `Genius.zip` to unzip it.
 3. Move `Genius.app` into `/Applications`.
 4. Double-click the app.
+
+On macOS Sonoma 14 and older:
+
+5. Click `Cancel`.
+6. Right-click the app and choose `Open`.
+7. Click `Open` again.
 
 On macOS Sequoia 15:
 
@@ -25,12 +31,6 @@ On macOS Sequoia 15:
 6. Open [`Privacy & Security` in System Settings](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension), scroll to the message `“Genius.app” was blocked to protect your Mac.` and click `Open Anyway`.
 7. Click `Open Anyway` again.
 8. Authenticate yourself.
-
-On macOS Sonoma 14 and older:
-
-5. Click `Cancel`.
-6. Right-click the app and choose `Open`.
-7. Click `Open` again.
 
 ### Command Line Installation:
 
