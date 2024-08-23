@@ -3,10 +3,10 @@
 /bin/echo "
 Preparing..."
 if [ -w /Applications ]; then
-   cd /Applications
+    cd /Applications
 else
-   /bin/mkdir -p ~/Applications
-   cd ~/Applications
+    /bin/mkdir -p ~/Applications
+    cd ~/Applications
 fi
 
 /bin/echo "Downloading..."
@@ -21,11 +21,11 @@ fi
 
 /bin/echo "Opening..."
 if [ -e /usr/bin/open ]; then
-   /usr/bin/open Genius.app
+    /usr/bin/open Genius.app
 else
-   /bin/echo "
+    /bin/echo "
 export PATH=\"$(/bin/pwd)/Genius.app/Contents/MacOS:\$PATH\"" >> ~/.bash_profile
-   Genius.app/Contents/MacOS/Genius
+    Genius.app/Contents/MacOS/Genius
 fi
 
 /bin/echo "Done."
