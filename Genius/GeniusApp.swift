@@ -14,11 +14,7 @@ struct GeniusApp: App {
 
     var body: some Scene {
         WindowGroup {
-            if #available(macOS 15, *) {
-                ContentView()
-            } else {
-                ContentViewLegacy()
-            }
+            ContentView()
         }
         .windowToolbarStyle(.unified(showsTitle: false))
         .commands {
