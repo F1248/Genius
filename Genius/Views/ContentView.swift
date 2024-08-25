@@ -13,39 +13,21 @@ struct ContentView: View {
     var interfaceMode = Settings.InterfaceMode()
 
     var body: some View {
-        if #available(macOS 15, *) {
-            TabView {
-                Tab("Home") {
-                    HomeView()
-                }
-                Tab(interfaceMode >= .simple ? "System Information" : "Information") {
-                    SystemInformationView()
-                }
-                Tab("Maintenance") {
-                    MaintenanceView()
-                }
-                Tab("Settings") {
-                    SettingsView()
-                }
+        TabView {
+            Tab("Home") {
+                HomeView()
             }
-            .frame(minWidth: 686, minHeight: 256)
-        } else {
-            TabViewLegacy(entireWindow: true) {
-                TabLegacy("Home") {
-                    HomeView()
-                }
-                TabLegacy(interfaceMode >= .simple ? "System Information" : "Information") {
-                    SystemInformationView()
-                }
-                TabLegacy("Maintenance") {
-                    MaintenanceView()
-                }
-                TabLegacy("Settings") {
-                    SettingsView()
-                }
+            Tab(interfaceMode >= .simple ? "System Information" : "Information") {
+                SystemInformationView()
             }
-            .frame(minWidth: 686, minHeight: 256)
+            Tab("Maintenance") {
+                MaintenanceView()
+            }
+            Tab("Settings") {
+                SettingsView()
+            }
         }
+        .frame(minWidth: 686, minHeight: 256)
     }
 }
 
