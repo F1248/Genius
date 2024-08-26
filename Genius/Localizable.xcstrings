@@ -18,6 +18,26 @@
         }
       }
     },
+    "Genius" : {
+      "shouldTranslate" : false
+    },
+    "Genius requires administrator privileges." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius benötigt Administratorrechte."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius requires administrator privileges."
+          }
+        }
+      }
+    },
     "Home" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -112,26 +132,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Normal"
-          }
-        }
-      }
-    },
-    "Genius" : {
-      "shouldTranslate" : false
-    },
-    "Genius requires administrator privileges." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Genius benötigt Administratorrechte."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Genius requires administrator privileges."
           }
         }
       }
