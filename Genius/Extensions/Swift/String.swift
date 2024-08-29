@@ -10,7 +10,11 @@ import SwiftUI
 extension String {
 
     var localized: String {
-        NSLocalizedString(self, comment: "")
+        if #available(macOS 12, *) {
+            String(localized: LocalizationValue(self))
+        } else {
+            NSLocalizedString(self, comment: "")
+        }
     }
 
     init?(_ string: (any StringProtocol)?) {
@@ -18,15 +22,13 @@ extension String {
         self.init(string)
     }
 
-    init(_ localizedStringKey: LocalizedStringKey) {
-        self = (
-            Mirror(reflecting: localizedStringKey).children.first { $0.label == "key" }?.value as? String ?? "Unknown"
-        ).localized
-    }
-
     init?(_ data: Data?) {
         guard let data else { return nil }
         self.init(decoding: data, as: UTF8.self)
+    }
+
+    init?(_ versionNumber: VersionNumber?) {
+        self.init(versionNumber?.versions.map(String.init).joined(separator: "."))
     }
 
     func contains(any strings: [any StringProtocol]) -> Bool {
