@@ -10,11 +10,7 @@ import SwiftUI
 extension String {
 
     var localized: String {
-        if #available(macOS 12, *) {
-            String(localized: LocalizationValue(self))
-        } else {
-            NSLocalizedString(self, comment: "")
-        }
+        String(localized: LocalizationValue(self))
     }
 
     init?(_ string: (any StringProtocol)?) {
