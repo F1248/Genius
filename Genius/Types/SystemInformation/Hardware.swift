@@ -41,7 +41,7 @@ extension SystemInformation {
                 case _ where name.hasPrefix("Apple Virtual Machine"): "macwindow"
                 default: "desktopcomputer.and.macbook"
                 }
-            nonisolated(unsafe) static let marketingName: LocalizedStringKey? = {
+            static let marketingName: String? = {
                 guard let serialNumber = Machine.serialNumber, [11, 12].contains(serialNumber.count) else { return nil }
                 // swiftlint:disable:next explicit_type_interface
                 let url = """
@@ -52,7 +52,7 @@ extension SystemInformation {
                 guard
                     let marketingName = Network.transferURL(url)?.between(start: "<configCode>", end: "</configCode>")
                 else { return nil }
-                return LocalizedStringKey(marketingName)
+                return marketingName
             }()
         }
 
