@@ -5,7 +5,7 @@
 ## Requirements:
 
 ### Supported macOS Versions
-* macOS Sonoma 14 and later, including recoveryOS
+* macOS Sequoia 15, including recoveryOS
 
 ### Supported Models
 * Macs (including officially unsupported ones), Hackintoshes and virtual machines
@@ -18,15 +18,6 @@
 2. If not already unzipped automatically, double-click `Genius.zip` to unzip it.
 3. Move `Genius.app` into `/Applications`.
 4. Double-click the app.
-
-On macOS Sonoma 14:
-
-5. Click `Cancel`.
-6. Right-click the app and choose `Open`.
-7. Click `Open` again.
-
-On macOS Sequoia 15:
-
 5. Click `Done`.
 6. Open [`Privacy & Security` in System Settings](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension), scroll to the message `“Genius.app” was blocked to protect your Mac.` and click `Open Anyway`.
 7. Click `Open Anyway` again.
