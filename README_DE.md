@@ -5,7 +5,7 @@
 ## Anforderungen:
 
 ### Unterstützte macOS-Versionen
-* macOS Ventura 13 und höher, inklusive recoveryOS
+* macOS Sonoma 14 und höher, inklusive recoveryOS
 
 ### Unterstützte Modelle
 * Macs (inklusive offiziell nicht unterstützten), Hackintoshs und virtuelle Maschinen
@@ -19,7 +19,7 @@
 3. Verschiebe `Genius.app` in `/Programme`.
 4. Doppelklicke auf die App.
 
-Unter macOS Sonoma 14 und älter:
+Unter macOS Sonoma 14:
 
 5. Klicke auf `Abbrechen`.
 6. Rechtsklicke auf die App und wähle `Öffnen`.
