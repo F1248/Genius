@@ -5,16 +5,12 @@
 //  Created by F1248.
 //
 
-import SwiftUI
+import Foundation
 
 extension String {
 
     var localized: String {
-        if #available(macOS 12, *) {
-            String(localized: LocalizationValue(self))
-        } else {
-            NSLocalizedString(self, comment: "")
-        }
+        String(localized: LocalizationValue(self))
     }
 
     init?(_ string: (any StringProtocol)?) {
