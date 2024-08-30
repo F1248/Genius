@@ -5,8 +5,6 @@
 //  Created by F1248.
 //
 
-import SwiftUI
-
 struct VersionNumber {
 
     let versions: [Int]

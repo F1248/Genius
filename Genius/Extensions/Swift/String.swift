@@ -5,7 +5,7 @@
 //  Created by F1248.
 //
 
-import SwiftUI
+import Foundation
 
 extension String {
 
