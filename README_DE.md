@@ -5,7 +5,7 @@
 ## Anforderungen:
 
 ### Unterstützte macOS-Versionen
-* macOS Monterey 12 und höher, inklusive recoveryOS
+* macOS Ventura 13 und höher, inklusive recoveryOS
 
 ### Unterstützte Modelle
 * Macs (inklusive offiziell nicht unterstützten), Hackintoshs und virtuelle Maschinen
