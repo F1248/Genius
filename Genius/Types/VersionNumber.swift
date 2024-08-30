@@ -5,8 +5,6 @@
 //  Created by F1248.
 //
 
-import Foundation
-
 struct VersionNumber {
 
     let versions: [Int]
