@@ -59,7 +59,9 @@ jobs:
 
       - name: Select Xcode version
         run: |
-          /usr/bin/sudo /usr/bin/xcode-select --switch /Applications/Xcode_16.1.app
+          /usr/bin/sudo /usr/bin/xcode-select --switch /Applications/$(
+            /bin/ls /Applications | /usr/bin/grep "Xcode_\d*\.\d*\.app" | /usr/bin/tail --lines=1
+          )
           /bin/echo "$(/usr/bin/xcodebuild -version | /usr/bin/tr "\n" " ")selected"
 
       - name: Build Genius
