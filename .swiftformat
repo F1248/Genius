@@ -15,4 +15,5 @@
 --markcategories false
 --nospaceoperators ..<
 --organizationmode type
+--self init-only
 --typeblanklines preserve

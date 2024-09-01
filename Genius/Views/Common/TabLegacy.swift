@@ -14,7 +14,7 @@ struct TabLegacy: Hashable, Identifiable {
     let content: AnyView
 
     init(_ titleKey: LocalizedStringKey, content: () -> any View) {
-        title = Text(titleKey)
+        self.title = Text(titleKey)
         self.content = AnyView(content())
     }
 
