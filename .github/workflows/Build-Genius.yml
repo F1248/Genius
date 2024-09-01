@@ -54,7 +54,7 @@ jobs:
           /usr/bin/sudo /usr/sbin/installer -package SwiftLint.pkg -target /
           /bin/echo "SwiftLint $(/usr/local/bin/swiftlint version) installed"
 
-      - name: Run SwiftLint
+      - name: Run SwiftLint Lint Rules
         run: /usr/local/bin/swiftlint lint --strict --reporter github-actions-logging
 
       - name: Select Xcode Version
@@ -65,7 +65,10 @@ jobs:
           /bin/echo "$(/usr/bin/xcodebuild -version | /usr/bin/tr "\n" " ")selected"
 
       - name: Build Genius
-        run: /usr/bin/xcodebuild build CODE_SIGNING_ALLOWED=NO
+        run: /usr/bin/xcodebuild build CODE_SIGNING_ALLOWED=NO | /usr/bin/tee xcodebuild.log
+
+      - name: Run SwiftLint Analyzer Rules
+        run: /usr/local/bin/swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
 
       - name: Zip Genius
         run: |
