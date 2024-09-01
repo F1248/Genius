@@ -17,9 +17,9 @@ struct TabViewLegacy: View {
     // swiftlint:disable:next type_contents_order
     init?(entireWindow: Bool = false, @TabContentBuilder content: () -> [TabLegacy]) {
         self.entireWindow = entireWindow
-        tabs = content()
+        self.tabs = content()
         guard let firstTab = tabs.first else { return nil }
-        selectedTab = firstTab
+        self.selectedTab = firstTab
     }
 
     var picker: some View {

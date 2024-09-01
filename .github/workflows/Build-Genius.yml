@@ -54,10 +54,10 @@ jobs:
           /usr/bin/sudo /usr/sbin/installer -package SwiftLint.pkg -target /
           /bin/echo "SwiftLint $(/usr/local/bin/swiftlint version) installed"
 
-      - name: Run SwiftLint
+      - name: Run SwiftLint Lint Rules
         run: /usr/local/bin/swiftlint lint --strict --reporter github-actions-logging
 
-      - name: Select Xcode version
+      - name: Select Xcode Version
         run: |
           /usr/bin/sudo /usr/bin/xcode-select --switch /Applications/$(
             /bin/ls /Applications | /usr/bin/grep "Xcode_\d*\.\d*\.app" | /usr/bin/tail --lines=1
@@ -65,8 +65,13 @@ jobs:
           /bin/echo "$(/usr/bin/xcodebuild -version | /usr/bin/tr "\n" " ")selected"
 
       - name: Build Genius
+        run: /usr/bin/xcodebuild build CODE_SIGNING_ALLOWED=NO | /usr/bin/tee xcodebuild.log
+
+      - name: Run SwiftLint Analyzer Rules
+        run: /usr/local/bin/swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
+
+      - name: Zip Genius
         run: |
-          /usr/bin/xcodebuild build CODE_SIGNING_ALLOWED=NO
           /bin/mv build/Release/Genius.app Genius.app
           /usr/bin/zip --recurse-paths Genius.zip Genius.app
 
