@@ -1,11 +1,11 @@
-// swiftlint:disable:this file_name
-
 //
 //  Dictionary.swift
 //  Genius
 //
 //  Created by F1248.
 //
+
+extension Dictionary {}
 
 extension Optional {
 
