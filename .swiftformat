@@ -2,18 +2,22 @@
     acronyms,\
     blankLinesBetweenImports,\
     blockComments,\
-    docComments,\
     isEmpty,\
-    markTypes,\
     noExplicitOwnership,\
     organizeDeclarations,\
     redundantProperty,\
-    sortSwitchCases,\
-    wrapEnumCases,\
     wrapMultilineConditionalAssignment,\
 
+--acronyms "ID,OS,URL,UUID"
+--condassignment always
+--fractiongrouping enabled
+--header "\n {file}\n Genius\n\n Created by {author.name}.\n"
 --markcategories false
---nospaceoperators ..<
+--maxwidth 128
 --organizationmode type
+--ranges no-space
 --self init-only
+--semicolons never
+--shortoptionals always
 --typeblanklines preserve
+--xcodeindentation enabled
