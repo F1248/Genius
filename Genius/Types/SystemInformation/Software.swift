@@ -5,6 +5,8 @@
 //  Created by F1248.
 //
 
+import Foundation
+
 extension SystemInformation {
 
     enum Software {

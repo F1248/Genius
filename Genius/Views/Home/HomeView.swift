@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUICore
 
 struct HomeView: View {
 
@@ -17,7 +18,7 @@ struct HomeView: View {
             Text("Genius")
                 .font(.largeTitle)
                 .padding()
-            Text("Interface Mode: \(interfaceMode.localized)")
+            Text("Interface Mode: \(interfaceMode.localizedString)")
                 .font(.subheadline)
         }
     }
