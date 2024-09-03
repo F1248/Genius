@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUICore
 
 extension Tab where Value == Never, Content: View {
 
