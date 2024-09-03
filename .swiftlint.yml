@@ -26,6 +26,10 @@ disabled_rules:
 
 cyclomatic_complexity:
     ignores_case_statements: true
+deployment_target:
+    macOS_deployment_target: 11.0
+explicit_init:
+    include_bare_init: true
 explicit_type_interface:
     allow_redundancy: true
 identifier_name:
@@ -34,9 +38,24 @@ indentation_width:
     include_comments: false
 large_tuple: 3
 line_length: 128
+multiline_arguments:
+    first_argument_location: next_line
+number_separator:
+    minimum_length: 6
+operator_usage_whitespace:
+    lines_look_around: 399
+    skip_aligned_constants: false
+prefer_key_path:
+    restrict_to_standard_functions: false
+private_over_fileprivate:
+    validate_extensions: true
+redundant_type_annotation:
+    consider_default_literal_types_redundant: true
 trailing_comma:
     mandatory_comma: true
 trailing_whitespace:
     ignores_comments: false
 type_name:
     min_length: 2
+unused_import:
+    require_explicit_imports: true

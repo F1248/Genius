@@ -5,7 +5,9 @@
 //  Created by F1248.
 //
 
+import AppKit
 import SwiftUI
+import SwiftUICore
 
 @main
 struct GeniusApp: App {

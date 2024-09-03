@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUICore
 
 @available(macOS 15, *)
 extension Tab where Value == Never, Content: View {
