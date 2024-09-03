@@ -5,6 +5,8 @@
 //  Created by F1248.
 //
 
+import SwiftUICore
+
 enum Settings {
 
     enum InterfaceMode: String, CaseIterable, Identifiable, Comparable {
@@ -17,7 +19,8 @@ enum Settings {
 
         var id: Self { self }
         var index: Int { Self.allCases.firstIndex(of: self)! } // swiftlint:disable:this force_unwrapping
-        var localized: String { rawValue.localized }
+        var localizedString: String { rawValue.localized }
+        var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
 
         init() { self = .normal }
 

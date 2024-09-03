@@ -6,6 +6,7 @@
 //
 
 import AppKit
+import ObjectiveC
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 

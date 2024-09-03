@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ObjectiveC
 import os
 
 extension Process {

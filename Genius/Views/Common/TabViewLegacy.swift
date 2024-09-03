@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUICore
 
 struct TabViewLegacy: View {
 

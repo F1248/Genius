@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUICore
 
 struct SettingsView: View {
 
@@ -20,7 +21,7 @@ struct SettingsView: View {
             Form {
                 Picker("Interface Mode:", selection: $interfaceMode) {
                     ForEach(Settings.InterfaceMode.allCases) { interfaceMode in
-                        Text(interfaceMode.localized)
+                        Text(interfaceMode.localizedStringKey)
                     }
                 }
                 .pickerStyle(.inline)
