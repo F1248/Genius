@@ -5,6 +5,7 @@
 //  Created by F1248.
 //
 
+import Foundation
 import SwiftUICore
 
 struct TabLegacy: Hashable, Identifiable {
