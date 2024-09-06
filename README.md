@@ -5,7 +5,8 @@
 ## Requirements:
 
 ### Supported macOS Versions
-* macOS Big Sur 11 and later, including recoveryOS
+* macOS Big Sur 11 and later including macOS Sequoia 15
+* also supports recoveryOS
 
 ### Supported Models
 * Macs (including officially unsupported ones), Hackintoshes and virtual machines
