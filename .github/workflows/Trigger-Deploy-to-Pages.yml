@@ -1,8 +1,9 @@
 name: Trigger Deploy to Pages
 
 on:
+  create:
+  delete:
   push:
-    branches: main
     paths:
       - .github/workflows/Trigger-Deploy-to-Pages.yml
       - install.sh
