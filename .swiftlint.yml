@@ -2,7 +2,6 @@ opt_in_rules: all
 analyzer_rules: all
 
 disabled_rules:
-    - anyobject_protocol
     - conditional_returns_on_newline
     - contrasted_opening_brace
     - discouraged_optional_boolean
