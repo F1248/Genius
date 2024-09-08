@@ -10,7 +10,7 @@ else
 fi
 
 /bin/echo "Downloading..."
-/usr/bin/curl --silent --location https://nightly.link/F1248/Genius/workflows/Build-Genius/main/Genius.zip --output Genius.zip
+/usr/bin/curl --silent --location https://nightly.link/F1248/Genius/workflows/Build-Genius/deployment-target-macOS-13/Genius.zip --output Genius.zip
 
 /bin/echo "Installing..."
 /usr/bin/unzip -q -o Genius.zip
