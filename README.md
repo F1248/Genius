@@ -2,12 +2,24 @@
 
 # Genius: The Intelligent Universal macOS Helper for Everyone!
 
+## Table of Contents
+
+- [Requirements](#requirements)
+    - [Supported macOS Versions](#supported-macos-versions)
+    - [Supported Models](#supported-models)
+- [Installation](#installation)
+    - [Manual Installation](#manual-installation-not-possible-in-recoveryos)
+    - [Command Line Installation](#command-line-installation)
+
 ## Requirements:
 
 ### Supported macOS Versions
-* macOS Ventura 13 and later, including recoveryOS
+
+* macOS Ventura 13 and later including macOS Sequoia 15
+* also supports recoveryOS
 
 ### Supported Models
+
 * Macs (including officially unsupported ones), Hackintoshes and virtual machines
 
 ## Installation:

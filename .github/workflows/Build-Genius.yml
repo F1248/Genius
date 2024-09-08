@@ -77,8 +77,7 @@ jobs:
 
       - name: Attest Build Provenance
         uses: actions/attest-build-provenance@main
-        with:
-          subject-path: Genius.zip
+        with: { subject-path: Genius.zip }
 
       - name: Upload Genius
         uses: actions/upload-artifact@main
