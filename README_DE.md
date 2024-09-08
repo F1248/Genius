@@ -2,12 +2,24 @@
 
 # Genius: Der intelligente, universelle macOS-Helfer für alle!
 
+## Inhaltsverzeichnis
+
+- [Anforderungen](#anforderungen)
+    - [Unterstützte macOS-Versionen](#unterstützte-macos-versionen)
+    - [Unterstützte Modelle](#unterstützte-modelle)
+- [Installation](#installation)
+    - [Manuelle Installation](#manuelle-installation-in-recoveryos-nicht-möglich)
+    - [Befehlszeilen-Installation](#befehlszeilen-installation)
+
 ## Anforderungen:
 
 ### Unterstützte macOS-Versionen
-* macOS Sequoia 15, inklusive recoveryOS
+
+* macOS Sequoia 15
+* unterstützt auch recoveryOS
 
 ### Unterstützte Modelle
+
 * Macs (inklusive offiziell nicht unterstützten), Hackintoshs und virtuelle Maschinen
 
 ## Installation:
