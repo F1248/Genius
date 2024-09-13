@@ -15,7 +15,7 @@
 
 ### Unterstützte macOS-Versionen
 
-* macOS Big Sur 11 und höher inklusive macOS Sequoia 15
+* macOS Big Sur 11 und neuer inklusive macOS Sequoia 15
 * unterstützt auch recoveryOS
 
 ### Unterstützte Modelle
