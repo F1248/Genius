@@ -15,7 +15,7 @@
 
 ### Unterstützte macOS-Versionen
 
-* macOS Ventura 13 und höher inklusive macOS Sequoia 15
+* macOS Ventura 13 und neuer inklusive macOS Sequoia 15
 * unterstützt auch recoveryOS
 
 ### Unterstützte Modelle

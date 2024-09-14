@@ -143,7 +143,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n    if /usr/bin/which -s swiftformat; then\n        swiftformat --lint --lenient .\n    else\n        echo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"\n    fi\nfi\n";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n    if /usr/bin/which -s swiftformat; then\n        swiftformat --lint --lenient --disable fileHeader .\n    else\n        echo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"\n    fi\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
