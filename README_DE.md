@@ -15,7 +15,7 @@
 
 ### Unterstützte macOS-Versionen
 
-* macOS Sonoma 14 und höher inklusive macOS Sequoia 15
+* macOS Sonoma 14 und neuer inklusive macOS Sequoia 15
 * unterstützt auch recoveryOS
 
 ### Unterstützte Modelle
