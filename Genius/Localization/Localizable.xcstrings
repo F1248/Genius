@@ -54,22 +54,6 @@
         }
       }
     },
-    "Information" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Informationen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Information"
-          }
-        }
-      }
-    },
     "Interface Mode:" : {
       "localizations" : {
         "de" : {
@@ -186,20 +170,7 @@
       }
     },
     "System Information" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Systeminformationen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "System Information"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Very Simple" : {
       "extractionState" : "manual",
