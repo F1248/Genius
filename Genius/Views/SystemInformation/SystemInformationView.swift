@@ -15,7 +15,7 @@ struct SystemInformationView: View {
 
     var body: some View {
         VStack {
-            Text(interfaceMode >= .simple ? "System Information" : "Information")
+            Text("System Information", tableName: interfaceMode.localizationTable)
                 .font(.largeTitle)
                 .padding()
         }
