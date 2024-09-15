@@ -9,9 +9,15 @@ import SwiftUI
 import SwiftUICore
 
 @available(macOS 15, *)
-extension Tab where Value == Never, Content: View {
+extension Tab where Value == Never, Content: View, Label == SwiftUI.Label<Text, EmptyView> {
 
-    init(_ titleKey: LocalizedStringKey, content: () -> Content) where Label == DefaultTabLabel {
-        self.init(titleKey, systemImage: "", content: content)
+    init(_ titleKey: LocalizedStringKey, tableName: String? = nil, content: () -> Content) {
+        self.init(content: content) {
+            Label {
+                Text(titleKey, tableName: tableName)
+            } icon: {
+                EmptyView()
+            }
+        }
     }
 }

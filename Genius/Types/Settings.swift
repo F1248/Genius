@@ -9,7 +9,7 @@ import SwiftUICore
 
 enum Settings {
 
-    enum InterfaceMode: String, CaseIterable, Identifiable, Comparable {
+    enum InterfaceMode: String, CaseIterable, Identifiable {
 
         case verySimple = "Very Simple"
         case simple = "Simple"
@@ -18,14 +18,10 @@ enum Settings {
         case powerUser = "Power User"
 
         var id: Self { self }
-        var index: Int { Self.allCases.firstIndex(of: self)! } // swiftlint:disable:this force_unwrapping
         var localizedString: String { rawValue.localized }
         var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
+        var localizationTable: String { "Localizable\(rawValue.remove(" "))" }
 
         init() { self = .normal }
-
-        static func < (lhs: Self, rhs: Self) -> Bool {
-            lhs.index < rhs.index
-        }
     }
 }
