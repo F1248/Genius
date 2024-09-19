@@ -16,33 +16,23 @@ struct ContentView: View {
     var body: some View {
         if #available(macOS 15, *) {
             TabView {
-                Tab("Home") {
-                    HomeView()
-                }
-                Tab("System Information", variesByInterfaceMode: true, viewInvalidator: interfaceMode) {
-                    SystemInformationView()
-                }
-                Tab("Maintenance") {
-                    MaintenanceView()
-                }
-                Tab("Settings") {
-                    SettingsView()
+                ForEach(ContentViewTabs.allCases) { tab in
+                    Tab(
+                        tab.localizedStringKey,
+                        variesByInterfaceMode: tab.variesByInterfaceMode,
+                        viewInvalidator: tab.variesByInterfaceMode ? interfaceMode : nil
+                    ) { tab.content }
                 }
             }
             .frame(minWidth: 686, minHeight: 256)
         } else {
             TabViewLegacy(entireWindow: true) {
-                TabLegacy("Home") {
-                    HomeView()
-                }
-                TabLegacy("System Information", variesByInterfaceMode: true, viewInvalidator: interfaceMode) {
-                    SystemInformationView()
-                }
-                TabLegacy("Maintenance") {
-                    MaintenanceView()
-                }
-                TabLegacy("Settings") {
-                    SettingsView()
+                ContentViewTabs.allCases.map { tab in
+                    TabLegacy(
+                        tab.localizedStringKey,
+                        variesByInterfaceMode: tab.variesByInterfaceMode,
+                        viewInvalidator: tab.variesByInterfaceMode ? interfaceMode : nil
+                    ) { tab.content }
                 }
             }
             .frame(minWidth: 686, minHeight: 256)

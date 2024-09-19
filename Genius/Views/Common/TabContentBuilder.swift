@@ -8,6 +8,10 @@
 @resultBuilder
 enum TabContentBuilder {
 
+    static func buildBlock(_ tabs: [TabLegacy]) -> [TabLegacy] {
+        tabs
+    }
+
     static func buildBlock(_ tabs: TabLegacy...) -> [TabLegacy] {
         tabs
     }
