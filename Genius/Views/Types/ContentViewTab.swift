@@ -1,5 +1,5 @@
 //
-//  ContentViewTabs.swift
+//  ContentViewTab.swift
 //  Genius
 //
 //  Created by F1248.
@@ -7,7 +7,7 @@
 
 import SwiftUICore
 
-enum ContentViewTabs: String, CaseIterable, Identifiable {
+enum ContentViewTab: String, CaseIterable, Identifiable {
 
     case home = "Home"
     case systemInformation = "System Information"

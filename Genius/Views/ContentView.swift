@@ -16,7 +16,7 @@ struct ContentView: View {
     var body: some View {
         if #available(macOS 15, *) {
             TabView {
-                ForEach(ContentViewTabs.allCases) { tab in
+                ForEach(ContentViewTab.allCases) { tab in
                     Tab(
                         tab.localizedStringKey,
                         variesByInterfaceMode: tab.variesByInterfaceMode,
@@ -27,7 +27,7 @@ struct ContentView: View {
             .frame(minWidth: 686, minHeight: 256)
         } else {
             TabViewLegacy(entireWindow: true) {
-                ContentViewTabs.allCases.map { tab in
+                ContentViewTab.allCases.map { tab in
                     TabLegacy(
                         tab.localizedStringKey,
                         variesByInterfaceMode: tab.variesByInterfaceMode,
