@@ -19,7 +19,7 @@ struct ContentView: View {
                 Tab("Home") {
                     HomeView()
                 }
-                Tab("System Information", tableName: interfaceMode.localizationTable) {
+                Tab("System Information", variesByInterfaceMode: true, viewInvalidator: interfaceMode) {
                     SystemInformationView()
                 }
                 Tab("Maintenance") {
@@ -35,7 +35,7 @@ struct ContentView: View {
                 TabLegacy("Home") {
                     HomeView()
                 }
-                TabLegacy("System Information", tableName: interfaceMode.localizationTable) {
+                TabLegacy("System Information", variesByInterfaceMode: true, viewInvalidator: interfaceMode) {
                     SystemInformationView()
                 }
                 TabLegacy("Maintenance") {
