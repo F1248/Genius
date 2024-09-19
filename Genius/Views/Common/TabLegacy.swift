@@ -14,8 +14,13 @@ struct TabLegacy: Hashable, Identifiable {
     let title: Text
     let content: AnyView
 
-    init(_ titleKey: LocalizedStringKey, tableName: String? = nil, content: () -> any View) {
-        self.title = Text(titleKey, tableName: tableName)
+    init(
+        _ titleKey: LocalizedStringKey,
+        variesByInterfaceMode: Bool = false,
+        viewInvalidator _: Any? = nil,
+        content: () -> any View
+    ) {
+        self.title = Text(titleKey, variesByInterfaceMode: variesByInterfaceMode)
         self.content = AnyView(content())
     }
 
