@@ -12,22 +12,24 @@ struct TabViewLegacy: View {
 
     let entireWindow: Bool
     let tabs: [TabLegacy]
+    var selectedTabIndexParameter: Binding<Int>?
 
-    @State private var selectedTab: TabLegacy
+    @State private var selectedTabIndexPrivate = 0 // swiftlint:disable:this explicit_type_interface
+
+    var selectedTab: TabLegacy { tabs[selectedTabIndexParameter?.wrappedValue ?? selectedTabIndexPrivate] }
 
     // swiftlint:disable:next type_contents_order
-    init?(entireWindow: Bool = false, @TabContentBuilder content: () -> [TabLegacy]) {
+    init?(selection: Binding<Int>? = nil, entireWindow: Bool = false, @TabContentBuilder content: () -> [TabLegacy]) {
+        self.selectedTabIndexParameter = selection
         self.entireWindow = entireWindow
         self.tabs = content()
-        guard let firstTab = tabs.first else { return nil }
-        self.selectedTab = firstTab
     }
 
     var picker: some View {
-        Picker(selection: $selectedTab) {
+        Picker(selection: selectedTabIndexParameter ?? $selectedTabIndexPrivate) {
             ForEach(tabs) { tab in
                 tab.title
-                    .tag(tab)
+                    .tag(tabs.firstIndex(of: tab)!) // swiftlint:disable:this force_unwrapping
             }
         }
         .pickerStyle(.segmented)
