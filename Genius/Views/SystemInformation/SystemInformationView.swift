@@ -10,12 +10,9 @@ import SwiftUICore
 
 struct SystemInformationView: View {
 
-    @AppStorage("interfaceMode")
-    var interfaceMode = Settings.InterfaceMode()
-
     var body: some View {
         VStack {
-            Text("System Information", tableName: interfaceMode.localizationTable)
+            Text("System Information", variesByInterfaceMode: true)
                 .font(.largeTitle)
                 .padding()
         }

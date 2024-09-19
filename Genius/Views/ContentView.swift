@@ -18,7 +18,7 @@ struct ContentView: View {
             Tab("Home") {
                 HomeView()
             }
-            Tab("System Information", tableName: interfaceMode.localizationTable) {
+            Tab("System Information", variesByInterfaceMode: true, viewInvalidator: interfaceMode) {
                 SystemInformationView()
             }
             Tab("Maintenance") {
