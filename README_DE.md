@@ -15,12 +15,12 @@
 
 ### Unterstützte macOS-Versionen
 
-* macOS Sequoia 15
-* unterstützt auch recoveryOS
+- macOS Sequoia 15
+- unterstützt auch recoveryOS
 
 ### Unterstützte Modelle
 
-* Macs (inklusive offiziell nicht unterstützten), Hackintoshs und virtuelle Maschinen
+- Macs (inklusive offiziell nicht unterstützten), Hackintoshs und virtuelle Maschinen
 
 ## Installation:
 
@@ -43,4 +43,4 @@ Füge den folgenden Befehl im Terminal ein und führe ihn aus. Beachte, dass in 
 curl -L f1248.github.io/deployment-target-macOS-15 | sh
 ```
 
-Um Genius in recoveryOS zu öffnen, führe einfach `Genius` im Terminal aus.
+Um Genius in recoveryOS zu öffnen, führe einfach `genius` im Terminal aus.

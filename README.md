@@ -15,12 +15,12 @@
 
 ### Supported macOS Versions
 
-* macOS Sonoma 15
-* also supports recoveryOS
+- macOS Sonoma 15
+- also supports recoveryOS
 
 ### Supported Models
 
-* Macs (including officially unsupported ones), Hackintoshes and virtual machines
+- Macs (including officially unsupported ones), Hackintoshes and virtual machines
 
 ## Installation:
 
@@ -43,4 +43,4 @@ Paste and run the following command in Terminal. Note that in recoveryOS, Genius
 curl -L f1248.github.io/deployment-target-macOS-15 | sh
 ```
 
-To open Genius in recoveryOS, simply run `Genius` in Terminal.
+To open Genius in recoveryOS, simply run `genius` in Terminal.
