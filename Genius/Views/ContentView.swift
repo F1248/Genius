@@ -10,39 +10,31 @@ import SwiftUICore
 
 struct ContentView: View {
 
+    @ObservedObject var observedSharedData: SharedData = sharedData
     @AppStorage("interfaceMode")
     var interfaceMode = Settings.InterfaceMode()
 
     var body: some View {
         if #available(macOS 15, *) {
-            TabView {
-                Tab("Home") {
-                    HomeView()
-                }
-                Tab("System Information", variesByInterfaceMode: true, viewInvalidator: interfaceMode) {
-                    SystemInformationView()
-                }
-                Tab("Maintenance") {
-                    MaintenanceView()
-                }
-                Tab("Settings") {
-                    SettingsView()
+            TabView(selection: $observedSharedData.selectedTabIndex) {
+                ForEach(ContentViewTab.allCases) { tab in
+                    Tab(
+                        tab.localizedStringKey,
+                        value: tab.tag,
+                        variesByInterfaceMode: tab.variesByInterfaceMode,
+                        viewInvalidator: tab.variesByInterfaceMode ? interfaceMode : nil
+                    ) { tab.content }
                 }
             }
             .frame(minWidth: 686, minHeight: 256)
         } else {
-            TabViewLegacy(entireWindow: true) {
-                TabLegacy("Home") {
-                    HomeView()
-                }
-                TabLegacy("System Information", variesByInterfaceMode: true, viewInvalidator: interfaceMode) {
-                    SystemInformationView()
-                }
-                TabLegacy("Maintenance") {
-                    MaintenanceView()
-                }
-                TabLegacy("Settings") {
-                    SettingsView()
+            TabViewLegacy(selection: $observedSharedData.selectedTabIndex, entireWindow: true) {
+                ContentViewTab.allCases.map { tab in
+                    TabLegacy(
+                        tab.localizedStringKey,
+                        variesByInterfaceMode: tab.variesByInterfaceMode,
+                        viewInvalidator: tab.variesByInterfaceMode ? interfaceMode : nil
+                    ) { tab.content }
                 }
             }
             .frame(minWidth: 686, minHeight: 256)

@@ -11,4 +11,19 @@ import ObjectiveC
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool { true }
+
+    func applicationDockMenu(_: NSApplication) -> NSMenu? {
+        let dockMenu = NSMenu()
+        for tab in ContentViewTab.allCases {
+            let menuItem = NSMenuItem(title: tab.localizedString, action: #selector(changeTab(_:)), keyEquivalent: "")
+            menuItem.tag = tab.tag
+            dockMenu.addItem(menuItem)
+        }
+        return dockMenu
+    }
+
+    @objc
+    func changeTab(_ sender: NSMenuItem) {
+        sharedData.selectedTabIndex = sender.tag
+    }
 }
