@@ -52,4 +52,4 @@ Paste and run the following command in Terminal. Note that in recoveryOS, Genius
 curl -L f1248.github.io | sh
 ```
 
-To open Genius in recoveryOS, simply run `Genius` in Terminal.
+To open Genius in recoveryOS, simply run `genius` in Terminal.
