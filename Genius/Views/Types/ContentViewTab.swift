@@ -15,7 +15,7 @@ enum ContentViewTab: String, CaseIterable, Identifiable {
     case settings = "Settings"
 
     var id: Self { self }
-    var tag: Int { Self.allCases.firstIndex(of: self)! } // swiftlint:disable:this force_unwrapping
+    var index: Int { Self.allCases.firstIndex(of: self)! } // swiftlint:disable:this force_unwrapping
     var localizedString: String { rawValue.localized }
     var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
 
