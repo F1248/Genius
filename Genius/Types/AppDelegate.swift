@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let dockMenu = NSMenu()
         for tab in ContentViewTab.allCases {
             let menuItem = NSMenuItem(title: tab.localizedString, action: #selector(changeTab(_:)), keyEquivalent: "")
-            menuItem.tag = tab.tag
+            menuItem.tag = tab.index
             dockMenu.addItem(menuItem)
         }
         return dockMenu
