@@ -40,7 +40,7 @@
 Paste and run the following command in Terminal. Note that in recoveryOS, Genius will be removed by a reboot.
 
 ```
-curl -L f1248.github.io/deployment-target-macOS-15 | sh
+curl https://f1248.github.io/deployment-target-macOS-15 | sh
 ```
 
 To open Genius in recoveryOS, simply run `genius` in Terminal.
