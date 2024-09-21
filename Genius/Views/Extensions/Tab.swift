@@ -19,11 +19,7 @@ extension Tab where Value: Hashable, Content: View {
         content: () -> Content
     ) where Label == SwiftUI.Label<Text, EmptyView> {
         self.init(value: value, content: content) {
-            Label {
-                Text(titleKey, variesByInterfaceMode: variesByInterfaceMode)
-            } icon: {
-                EmptyView()
-            }
+            Label(titleKey, variesByInterfaceMode: variesByInterfaceMode)
         }
     }
 }
