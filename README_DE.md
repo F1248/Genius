@@ -53,3 +53,9 @@ curl https://f1248.github.io | sh
 ```
 
 Um Genius in recoveryOS zu öffnen, führe einfach `genius` im Terminal aus.
+
+# Urheberrecht
+© 2024 F1248 <f1248@mailbox.org>
+
+# Lizenz
+Siehe [LICENSE.txt](LICENSE.txt) (in Englisch) für Lizenzinformationen.
