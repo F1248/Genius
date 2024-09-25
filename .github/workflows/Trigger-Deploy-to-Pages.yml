@@ -17,7 +17,7 @@ jobs:
 
   Trigger-Deploy-to-Pages:
     name: Trigger Deploy to Pages
-    runs-on: macos-latest
+    runs-on: macos-15
 
     steps:
 

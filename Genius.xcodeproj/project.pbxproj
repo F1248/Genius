@@ -8,6 +8,7 @@
 
 /* Begin PBXFileReference section */
 		A42B353D2BA2185B009E81AD /* Genius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Genius.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A438B3FA2CA346C600F8DF17 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		A43BD9C22C729A680049953D /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
 		A43BD9C32C729A680049953D /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		A4528F1F2BCD9B400092CBB8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -41,6 +42,7 @@
 				A452AFF22BBF2CAB00760569 /* .swiftlint.yml */,
 				A47D8B992C26145300A0E4CF /* Genius */,
 				A4844FF82C73E08C0021E6E8 /* install.sh */,
+				A438B3FA2CA346C600F8DF17 /* LICENSE.txt */,
 				A47BFC592C72116700B88607 /* README_DE.md */,
 				A4EB1C9A2BCC3F8200DF01A6 /* README.md */,
 				A42B353E2BA2185B009E81AD /* Products */,
@@ -143,7 +145,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n    if /usr/bin/which -s swiftformat; then\n        swiftformat --lint --lenient --disable fileHeader .\n    else\n        echo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"\n    fi\nfi\n";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n    if /usr/bin/which -s swiftformat; then\n        swiftformat --lint --lenient .\n    else\n        echo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"\n    fi\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -250,6 +252,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 F1248 <f1248@mailbox.org>";
 				LD_WARN_DUPLICATE_LIBRARIES = YES;
 				LD_WARN_UNUSED_DYLIBS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
@@ -352,6 +355,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 F1248 <f1248@mailbox.org>";
 				LD_WARN_DUPLICATE_LIBRARIES = YES;
 				LD_WARN_UNUSED_DYLIBS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
