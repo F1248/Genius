@@ -2,7 +2,8 @@
 //  AppDelegate.swift
 //  Genius
 //
-//  Created by F1248.
+//  © 2024 F1248 <f1248@mailbox.org>
+//  See LICENSE.txt for license information.
 //
 
 import AppKit
