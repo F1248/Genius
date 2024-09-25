@@ -53,3 +53,9 @@ curl https://f1248.github.io/deployment-target-macOS-12 | sh
 ```
 
 To open Genius in recoveryOS, simply run `genius` in Terminal.
+
+# Copyright
+© 2024 F1248 <f1248@mailbox.org>
+
+# License
+See [LICENSE.txt](LICENSE.txt) for license information.

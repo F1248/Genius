@@ -27,7 +27,7 @@ jobs:
 
   Build-Genius:
     name: Build Genius
-    runs-on: macos-latest
+    runs-on: macos-15
 
     permissions:
       id-token: write
