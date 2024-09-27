@@ -8,34 +8,36 @@
 #  See LICENSE.txt for license information.
 #
 
-/bin/echo "
+PATH="/usr/bin:/bin"
+
+echo "
 Preparing..."
 if [ -w /Applications ]; then
     cd /Applications
 else
-    /bin/mkdir -p ~/Applications
+    mkdir -p ~/Applications
     cd ~/Applications
 fi
 
-/bin/echo "Downloading..."
-/usr/bin/curl --silent --remote-name --location https://nightly.link/F1248/Genius/workflows/Build-Genius/main/Genius.zip
+echo "Downloading..."
+curl --silent --remote-name --location https://nightly.link/F1248/Genius/workflows/Build-Genius/main/Genius.zip
 
-/bin/echo "Installing..."
-/usr/bin/unzip -q -o Genius.zip
-/usr/bin/unzip -q -o Genius.zip
+echo "Installing..."
+unzip -q -o Genius.zip
+unzip -q -o Genius.zip
 if [ ! -e /System/Library/CoreServices/Finder.app ]; then
-    /bin/echo "
-export PATH=\"$(/bin/pwd)/Genius.app/Contents/MacOS:\$PATH\"" >> ~/.bash_profile
+    echo "
+export PATH=\"$(pwd)/Genius.app/Contents/MacOS:\$PATH\"" >> ~/.bash_profile
 fi
 
-/bin/echo "Cleaning up..."
-/bin/rm Genius.zip
+echo "Cleaning up..."
+rm Genius.zip
 
-/bin/echo "Opening..."
+echo "Opening..."
 if [ -e /usr/bin/open ]; then
-    /usr/bin/open Genius.app
+    open Genius.app
 else
     Genius.app/Contents/MacOS/Genius
 fi
 
-/bin/echo "Done."
+echo "Done."
