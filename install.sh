@@ -18,7 +18,7 @@ else
 fi
 
 /bin/echo "Downloading..."
-/usr/bin/curl --silent --location https://nightly.link/F1248/Genius/workflows/Build-Genius/main/Genius.zip --output Genius.zip
+/usr/bin/curl --silent --remote-name --location https://nightly.link/F1248/Genius/workflows/Build-Genius/main/Genius.zip
 
 /bin/echo "Installing..."
 /usr/bin/unzip -q -o Genius.zip

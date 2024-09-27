@@ -40,7 +40,7 @@ jobs:
 
       - name: Install SwiftFormat
         run: |
-          /usr/bin/curl --location https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip --output swiftformat.zip
+          /usr/bin/curl --remote-name --location https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip
           /usr/bin/unzip swiftformat.zip
           /usr/bin/sudo /bin/mv swiftformat /usr/local/bin
           /bin/echo "SwiftFormat $(/usr/local/bin/swiftformat --version) installed"
@@ -50,7 +50,7 @@ jobs:
 
       - name: Install SwiftLint
         run: |
-          /usr/bin/curl --location https://github.com/realm/SwiftLint/releases/latest/download/SwiftLint.pkg --output SwiftLint.pkg
+          /usr/bin/curl --remote-name --location https://github.com/realm/SwiftLint/releases/latest/download/SwiftLint.pkg
           /usr/bin/sudo /usr/sbin/installer -package SwiftLint.pkg -target /
           /bin/echo "SwiftLint $(/usr/local/bin/swiftlint version) installed"
 
