@@ -10,6 +10,8 @@
 - [Installation](#installation)
     - [Manuelle Installation](#manuelle-installation-in-recoveryos-nicht-möglich)
     - [Befehlszeilen-Installation](#befehlszeilen-installation)
+- [Urheberrecht](#urheberrecht)
+- [Lizenz](#lizenz)
 
 ## Anforderungen:
 
@@ -54,8 +56,8 @@ curl https://f1248.github.io/deployment-target-macOS-13 | sh
 
 Um Genius in recoveryOS zu öffnen, führe einfach `genius` im Terminal aus.
 
-# Urheberrecht
+## Urheberrecht
 © 2024 F1248 <f1248@mailbox.org>
 
-# Lizenz
+## Lizenz
 Siehe [LICENSE.txt](LICENSE.txt) (in Englisch) für Lizenzinformationen.
