@@ -23,6 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return dockMenu
     }
 
+    @MainActor
     @objc
     func changeTab(_ sender: NSMenuItem) {
         sharedData.contentViewSelectedTabIndex = sender.tag

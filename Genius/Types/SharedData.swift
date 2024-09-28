@@ -13,4 +13,4 @@ class SharedData: ObservableObject {
     @Published var contentViewSelectedTabIndex = 0 // swiftlint:disable:this explicit_type_interface
 }
 
-nonisolated(unsafe) let sharedData = SharedData()
+@MainActor let sharedData = SharedData()
