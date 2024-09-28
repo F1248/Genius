@@ -6,6 +6,7 @@
 //  See LICENSE.txt for license information.
 //
 
+import _Concurrency
 import AppKit
 import ObjectiveC
 
