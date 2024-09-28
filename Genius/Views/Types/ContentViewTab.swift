@@ -39,7 +39,7 @@ enum ContentViewTab: String, CaseIterable, Identifiable {
 
     func button(viewInvalidator _: Any? = nil) -> some View {
         Button {
-            sharedData.selectedTabIndex = index
+            sharedData.contentViewSelectedTabIndex = index
         } label: {
             Label(localizedStringKey, variesByInterfaceMode: variesByInterfaceMode)
         }

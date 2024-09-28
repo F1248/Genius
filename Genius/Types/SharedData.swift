@@ -10,7 +10,7 @@ import Foundation
 
 class SharedData: ObservableObject {
 
-    @Published var selectedTabIndex = 0 // swiftlint:disable:this explicit_type_interface
+    @Published var contentViewSelectedTabIndex = 0 // swiftlint:disable:this explicit_type_interface
 }
 
 nonisolated(unsafe) let sharedData = SharedData()

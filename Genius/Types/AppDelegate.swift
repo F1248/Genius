@@ -25,6 +25,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc
     func changeTab(_ sender: NSMenuItem) {
-        sharedData.selectedTabIndex = sender.tag
+        sharedData.contentViewSelectedTabIndex = sender.tag
     }
 }
