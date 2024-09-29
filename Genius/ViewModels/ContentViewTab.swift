@@ -21,19 +21,19 @@ enum ContentViewTab: String, CaseIterable, Identifiable {
     var localizedString: String { rawValue.localized }
     var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
 
+    var variesByInterfaceMode: Bool {
+        switch self {
+        case .systemInformation: true
+        default: false
+        }
+    }
+
     var content: AnyView {
         switch self {
         case .home: AnyView(HomeView())
         case .systemInformation: AnyView(SystemInformationView())
         case .maintenance: AnyView(MaintenanceView())
         case .settings: AnyView(SettingsView())
-        }
-    }
-
-    var variesByInterfaceMode: Bool {
-        switch self {
-        case .systemInformation: true
-        default: false
         }
     }
 
