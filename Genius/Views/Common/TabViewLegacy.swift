@@ -30,7 +30,7 @@ struct TabViewLegacy: View {
         Picker(selection: selectedTabIndexParameter ?? $selectedTabIndexPrivate) {
             ForEach(tabs) { tab in
                 tab.title
-                    .tag(tabs.firstIndex(of: tab)!) // swiftlint:disable:this force_unwrapping
+                    .tag(tabs.firstIndex(of: tab))
             }
         }
         .pickerStyle(.segmented)
