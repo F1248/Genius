@@ -17,7 +17,7 @@ struct ContentView: View {
 
     var body: some View {
         if #available(macOS 15, *) {
-            TabView(selection: $observedSharedData.selectedTabIndex) {
+            TabView(selection: $observedSharedData.contentViewSelectedTabIndex) {
                 ForEach(ContentViewTab.allCases) { tab in
                     Tab(
                         tab.localizedStringKey,
@@ -29,7 +29,7 @@ struct ContentView: View {
             }
             .frame(minWidth: 686, minHeight: 256)
         } else {
-            TabViewLegacy(selection: $observedSharedData.selectedTabIndex, entireWindow: true) {
+            TabViewLegacy(selection: $observedSharedData.contentViewSelectedTabIndex, entireWindow: true) {
                 ContentViewTab.allCases.map { tab in
                     TabLegacy(
                         tab.localizedStringKey,
