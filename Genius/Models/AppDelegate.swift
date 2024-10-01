@@ -6,6 +6,7 @@
 //  See LICENSE.txt for license information.
 //
 
+import _Concurrency
 import AppKit
 import ObjectiveC
 
@@ -23,8 +24,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return dockMenu
     }
 
+    @MainActor
     @objc
     func changeTab(_ sender: NSMenuItem) {
-        sharedData.selectedTabIndex = sender.tag
+        sharedData.contentViewSelectedTabIndex = sender.tag
     }
 }
