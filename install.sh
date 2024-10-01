@@ -28,7 +28,7 @@ unzip -q -o Genius.zip
 unzip -q -o Genius.zip
 if [ ! -e /System/Library/CoreServices/Finder.app ]; then
     echo "
-export PATH=\"$(pwd)/Genius.app/Contents/MacOS:\$PATH\"" >> ~/.bash_profile
+export PATH=\"${PWD}/Genius.app/Contents/MacOS:\$PATH\"" >> ~/.bash_profile
 fi
 
 echo "Cleaning up..."
