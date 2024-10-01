@@ -19,13 +19,6 @@ struct TabViewLegacy: View {
 
     var selectedTab: TabLegacy { tabs[selectedTabIndexParameter?.wrappedValue ?? selectedTabIndexPrivate] }
 
-    // swiftlint:disable:next type_contents_order
-    init?(selection: Binding<Int>? = nil, entireWindow: Bool = false, @TabContentBuilder content: () -> [TabLegacy]) {
-        self.selectedTabIndexParameter = selection
-        self.entireWindow = entireWindow
-        self.tabs = content()
-    }
-
     var picker: some View {
         Picker(selection: selectedTabIndexParameter ?? $selectedTabIndexPrivate) {
             ForEach(tabs) { tab in
@@ -48,6 +41,12 @@ struct TabViewLegacy: View {
                 .fixedSize()
             selectedTab.content
         }
+    }
+
+    init(selection: Binding<Int>? = nil, entireWindow: Bool = false, @TabContentBuilder content: () -> [TabLegacy]) {
+        self.selectedTabIndexParameter = selection
+        self.entireWindow = entireWindow
+        self.tabs = content()
     }
 }
 
