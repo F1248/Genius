@@ -16,7 +16,7 @@ struct ContentView: View {
     var interfaceMode = Settings.InterfaceMode()
 
     var body: some View {
-        TabView(selection: $observedSharedData.selectedTabIndex) {
+        TabView(selection: $observedSharedData.contentViewSelectedTabIndex) {
             ForEach(ContentViewTab.allCases) { tab in
                 Tab(
                     tab.localizedStringKey,
