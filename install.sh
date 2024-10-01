@@ -9,14 +9,15 @@
 #
 
 PATH="/usr/bin:/bin"
+set -e
 
 echo "
 Preparing..."
 if [ -w /Applications ]; then
-    cd /Applications || exit
+    cd /Applications
 else
     mkdir -p ~/Applications
-    cd ~/Applications || exit
+    cd ~/Applications
 fi
 
 echo "Downloading..."
