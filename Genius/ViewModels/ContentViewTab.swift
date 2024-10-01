@@ -21,6 +21,13 @@ enum ContentViewTab: String, CaseIterable, Identifiable {
     var localizedString: String { rawValue.localized }
     var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
 
+    var variesByInterfaceMode: Bool {
+        switch self {
+        case .systemInformation: true
+        default: false
+        }
+    }
+
     var content: AnyView {
         switch self {
         case .home: AnyView(HomeView())
@@ -30,16 +37,9 @@ enum ContentViewTab: String, CaseIterable, Identifiable {
         }
     }
 
-    var variesByInterfaceMode: Bool {
-        switch self {
-        case .systemInformation: true
-        default: false
-        }
-    }
-
     func button(viewInvalidator _: Any? = nil) -> some View {
         Button {
-            sharedData.selectedTabIndex = index
+            sharedData.contentViewSelectedTabIndex = index
         } label: {
             Label(localizedStringKey, variesByInterfaceMode: variesByInterfaceMode)
         }
