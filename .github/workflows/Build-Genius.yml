@@ -83,3 +83,14 @@ jobs:
         with:
           name: Genius
           path: Genius.zip
+
+      - name: Zip Debug Symbols
+        run: |
+          mv build/Release/Genius.app.dSYM Genius.app.dSYM
+          zip --recurse-paths DebugSymbols.zip Genius.app.dSYM
+
+      - name: Upload Debug Symbols
+        uses: actions/upload-artifact@main
+        with:
+          name: Debug Symbols
+          path: DebugSymbols.zip
