@@ -34,6 +34,7 @@ struct ContentView: View {
                     TabLegacy(
                         tab.localizedStringKey,
                         variesByInterfaceMode: tab.variesByInterfaceMode,
+                        index: tab.index,
                         viewInvalidator: tab.variesByInterfaceMode ? interfaceMode : nil
                     ) { tab.content }
                 }
