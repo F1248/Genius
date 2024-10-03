@@ -30,7 +30,7 @@ struct TabViewLegacy: View {
         Picker(selection: selectedTabIndexParameter ?? $selectedTabIndexPrivate) {
             ForEach(tabs) { tab in
                 tab.title
-                    .tag(tabs.firstIndex(of: tab))
+                    .tag(tab.index)
             }
         }
         .pickerStyle(.segmented)
@@ -53,10 +53,10 @@ struct TabViewLegacy: View {
 
 #Preview("TabViewLegacy in entire window") {
     TabViewLegacy(entireWindow: true) {
-        TabLegacy("Preview Title 1") {
+        TabLegacy("Preview Title 1", index: 0) {
             Text("Preview content 1")
         }
-        TabLegacy("Preview Title 2") {
+        TabLegacy("Preview Title 2", index: 1) {
             Text("Preview content 2")
         }
     }
@@ -65,10 +65,10 @@ struct TabViewLegacy: View {
 
 #Preview {
     TabViewLegacy {
-        TabLegacy("Preview Title 1") {
+        TabLegacy("Preview Title 1", index: 0) {
             Text("Preview content 1")
         }
-        TabLegacy("Preview Title 2") {
+        TabLegacy("Preview Title 2", index: 1) {
             Text("Preview content 2")
         }
     }

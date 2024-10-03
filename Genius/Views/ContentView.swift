@@ -21,8 +21,8 @@ struct ContentView: View {
                 ForEach(ContentViewTab.allCases) { tab in
                     Tab(
                         tab.localizedStringKey,
-                        value: tab.index,
                         variesByInterfaceMode: tab.variesByInterfaceMode,
+                        value: tab.index,
                         viewInvalidator: tab.variesByInterfaceMode ? interfaceMode : nil
                     ) { tab.content }
                 }
@@ -34,6 +34,7 @@ struct ContentView: View {
                     TabLegacy(
                         tab.localizedStringKey,
                         variesByInterfaceMode: tab.variesByInterfaceMode,
+                        index: tab.index,
                         viewInvalidator: tab.variesByInterfaceMode ? interfaceMode : nil
                     ) { tab.content }
                 }
