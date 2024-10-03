@@ -11,7 +11,7 @@ import Foundation
 
 class SharedData: ObservableObject {
 
-    @Published var contentViewSelectedTabIndex = 0 // swiftlint:disable:this explicit_type_interface
+    @Published var selectedTabsIndexes: [String: Int] = [:]
 }
 
 @MainActor let sharedData = SharedData()

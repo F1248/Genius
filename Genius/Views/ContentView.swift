@@ -11,22 +11,9 @@ import SwiftUICore
 
 struct ContentView: View {
 
-    @ObservedObject var observedSharedData: SharedData = sharedData
-    @AppStorage("interfaceMode")
-    var interfaceMode = Settings.InterfaceMode()
-
     var body: some View {
-        TabView(selection: $observedSharedData.contentViewSelectedTabIndex) {
-            ForEach(ContentViewTab.allCases) { tab in
-                Tab(
-                    tab.localizedStringKey,
-                    variesByInterfaceMode: tab.variesByInterfaceMode,
-                    value: tab.index,
-                    viewInvalidator: tab.variesByInterfaceMode ? interfaceMode : nil
-                ) { tab.content }
-            }
-        }
-        .frame(minWidth: 686, minHeight: 256)
+        AdaptingTabView(viewTab: ContentViewTab.self)
+            .frame(minWidth: 686, minHeight: 256)
     }
 }
 
