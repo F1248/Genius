@@ -15,9 +15,14 @@ struct ContentView: View {
     @AppStorage("interfaceMode")
     var interfaceMode = Settings.InterfaceMode()
 
+    var selection: Binding<Int> { Binding(
+        get: { observedSharedData.selectedTabsIndexes[ContentViewTab.id] ?? 0 },
+        set: { observedSharedData.selectedTabsIndexes[ContentViewTab.id] = $0 }
+    ) }
+
     var body: some View {
         if #available(macOS 15, *) {
-            TabView(selection: $observedSharedData.contentViewSelectedTabIndex) {
+            TabView(selection: selection) {
                 ForEach(ContentViewTab.allCases) { tab in
                     Tab(
                         tab.localizedStringKey,
@@ -29,7 +34,7 @@ struct ContentView: View {
             }
             .frame(minWidth: 686, minHeight: 256)
         } else {
-            TabViewLegacy(selection: $observedSharedData.contentViewSelectedTabIndex, entireWindow: true) {
+            TabViewLegacy(selection: selection, entireWindow: true) {
                 ContentViewTab.allCases.map { tab in
                     TabLegacy(
                         tab.localizedStringKey,
