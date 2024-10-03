@@ -19,7 +19,7 @@ extension ViewTab {
 
     var id: Self { self }
     var index: Int { Self.allCases.firstIndex(of: self) as? Int ?? 0 }
-    var localizedString: String { rawValue.localized }
+    var localizedString: String { rawValue.localized(variesByInterfaceMode: variesByInterfaceMode) }
     var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
 
     func button(viewInvalidator _: Any? = nil) -> some View {

@@ -50,10 +50,7 @@ extension SystemInformation {
                 cc=\(serialNumber.dropFirst(8))&\
                 lang=\(Locale.currentLanguageCode ?? "")
                 """
-                guard
-                    let marketingName = Network.transferURL(url)?.between(start: "<configCode>", end: "</configCode>")
-                else { return nil }
-                return marketingName
+                return Network.transferURL(url)?.between(start: "<configCode>", end: "</configCode>")
             }()
         }
 
@@ -67,19 +64,16 @@ extension SystemInformation {
                     static let performance: Int? = cores?.1
                     static let efficiency: Int? = cores?.2
 
-                    static let cores: (Int?, Int?, Int?)? = {
-                        if Model.appleSiliconBased {
+                    static let cores: (Int?, Int?, Int?)? =
+                        if Model.appleSiliconBased { {
                             let components = [Int](
                                 (SystemProfiler.hardware?["number_processors"] as? String)?
                                     .remove("proc ").split(separator: ":")
                             )
                             return (components?[0], components?[1], components?[2])
-                        }
-                        if Model.intelBased {
-                            return (SystemProfiler.hardware?["number_processors"] as? Int, nil, nil)
-                        }
-                        return nil
-                    }()
+                        }() } else if Model.intelBased {
+                            (SystemProfiler.hardware?["number_processors"] as? Int, nil, nil)
+                        } else { nil }
                 }
 
                 static let name: String? =
