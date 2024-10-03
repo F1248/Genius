@@ -14,8 +14,8 @@ extension Tab where Value: Hashable, Content: View {
 
     init(
         _ titleKey: LocalizedStringKey,
-        value: Value,
         variesByInterfaceMode: Bool = false,
+        value: Value = 0,
         viewInvalidator _: Any? = nil,
         content: () -> Content
     ) where Label == SwiftUI.Label<Text, EmptyView> {
