@@ -19,7 +19,7 @@ enum Settings {
         case powerUser = "Power User"
 
         var id: Self { self }
-        var localizedString: String { rawValue.localized }
+        var localizedString: String { rawValue.localized() }
         var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
         var localizationTable: String { "Localizable\(rawValue.remove(" "))" }
 

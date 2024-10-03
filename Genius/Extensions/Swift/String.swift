@@ -7,16 +7,9 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension String {
-
-    var localized: String {
-        if #available(macOS 12, *) {
-            String(localized: LocalizationValue(self))
-        } else {
-            NSLocalizedString(self, comment: "")
-        }
-    }
 
     init?(_ string: (any StringProtocol)?) {
         guard let string else { return nil }
@@ -46,6 +39,16 @@ extension String {
             let endRange = range(of: end, range: startRange..<endIndex)?.lowerBound
         else { return nil }
         return String(self[startRange..<endRange])
+    }
+
+    func localized(variesByInterfaceMode: Bool = false) -> String {
+        @AppStorage("interfaceMode")
+        var interfaceMode = Settings.InterfaceMode()
+        return if #available(macOS 12, *) {
+            String(localized: LocalizationValue(self), table: variesByInterfaceMode ? interfaceMode.localizationTable : nil)
+        } else {
+            NSLocalizedString(self, tableName: variesByInterfaceMode ? interfaceMode.localizationTable : nil, comment: "")
+        }
     }
 }
 
