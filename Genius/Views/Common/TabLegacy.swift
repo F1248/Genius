@@ -13,15 +13,18 @@ struct TabLegacy: Hashable, Identifiable {
 
     let id = UUID()
     let title: Text
+    let index: Int
     let content: AnyView
 
     init(
         _ titleKey: LocalizedStringKey,
         variesByInterfaceMode: Bool = false,
+        index: Int,
         viewInvalidator _: Any? = nil,
         content: () -> any View
     ) {
         self.title = Text(titleKey, variesByInterfaceMode: variesByInterfaceMode)
+        self.index = index
         self.content = AnyView(content())
     }
 
