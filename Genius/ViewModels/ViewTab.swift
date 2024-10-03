@@ -11,7 +11,6 @@ import SwiftUICore
 
 protocol ViewTab: RawRepresentable, CaseIterable, Identifiable, Equatable, Sendable where RawValue == String {
 
-    static var entireWindow: Bool { get }
     var variesByInterfaceMode: Bool { get }
     var content: AnyView { get }
 }
