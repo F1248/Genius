@@ -9,7 +9,8 @@
 import SwiftUI
 import SwiftUICore
 
-protocol ViewTab: RawRepresentable, CaseIterable, Identifiable, Equatable, Sendable where RawValue == String {
+protocol ViewTab: RawRepresentable, CaseIterable, Identifiable, Equatable, Sendable
+where AllCases: RandomAccessCollection, RawValue == String {
 
     static var entireWindow: Bool { get }
     var variesByInterfaceMode: Bool { get }
