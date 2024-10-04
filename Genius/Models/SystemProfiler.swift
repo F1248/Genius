@@ -10,14 +10,14 @@ import Foundation
 
 enum SystemProfiler {
 
-    nonisolated(unsafe) static let firewall = get("Firewall")
-    nonisolated(unsafe) static let hardware = get("Hardware")
-    nonisolated(unsafe) static let software = get("Software")
+    static let firewall = get("Firewall")
+    static let hardware = get("Hardware")
+    static let software = get("Software")
 
-    static func get(_ dataType: String) -> [String: Any]? {
+    static func get(_ dataType: String) -> [String: any Sendable]? {
         let dataType = "SP\(dataType)DataType" // swiftlint:disable:this explicit_type_interface
         return (try? JSONSerialization.jsonOptionalObject(
             with: Data(Process("/usr/sbin/system_profiler", ["-json", dataType])?.runSafe())
-        ) as? [String: [[String: Any]]])?[dataType]?.first
+        ) as? [String: [[String: any Sendable]]])?[dataType]?.first
     }
 }
