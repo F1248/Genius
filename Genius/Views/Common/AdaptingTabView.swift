@@ -18,8 +18,8 @@ struct AdaptingTabView<T: ViewTab>: View {
     var interfaceMode = Settings.InterfaceMode()
 
     var selection: Binding<Int> { Binding(
-        get: { observedSharedData.selectedTabsIndexes[ContentViewTab.id] ?? 0 },
-        set: { observedSharedData.selectedTabsIndexes[ContentViewTab.id] = $0 }
+        get: { observedSharedData.selectedTabsIndexes[viewTab.id] ?? 0 },
+        set: { observedSharedData.selectedTabsIndexes[viewTab.id] = $0 }
     ) }
 
     var body: some View {
