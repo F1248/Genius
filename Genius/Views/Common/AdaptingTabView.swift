@@ -9,7 +9,7 @@
 import SwiftUI
 import SwiftUICore
 
-struct AdaptingTabView<T: ViewTab>: View where T.AllCases: RandomAccessCollection {
+struct AdaptingTabView<T: ViewTab>: View {
 
     let viewTab: T.Type
 
