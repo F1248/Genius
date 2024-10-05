@@ -23,7 +23,7 @@ struct AdaptingTabView<T: ViewTab>: View {
     ) }
 
     var body: some View {
-        if #available(macOS 15, *) {
+        if #available(macOS 15, *), viewTab.entireWindow {
             TabView(selection: selection) {
                 ForEach(viewTab.allCases) { tab in
                     Tab(
