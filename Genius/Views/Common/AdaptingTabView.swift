@@ -35,9 +35,9 @@ struct AdaptingTabView<T: ViewTab>: View {
                 }
             }
         } else {
-            TabViewLegacy(selection: selection, entireWindow: viewTab.entireWindow) {
+            CustomTabView(selection: selection, entireWindow: viewTab.entireWindow) {
                 viewTab.allCases.map { tab in
-                    TabLegacy(
+                    CustomTab(
                         tab.localizedStringKey,
                         variesByInterfaceMode: tab.variesByInterfaceMode,
                         index: tab.index,
