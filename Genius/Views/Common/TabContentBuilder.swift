@@ -9,11 +9,11 @@
 @resultBuilder
 enum TabContentBuilder {
 
-    static func buildBlock(_ tabs: [TabLegacy]) -> [TabLegacy] {
+    static func buildBlock(_ tabs: [CustomTab]) -> [CustomTab] {
         tabs
     }
 
-    static func buildBlock(_ tabs: TabLegacy...) -> [TabLegacy] {
+    static func buildBlock(_ tabs: CustomTab...) -> [CustomTab] {
         tabs
     }
 }
