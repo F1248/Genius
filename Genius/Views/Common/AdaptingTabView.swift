@@ -23,19 +23,28 @@ struct AdaptingTabView<T: ViewTab>: View {
     ) }
 
     var body: some View {
-        TabView(selection: selection) {
-            ForEach(viewTab.allCases) { tab in
-                Tab(
-                    tab.localizedStringKey,
-                    variesByInterfaceMode: tab.variesByInterfaceMode,
-                    value: tab.index,
-                    viewInvalidator: tab.variesByInterfaceMode ? interfaceMode : nil
-                ) { tab.content }
+        if viewTab.entireWindow {
+            TabView(selection: selection) {
+                ForEach(viewTab.allCases) { tab in
+                    Tab(
+                        tab.localizedStringKey,
+                        variesByInterfaceMode: tab.variesByInterfaceMode,
+                        value: tab.index,
+                        viewInvalidator: tab.variesByInterfaceMode ? interfaceMode : nil
+                    ) { tab.content }
+                }
+            }
+        } else {
+            CustomTabView(selection: selection, entireWindow: viewTab.entireWindow) {
+                viewTab.allCases.map { tab in
+                    CustomTab(
+                        tab.localizedStringKey,
+                        variesByInterfaceMode: tab.variesByInterfaceMode,
+                        index: tab.index,
+                        viewInvalidator: tab.variesByInterfaceMode ? interfaceMode : nil
+                    ) { tab.content }
+                }
             }
         }
     }
-}
-
-#Preview("ContentViewTab") {
-    AdaptingTabView(viewTab: ContentViewTab.self)
 }

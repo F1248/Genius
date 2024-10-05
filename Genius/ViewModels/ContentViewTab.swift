@@ -15,6 +15,8 @@ enum ContentViewTab: String, ViewTab {
     case maintenance = "Maintenance"
     case settings = "Settings"
 
+    static let entireWindow = true // swiftlint:disable:this explicit_type_interface
+
     var variesByInterfaceMode: Bool {
         switch self {
         case .systemInformation: true
