@@ -48,7 +48,3 @@ struct AdaptingTabView<T: ViewTab>: View {
         }
     }
 }
-
-#Preview("ContentViewTab") {
-    AdaptingTabView(viewTab: ContentViewTab.self)
-}
