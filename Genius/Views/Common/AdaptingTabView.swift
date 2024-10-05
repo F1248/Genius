@@ -23,7 +23,7 @@ struct AdaptingTabView<T: ViewTab>: View {
     ) }
 
     var body: some View {
-        if #available(macOS 15, *) {
+        if #available(macOS 15, *), viewTab.entireWindow {
             TabView(selection: selection) {
                 ForEach(viewTab.allCases) { tab in
                     Tab(
@@ -35,9 +35,9 @@ struct AdaptingTabView<T: ViewTab>: View {
                 }
             }
         } else {
-            TabViewLegacy(selection: selection, entireWindow: viewTab.entireWindow) {
+            CustomTabView(selection: selection, entireWindow: viewTab.entireWindow) {
                 viewTab.allCases.map { tab in
-                    TabLegacy(
+                    CustomTab(
                         tab.localizedStringKey,
                         variesByInterfaceMode: tab.variesByInterfaceMode,
                         index: tab.index,
@@ -47,8 +47,4 @@ struct AdaptingTabView<T: ViewTab>: View {
             }
         }
     }
-}
-
-#Preview("ContentViewTab") {
-    AdaptingTabView(viewTab: ContentViewTab.self)
 }

@@ -1,5 +1,5 @@
 //
-//  TabLegacy.swift
+//  CustomTab.swift
 //  Genius
 //
 //  © 2024 F1248 <f1248@mailbox.org>
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUICore
 
-struct TabLegacy: Hashable, Identifiable {
+struct CustomTab: Hashable, Identifiable {
 
     let id = UUID()
     let title: Text
