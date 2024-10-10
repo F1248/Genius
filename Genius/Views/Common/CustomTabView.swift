@@ -13,7 +13,7 @@ struct CustomTabView: View {
 
     let entireWindow: Bool
     let tabs: [CustomTab]
-    var selectedTabIndexParameter: Binding<Int>?
+    let selectedTabIndexParameter: Binding<Int>?
 
     @State private var selectedTabIndexPrivate = 0 // swiftlint:disable:this explicit_type_interface
 
