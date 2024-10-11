@@ -16,7 +16,6 @@ extension Collection {
 extension Optional where Wrapped: Collection {
 
     var isEmpty: Bool {
-        guard let self else { return true }
-        return self.isEmpty
+        self?.isEmpty ?? true
     }
 }
