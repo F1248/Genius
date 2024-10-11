@@ -16,6 +16,7 @@ enum ContentViewTab: String, ViewTab {
     case settings = "Settings"
 
     static let entireWindow = true // swiftlint:disable:this explicit_type_interface
+    static let keyboardShortcutModifiers: EventModifiers = .command
 
     var variesByInterfaceMode: Bool {
         switch self {
