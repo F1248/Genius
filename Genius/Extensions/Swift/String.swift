@@ -55,7 +55,6 @@ extension String {
 extension String? {
 
     func hasPrefix(_ prefix: any StringProtocol) -> Bool {
-        guard let self else { return false }
-        return self.hasPrefix(prefix)
+        self?.hasPrefix(prefix) ?? false
     }
 }
