@@ -6,12 +6,7 @@
 //  See LICENSE.txt for license information.
 //
 
-extension Array {
-
-    subscript(index: Index) -> Element? {
-        indices.contains(index) ? self[index] : nil
-    }
-}
+extension Array {}
 
 extension [Int] {
 

@@ -6,7 +6,12 @@
 //  See LICENSE.txt for license information.
 //
 
-extension Collection {}
+extension Collection {
+
+    subscript(safe index: Index) -> Element? {
+        indices.contains(index) ? self[index] : nil
+    }
+}
 
 extension Optional where Wrapped: Collection {
 
