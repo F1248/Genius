@@ -72,7 +72,7 @@ extension SystemInformation {
                                 (SystemProfiler.hardware?["number_processors"] as? String)?
                                     .remove("proc ").split(separator: ":")
                             )
-                            return (components?[0], components?[1], components?[2])
+                            return (components?[safe: 0], components?[safe: 1], components?[safe: 2])
                         }() } else if Model.intelBased {
                             (SystemProfiler.hardware?["number_processors"] as? Int, nil, nil)
                         } else { nil }

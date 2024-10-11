@@ -13,11 +13,11 @@ struct CustomTabView: View {
 
     let entireWindow: Bool
     let tabs: [CustomTab]
-    var selectedTabIndexParameter: Binding<Int>?
+    let selectedTabIndexParameter: Binding<Int>?
 
     @State private var selectedTabIndexPrivate = 0 // swiftlint:disable:this explicit_type_interface
 
-    var selectedTab: CustomTab { tabs[selectedTabIndexParameter?.wrappedValue ?? selectedTabIndexPrivate] }
+    var selectedTab: CustomTab? { tabs[safe: selectedTabIndexParameter?.wrappedValue ?? selectedTabIndexPrivate] }
 
     // swiftlint:disable:next type_contents_order
     init(selection: Binding<Int>? = nil, entireWindow: Bool = false, @TabContentBuilder content: () -> [CustomTab]) {
@@ -38,7 +38,7 @@ struct CustomTabView: View {
 
     var body: some View {
         if entireWindow {
-            selectedTab.content
+            selectedTab?.content
                 .toolbar {
                     ToolbarItem(placement: .principal) { picker }
                 }
@@ -46,7 +46,7 @@ struct CustomTabView: View {
             picker
                 .controlSize(.large)
                 .fixedSize()
-            selectedTab.content
+            selectedTab?.content
         }
     }
 }
