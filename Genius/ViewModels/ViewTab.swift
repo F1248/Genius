@@ -13,6 +13,7 @@ protocol ViewTab: RawRepresentable, CaseIterable, Identifiable, Equatable, Senda
 where AllCases: RandomAccessCollection, RawValue == String {
 
     static var entireWindow: Bool { get }
+    static var keyboardShortcutModifiers: EventModifiers { get }
     var variesByInterfaceMode: Bool { get }
     var content: AnyView { get }
 }
@@ -31,6 +32,9 @@ extension ViewTab {
         } label: {
             Label(localizedStringKey, variesByInterfaceMode: variesByInterfaceMode)
         }
-        .keyboardShortcut(self as? ContentViewTab == .settings ? "," : KeyEquivalent(Character(String(index + 1))))
+        .keyboardShortcut(
+            self as? ContentViewTab == .settings ? "," : KeyEquivalent(Character(String(index + 1))),
+            modifiers: Self.keyboardShortcutModifiers
+        )
     }
 }
