@@ -11,8 +11,10 @@ import Foundation
 extension Measurement {
 
     init?(_ string: Any?) {
-        guard let components = (string as? String)?.split(separator: " "), components.count == 2 else { return nil }
-        guard let value = Double(components.first) else { return nil }
+        guard
+            let components = (string as? String)?.split(separator: " "), components.count == 2,
+            let value = Double(components.first)
+        else { return nil }
         if let unit = UnitFrequency?(components.last) as? UnitType {
             self.init(value: value, unit: unit)
         } else if let unit = UnitInformationStorage?(components.last) as? UnitType {
