@@ -11,8 +11,7 @@ extension Array {}
 extension [Int] {
 
     init?(_ strings: [any StringProtocol]?) {
-        guard let strings else { return nil }
-        self = strings.compactMap(Int.init)
-        guard strings.count == count else { return nil }
+        guard let map = strings?.map(Int.init), !map.contains(nil) else { return nil }
+        self = map.compactMap { $0 }
     }
 }
