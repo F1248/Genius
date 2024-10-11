@@ -16,12 +16,12 @@ struct AppCommands: Commands {
 
     var body: some Commands {
         CommandGroup(replacing: .appSettings) {
-            ContentViewTab.settings.button(viewInvalidator: interfaceMode)
+            TabViewButton(viewTab: ContentViewTab.settings, viewInvalidator: interfaceMode)
         }
         CommandGroup(replacing: .newItem) { EmptyView() }
         CommandGroup(before: .toolbar) {
             ForEach(ContentViewTab.allCases.filter { $0 != .settings }) { tab in
-                tab.button(viewInvalidator: interfaceMode)
+                TabViewButton(viewTab: tab, viewInvalidator: interfaceMode)
             }
             Divider()
         }
