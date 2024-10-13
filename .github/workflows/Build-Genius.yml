@@ -71,7 +71,7 @@ jobs:
 
       - name: Zip Genius
         run: |
-          mv build/Release/Genius.app Genius.app
+          mv build/Release/Genius.app .
           zip --recurse-paths Genius.zip Genius.app
 
       - name: Attest Build Provenance
@@ -86,7 +86,7 @@ jobs:
 
       - name: Zip Debug Symbols
         run: |
-          mv build/Release/Genius.app.dSYM Genius.app.dSYM
+          mv build/Release/Genius.app.dSYM .
           zip --recurse-paths DebugSymbols.zip Genius.app.dSYM
 
       - name: Upload Debug Symbols
