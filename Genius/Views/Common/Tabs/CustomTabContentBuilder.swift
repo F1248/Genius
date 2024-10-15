@@ -1,5 +1,5 @@
 //
-//  TabContentBuilder.swift
+//  CustomTabContentBuilder.swift
 //  Genius
 //
 //  © 2024 F1248 <f1248@mailbox.org>
@@ -7,7 +7,7 @@
 //
 
 @resultBuilder
-enum TabContentBuilder {
+enum CustomTabContentBuilder {
 
     static func buildBlock(_ tabs: [CustomTab]) -> [CustomTab] {
         tabs
