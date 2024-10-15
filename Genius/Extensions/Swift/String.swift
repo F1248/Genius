@@ -44,10 +44,11 @@ extension String {
     func localized(variesByInterfaceMode: Bool = false) -> String {
         @AppStorage("interfaceMode")
         var interfaceMode = Settings.InterfaceMode()
+        let tableName: String? = variesByInterfaceMode ? interfaceMode.localizationTable : nil
         return if #available(macOS 12, *) {
-            String(localized: LocalizationValue(self), table: variesByInterfaceMode ? interfaceMode.localizationTable : nil)
+            String(localized: LocalizationValue(self), table: tableName)
         } else {
-            NSLocalizedString(self, tableName: variesByInterfaceMode ? interfaceMode.localizationTable : nil, comment: "")
+            NSLocalizedString(self, tableName: tableName, comment: "")
         }
     }
 }
