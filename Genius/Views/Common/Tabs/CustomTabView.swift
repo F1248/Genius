@@ -20,7 +20,7 @@ struct CustomTabView: View {
     var selectedTab: CustomTab? { tabs[safe: selectedTabIndexParameter?.wrappedValue ?? selectedTabIndexPrivate] }
 
     // swiftlint:disable:next type_contents_order
-    init(selection: Binding<Int>? = nil, entireWindow: Bool = false, @TabContentBuilder content: () -> [CustomTab]) {
+    init(selection: Binding<Int>? = nil, entireWindow: Bool = false, @CustomTabContentBuilder content: () -> [CustomTab]) {
         self.selectedTabIndexParameter = selection
         self.entireWindow = entireWindow
         self.tabs = content()
