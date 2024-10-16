@@ -35,10 +35,10 @@ extension String {
 
     func between(start: String, end: String) -> String? {
         guard
-            let startRange = range(of: start)?.upperBound,
-            let endRange = range(of: end, range: startRange..<endIndex)?.lowerBound
+            let startIndex = range(of: start)?.upperBound,
+            let endIndex = range(of: end, range: startIndex..<endIndex)?.lowerBound
         else { return nil }
-        return String(self[startRange..<endRange])
+        return String(self[startIndex..<endIndex])
     }
 
     func localized(variesByInterfaceMode: Bool = false) -> String {
