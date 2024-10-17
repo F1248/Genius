@@ -14,8 +14,6 @@ struct AdaptingTabView<T: ViewTab>: View {
     let viewTab: T.Type
 
     @ObservedObject var observedSharedData: SharedData = sharedData
-    @AppStorage("interfaceMode")
-    var interfaceMode = Settings.InterfaceMode()
 
     var selection: Binding<Int> { Binding(
         get: { observedSharedData.selectedTabsIndexes[viewTab.id] ?? 0 },
@@ -29,8 +27,7 @@ struct AdaptingTabView<T: ViewTab>: View {
                     Tab(
                         tab.localizedStringKey,
                         variesByInterfaceMode: tab.variesByInterfaceMode,
-                        value: tab.index,
-                        viewInvalidator: tab.variesByInterfaceMode ? interfaceMode : nil
+                        value: tab.index
                     ) { tab.content }
                 }
             }
@@ -40,8 +37,7 @@ struct AdaptingTabView<T: ViewTab>: View {
                     CustomTab(
                         tab.localizedStringKey,
                         variesByInterfaceMode: tab.variesByInterfaceMode,
-                        index: tab.index,
-                        viewInvalidator: tab.variesByInterfaceMode ? interfaceMode : nil
+                        index: tab.index
                     ) { tab.content }
                 }
             }

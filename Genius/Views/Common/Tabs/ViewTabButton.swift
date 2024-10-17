@@ -12,7 +12,6 @@ import SwiftUICore
 struct ViewTabButton<T: ViewTab>: View {
 
     let viewTab: T
-    var viewInvalidator: Any?
 
     var body: some View {
         Button {

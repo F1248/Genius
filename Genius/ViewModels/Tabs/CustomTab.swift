@@ -6,6 +6,7 @@
 //  See LICENSE.txt for license information.
 //
 
+import _Concurrency
 import Foundation
 import SwiftUICore
 
@@ -16,11 +17,11 @@ struct CustomTab: Hashable, Identifiable {
     let index: Int
     let content: AnyView
 
+    @MainActor
     init(
         _ titleKey: LocalizedStringKey,
         variesByInterfaceMode: Bool = false,
         index: Int,
-        viewInvalidator _: Any? = nil,
         content: () -> any View
     ) {
         self.title = Text(titleKey, variesByInterfaceMode: variesByInterfaceMode)
