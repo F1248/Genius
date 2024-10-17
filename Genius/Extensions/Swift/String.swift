@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftUI
 
 extension String {
 
@@ -42,9 +41,10 @@ extension String {
     }
 
     func localized(variesByInterfaceMode: Bool = false) -> String {
-        @AppStorage("interfaceMode")
-        var interfaceMode = Settings.InterfaceMode()
-        return String(localized: LocalizationValue(self), table: variesByInterfaceMode ? interfaceMode.localizationTable : nil)
+        String(
+            localized: LocalizationValue(self),
+            table: variesByInterfaceMode ? settings.interfaceMode.localizationTable : nil
+        )
     }
 }
 
