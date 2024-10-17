@@ -24,6 +24,6 @@ struct Text: View {
     }
 
     var body: some View {
-        SwiftUI.Text(key, tableName: variesByInterfaceMode ? interfaceMode.localizationTable : nil)
+        SwiftUICore.Text(key, tableName: variesByInterfaceMode ? interfaceMode.localizationTable : nil)
     }
 }
