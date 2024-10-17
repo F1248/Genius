@@ -11,17 +11,14 @@ import SwiftUICore
 
 struct AppCommands: Commands {
 
-    @AppStorage("interfaceMode")
-    var interfaceMode = Settings.InterfaceMode()
-
     var body: some Commands {
         CommandGroup(replacing: .appSettings) {
-            TabViewButton(viewTab: ContentViewTab.settings, viewInvalidator: interfaceMode)
+            ViewTabButton(viewTab: ContentViewTab.settings)
         }
         CommandGroup(replacing: .newItem) { EmptyView() }
         CommandGroup(before: .toolbar) {
             ForEach(ContentViewTab.allCases.filter { $0 != .settings }) { tab in
-                TabViewButton(viewTab: tab, viewInvalidator: interfaceMode)
+                ViewTabButton(viewTab: tab)
             }
             Divider()
         }
