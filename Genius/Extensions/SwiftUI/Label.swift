@@ -6,11 +6,13 @@
 //  See LICENSE.txt for license information.
 //
 
+import _Concurrency
 import SwiftUI
 import SwiftUICore
 
 extension Label {
 
+    @MainActor
     init(_ titleKey: LocalizedStringKey, variesByInterfaceMode: Bool = false) where Title == Text, Icon == EmptyView {
         self.init {
             Text(titleKey, variesByInterfaceMode: variesByInterfaceMode)
