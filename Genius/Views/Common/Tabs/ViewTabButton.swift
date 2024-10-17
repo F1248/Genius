@@ -1,5 +1,5 @@
 //
-//  TabViewButton.swift
+//  ViewTabButton.swift
 //  Genius
 //
 //  © 2024 F1248 <f1248@mailbox.org>
@@ -9,10 +9,9 @@
 import SwiftUI
 import SwiftUICore
 
-struct TabViewButton<T: ViewTab>: View {
+struct ViewTabButton<T: ViewTab>: View {
 
     let viewTab: T
-    var viewInvalidator: Any?
 
     var body: some View {
         Button {
