@@ -11,8 +11,8 @@ import SwiftUICore
 
 struct SettingsView: View {
 
-    @AppStorage("interfaceMode")
-    var interfaceMode = Settings.InterfaceMode()
+    @AppStorage(Settings.InterfaceMode.key)
+    var interfaceMode: Settings.InterfaceMode = settings.interfaceMode
 
     var body: some View {
         VStack {
