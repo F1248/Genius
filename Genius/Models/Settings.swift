@@ -6,10 +6,7 @@
 //  See LICENSE.txt for license information.
 //
 
-import SwiftUI
-import SwiftUICore
-
-struct Settings {
+enum Settings {
 
     enum InterfaceMode: String, CaseIterable, Identifiable, Setting {
 
@@ -19,18 +16,9 @@ struct Settings {
         case advanced = "Advanced"
         case powerUser = "Power User"
 
-        static let key = "interfaceMode" // swiftlint:disable:this explicit_type_interface
-
         var id: Self { self }
-        var localizedString: String { rawValue.localized() }
-        var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
         var localizationTable: String { "Localizable\(rawValue.remove(" "))" }
 
         init() { self = .normal }
     }
-
-    @AppStorage(InterfaceMode.key)
-    var interfaceMode = InterfaceMode()
 }
-
-let settings = Settings()

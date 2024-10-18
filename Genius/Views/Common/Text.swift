@@ -15,7 +15,7 @@ struct Text: View {
     let variesByInterfaceMode: Bool
 
     @AppStorage(Settings.InterfaceMode.key)
-    var interfaceMode: Settings.InterfaceMode = settings.interfaceMode
+    var interfaceMode = Settings.InterfaceMode.value // swiftlint:disable:this explicit_type_interface
 
     // swiftlint:disable:next type_contents_order
     init(_ key: LocalizedStringKey, variesByInterfaceMode: Bool = false) {
