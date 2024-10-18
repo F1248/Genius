@@ -43,7 +43,7 @@ extension String {
     func localized(variesByInterfaceMode: Bool = false) -> String {
         String(
             localized: LocalizationValue(self),
-            table: variesByInterfaceMode ? settings.interfaceMode.localizationTable : nil
+            table: variesByInterfaceMode ? Settings.InterfaceMode.value.localizationTable : nil
         )
     }
 }
