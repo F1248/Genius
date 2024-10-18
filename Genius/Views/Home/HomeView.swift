@@ -16,7 +16,7 @@ struct HomeView: View {
             Text("Genius")
                 .font(.largeTitle)
                 .padding()
-            Text("Interface Mode: \(settings.interfaceMode.localizedString)")
+            Text("Interface Mode: \(Settings.InterfaceMode.value.localizedString)")
                 .font(.subheadline)
         }
     }
