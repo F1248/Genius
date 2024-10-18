@@ -9,7 +9,7 @@
 import SwiftUI
 import SwiftUICore
 
-struct Settings {
+enum Settings {
 
     enum InterfaceMode: String, CaseIterable, Identifiable, Setting {
 
@@ -26,11 +26,14 @@ struct Settings {
         var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
         var localizationTable: String { "Localizable\(rawValue.remove(" "))" }
 
+        static var value: Self {
+            // swiftformat:disable redundantProperty
+            @AppStorage(key)
+            var value = Self() // swiftlint:disable:this direct_return
+            // swiftformat:enable redundantProperty
+            return value
+        }
+
         init() { self = .normal }
     }
-
-    @AppStorage(InterfaceMode.key)
-    var interfaceMode = InterfaceMode()
 }
-
-let settings = Settings()

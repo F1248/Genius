@@ -41,7 +41,7 @@ extension String {
     }
 
     func localized(variesByInterfaceMode: Bool = false) -> String {
-        let tableName: String? = variesByInterfaceMode ? settings.interfaceMode.localizationTable : nil
+        let tableName: String? = variesByInterfaceMode ? Settings.InterfaceMode.value.localizationTable : nil
         return if #available(macOS 12, *) {
             String(localized: LocalizationValue(self), table: tableName)
         } else {
