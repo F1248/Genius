@@ -1,5 +1,5 @@
 //
-//  Text.swift
+//  VaryingText.swift
 //  Genius
 //
 //  © 2024 F1248 <f1248@mailbox.org>
@@ -9,7 +9,7 @@
 import SwiftUI
 import SwiftUICore
 
-struct Text: View {
+struct VaryingText: View {
 
     let key: LocalizedStringKey
     let variesByInterfaceMode: Bool
@@ -24,6 +24,6 @@ struct Text: View {
     }
 
     var body: some View {
-        SwiftUICore.Text(key, tableName: variesByInterfaceMode ? interfaceMode.localizationTable : nil)
+        Text(key, tableName: variesByInterfaceMode ? interfaceMode.localizationTable : nil)
     }
 }
