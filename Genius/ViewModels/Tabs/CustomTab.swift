@@ -13,7 +13,7 @@ import SwiftUICore
 struct CustomTab: Hashable, Identifiable {
 
     let id = UUID()
-    let title: Text
+    let title: VaryingText
     let index: Int
     let content: AnyView
 
@@ -24,7 +24,7 @@ struct CustomTab: Hashable, Identifiable {
         index: Int,
         content: () -> any View
     ) {
-        self.title = Text(titleKey, variesByInterfaceMode: variesByInterfaceMode)
+        self.title = VaryingText(titleKey, variesByInterfaceMode: variesByInterfaceMode)
         self.index = index
         self.content = AnyView(content())
     }

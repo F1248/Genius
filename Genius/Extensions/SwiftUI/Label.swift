@@ -13,9 +13,9 @@ import SwiftUICore
 extension Label {
 
     @MainActor
-    init(_ titleKey: LocalizedStringKey, variesByInterfaceMode: Bool = false) where Title == Text, Icon == EmptyView {
+    init(_ titleKey: LocalizedStringKey, variesByInterfaceMode: Bool = false) where Title == VaryingText, Icon == EmptyView {
         self.init {
-            Text(titleKey, variesByInterfaceMode: variesByInterfaceMode)
+            VaryingText(titleKey, variesByInterfaceMode: variesByInterfaceMode)
         } icon: {
             EmptyView()
         }
