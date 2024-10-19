@@ -18,7 +18,6 @@ disabled_rules:
     - sorted_enum_cases
     - switch_case_on_newline
     - unused_capture_list
-    - unused_declaration
     - vertical_whitespace_between_cases
     - vertical_whitespace_opening_braces
 
@@ -55,5 +54,7 @@ trailing_whitespace:
     ignores_comments: false
 type_name:
     min_length: 2
+unused_declaration:
+    include_public_and_open: true
 unused_import:
     require_explicit_imports: true
