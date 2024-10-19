@@ -12,7 +12,7 @@ import SwiftUICore
 struct SettingsView: View {
 
     @AppStorage(Settings.InterfaceMode.key)
-    var interfaceMode = Settings.InterfaceMode.value // swiftlint:disable:this explicit_type_interface
+    var interfaceMode = Settings.InterfaceMode()
 
     var body: some View {
         VStack {
