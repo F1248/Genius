@@ -19,7 +19,7 @@ extension Tab where Value: Hashable, Content: View {
         variesByInterfaceMode: Bool = false,
         value: Value,
         content: () -> Content
-    ) where Label == SwiftUI.Label<Text, EmptyView> {
+    ) where Label == SwiftUI.Label<VaryingText, EmptyView> {
         self.init(value: value, content: content) {
             Label(titleKey, variesByInterfaceMode: variesByInterfaceMode)
         }
