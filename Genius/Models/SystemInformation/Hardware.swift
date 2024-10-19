@@ -10,6 +10,7 @@ import Foundation
 
 extension SystemInformation {
 
+    // swiftlint:disable unused_declaration
     enum Hardware {
 
         enum Model {
@@ -94,4 +95,5 @@ extension SystemInformation {
             static let provisioningUDID: String? = SystemProfiler.hardware?["provisioning_UDID"] as? String
         }
     }
+    // swiftlint:enable unused_declaration
 }
