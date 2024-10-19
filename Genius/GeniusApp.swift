@@ -12,7 +12,7 @@ import SwiftUI
 @main
 struct GeniusApp: App {
 
-    @NSApplicationDelegateAdaptor var appDelegate: AppDelegate
+    @NSApplicationDelegateAdaptor var appDelegate: AppDelegate // swiftlint:disable:this unused_declaration
 
     var body: some Scene {
         WindowGroup {

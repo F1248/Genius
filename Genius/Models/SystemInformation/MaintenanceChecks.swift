@@ -10,6 +10,7 @@ import Foundation
 
 extension SystemInformation {
 
+    // swiftlint:disable unused_declaration
     enum MaintenanceChecks {
 
         enum TheftProtection {
@@ -48,4 +49,5 @@ extension SystemInformation {
             static let installAppStore: Bool? = Bool(Defaults.read("/Library/Preferences/com.apple.commerce", "AutoUpdate"))
         }
     }
+    // swiftlint:enable unused_declaration
 }

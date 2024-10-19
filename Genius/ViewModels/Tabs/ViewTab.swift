@@ -20,7 +20,7 @@ where AllCases: RandomAccessCollection, RawValue == String {
 extension ViewTab {
 
     static var id: String { String(describing: self) }
-    var id: Self { self }
+    var id: Self { self } // swiftlint:disable:this unused_declaration
     var index: Int { Self.allCases.firstIndex(of: self) as? Int ?? 0 }
     var localizedString: String { rawValue.localized(variesByInterfaceMode: variesByInterfaceMode) }
     var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
