@@ -30,11 +30,6 @@ extension SystemInformation {
             static let version: VersionNumber? = VersionNumber(components?[safe: 1])
         }
 
-        enum Boot {
-
-            static let volume: String? = SystemProfiler.software?["boot_volume"] as? String
-        }
-
         enum OS {
 
             static let components = (SystemProfiler.software?["os_version"] as? String)?.split(separator: " ")
@@ -51,6 +46,7 @@ extension SystemInformation {
                 }
             static let build: String? = components?.last?.trimmingCharacters(in: .parentheses)
             static let bootMode: OSBootMode? = OSBootMode(SystemProfiler.software?["boot_mode"])
+            static let bootVolume: String? = SystemProfiler.software?["boot_volume"] as? String
             static let loaderVersion: VersionNumber? = VersionNumber(SystemProfiler.hardware?["os_loader_version"])
         }
 
