@@ -37,7 +37,6 @@ extension SystemInformation {
             static let version: VersionNumber? = VersionNumber(components?[safe: 1])
             static let codeName: String? =
                 switch version?.major {
-                case 11: "Big Sur"
                 case 12: "Monterey"
                 case 13: "Ventura"
                 case 14: "Sonoma"
