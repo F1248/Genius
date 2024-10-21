@@ -15,7 +15,7 @@ extension SystemInformation {
 
         enum Model {
 
-            static let name: String? = SystemProfiler.hardware?["machine_name"] as? String
+            static let line: String? = SystemProfiler.hardware?["machine_name"] as? String
             static let identifier: String? = SystemProfiler.hardware?["machine_model"] as? String
             static let number: String? = SystemProfiler.hardware?["model_number"] as? String
             static let appleSiliconBased: Bool = SystemProfiler.hardware.contains(key: "chip_type")
@@ -45,7 +45,7 @@ extension SystemInformation {
                 case _ where name.hasPrefix("Apple Virtual Machine"): "macwindow"
                 default: if #available(macOS 15, *) { "desktopcomputer.and.macbook" } else { "desktopcomputer" }
                 }
-            static let marketingName: String? = {
+            static let name: String? = {
                 guard let serialNumber = Machine.serialNumber, [11, 12].contains(serialNumber.count) else { return nil }
                 // swiftlint:disable:next explicit_type_interface
                 let url = """
