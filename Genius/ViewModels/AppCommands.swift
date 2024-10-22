@@ -17,10 +17,7 @@ struct AppCommands: Commands {
         }
         CommandGroup(replacing: .newItem) { EmptyView() }
         CommandGroup(before: .toolbar) {
-            ForEach(ContentViewTab.allCases.filter { $0 != .settings }) { tab in
-                ViewTabButton(viewTab: tab)
-            }
-            Divider()
+            TabViewButtons(viewTab: ContentViewTab.self)
         }
         CommandGroup(replacing: .help) { EmptyView() }
     }
