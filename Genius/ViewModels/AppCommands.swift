@@ -13,11 +13,11 @@ struct AppCommands: Commands {
 
     var body: some Commands {
         CommandGroup(replacing: .appSettings) {
-            ViewTabButton(tab: ContentViewTab.settings)
+            TabButton(tab: ContentViewTab.settings)
         }
         CommandGroup(replacing: .newItem) { EmptyView() }
         CommandGroup(before: .toolbar) {
-            TabViewButtons(viewTab: ContentViewTab.self)
+            TabViewButtons(tabData: ContentViewTab.self)
         }
         CommandGroup(replacing: .help) { EmptyView() }
     }

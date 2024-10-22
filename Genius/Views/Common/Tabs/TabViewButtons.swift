@@ -9,13 +9,13 @@
 import SwiftUI
 import SwiftUICore
 
-struct TabViewButtons<T: ViewTab>: View {
+struct TabViewButtons<T: TabData>: View {
 
-    let viewTab: T.Type
+    let tabData: T.Type
 
     var body: some View {
-        ForEach(viewTab.allCases.filter { $0 as? ContentViewTab != .settings }) { tab in
-            ViewTabButton(tab: tab)
+        ForEach(tabData.allCases.filter { $0 as? ContentViewTab != .settings }) { tab in
+            TabButton(tab: tab)
         }
         Divider()
     }

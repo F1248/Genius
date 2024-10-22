@@ -1,5 +1,5 @@
 //
-//  ViewTabButton.swift
+//  TabButton.swift
 //  Genius
 //
 //  © 2024 F1248 <f1248@mailbox.org>
@@ -9,7 +9,7 @@
 import SwiftUI
 import SwiftUICore
 
-struct ViewTabButton<T: ViewTab>: View {
+struct TabButton<T: TabData>: View {
 
     let tab: T
 
