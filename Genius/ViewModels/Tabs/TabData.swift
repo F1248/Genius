@@ -1,5 +1,5 @@
 //
-//  ViewTab.swift
+//  TabData.swift
 //  Genius
 //
 //  © 2024 F1248 <f1248@mailbox.org>
@@ -8,7 +8,7 @@
 
 import SwiftUICore
 
-protocol ViewTab: RawRepresentable, CaseIterable, Identifiable, Equatable, Sendable
+protocol TabData: RawRepresentable, CaseIterable, Identifiable, Equatable, Sendable
 where AllCases: RandomAccessCollection, RawValue == String {
 
     static var entireWindow: Bool { get }
@@ -17,7 +17,7 @@ where AllCases: RandomAccessCollection, RawValue == String {
     var content: AnyView { get }
 }
 
-extension ViewTab {
+extension TabData {
 
     static var id: String { String(describing: self) }
     var id: Self { self } // swiftlint:disable:this unused_declaration

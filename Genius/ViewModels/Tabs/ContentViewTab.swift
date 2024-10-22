@@ -8,7 +8,7 @@
 
 import SwiftUICore
 
-enum ContentViewTab: String, ViewTab {
+enum ContentViewTab: String, TabData {
 
     case home = "Home"
     case systemInformation = "System Information"
