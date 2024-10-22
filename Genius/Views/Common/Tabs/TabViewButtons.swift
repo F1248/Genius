@@ -15,7 +15,7 @@ struct TabViewButtons<T: ViewTab>: View {
 
     var body: some View {
         ForEach(viewTab.allCases.filter { $0 as? ContentViewTab != .settings }) { tab in
-            ViewTabButton(viewTab: tab)
+            ViewTabButton(tab: tab)
         }
         Divider()
     }
