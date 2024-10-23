@@ -5,11 +5,11 @@
 ## Table of Contents
 
 - [Requirements](#requirements)
-    - [Supported macOS Versions](#supported-macos-versions)
-    - [Supported Models](#supported-models)
+	- [Supported macOS Versions](#supported-macos-versions)
+	- [Supported Models](#supported-models)
 - [Installation](#installation)
-    - [Manual Installation](#manual-installation-not-possible-in-recoveryos)
-    - [Command Line Installation](#command-line-installation)
+	- [Manual Installation](#manual-installation-not-possible-in-recoveryos)
+	- [Command Line Installation](#command-line-installation)
 - [Copyright](#copyright)
 - [License](#license)
 
