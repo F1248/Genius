@@ -6,30 +6,14 @@
 // See LICENSE.txt for license information.
 //
 
-import SwiftUI
-import SwiftUICore
+protocol Setting {}
 
-protocol Setting {
+extension Setting {
 
-	init()
+	static var key: String { String(describing: self) }
 }
 
 extension Setting where Self: Identifiable {
 
 	var id: Self { self } // swiftlint:disable:this unused_declaration
-}
-
-extension Setting where Self: RawRepresentable, RawValue == String {
-
-	static var key: String { String(describing: self) }
-	static var value: Self {
-		// swiftformat:disable redundantProperty
-		@AppStorage(key)
-		var value = Self() // swiftlint:disable:this direct_return
-		// swiftformat:enable redundantProperty
-		return value
-	}
-
-	var localizedString: String { rawValue.localized() }
-	var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
