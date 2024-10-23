@@ -1,14 +1,14 @@
 //
-//  Locale.swift
-//  Genius
+// Locale.swift
+// Genius
 //
-//  © 2024 F1248 <f1248@mailbox.org>
-//  See LICENSE.txt for license information.
+// © 2024 F1248 <f1248@mailbox.org>
+// See LICENSE.txt for license information.
 //
 
 import Foundation
 
 extension Locale {
 
-    static let currentLanguageCode: String? = Locale.current.language.languageCode?.identifier
+	static let currentLanguageCode: String? = Locale.current.language.languageCode?.identifier
 }
