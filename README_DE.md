@@ -5,11 +5,11 @@
 ## Inhaltsverzeichnis
 
 - [Anforderungen](#anforderungen)
-    - [Unterstützte macOS-Versionen](#unterstützte-macos-versionen)
-    - [Unterstützte Modelle](#unterstützte-modelle)
+	- [Unterstützte macOS-Versionen](#unterstützte-macos-versionen)
+	- [Unterstützte Modelle](#unterstützte-modelle)
 - [Installation](#installation)
-    - [Manuelle Installation](#manuelle-installation-in-recoveryos-nicht-möglich)
-    - [Befehlszeilen-Installation](#befehlszeilen-installation)
+	- [Manuelle Installation](#manuelle-installation-in-recoveryos-nicht-möglich)
+	- [Befehlszeilen-Installation](#befehlszeilen-installation)
 - [Urheberrecht](#urheberrecht)
 - [Lizenz](#lizenz)
 

@@ -1,96 +1,96 @@
 name: Build Genius
 
 on:
-  push:
-    paths:
-      - .github/workflows/Build-Genius.yml
-      - .swift-version
-      - .swiftformat
-      - .swiftlint.yml
-      - Genius/**
-      - Genius.xcodeproj/**
-  pull_request:
-    paths:
-      - .github/workflows/Build-Genius.yml
-      - .swift-version
-      - .swiftformat
-      - .swiftlint.yml
-      - Genius/**
-      - Genius.xcodeproj/**
-  workflow_dispatch:
+    push:
+        paths:
+            - .github/workflows/Build-Genius.yml
+            - .swift-version
+            - .swiftformat
+            - .swiftlint.yml
+            - Genius/**
+            - Genius.xcodeproj/**
+    pull_request:
+        paths:
+            - .github/workflows/Build-Genius.yml
+            - .swift-version
+            - .swiftformat
+            - .swiftlint.yml
+            - Genius/**
+            - Genius.xcodeproj/**
+    workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
 
 jobs:
 
-  Build-Genius:
-    name: Build Genius
-    runs-on: macos-15
+    Build-Genius:
+        name: Build Genius
+        runs-on: macos-15
 
-    permissions:
-      id-token: write
-      attestations: write
+        permissions:
+            id-token: write
+            attestations: write
 
-    steps:
+        steps:
 
-      - name: Checkout
-        uses: actions/checkout@main
+            - name: Checkout
+              uses: actions/checkout@main
 
-      - name: Install SwiftFormat
-        run: |
-          curl --remote-name --location https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip
-          unzip swiftformat.zip
-          echo "SwiftFormat $(./swiftformat --version) installed"
+            - name: Install SwiftFormat
+              run: |
+                curl --remote-name --location https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip
+                unzip swiftformat.zip
+                echo "SwiftFormat $(./swiftformat --version) installed"
 
-      - name: Run SwiftFormat
-        run: ./swiftformat --lint . --reporter github-actions-log
+            - name: Run SwiftFormat
+              run: ./swiftformat --lint . --reporter github-actions-log
 
-      - name: Install SwiftLint
-        run: |
-          curl --remote-name --location https://github.com/realm/SwiftLint/releases/latest/download/portable_swiftlint.zip
-          unzip portable_swiftlint.zip
-          echo "SwiftLint $(./swiftlint version) installed"
+            - name: Install SwiftLint
+              run: |
+                curl --remote-name --location https://github.com/realm/SwiftLint/releases/latest/download/portable_swiftlint.zip
+                unzip portable_swiftlint.zip
+                echo "SwiftLint $(./swiftlint version) installed"
 
-      - name: Run SwiftLint Lint Rules
-        run: ./swiftlint lint --strict --reporter github-actions-logging
+            - name: Run SwiftLint Lint Rules
+              run: ./swiftlint lint --strict --reporter github-actions-logging
 
-      - name: Select Xcode Version
-        run: |
-          sudo xcode-select --switch /Applications/$(
-            ls /Applications | grep "Xcode_\d*\.\d*\.app" | tail --lines=1
-          )
-          echo "$(xcodebuild -version | tr "\n" " ")selected"
+            - name: Select Xcode Version
+              run: |
+                sudo xcode-select --switch /Applications/$(
+                    ls /Applications | grep "Xcode_\d*\.\d*\.app" | tail --lines=1
+                )
+                echo "$(xcodebuild -version | tr "\n" " ")selected"
 
-      - name: Build Genius
-        run: xcodebuild build CODE_SIGNING_ALLOWED=NO | tee xcodebuild.log
+            - name: Build Genius
+              run: xcodebuild build CODE_SIGNING_ALLOWED=NO | tee xcodebuild.log
 
-      - name: Run SwiftLint Analyzer Rules
-        run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
+            - name: Run SwiftLint Analyzer Rules
+              run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
 
-      - name: Zip Genius
-        run: |
-          mv build/Release/Genius.app .
-          zip --recurse-paths Genius.zip Genius.app
+            - name: Zip Genius
+              run: |
+                mv build/Release/Genius.app .
+                zip --recurse-paths Genius.zip Genius.app
 
-      - name: Attest Build Provenance
-        uses: actions/attest-build-provenance@main
-        with: { subject-path: Genius.zip }
+            - name: Attest Build Provenance
+              uses: actions/attest-build-provenance@main
+              with: { subject-path: Genius.zip }
 
-      - name: Upload Genius
-        uses: actions/upload-artifact@main
-        with:
-          name: Genius
-          path: Genius.zip
+            - name: Upload Genius
+              uses: actions/upload-artifact@main
+              with:
+                name: Genius
+                path: Genius.zip
 
-      - name: Zip Debug Symbols
-        run: |
-          mv build/Release/Genius.app.dSYM .
-          zip --recurse-paths DebugSymbols.zip Genius.app.dSYM
+            - name: Zip Debug Symbols
+              run: |
+                mv build/Release/Genius.app.dSYM .
+                zip --recurse-paths DebugSymbols.zip Genius.app.dSYM
 
-      - name: Upload Debug Symbols
-        uses: actions/upload-artifact@main
-        with:
-          name: Debug Symbols
-          path: DebugSymbols.zip
+            - name: Upload Debug Symbols
+              uses: actions/upload-artifact@main
+              with:
+                name: Debug Symbols
+                path: DebugSymbols.zip
