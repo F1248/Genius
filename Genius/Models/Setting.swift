@@ -14,6 +14,11 @@ protocol Setting {
     init()
 }
 
+extension Setting where Self: Identifiable {
+
+    var id: Self { self } // swiftlint:disable:this unused_declaration
+}
+
 extension Setting where Self: RawRepresentable, RawValue == String {
 
     static var key: String { String(describing: self) }

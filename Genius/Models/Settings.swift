@@ -16,7 +16,6 @@ enum Settings {
         case advanced = "Advanced"
         case powerUser = "Power User"
 
-        var id: Self { self }
         var localizationTable: String { "Localizable\(rawValue.remove(" "))" }
 
         init() { self = .normal }
