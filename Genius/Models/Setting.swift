@@ -14,6 +14,11 @@ protocol Setting {
 	init()
 }
 
+extension Setting {
+
+	static var key: String { String(describing: self) }
+}
+
 extension Setting where Self: Identifiable {
 
 	var id: Self { self } // swiftlint:disable:this unused_declaration
@@ -21,7 +26,6 @@ extension Setting where Self: Identifiable {
 
 extension Setting where Self: RawRepresentable, RawValue == String {
 
-	static var key: String { String(describing: self) }
 	static var value: Self {
 		// swiftformat:disable redundantProperty
 		@AppStorage(key)
