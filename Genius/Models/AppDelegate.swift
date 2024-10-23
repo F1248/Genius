@@ -12,21 +12,21 @@ import ObjectiveC
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool { true }
+	func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool { true }
 
-    func applicationDockMenu(_: NSApplication) -> NSMenu? {
-        let dockMenu = NSMenu()
-        for tab in ContentViewTab.allCases {
-            let menuItem = NSMenuItem(title: tab.localizedString, action: #selector(changeTab(_:)), keyEquivalent: "")
-            menuItem.tag = tab.index
-            dockMenu.addItem(menuItem)
-        }
-        return dockMenu
-    }
+	func applicationDockMenu(_: NSApplication) -> NSMenu? {
+		let dockMenu = NSMenu()
+		for tab in ContentViewTab.allCases {
+			let menuItem = NSMenuItem(title: tab.localizedString, action: #selector(changeTab(_:)), keyEquivalent: "")
+			menuItem.tag = tab.index
+			dockMenu.addItem(menuItem)
+		}
+		return dockMenu
+	}
 
-    @MainActor
-    @objc
-    func changeTab(_ sender: NSMenuItem) {
-        sharedData.selectedTabsIndexes[ContentViewTab.id] = sender.tag
-    }
+	@MainActor
+	@objc
+	func changeTab(_ sender: NSMenuItem) {
+		sharedData.selectedTabsIndexes[ContentViewTab.id] = sender.tag
+	}
 }

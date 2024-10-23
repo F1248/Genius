@@ -13,15 +13,15 @@ import SwiftUICore
 @available(macOS 15, *)
 extension Tab where Value: Hashable, Content: View {
 
-    @MainActor
-    init(
-        _ titleKey: LocalizedStringKey,
-        variesByInterfaceMode: Bool = false,
-        value: Value,
-        content: () -> Content
-    ) where Label == SwiftUI.Label<VaryingText, EmptyView> {
-        self.init(value: value, content: content) {
-            Label(titleKey, variesByInterfaceMode: variesByInterfaceMode)
-        }
-    }
+	@MainActor
+	init(
+		_ titleKey: LocalizedStringKey,
+		variesByInterfaceMode: Bool = false,
+		value: Value,
+		content: () -> Content
+	) where Label == SwiftUI.Label<VaryingText, EmptyView> {
+		self.init(value: value, content: content) {
+			Label(titleKey, variesByInterfaceMode: variesByInterfaceMode)
+		}
+	}
 }

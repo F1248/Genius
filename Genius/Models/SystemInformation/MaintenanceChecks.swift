@@ -10,44 +10,44 @@ import Foundation
 
 extension SystemInformation {
 
-    // swiftlint:disable unused_declaration
-    enum MaintenanceChecks {
+	// swiftlint:disable unused_declaration
+	enum MaintenanceChecks {
 
-        enum TheftProtection {
+		enum TheftProtection {
 
-            static let activationLock: Bool? = Bool(SystemProfiler.hardware?["activation_lock_status"])
-            static let firmwarePassword: Bool? = Hardware.Model.intelBased ?
-                Bool(Process("/usr/sbin/firmwarepasswd", ["-check"], requiresRoot: true)?.runSafe()) : nil
-        }
+			static let activationLock: Bool? = Bool(SystemProfiler.hardware?["activation_lock_status"])
+			static let firmwarePassword: Bool? = Hardware.Model.intelBased ?
+				Bool(Process("/usr/sbin/firmwarepasswd", ["-check"], requiresRoot: true)?.runSafe()) : nil
+		}
 
-        enum DataSecurity {
+		enum DataSecurity {
 
-            static let fileVault: Bool? = Bool(Process("/usr/bin/fdesetup", ["isactive"])?.runSafe())
-        }
+			static let fileVault: Bool? = Bool(Process("/usr/bin/fdesetup", ["isactive"])?.runSafe())
+		}
 
-        enum MalwareProtection {
+		enum MalwareProtection {
 
-            static let hyperThreading: Bool? = Bool(SystemProfiler.hardware?["platform_cpu_htt"])
-            static let secureVirtualMemory: Bool? = Bool(SystemProfiler.software?["secure_vm"])
-            static let systemIntegrityProtection: Bool? = Bool(SystemProfiler.software?["system_integrity"])
-            static let firewall: Bool? = Bool(SystemProfiler.firewall?["spfirewall_globalstate"])
-            static let gatekeeper: Bool? = Bool(Process("/usr/sbin/spctl", ["--status"])?.runSafe())
-        }
+			static let hyperThreading: Bool? = Bool(SystemProfiler.hardware?["platform_cpu_htt"])
+			static let secureVirtualMemory: Bool? = Bool(SystemProfiler.software?["secure_vm"])
+			static let systemIntegrityProtection: Bool? = Bool(SystemProfiler.software?["system_integrity"])
+			static let firewall: Bool? = Bool(SystemProfiler.firewall?["spfirewall_globalstate"])
+			static let gatekeeper: Bool? = Bool(Process("/usr/sbin/spctl", ["--status"])?.runSafe())
+		}
 
-        enum AutomaticUpdates {
+		enum AutomaticUpdates {
 
-            static let checkMacOS: Bool? =
-                Bool(Defaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled"))
-            static let downloadMacOS: Bool? =
-                Bool(Defaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))
-            static let installMacOS: Bool? =
-                Bool(Defaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates"))
-            static let installCritical: Bool? =
-                Bool(Defaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"))
-            static let installConfigData: Bool? =
-                Bool(Defaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"))
-            static let installAppStore: Bool? = Bool(Defaults.read("/Library/Preferences/com.apple.commerce", "AutoUpdate"))
-        }
-    }
-    // swiftlint:enable unused_declaration
+			static let checkMacOS: Bool? =
+				Bool(Defaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled"))
+			static let downloadMacOS: Bool? =
+				Bool(Defaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))
+			static let installMacOS: Bool? =
+				Bool(Defaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates"))
+			static let installCritical: Bool? =
+				Bool(Defaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"))
+			static let installConfigData: Bool? =
+				Bool(Defaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"))
+			static let installAppStore: Bool? = Bool(Defaults.read("/Library/Preferences/com.apple.commerce", "AutoUpdate"))
+		}
+	}
+	// swiftlint:enable unused_declaration
 }

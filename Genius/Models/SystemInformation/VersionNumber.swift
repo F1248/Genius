@@ -8,13 +8,13 @@
 
 struct VersionNumber {
 
-    let versions: [Int]
+	let versions: [Int]
 
-    var major: Int? { versions.first }
+	var major: Int? { versions.first }
 
-    init?(_ versionNumber: Any?) {
-        let components = (versionNumber as? Substring)?.split(separator: ".")
-        guard !components.isEmpty, let versions = [Int](components) else { return nil }
-        self.versions = versions
-    }
+	init?(_ versionNumber: Any?) {
+		let components = (versionNumber as? Substring)?.split(separator: ".")
+		guard !components.isEmpty, let versions = [Int](components) else { return nil }
+		self.versions = versions
+	}
 }

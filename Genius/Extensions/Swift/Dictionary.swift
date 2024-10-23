@@ -10,7 +10,7 @@ extension Dictionary {}
 
 extension Optional {
 
-    func contains<Key, Value>(key: Key) -> Bool where Wrapped == [Key: Value] {
-        self?.keys.contains(key) ?? false
-    }
+	func contains<Key, Value>(key: Key) -> Bool where Wrapped == [Key: Value] {
+		self?.keys.contains(key) ?? false
+	}
 }

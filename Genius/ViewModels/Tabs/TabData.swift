@@ -11,17 +11,17 @@ import SwiftUICore
 protocol TabData: RawRepresentable, CaseIterable, Identifiable, Equatable, Sendable
 where AllCases: RandomAccessCollection, RawValue == String {
 
-    static var entireWindow: Bool { get }
-    static var keyboardShortcutModifiers: EventModifiers { get }
-    var variesByInterfaceMode: Bool { get }
-    var content: AnyView { get }
+	static var entireWindow: Bool { get }
+	static var keyboardShortcutModifiers: EventModifiers { get }
+	var variesByInterfaceMode: Bool { get }
+	var content: AnyView { get }
 }
 
 extension TabData {
 
-    static var id: String { String(describing: self) }
-    var id: Self { self } // swiftlint:disable:this unused_declaration
-    var index: Int { Self.allCases.firstIndex(of: self) as? Int ?? 0 }
-    var localizedString: String { rawValue.localized(variesByInterfaceMode: variesByInterfaceMode) }
-    var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
+	static var id: String { String(describing: self) }
+	var id: Self { self } // swiftlint:disable:this unused_declaration
+	var index: Int { Self.allCases.firstIndex(of: self) as? Int ?? 0 }
+	var localizedString: String { rawValue.localized(variesByInterfaceMode: variesByInterfaceMode) }
+	var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }

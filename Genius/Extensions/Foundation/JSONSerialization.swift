@@ -10,7 +10,7 @@ import Foundation
 
 extension JSONSerialization {
 
-    class func jsonOptionalObject(with data: Data?, options opt: JSONSerialization.ReadingOptions = []) -> Any? {
-        try? data.map { try Foundation.JSONSerialization.jsonObject(with: $0, options: opt) }
-    }
+	class func jsonOptionalObject(with data: Data?, options opt: JSONSerialization.ReadingOptions = []) -> Any? {
+		try? data.map { try Foundation.JSONSerialization.jsonObject(with: $0, options: opt) }
+	}
 }

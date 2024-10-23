@@ -8,8 +8,8 @@
 
 extension Int {
 
-    init?(_ string: (any StringProtocol)?) {
-        guard let string else { return nil }
-        self.init(string)
-    }
+	init?(_ string: (any StringProtocol)?) {
+		guard let string else { return nil }
+		self.init(string)
+	}
 }

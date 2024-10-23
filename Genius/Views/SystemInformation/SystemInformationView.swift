@@ -11,15 +11,15 @@ import SwiftUICore
 
 struct SystemInformationView: View {
 
-    var body: some View {
-        VStack {
-            VaryingText("System Information", variesByInterfaceMode: true)
-                .font(.largeTitle)
-                .padding()
-        }
-    }
+	var body: some View {
+		VStack {
+			VaryingText("System Information", variesByInterfaceMode: true)
+				.font(.largeTitle)
+				.padding()
+		}
+	}
 }
 
 #Preview {
-    SystemInformationView()
+	SystemInformationView()
 }

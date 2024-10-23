@@ -11,14 +11,14 @@ import SwiftUICore
 
 struct AppCommands: Commands {
 
-    var body: some Commands {
-        CommandGroup(replacing: .appSettings) {
-            TabButton(tab: ContentViewTab.settings)
-        }
-        CommandGroup(replacing: .newItem) { EmptyView() }
-        CommandGroup(before: .toolbar) {
-            TabViewButtons(tabData: ContentViewTab.self)
-        }
-        CommandGroup(replacing: .help) { EmptyView() }
-    }
+	var body: some Commands {
+		CommandGroup(replacing: .appSettings) {
+			TabButton(tab: ContentViewTab.settings)
+		}
+		CommandGroup(replacing: .newItem) { EmptyView() }
+		CommandGroup(before: .toolbar) {
+			TabViewButtons(tabData: ContentViewTab.self)
+		}
+		CommandGroup(replacing: .help) { EmptyView() }
+	}
 }

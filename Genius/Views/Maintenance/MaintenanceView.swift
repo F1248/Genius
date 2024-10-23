@@ -11,15 +11,15 @@ import SwiftUICore
 
 struct MaintenanceView: View {
 
-    var body: some View {
-        VStack {
-            Text("Maintenance")
-                .font(.largeTitle)
-                .padding()
-        }
-    }
+	var body: some View {
+		VStack {
+			Text("Maintenance")
+				.font(.largeTitle)
+				.padding()
+		}
+	}
 }
 
 #Preview {
-    MaintenanceView()
+	MaintenanceView()
 }

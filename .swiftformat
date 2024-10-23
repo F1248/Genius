@@ -1,17 +1,18 @@
 --enable \
-    acronyms,\
-    blankLinesBetweenImports,\
-    blockComments,\
-    isEmpty,\
-    noExplicitOwnership,\
-    organizeDeclarations,\
-    redundantProperty,\
-    wrapMultilineConditionalAssignment,\
+	acronyms,\
+	blankLinesBetweenImports,\
+	blockComments,\
+	isEmpty,\
+	noExplicitOwnership,\
+	organizeDeclarations,\
+	redundantProperty,\
+	wrapMultilineConditionalAssignment,\
 
 --acronyms "ID,OS,URL,UUID"
 --condassignment always
 --fractiongrouping enabled
 --header "\n{file}\nGenius\n\n© {created.year} F1248 <f1248@mailbox.org>\nSee LICENSE.txt for license information.\n"
+--indent tab
 --markcategories false
 --maxwidth 128
 --organizationmode type

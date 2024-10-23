@@ -10,8 +10,8 @@ extension Array {}
 
 extension [Int] {
 
-    init?(_ strings: [any StringProtocol]?) {
-        guard let map = strings?.map(Int.init), !map.contains(nil) else { return nil }
-        self = map.compactMap { $0 }
-    }
+	init?(_ strings: [any StringProtocol]?) {
+		guard let map = strings?.map(Int.init), !map.contains(nil) else { return nil }
+		self = map.compactMap { $0 }
+	}
 }

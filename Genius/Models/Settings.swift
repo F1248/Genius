@@ -8,16 +8,16 @@
 
 enum Settings {
 
-    enum InterfaceMode: String, CaseIterable, Identifiable, Setting {
+	enum InterfaceMode: String, CaseIterable, Identifiable, Setting {
 
-        case verySimple = "Very Simple"
-        case simple = "Simple"
-        case normal = "Normal"
-        case advanced = "Advanced"
-        case powerUser = "Power User"
+		case verySimple = "Very Simple"
+		case simple = "Simple"
+		case normal = "Normal"
+		case advanced = "Advanced"
+		case powerUser = "Power User"
 
-        var localizationTable: String { "Localizable\(rawValue.remove(" "))" }
+		var localizationTable: String { "Localizable\(rawValue.remove(" "))" }
 
-        init() { self = .normal }
-    }
+		init() { self = .normal }
+	}
 }

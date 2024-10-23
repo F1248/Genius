@@ -10,5 +10,5 @@ import Foundation
 
 extension CharacterSet {
 
-    static let parentheses = CharacterSet(charactersIn: "()")
+	static let parentheses = CharacterSet(charactersIn: "()")
 }

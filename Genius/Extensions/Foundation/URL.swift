@@ -10,8 +10,8 @@ import Foundation
 
 extension URL {
 
-    init?(_ path: String?) {
-        guard let path, FileManager.default.fileExists(atPath: path) else { return nil }
-        self.init(fileURLWithPath: path)
-    }
+	init?(_ path: String?) {
+		guard let path, FileManager.default.fileExists(atPath: path) else { return nil }
+		self.init(fileURLWithPath: path)
+	}
 }

@@ -11,36 +11,36 @@ import SwiftUICore
 
 struct AdaptingTabView<T: TabData>: View {
 
-    let tabData: T.Type
+	let tabData: T.Type
 
-    @ObservedObject var observedSharedData: SharedData = sharedData
+	@ObservedObject var observedSharedData: SharedData = sharedData
 
-    var selection: Binding<Int> { Binding(
-        get: { observedSharedData.selectedTabsIndexes[tabData.id] ?? 0 },
-        set: { observedSharedData.selectedTabsIndexes[tabData.id] = $0 }
-    ) }
+	var selection: Binding<Int> { Binding(
+		get: { observedSharedData.selectedTabsIndexes[tabData.id] ?? 0 },
+		set: { observedSharedData.selectedTabsIndexes[tabData.id] = $0 }
+	) }
 
-    var body: some View {
-        if #available(macOS 15, *), tabData.entireWindow {
-            TabView(selection: selection) {
-                ForEach(tabData.allCases) { tab in
-                    Tab(
-                        tab.localizedStringKey,
-                        variesByInterfaceMode: tab.variesByInterfaceMode,
-                        value: tab.index
-                    ) { tab.content }
-                }
-            }
-        } else {
-            CustomTabView(selection: selection, entireWindow: tabData.entireWindow) {
-                tabData.allCases.map { tab in
-                    CustomTab(
-                        tab.localizedStringKey,
-                        variesByInterfaceMode: tab.variesByInterfaceMode,
-                        index: tab.index
-                    ) { tab.content }
-                }
-            }
-        }
-    }
+	var body: some View {
+		if #available(macOS 15, *), tabData.entireWindow {
+			TabView(selection: selection) {
+				ForEach(tabData.allCases) { tab in
+					Tab(
+						tab.localizedStringKey,
+						variesByInterfaceMode: tab.variesByInterfaceMode,
+						value: tab.index
+					) { tab.content }
+				}
+			}
+		} else {
+			CustomTabView(selection: selection, entireWindow: tabData.entireWindow) {
+				tabData.allCases.map { tab in
+					CustomTab(
+						tab.localizedStringKey,
+						variesByInterfaceMode: tab.variesByInterfaceMode,
+						index: tab.index
+					) { tab.content }
+				}
+			}
+		}
+	}
 }

@@ -11,17 +11,17 @@ import SwiftUICore
 
 struct HomeView: View {
 
-    var body: some View {
-        VStack {
-            Text("Genius")
-                .font(.largeTitle)
-                .padding()
-            Text("Interface Mode: \(Settings.InterfaceMode.value.localizedString)")
-                .font(.subheadline)
-        }
-    }
+	var body: some View {
+		VStack {
+			Text("Genius")
+				.font(.largeTitle)
+				.padding()
+			Text("Interface Mode: \(Settings.InterfaceMode.value.localizedString)")
+				.font(.subheadline)
+		}
+	}
 }
 
 #Preview {
-    HomeView()
+	HomeView()
 }
