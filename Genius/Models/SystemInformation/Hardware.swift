@@ -20,10 +20,10 @@ extension SystemInformation {
 			static let number: String? = SystemProfiler.hardware?["model_number"] as? String
 			static let appleSiliconBased: Bool = SystemProfiler.hardware.contains(key: "chip_type")
 			static let intelBased: Bool = SystemProfiler.hardware.contains(key: "cpu_type")
-			static let isLaptop: Bool = name.hasPrefix("MacBook")
+			static let isLaptop: Bool = line.hasPrefix("MacBook")
 			static let systemImage: String =
-				switch name {
-				case _ where name.hasPrefix("MacBook"):
+				switch line {
+				case _ where line.hasPrefix("MacBook"):
 					switch identifier {
 					case "Mac14,7": "macbook.gen1"
 					case _ where identifier.hasPrefix("MacBookPro18"): "macbook.gen2"
@@ -40,7 +40,7 @@ extension SystemInformation {
 					default: "macpro.gen3"
 					}
 				case "Xserve": "xserve"
-				case _ where name.hasPrefix("Apple Virtual Machine"): "macwindow"
+				case _ where line.hasPrefix("Apple Virtual Machine"): "macwindow"
 				default: "desktopcomputer.and.macbook"
 				}
 			static let name: String? = {
