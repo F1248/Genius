@@ -32,6 +32,7 @@ extension SystemInformation {
 
 		enum OS {
 
+			// swiftformat:disable organizeDeclarations
 			static let components = (SystemProfiler.software?["os_version"] as? String)?.split(separator: " ")
 			static let name: String? = String(components?[safe: 0])
 			static let version: VersionNumber? = VersionNumber(components?[safe: 1])
@@ -42,9 +43,19 @@ extension SystemInformation {
 				default: nil
 				}
 			static let build: String? = components?.last?.trimmingCharacters(in: .parentheses)
-			static let bootMode: OSBootMode? = OSBootMode(SystemProfiler.software?["boot_mode"])
+			static let bootMode: BootMode? =
+				if !FileManager.default.fileExists(atPath: "/System/Library/CoreServices/Finder.app") {
+					.recovery
+				} else {
+					switch SystemProfiler.software?["boot_mode"] as? String {
+					case "normal_boot": .normal
+					case "safe_boot": .safe
+					default: nil
+					}
+				} // swiftformat:disable:next blankLinesBetweenScopes
 			static let bootVolume: String? = SystemProfiler.software?["boot_volume"] as? String
 			static let loaderVersion: VersionNumber? = VersionNumber(SystemProfiler.hardware?["os_loader_version"])
+			// swiftformat:enable organizeDeclarations
 		}
 
 		enum Computer {
