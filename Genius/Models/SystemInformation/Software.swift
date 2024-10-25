@@ -45,7 +45,7 @@ extension SystemInformation {
 				default: nil
 				}
 			static let build: String? = components?.last?.trimmingCharacters(in: .parentheses)
-			static let bootMode: OSBootMode? = OSBootMode(SystemProfiler.software?["boot_mode"])
+			static let bootMode: BootMode? = BootMode(SystemProfiler.software?["boot_mode"])
 			static let bootVolume: String? = SystemProfiler.software?["boot_volume"] as? String
 			static let loaderVersion: VersionNumber? = VersionNumber(SystemProfiler.hardware?["os_loader_version"])
 		}

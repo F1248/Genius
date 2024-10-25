@@ -1,5 +1,5 @@
 //
-// OSBootMode.swift
+// BootMode.swift
 // Genius
 //
 // © 2024 F1248 <f1248@mailbox.org>
@@ -8,24 +8,24 @@
 
 import Foundation
 
-enum OSBootMode {
+enum BootMode {
 
 	case normal
 	case safe
 	case recovery
 
-	init?(_ osBootMode: Any?) {
+	init?(_ bootMode: Any?) {
 		if !FileManager.default.fileExists(atPath: "/System/Library/CoreServices/Finder.app") {
 			self = .recovery
 		} else {
-			let osBootMode: Self? =
-				switch osBootMode as? String {
+			let bootMode: Self? =
+				switch bootMode as? String {
 				case "normal_boot": .normal
 				case "safe_boot": .safe
 				default: nil
 				}
-			guard let osBootMode else { return nil }
-			self = osBootMode
+			guard let bootMode else { return nil }
+			self = bootMode
 		}
 	}
 }
