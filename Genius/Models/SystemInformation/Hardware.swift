@@ -68,13 +68,12 @@ extension SystemInformation {
 					static let efficiency: Int? = cores?.2
 
 					static let cores: (Int?, Int?, Int?)? =
-						if Model.appleSiliconBased { {
-							let components = [Int](
+						if Model.appleSiliconBased {
+							[Int](
 								(SystemProfiler.hardware?["number_processors"] as? String)?
 									.remove("proc ").split(separator: ":")
-							)
-							return (components?[safe: 0], components?[safe: 1], components?[safe: 2])
-						}() } else if Model.intelBased {
+							).map { ($0[safe: 0], $0[safe: 1], $0[safe: 2]) }
+						} else if Model.intelBased {
 							(SystemProfiler.hardware?["number_processors"] as? Int, nil, nil)
 						} else { nil }
 				}
