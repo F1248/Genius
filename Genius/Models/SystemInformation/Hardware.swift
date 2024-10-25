@@ -18,8 +18,6 @@ extension SystemInformation {
 			static let line: String? = SystemProfiler.hardware?["machine_name"] as? String
 			static let identifier: String? = SystemProfiler.hardware?["machine_model"] as? String
 			static let number: String? = SystemProfiler.hardware?["model_number"] as? String
-			static let appleSiliconBased: Bool = SystemProfiler.hardware.contains(key: "chip_type")
-			static let intelBased: Bool = SystemProfiler.hardware.contains(key: "cpu_type")
 			static let isLaptop: Bool? = line?.hasPrefix("MacBook")
 			static let systemImage: String =
 				switch line {
@@ -61,27 +59,35 @@ extension SystemInformation {
 
 			enum CPU {
 
+				// swiftformat:disable organizeDeclarations
 				enum Cores {
 
 					static let total: Int? = cores?.0
 					static let performance: Int? = cores?.1
 					static let efficiency: Int? = cores?.2
-
 					static let cores: (Int?, Int?, Int?)? =
-						if Model.appleSiliconBased {
+						switch Hardware.Specifications.CPU.type {
+						case .appleSilicon:
 							[Int](
 								(SystemProfiler.hardware?["number_processors"] as? String)?
 									.remove("proc ").split(separator: ":")
 							).map { ($0[safe: 0], $0[safe: 1], $0[safe: 2]) }
-						} else if Model.intelBased {
-							(SystemProfiler.hardware?["number_processors"] as? Int, nil, nil)
-						} else { nil }
+						case .intel: (SystemProfiler.hardware?["number_processors"] as? Int, nil, nil)
+						default: nil
+						}
 				}
 
+				static let type: CPUType? =
+					if SystemProfiler.hardware.contains(key: "chip_type") {
+						.appleSilicon
+					} else if SystemProfiler.hardware.contains(key: "cpu_type") {
+						.intel
+					} else { nil }
 				static let name: String? =
 					SystemProfiler.hardware?["chip_type"] as? String ??
 					SystemProfiler.hardware?["cpu_type"] as? String
 				static let speed: Measurement<UnitFrequency>? = Measurement(SystemProfiler.hardware?["current_processor_speed"])
+				// swiftformat:enable organizeDeclarations
 			}
 
 			static let memory: Measurement<UnitInformationStorage>? = Measurement(SystemProfiler.hardware?["physical_memory"])
