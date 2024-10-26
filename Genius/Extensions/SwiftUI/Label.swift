@@ -16,8 +16,6 @@ extension Label {
 	init(_ titleKey: LocalizedStringKey, variesByInterfaceMode: Bool = false) where Title == VaryingText, Icon == EmptyView {
 		self.init {
 			VaryingText(titleKey, variesByInterfaceMode: variesByInterfaceMode)
-		} icon: {
-			EmptyView()
-		}
+		} icon: { EmptyView() } // swiftlint:disable:this closure_end_indentation
 	}
 }

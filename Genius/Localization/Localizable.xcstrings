@@ -18,6 +18,22 @@
         }
       }
     },
+    "Development Mode" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entwicklungsmodus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Development Mode"
+          }
+        }
+      }
+    },
     "Genius" : {
       "shouldTranslate" : false
     },
@@ -67,22 +83,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Interface Mode:"
-          }
-        }
-      }
-    },
-    "Interface Mode: %@" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oberflächenmodus: %@"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Interface Mode: %@"
           }
         }
       }

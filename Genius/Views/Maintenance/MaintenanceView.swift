@@ -12,11 +12,9 @@ import SwiftUICore
 struct MaintenanceView: View {
 
 	var body: some View {
-		VStack {
-			Text("Maintenance")
-				.font(.largeTitle)
-				.padding()
-		}
+		Text("Maintenance")
+			.font(.largeTitle)
+			.padding()
 	}
 }
 
