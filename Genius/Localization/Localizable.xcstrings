@@ -71,22 +71,6 @@
         }
       }
     },
-    "Interface Mode: %@" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oberflächenmodus: %@"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Interface Mode: %@"
-          }
-        }
-      }
-    },
     "Maintenance" : {
       "localizations" : {
         "de" : {
