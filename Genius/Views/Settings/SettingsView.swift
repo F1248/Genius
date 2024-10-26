@@ -21,15 +21,15 @@ struct SettingsView: View {
 			.font(.largeTitle)
 			.padding()
 		GroupBox {
-			VStack {
-				Text("Interface Mode")
-				Picker(selection: $interfaceMode) {
-					ForEach(Settings.InterfaceMode.allCases) { interfaceMode in
-						Text(interfaceMode.localizedStringKey)
-					}
+			Text("Interface Mode")
+				.padding(.leading, 8)
+				.frame(width: 512, alignment: .leading)
+			Picker(selection: $interfaceMode) {
+				ForEach(Settings.InterfaceMode.allCases) { interfaceMode in
+					Text(interfaceMode.localizedStringKey)
 				}
-				.pickerStyle(.inline)
 			}
+			.pickerStyle(.inline)
 			.frame(width: 512, alignment: .leading)
 			if developmentMode || interfaceMode >= .powerUser {
 				Divider()
