@@ -6,6 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
+import _Concurrency
 import SwiftUICore
 
 protocol TabData: RawRepresentable, CaseIterable, Identifiable, Equatable, Sendable
@@ -20,6 +21,7 @@ where AllCases == [Self], RawValue == String {
 extension TabData {
 
 	static var id: String { String(describing: self) }
+	@MainActor static var selection: Self? { allCases[safe: sharedData.selectedTabsIndexes[id] ?? 0] }
 	var id: Self { self } // swiftlint:disable:this unused_declaration
 	var index: Int { Self.allCases.firstIndex(of: self) ?? 0 }
 	var localizedString: String { rawValue.localized(variesByInterfaceMode: variesByInterfaceMode) }
