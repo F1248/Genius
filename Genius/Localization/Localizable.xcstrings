@@ -1,6 +1,22 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Account Name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accountname"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account Name"
+          }
+        }
+      }
+    },
     "Advanced" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -18,6 +34,151 @@
         }
       }
     },
+    "Apple Silicon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple-Chip"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Silicon"
+          }
+        }
+      }
+    },
+    "Boot Mode" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startmodus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boot Mode"
+          }
+        }
+      }
+    },
+    "Boot Volume" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startvolume"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boot Volume"
+          }
+        }
+      }
+    },
+    "Build" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Build"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Build"
+          }
+        }
+      }
+    },
+    "Code Name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Codename"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code Name"
+          }
+        }
+      }
+    },
+    "Computer" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Computer"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Computer"
+          }
+        }
+      }
+    },
+    "CPU Name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU-Name"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU Name"
+          }
+        }
+      }
+    },
+    "CPU Speed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU-Geschwindigkeit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU Speed"
+          }
+        }
+      }
+    },
+    "CPU Type" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU-Typ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU Type"
+          }
+        }
+      }
+    },
     "Development Mode" : {
       "localizations" : {
         "de" : {
@@ -30,6 +191,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Development Mode"
+          }
+        }
+      }
+    },
+    "Efficiency Cores" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effizienzkerne"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Efficiency Cores"
+          }
+        }
+      }
+    },
+    "Firmware" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Firmware"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Firmware"
           }
         }
       }
@@ -54,6 +247,38 @@
         }
       }
     },
+    "Hardware" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hardware"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hardware"
+          }
+        }
+      }
+    },
+    "Hardware UUID" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hardware-UUID"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hardware UUID"
+          }
+        }
+      }
+    },
     "Home" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -67,6 +292,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Home"
+          }
+        }
+      }
+    },
+    "Identifier" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identifizierung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identifier"
+          }
+        }
+      }
+    },
+    "Intel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intel"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intel"
           }
         }
       }
@@ -87,6 +345,54 @@
         }
       }
     },
+    "Line" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reihe"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Line"
+          }
+        }
+      }
+    },
+    "Loader Version" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ladeprogrammversion"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loader Version"
+          }
+        }
+      }
+    },
+    "Machine" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerät"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Machine"
+          }
+        }
+      }
+    },
     "Maintenance" : {
       "localizations" : {
         "de" : {
@@ -99,6 +405,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Maintenance"
+          }
+        }
+      }
+    },
+    "Memory" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arbeitsspeicher"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memory"
+          }
+        }
+      }
+    },
+    "Model" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modell"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Model"
+          }
+        }
+      }
+    },
+    "Name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
           }
         }
       }
@@ -120,6 +474,38 @@
         }
       }
     },
+    "Number" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nummer"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Number"
+          }
+        }
+      }
+    },
+    "Performance Cores" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leistungskerne"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Performance Cores"
+          }
+        }
+      }
+    },
     "Power User" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -133,6 +519,72 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Power User"
+          }
+        }
+      }
+    },
+    "Provisioning UDID" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereitstellungs-UDID"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provisioning UDID"
+          }
+        }
+      }
+    },
+    "Recovery" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wiederherstellung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recovery"
+          }
+        }
+      }
+    },
+    "Safe" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicher"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safe"
+          }
+        }
+      }
+    },
+    "Serial Number" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seriennummer"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serial Number"
           }
         }
       }
@@ -170,8 +622,121 @@
         }
       }
     },
+    "SMC" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SMC"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SMC"
+          }
+        }
+      }
+    },
+    "Software" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Software"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Software"
+          }
+        }
+      }
+    },
+    "Specifications" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spezifikationen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specifications"
+          }
+        }
+      }
+    },
     "System Information" : {
       "shouldTranslate" : false
+    },
+    "Total Cores" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kerne gesamt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Cores"
+          }
+        }
+      }
+    },
+    "Unknown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unbekannt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown"
+          }
+        }
+      }
+    },
+    "User" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "^[Benutzerin](inflect: true, inflectionAlternative: \"Benutzer:in\")"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User"
+          }
+        }
+      }
+    },
+    "Version" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        }
+      }
     },
     "Very Simple" : {
       "extractionState" : "manual",

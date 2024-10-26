@@ -10,7 +10,6 @@ import Foundation
 
 extension SystemInformation {
 
-	// swiftlint:disable unused_declaration
 	enum Software {
 
 		enum SMC {
@@ -70,5 +69,4 @@ extension SystemInformation {
 			static let accountName: String? = components?.last?.trimmingCharacters(in: .parentheses)
 		}
 	}
-	// swiftlint:enable unused_declaration
 }
