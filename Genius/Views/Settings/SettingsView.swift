@@ -22,24 +22,31 @@ struct SettingsView: View {
 			.padding()
 		GroupBox {
 			VStack {
-				Text("Interface Mode:")
-				Picker(selection: $interfaceMode) {
-					ForEach(Settings.InterfaceMode.allCases) { interfaceMode in
-						Text(interfaceMode.localizedStringKey)
+				VStack {
+					Text("Interface Mode")
+						.padding(.leading, 8)
+						.frame(width: 512, alignment: .leading)
+					Picker(selection: $interfaceMode) {
+						ForEach(Settings.InterfaceMode.allCases) { interfaceMode in
+							Text(interfaceMode.localizedStringKey)
+						}
 					}
+					.pickerStyle(.inline)
+					.frame(width: 512, alignment: .leading)
 				}
-				.pickerStyle(.inline)
-			}
-			.frame(width: 512, alignment: .leading)
-			if developmentMode || interfaceMode >= .powerUser {
-				Divider()
-				HStack {
-					Text("Development Mode")
-					Spacer()
-					Toggle(isOn: $developmentMode)
-						.toggleStyle(.switch)
+				.padding(.vertical, 2)
+				if developmentMode || interfaceMode >= .powerUser {
+					Divider()
+					HStack {
+						Text("Development Mode")
+						Spacer()
+						Toggle(isOn: $developmentMode)
+							.toggleStyle(.switch)
+					}
+					.padding(.vertical, 2)
 				}
 			}
+			.padding(.horizontal, 2)
 		}
 		.frame(width: 512)
 	}
