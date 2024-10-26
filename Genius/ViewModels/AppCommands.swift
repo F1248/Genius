@@ -11,6 +11,8 @@ import SwiftUICore
 
 struct AppCommands: Commands {
 
+	@ObservedObject var observedSharedData: SharedData = sharedData // swiftlint:disable:this unused_declaration
+
 	var body: some Commands {
 		CommandGroup(replacing: .appSettings) {
 			TabButton(tab: ContentViewTab.settings)
@@ -18,6 +20,10 @@ struct AppCommands: Commands {
 		CommandGroup(replacing: .newItem) { EmptyView() }
 		CommandGroup(before: .toolbar) {
 			TabViewButtons(tabData: ContentViewTab.self)
+			switch ContentViewTab.selection {
+			case .systemInformation: TabViewButtons(tabData: SystemInformationViewTab.self)
+			default: EmptyView()
+			}
 		}
 		CommandGroup(replacing: .help) { EmptyView() }
 	}

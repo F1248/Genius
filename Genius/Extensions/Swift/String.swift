@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ObjectiveC
 
 extension String {
 
@@ -22,6 +23,31 @@ extension String {
 
 	init?(_ versionNumber: VersionNumber?) {
 		self.init(versionNumber?.versions.map(String.init).joined(separator: "."))
+	}
+
+	init?(_ any: Any?) {
+		let string: String? =
+			switch any {
+			case let any as Int: String(any)
+			case let any as String: any
+			case let any as Measurement<UnitFrequency>: MeasurementFormatter().string(from: any)
+			case let any as Measurement<UnitInformationStorage>: MeasurementFormatter().string(from: any)
+			case let any as BootMode:
+				switch any {
+				case .normal: "Normal"
+				case .safe: "Safe"
+				case .recovery: "Recovery"
+				}
+			case let any as CPUType:
+				switch any {
+				case .appleSilicon: "Apple Silicon"
+				case .intel: "Intel"
+				}
+			case let any as VersionNumber: any.versions.map(String.init).joined(separator: ".")
+			default: nil
+			}
+		guard let string else { return nil }
+		self.init(string)
 	}
 
 	func contains(any strings: [any StringProtocol]) -> Bool {
