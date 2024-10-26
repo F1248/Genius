@@ -17,7 +17,7 @@ protocol WrappedSetting: Setting {
 
 extension WrappedSetting where WrappedValue == Bool {
 
-	static var value: WrappedValue { // swiftlint:disable:this unused_declaration
+	static var value: WrappedValue {
 		// swiftformat:disable redundantProperty
 		@AppStorage(key)
 		var value: WrappedValue = defaultValue // swiftlint:disable:this direct_return
