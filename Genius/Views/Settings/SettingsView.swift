@@ -18,14 +18,19 @@ struct SettingsView: View {
 		Text("Settings")
 			.font(.largeTitle)
 			.padding()
-		Form {
-			Picker("Interface Mode:", selection: $interfaceMode) {
-				ForEach(Settings.InterfaceMode.allCases) { interfaceMode in
-					Text(interfaceMode.localizedStringKey)
+		GroupBox {
+			VStack {
+				Text("Interface Mode:")
+				Picker(selection: $interfaceMode) {
+					ForEach(Settings.InterfaceMode.allCases) { interfaceMode in
+						Text(interfaceMode.localizedStringKey)
+					}
 				}
+				.pickerStyle(.inline)
 			}
-			.pickerStyle(.inline)
+			.frame(width: 512, alignment: .leading)
 		}
+		.frame(width: 512)
 	}
 }
 
