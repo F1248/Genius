@@ -24,6 +24,6 @@ extension CaseIterableSetting where RawValue == String {
 		return value
 	}
 
-	var localizedString: String { rawValue.localized() }
+	var localizedString: String { rawValue.localized() } // swiftlint:disable:this unused_declaration
 	var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
