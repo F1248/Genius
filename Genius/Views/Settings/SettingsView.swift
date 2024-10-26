@@ -13,6 +13,8 @@ struct SettingsView: View {
 
 	@AppStorage(Settings.InterfaceMode.key)
 	var interfaceMode = Settings.InterfaceMode()
+	@AppStorage(Settings.DevelopmentMode.key)
+	var developmentMode: Settings.DevelopmentMode.WrappedValue = Settings.DevelopmentMode.defaultValue
 
 	var body: some View {
 		Text("Settings")
@@ -29,6 +31,15 @@ struct SettingsView: View {
 				.pickerStyle(.inline)
 			}
 			.frame(width: 512, alignment: .leading)
+			if developmentMode || interfaceMode >= .powerUser {
+				Divider()
+				HStack {
+					Text("Development Mode")
+					Spacer()
+					Toggle(isOn: $developmentMode)
+						.toggleStyle(.switch)
+				}
+			}
 		}
 		.frame(width: 512)
 	}
