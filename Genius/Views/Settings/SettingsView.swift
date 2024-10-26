@@ -22,7 +22,7 @@ struct SettingsView: View {
 			.padding()
 		GroupBox {
 			VStack {
-				Text("Interface Mode:")
+				Text("Interface Mode")
 				Picker(selection: $interfaceMode) {
 					ForEach(Settings.InterfaceMode.allCases) { interfaceMode in
 						Text(interfaceMode.localizedStringKey)
