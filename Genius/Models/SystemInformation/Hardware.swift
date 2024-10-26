@@ -10,7 +10,6 @@ import Foundation
 
 extension SystemInformation {
 
-	// swiftlint:disable unused_declaration
 	enum Hardware {
 
 		enum Model {
@@ -18,7 +17,7 @@ extension SystemInformation {
 			static let line: String? = SystemProfiler.hardware?["machine_name"] as? String
 			static let identifier: String? = SystemProfiler.hardware?["machine_model"] as? String
 			static let number: String? = SystemProfiler.hardware?["model_number"] as? String
-			static let isLaptop: Bool? = line?.hasPrefix("MacBook")
+			static let isLaptop: Bool? = line?.hasPrefix("MacBook") // swiftlint:disable:this unused_declaration
 			static let systemImage: String =
 				switch line {
 				case _ where line.hasPrefix("MacBook"):
@@ -98,5 +97,4 @@ extension SystemInformation {
 			static let provisioningUDID: String? = SystemProfiler.hardware?["provisioning_UDID"] as? String
 		}
 	}
-	// swiftlint:enable unused_declaration
 }
