@@ -38,7 +38,7 @@ struct CustomTabView: View {
 
 	var body: some View {
 		if entireWindow {
-			selectedTab?.content
+			VStack { selectedTab?.content }
 				.toolbar {
 					ToolbarItem(placement: .principal) { picker }
 				}
