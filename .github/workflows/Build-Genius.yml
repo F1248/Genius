@@ -35,6 +35,9 @@ jobs:
 
         steps:
 
+            - name: Prepare
+              run: set -o pipefail
+
             - name: Checkout
               uses: actions/checkout@main
 
@@ -63,8 +66,16 @@ jobs:
                 )
                 echo "$(xcodebuild -version | tr "\n" " ")selected"
 
+            - name: Install xcbeautify
+              run: |
+                curl --location https://github.com/cpisciotta/xcbeautify/releases/latest/download/xcbeautify-"$(
+                    curl --silent https://api.github.com/repos/cpisciotta/xcbeautify/releases/latest | grep "\"tag_name\": \".*\"" | cut -d "\"" -f 4
+                )"-arm64-apple-macosx.zip --output xcbeautify.zip
+                unzip xcbeautify.zip
+                echo "xcbeautify $(./xcbeautify --version) installed"
+
             - name: Build Genius
-              run: xcodebuild build CODE_SIGNING_ALLOWED=NO | tee xcodebuild.log
+              run: xcodebuild build CODE_SIGNING_ALLOWED=NO | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run SwiftLint Analyzer Rules
               run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
