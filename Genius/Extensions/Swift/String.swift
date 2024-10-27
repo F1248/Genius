@@ -33,19 +33,24 @@ extension String {
 				case let any as String: any
 				case let any as Measurement<UnitFrequency>: MeasurementFormatter().string(from: any)
 				case let any as Measurement<UnitInformationStorage>: MeasurementFormatter().string(from: any)
-				case let any as BootMode:
+				// swiftformat:disable indent
+				case let any as BootMode: {
 					switch any {
 					case .normal: "Normal"
 					case .safe: "Safe"
 					case .recovery: "Recovery"
 					}
-				case let any as CPUType:
+				}()
+					.localized()
+				case let any as CPUType: {
 					switch any {
 					case .appleSilicon: "Apple Silicon"
 					case .intel: "Intel"
 					}
+				}()
+					.localized()
 				case let any as VersionNumber: any.versions.map(String.init).joined(separator: ".")
-				default: nil // swiftformat:disable indent
+				default: nil
 				// swiftlint:disable:next statement_position
 				}
 		else { return nil }
