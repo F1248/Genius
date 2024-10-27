@@ -26,27 +26,34 @@ extension String {
 	}
 
 	init?(_ any: Any?) {
-		let string: String? =
-			switch any {
-			case let any as Int: String(any)
-			case let any as String: any
-			case let any as Measurement<UnitFrequency>: MeasurementFormatter().string(from: any)
-			case let any as Measurement<UnitInformationStorage>: MeasurementFormatter().string(from: any)
-			case let any as BootMode:
+		guard
+			let string: String? =
 				switch any {
-				case .normal: "Normal"
-				case .safe: "Safe"
-				case .recovery: "Recovery"
+				case let any as Int: String(any)
+				case let any as String: any
+				case let any as Measurement<UnitFrequency>: MeasurementFormatter().string(from: any)
+				case let any as Measurement<UnitInformationStorage>: MeasurementFormatter().string(from: any)
+				// swiftformat:disable indent
+				case let any as BootMode: {
+					switch any {
+					case .normal: "Normal"
+					case .safe: "Safe"
+					case .recovery: "Recovery"
+					}
+				}()
+					.localized()
+				case let any as CPUType: {
+					switch any {
+					case .appleSilicon: "Apple Silicon"
+					case .intel: "Intel"
+					}
+				}()
+					.localized()
+				case let any as VersionNumber: any.versions.map(String.init).joined(separator: ".")
+				default: nil
+				// swiftlint:disable:next statement_position
 				}
-			case let any as CPUType:
-				switch any {
-				case .appleSilicon: "Apple Silicon"
-				case .intel: "Intel"
-				}
-			case let any as VersionNumber: any.versions.map(String.init).joined(separator: ".")
-			default: nil
-			}
-		guard let string else { return nil }
+		else { return nil }
 		self.init(string)
 	}
 
