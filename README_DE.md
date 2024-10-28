@@ -33,19 +33,20 @@
 3. Verschiebe `Genius.app` in `/Programme`.
 4. Doppelklicke auf die App.
 5. Klicke auf `Fertig`.
-6. Öffne [`Datenschutz & Sicherheit` in den Systemeinstellungen](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension), scrolle zu der Nachricht `„Genius“ wurde blockiert, um deinen Mac zu schützen.` und klicke auf `Dennoch öffnen`.
+6. Öffne [`Datenschutz & Sicherheit` in den Systemeinstellungen](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension), scrolle nach unten zu der Nachricht `„Genius“ wurde blockiert, um deinen Mac zu schützen.` und klicke auf `Dennoch öffnen`.
 7. Klicke erneut auf `Dennoch öffnen`.
 8. Authentifiziere dich.
 
 ### Befehlszeilen-Installation:
 
-Füge den folgenden Befehl im Terminal ein und führe ihn aus. Beachte, dass in recoveryOS Genius durch einen Neustart entfernt wird.
+Füge im Terminal den folgenden Befehl ein und führe ihn aus:
 
 ```
 curl https://f1248.github.io/deployment-target-macOS-15 | sh
 ```
 
-Um Genius in recoveryOS zu öffnen, führe einfach `genius` im Terminal aus.
+Um Genius zu öffnen, führe `genius` im Terminal aus.
+Beachte, dass Genius nach einem Neustart neu installiert werden muss.
 
 ## Urheberrecht
 © 2024 F1248 <[f1248@mailbox.org](mailto:f1248@mailbox.org)>

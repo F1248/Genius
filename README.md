@@ -22,7 +22,7 @@
 
 ### Supported Models
 
-- Macs (including officially unsupported ones), Hackintoshes and virtual machines
+- Macs (including officially unsupported ones), Hackintoshes, and virtual machines
 
 ## Installation:
 
@@ -33,19 +33,20 @@
 3. Move `Genius.app` into `/Applications`.
 4. Double-click the app.
 5. Click `Done`.
-6. Open [`Privacy & Security` in System Settings](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension), scroll to the message `“Genius.app” was blocked to protect your Mac.` and click `Open Anyway`.
+6. Open [`Privacy & Security` in System Settings](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension), scroll down to the message `“Genius.app” was blocked to protect your Mac.` and click `Open Anyway`.
 7. Click `Open Anyway` again.
 8. Authenticate yourself.
 
 ### Command Line Installation:
 
-Paste and run the following command in Terminal. Note that in recoveryOS, Genius will be removed by a reboot.
+In Terminal, paste and run the following command:
 
 ```
 curl https://f1248.github.io/deployment-target-macOS-15 | sh
 ```
 
-To open Genius in recoveryOS, simply run `genius` in Terminal.
+To open Genius run `genius` in Terminal.
+Note that Genius will need to be reinstalled after a reboot.
 
 ## Copyright
 © 2024 F1248 <[f1248@mailbox.org](mailto:f1248@mailbox.org)>
