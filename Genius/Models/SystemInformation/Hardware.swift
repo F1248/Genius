@@ -61,9 +61,6 @@ extension SystemInformation {
 				// swiftformat:disable organizeDeclarations
 				enum Cores {
 
-					static let total: Int? = cores?.0
-					static let performance: Int? = cores?.1
-					static let efficiency: Int? = cores?.2
 					static let cores: (Int?, Int?, Int?)? =
 						switch Hardware.Specifications.CPU.type {
 						case .appleSilicon:
@@ -74,6 +71,9 @@ extension SystemInformation {
 						case .intel: (SystemProfiler.hardware?["number_processors"] as? Int, nil, nil)
 						default: nil
 						}
+					static let total: Int? = cores?.0
+					static let performance: Int? = cores?.1
+					static let efficiency: Int? = cores?.2
 				}
 
 				static let type: CPUType? =
