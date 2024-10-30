@@ -10,6 +10,7 @@ import Foundation
 
 extension SystemInformation {
 
+	// swiftformat:disable organizeDeclarations
 	enum Hardware {
 
 		enum Model {
@@ -52,43 +53,38 @@ extension SystemInformation {
 			}()
 		}
 
-		enum Specifications {
+		enum CPU {
 
-			enum CPU {
+			enum Cores {
 
-				// swiftformat:disable organizeDeclarations
-				enum Cores {
-
-					static let total: Int? = cores?.0
-					static let performance: Int? = cores?.1
-					static let efficiency: Int? = cores?.2
-					static let cores: (Int?, Int?, Int?)? =
-						switch Hardware.Specifications.CPU.type {
-						case .appleSilicon:
-							[Int](
-								(SystemProfiler.hardware?["number_processors"] as? String)?
-									.remove("proc ").split(separator: ":")
-							).map { ($0[safe: 0], $0[safe: 1], $0[safe: 2]) }
-						case .intel: (SystemProfiler.hardware?["number_processors"] as? Int, nil, nil)
-						default: nil
-						}
-				}
-
-				static let type: CPUType? =
-					if SystemProfiler.hardware.contains(key: "chip_type") {
-						.appleSilicon
-					} else if SystemProfiler.hardware.contains(key: "cpu_type") {
-						.intel
-					} else { nil }
-				static let name: String? =
-					SystemProfiler.hardware?["chip_type"] as? String ??
-					SystemProfiler.hardware?["cpu_type"] as? String
-				static let speed: Measurement<UnitFrequency>? = Measurement(SystemProfiler.hardware?["current_processor_speed"])
-				// swiftformat:enable organizeDeclarations
+				static let cores: (Int?, Int?, Int?)? =
+					switch type {
+					case .appleSilicon:
+						[Int](
+							(SystemProfiler.hardware?["number_processors"] as? String)?
+								.remove("proc ").split(separator: ":")
+						).map { ($0[safe: 0], $0[safe: 1], $0[safe: 2]) }
+					case .intel: (SystemProfiler.hardware?["number_processors"] as? Int, nil, nil)
+					default: nil
+					}
+				static let total: Int? = cores?.0
+				static let performance: Int? = cores?.1
+				static let efficiency: Int? = cores?.2
 			}
 
-			static let memory: Measurement<UnitInformationStorage>? = Measurement(SystemProfiler.hardware?["physical_memory"])
+			static let type: CPUType? =
+				if SystemProfiler.hardware.contains(key: "chip_type") {
+					.appleSilicon
+				} else if SystemProfiler.hardware.contains(key: "cpu_type") {
+					.intel
+				} else { nil }
+			static let name: String? =
+				SystemProfiler.hardware?["chip_type"] as? String ??
+				SystemProfiler.hardware?["cpu_type"] as? String
+			static let speed: Measurement<UnitFrequency>? = Measurement(SystemProfiler.hardware?["current_processor_speed"])
 		}
+
+		static let memory: Measurement<UnitInformationStorage>? = Measurement(SystemProfiler.hardware?["physical_memory"])
 
 		enum Machine {
 
