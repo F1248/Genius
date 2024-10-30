@@ -69,7 +69,7 @@ jobs:
             - name: Install xcbeautify
               run: |
                 curl --location https://github.com/cpisciotta/xcbeautify/releases/latest/download/xcbeautify-"$(
-                    curl --silent https://api.github.com/repos/cpisciotta/xcbeautify/releases/latest | grep "\"tag_name\": \".*\"" | cut -d "\"" -f 4
+                    gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4
                 )"-arm64-apple-macosx.zip --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
