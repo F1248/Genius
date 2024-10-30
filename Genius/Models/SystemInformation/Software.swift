@@ -24,16 +24,16 @@ extension SystemInformation {
 
 		enum Kernel {
 
-			static let components = (SystemProfiler.software?["kernel_version"] as? String)?.split(separator: " ")
-			static let name: String? = String(components?[safe: 0])
+			static let components = (SystemProfiler.software?["kernel_version"] as? String)?.split(separator: " ").map(String.init)
+			static let name: String? = components?[safe: 0]
 			static let version: VersionNumber? = VersionNumber(components?[safe: 1])
 		}
 
 		enum OS {
 
 			// swiftformat:disable organizeDeclarations
-			static let components = (SystemProfiler.software?["os_version"] as? String)?.split(separator: " ")
-			static let name: String? = String(components?[safe: 0])
+			static let components = (SystemProfiler.software?["os_version"] as? String)?.split(separator: " ").map(String.init)
+			static let name: String? = components?[safe: 0]
 			static let version: VersionNumber? = VersionNumber(components?[safe: 1])
 			static let codeName: String? =
 				switch version?.major {

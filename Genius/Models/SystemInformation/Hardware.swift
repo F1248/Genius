@@ -62,7 +62,7 @@ extension SystemInformation {
 				enum Cores {
 
 					static let cores: (Int?, Int?, Int?)? =
-						switch Hardware.Specifications.CPU.type {
+						switch type {
 						case .appleSilicon:
 							[Int](
 								(SystemProfiler.hardware?["number_processors"] as? String)?
