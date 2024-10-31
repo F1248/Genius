@@ -34,7 +34,7 @@ struct SystemInformationHardwareView: View {
 				"Provisioning UDID": SystemInformation.Hardware.Machine.provisioningUDID,
 			],
 		] } label: {
-			Label("Hardware", systemImage: SystemInformation.Hardware.Model.systemImage)
+			Label("Hardware", systemImage: SystemInformation.Hardware.Model.systemImage.value)
 		}
 	}
 }
