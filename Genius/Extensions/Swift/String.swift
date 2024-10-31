@@ -21,14 +21,10 @@ extension String {
 		self.init(decoding: data, as: UTF8.self)
 	}
 
-	init?(_ versionNumber: VersionNumber?) {
-		self.init(versionNumber?.versions.map(String.init).joined(separator: "."))
-	}
-
-	init?(_ any: Any?) {
+	init?(_ any: any SystemInformationDataProtocol) {
 		guard
 			let string: String? =
-				switch any {
+				switch any.value {
 				case let any as Int: String(any)
 				case let any as String: any
 				case let any as Measurement<UnitFrequency>: MeasurementFormatter().string(from: any)
