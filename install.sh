@@ -21,7 +21,7 @@ else
 fi
 
 echo "Downloading..."
-curl --silent --remote-name --location https://nightly.link/F1248/Genius/workflows/Build-Genius/deployment-target-macOS-12/Genius.zip
+curl --silent --remote-name --location https://nightly.link/F1248/Genius/workflows/Build-Genius/deployment-target-macos-12/Genius.zip
 
 echo "Installing..."
 unzip -q -o Genius.zip

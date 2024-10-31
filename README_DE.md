@@ -28,7 +28,7 @@
 
 ### Manuelle Installation (in recoveryOS nicht möglich):
 
-1. Lade [den neusten Build](https://nightly.link/F1248/Genius/workflows/Build-Genius/deployment-target-macOS-12/Genius.zip) herunter.
+1. Lade [den neusten Build](https://nightly.link/F1248/Genius/workflows/Build-Genius/deployment-target-macos-12/Genius.zip) herunter.
 2. Wenn nicht bereits automatisch entzippt, doppelklicke auf `Genius.zip`, um es zu entzippen.
 3. Verschiebe `Genius.app` in `/Programme`.
 4. Doppelklicke auf die App.
@@ -51,7 +51,7 @@ Unter macOS Sonoma 14 und älter:
 Füge im Terminal den folgenden Befehl ein und führe ihn aus:
 
 ```
-curl https://f1248.github.io/deployment-target-macOS-12 | sh
+curl https://f1248.github.io/deployment-target-macos-12 | sh
 ```
 
 Um Genius zu öffnen, führe `genius` im Terminal aus.
