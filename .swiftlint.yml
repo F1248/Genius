@@ -56,6 +56,8 @@ trailing_comma:
 trailing_whitespace:
     ignores_comments: false
 type_name:
+    excluded:
+        - T
     min_length: 2
 unused_declaration:
     include_public_and_open: true
