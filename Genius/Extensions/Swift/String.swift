@@ -21,10 +21,6 @@ extension String {
 		self.init(decoding: data, as: UTF8.self)
 	}
 
-	init?(_ versionNumber: VersionNumber?) {
-		self.init(versionNumber?.versions.map(String.init).joined(separator: "."))
-	}
-
 	init?(_ any: Any?) {
 		guard
 			let string: String? =
