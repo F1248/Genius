@@ -15,33 +15,34 @@ extension SystemInformation {
 
 		enum SMC {
 
-			static let version: String? = SystemProfiler.hardware?["SMC_version_system"] as? String
+			static let version = SystemInformationData<String?>(SystemProfiler.hardware?["SMC_version_system"])
 		}
 
 		enum Firmware {
 
-			static let version: VersionNumber? = VersionNumber(SystemProfiler.hardware?["boot_rom_version"])
+			static let version = SystemInformationData<VersionNumber?>(VersionNumber(SystemProfiler.hardware?["boot_rom_version"]))
 		}
 
 		enum Kernel {
 
 			static let components = (SystemProfiler.software?["kernel_version"] as? String)?.split(separator: " ").map(String.init)
-			static let name: String? = components?[safe: 0]
-			static let version: VersionNumber? = VersionNumber(components?[safe: 1])
+			static let name = SystemInformationData<String?>(components?[safe: 0])
+			static let version = SystemInformationData<VersionNumber?>(VersionNumber(components?[safe: 1]))
 		}
 
 		enum OS {
 
 			static let components = (SystemProfiler.software?["os_version"] as? String)?.split(separator: " ").map(String.init)
-			static let name: String? = components?[safe: 0]
-			static let version: VersionNumber? = VersionNumber(components?[safe: 1])
-			static let codeName: String? =
-				switch version?.major {
+			static let name = SystemInformationData<String?>(components?[safe: 0])
+			static let version = SystemInformationData<VersionNumber?>(VersionNumber(components?[safe: 1]))
+			static let codeName = SystemInformationData<String?>({
+				switch version.value?.major {
 				case 15: "Sequoia"
 				default: nil
 				}
-			static let build: String? = components?.last?.trimmingCharacters(in: .parentheses)
-			static let bootMode: BootMode? =
+			}())
+			static let build = SystemInformationData<String?>(components?.last?.trimmingCharacters(in: .parentheses))
+			static let bootMode = SystemInformationData<BootMode?>({
 				if !FileManager.default.fileExists(atPath: "/System/Library/CoreServices/Finder.app") {
 					.recovery
 				} else {
@@ -51,20 +52,22 @@ extension SystemInformation {
 					default: nil
 					}
 				} // swiftformat:disable:next blankLinesBetweenScopes
-			static let bootVolume: String? = SystemProfiler.software?["boot_volume"] as? String
-			static let loaderVersion: VersionNumber? = VersionNumber(SystemProfiler.hardware?["os_loader_version"])
+			}())
+			static let bootVolume = SystemInformationData<String?>(SystemProfiler.software?["boot_volume"])
+			static let loaderVersion =
+				SystemInformationData<VersionNumber?>(VersionNumber(SystemProfiler.hardware?["os_loader_version"]))
 		}
 
 		enum Computer {
 
-			static let name: String? = SystemProfiler.software?["local_host_name"] as? String
+			static let name = SystemInformationData<String?>(SystemProfiler.software?["local_host_name"])
 		}
 
 		enum User {
 
 			static let components = (SystemProfiler.software?["user_name"] as? String)?.split(separator: " ")
-			static let name: String? = components?.dropLast().joined(separator: " ")
-			static let accountName: String? = components?.last?.trimmingCharacters(in: .parentheses)
+			static let name = SystemInformationData<String?>(components?.dropLast().joined(separator: " "))
+			static let accountName = SystemInformationData<String?>(components?.last?.trimmingCharacters(in: .parentheses))
 		}
 	}
 }

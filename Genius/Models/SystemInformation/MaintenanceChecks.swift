@@ -16,7 +16,7 @@ extension SystemInformation {
 		enum TheftProtection {
 
 			static let activationLock: Bool? = Bool(SystemProfiler.hardware?["activation_lock_status"])
-			static let firmwarePassword: Bool? = Hardware.CPU.type == .intel ?
+			static let firmwarePassword: Bool? = Hardware.CPU.type.value == .intel ?
 				Bool(Process("/usr/sbin/firmwarepasswd", ["-check"], requiresRoot: true)?.runSafe()) : nil
 		}
 
