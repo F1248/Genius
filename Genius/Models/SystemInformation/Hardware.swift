@@ -20,17 +20,15 @@ extension SystemInformation {
 			static let number = SystemInformationData<String?>(SystemProfiler.hardware?["model_number"])
 			// swiftlint:disable:next unused_declaration
 			static let isLaptop = SystemInformationData<Bool?>(line.value?.hasPrefix("MacBook"))
-			static let systemImage = SystemInformationData<String>({
+			static let systemImage = SystemInformationData<String>(systemImageFallback({
 				switch line.value {
 				case _ where line.value.hasPrefix("MacBook"):
-					if #available(macOS 14, *) {
-						switch identifier.value {
-						case "Mac14,7": "macbook.gen1"
-						case _ where identifier.value.hasPrefix("MacBookPro18"): "macbook.gen2"
-						case _ where identifier.value.hasPrefix("MacBook"): "macbook.gen1"
-						default: "macbook.gen2"
-						}
-					} else { "laptopcomputer" }
+					switch identifier.value {
+					case "Mac14,7": "macbook.gen1"
+					case _ where identifier.value.hasPrefix("MacBookPro18"): "macbook.gen2"
+					case _ where identifier.value.hasPrefix("MacBook"): "macbook.gen1"
+					default: "macbook.gen2"
+					}
 				case "iMac", "iMac Pro": "desktopcomputer"
 				case "Mac mini": "macmini"
 				case "Mac Studio": "macstudio"
@@ -42,9 +40,9 @@ extension SystemInformation {
 					}
 				case "Xserve": "xserve"
 				case _ where line.value.hasPrefix("Apple Virtual Machine"): "macwindow"
-				default: if #available(macOS 15, *) { "desktopcomputer.and.macbook" } else { "desktopcomputer" }
+				default: "desktopcomputer.and.macbook"
 				}
-			}())
+			}()))
 			static let name = SystemInformationData<String?>({
 				guard let serialNumber = Machine.serialNumber.value, [11, 12].contains(serialNumber.count) else { return nil }
 				// swiftlint:disable:next explicit_type_interface

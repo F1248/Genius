@@ -22,35 +22,34 @@ extension String {
 	}
 
 	init?(_ any: any SystemInformationDataProtocol) {
-		guard
-			let string: String? =
-				switch any.value {
-				case let any as Int: String(any)
-				case let any as String: any
-				case let any as Measurement<UnitFrequency>: MeasurementFormatter().string(from: any)
-				case let any as Measurement<UnitInformationStorage>: MeasurementFormatter().string(from: any)
-				// swiftformat:disable indent
-				case let any as BootMode: {
-					switch any {
-					case .normal: "Normal"
-					case .safe: "Safe"
-					case .recovery: "Recovery"
-					}
-				}()
-					.localized()
-				case let any as CPUType: {
-					switch any {
-					case .appleSilicon: "Apple Silicon"
-					case .intel: "Intel"
-					}
-				}()
-					.localized()
-				case let any as VersionNumber: any.versions.map(String.init).joined(separator: ".")
-				default: nil
-				// swiftlint:disable:next statement_position
+		guard let string =
+			switch any.value {
+			case let any as Int: String(any)
+			case let any as String: any
+			case let any as Measurement<UnitFrequency>: MeasurementFormatter().string(from: any)
+			case let any as Measurement<UnitInformationStorage>: MeasurementFormatter().string(from: any)
+			// swiftformat:disable indent
+			case let any as BootMode: {
+				switch any {
+				case .normal: "Normal"
+				case .safe: "Safe"
+				case .recovery: "Recovery"
 				}
+			}()
+				.localized()
+			case let any as CPUType: {
+				switch any {
+				case .appleSilicon: "Apple Silicon"
+				case .intel: "Intel"
+				}
+			}()
+				.localized()
+			case let any as VersionNumber: any.versions.map(String.init).joined(separator: ".")
+			default: nil
+			// swiftlint:disable:next statement_position
+			}
 		else { return nil }
-		self.init(string)
+		self = string
 	}
 
 	func contains(any strings: [any StringProtocol]) -> Bool {
