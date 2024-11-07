@@ -9,12 +9,19 @@
 struct SystemInformationData<T: Sendable>: SystemInformationDataProtocol {
 
 	let value: T
+	let applicable: Bool
 
 	init(_ value: T) {
 		self.value = value
+		self.applicable = true
 	}
 
 	init<W>(_ value: Any?) where T == W? {
 		self.init(value as? W)
+	}
+
+	init<W>(_ value: () -> Any?, applicable: Bool) where T == W? {
+		self.value = applicable ? value() as? W : nil
+		self.applicable = applicable
 	}
 }
