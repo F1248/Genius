@@ -17,7 +17,10 @@ extension SystemInformation {
 
 			static let line = SystemInformationData<String?>(SystemProfiler.hardware?["machine_name"])
 			static let identifier = SystemInformationData<String?>(SystemProfiler.hardware?["machine_model"])
-			static let number = SystemInformationData<String?>(SystemProfiler.hardware?["model_number"])
+			static let number = SystemInformationData<String?>(
+				{ SystemProfiler.hardware?["model_number"] },
+				applicable: CPU.type.value == .appleSilicon
+			)
 			// swiftlint:disable:next unused_declaration
 			static let isLaptop = SystemInformationData<Bool?>(line.value?.hasPrefix("MacBook"))
 			static let systemImage = SystemInformationData<String>(systemImageFallback({
@@ -70,8 +73,8 @@ extension SystemInformation {
 					default: nil
 					}
 				static let total = SystemInformationData<Int?>(cores?.0)
-				static let performance = SystemInformationData<Int?>(cores?.1)
-				static let efficiency = SystemInformationData<Int?>(cores?.2)
+				static let performance = SystemInformationData<Int?>({ cores?.1 }, applicable: type.value == .appleSilicon)
+				static let efficiency = SystemInformationData<Int?>({ cores?.2 }, applicable: type.value == .appleSilicon)
 			}
 
 			static let type = SystemInformationData<CPUType?>({
@@ -83,7 +86,10 @@ extension SystemInformation {
 			}())
 			static let name =
 				SystemInformationData<String?>(SystemProfiler.hardware?["chip_type"] ?? SystemProfiler.hardware?["cpu_type"])
-			static let speed = SystemInformationData<Frequency?>(Frequency(SystemProfiler.hardware?["current_processor_speed"]))
+			static let speed = SystemInformationData<Frequency?>(
+				{ Frequency(SystemProfiler.hardware?["current_processor_speed"]) },
+				applicable: type.value == .intel
+			)
 		}
 
 		static let memory =

@@ -11,4 +11,5 @@ protocol SystemInformationDataProtocol {
 	associatedtype T
 
 	var value: T { get }
+	var applicable: Bool { get }
 }
