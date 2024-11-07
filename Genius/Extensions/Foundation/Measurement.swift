@@ -8,6 +8,9 @@
 
 import Foundation
 
+typealias Frequency = Measurement<UnitFrequency>
+typealias InformationStorage = Measurement<UnitInformationStorage>
+
 extension Measurement {
 
 	init?(_ string: Any?) {
