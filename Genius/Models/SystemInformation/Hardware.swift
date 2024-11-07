@@ -83,12 +83,10 @@ extension SystemInformation {
 			}())
 			static let name =
 				SystemInformationData<String?>(SystemProfiler.hardware?["chip_type"] ?? SystemProfiler.hardware?["cpu_type"])
-			static let speed =
-				SystemInformationData<Measurement<UnitFrequency>?>(Measurement(SystemProfiler.hardware?["current_processor_speed"]))
+			static let speed = SystemInformationData<Frequency?>(Measurement(SystemProfiler.hardware?["current_processor_speed"]))
 		}
 
-		static let memory =
-			SystemInformationData<Measurement<UnitInformationStorage>?>(Measurement(SystemProfiler.hardware?["physical_memory"]))
+		static let memory = SystemInformationData<InformationStorage?>(Measurement(SystemProfiler.hardware?["physical_memory"]))
 
 		enum Machine {
 

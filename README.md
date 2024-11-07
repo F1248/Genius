@@ -41,7 +41,7 @@
 
 In Terminal, paste and run the following command:
 
-```
+```shellsession
 curl https://f1248.github.io/deployment-target-macos-15 | sh
 ```
 

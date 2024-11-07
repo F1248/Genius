@@ -26,8 +26,8 @@ extension String {
 			switch any.value {
 			case let any as Int: String(any)
 			case let any as String: any
-			case let any as Measurement<UnitFrequency>: MeasurementFormatter().string(from: any)
-			case let any as Measurement<UnitInformationStorage>: MeasurementFormatter().string(from: any)
+			case let any as Frequency: MeasurementFormatter().string(from: any)
+			case let any as InformationStorage: MeasurementFormatter().string(from: any)
 			// swiftformat:disable indent
 			case let any as BootMode: {
 				switch any {
