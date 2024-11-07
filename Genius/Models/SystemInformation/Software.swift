@@ -15,12 +15,15 @@ extension SystemInformation {
 
 		enum SMC {
 
-			static let version = SystemInformationData<String?>(SystemProfiler.hardware?["SMC_version_system"])
+			static let version = SystemInformationData<String?>(
+				{ SystemProfiler.hardware?["SMC_version_system"] },
+				applicable: SystemProfiler.hardware.contains(key: "SMC_version_system")
+			)
 		}
 
 		enum Firmware {
 
-			static let version = SystemInformationData<VersionNumber?>(VersionNumber(SystemProfiler.hardware?["boot_rom_version"]))
+			static let version = SystemInformationData<String?>(SystemProfiler.hardware?["boot_rom_version"])
 		}
 
 		enum Kernel {
@@ -56,8 +59,7 @@ extension SystemInformation {
 				} // swiftformat:disable:next blankLinesBetweenScopes
 			}())
 			static let bootVolume = SystemInformationData<String?>(SystemProfiler.software?["boot_volume"])
-			static let loaderVersion =
-				SystemInformationData<VersionNumber?>(VersionNumber(SystemProfiler.hardware?["os_loader_version"]))
+			static let loaderVersion = SystemInformationData<String?>(SystemProfiler.hardware?["os_loader_version"])
 		}
 
 		enum Computer {
