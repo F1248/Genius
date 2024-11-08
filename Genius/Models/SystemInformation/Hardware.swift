@@ -54,7 +54,7 @@ extension SystemInformation {
 				cc=\(serialNumber.dropFirst(8))&\
 				lang=\(Locale.currentLanguageCode ?? "")
 				"""
-				return Network.transferURL(url)?.between(start: "<configCode>", end: "</configCode>")
+				return String(Network.transferURL(url)?.between(start: "<configCode>", end: "</configCode>"))
 			}())
 		}
 
