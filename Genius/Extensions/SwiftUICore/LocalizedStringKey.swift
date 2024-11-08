@@ -10,7 +10,7 @@ import SwiftUICore
 
 extension LocalizedStringKey {
 
-	init(_ any: any SystemInformationDataProtocol) {
-		self.init(String(any) ?? "Unknown")
+	init(_ systemInformationData: any SystemInformationDataProtocol) {
+		self.init(String(systemInformationData) ?? "Unknown")
 	}
 }

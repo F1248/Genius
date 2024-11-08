@@ -21,30 +21,30 @@ extension String {
 		self.init(decoding: data, as: UTF8.self)
 	}
 
-	init?(_ any: any SystemInformationDataProtocol) {
+	init?(_ systemInformationData: any SystemInformationDataProtocol) {
 		guard let string =
-			switch any.value {
-			case let any as Int: String(any)
-			case let any as String: any
-			case let any as Frequency: MeasurementFormatter().string(from: any)
-			case let any as InformationStorage: MeasurementFormatter().string(from: any)
+			switch systemInformationData.value {
+			case let systemInformationData as Int: String(systemInformationData)
+			case let systemInformationData as String: systemInformationData
+			case let systemInformationData as Frequency: MeasurementFormatter().string(from: systemInformationData)
+			case let systemInformationData as InformationStorage: MeasurementFormatter().string(from: systemInformationData)
 			// swiftformat:disable indent
-			case let any as BootMode: {
-				switch any {
+			case let systemInformationData as BootMode: {
+				switch systemInformationData {
 				case .normal: "Normal"
 				case .safe: "Safe"
 				case .recovery: "Recovery"
 				}
 			}()
 				.localized()
-			case let any as CPUType: {
-				switch any {
+			case let systemInformationData as CPUType: {
+				switch systemInformationData {
 				case .appleSilicon: "Apple Silicon"
 				case .intel: "Intel"
 				}
 			}()
 				.localized()
-			case let any as VersionNumber: any.versions.map(String.init).joined(separator: ".")
+			case let systemInformationData as VersionNumber: systemInformationData.versions.map(String.init).joined(separator: ".")
 			default: nil
 			// swiftlint:disable:next statement_position
 			}
