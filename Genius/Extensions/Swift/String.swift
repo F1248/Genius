@@ -60,12 +60,12 @@ extension String {
 		replacingOccurrences(of: string, with: "")
 	}
 
-	func between(start: String, end: String) -> String? {
+	func between(start: String, end: String) -> SubSequence? {
 		guard
 			let startIndex = range(of: start)?.upperBound,
 			let endIndex = range(of: end, range: startIndex..<endIndex)?.lowerBound
 		else { return nil }
-		return String(self[startIndex..<endIndex])
+		return self[startIndex..<endIndex]
 	}
 
 	func localized(variesByInterfaceMode: Bool = false) -> String {
