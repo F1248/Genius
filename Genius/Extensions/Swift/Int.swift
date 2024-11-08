@@ -8,7 +8,7 @@
 
 extension Int {
 
-	init?(_ string: (any StringProtocol)?) {
+	init?(_ string: (some StringProtocol)?) {
 		guard let string else { return nil }
 		self.init(string)
 	}

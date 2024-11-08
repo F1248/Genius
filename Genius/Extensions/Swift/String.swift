@@ -11,7 +11,7 @@ import ObjectiveC
 
 extension String {
 
-	init?(_ string: (any StringProtocol)?) {
+	init?(_ string: (some StringProtocol)?) {
 		guard let string else { return nil }
 		self.init(string)
 	}
@@ -21,7 +21,7 @@ extension String {
 		self.init(decoding: data, as: UTF8.self)
 	}
 
-	init?(_ systemInformationData: any SystemInformationDataProtocol) {
+	init?(_ systemInformationData: some SystemInformationDataProtocol) {
 		guard let string =
 			switch systemInformationData.value {
 			case let systemInformationData as Int: String(systemInformationData)
@@ -52,11 +52,11 @@ extension String {
 		self = string
 	}
 
-	func contains(any strings: [any StringProtocol]) -> Bool {
+	func contains(any strings: [some StringProtocol]) -> Bool {
 		strings.contains { contains($0) }
 	}
 
-	func remove(_ string: any StringProtocol) -> String {
+	func remove(_ string: some StringProtocol) -> String {
 		replacingOccurrences(of: string, with: "")
 	}
 
@@ -80,7 +80,7 @@ extension String {
 
 extension String? {
 
-	func hasPrefix(_ prefix: any StringProtocol) -> Bool {
+	func hasPrefix(_ prefix: some StringProtocol) -> Bool {
 		self?.hasPrefix(prefix) ?? false
 	}
 }
