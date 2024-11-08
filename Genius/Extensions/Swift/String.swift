@@ -11,16 +11,6 @@ import ObjectiveC
 
 extension String {
 
-	init?(_ string: (some StringProtocol)?) {
-		guard let string else { return nil }
-		self.init(string)
-	}
-
-	init?(_ data: Data?) {
-		guard let data else { return nil }
-		self.init(decoding: data, as: UTF8.self)
-	}
-
 	init?(_ systemInformationData: some SystemInformationDataProtocol) {
 		guard let string =
 			switch systemInformationData.value {
@@ -52,22 +42,6 @@ extension String {
 		self = string
 	}
 
-	func contains(any strings: [some StringProtocol]) -> Bool {
-		strings.contains { contains($0) }
-	}
-
-	func remove(_ string: some StringProtocol) -> String {
-		replacingOccurrences(of: string, with: "")
-	}
-
-	func between(start: String, end: String) -> SubSequence? {
-		guard
-			let startIndex = range(of: start)?.upperBound,
-			let endIndex = range(of: end, range: startIndex..<endIndex)?.lowerBound
-		else { return nil }
-		return self[startIndex..<endIndex]
-	}
-
 	func localized(variesByInterfaceMode: Bool = false) -> String {
 		let tableName: String? = variesByInterfaceMode ? Settings.InterfaceMode.value.localizationTable : nil
 		return if #available(macOS 12, *) {
@@ -75,12 +49,5 @@ extension String {
 		} else {
 			NSLocalizedString(self, tableName: tableName, comment: "")
 		}
-	}
-}
-
-extension String? {
-
-	func hasPrefix(_ prefix: some StringProtocol) -> Bool {
-		self?.hasPrefix(prefix) ?? false
 	}
 }
