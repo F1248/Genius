@@ -22,7 +22,7 @@ struct CustomTab: Hashable, Identifiable {
 		_ titleKey: LocalizedStringKey,
 		variesByInterfaceMode: Bool = false,
 		index: Int,
-		content: () -> any View
+		content: () -> some View
 	) {
 		self.title = VaryingText(titleKey, variesByInterfaceMode: variesByInterfaceMode)
 		self.index = index
