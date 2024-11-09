@@ -13,8 +13,8 @@ struct VersionNumber {
 	var major: Int? { versions.first }
 
 	init?(_ versionNumber: Any?) {
-		let components = (versionNumber as? String)?.split(separator: ".")
-		guard !components.isEmpty, let versions = [Int](components) else { return nil }
+		let versions = (versionNumber as? String)?.split(separator: ".")
+		guard !versions.isEmpty, let versions = [Int](versions) else { return nil }
 		self.versions = versions
 	}
 }
