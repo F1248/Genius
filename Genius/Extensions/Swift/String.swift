@@ -11,6 +11,11 @@ import ObjectiveC
 
 extension String {
 
+	init?(_ string: (some StringProtocol)?) {
+		guard let string else { return nil }
+		self.init(string)
+	}
+
 	init?(_ systemInformationData: some SystemInformationDataProtocol) {
 		guard let string =
 			switch systemInformationData.value {
