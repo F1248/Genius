@@ -10,11 +10,6 @@ import Foundation
 
 extension StringProtocol {
 
-	init?(_ string: (some StringProtocol)?) {
-		guard let string else { return nil }
-		self.init(string)
-	}
-
 	init?(_ data: Data?) {
 		guard let data else { return nil }
 		self.init(decoding: data, as: UTF8.self)
