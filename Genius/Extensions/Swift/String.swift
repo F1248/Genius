@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ObjectiveC
 
 extension String {
 
@@ -21,8 +20,8 @@ extension String {
 			switch systemInformationData.value {
 			case let systemInformationData as Int: String(systemInformationData)
 			case let systemInformationData as String: systemInformationData
-			case let systemInformationData as Frequency: MeasurementFormatter().string(from: systemInformationData)
-			case let systemInformationData as InformationStorage: MeasurementFormatter().string(from: systemInformationData)
+			case let systemInformationData as Frequency: systemInformationData.formatted()
+			case let systemInformationData as InformationStorage: systemInformationData.formatted()
 			// swiftformat:disable indent
 			case let systemInformationData as BootMode: {
 				switch systemInformationData {
