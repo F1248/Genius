@@ -11,11 +11,11 @@ import SwiftUICore
 
 struct CustomTabView: View {
 
+	@State private var selectedTabIndexPrivate = 0 // swiftlint:disable:this explicit_type_interface
+
 	let entireWindow: Bool
 	let tabs: [CustomTab]
 	let selectedTabIndexParameter: Binding<Int>?
-
-	@State private var selectedTabIndexPrivate = 0 // swiftlint:disable:this explicit_type_interface
 
 	var selectedTab: CustomTab? { tabs[safe: selectedTabIndexParameter?.wrappedValue ?? selectedTabIndexPrivate] }
 

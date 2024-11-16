@@ -11,11 +11,11 @@ import SwiftUICore
 
 struct VaryingText: View {
 
-	let key: LocalizedStringKey
-	let variesByInterfaceMode: Bool
-
 	@AppStorage(Settings.InterfaceMode.key)
 	var interfaceMode = Settings.InterfaceMode()
+
+	let key: LocalizedStringKey
+	let variesByInterfaceMode: Bool
 
 	// swiftlint:disable:next type_contents_order
 	init(_ key: LocalizedStringKey, variesByInterfaceMode: Bool = false) {
