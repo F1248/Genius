@@ -16,7 +16,7 @@ extension StringProtocol {
 	}
 
 	func contains(any strings: [some StringProtocol]) -> Bool {
-		strings.contains { contains($0) }
+		strings.contains(where: contains)
 	}
 
 	func remove(_ string: some StringProtocol) -> String {

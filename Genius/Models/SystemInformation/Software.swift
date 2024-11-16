@@ -54,7 +54,7 @@ extension SystemInformation {
 					case "safe_boot": .safe
 					default: nil
 					}
-				} // swiftformat:disable:next blankLinesBetweenScopes
+				}
 			}())
 			static let bootVolume = SystemInformationData<String?>(SystemProfiler.software?["boot_volume"])
 			static let loaderVersion = SystemInformationData<String?>(SystemProfiler.hardware?["os_loader_version"])
