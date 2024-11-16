@@ -12,7 +12,7 @@ import ObjectiveC
 typealias Frequency = Measurement<UnitFrequency>
 typealias InformationStorage = Measurement<UnitInformationStorage>
 
-extension Measurement {
+extension Measurement: MeasurementProtocol {
 
 	init?(_ string: Any?) {
 		guard
