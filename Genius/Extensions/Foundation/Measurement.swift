@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import ObjectiveC
 
 typealias Frequency = Measurement<UnitFrequency>
 typealias InformationStorage = Measurement<UnitInformationStorage>
 
-extension Measurement {
+extension Measurement: MeasurementProtocol {
 
 	init?(_ string: Any?) {
 		guard
@@ -23,6 +24,12 @@ extension Measurement {
 		} else if let unit = UnitInformationStorage?(components.last) as? UnitType {
 			self.init(value: value, unit: unit)
 		} else { return nil }
+	}
+
+	func formatted() -> String {
+		let formatter = MeasurementFormatter()
+		formatter.unitOptions = .naturalScale
+		return formatter.string(from: self)
 	}
 }
 
