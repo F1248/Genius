@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension String {
+extension String: SysctlValue {
 
 	init?(_ string: (some StringProtocol)?) {
 		guard let string else { return nil }
