@@ -16,7 +16,7 @@ extension SystemInformation {
 		enum Model {
 
 			static let line = SystemInformationData<String?>(SystemProfiler.hardware?["machine_name"])
-			static let identifier = SystemInformationData<String?>(SystemProfiler.hardware?["machine_model"])
+			static let identifier = SystemInformationData<String?>(Sysctl.value(for: "hw.product"))
 			static let number = SystemInformationData<String?>(
 				{ SystemProfiler.hardware?["model_number"] },
 				applicable: CPU.type.value == .appleSilicon
@@ -62,38 +62,29 @@ extension SystemInformation {
 
 			enum Cores {
 
-				static let cores: (Int?, Int?, Int?)? =
-					switch type.value {
-					case .appleSilicon:
-						[Int](
-							(SystemProfiler.hardware?["number_processors"] as? String)?
-								.remove("proc ").split(separator: ":")
-						).map { ($0[safe: 0], $0[safe: 1], $0[safe: 2]) }
-					case .intel: (SystemProfiler.hardware?["number_processors"] as? Int, nil, nil)
-					default: nil
-					}
-				static let total = SystemInformationData<Int?>(cores?.0)
-				static let performance = SystemInformationData<Int?>({ cores?.1 }, applicable: type.value == .appleSilicon)
-				static let efficiency = SystemInformationData<Int?>({ cores?.2 }, applicable: type.value == .appleSilicon)
+				static let total = SystemInformationData<Int?>(Sysctl.value(for: "hw.physicalcpu"))
+				static let performance =
+					SystemInformationData<Int?>({ Sysctl.value(for: "hw.perflevel0.physicalcpu") }, applicable: type.value == .appleSilicon)
+				static let efficiency =
+					SystemInformationData<Int?>({ Sysctl.value(for: "hw.perflevel1.physicalcpu") }, applicable: type.value == .appleSilicon)
 			}
 
 			static let type = SystemInformationData<CPUType?>({
-				if SystemProfiler.hardware.contains(key: "chip_type") {
-					.appleSilicon
-				} else if SystemProfiler.hardware.contains(key: "cpu_type") {
-					.intel
-				} else { nil }
+				switch Sysctl<String>.value(for: "hw.machine") {
+				case "arm64": .appleSilicon
+				case "x86_64": .intel
+				default: nil
+				}
 			}())
-			static let name =
-				SystemInformationData<String?>(SystemProfiler.hardware?["chip_type"] ?? SystemProfiler.hardware?["cpu_type"])
+			static let name = SystemInformationData<String?>(Sysctl.value(for: "machdep.cpu.brand_string"))
 			static let speed = SystemInformationData<Frequency?>(
-				{ Frequency(SystemProfiler.hardware?["current_processor_speed"]) },
+				{ Double(Sysctl.value(for: "hw.cpufrequency")).map(Frequency.init) },
 				applicable: type.value == .intel
 			)
 		}
 
 		static let memory =
-			SystemInformationData<InformationStorage?>(InformationStorage(SystemProfiler.hardware?["physical_memory"]))
+			SystemInformationData<InformationStorage?>(Double(Sysctl.value(for: "hw.memsize")).map(InformationStorage.init))
 
 		enum Machine {
 
