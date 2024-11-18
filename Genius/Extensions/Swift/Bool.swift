@@ -6,7 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
-extension Bool {
+extension Bool: SysctlValue {
 
 	init?(_ string: Any?) {
 		guard let string = string as? String else { return nil }

@@ -28,16 +28,13 @@ extension SystemInformation {
 
 		enum Kernel {
 
-			static let components = (SystemProfiler.software?["kernel_version"] as? String)?.split(separator: " ").map(String.init)
-			static let name = SystemInformationData<String?>(components?[safe: 0])
-			static let version = SystemInformationData<VersionNumber?>(VersionNumber(components?[safe: 1]))
+			static let name = SystemInformationData<String?>(Sysctl.value(for: "kern.ostype"))
+			static let version = SystemInformationData<VersionNumber?>(VersionNumber(Sysctl.value(for: "kern.osrelease")))
 		}
 
 		enum OS {
 
-			static let components = (SystemProfiler.software?["os_version"] as? String)?.split(separator: " ").map(String.init)
-			static let name = SystemInformationData<String?>(components?[safe: 0])
-			static let version = SystemInformationData<VersionNumber?>(VersionNumber(components?[safe: 1]))
+			static let version = SystemInformationData<VersionNumber?>(VersionNumber(Sysctl.value(for: "kern.osproductversion")))
 			static let codeName = SystemInformationData<String?>({
 				switch version.value?.major {
 				case 12: "Monterey"
@@ -47,14 +44,14 @@ extension SystemInformation {
 				default: nil
 				}
 			}())
-			static let build = SystemInformationData<String?>(components?.last?.trimmingCharacters(in: .parentheses))
+			static let build = SystemInformationData<String?>(Sysctl.value(for: "kern.osversion"))
 			static let bootMode = SystemInformationData<BootMode?>({
-				if !FileManager.default.fileExists(atPath: "/System/Library/CoreServices/Finder.app") {
+				if Sysctl.value(for: "hw.osenvironment") == "recoveryos" {
 					.recovery
 				} else {
-					switch SystemProfiler.software?["boot_mode"] as? String {
-					case "normal_boot": .normal
-					case "safe_boot": .safe
+					switch Sysctl<Bool>.value(for: "kern.safeboot") {
+					case true: .safe
+					case false: .normal
 					default: nil
 					}
 				}
@@ -65,14 +62,14 @@ extension SystemInformation {
 
 		enum Computer {
 
-			static let name = SystemInformationData<String?>(SystemProfiler.software?["local_host_name"])
+			static let name = SystemInformationData<String?>(SystemProfiler.software?["local_host_name"] ?? Host.current().localizedName)
+			static let hostName = SystemInformationData<String?>(Sysctl.value(for: "kern.hostname"))
 		}
 
 		enum User {
 
-			static let components = (SystemProfiler.software?["user_name"] as? String)?.split(separator: " ")
-			static let name = SystemInformationData<String?>(components?.dropLast().joined(separator: " "))
-			static let accountName = SystemInformationData<String?>(components?.last?.trimmingCharacters(in: .parentheses))
+			static let name = SystemInformationData<String>(NSFullUserName())
+			static let accountName = SystemInformationData<String>(NSUserName())
 		}
 	}
 }
