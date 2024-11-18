@@ -6,7 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
-extension Int {
+extension Int: SysctlValue {
 
 	init?(_ string: (some StringProtocol)?) {
 		guard let string else { return nil }

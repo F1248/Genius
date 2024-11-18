@@ -14,50 +14,21 @@ typealias InformationStorage = Measurement<UnitInformationStorage>
 
 extension Measurement: MeasurementProtocol {
 
-	init?(_ string: Any?) {
-		guard
-			let components = (string as? String)?.split(separator: " "), components.count == 2,
-			let value = Double(components.first)
-		else { return nil }
-		if let unit = UnitFrequency?(components.last) as? UnitType {
-			self.init(value: value, unit: unit)
-		} else if let unit = UnitInformationStorage?(components.last) as? UnitType {
-			self.init(value: value, unit: unit)
-		} else { return nil }
-	}
-
 	func formatted() -> String {
+		if let self = self as? InformationStorage {
+			let formatter = ByteCountFormatter()
+			formatter.countStyle = .binary
+			return formatter.string(from: self)
+		}
 		let formatter = MeasurementFormatter()
 		formatter.unitOptions = .naturalScale
 		return formatter.string(from: self)
 	}
 }
 
-extension UnitFrequency? {
+extension Measurement where UnitType: Dimension {
 
-	init(_ substring: Substring?) {
-		self =
-			switch substring {
-			case "Hz": .hertz
-			case "kHz": .kilohertz
-			case "MHz": .megahertz
-			case "GHz": .gigahertz
-			default: nil
-			}
-	}
-}
-
-extension UnitInformationStorage? {
-
-	init(_ substring: Substring?) {
-		self =
-			switch substring {
-			case "B": .bytes
-			case "KB": .kilobytes
-			case "MB": .megabytes
-			case "GB": .gigabytes
-			case "TB": .terabytes
-			default: nil
-			}
+	init(value: Double) {
+		self.init(value: value, unit: UnitType.baseUnit())
 	}
 }

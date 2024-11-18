@@ -19,10 +19,11 @@ struct SystemInformationSoftwareView: View {
 			"Firmware": [
 				"Version": SystemInformation.Software.Firmware.version,
 			],
-			LocalizedStringKey(SystemInformation.Software.Kernel.name): [
+			"Kernel": [
+				"Name": SystemInformation.Software.Kernel.name,
 				"Version": SystemInformation.Software.Kernel.version,
 			],
-			LocalizedStringKey(SystemInformation.Software.OS.name): [
+			"macOS": [
 				"Version": SystemInformation.Software.OS.version,
 				"Code Name": SystemInformation.Software.OS.codeName,
 				"Build": SystemInformation.Software.OS.build,
@@ -32,6 +33,7 @@ struct SystemInformationSoftwareView: View {
 			],
 			"Computer": [
 				"Name": SystemInformation.Software.Computer.name,
+				"Hostname": SystemInformation.Software.Computer.hostName,
 			],
 			"User": [
 				"Name": SystemInformation.Software.User.name,
