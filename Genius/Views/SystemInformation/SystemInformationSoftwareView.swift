@@ -33,6 +33,7 @@ struct SystemInformationSoftwareView: View {
 			],
 			"Computer": [
 				"Name": SystemInformation.Software.Computer.name,
+				"Hostname": SystemInformation.Software.Computer.hostName,
 			],
 			"User": [
 				"Name": SystemInformation.Software.User.name,

@@ -64,6 +64,7 @@ extension SystemInformation {
 		enum Computer {
 
 			static let name = SystemInformationData<String?>(SystemProfiler.software?["local_host_name"] ?? Host.current().localizedName)
+			static let hostName = SystemInformationData<String?>(Sysctl.value(for: "kern.hostname"))
 		}
 
 		enum User {
