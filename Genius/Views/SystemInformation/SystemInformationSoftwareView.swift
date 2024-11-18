@@ -19,7 +19,8 @@ struct SystemInformationSoftwareView: View {
 			"Firmware": [
 				"Version": SystemInformation.Software.Firmware.version,
 			],
-			LocalizedStringKey(SystemInformation.Software.Kernel.name): [
+			"Kernel": [
+				"Name": SystemInformation.Software.Kernel.name,
 				"Version": SystemInformation.Software.Kernel.version,
 			],
 			"macOS": [

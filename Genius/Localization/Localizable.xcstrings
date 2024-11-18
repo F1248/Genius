@@ -361,6 +361,22 @@
         }
       }
     },
+    "Kernel" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kernel"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kernel"
+          }
+        }
+      }
+    },
     "Line" : {
       "localizations" : {
         "de" : {
