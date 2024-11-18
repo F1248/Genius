@@ -36,7 +36,6 @@ extension SystemInformation {
 		enum OS {
 
 			static let components = (SystemProfiler.software?["os_version"] as? String)?.split(separator: " ").map(String.init)
-			static let name = SystemInformationData<String?>(components?[safe: 0])
 			static let version = SystemInformationData<VersionNumber?>(VersionNumber(components?[safe: 1]))
 			static let codeName = SystemInformationData<String?>({
 				switch version.value?.major {

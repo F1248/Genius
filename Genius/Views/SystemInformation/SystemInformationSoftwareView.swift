@@ -22,7 +22,7 @@ struct SystemInformationSoftwareView: View {
 			LocalizedStringKey(SystemInformation.Software.Kernel.name): [
 				"Version": SystemInformation.Software.Kernel.version,
 			],
-			LocalizedStringKey(SystemInformation.Software.OS.name): [
+			"macOS": [
 				"Version": SystemInformation.Software.OS.version,
 				"Code Name": SystemInformation.Software.OS.codeName,
 				"Build": SystemInformation.Software.OS.build,
