@@ -28,30 +28,26 @@ extension SystemInformation {
 
 		enum Kernel {
 
-			static let name = SystemInformationData<String?>(Sysctl.value(for: "kern.ostype"))
-			static let version = SystemInformationData<VersionNumber?>(VersionNumber(Sysctl.value(for: "kern.osrelease")))
+			static let name = SystemInformationData<String?>(Sysctl.read("kern.ostype"))
+			static let version = SystemInformationData<VersionNumber?>(VersionNumber(Sysctl.read("kern.osrelease")))
 		}
 
 		enum OS {
 
-			static let version = SystemInformationData<VersionNumber?>(VersionNumber(Sysctl.value(for: "kern.osproductversion")))
+			static let version = SystemInformationData<VersionNumber?>(VersionNumber(Sysctl.read("kern.osproductversion")))
 			static let codeName = SystemInformationData<String?>({
 				switch version.value?.major {
 				case 15: "Sequoia"
 				default: nil
 				}
 			}())
-			static let build = SystemInformationData<String?>(Sysctl.value(for: "kern.osversion"))
+			static let build = SystemInformationData<String?>(Sysctl.read("kern.osversion"))
 			static let bootMode = SystemInformationData<BootMode?>({
-				if Sysctl.value(for: "hw.osenvironment") == "recoveryos" {
+				if Sysctl.read("hw.osenvironment") == "recoveryos" {
 					.recovery
-				} else {
-					switch Sysctl<Bool>.value(for: "kern.safeboot") {
-					case true: .safe
-					case false: .normal
-					default: nil
-					}
-				}
+				} else if let safe: Bool = Sysctl.read("kern.safeboot") {
+					safe ? .safe : .normal
+				} else { nil }
 			}())
 			static let bootVolume = SystemInformationData<String?>(SystemProfiler.software?["boot_volume"])
 			static let loaderVersion = SystemInformationData<String?>(SystemProfiler.hardware?["os_loader_version"])
@@ -60,7 +56,7 @@ extension SystemInformation {
 		enum Computer {
 
 			static let name = SystemInformationData<String?>(SystemProfiler.software?["local_host_name"] ?? Host.current().localizedName)
-			static let hostName = SystemInformationData<String?>(Sysctl.value(for: "kern.hostname"))
+			static let hostName = SystemInformationData<String?>(Sysctl.read("kern.hostname"))
 		}
 
 		enum User {
