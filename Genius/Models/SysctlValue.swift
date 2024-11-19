@@ -6,4 +6,9 @@
 // See LICENSE.txt for license information.
 //
 
-protocol SysctlValue {}
+import Foundation
+
+protocol SysctlValue {
+
+	init?(_ data: Data)
+}
