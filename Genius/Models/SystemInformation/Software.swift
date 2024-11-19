@@ -49,13 +49,9 @@ extension SystemInformation {
 			static let bootMode = SystemInformationData<BootMode?>({
 				if Sysctl.value(for: "hw.osenvironment") == "recoveryos" {
 					.recovery
-				} else {
-					switch Sysctl<Bool>.value(for: "kern.safeboot") {
-					case true: .safe
-					case false: .normal
-					default: nil
-					}
-				}
+				} else if let safe: Bool = Sysctl.value(for: "kern.safeboot") {
+					safe ? .safe : .normal
+				} else { nil }
 			}())
 			static let bootVolume = SystemInformationData<String?>(SystemProfiler.software?["boot_volume"])
 			static let loaderVersion = SystemInformationData<String?>(SystemProfiler.hardware?["os_loader_version"])
