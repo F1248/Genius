@@ -16,14 +16,14 @@ extension SystemInformation {
 		enum Model {
 
 			static let line = SystemInformationData<String?>(SystemProfiler.hardware?["machine_name"])
-			static let identifier = SystemInformationData<String?>(Sysctl.value(for: "hw.product"))
+			static let identifier = SystemInformationData<String?>(Sysctl.read("hw.product"))
 			static let number = SystemInformationData<String?>(
 				{ SystemProfiler.hardware?["model_number"] },
 				applicable: CPU.type.value == .appleSilicon
 			)
 			// swiftlint:disable:next unused_declaration
 			static let isLaptop = SystemInformationData<Bool?>(line.value?.hasPrefix("MacBook"))
-			static let isVirtualMachine = SystemInformationData<Bool>(Sysctl.value(for: "kern.hv_vmm_present") ?? false)
+			static let isVirtualMachine = SystemInformationData<Bool>(Sysctl.read("kern.hv_vmm_present") ?? false)
 			static let systemImage = SystemInformationData<String>(systemImageFallback({
 				switch line.value {
 				case _ where line.value.hasPrefix("MacBook"):
@@ -64,29 +64,28 @@ extension SystemInformation {
 			enum Cores {
 
 				static let differentTypes = SystemInformationData<Bool>(type.value == .appleSilicon && !Model.isVirtualMachine.value)
-				static let total = SystemInformationData<Int?>(Sysctl.value(for: "hw.physicalcpu"))
+				static let total = SystemInformationData<Int?>(Sysctl.read("hw.physicalcpu"))
 				static let performance =
-					SystemInformationData<Int?>({ Sysctl.value(for: "hw.perflevel0.physicalcpu") }, applicable: differentTypes.value)
+					SystemInformationData<Int?>({ Sysctl.read("hw.perflevel0.physicalcpu") }, applicable: differentTypes.value)
 				static let efficiency =
-					SystemInformationData<Int?>({ Sysctl.value(for: "hw.perflevel1.physicalcpu") }, applicable: differentTypes.value)
+					SystemInformationData<Int?>({ Sysctl.read("hw.perflevel1.physicalcpu") }, applicable: differentTypes.value)
 			}
 
 			static let type = SystemInformationData<CPUType?>({
-				switch Sysctl<String>.value(for: "hw.machine") {
+				switch Sysctl<String>.read("hw.machine") {
 				case "arm64": .appleSilicon
 				case "x86_64": .intel
 				default: nil
 				}
 			}())
-			static let name = SystemInformationData<String?>(Sysctl.value(for: "machdep.cpu.brand_string"))
+			static let name = SystemInformationData<String?>(Sysctl.read("machdep.cpu.brand_string"))
 			static let speed = SystemInformationData<Frequency?>(
-				{ Double(Sysctl.value(for: "hw.cpufrequency")).map(Frequency.init) },
+				{ Double(Sysctl.read("hw.cpufrequency")).map(Frequency.init) },
 				applicable: type.value == .intel
 			)
 		}
 
-		static let memory =
-			SystemInformationData<InformationStorage?>(Double(Sysctl.value(for: "hw.memsize")).map(InformationStorage.init))
+		static let memory = SystemInformationData<InformationStorage?>(Double(Sysctl.read("hw.memsize")).map(InformationStorage.init))
 
 		enum Machine {
 

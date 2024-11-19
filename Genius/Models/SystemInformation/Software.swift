@@ -28,13 +28,13 @@ extension SystemInformation {
 
 		enum Kernel {
 
-			static let name = SystemInformationData<String?>(Sysctl.value(for: "kern.ostype"))
-			static let version = SystemInformationData<VersionNumber?>(VersionNumber(Sysctl.value(for: "kern.osrelease")))
+			static let name = SystemInformationData<String?>(Sysctl.read("kern.ostype"))
+			static let version = SystemInformationData<VersionNumber?>(VersionNumber(Sysctl.read("kern.osrelease")))
 		}
 
 		enum OS {
 
-			static let version = SystemInformationData<VersionNumber?>(VersionNumber(Sysctl.value(for: "kern.osproductversion")))
+			static let version = SystemInformationData<VersionNumber?>(VersionNumber(Sysctl.read("kern.osproductversion")))
 			static let codeName = SystemInformationData<String?>({
 				switch version.value?.major {
 				case 11: "Big Sur"
@@ -45,11 +45,11 @@ extension SystemInformation {
 				default: nil
 				}
 			}())
-			static let build = SystemInformationData<String?>(Sysctl.value(for: "kern.osversion"))
+			static let build = SystemInformationData<String?>(Sysctl.read("kern.osversion"))
 			static let bootMode = SystemInformationData<BootMode?>({
-				if Sysctl.value(for: "hw.osenvironment") == "recoveryos" {
+				if Sysctl.read("hw.osenvironment") == "recoveryos" {
 					.recovery
-				} else if let safe: Bool = Sysctl.value(for: "kern.safeboot") {
+				} else if let safe: Bool = Sysctl.read("kern.safeboot") {
 					safe ? .safe : .normal
 				} else { nil }
 			}())
@@ -60,7 +60,7 @@ extension SystemInformation {
 		enum Computer {
 
 			static let name = SystemInformationData<String?>(SystemProfiler.software?["local_host_name"] ?? Host.current().localizedName)
-			static let hostName = SystemInformationData<String?>(Sysctl.value(for: "kern.hostname"))
+			static let hostName = SystemInformationData<String?>(Sysctl.read("kern.hostname"))
 		}
 
 		enum User {
