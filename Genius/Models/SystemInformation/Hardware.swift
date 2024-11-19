@@ -23,6 +23,7 @@ extension SystemInformation {
 			)
 			// swiftlint:disable:next unused_declaration
 			static let isLaptop = SystemInformationData<Bool?>(line.value?.hasPrefix("MacBook"))
+			static let isVirtualMachine = SystemInformationData<Bool>(Sysctl.value(for: "kern.hv_vmm_present") ?? false)
 			static let systemImage = SystemInformationData<String>(systemImageFallback({
 				switch line.value {
 				case _ where line.value.hasPrefix("MacBook"):
@@ -42,7 +43,7 @@ extension SystemInformation {
 					default: "macpro.gen3"
 					}
 				case "Xserve": "xserve"
-				case _ where line.value.hasPrefix("Apple Virtual Machine"): "macwindow"
+				case _ where isVirtualMachine.value: "macwindow"
 				default: "desktopcomputer.and.macbook"
 				}
 			}()))
