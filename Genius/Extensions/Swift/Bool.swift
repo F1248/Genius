@@ -6,7 +6,14 @@
 // See LICENSE.txt for license information.
 //
 
+import Foundation
+
 extension Bool: SysctlValue {
+
+	init?(_ data: Data) {
+		guard let bool = data[0] == 0 ? false : data[0] == 1 ? true : nil else { return nil }
+		self = bool
+	}
 
 	init?(_ string: Any?) {
 		guard let string = string as? String else { return nil }

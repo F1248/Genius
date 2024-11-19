@@ -10,9 +10,13 @@ import Foundation
 
 extension StringProtocol {
 
+	init(_ data: Data) {
+		self.init(decoding: data, as: UTF8.self)
+	}
+
 	init?(_ data: Data?) {
 		guard let data else { return nil }
-		self.init(decoding: data, as: UTF8.self)
+		self.init(data)
 	}
 
 	func contains(any strings: [some StringProtocol]) -> Bool {
