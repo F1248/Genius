@@ -63,11 +63,12 @@ extension SystemInformation {
 
 			enum Cores {
 
+				static let differentTypes = SystemInformationData<Bool>(type.value == .appleSilicon && !Model.isVirtualMachine.value)
 				static let total = SystemInformationData<Int?>(Sysctl.value(for: "hw.physicalcpu"))
 				static let performance =
-					SystemInformationData<Int?>({ Sysctl.value(for: "hw.perflevel0.physicalcpu") }, applicable: type.value == .appleSilicon)
+					SystemInformationData<Int?>({ Sysctl.value(for: "hw.perflevel0.physicalcpu") }, applicable: differentTypes.value)
 				static let efficiency =
-					SystemInformationData<Int?>({ Sysctl.value(for: "hw.perflevel1.physicalcpu") }, applicable: type.value == .appleSilicon)
+					SystemInformationData<Int?>({ Sysctl.value(for: "hw.perflevel1.physicalcpu") }, applicable: differentTypes.value)
 			}
 
 			static let type = SystemInformationData<CPUType?>({
