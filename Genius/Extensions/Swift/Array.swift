@@ -12,6 +12,6 @@ extension [Int] {
 
 	init?(_ strings: [some StringProtocol]?) {
 		guard let map = strings?.map(Int.init), !map.contains(nil) else { return nil }
-		self = map.compactMap { $0 }
+		self = map.compactMap(\.self)
 	}
 }
