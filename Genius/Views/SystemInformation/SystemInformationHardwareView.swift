@@ -14,10 +14,9 @@ struct SystemInformationHardwareView: View {
 	var body: some View {
 		SystemInformationTabView { [
 			"Model": [
-				"Line": SystemInformation.Hardware.Model.line,
 				"Identifier": SystemInformation.Hardware.Model.identifier,
 				"Number": SystemInformation.Hardware.Model.number,
-				"Name": SystemInformation.Hardware.Model.name,
+				"Name": SystemInformation.Hardware.Model.localizedName,
 			],
 			"Specifications": [
 				"CPU Type": SystemInformation.Hardware.CPU.type,
