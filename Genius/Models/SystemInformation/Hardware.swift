@@ -26,6 +26,7 @@ extension SystemInformation {
 			static let isVirtualMachine = SystemInformationData<Bool>(Sysctl.read("kern.hv_vmm_present") ?? false)
 			static let systemImage = SystemInformationData<String>(systemImageFallback({
 				switch line.value {
+				case _ where isVirtualMachine.value: "macwindow"
 				case _ where line.value.hasPrefix("MacBook"):
 					switch identifier.value {
 					case "Mac14,7": "macbook.gen1"
@@ -43,7 +44,6 @@ extension SystemInformation {
 					default: "macpro.gen3"
 					}
 				case "Xserve": "xserve"
-				case _ where isVirtualMachine.value: "macwindow"
 				default: "desktopcomputer.and.macbook"
 				}
 			}()))
