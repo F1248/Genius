@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension String: SysctlValue {
+extension String: DataInitializable {
 
 	init?(_ string: (some StringProtocol)?) {
 		guard let string else { return nil }
