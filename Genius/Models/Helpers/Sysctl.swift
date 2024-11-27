@@ -9,7 +9,7 @@
 import Darwin
 import Foundation
 
-enum Sysctl<W: SysctlValue> {
+enum Sysctl<W: DataInitializable> {
 
 	static func read(_ name: String) -> W? {
 		var size = 0 // swiftlint:disable:this explicit_type_interface

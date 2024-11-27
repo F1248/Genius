@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Bool: SysctlValue {
+extension Bool: DataInitializable {
 
 	init?(_ data: Data) {
 		guard let bool = data[0] == 0 ? false : data[0] == 1 ? true : nil else { return nil }

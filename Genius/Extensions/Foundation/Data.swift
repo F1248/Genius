@@ -14,4 +14,8 @@ extension Data {
 		guard let data = string?.data(using: .utf8) else { return nil }
 		self = data
 	}
+
+	func trimmingTrailingZeros() -> Data {
+		lastIndex { $0 != 0 }.map { prefix(upTo: $0 + 1) } ?? Data()
+	}
 }
