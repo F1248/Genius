@@ -38,6 +38,8 @@ extension SystemInformation {
 				},
 				applicable: CPU.type.value == .appleSilicon
 			)
+			static let regulatoryNumber =
+				SystemInformationData<String?>(IORegistry.read(class: "IOPlatformExpertDevice", "regulatory-model-number"))
 			// swiftlint:disable:next unused_declaration
 			static let isLaptop = SystemInformationData<Bool?>(name.value?.hasPrefix("MacBook"))
 			static let isVirtualMachine = SystemInformationData<Bool>(Sysctl.read("kern.hv_vmm_present") ?? false)

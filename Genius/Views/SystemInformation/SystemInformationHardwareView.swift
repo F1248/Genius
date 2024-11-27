@@ -17,6 +17,7 @@ struct SystemInformationHardwareView: View {
 				"Name": SystemInformation.Hardware.Model.localizedName,
 				"Identifier": SystemInformation.Hardware.Model.identifier,
 				"Number": SystemInformation.Hardware.Model.number,
+				"Regulatory Number": SystemInformation.Hardware.Model.regulatoryNumber,
 			],
 			"Specifications": [
 				"CPU Type": SystemInformation.Hardware.CPU.type,
