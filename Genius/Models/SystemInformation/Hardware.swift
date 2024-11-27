@@ -16,6 +16,17 @@ extension SystemInformation {
 
 		enum Model {
 
+			static let name = SystemInformationData<String?>(IORegistry.read(name: "product", "product-name"))
+			static let localizedName = SystemInformationData<String?>({
+				guard let serialNumber = Machine.serialNumber.value, [11, 12].contains(serialNumber.count) else { return nil }
+				// swiftlint:disable:next explicit_type_interface
+				let url = """
+				https://support-sp.apple.com/sp/product?\
+				cc=\(serialNumber.dropFirst(8))&\
+				lang=\(Locale.currentLanguageCode ?? "")
+				"""
+				return String(Network.transferURL(url)?.between(start: "<configCode>", end: "</configCode>"))
+			}() ?? name.value)
 			static let identifier = SystemInformationData<String?>(Sysctl.read("hw.product"))
 			static let number = SystemInformationData<String?>(
 				{
@@ -56,17 +67,6 @@ extension SystemInformation {
 					"xserve"
 				} else { "desktopcomputer.and.macbook" }
 			}()))
-			static let name = SystemInformationData<String?>(IORegistry.read(name: "product", "product-name"))
-			static let localizedName = SystemInformationData<String?>({
-				guard let serialNumber = Machine.serialNumber.value, [11, 12].contains(serialNumber.count) else { return nil }
-				// swiftlint:disable:next explicit_type_interface
-				let url = """
-				https://support-sp.apple.com/sp/product?\
-				cc=\(serialNumber.dropFirst(8))&\
-				lang=\(Locale.currentLanguageCode ?? "")
-				"""
-				return String(Network.transferURL(url)?.between(start: "<configCode>", end: "</configCode>"))
-			}() ?? name.value)
 		}
 
 		enum CPU {
