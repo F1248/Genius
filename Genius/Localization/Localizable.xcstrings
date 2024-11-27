@@ -393,22 +393,6 @@
         }
       }
     },
-    "Line" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reihe"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Line"
-          }
-        }
-      }
-    },
     "Loader Version" : {
       "localizations" : {
         "de" : {
