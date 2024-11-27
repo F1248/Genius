@@ -1,5 +1,5 @@
 //
-// SysctlValue.swift
+// DataInitializable.swift
 // Genius
 //
 // © 2024 F1248 <f1248@mailbox.org>
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SysctlValue {
+protocol DataInitializable {
 
 	init?(_ data: Data)
 }
