@@ -63,7 +63,7 @@ extension SystemInformation {
 					switch identifier.value {
 					case "MacPro3,1", "MacPro4,1", "MacPro5,1": "macpro.gen1"
 					case "MacPro6,1": "macpro.gen2"
-					default: "macpro.gen3"
+					default: ["A2304", "A2787"].contains(regulatoryNumber.value) ? "macpro.gen3.server" : "macpro.gen3"
 					}
 				} else if name.value.hasPrefix("Xserve") {
 					"xserve"
