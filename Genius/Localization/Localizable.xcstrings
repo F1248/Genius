@@ -147,6 +147,22 @@
         }
       }
     },
+    "CPU Frequency" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU-Frequenz"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU Frequency"
+          }
+        }
+      }
+    },
     "CPU Name" : {
       "localizations" : {
         "de" : {
@@ -159,22 +175,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CPU Name"
-          }
-        }
-      }
-    },
-    "CPU Speed" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CPU-Geschwindigkeit"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CPU Speed"
           }
         }
       }
