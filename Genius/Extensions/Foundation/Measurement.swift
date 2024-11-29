@@ -16,6 +16,12 @@ extension Measurement: MeasurementProtocol {
 
 	func formatted() -> String {
 		switch self {
+		case let self as Frequency:
+			let formatter = MeasurementFormatter()
+			let units: [UnitFrequency] = [.terahertz, .gigahertz, .megahertz, .kilohertz, .hertz, .millihertz, .microhertz, .nanohertz]
+			return formatter.string(
+				from: units.lazy.map(self.converted).first { $0.value > 1 } ?? self.converted(to: UnitFrequency.baseUnit())
+			)
 		case let self as InformationStorage:
 			let formatter = ByteCountFormatter()
 			formatter.countStyle = .binary
