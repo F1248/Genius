@@ -93,7 +93,7 @@ extension SystemInformation {
 				}
 			}())
 			static let name = SystemInformationData<String?>(Sysctl.read("machdep.cpu.brand_string"))
-			static let speed = SystemInformationData<Frequency?>(
+			static let frequency = SystemInformationData<Frequency?>(
 				{ Double(Sysctl.read("hw.cpufrequency")).map(Frequency.init) },
 				applicable: type.value == .intel
 			)

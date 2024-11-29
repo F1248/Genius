@@ -22,7 +22,7 @@ struct SystemInformationHardwareView: View {
 			"Specifications": [
 				"CPU Type": SystemInformation.Hardware.CPU.type,
 				"CPU Name": SystemInformation.Hardware.CPU.name,
-				"CPU Speed": SystemInformation.Hardware.CPU.speed,
+				"CPU Frequency": SystemInformation.Hardware.CPU.frequency,
 				SystemInformation.Hardware.CPU.Cores.differentTypes.value ? "Total Cores" : "Cores":
 					SystemInformation.Hardware.CPU.Cores.total,
 				"Performance Cores": SystemInformation.Hardware.CPU.Cores.performance,
