@@ -80,7 +80,7 @@ jobs:
             - name: Build Genius
               env: 
                 NSUnbufferedIO: YES
-              run: xcodebuild build CODE_SIGNING_ALLOWED=NO | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
+              run: xcodebuild build | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run SwiftLint Analyzer Rules
               run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log

@@ -17,7 +17,7 @@ extension SystemInformation {
 		enum Model {
 
 			static let name = SystemInformationData<String?>(IORegistry.read(name: "product", "product-name"))
-			static let localizedName = SystemInformationData<String?>({
+			static let localizedName = SystemInformationData<String?>({ () -> String? in
 				guard let serialNumber = Machine.serialNumber.value, [11, 12].contains(serialNumber.count) else { return nil }
 				// swiftlint:disable:next explicit_type_interface
 				let url = """
