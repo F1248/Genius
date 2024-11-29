@@ -15,14 +15,16 @@ typealias InformationStorage = Measurement<UnitInformationStorage>
 extension Measurement: MeasurementProtocol {
 
 	func formatted() -> String {
-		if let self = self as? InformationStorage {
+		switch self {
+		case let self as InformationStorage:
 			let formatter = ByteCountFormatter()
 			formatter.countStyle = .binary
 			return formatter.string(from: self)
+		default:
+			let formatter = MeasurementFormatter()
+			formatter.unitOptions = .naturalScale
+			return formatter.string(from: self)
 		}
-		let formatter = MeasurementFormatter()
-		formatter.unitOptions = .naturalScale
-		return formatter.string(from: self)
 	}
 }
 
