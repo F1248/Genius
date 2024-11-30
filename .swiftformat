@@ -20,6 +20,7 @@
 --organizationmode type
 --ranges no-space
 --self init-only
+--selfrequired error
 --semicolons never
 --shortoptionals always
 --typeblanklines preserve
