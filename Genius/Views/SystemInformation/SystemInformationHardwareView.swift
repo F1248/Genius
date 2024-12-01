@@ -20,6 +20,7 @@ struct SystemInformationHardwareView: View {
 				"Regulatory Number": SystemInformation.Hardware.Model.regulatoryNumber,
 			],
 			"Specifications": [
+				"Security Chip": SystemInformation.Hardware.securityChip,
 				"CPU Type": SystemInformation.Hardware.CPU.type,
 				"CPU Name": SystemInformation.Hardware.CPU.name,
 				"CPU Frequency": SystemInformation.Hardware.CPU.frequency,
