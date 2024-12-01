@@ -10,9 +10,9 @@ import CoreFoundation
 import Foundation
 import IOKit
 
-enum IORegistry<W: DataInitializable> {
+enum IORegistry {
 
-	static func read(class className: String? = nil, name: String? = nil, _ key: String) -> W? {
+	static func read<W: DataInitializable>(class className: String? = nil, name: String? = nil, _ key: String) -> W? {
 		guard let matchingDictionary: CFMutableDictionary =
 			if let className {
 				IOServiceMatching(className)

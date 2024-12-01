@@ -9,9 +9,9 @@
 import Darwin
 import Foundation
 
-enum Sysctl<W: DataInitializable> {
+enum Sysctl {
 
-	static func read(_ name: String) -> W? {
+	static func read<W: DataInitializable>(_ name: String) -> W? {
 		var size = 0 // swiftlint:disable:this explicit_type_interface
 		guard sysctlbyname(name, nil, &size, nil, 0) == 0, size > 0 else { return nil }
 		var result = [UInt8](repeating: 0, count: size)

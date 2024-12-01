@@ -31,8 +31,8 @@ extension SystemInformation {
 			static let number = SystemInformationData<String?>(
 				{
 					guard
-						let modelNumber = IORegistry<String>.read(class: "IOPlatformExpertDevice", "model-number"),
-						let regionInfo = IORegistry<String>.read(class: "IOPlatformExpertDevice", "region-info")
+						let modelNumber = IORegistry.read(class: "IOPlatformExpertDevice", "model-number") as String?,
+						let regionInfo = IORegistry.read(class: "IOPlatformExpertDevice", "region-info") as String?
 					else { return nil }
 					return modelNumber + regionInfo
 				},
@@ -86,7 +86,7 @@ extension SystemInformation {
 			}
 
 			static let type = SystemInformationData<CPUType?>({
-				switch Sysctl<String>.read("hw.machine") {
+				switch Sysctl.read("hw.machine") as String? {
 				case "arm64": .appleSilicon
 				case "x86_64": .intel
 				default: nil
