@@ -6,10 +6,10 @@
 // See LICENSE.txt for license information.
 //
 
-enum SecurityChip {
+enum SecurityChip: Comparable {
 
-	case mSeries
-	case t2
-	case t1
 	case none
+	case t1
+	case t2
+	case mSeries
 }
