@@ -10,9 +10,9 @@ import CoreFoundation
 import Foundation
 import IOKit
 
-enum IORegistry<W: DataInitializable> {
+enum IORegistry {
 
-	static func read(class className: String? = nil, name: String? = nil, _ key: String) -> W? {
+	static func read<W: DataInitializable>(class className: String? = nil, name: String? = nil, _ key: String) -> W? {
 		guard let matchingDictionary: CFMutableDictionary =
 			if let className {
 				IOServiceMatching(className)
@@ -26,5 +26,19 @@ enum IORegistry<W: DataInitializable> {
 		guard service > 0 else { return nil }
 		let property = IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0)?.takeRetainedValue()
 		return property as? W ?? ((property as? Data)?.trimmingTrailingZeros()).flatMap(W.init)
+	}
+
+	static func serviceExists(class className: String? = nil, name: String? = nil) -> Bool {
+		guard let matchingDictionary: CFMutableDictionary =
+			if let className {
+				IOServiceMatching(className)
+			} else if let name {
+				IOServiceNameMatching(name)
+			// swiftlint:disable:next statement_position
+			} else { nil }
+		else { return false }
+		let service = IOServiceGetMatchingService(kIOMainPortDefault, matchingDictionary)
+		defer { IOObjectRelease(service) }
+		return service > 0
 	}
 }

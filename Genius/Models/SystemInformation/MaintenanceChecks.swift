@@ -27,7 +27,6 @@ extension SystemInformation {
 
 		enum MalwareProtection {
 
-			static let hyperThreading: Bool? = Bool(SystemProfiler.hardware?["platform_cpu_htt"])
 			static let secureVirtualMemory: Bool? = Bool(SystemProfiler.software?["secure_vm"])
 			static let systemIntegrityProtection: Bool? = Bool(SystemProfiler.software?["system_integrity"])
 			static let firewall: Bool? = Bool(SystemProfiler.firewall?["spfirewall_globalstate"])

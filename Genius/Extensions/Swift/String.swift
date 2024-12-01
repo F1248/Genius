@@ -37,6 +37,15 @@ extension String: DataInitializable {
 				}
 			}()
 				.localized()
+			case let systemInformationData as SecurityChip: {
+				switch systemInformationData {
+				case .mSeries: "M-series"
+				case .t2: "Apple T2"
+				case .t1: "Apple T1"
+				case .none: "None (Security Chip)"
+				}
+			}()
+				.localized()
 			case let systemInformationData as VersionNumber: systemInformationData.versions.map(String.init).joined(separator: ".")
 			default: nil
 			// swiftlint:disable:next statement_position

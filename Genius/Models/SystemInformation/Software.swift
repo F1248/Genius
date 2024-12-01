@@ -37,10 +37,10 @@ extension SystemInformation {
 			static let version = SystemInformationData<VersionNumber?>(VersionNumber(Sysctl.read("kern.osproductversion")))
 			static let codeName = SystemInformationData<String?>({
 				switch version.value?.major {
-				case 12: "Monterey"
-				case 13: "Ventura"
-				case 14: "Sonoma"
 				case 15: "Sequoia"
+				case 14: "Sonoma"
+				case 13: "Ventura"
+				case 12: "Monterey"
 				default: nil
 				}
 			}())
