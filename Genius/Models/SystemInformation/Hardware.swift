@@ -73,6 +73,21 @@ extension SystemInformation {
 			}()))
 		}
 
+		static let securityChip = SystemInformationData<SecurityChip?>({
+			switch CPU.type.value {
+			case .appleSilicon: .mSeries
+			case .intel:
+				if IORegistry.serviceExists(name: "Apple T2 Controller") {
+					.t2
+				} else if IORegistry.serviceExists(name: "Apple T1 Controller") {
+					.t1
+				} else {
+					.none
+				} as SecurityChip
+			default: nil
+			}
+		}())
+
 		enum CPU {
 
 			enum Cores {

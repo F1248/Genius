@@ -5,6 +5,7 @@ analyzer_rules: all
 disabled_rules:
     - conditional_returns_on_newline
     - contrasted_opening_brace
+    - discouraged_none_name
     - discouraged_optional_boolean
     - discouraged_optional_collection
     - explicit_acl

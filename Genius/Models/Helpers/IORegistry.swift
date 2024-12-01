@@ -27,4 +27,18 @@ enum IORegistry {
 		let property = IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0)?.takeRetainedValue()
 		return property as? W ?? ((property as? Data)?.trimmingTrailingZeros()).flatMap(W.init)
 	}
+
+	static func serviceExists(class className: String? = nil, name: String? = nil) -> Bool {
+		guard let matchingDictionary: CFMutableDictionary =
+			if let className {
+				IOServiceMatching(className)
+			} else if let name {
+				IOServiceNameMatching(name)
+			// swiftlint:disable:next statement_position
+			} else { nil }
+		else { return false }
+		let service = IOServiceGetMatchingService(kIOMasterPortDefault, matchingDictionary)
+		defer { IOObjectRelease(service) }
+		return service > 0
+	}
 }
