@@ -31,8 +31,8 @@ extension SystemInformation {
 			static let number = SystemInformationData<String?>(
 				{
 					guard
-						let modelNumber = IORegistry<String>.read(class: "IOPlatformExpertDevice", "model-number"),
-						let regionInfo = IORegistry<String>.read(class: "IOPlatformExpertDevice", "region-info")
+						let modelNumber = IORegistry.read(class: "IOPlatformExpertDevice", "model-number") as String?,
+						let regionInfo = IORegistry.read(class: "IOPlatformExpertDevice", "region-info") as String?
 					else { return nil }
 					return modelNumber + regionInfo
 				},
@@ -73,6 +73,21 @@ extension SystemInformation {
 			}()))
 		}
 
+		static let securityChip = SystemInformationData<SecurityChip?>({
+			switch CPU.type.value {
+			case .appleSilicon: .mSeries
+			case .intel:
+				if IORegistry.serviceExists(name: "Apple T2 Controller") {
+					.t2
+				} else if IORegistry.serviceExists(name: "Apple T1 Controller") {
+					.t1
+				} else {
+					.none
+				} as SecurityChip
+			default: nil
+			}
+		}())
+
 		enum CPU {
 
 			enum Cores {
@@ -86,7 +101,7 @@ extension SystemInformation {
 			}
 
 			static let type = SystemInformationData<CPUType?>({
-				switch Sysctl<String>.read("hw.machine") {
+				switch Sysctl.read("hw.machine") as String? {
 				case "arm64": .appleSilicon
 				case "x86_64": .intel
 				default: nil

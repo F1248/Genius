@@ -14,7 +14,7 @@ struct VersionNumber {
 
 	init?(_ versionNumber: String?) {
 		let versions = versionNumber?.split(separator: ".")
-		guard !versions.isEmpty, let versions = [Int](versions) else { return nil }
+		guard let versions = [Int](versions), !versions.isEmpty else { return nil }
 		self.versions = versions
 	}
 }
