@@ -54,7 +54,6 @@ extension Process {
 	}
 
 	func logError(outputPipeData: String?, errorPipeData: String?) {
-		// swiftformat:disable redundantSelf
 		Logger().error("""
 		Process failed:
 			Executable: \(self.executableURL.debugDescription)
@@ -66,6 +65,5 @@ extension Process {
 			Standard error:
 		\(errorPipeData.debugDescription)
 		""")
-		// swiftformat:enable redundantSelf
 	}
 }
