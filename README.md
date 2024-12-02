@@ -18,7 +18,7 @@
 ### Supported macOS Versions
 
 - macOS Sonoma 15
-- also supports recoveryOS
+- Also supports recoveryOS
 
 ### Supported Models
 

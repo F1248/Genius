@@ -18,7 +18,7 @@
 ### Unterstützte macOS-Versionen
 
 - macOS Sequoia 15
-- unterstützt auch recoveryOS
+- Unterstützt auch recoveryOS
 
 ### Unterstützte Modelle
 
