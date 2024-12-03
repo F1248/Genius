@@ -12,7 +12,7 @@
 		A43BD9C22C729A680049953D /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
 		A43BD9C32C729A680049953D /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		A4528F1F2BCD9B400092CBB8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		A452AFF22BBF2CAB00760569 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		A452AFF22BBF2CAB00760569 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; usesTabs = 0; };
 		A47BFC592C72116700B88607 /* README_DE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_DE.md; sourceTree = "<group>"; };
 		A4844FF82C73E08C0021E6E8 /* install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install.sh; sourceTree = "<group>"; };
 		A4EB1C9A2BCC3F8200DF01A6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -23,6 +23,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = .github;
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		A47D8B992C26145300A0E4CF /* Genius */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -48,6 +49,7 @@
 				A42B353E2BA2185B009E81AD /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		A42B353E2BA2185B009E81AD /* Products */ = {
 			isa = PBXGroup;
