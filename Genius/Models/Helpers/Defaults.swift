@@ -10,7 +10,7 @@ import Foundation
 
 enum Defaults {
 
-	static func read(_ domain: String, _ key: String) -> String? {
-		Process("/usr/bin/defaults", ["read", domain, key])?.runSafe()
+	static func read<W>(_ domain: String, _ key: String) -> W? {
+		UserDefaults(suiteName: domain)?.object(forKey: key) as? W
 	}
 }
