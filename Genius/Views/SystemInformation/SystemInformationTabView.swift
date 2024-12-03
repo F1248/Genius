@@ -22,12 +22,18 @@ struct SystemInformationTabView: View {
 		self.content =
 			content().map { key, value in
 				(key, value.compactMap { key, value in
-					if !value.applicable {
-						nil
-					} else if Settings.DevelopmentMode.value || Settings.InterfaceMode.value >= .advanced {
-						(key, String(value) ?? "Unknown".localized())
+					if value.applicable {
+						if Settings.DevelopmentMode.value || Settings.InterfaceMode.value >= .advanced {
+							(key, String(value) ?? "Unknown".localized())
+						} else {
+							String(value).map { (key, $0) }
+						}
 					} else {
-						String(value).map { (key, $0) }
+						if Settings.DevelopmentMode.value {
+							(key, "Not applicable".localized())
+						} else {
+							nil
+						}
 					}
 				})
 			}
