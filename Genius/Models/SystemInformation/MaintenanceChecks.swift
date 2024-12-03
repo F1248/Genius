@@ -41,16 +41,16 @@ extension SystemInformation {
 		enum AutomaticUpdates {
 
 			static let downloadMacOS =
-				SystemInformationData<Bool?>(Bool(Defaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload")))
+				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))
 			static let installMacOS = SystemInformationData<Bool?>(
-				Bool(Defaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates"))
+				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates")
 			)
 			static let installCritical =
-				SystemInformationData<Bool?>(Bool(Defaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall")))
+				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"))
 			static let installConfigData =
-				SystemInformationData<Bool?>(Bool(Defaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall")))
+				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"))
 			static let installAppStore =
-				SystemInformationData<Bool?>(Bool(Defaults.read("/Library/Preferences/com.apple.commerce", "AutoUpdate")))
+				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.commerce", "AutoUpdate"))
 		}
 	}
 	// swiftlint:enable unused_declaration
