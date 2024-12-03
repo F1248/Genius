@@ -590,6 +590,23 @@
         }
       }
     },
+    "Not applicable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht zutreffend"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not applicable"
+          }
+        }
+      }
+    },
     "Number" : {
       "localizations" : {
         "de" : {

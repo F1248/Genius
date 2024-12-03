@@ -28,7 +28,13 @@ struct SystemInformationTabView: View {
 						} else {
 							String(value).map { (key, $0) }
 						}
-					} else { nil }
+					} else {
+						if Settings.DevelopmentMode.value {
+							(key, "Not applicable".localized())
+						} else {
+							nil
+						}
+					}
 				})
 			}
 			.filter { !$0.1.isEmpty }
