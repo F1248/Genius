@@ -1,5 +1,5 @@
 //
-// Defaults.swift
+// UserDefaults.swift
 // Genius
 //
 // © 2024 F1248 <f1248@mailbox.org>
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Defaults {
+extension UserDefaults {
 
 	static func read<W>(_ domain: String, _ key: String) -> W? {
 		UserDefaults(suiteName: domain)?.object(forKey: key) as? W
