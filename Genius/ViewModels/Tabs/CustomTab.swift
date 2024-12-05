@@ -10,7 +10,7 @@ import _Concurrency
 import Foundation
 import SwiftUICore
 
-struct CustomTab: Hashable, Identifiable {
+struct CustomTab: Identifiable {
 
 	let id = UUID()
 	let title: VaryingText
@@ -27,13 +27,5 @@ struct CustomTab: Hashable, Identifiable {
 		self.title = VaryingText(titleKey, variesByInterfaceMode: variesByInterfaceMode)
 		self.index = index
 		self.content = AnyView(content())
-	}
-
-	static func == (lhs: Self, rhs: Self) -> Bool {
-		lhs.id == rhs.id
-	}
-
-	func hash(into hasher: inout Hasher) {
-		hasher.combine(id)
 	}
 }
