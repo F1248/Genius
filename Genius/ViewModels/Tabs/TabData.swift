@@ -9,8 +9,7 @@
 import _Concurrency
 import SwiftUICore
 
-protocol TabData: RawRepresentable, CaseIterable, Identifiable, Equatable, Sendable
-where AllCases == [Self], RawValue == String {
+protocol TabData: RawRepresentable, CaseIterable, SelfIdentifiable where AllCases == [Self], RawValue == String {
 
 	static var entireWindow: Bool { get }
 	static var keyboardShortcutModifiers: EventModifiers { get }
@@ -22,7 +21,6 @@ extension TabData {
 
 	static var id: String { String(describing: self) }
 	@MainActor static var selection: Self? { allCases[safe: sharedData.selectedTabsIndexes[id] ?? 0] }
-	var id: Self { self } // swiftlint:disable:this unused_declaration
 	var index: Int { Self.allCases.firstIndex(of: self) ?? 0 }
 	var localizedString: String { rawValue.localized(variesByInterfaceMode: variesByInterfaceMode) }
 	var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
