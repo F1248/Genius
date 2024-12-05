@@ -8,7 +8,7 @@
 
 enum Settings {
 
-	enum InterfaceMode: String, Identifiable, Comparable, CaseIterableSetting {
+	enum InterfaceMode: String, Comparable, SelfIdentifiable, CaseIterableSetting {
 
 		case verySimple = "Very Simple"
 		case simple = "Simple"
