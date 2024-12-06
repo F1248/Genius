@@ -25,12 +25,12 @@ enum ContentViewTab: String, TabData {
 		}
 	}
 
-	var content: AnyView {
+	@ViewBuilder var content: some View {
 		switch self {
-		case .home: AnyView(HomeView())
-		case .systemInformation: AnyView(SystemInformationView())
-		case .maintenance: AnyView(MaintenanceView())
-		case .settings: AnyView(SettingsView())
+		case .home: HomeView()
+		case .systemInformation: SystemInformationView()
+		case .maintenance: MaintenanceView()
+		case .settings: SettingsView()
 		}
 	}
 }
