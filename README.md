@@ -55,6 +55,7 @@ curl https://f1248.github.io | sh
 ```
 
 To open Genius run `genius` in Terminal.
+
 Note that Genius will need to be reinstalled after a reboot.
 
 ## Copyright
