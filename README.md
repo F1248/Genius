@@ -10,6 +10,7 @@
 - [Installation](#installation)
 	- [Manual Installation](#manual-installation-not-possible-in-recoveryos)
 	- [Command Line Installation](#command-line-installation)
+- [Notes for use in recoveryOS](#notes-for-use-in-recoveryos)
 - [Copyright](#copyright)
 - [License](#license)
 
@@ -54,9 +55,10 @@ Paste and run this command in a terminal:
 curl https://f1248.github.io | sh
 ```
 
-To open Genius run `genius` in Terminal.
+## Notes for use in recoveryOS
 
-Note that Genius will need to be reinstalled after a reboot.
+- To open Genius run `genius` in Terminal.
+- Genius only remains installed until restarting.
 
 ## Copyright
 © 2024 F1248 <[f1248@mailbox.org](mailto:f1248@mailbox.org)>
