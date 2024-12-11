@@ -48,7 +48,7 @@ Unter macOS Sonoma 14 und älter:
 
 ### Befehlszeilen-Installation
 
-Füge im Terminal den folgenden Befehl ein und führe ihn aus:
+Füge diesen Befehl in ein Terminal ein und führe ihn aus:
 
 ```shellsession
 curl https://f1248.github.io | sh
