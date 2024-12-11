@@ -1,6 +1,6 @@
 [Switch to English](README.md)
 
-# Genius: Der intelligente, universelle macOS-Helfer für alle!
+# Genius – Der intelligente, universelle macOS-Helfer für alle!
 
 ## Inhaltsverzeichnis
 
@@ -13,7 +13,7 @@
 - [Urheberrecht](#urheberrecht)
 - [Lizenz](#lizenz)
 
-## Anforderungen:
+## Anforderungen
 
 ### Unterstützte macOS-Versionen
 
@@ -24,9 +24,9 @@
 
 - Macs (inklusive offiziell nicht unterstützten), Hackintoshs und virtuelle Maschinen
 
-## Installation:
+## Installation
 
-### Manuelle Installation (in recoveryOS nicht möglich):
+### Manuelle Installation (in recoveryOS nicht möglich)
 
 1. Lade [den neusten Build](https://nightly.link/F1248/Genius/workflows/Build-Genius/main/Genius.zip) herunter.
 2. Wenn nicht bereits automatisch entzippt, doppelklicke auf `Genius.zip`, um es zu entzippen.
@@ -46,7 +46,7 @@ Unter macOS Sonoma 14 und älter:
 6. Rechtsklicke auf die App und wähle `Öffnen`.
 7. Klicke erneut auf `Öffnen`.
 
-### Befehlszeilen-Installation:
+### Befehlszeilen-Installation
 
 Füge im Terminal den folgenden Befehl ein und führe ihn aus:
 
