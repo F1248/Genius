@@ -14,12 +14,8 @@ enum IORegistry {
 
 	static func read<W: DataInitializable>(class className: String? = nil, name: String? = nil, _ key: String) -> W? {
 		guard let matchingDictionary: CFMutableDictionary =
-			if let className {
-				IOServiceMatching(className)
-			} else if let name {
-				IOServiceNameMatching(name)
-			} else { nil }
-			// swiftformat:disable indent
+			className.map({ IOServiceMatching($0) }) ??
+			name.map({ IOServiceNameMatching($0) })
 		else { return nil }
 		let service = IOServiceGetMatchingService(kIOMainPortDefault, matchingDictionary)
 		defer { IOObjectRelease(service) }
@@ -30,12 +26,8 @@ enum IORegistry {
 
 	static func serviceExists(class className: String? = nil, name: String? = nil) -> Bool {
 		guard let matchingDictionary: CFMutableDictionary =
-			if let className {
-				IOServiceMatching(className)
-			} else if let name {
-				IOServiceNameMatching(name)
-			// swiftlint:disable:next statement_position
-			} else { nil }
+			className.map({ IOServiceMatching($0) }) ??
+			name.map({ IOServiceNameMatching($0) })
 		else { return false }
 		let service = IOServiceGetMatchingService(kIOMainPortDefault, matchingDictionary)
 		defer { IOObjectRelease(service) }

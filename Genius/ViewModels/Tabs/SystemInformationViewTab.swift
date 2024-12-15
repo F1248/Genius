@@ -23,10 +23,10 @@ enum SystemInformationViewTab: String, TabData {
 		}
 	}
 
-	var content: AnyView {
+	@ViewBuilder var content: some View {
 		switch self {
-		case .hardware: AnyView(SystemInformationHardwareView())
-		case .software: AnyView(SystemInformationSoftwareView())
+		case .hardware: SystemInformationHardwareView()
+		case .software: SystemInformationSoftwareView()
 		}
 	}
 }
