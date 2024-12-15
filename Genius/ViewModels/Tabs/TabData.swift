@@ -11,10 +11,12 @@ import SwiftUICore
 
 protocol TabData: RawRepresentable, CaseIterable, SelfIdentifiable where AllCases == [Self], RawValue == String {
 
+	associatedtype ViewType: View
+
 	static var entireWindow: Bool { get }
 	static var keyboardShortcutModifiers: EventModifiers { get }
 	var variesByInterfaceMode: Bool { get }
-	var content: AnyView { get }
+	var content: ViewType { get }
 }
 
 extension TabData {

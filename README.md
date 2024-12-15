@@ -1,6 +1,6 @@
 [Zu Deutsch wechseln](README_DE.md)
 
-# Genius: The Intelligent Universal macOS Helper for Everyone!
+# Genius – The Intelligent Universal macOS Helper for Everyone!
 
 ## Table of Contents
 
@@ -10,10 +10,11 @@
 - [Installation](#installation)
 	- [Manual Installation](#manual-installation-not-possible-in-recoveryos)
 	- [Command Line Installation](#command-line-installation)
+- [Notes for use in recoveryOS](#notes-for-use-in-recoveryos)
 - [Copyright](#copyright)
 - [License](#license)
 
-## Requirements:
+## Requirements
 
 ### Supported macOS Versions
 
@@ -24,9 +25,9 @@
 
 - Macs (including officially unsupported ones), Hackintoshes, and virtual machines
 
-## Installation:
+## Installation
 
-### Manual Installation (not possible in recoveryOS):
+### Manual Installation (not possible in recoveryOS)
 
 1. Download [the latest build](https://nightly.link/F1248/Genius/workflows/Build-Genius/deployment-target-macos-12/Genius.zip).
 2. If not already unzipped automatically, double-click `Genius.zip` to unzip it.
@@ -46,16 +47,18 @@ On macOS Sonoma 14 and older:
 6. Right-click the app and choose `Open`.
 7. Click `Open` again.
 
-### Command Line Installation:
+### Command Line Installation
 
-In Terminal, paste and run the following command:
+Paste and run this command in a terminal:
 
 ```shellsession
 curl https://f1248.github.io/deployment-target-macos-12 | sh
 ```
 
-To open Genius run `genius` in Terminal.
-Note that Genius will need to be reinstalled after a reboot.
+## Notes for use in recoveryOS
+
+- To open Genius run `genius` in Terminal.
+- Genius only remains installed until restarting.
 
 ## Copyright
 © 2024 F1248 <[f1248@mailbox.org](mailto:f1248@mailbox.org)>
