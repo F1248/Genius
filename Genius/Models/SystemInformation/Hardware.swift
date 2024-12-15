@@ -42,6 +42,7 @@ extension SystemInformation {
 				{ IORegistry.read(class: "IOPlatformExpertDevice", "regulatory-model-number") },
 				applicable: CPU.type.value == .appleSilicon
 			)
+			// periphery:ignore
 			// swiftlint:disable:next unused_declaration
 			static let isLaptop = SystemInformationData<Bool?>(name.value?.hasPrefix("MacBook"))
 			static let isVirtualMachine = SystemInformationData<Bool>(Sysctl.read("kern.hv_vmm_present") ?? false)
