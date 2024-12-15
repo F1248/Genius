@@ -1,6 +1,6 @@
 [Switch to English](README.md)
 
-# Genius: Der intelligente, universelle macOS-Helfer für alle!
+# Genius – Der intelligente, universelle macOS-Helfer für alle!
 
 ## Inhaltsverzeichnis
 
@@ -10,10 +10,11 @@
 - [Installation](#installation)
 	- [Manuelle Installation](#manuelle-installation-in-recoveryos-nicht-möglich)
 	- [Befehlszeilen-Installation](#befehlszeilen-installation)
+- [Hinweise zur Verwendung in recoveryOS](#hinweise-zur-verwendung-in-recoveryos)
 - [Urheberrecht](#urheberrecht)
 - [Lizenz](#lizenz)
 
-## Anforderungen:
+## Anforderungen
 
 ### Unterstützte macOS-Versionen
 
@@ -24,9 +25,9 @@
 
 - Macs (inklusive offiziell nicht unterstützten), Hackintoshs und virtuelle Maschinen
 
-## Installation:
+## Installation
 
-### Manuelle Installation (in recoveryOS nicht möglich):
+### Manuelle Installation (in recoveryOS nicht möglich)
 
 1. Lade [den neusten Build](https://nightly.link/F1248/Genius/workflows/Build-Genius/deployment-target-macos-14/Genius.zip) herunter.
 2. Wenn nicht bereits automatisch entzippt, doppelklicke auf `Genius.zip`, um es zu entzippen.
@@ -46,16 +47,18 @@ Unter macOS Sonoma 14:
 6. Rechtsklicke auf die App und wähle `Öffnen`.
 7. Klicke erneut auf `Öffnen`.
 
-### Befehlszeilen-Installation:
+### Befehlszeilen-Installation
 
-Füge im Terminal den folgenden Befehl ein und führe ihn aus:
+Füge diesen Befehl in ein Terminal ein und führe ihn aus:
 
 ```shellsession
 curl https://f1248.github.io/deployment-target-macos-14 | sh
 ```
 
-Um Genius zu öffnen, führe `genius` im Terminal aus.
-Beachte, dass Genius nach einem Neustart neu installiert werden muss.
+## Hinweise zur Verwendung in recoveryOS
+
+- Um Genius zu öffnen, führe `genius` im Terminal aus.
+- Genius bleibt nur bis zum Neustarten installiert.
 
 ## Urheberrecht
 © 2024 F1248 <[f1248@mailbox.org](mailto:f1248@mailbox.org)>

@@ -62,6 +62,16 @@ jobs:
             - name: Run SwiftLint Lint Rules
               run: ./swiftlint lint --strict --reporter github-actions-logging
 
+            - name: Install Periphery
+              run: |
+                latest_periphery_tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/peripheryapp/periphery/releases/download/"$latest_periphery_tag"/periphery-"$latest_periphery_tag".zip --output periphery.zip
+                unzip periphery.zip
+                echo "Periphery $(./periphery version) installed"
+
+            - name: Run Periphery
+              run: ./periphery scan --format github-actions --relative-results --strict -- -skipPackagePluginValidation
+
             - name: Select Xcode Version
               run: |
                 sudo xcode-select --switch /Applications/$(
@@ -71,9 +81,8 @@ jobs:
 
             - name: Install xcbeautify
               run: |
-                curl --location https://github.com/cpisciotta/xcbeautify/releases/latest/download/xcbeautify-"$(
-                    gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4
-                )"-arm64-apple-macosx.zip --output xcbeautify.zip
+                latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
