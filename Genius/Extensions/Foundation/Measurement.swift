@@ -36,7 +36,7 @@ extension Measurement: MeasurementProtocol {
 
 extension Measurement where UnitType: Dimension {
 
-	init(value: Double) {
-		self.init(value: value, unit: UnitType.baseUnit())
+	init(value: Int) {
+		self.init(value: Double(value), unit: UnitType.baseUnit())
 	}
 }

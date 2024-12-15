@@ -108,13 +108,11 @@ extension SystemInformation {
 				}
 			}())
 			static let name = SystemInformationData<String?>(Sysctl.read("machdep.cpu.brand_string"))
-			static let frequency = SystemInformationData<Frequency?>(
-				{ Double(Sysctl.read("hw.cpufrequency")).map(Frequency.init) },
-				applicable: type.value == .intel
-			)
+			static let frequency =
+				SystemInformationData<Frequency?>({ Sysctl.read("hw.cpufrequency").map(Frequency.init) }, applicable: type.value == .intel)
 		}
 
-		static let memory = SystemInformationData<InformationStorage?>(Double(Sysctl.read("hw.memsize")).map(InformationStorage.init))
+		static let memory = SystemInformationData<InformationStorage?>(Sysctl.read("hw.memsize").map(InformationStorage.init))
 
 		enum Machine {
 
