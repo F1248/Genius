@@ -14,9 +14,4 @@ extension Double {
 		guard let int else { return nil }
 		self.init(int)
 	}
-
-	init?(_ string: (some StringProtocol)?) {
-		guard let string else { return nil }
-		self.init(string.replacingOccurrences(of: ",", with: "."))
-	}
 }
