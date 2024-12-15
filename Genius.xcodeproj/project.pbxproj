@@ -11,6 +11,7 @@
 		A438B3FA2CA346C600F8DF17 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		A43BD9C22C729A680049953D /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
 		A43BD9C32C729A680049953D /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
+		A444562E2D0E4EB200CE6207 /* .periphery.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .periphery.yml; sourceTree = "<group>"; usesTabs = 0; };
 		A4528F1F2BCD9B400092CBB8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A452AFF22BBF2CAB00760569 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; usesTabs = 0; };
 		A47BFC592C72116700B88607 /* README_DE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_DE.md; sourceTree = "<group>"; };
@@ -38,6 +39,7 @@
 			children = (
 				A417A7ED2C5EC312001FD481 /* .github */,
 				A4528F1F2BCD9B400092CBB8 /* .gitignore */,
+				A444562E2D0E4EB200CE6207 /* .periphery.yml */,
 				A43BD9C22C729A680049953D /* .swift-version */,
 				A43BD9C32C729A680049953D /* .swiftformat */,
 				A452AFF22BBF2CAB00760569 /* .swiftlint.yml */,
@@ -69,6 +71,7 @@
 				A42B35392BA2185B009E81AD /* Sources */,
 				A42B353B2BA2185B009E81AD /* Resources */,
 				A42660D12C729D04000E0507 /* SwiftFormat */,
+				A4DB2C042D0F3E6600A1BA10 /* Periphery */,
 			);
 			buildRules = (
 			);
@@ -148,6 +151,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
 			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n\tif which -s swiftformat; then\n\t\tswiftformat --lint --lenient .\n\telse\n\t\techo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"\n\tfi\nfi\n";
+		};
+		A4DB2C042D0F3E6600A1BA10 /* Periphery */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Periphery;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/zsh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ] && [ -z \"${INVOKED_BY_PERIPHERY}\" ]; then\n\tif which -s periphery; then\n\t\tperiphery scan -- INVOKED_BY_PERIPHERY=1\n\telse\n\t\techo \"warning: Periphery is not installed, see https://github.com/peripheryapp/periphery#installation for installation instructions\"\n\tfi\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

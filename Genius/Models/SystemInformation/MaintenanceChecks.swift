@@ -10,6 +10,7 @@ import Foundation
 
 extension SystemInformation {
 
+	// periphery:ignore
 	// swiftlint:disable unused_declaration
 	enum MaintenanceChecks {
 
