@@ -11,8 +11,11 @@ import Foundation
 extension Bool: DataInitializable {
 
 	init?(_ data: Data) {
-		guard let bool = data[0] == 0 ? false : data[0] == 1 ? true : nil else { return nil }
-		self = bool
+		switch data.first {
+		case 0: self = false
+		case 1: self = true
+		default: return nil
+		}
 	}
 
 	init?(_ string: Any?) {
