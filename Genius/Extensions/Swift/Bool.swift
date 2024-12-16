@@ -11,25 +11,30 @@ import Foundation
 extension Bool: DataInitializable {
 
 	init?(_ data: Data) {
-		guard let bool = data[0] == 0 ? false : data[0] == 1 ? true : nil else { return nil }
-		self = bool
+		switch data.first {
+		case 0: self = false
+		case 1: self = true
+		default: return nil
+		}
 	}
 
 	init?(_ string: Any?) {
-		guard let string = string as? String else { return nil }
+		guard let string = (string as? String)?.lowercased() else { return nil }
 		if string.contains(any: [
+			"no",
+			"false",
+			"disabled",
+			"spfirewall_globalstate_allow_all",
+		]) {
+			self = false
+		} else if string.contains(any: [
+			"yes",
 			"true",
 			"enabled",
 			"spfirewall_globalstate_limit_connections",
 			"spfirewall_globalstate_block_all",
 		]) {
 			self = true
-		} else if string.contains(any: [
-			"false",
-			"disabled",
-			"spfirewall_globalstate_allow_all",
-		]) {
-			self = false
 		} else { return nil }
 	}
 }
