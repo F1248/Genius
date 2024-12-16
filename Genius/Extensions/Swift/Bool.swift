@@ -19,20 +19,22 @@ extension Bool: DataInitializable {
 	}
 
 	init?(_ string: Any?) {
-		guard let string = string as? String else { return nil }
+		guard let string = (string as? String)?.lowercased() else { return nil }
 		if string.contains(any: [
+			"no",
+			"false",
+			"disabled",
+			"spfirewall_globalstate_allow_all",
+		]) {
+			self = false
+		} else if string.contains(any: [
+			"yes",
 			"true",
 			"enabled",
 			"spfirewall_globalstate_limit_connections",
 			"spfirewall_globalstate_block_all",
 		]) {
 			self = true
-		} else if string.contains(any: [
-			"false",
-			"disabled",
-			"spfirewall_globalstate_allow_all",
-		]) {
-			self = false
 		} else { return nil }
 	}
 }
