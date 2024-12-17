@@ -18,7 +18,7 @@ extension SystemInformation {
 
 			static let activationLock = SystemInformationData<Bool?>(
 				{ Bool(SystemProfiler.hardware?["activation_lock_status"]) },
-				applicable: Hardware.securityChip.value.map { $0 >= .t2 }
+				applicable: Hardware.securityChip.value >=? .t2
 			)
 			static let firmwarePassword = SystemInformationData<Bool?>(
 				{ Bool(Process("/usr/sbin/firmwarepasswd", ["-check"], requiresRoot: true)?.runSafe()) },
@@ -43,7 +43,7 @@ extension SystemInformation {
 
 			static let checkMacOS = SystemInformationData<Bool?>(
 				{ UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled") },
-				applicable: Software.OS.version.value?.major.map { $0 <= 14 }
+				applicable: Software.OS.version.value?.major <=? 14
 			)
 			static let downloadMacOS =
 				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))

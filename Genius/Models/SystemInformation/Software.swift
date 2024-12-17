@@ -17,7 +17,7 @@ extension SystemInformation {
 
 			static let version = SystemInformationData<String?>(
 				{ SystemProfiler.hardware?["SMC_version_system"] },
-				applicable: Hardware.securityChip.value.map { $0 <= .t1 }
+				applicable: Hardware.securityChip.value <=? .t1
 			)
 		}
 
