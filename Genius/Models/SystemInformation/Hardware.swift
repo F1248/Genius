@@ -40,7 +40,7 @@ extension SystemInformation {
 			)
 			static let regulatoryNumber = SystemInformationData<String?>(
 				{ IORegistry.read(class: "IOPlatformExpertDevice", "regulatory-model-number") },
-				applicable: CPU.type.value == .appleSilicon
+				applicable: CPU.type.value == .appleSilicon && !isVirtualMachine.value
 			)
 			// periphery:ignore
 			// swiftlint:disable:next unused_declaration
