@@ -6,6 +6,14 @@
 // See LICENSE.txt for license information.
 //
 
+extension Optional where Wrapped: Equatable {
+
+	static func ==? (lhs: Self, rhs: Self) -> Bool? {
+		guard let lhs, let rhs else { return nil }
+		return lhs == rhs
+	}
+}
+
 extension Optional where Wrapped: Comparable {
 
 	static func <? (lhs: Self, rhs: Self) -> Bool? {

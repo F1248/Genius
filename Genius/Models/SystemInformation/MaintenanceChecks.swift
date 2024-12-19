@@ -22,7 +22,7 @@ extension SystemInformation {
 			)
 			static let firmwarePassword = SystemInformationData<Bool?>(
 				{ Bool(Process("/usr/sbin/firmwarepasswd", ["-check"], requiresRoot: true)?.runSafe()) },
-				applicable: Hardware.CPU.type.value == .intel
+				applicable: Hardware.CPU.type.value ==? .intel
 			)
 		}
 
