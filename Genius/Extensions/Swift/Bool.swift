@@ -52,4 +52,12 @@ extension Bool? {
 			false
 		} else { nil }
 	}
+
+	static func ||? (lhs: Self, rhs: Self) -> Self {
+		if let lhs, let rhs {
+			lhs || rhs
+		} else if [lhs, rhs].contains(true) {
+			true
+		} else { nil }
+	}
 }

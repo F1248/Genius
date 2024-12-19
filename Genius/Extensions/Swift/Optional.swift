@@ -12,6 +12,10 @@ extension Optional where Wrapped: Equatable {
 		guard let lhs, let rhs else { return nil }
 		return lhs == rhs
 	}
+
+	static func !=? (lhs: Self, rhs: Self) -> Bool? {
+		!?(lhs ==? rhs)
+	}
 }
 
 extension Optional where Wrapped: Comparable {
