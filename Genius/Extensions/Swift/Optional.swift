@@ -6,11 +6,6 @@
 // See LICENSE.txt for license information.
 //
 
-infix operator <?: ComparisonPrecedence
-infix operator >?: ComparisonPrecedence
-infix operator <=?: ComparisonPrecedence
-infix operator >=?: ComparisonPrecedence
-
 extension Optional where Wrapped: Comparable {
 
 	static func <? (lhs: Self, rhs: Self) -> Bool? {
