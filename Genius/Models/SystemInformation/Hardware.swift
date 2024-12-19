@@ -121,7 +121,9 @@ extension SystemInformation {
 				SystemInformationData<String?>(IORegistry.read(class: "IOPlatformExpertDevice", kIOPlatformSerialNumberKey))
 			static let hardwareUUID =
 				SystemInformationData<String?>(IORegistry.read(class: "IOPlatformExpertDevice", kIOPlatformUUIDKey))
-			static let provisioningUDID = SystemInformationData<String?>(SystemProfiler.hardware?["provisioning_UDID"])
+			static let provisioningUDID = SystemInformationData<String?>(
+				SystemProfiler.hardware?["provisioning_UDID"] ?? (CPU.type.value == .intel ? hardwareUUID : nil)
+			)
 		}
 	}
 }
