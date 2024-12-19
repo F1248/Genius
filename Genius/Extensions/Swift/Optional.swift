@@ -19,10 +19,10 @@ extension Optional where Wrapped: Comparable {
 	}
 
 	static func <=? (lhs: Self, rhs: Self) -> Bool? {
-		(lhs >? rhs).map(!)
+		!?(lhs >? rhs)
 	}
 
 	static func >=? (lhs: Self, rhs: Self) -> Bool? {
-		(lhs <? rhs).map(!)
+		!?(lhs <? rhs)
 	}
 }
