@@ -38,3 +38,18 @@ extension Bool: DataInitializable {
 		} else { return nil }
 	}
 }
+
+extension Bool? {
+
+	static prefix func !? (bool: Self) -> Self {
+		bool.map(!)
+	}
+
+	static func &&? (lhs: Self, rhs: Self) -> Self {
+		if let lhs, let rhs {
+			lhs && rhs
+		} else if [lhs, rhs].contains(false) {
+			false
+		} else { nil }
+	}
+}
