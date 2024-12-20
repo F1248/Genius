@@ -71,7 +71,6 @@
 				A42B35392BA2185B009E81AD /* Sources */,
 				A42B353B2BA2185B009E81AD /* Resources */,
 				A42660D12C729D04000E0507 /* SwiftFormat */,
-				A4DB2C042D0F3E6600A1BA10 /* Periphery */,
 			);
 			buildRules = (
 			);
@@ -151,25 +150,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
 			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n\tif which -s swiftformat; then\n\t\tswiftformat --lint --lenient .\n\telse\n\t\techo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"\n\tfi\nfi\n";
-		};
-		A4DB2C042D0F3E6600A1BA10 /* Periphery */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Periphery;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/zsh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ] && [ -z \"${INVOKED_BY_PERIPHERY}\" ]; then\n\tif which -s periphery; then\n\t\tperiphery scan -- INVOKED_BY_PERIPHERY=1\n\telse\n\t\techo \"warning: Periphery is not installed, see https://github.com/peripheryapp/periphery#installation for installation instructions\"\n\tfi\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

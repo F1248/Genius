@@ -18,11 +18,11 @@ extension SystemInformation {
 
 			static let activationLock = SystemInformationData<Bool?>(
 				{ Bool(SystemProfiler.hardware?["activation_lock_status"]) },
-				applicable: Hardware.securityChip.value.map { $0 >= .t2 }
+				applicable: Hardware.securityChip.value >=? .t2 &&? Software.OS.bootMode.value !=? .recovery
 			)
 			static let firmwarePassword = SystemInformationData<Bool?>(
 				{ Bool(Process("/usr/sbin/firmwarepasswd", ["-check"], requiresRoot: true)?.runSafe()) },
-				applicable: Hardware.CPU.type.value == .intel
+				applicable: Hardware.CPU.type.value ==? .intel
 			)
 		}
 
@@ -33,9 +33,18 @@ extension SystemInformation {
 
 		enum MalwareProtection {
 
-			static let secureVirtualMemory = SystemInformationData<Bool?>(Bool(SystemProfiler.software?["secure_vm"]))
-			static let systemIntegrityProtection = SystemInformationData<Bool?>(Bool(SystemProfiler.software?["system_integrity"]))
-			static let firewall = SystemInformationData<Bool?>(Bool(SystemProfiler.firewall?["spfirewall_globalstate"]))
+			static let secureVirtualMemory = SystemInformationData<Bool?>(
+				{ Bool(SystemProfiler.software?["secure_vm"]) },
+				applicable: Software.OS.bootMode.value !=? .recovery
+			)
+			static let systemIntegrityProtection = SystemInformationData<Bool?>(
+				{ Bool(SystemProfiler.software?["system_integrity"]) },
+				applicable: Software.OS.bootMode.value !=? .recovery
+			)
+			static let firewall = SystemInformationData<Bool?>(
+				{ Bool(SystemProfiler.firewall?["spfirewall_globalstate"]) },
+				applicable: Software.OS.bootMode.value !=? .recovery
+			)
 			static let gatekeeper = SystemInformationData<Bool?>(Bool(Process("/usr/sbin/spctl", ["--status"])?.runSafe()))
 		}
 
@@ -43,7 +52,7 @@ extension SystemInformation {
 
 			static let checkMacOS = SystemInformationData<Bool?>(
 				{ UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled") },
-				applicable: Software.OS.version.value?.major.map { $0 <= 14 }
+				applicable: { if #unavailable(macOS 15) { true } else { false } }()
 			)
 			static let downloadMacOS =
 				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))
