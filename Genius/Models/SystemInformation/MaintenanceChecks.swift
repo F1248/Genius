@@ -18,11 +18,11 @@ extension SystemInformation {
 
 			static let activationLock = SystemInformationData<Bool?>(
 				{ Bool(SystemProfiler.hardware?["activation_lock_status"]) },
-				applicable: Hardware.securityChip.value >=? .t2 &&? Software.OS.bootMode.value !=? .recovery
+				applicable: Hardware.securityChip.value >= .t2 &&? Software.OS.bootMode.value !=? .recovery
 			)
 			static let firmwarePassword = SystemInformationData<Bool?>(
 				{ Bool(Process("/usr/sbin/firmwarepasswd", ["-check"], requiresRoot: true)?.runSafe()) },
-				applicable: Hardware.CPU.type.value ==? .intel
+				applicable: Hardware.CPU.type.value == .intel
 			)
 		}
 
