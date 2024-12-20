@@ -10,8 +10,6 @@ struct VersionNumber {
 
 	let versions: [Int]
 
-	var major: Int? { versions.first }
-
 	init?(_ versionNumber: String?) {
 		let versions = versionNumber?.split(separator: ".")
 		guard let versions = [Int](versions), !versions.isEmpty else { return nil }

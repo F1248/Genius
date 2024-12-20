@@ -39,13 +39,18 @@ extension SystemInformation {
 
 			static let version = SystemInformationData<VersionNumber?>(VersionNumber(Sysctl.read("kern.osproductversion")))
 			static let codeName = SystemInformationData<String?>({
-				switch version.value?.major {
-				case 15: "Sequoia"
-				case 14: "Sonoma"
-				case 13: "Ventura"
-				case 12: "Monterey"
-				case 11: "Big Sur"
-				default: nil
+				if #available(macOS 16, *) {
+					nil
+				} else if #available(macOS 15, *) {
+					"Sequoia"
+				} else if #available(macOS 14, *) {
+					"Sonoma"
+				} else if #available(macOS 13, *) {
+					"Ventura"
+				} else if #available(macOS 12, *) {
+					"Monterey"
+				} else {
+					"Big Sur"
 				}
 			}())
 			static let build = SystemInformationData<String?>(Sysctl.read("kern.osversion"))

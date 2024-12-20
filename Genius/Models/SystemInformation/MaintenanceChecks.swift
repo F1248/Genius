@@ -52,7 +52,7 @@ extension SystemInformation {
 
 			static let checkMacOS = SystemInformationData<Bool?>(
 				{ UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled") },
-				applicable: Software.OS.version.value?.major <=? 14
+				applicable: { if #unavailable(macOS 15) { true } else { false } }()
 			)
 			static let downloadMacOS =
 				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))
