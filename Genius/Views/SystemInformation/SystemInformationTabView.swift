@@ -22,7 +22,7 @@ struct SystemInformationTabView: View {
 		self.content =
 			content().map { key, value in
 				(key, value.compactMap { key, value in
-					if value.applicable {
+					if value.applicable ?? true {
 						if Settings.DevelopmentMode.value || Settings.InterfaceMode.value >= .advanced {
 							(key, String(value) ?? "Unknown".localized())
 						} else {

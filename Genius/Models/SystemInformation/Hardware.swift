@@ -36,18 +36,18 @@ extension SystemInformation {
 					else { return nil }
 					return modelNumber + regionInfo
 				},
-				applicable: CPU.type.value == .appleSilicon
+				applicable: CPU.type.value ==? .appleSilicon
 			)
 			static let regulatoryNumber = SystemInformationData<String?>(
 				{ IORegistry.read(class: "IOPlatformExpertDevice", "regulatory-model-number") },
-				applicable: CPU.type.value == .appleSilicon
+				applicable: CPU.type.value ==? .appleSilicon &&? !?isVirtualMachine.value
 			)
 			// periphery:ignore
 			// swiftlint:disable:next unused_declaration
 			static let isLaptop = SystemInformationData<Bool?>(name.value?.hasPrefix("MacBook"))
-			static let isVirtualMachine = SystemInformationData<Bool>(Sysctl.read("kern.hv_vmm_present") ?? false)
+			static let isVirtualMachine = SystemInformationData<Bool?>(Sysctl.read("kern.hv_vmm_present"))
 			static let systemImage = SystemInformationData<String>(systemImageFallback({
-				if isVirtualMachine.value {
+				if isVirtualMachine.value ?? false {
 					"macwindow"
 				} else if name.value.hasPrefix("MacBook") {
 					switch identifier.value {
@@ -93,7 +93,7 @@ extension SystemInformation {
 
 			enum Cores {
 
-				static let differentTypes = SystemInformationData<Bool>(type.value == .appleSilicon && !Model.isVirtualMachine.value)
+				static let differentTypes = SystemInformationData<Bool?>(type.value ==? .appleSilicon &&? !?Model.isVirtualMachine.value)
 				static let total = SystemInformationData<Int?>(Sysctl.read("hw.physicalcpu"))
 				static let performance =
 					SystemInformationData<Int?>({ Sysctl.read("hw.perflevel0.physicalcpu") }, applicable: differentTypes.value)
@@ -110,7 +110,7 @@ extension SystemInformation {
 			}())
 			static let name = SystemInformationData<String?>(Sysctl.read("machdep.cpu.brand_string"))
 			static let frequency =
-				SystemInformationData<Frequency?>({ Sysctl.read("hw.cpufrequency").map(Frequency.init) }, applicable: type.value == .intel)
+				SystemInformationData<Frequency?>({ Sysctl.read("hw.cpufrequency").map(Frequency.init) }, applicable: type.value ==? .intel)
 		}
 
 		static let memory = SystemInformationData<InformationStorage?>(Sysctl.read("hw.memsize").map(InformationStorage.init))
@@ -121,7 +121,10 @@ extension SystemInformation {
 				SystemInformationData<String?>(IORegistry.read(class: "IOPlatformExpertDevice", kIOPlatformSerialNumberKey))
 			static let hardwareUUID =
 				SystemInformationData<String?>(IORegistry.read(class: "IOPlatformExpertDevice", kIOPlatformUUIDKey))
-			static let provisioningUDID = SystemInformationData<String?>(SystemProfiler.hardware?["provisioning_UDID"])
+			static let provisioningUDID = SystemInformationData<String?>(
+				{ SystemProfiler.hardware?["provisioning_UDID"] ?? (CPU.type.value == .intel ? hardwareUUID : nil) },
+				applicable: Software.OS.bootMode.value !=? .recovery ||? CPU.type.value ==? .intel
+			)
 		}
 	}
 }
