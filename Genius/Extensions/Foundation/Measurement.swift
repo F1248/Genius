@@ -20,7 +20,7 @@ extension Measurement: MeasurementProtocol {
 			let formatter = MeasurementFormatter()
 			let units: [UnitFrequency] = [.terahertz, .gigahertz, .megahertz, .kilohertz, .hertz, .millihertz, .microhertz, .nanohertz]
 			return formatter.string(
-				from: units.lazy.map(self.converted).first { $0.value > 1 } ?? self.converted(to: UnitFrequency.baseUnit())
+				from: units.lazy.map(self.converted).first { $0.value >= 1 } ?? self.converted(to: UnitFrequency.baseUnit())
 			)
 		case let self as InformationStorage:
 			let formatter = ByteCountFormatter()
