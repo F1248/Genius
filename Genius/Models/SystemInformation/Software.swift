@@ -17,13 +17,16 @@ extension SystemInformation {
 
 			static let version = SystemInformationData<String?>(
 				{ SystemProfiler.hardware?["SMC_version_system"] },
-				applicable: SystemProfiler.hardware.contains(key: "SMC_version_system")
+				applicable: Hardware.securityChip.value <=? .t1 &&? OS.bootMode.value !=? .recovery
 			)
 		}
 
 		enum Firmware {
 
-			static let version = SystemInformationData<String?>(SystemProfiler.hardware?["boot_rom_version"])
+			static let version = SystemInformationData<String?>(
+				{ SystemProfiler.hardware?["boot_rom_version"] },
+				applicable: OS.bootMode.value !=? .recovery
+			)
 		}
 
 		enum Kernel {
@@ -36,10 +39,12 @@ extension SystemInformation {
 
 			static let version = SystemInformationData<VersionNumber?>(VersionNumber(Sysctl.read("kern.osproductversion")))
 			static let codeName = SystemInformationData<String?>({
-				switch version.value?.major {
-				case 15: "Sequoia"
-				case 14: "Sonoma"
-				default: nil
+				if #available(macOS 16, *) {
+					nil
+				} else if #available(macOS 15, *) {
+					"Sequoia"
+				} else {
+					"Sonoma"
 				}
 			}())
 			static let build = SystemInformationData<String?>(Sysctl.read("kern.osversion"))
@@ -50,8 +55,10 @@ extension SystemInformation {
 					safe ? .safe : .normal
 				} else { nil }
 			}())
-			static let bootVolume = SystemInformationData<String?>(SystemProfiler.software?["boot_volume"])
-			static let loaderVersion = SystemInformationData<String?>(SystemProfiler.hardware?["os_loader_version"])
+			static let bootVolume =
+				SystemInformationData<String?>({ SystemProfiler.software?["boot_volume"] }, applicable: bootMode.value !=? .recovery)
+			static let loaderVersion =
+				SystemInformationData<String?>({ SystemProfiler.hardware?["os_loader_version"] }, applicable: bootMode.value !=? .recovery)
 		}
 
 		enum Computer {

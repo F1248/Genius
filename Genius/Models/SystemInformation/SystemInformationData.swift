@@ -9,7 +9,7 @@
 struct SystemInformationData<T: Sendable>: SystemInformationDataProtocol {
 
 	let value: T
-	let applicable: Bool
+	let applicable: Bool?
 
 	init(_ value: T) {
 		self.value = value
@@ -21,12 +21,12 @@ struct SystemInformationData<T: Sendable>: SystemInformationDataProtocol {
 	}
 
 	init<W>(_ value: () -> T, applicable: Bool?) where T == W? {
-		self.applicable = applicable ?? false
-		self.value = self.applicable ? value() : nil
+		self.applicable = applicable
+		self.value = applicable ?? true ? value() : nil
 	}
 
 	init<W>(_ value: () -> Any?, applicable: Bool?) where T == W? {
-		self.applicable = applicable ?? false
-		self.value = self.applicable ? value() as? W : nil
+		self.applicable = applicable
+		self.value = applicable ?? true ? value() as? W : nil
 	}
 }
