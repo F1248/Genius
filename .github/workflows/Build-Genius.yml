@@ -25,6 +25,7 @@ concurrency:
 
 env:
     GH_TOKEN: ${{ github.token }}
+    NSUnbufferedIO: YES
 
 jobs:
 
@@ -89,8 +90,6 @@ jobs:
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Build Genius
-              env: 
-                NSUnbufferedIO: YES
               run: xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run SwiftLint Analyzer Rules
