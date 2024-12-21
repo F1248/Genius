@@ -81,9 +81,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A42B354E2BA2185C009E81AD /* Build configuration list for PBXNativeTarget "Genius" */;
 			buildPhases = (
+				A42660D12C729D04000E0507 /* SwiftFormat */,
 				A42B35392BA2185B009E81AD /* Sources */,
 				A42B353B2BA2185B009E81AD /* Resources */,
-				A42660D12C729D04000E0507 /* SwiftFormat */,
 			);
 			buildRules = (
 			);
