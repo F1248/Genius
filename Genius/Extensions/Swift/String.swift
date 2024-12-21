@@ -6,6 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
+import Defaults
 import Foundation
 
 extension String: DataInitializable {
@@ -55,7 +56,7 @@ extension String: DataInitializable {
 	}
 
 	func localized(variesByInterfaceMode: Bool = false) -> String {
-		let tableName: String? = variesByInterfaceMode ? Settings.InterfaceMode.value.localizationTable : nil
+		let tableName: String? = variesByInterfaceMode ? Defaults[.interfaceMode].localizationTable : nil
 		return if #available(macOS 12, *) {
 			String(localized: LocalizationValue(self), table: tableName)
 		} else {

@@ -6,6 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
+import Defaults
 import SwiftUI
 import SwiftUICore
 
@@ -23,13 +24,13 @@ struct SystemInformationTabView: View {
 			content().map { key, value in
 				(key, value.compactMap { key, value in
 					if value.applicable ?? true {
-						if Settings.DevelopmentMode.value || Settings.InterfaceMode.value >= .advanced {
+						if Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced {
 							(key, String(value) ?? "Unknown".localized())
 						} else {
 							String(value).map { (key, $0) }
 						}
 					} else {
-						if Settings.DevelopmentMode.value {
+						if Defaults[.developmentMode] {
 							(key, "Not applicable".localized())
 						} else {
 							nil

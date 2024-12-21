@@ -16,7 +16,7 @@ protocol TabData: RawRepresentable, CaseIterable, SelfIdentifiable where AllCase
 	static var entireWindow: Bool { get }
 	static var keyboardShortcutModifiers: EventModifiers { get }
 	var variesByInterfaceMode: Bool { get }
-	var content: ViewType { get }
+	@MainActor var content: ViewType { get }
 }
 
 extension TabData {
