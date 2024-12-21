@@ -36,11 +36,11 @@ extension SystemInformation {
 					else { return nil }
 					return modelNumber + regionInfo
 				},
-				applicable: CPU.type.value ==? .appleSilicon
+				applicable: CPU.type.value == .appleSilicon
 			)
 			static let regulatoryNumber = SystemInformationData<String?>(
 				{ IORegistry.read(class: "IOPlatformExpertDevice", "regulatory-model-number") },
-				applicable: CPU.type.value ==? .appleSilicon &&? !?isVirtualMachine.value
+				applicable: CPU.type.value == .appleSilicon &&? !?isVirtualMachine.value
 			)
 			// periphery:ignore
 			// swiftlint:disable:next unused_declaration
@@ -74,7 +74,7 @@ extension SystemInformation {
 			}()))
 		}
 
-		static let securityChip = SystemInformationData<SecurityChip?>({
+		static let securityChip = SystemInformationData<SecurityChip>({
 			switch CPU.type.value {
 			case .appleSilicon: .mSeries
 			case .intel:
@@ -84,8 +84,7 @@ extension SystemInformation {
 					.t1
 				} else {
 					.none
-				} as SecurityChip
-			default: nil
+				}
 			}
 		}())
 
@@ -93,7 +92,7 @@ extension SystemInformation {
 
 			enum Cores {
 
-				static let differentTypes = SystemInformationData<Bool?>(type.value ==? .appleSilicon &&? !?Model.isVirtualMachine.value)
+				static let differentTypes = SystemInformationData<Bool?>(type.value == .appleSilicon &&? !?Model.isVirtualMachine.value)
 				static let total = SystemInformationData<Int?>(Sysctl.read("hw.physicalcpu"))
 				static let performance =
 					SystemInformationData<Int?>({ Sysctl.read("hw.perflevel0.physicalcpu") }, applicable: differentTypes.value)
@@ -101,16 +100,18 @@ extension SystemInformation {
 					SystemInformationData<Int?>({ Sysctl.read("hw.perflevel1.physicalcpu") }, applicable: differentTypes.value)
 			}
 
-			static let type = SystemInformationData<CPUType?>({
-				switch Sysctl.read("hw.machine") as String? {
-				case "arm64": .appleSilicon
-				case "x86_64": .intel
-				default: nil
-				}
+			static let type = SystemInformationData<CPUType>({
+				#if arch(arm64)
+					.appleSilicon
+				#elseif arch(x86_64)
+					.intel
+				#else
+					#error("Unsupported architecture")
+				#endif
 			}())
 			static let name = SystemInformationData<String?>(Sysctl.read("machdep.cpu.brand_string"))
 			static let frequency =
-				SystemInformationData<Frequency?>({ Sysctl.read("hw.cpufrequency").map(Frequency.init) }, applicable: type.value ==? .intel)
+				SystemInformationData<Frequency?>({ Sysctl.read("hw.cpufrequency").map(Frequency.init) }, applicable: type.value == .intel)
 		}
 
 		static let memory = SystemInformationData<InformationStorage?>(Sysctl.read("hw.memsize").map(InformationStorage.init))
@@ -123,7 +124,7 @@ extension SystemInformation {
 				SystemInformationData<String?>(IORegistry.read(class: "IOPlatformExpertDevice", kIOPlatformUUIDKey))
 			static let provisioningUDID = SystemInformationData<String?>(
 				{ SystemProfiler.hardware?["provisioning_UDID"] ?? (CPU.type.value == .intel ? hardwareUUID : nil) },
-				applicable: Software.OS.bootMode.value !=? .recovery ||? CPU.type.value ==? .intel
+				applicable: Software.OS.bootMode.value !=? .recovery ||? CPU.type.value == .intel
 			)
 		}
 	}
