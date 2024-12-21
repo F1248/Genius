@@ -19,6 +19,16 @@
 		A4EB1C9A2BCC3F8200DF01A6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A450FB812D16DBC3005EA160 /* Exceptions for "Genius" folder in "Genius" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A42B353C2BA2185B009E81AD /* Genius */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A417A7ED2C5EC312001FD481 /* .github */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -28,6 +38,9 @@
 		};
 		A47D8B992C26145300A0E4CF /* Genius */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A450FB812D16DBC3005EA160 /* Exceptions for "Genius" folder in "Genius" target */,
+			);
 			path = Genius;
 			sourceTree = "<group>";
 		};
@@ -256,6 +269,7 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Genius/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 F1248 <f1248@mailbox.org>";
 				LD_WARN_DUPLICATE_LIBRARIES = YES;
@@ -361,6 +375,7 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Genius/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 F1248 <f1248@mailbox.org>";
 				LD_WARN_DUPLICATE_LIBRARIES = YES;
