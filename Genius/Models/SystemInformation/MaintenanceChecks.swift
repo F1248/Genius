@@ -59,7 +59,7 @@ extension SystemInformation {
 				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"))
 			static let installConfigData =
 				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"))
-			static let installAppStore =
+			static let installAppStoreApps =
 				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.commerce", "AutoUpdate"))
 		}
 	}
