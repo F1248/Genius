@@ -6,13 +6,14 @@
 // See LICENSE.txt for license information.
 //
 
+import Defaults
 import SwiftUI
 import SwiftUICore
 
 struct VaryingText: View {
 
-	@AppStorage(Settings.InterfaceMode.key)
-	var interfaceMode = Settings.InterfaceMode()
+	@AppStorage(Defaults.Keys.interfaceMode.name)
+	var interfaceMode: Settings.InterfaceMode = Defaults.Keys.interfaceMode.defaultValue
 
 	let key: LocalizedStringKey
 	let variesByInterfaceMode: Bool
