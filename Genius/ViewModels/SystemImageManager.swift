@@ -8,7 +8,7 @@
 
 func systemImageFallback(_ name: String) -> String {
 	switch name {
-	default: break
+		default: break
 	}
 	return name
 }

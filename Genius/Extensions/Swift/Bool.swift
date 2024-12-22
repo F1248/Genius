@@ -12,9 +12,9 @@ extension Bool: DataInitializable {
 
 	init?(_ data: Data) {
 		switch data.first {
-		case 0: self = false
-		case 1: self = true
-		default: return nil
+			case 0: self = false
+			case 1: self = true
+			default: return nil
 		}
 	}
 
