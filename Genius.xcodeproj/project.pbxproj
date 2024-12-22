@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A46854972D1729B500DB3E87 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = A46854962D1729B500DB3E87 /* Defaults */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		A42B353D2BA2185B009E81AD /* Genius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Genius.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A438B3FA2CA346C600F8DF17 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -46,6 +50,17 @@
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
+/* Begin PBXFrameworksBuildPhase section */
+		A46854942D1729A800DB3E87 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A46854972D1729B500DB3E87 /* Defaults in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		A42B35342BA2185B009E81AD = {
 			isa = PBXGroup;
@@ -81,9 +96,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A42B354E2BA2185C009E81AD /* Build configuration list for PBXNativeTarget "Genius" */;
 			buildPhases = (
-				A42B35392BA2185B009E81AD /* Sources */,
-				A42B353B2BA2185B009E81AD /* Resources */,
 				A42660D12C729D04000E0507 /* SwiftFormat */,
+				A42B35392BA2185B009E81AD /* Sources */,
+				A46854942D1729A800DB3E87 /* Frameworks */,
+				A42B353B2BA2185B009E81AD /* Resources */,
 			);
 			buildRules = (
 			);
@@ -123,6 +139,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				A4672DD92C61205000C933CB /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+				A46854952D1729B500DB3E87 /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A42B353E2BA2185B009E81AD /* Products */;
@@ -438,6 +455,14 @@
 				kind = branch;
 			};
 		};
+		A46854952D1729B500DB3E87 /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -445,6 +470,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A4672DD92C61205000C933CB /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
 			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		A46854962D1729B500DB3E87 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A46854952D1729B500DB3E87 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

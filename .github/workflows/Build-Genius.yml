@@ -25,6 +25,7 @@ concurrency:
 
 env:
     GH_TOKEN: ${{ github.token }}
+    NSUnbufferedIO: YES
 
 jobs:
 
@@ -39,7 +40,9 @@ jobs:
         steps:
 
             - name: Prepare
-              run: set -o pipefail
+              run: |
+                set -o pipefail
+                defaults write com.apple.dt.Xcode IDESkipPackagePluginFingerprintValidatation -boolean true
 
             - name: Checkout
               uses: actions/checkout@main
@@ -70,7 +73,7 @@ jobs:
                 echo "Periphery $(./periphery version) installed"
 
             - name: Run Periphery
-              run: ./periphery scan --format github-actions --relative-results --strict -- -skipPackagePluginValidation
+              run: ./periphery scan --format github-actions --relative-results --strict
 
             - name: Select Xcode Version
               run: |
@@ -87,16 +90,14 @@ jobs:
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Build Genius
-              env: 
-                NSUnbufferedIO: YES
-              run: xcodebuild build | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
+              run: xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run SwiftLint Analyzer Rules
-              run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
+              run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log Genius
 
             - name: Zip Genius
               run: |
-                mv build/Release/Genius.app .
+                mv Genius.xcarchive/Products/Applications/Genius.app .
                 zip --recurse-paths Genius.zip Genius.app
 
             - name: Attest Build Provenance
@@ -111,7 +112,7 @@ jobs:
 
             - name: Zip Debug Symbols
               run: |
-                mv build/Release/Genius.app.dSYM .
+                mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
                 zip --recurse-paths DebugSymbols.zip Genius.app.dSYM
 
             - name: Upload Debug Symbols
