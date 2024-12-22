@@ -6,15 +6,16 @@
 // See LICENSE.txt for license information.
 //
 
+import Defaults
 import SwiftUI
 import SwiftUICore
 
 struct SettingsView: View {
 
-	@AppStorage(Settings.InterfaceMode.key)
-	var interfaceMode = Settings.InterfaceMode()
-	@AppStorage(Settings.DevelopmentMode.key)
-	var developmentMode: Settings.DevelopmentMode.WrappedValue = Settings.DevelopmentMode.defaultValue
+	@Default(.interfaceMode)
+	var interfaceMode: Settings.InterfaceMode
+	@Default(.developmentMode)
+	var developmentMode: Bool
 
 	var body: some View {
 		Text("Settings")
@@ -28,14 +29,14 @@ struct SettingsView: View {
 						.frame(width: 512, alignment: .leading)
 					Picker(selection: $interfaceMode) {
 						ForEach(Settings.InterfaceMode.allCases) { interfaceMode in
-							Text(interfaceMode.localizedStringKey)
+							Text(LocalizedStringKey(interfaceMode.rawValue))
 						}
 					}
 					.pickerStyle(.inline)
 					.frame(width: 512, alignment: .leading)
 				}
 				.padding(.vertical, 2)
-				if developmentMode || interfaceMode >= .powerUser {
+				if Defaults[.developmentMode] || interfaceMode >= .powerUser {
 					Divider()
 					HStack {
 						Text("Development Mode")
