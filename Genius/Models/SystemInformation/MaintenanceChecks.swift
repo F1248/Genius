@@ -57,7 +57,7 @@ extension SystemInformation {
 			)
 			static let installCritical =
 				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"))
-			static let installConfigData =
+			static let installConfigurationData =
 				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"))
 			static let installAppStoreApps =
 				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.commerce", "AutoUpdate"))
