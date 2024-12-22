@@ -17,11 +17,11 @@ struct SystemInformationTabView: View {
 
 	// swiftlint:disable:next type_contents_order
 	init(
-		content: () -> KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any SystemInformationDataProtocol>>,
+		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any SystemInformationDataProtocol>>,
 		label: () -> Label<Text, Image>
 	) {
 		self.content =
-			content().map { key, value in
+			content.map { key, value in
 				(key, value.compactMap { key, value in
 					if value.applicable ?? true {
 						if Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced {
