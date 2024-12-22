@@ -22,8 +22,8 @@ struct AppCommands: Commands {
 		CommandGroup(before: .toolbar) {
 			TabViewButtons(tabData: ContentViewTab.self)
 			switch ContentViewTab.selection {
-			case .systemInformation: TabViewButtons(tabData: SystemInformationViewTab.self)
-			default: EmptyView()
+				case .systemInformation: TabViewButtons(tabData: SystemInformationViewTab.self)
+				default: EmptyView()
 			}
 		}
 		CommandGroup(replacing: .help) { EmptyView() }

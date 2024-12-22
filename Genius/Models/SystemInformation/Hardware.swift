@@ -51,10 +51,10 @@ extension SystemInformation {
 					"macwindow"
 				} else if name.value.hasPrefix("MacBook") {
 					switch identifier.value {
-					case "Mac14,7": "macbook.gen1"
-					case _ where identifier.value.hasPrefix("MacBookPro18"): "macbook.gen2"
-					case _ where identifier.value.hasPrefix("MacBook"): "macbook.gen1"
-					default: "macbook.gen2"
+						case "Mac14,7": "macbook.gen1"
+						case _ where identifier.value.hasPrefix("MacBookPro18"): "macbook.gen2"
+						case _ where identifier.value.hasPrefix("MacBook"): "macbook.gen1"
+						default: "macbook.gen2"
 					}
 				} else if name.value.hasPrefix("iMac") {
 					"desktopcomputer"
@@ -64,9 +64,9 @@ extension SystemInformation {
 					"macstudio"
 				} else if name.value.hasPrefix("Mac Pro") {
 					switch identifier.value {
-					case "MacPro3,1", "MacPro4,1", "MacPro5,1": "macpro.gen1"
-					case "MacPro6,1": "macpro.gen2"
-					default: ["A2304", "A2787"].contains(regulatoryNumber.value) ? "macpro.gen3.server" : "macpro.gen3"
+						case "MacPro3,1", "MacPro4,1", "MacPro5,1": "macpro.gen1"
+						case "MacPro6,1": "macpro.gen2"
+						default: ["A2304", "A2787"].contains(regulatoryNumber.value) ? "macpro.gen3.server" : "macpro.gen3"
 					}
 				} else if name.value.hasPrefix("Xserve") {
 					"xserve"
@@ -76,15 +76,15 @@ extension SystemInformation {
 
 		static let securityChip = SystemInformationData<SecurityChip>({
 			switch CPU.type.value {
-			case .appleSilicon: .mSeries
-			case .intel:
-				if IORegistry.serviceExists(name: "Apple T2 Controller") {
-					.t2
-				} else if IORegistry.serviceExists(name: "Apple T1 Controller") {
-					.t1
-				} else {
-					.none
-				}
+				case .appleSilicon: .mSeries
+				case .intel:
+					if IORegistry.serviceExists(name: "Apple T2 Controller") {
+						.t2
+					} else if IORegistry.serviceExists(name: "Apple T1 Controller") {
+						.t1
+					} else {
+						.none
+					}
 			}
 		}())
 
