@@ -8,8 +8,8 @@
 
 func systemImageFallback(_ name: String) -> String {
 	switch name {
-	case "desktopcomputer.and.macbook": if #unavailable(macOS 15) { return "desktopcomputer" }
-	default: break
+		case "desktopcomputer.and.macbook": if #unavailable(macOS 15) { return "desktopcomputer" }
+		default: break
 	}
 	return name
 }

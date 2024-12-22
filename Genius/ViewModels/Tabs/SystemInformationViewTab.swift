@@ -19,14 +19,14 @@ enum SystemInformationViewTab: String, TabData {
 
 	var variesByInterfaceMode: Bool {
 		switch self {
-		default: false
+			default: false
 		}
 	}
 
 	@ViewBuilder var content: some View {
 		switch self {
-		case .hardware: SystemInformationHardwareView()
-		case .software: SystemInformationSoftwareView()
+			case .hardware: SystemInformationHardwareView()
+			case .software: SystemInformationSoftwareView()
 		}
 	}
 }
