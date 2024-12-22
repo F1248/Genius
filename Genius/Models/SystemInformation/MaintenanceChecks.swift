@@ -10,8 +10,6 @@ import Foundation
 
 extension SystemInformation {
 
-	// periphery:ignore
-	// swiftlint:disable unused_declaration
 	enum MaintenanceChecks {
 
 		enum TheftProtection {
@@ -63,5 +61,4 @@ extension SystemInformation {
 				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.commerce", "AutoUpdate"))
 		}
 	}
-	// swiftlint:enable unused_declaration
 }
