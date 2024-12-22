@@ -6,9 +6,11 @@
 // See LICENSE.txt for license information.
 //
 
+import Defaults
+
 enum Settings {
 
-	enum InterfaceMode: String, Comparable, SelfIdentifiable, CaseIterableSetting {
+	enum InterfaceMode: String, CaseIterable, Comparable, SelfIdentifiable, Defaults.Serializable {
 
 		case verySimple = "Very Simple"
 		case simple = "Simple"
@@ -19,17 +21,8 @@ enum Settings {
 		var index: Int { Self.allCases.firstIndex(of: self) ?? 0 }
 		var localizationTable: String { "Localizable\(rawValue.remove(" "))" }
 
-		init() { self = .normal }
-
 		static func < (lhs: Self, rhs: Self) -> Bool {
 			lhs.index < rhs.index
 		}
-	}
-
-	enum DevelopmentMode: WrappedSetting {
-
-		typealias WrappedValue = Bool
-
-		static let defaultValue: WrappedValue = false
 	}
 }
