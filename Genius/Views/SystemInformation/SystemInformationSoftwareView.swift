@@ -12,6 +12,9 @@ import SwiftUICore
 struct SystemInformationSoftwareView: View {
 
 	var body: some View {
+		Label("Software", systemImage: "macwindow.on.rectangle")
+			.font(.title)
+			.padding()
 		SystemInformationTabView(content: [
 			"SMC": [
 				"Version": SystemInformation.Software.SMC.version,
@@ -39,9 +42,7 @@ struct SystemInformationSoftwareView: View {
 				"Name": SystemInformation.Software.User.name,
 				"Account Name": SystemInformation.Software.User.accountName,
 			],
-		]) {
-			Label("Software", systemImage: "macwindow.on.rectangle")
-		}
+		])
 	}
 }
 

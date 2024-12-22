@@ -12,6 +12,9 @@ import SwiftUICore
 struct SystemInformationHardwareView: View {
 
 	var body: some View {
+		Label("Hardware", systemImage: SystemInformation.Hardware.Model.systemImage.value)
+			.font(.title)
+			.padding()
 		SystemInformationTabView(content: [
 			"Model": [
 				"Name": SystemInformation.Hardware.Model.localizedName,
@@ -35,9 +38,7 @@ struct SystemInformationHardwareView: View {
 				"Hardware UUID": SystemInformation.Hardware.Machine.hardwareUUID,
 				"Provisioning UDID": SystemInformation.Hardware.Machine.provisioningUDID,
 			],
-		]) {
-			Label("Hardware", systemImage: SystemInformation.Hardware.Model.systemImage.value)
-		}
+		])
 	}
 }
 

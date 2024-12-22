@@ -13,12 +13,10 @@ import SwiftUICore
 struct SystemInformationTabView: View {
 
 	let content: [(LocalizedStringKey, [(LocalizedStringKey, String)])]
-	let label: Label<Text, Image>
 
 	// swiftlint:disable:next type_contents_order
 	init(
-		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any SystemInformationDataProtocol>>,
-		label: () -> Label<Text, Image>
+		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any SystemInformationDataProtocol>>
 	) {
 		self.content =
 			content.map { key, value in
@@ -39,14 +37,10 @@ struct SystemInformationTabView: View {
 				})
 			}
 			.filter { !$0.1.isEmpty }
-		self.label = label()
 	}
 
 	var body: some View {
 		ScrollView {
-			label
-				.font(.title)
-				.padding()
 			ForEach(0..<content.endIndex, id: \.self) { index in
 				let groupBoxContent: (LocalizedStringKey, [(LocalizedStringKey, String)]) = content[index]
 				GroupBox {
