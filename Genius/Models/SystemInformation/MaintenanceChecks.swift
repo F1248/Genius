@@ -33,10 +33,6 @@ extension SystemInformation {
 
 		enum MalwareProtection {
 
-			static let secureVirtualMemory = SystemInformationData<Bool?>(
-				{ Bool(SystemProfiler.software?["secure_vm"]) },
-				applicable: Software.OS.bootMode.value !=? .recovery
-			)
 			static let systemIntegrityProtection = SystemInformationData<Bool?>(
 				{ Bool(SystemProfiler.software?["system_integrity"]) },
 				applicable: Software.OS.bootMode.value !=? .recovery
