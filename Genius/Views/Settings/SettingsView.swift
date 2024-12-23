@@ -38,13 +38,9 @@ struct SettingsView: View {
 				.padding(.vertical, 2)
 				if Defaults[.developmentMode] || interfaceMode >= .powerUser {
 					Divider()
-					HStack {
-						Text("Development Mode")
-						Spacer()
-						Toggle(isOn: $developmentMode)
-							.toggleStyle(.switch)
-					}
-					.padding(.vertical, 2)
+					Toggle(spacedTitle: "Development Mode", isOn: $developmentMode)
+						.toggleStyle(.switch)
+						.padding(.vertical, 2)
 				}
 			}
 			.padding(.horizontal, 2)

@@ -17,7 +17,7 @@ struct TabButton<T: TabData>: View {
 		Button {
 			sharedData.selectedTabsIndexes[T.id] = tab.index
 		} label: {
-			Label(tab.localizedStringKey, variesByInterfaceMode: tab.variesByInterfaceMode)
+			VaryingText(tab.localizedStringKey)
 		}
 		.keyboardShortcut(
 			tab as? ContentViewTab == .settings ? "," : KeyEquivalent(Character(String(tab.index + 1))),
