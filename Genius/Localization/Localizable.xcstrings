@@ -17,6 +17,22 @@
         }
       }
     },
+    "Activation Lock" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktivierungssperre"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activation Lock"
+          }
+        }
+      }
+    },
     "Advanced" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -85,6 +101,22 @@
         }
       }
     },
+    "Automatic Updates" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatische Updates"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic Updates"
+          }
+        }
+      }
+    },
     "Boot Mode" : {
       "localizations" : {
         "de" : {
@@ -117,18 +149,34 @@
         }
       }
     },
-    "Build" : {
+    "Build Number" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Build"
+            "value" : "Build-Nummer"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Build"
+            "value" : "Build Number"
+          }
+        }
+      }
+    },
+    "Check for macOS updates" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach macOS-Updates suchen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check for macOS updates"
           }
         }
       }
@@ -229,6 +277,22 @@
         }
       }
     },
+    "Data Security" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datensicherheit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data Security"
+          }
+        }
+      }
+    },
     "Development Mode" : {
       "localizations" : {
         "de" : {
@@ -241,6 +305,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Development Mode"
+          }
+        }
+      }
+    },
+    "Disabled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deaktiviert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disabled"
+          }
+        }
+      }
+    },
+    "Download macOS updates" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS-Updates herunterladen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download macOS updates"
           }
         }
       }
@@ -261,6 +358,55 @@
         }
       }
     },
+    "Enabled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktiviert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enabled"
+          }
+        }
+      }
+    },
+    "FileVault" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FileVault"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FileVault"
+          }
+        }
+      }
+    },
+    "Firewall" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Firewall"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Firewall"
+          }
+        }
+      }
+    },
     "Firmware" : {
       "localizations" : {
         "de" : {
@@ -273,6 +419,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Firmware"
+          }
+        }
+      }
+    },
+    "Firmware Password" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Firmware-Passwort"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Firmware Password"
+          }
+        }
+      }
+    },
+    "Gatekeeper" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gatekeeper"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gatekeeper"
           }
         }
       }
@@ -374,6 +552,70 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Identifier"
+          }
+        }
+      }
+    },
+    "Install app updates from the App Store" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Updates aus dem App Store installieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install app updates from the App Store"
+          }
+        }
+      }
+    },
+    "Install configuration data updates" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konfigurationsdaten-Updates installieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install configuration data updates"
+          }
+        }
+      }
+    },
+    "Install critical updates" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kritische Updates installieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install critical updates"
+          }
+        }
+      }
+    },
+    "Install macOS updates" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS-Updates installieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install macOS updates"
           }
         }
       }
@@ -504,6 +746,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Maintenance"
+          }
+        }
+      }
+    },
+    "Malware Protection" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schadsoftware-Schutz"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Malware Protection"
           }
         }
       }
@@ -837,6 +1095,38 @@
     },
     "System Information" : {
       "shouldTranslate" : false
+    },
+    "System Integrity Protection" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systemintegritätsschutz"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System Integrity Protection"
+          }
+        }
+      }
+    },
+    "Theft Protection" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diebstahlschutz"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theft Protection"
+          }
+        }
+      }
     },
     "Total Cores" : {
       "localizations" : {
