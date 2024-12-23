@@ -11,6 +11,10 @@ import Foundation
 
 extension String: DataInitializable {
 
+	var isContainedInDefaultLocalizationTable: Bool {
+		NSLocalizedString(self, value: " ", comment: "") == " "
+	}
+
 	init?(_ string: (some StringProtocol)?) {
 		guard let string else { return nil }
 		self.init(string)
@@ -56,8 +60,8 @@ extension String: DataInitializable {
 		self = string
 	}
 
-	func localized(variesByInterfaceMode: Bool = false) -> String {
-		let tableName: String? = variesByInterfaceMode ? Defaults[.interfaceMode].localizationTable : nil
+	func localized() -> String {
+		let tableName: String? = isContainedInDefaultLocalizationTable ? Defaults[.interfaceMode].localizationTable : nil
 		return if #available(macOS 12, *) {
 			String(localized: LocalizationValue(self), table: tableName)
 		} else {

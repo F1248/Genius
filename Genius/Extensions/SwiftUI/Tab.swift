@@ -16,12 +16,11 @@ extension Tab where Value: Hashable, Content: View {
 	@MainActor
 	init(
 		_ titleKey: LocalizedStringKey,
-		variesByInterfaceMode: Bool = false,
 		value: Value,
 		content: () -> Content
 	) where Label == VaryingText {
 		self.init(value: value, content: content) {
-			VaryingText(titleKey, variesByInterfaceMode: variesByInterfaceMode)
+			VaryingText(titleKey)
 		}
 	}
 }
