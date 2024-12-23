@@ -6,12 +6,18 @@
 // See LICENSE.txt for license information.
 //
 
+import CoreFoundation
 import SwiftUI
 import SwiftUICore
 
 extension Toggle {
 
-	init(isOn: Binding<Bool>) where Label == EmptyView {
-		self.init(isOn: isOn) { EmptyView() }
+	init(spacedTitle titleKey: LocalizedStringKey, isOn: Binding<Bool>) where Label == AnyView {
+		self.init(isOn: isOn) {
+			AnyView(
+				Text(titleKey)
+					.frame(maxWidth: .infinity, alignment: .leading)
+			)
+		}
 	}
 }

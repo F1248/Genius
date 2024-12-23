@@ -15,12 +15,11 @@ extension Tab where Value: Hashable, Content: View {
 	@MainActor
 	init(
 		_ titleKey: LocalizedStringKey,
-		variesByInterfaceMode: Bool = false,
 		value: Value,
 		content: () -> Content
-	) where Label == SwiftUI.Label<VaryingText, EmptyView> {
+	) where Label == VaryingText {
 		self.init(value: value, content: content) {
-			Label(titleKey, variesByInterfaceMode: variesByInterfaceMode)
+			VaryingText(titleKey)
 		}
 	}
 }
