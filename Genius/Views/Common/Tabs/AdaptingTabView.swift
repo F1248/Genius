@@ -26,7 +26,6 @@ struct AdaptingTabView<T: TabData>: View {
 				ForEach(tabData.allCases) { tab in
 					Tab(
 						tab.localizedStringKey,
-						variesByInterfaceMode: tab.variesByInterfaceMode,
 						value: tab.index
 					) { tab.content }
 				}
@@ -36,7 +35,6 @@ struct AdaptingTabView<T: TabData>: View {
 				tabData.allCases.map { tab in
 					CustomTab(
 						tab.localizedStringKey,
-						variesByInterfaceMode: tab.variesByInterfaceMode,
 						index: tab.index
 					) { tab.content }
 				}

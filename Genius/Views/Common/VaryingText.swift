@@ -16,15 +16,13 @@ struct VaryingText: View {
 	var interfaceMode: Settings.InterfaceMode = Defaults.Keys.interfaceMode.defaultValue
 
 	let key: LocalizedStringKey
-	let variesByInterfaceMode: Bool
 
 	// swiftlint:disable:next type_contents_order
-	init(_ key: LocalizedStringKey, variesByInterfaceMode: Bool = false) {
+	init(_ key: LocalizedStringKey) {
 		self.key = key
-		self.variesByInterfaceMode = variesByInterfaceMode
 	}
 
 	var body: some View {
-		Text(key, tableName: variesByInterfaceMode ? interfaceMode.localizationTable : nil)
+		Text(key, tableName: key.key.isContainedInDefaultLocalizationTable ? interfaceMode.localizationTable : nil)
 	}
 }

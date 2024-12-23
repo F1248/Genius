@@ -12,7 +12,7 @@ import SwiftUICore
 struct SystemInformationView: View {
 
 	var body: some View {
-		VaryingText("System Information", variesByInterfaceMode: true)
+		VaryingText("System Information")
 			.font(.largeTitle)
 			.padding()
 		AdaptingTabView(tabData: SystemInformationViewTab.self)

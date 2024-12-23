@@ -20,11 +20,10 @@ struct CustomTab: Identifiable {
 	@MainActor
 	init(
 		_ titleKey: LocalizedStringKey,
-		variesByInterfaceMode: Bool = false,
 		index: Int,
 		content: () -> some View
 	) {
-		self.title = VaryingText(titleKey, variesByInterfaceMode: variesByInterfaceMode)
+		self.title = VaryingText(titleKey)
 		self.index = index
 		self.content = AnyView(content())
 	}

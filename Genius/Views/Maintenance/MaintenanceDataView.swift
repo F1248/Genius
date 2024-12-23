@@ -23,13 +23,13 @@ struct MaintenanceDataView: View {
 				(key, value.compactMap { key, value in
 					if value.applicable ?? true {
 						if Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced {
-							(key, String(value) ?? "Unknown".localized())
+							(key, String(value) ?? "Unknown".localized)
 						} else {
 							String(value).map { (key, $0) }
 						}
 					} else {
 						if Defaults[.developmentMode] {
-							(key, "Not applicable".localized())
+							(key, "Not applicable".localized)
 						} else {
 							nil
 						}

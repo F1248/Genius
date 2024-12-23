@@ -17,12 +17,6 @@ enum SystemInformationViewTab: String, TabData {
 	static let entireWindow = false // swiftlint:disable:this explicit_type_interface
 	static let keyboardShortcutModifiers: EventModifiers = [.command, .option]
 
-	var variesByInterfaceMode: Bool {
-		switch self {
-			default: false
-		}
-	}
-
 	@ViewBuilder var content: some View {
 		switch self {
 			case .hardware: SystemInformationHardwareView()
