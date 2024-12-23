@@ -19,6 +19,7 @@ extension String: DataInitializable {
 	init?(_ systemInformationData: some SystemInformationDataProtocol) {
 		guard let string =
 			switch systemInformationData.value {
+				case let systemInformationData as Bool: (systemInformationData ? "Enabled" : "Disabled").localized()
 				case let systemInformationData as Int: String(systemInformationData)
 				case let systemInformationData as String: systemInformationData
 				case let systemInformationData as any MeasurementProtocol: systemInformationData.formatted()
