@@ -29,7 +29,7 @@ struct SystemInformationSoftwareView: View {
 			"macOS": [
 				"Version": SystemInformation.Software.OS.version,
 				"Code Name": SystemInformation.Software.OS.codeName,
-				"Build": SystemInformation.Software.OS.build,
+				"Build Number": SystemInformation.Software.OS.buildNumber,
 				"Boot Mode": SystemInformation.Software.OS.bootMode,
 				"Boot Volume": SystemInformation.Software.OS.bootVolume,
 				"Loader Version": SystemInformation.Software.OS.loaderVersion,

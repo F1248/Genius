@@ -53,7 +53,7 @@ extension SystemInformation {
 					"Big Sur"
 				}
 			}())
-			static let build = SystemInformationData<String?>(Sysctl.read("kern.osversion"))
+			static let buildNumber = SystemInformationData<String?>(Sysctl.read("kern.osversion"))
 			static let bootMode = SystemInformationData<BootMode?>({
 				if Sysctl.read("hw.osenvironment") == "recoveryos" {
 					.recovery
