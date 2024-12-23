@@ -47,30 +47,27 @@ extension SystemInformation {
 			static let isLaptop = SystemInformationData<Bool?>(name.value?.hasPrefix("MacBook"))
 			static let isVirtualMachine = SystemInformationData<Bool?>(Sysctl.read("kern.hv_vmm_present"))
 			static let systemImage = SystemInformationData<String>(systemImageFallback({
-				if isVirtualMachine.value ?? false {
-					"macwindow"
-				} else if name.value.hasPrefix("MacBook") {
-					switch identifier.value {
-						case "Mac14,7": "macbook.gen1"
-						case _ where identifier.value.hasPrefix("MacBookPro18"): "macbook.gen2"
-						case _ where identifier.value.hasPrefix("MacBook"): "macbook.gen1"
-						default: "macbook.gen2"
-					}
-				} else if name.value.hasPrefix("iMac") {
-					"desktopcomputer"
-				} else if name.value.hasPrefix("Mac mini") {
-					"macmini"
-				} else if name.value.hasPrefix("Mac Studio") {
-					"macstudio"
-				} else if name.value.hasPrefix("Mac Pro") {
-					switch identifier.value {
-						case "MacPro3,1", "MacPro4,1", "MacPro5,1": "macpro.gen1"
-						case "MacPro6,1": "macpro.gen2"
-						default: ["A2304", "A2787"].contains(regulatoryNumber.value) ? "macpro.gen3.server" : "macpro.gen3"
-					}
-				} else if name.value.hasPrefix("Xserve") {
-					"xserve"
-				} else { "desktopcomputer.and.macbook" }
+				switch true {
+					case isVirtualMachine.value: "macwindow"
+					case name.value.hasPrefix("MacBook"):
+						switch identifier.value {
+							case "Mac14,7": "macbook.gen1"
+							case _ where identifier.value.hasPrefix("MacBookPro18"): "macbook.gen2"
+							case _ where identifier.value.hasPrefix("MacBook"): "macbook.gen1"
+							default: "macbook.gen2"
+						}
+					case name.value.hasPrefix("iMac"): "desktopcomputer"
+					case name.value.hasPrefix("Mac mini"): "macmini"
+					case name.value.hasPrefix("Mac Studio"): "macstudio"
+					case name.value.hasPrefix("Mac Pro"):
+						switch identifier.value {
+							case "MacPro3,1", "MacPro4,1", "MacPro5,1": "macpro.gen1"
+							case "MacPro6,1": "macpro.gen2"
+							default: ["A2304", "A2787"].contains(regulatoryNumber.value) ? "macpro.gen3.server" : "macpro.gen3"
+						}
+					case name.value.hasPrefix("Xserve"): "xserve"
+					default: "desktopcomputer.and.macbook"
+				}
 			}()))
 		}
 
