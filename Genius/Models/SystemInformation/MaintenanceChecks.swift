@@ -10,8 +10,6 @@ import Foundation
 
 extension SystemInformation {
 
-	// periphery:ignore
-	// swiftlint:disable unused_declaration
 	enum MaintenanceChecks {
 
 		enum TheftProtection {
@@ -33,10 +31,6 @@ extension SystemInformation {
 
 		enum MalwareProtection {
 
-			static let secureVirtualMemory = SystemInformationData<Bool?>(
-				{ Bool(SystemProfiler.software?["secure_vm"]) },
-				applicable: Software.OS.bootMode.value !=? .recovery
-			)
 			static let systemIntegrityProtection = SystemInformationData<Bool?>(
 				{ Bool(SystemProfiler.software?["system_integrity"]) },
 				applicable: Software.OS.bootMode.value !=? .recovery
@@ -61,11 +55,10 @@ extension SystemInformation {
 			)
 			static let installCritical =
 				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"))
-			static let installConfigData =
+			static let installConfigurationData =
 				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"))
-			static let installAppStore =
+			static let installAppStoreApps =
 				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.commerce", "AutoUpdate"))
 		}
 	}
-	// swiftlint:enable unused_declaration
 }

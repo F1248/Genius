@@ -1,5 +1,5 @@
 //
-// SystemInformationTabView.swift
+// MaintenanceDataView.swift
 // Genius
 //
 // © 2024 F1248 <f1248@mailbox.org>
@@ -10,7 +10,7 @@ import Defaults
 import SwiftUI
 import SwiftUICore
 
-struct SystemInformationTabView: View {
+struct MaintenanceDataView: View {
 
 	let content: [(LocalizedStringKey, [(LocalizedStringKey, String)])]
 
@@ -52,12 +52,7 @@ struct SystemInformationTabView: View {
 						HStack {
 							Text(rowContent.0)
 							Spacer()
-							Button {
-								Pasteboard.write(rowContent.1)
-							} label: {
-								Text(rowContent.1)
-							}
-							.buttonStyle(.plain)
+							Text(rowContent.1)
 						}
 						.padding(.vertical, 2)
 					}
