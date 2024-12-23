@@ -15,6 +15,15 @@ extension String: DataInitializable {
 		NSLocalizedString(self, value: " ", comment: "") == " "
 	}
 
+	var localized: String {
+		let tableName: String? = isContainedInDefaultLocalizationTable ? Defaults[.interfaceMode].localizationTable : nil
+		return if #available(macOS 12, *) {
+			String(localized: LocalizationValue(self), table: tableName)
+		} else {
+			NSLocalizedString(self, tableName: tableName, comment: "")
+		}
+	}
+
 	init?(_ string: (some StringProtocol)?) {
 		guard let string else { return nil }
 		self.init(string)
@@ -23,7 +32,7 @@ extension String: DataInitializable {
 	init?(_ systemInformationData: some SystemInformationDataProtocol) {
 		guard let string =
 			switch systemInformationData.value {
-				case let systemInformationData as Bool: (systemInformationData ? "Enabled" : "Disabled").localized()
+				case let systemInformationData as Bool: (systemInformationData ? "Enabled" : "Disabled").localized
 				case let systemInformationData as Int: String(systemInformationData)
 				case let systemInformationData as String: systemInformationData
 				case let systemInformationData as any MeasurementProtocol: systemInformationData.formatted()
@@ -35,14 +44,14 @@ extension String: DataInitializable {
 						case .recovery: "Recovery"
 					}
 				}()
-					.localized()
+					.localized
 				case let systemInformationData as CPUType: {
 					switch systemInformationData {
 						case .appleSilicon: "Apple Silicon"
 						case .intel: "Intel"
 					}
 				}()
-					.localized()
+					.localized
 				case let systemInformationData as SecurityChip: {
 					switch systemInformationData {
 						case .mSeries: "M-series"
@@ -51,21 +60,12 @@ extension String: DataInitializable {
 						case .none: "None (Security Chip)"
 					}
 				}()
-					.localized()
+					.localized
 				case let systemInformationData as VersionNumber: systemInformationData.versions.map(String.init).joined(separator: ".")
 				default: nil
 				// swiftlint:disable:next statement_position
 			}
 		else { return nil }
 		self = string
-	}
-
-	func localized() -> String {
-		let tableName: String? = isContainedInDefaultLocalizationTable ? Defaults[.interfaceMode].localizationTable : nil
-		return if #available(macOS 12, *) {
-			String(localized: LocalizationValue(self), table: tableName)
-		} else {
-			NSLocalizedString(self, tableName: tableName, comment: "")
-		}
 	}
 }
