@@ -16,7 +16,7 @@ extension SystemInformation {
 
 		enum Model {
 
-			static let name = SystemInformationData<String?>(IORegistry.read(name: "product", "product-name"))
+			static let name = SystemInformationData<String?>(IORegistry(name: "product").read("product-name"))
 			static let localizedName = SystemInformationData<String?>({ () -> String? in
 				guard let serialNumber = Machine.serialNumber.value, [11, 12].contains(serialNumber.count) else { return nil }
 				// swiftlint:disable:next explicit_type_interface
@@ -31,15 +31,15 @@ extension SystemInformation {
 			static let number = SystemInformationData<String?>(
 				{
 					guard
-						let modelNumber = IORegistry.read(class: "IOPlatformExpertDevice", "model-number") as String?,
-						let regionInfo = IORegistry.read(class: "IOPlatformExpertDevice", "region-info") as String?
+						let modelNumber = IORegistry(class: "IOPlatformExpertDevice").read("model-number") as String?,
+						let regionInfo = IORegistry(class: "IOPlatformExpertDevice").read("region-info") as String?
 					else { return nil }
 					return modelNumber + regionInfo
 				},
 				applicable: CPU.type.value == .appleSilicon
 			)
 			static let regulatoryNumber = SystemInformationData<String?>(
-				{ IORegistry.read(class: "IOPlatformExpertDevice", "regulatory-model-number") },
+				{ IORegistry(class: "IOPlatformExpertDevice").read("regulatory-model-number") },
 				applicable: CPU.type.value == .appleSilicon &&? !?isVirtualMachine.value
 			)
 			// periphery:ignore
@@ -75,9 +75,9 @@ extension SystemInformation {
 			switch CPU.type.value {
 				case .appleSilicon: .mSeries
 				case .intel:
-					if IORegistry.serviceExists(name: "Apple T2 Controller") {
+					if IORegistry(name: "Apple T2 Controller").serviceExists() {
 						.t2
-					} else if IORegistry.serviceExists(name: "Apple T1 Controller") {
+					} else if IORegistry(name: "Apple T1 Controller").serviceExists() {
 						.t1
 					} else {
 						.none
@@ -116,9 +116,9 @@ extension SystemInformation {
 		enum Machine {
 
 			static let serialNumber =
-				SystemInformationData<String?>(IORegistry.read(class: "IOPlatformExpertDevice", kIOPlatformSerialNumberKey))
+				SystemInformationData<String?>(IORegistry(class: "IOPlatformExpertDevice").read(kIOPlatformSerialNumberKey))
 			static let hardwareUUID =
-				SystemInformationData<String?>(IORegistry.read(class: "IOPlatformExpertDevice", kIOPlatformUUIDKey))
+				SystemInformationData<String?>(IORegistry(class: "IOPlatformExpertDevice").read(kIOPlatformUUIDKey))
 			static let provisioningUDID = SystemInformationData<String?>(
 				{ SystemProfiler.hardware?["provisioning_UDID"] ?? (CPU.type.value == .intel ? hardwareUUID : nil) },
 				applicable: Software.OS.bootMode.value !=? .recovery ||? CPU.type.value == .intel
