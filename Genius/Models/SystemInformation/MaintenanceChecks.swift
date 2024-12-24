@@ -15,8 +15,8 @@ extension SystemInformation {
 		enum TheftProtection {
 
 			static let activationLock = SystemInformationData<Bool?>(
-				{ Bool(SystemProfiler.hardware?["activation_lock_status"]) },
-				applicable: Hardware.securityChip.value >= .t2 &&? Software.OS.bootMode.value !=? .recovery
+				{ IORegistry(class: "IODTNVRAMVariables").keyExists("fmm-mobileme-token-FMM") },
+				applicable: Hardware.securityChip.value >= .t2
 			)
 			static let firmwarePassword = SystemInformationData<Bool?>(
 				{ Bool(Process("/usr/sbin/firmwarepasswd", ["-check"], requiresRoot: true)?.runSafe()) },
