@@ -39,6 +39,11 @@ struct IORegistry: ~Copyable {
 		return property as? W ?? ((property as? Data)?.trimmingTrailingZeros()).flatMap(W.init)
 	}
 
+	func keyExists(_ key: String) -> Bool {
+		guard let service else { return false }
+		return IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0) != nil
+	}
+
 	// swiftformat:disable organizeDeclarations
 	deinit {
 		if let service { IOObjectRelease(service) }
