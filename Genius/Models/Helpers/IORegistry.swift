@@ -29,14 +29,14 @@ struct IORegistry: ~Copyable {
 		self.matchingDictionary = IOServiceNameMatching(name)
 	}
 
+	func serviceExists() -> Bool {
+		service != nil
+	}
+
 	func read<W: DataInitializable>(_ key: String) -> W? {
 		guard let service else { return nil }
 		let property = IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0)?.takeRetainedValue()
 		return property as? W ?? ((property as? Data)?.trimmingTrailingZeros()).flatMap(W.init)
-	}
-
-	func serviceExists() -> Bool {
-		service != nil
 	}
 
 	// swiftformat:disable organizeDeclarations
