@@ -10,27 +10,40 @@ import CoreFoundation
 import Foundation
 import IOKit
 
-enum IORegistry {
+struct IORegistry: ~Copyable {
 
-	static func read<W: DataInitializable>(class className: String? = nil, name: String? = nil, _ key: String) -> W? {
-		guard let matchingDictionary: CFMutableDictionary =
-			className.map({ IOServiceMatching($0) }) ??
-			name.map({ IOServiceNameMatching($0) })
-		else { return nil }
-		let service = IOServiceGetMatchingService(kIOMainPortDefault, matchingDictionary)
-		defer { IOObjectRelease(service) }
-		guard service > 0 else { return nil }
+	let matchingDictionary: CFMutableDictionary?
+
+	var service: UInt32? {
+		guard let matchingDictionary else { return nil }
+		return IOServiceGetMatchingService(kIOMainPortDefault, matchingDictionary)
+	}
+
+	init(class className: String) {
+		self.matchingDictionary = IOServiceMatching(className)
+	}
+
+	init(name: String) {
+		self.matchingDictionary = IOServiceNameMatching(name)
+	}
+
+	func serviceExists() -> Bool? {
+		service >? 0
+	}
+
+	func read<W: DataInitializable>(_ key: String) -> W? {
+		guard serviceExists() ?? false, let service else { return nil }
 		let property = IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0)?.takeRetainedValue()
 		return property as? W ?? ((property as? Data)?.trimmingTrailingZeros()).flatMap(W.init)
 	}
 
-	static func serviceExists(class className: String? = nil, name: String? = nil) -> Bool {
-		guard let matchingDictionary: CFMutableDictionary =
-			className.map({ IOServiceMatching($0) }) ??
-			name.map({ IOServiceNameMatching($0) })
-		else { return false }
-		let service = IOServiceGetMatchingService(kIOMainPortDefault, matchingDictionary)
-		defer { IOObjectRelease(service) }
-		return service > 0
+	func keyExists(_ key: String) -> Bool? {
+		guard serviceExists() ?? false, let service else { return nil }
+		return IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0) != nil
+	}
+
+	// swiftformat:disable organizeDeclarations
+	deinit {
+		if let service { IOObjectRelease(service) }
 	}
 }
