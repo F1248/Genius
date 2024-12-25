@@ -50,7 +50,7 @@ struct MaintenanceDataView: View {
 							Divider()
 						}
 						HStack {
-							Text(rowContent.0)
+							VaryingText(rowContent.0)
 							Spacer()
 							Text(rowContent.1)
 						}
@@ -58,7 +58,7 @@ struct MaintenanceDataView: View {
 					}
 					.padding(.horizontal, 2)
 				} label: {
-					Text(groupBoxContent.0)
+					VaryingText(groupBoxContent.0)
 						.font(.title2)
 						.padding()
 				}

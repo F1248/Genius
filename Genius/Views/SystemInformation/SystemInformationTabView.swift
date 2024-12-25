@@ -50,7 +50,7 @@ struct SystemInformationTabView: View {
 							Divider()
 						}
 						HStack {
-							Text(rowContent.0)
+							VaryingText(rowContent.0)
 							Spacer()
 							Button {
 								Pasteboard.write(rowContent.1)

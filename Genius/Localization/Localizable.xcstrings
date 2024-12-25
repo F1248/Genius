@@ -102,52 +102,13 @@
       }
     },
     "Automatic Updates" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Automatische Updates"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Automatic Updates"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Boot Mode" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Startmodus"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Boot Mode"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Boot Volume" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Startvolume"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Boot Volume"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Build Number" : {
       "localizations" : {
@@ -166,20 +127,7 @@
       }
     },
     "Check for macOS updates" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nach macOS-Updates suchen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Check for macOS updates"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Code Name" : {
       "localizations" : {
@@ -230,52 +178,13 @@
       }
     },
     "CPU Frequency" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CPU-Frequenz"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CPU Frequency"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "CPU Name" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CPU-Name"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CPU Name"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "CPU Type" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CPU-Typ"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CPU Type"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Data Security" : {
       "localizations" : {
@@ -327,20 +236,7 @@
       }
     },
     "Download macOS updates" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "macOS-Updates herunterladen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Download macOS updates"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Efficiency Cores" : {
       "localizations" : {
@@ -458,23 +354,6 @@
     "Genius" : {
       "shouldTranslate" : false
     },
-    "Genius requires administrator privileges." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Genius benötigt Admin-Rechte."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Genius requires administrator privileges."
-          }
-        }
-      }
-    },
     "Hardware" : {
       "localizations" : {
         "de" : {
@@ -557,68 +436,16 @@
       }
     },
     "Install app updates from the App Store" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App-Updates aus dem App Store installieren"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Install app updates from the App Store"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Install configuration data updates" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Konfigurationsdaten-Updates installieren"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Install configuration data updates"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Install critical updates" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kritische Updates installieren"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Install critical updates"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Install macOS updates" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "macOS-Updates installieren"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Install macOS updates"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Intel" : {
       "extractionState" : "manual",
@@ -751,20 +578,7 @@
       }
     },
     "Malware Protection" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Schadsoftware-Schutz"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Malware Protection"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Memory" : {
       "localizations" : {
