@@ -12,10 +12,10 @@ import SwiftUICore
 
 struct SettingsView: View {
 
-	@Default(.interfaceMode)
-	var interfaceMode: Settings.InterfaceMode
-	@Default(.developmentMode)
-	var developmentMode: Bool
+	@AppStorage(Defaults.Keys.interfaceMode.name)
+	var interfaceMode: Settings.InterfaceMode = Defaults.Keys.interfaceMode.defaultValue
+	@AppStorage(Defaults.Keys.developmentMode.name)
+	var developmentMode: Bool = Defaults.Keys.developmentMode.defaultValue
 
 	var body: some View {
 		Text("Settings")
