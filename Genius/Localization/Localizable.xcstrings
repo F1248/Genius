@@ -1176,23 +1176,6 @@
           }
         }
       }
-    },
-    "Very Simple" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sehr einfach"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Very Simple"
-          }
-        }
-      }
     }
   },
   "version" : "1.0"
