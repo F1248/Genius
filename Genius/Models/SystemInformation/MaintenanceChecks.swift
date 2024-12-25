@@ -15,8 +15,8 @@ extension SystemInformation {
 		enum TheftProtection {
 
 			static let activationLock = SystemInformationData<Bool?>(
-				{ Bool(SystemProfiler.hardware?["activation_lock_status"]) },
-				applicable: Hardware.securityChip.value >= .t2 &&? Software.OS.bootMode.value !=? .recovery
+				{ IORegistry(class: "IODTNVRAMVariables").keyExists("fmm-mobileme-token-FMM") },
+				applicable: Hardware.securityChip.value >=? .t2
 			)
 			static let firmwarePassword = SystemInformationData<Bool?>(
 				{ Bool(Process("/usr/sbin/firmwarepasswd", ["-check"], requiresRoot: true)?.runSafe()) },
@@ -26,7 +26,10 @@ extension SystemInformation {
 
 		enum DataSecurity {
 
-			static let fileVault = SystemInformationData<Bool?>(Bool(Process("/usr/bin/fdesetup", ["isactive"])?.runSafe()))
+			static let fileVault = SystemInformationData<Bool?>(
+				{ Bool(Process("/usr/bin/fdesetup", ["isactive"])?.runSafe()) },
+				applicable: Software.OS.bootMode.value !=? .recovery
+			)
 		}
 
 		enum MalwareProtection {
@@ -46,19 +49,28 @@ extension SystemInformation {
 
 			static let checkMacOS = SystemInformationData<Bool?>(
 				{ UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled") },
-				applicable: { if #unavailable(macOS 15) { true } else { false } }()
+				applicable: { if #unavailable(macOS 15) { true } else { false } }() &&? Software.OS.bootMode.value !=? .recovery
 			)
-			static let downloadMacOS =
-				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"))
+			static let downloadMacOS = SystemInformationData<Bool?>(
+				{ UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload") },
+				applicable: Software.OS.bootMode.value !=? .recovery
+			)
 			static let installMacOS = SystemInformationData<Bool?>(
-				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates")
+				{ UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates") },
+				applicable: Software.OS.bootMode.value !=? .recovery
 			)
-			static let installCritical =
-				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"))
-			static let installConfigurationData =
-				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"))
-			static let installAppStoreApps =
-				SystemInformationData<Bool?>(UserDefaults.read("/Library/Preferences/com.apple.commerce", "AutoUpdate"))
+			static let installCritical = SystemInformationData<Bool?>(
+				{ UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall") },
+				applicable: Software.OS.bootMode.value !=? .recovery
+			)
+			static let installConfigurationData = SystemInformationData<Bool?>(
+				{ UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall") },
+				applicable: Software.OS.bootMode.value !=? .recovery
+			)
+			static let installAppStoreApps = SystemInformationData<Bool?>(
+				{ UserDefaults.read("/Library/Preferences/com.apple.commerce", "AutoUpdate") },
+				applicable: Software.OS.bootMode.value !=? .recovery
+			)
 		}
 	}
 }

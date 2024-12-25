@@ -12,7 +12,6 @@ enum Settings {
 
 	enum InterfaceMode: String, CaseIterable, Comparable, SelfIdentifiable, Defaults.Serializable {
 
-		case verySimple = "Very Simple"
 		case simple = "Simple"
 		case normal = "Normal"
 		case advanced = "Advanced"
