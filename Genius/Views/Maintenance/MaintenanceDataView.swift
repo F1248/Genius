@@ -53,6 +53,7 @@ struct MaintenanceDataView: View {
 							VaryingText(rowContent.0)
 							Spacer()
 							Text(rowContent.1)
+								.foregroundColor(.secondary)
 						}
 						.padding(.vertical, 2)
 					}

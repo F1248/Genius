@@ -57,7 +57,7 @@ struct SystemInformationTabView: View {
 							} label: {
 								Text(rowContent.1)
 							}
-							.buttonStyle(.plain)
+							.buttonStyle(.borderless)
 						}
 						.padding(.vertical, 2)
 					}
