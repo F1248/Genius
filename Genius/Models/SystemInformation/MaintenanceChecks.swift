@@ -16,7 +16,7 @@ extension SystemInformation {
 
 			static let activationLock = SystemInformationData<Bool?>(
 				{ IORegistry(class: "IODTNVRAMVariables").keyExists("fmm-mobileme-token-FMM") },
-				applicable: Hardware.securityChip.value >= .t2
+				applicable: Hardware.securityChip.value >=? .t2
 			)
 			static let firmwarePassword = SystemInformationData<Bool?>(
 				{ Bool(Process("/usr/sbin/firmwarepasswd", ["-check"], requiresRoot: true)?.runSafe()) },

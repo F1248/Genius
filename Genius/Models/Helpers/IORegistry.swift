@@ -16,9 +16,7 @@ struct IORegistry: ~Copyable {
 
 	var service: UInt32? {
 		guard let matchingDictionary else { return nil }
-		let service = IOServiceGetMatchingService(kIOMasterPortDefault, matchingDictionary)
-		guard service > 0 else { return nil }
-		return service
+		return IOServiceGetMatchingService(kIOMasterPortDefault, matchingDictionary)
 	}
 
 	init(class className: String) {
@@ -29,18 +27,18 @@ struct IORegistry: ~Copyable {
 		self.matchingDictionary = IOServiceNameMatching(name)
 	}
 
-	func serviceExists() -> Bool {
-		service != nil
+	func serviceExists() -> Bool? {
+		service >? 0
 	}
 
 	func read<W: DataInitializable>(_ key: String) -> W? {
-		guard let service else { return nil }
+		guard serviceExists() ?? false, let service else { return nil }
 		let property = IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0)?.takeRetainedValue()
 		return property as? W ?? ((property as? Data)?.trimmingTrailingZeros()).flatMap(W.init)
 	}
 
-	func keyExists(_ key: String) -> Bool {
-		guard let service else { return false }
+	func keyExists(_ key: String) -> Bool? {
+		guard serviceExists() ?? false, let service else { return nil }
 		return IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0) != nil
 	}
 

@@ -71,17 +71,16 @@ extension SystemInformation {
 			}()))
 		}
 
-		static let securityChip = SystemInformationData<SecurityChip>({
+		static let securityChip = SystemInformationData<SecurityChip?>({
 			switch CPU.type.value {
-				case .appleSilicon: .mSeries
+				case .appleSilicon: return .mSeries
 				case .intel:
-					if IORegistry(name: "Apple T2 Controller").serviceExists() {
-						.t2
-					} else if IORegistry(name: "Apple T1 Controller").serviceExists() {
-						.t1
-					} else {
-						.none
-					}
+					let t2 = IORegistry(name: "Apple T2 Controller").serviceExists()
+					if t2 ?? false { return .t2 }
+					let t1 = IORegistry(name: "Apple T1 Controller").serviceExists()
+					if t1 ?? false { return .t1 }
+					if t2 == false, t1 == false { return SecurityChip.none }
+					return nil
 			}
 		}())
 
