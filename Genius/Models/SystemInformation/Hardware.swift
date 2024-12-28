@@ -27,7 +27,7 @@ extension SystemInformation {
 				"""
 				return String(Network.transferURL(url)?.between(start: "<configCode>", end: "</configCode>"))
 			}() ?? name.value)
-			static let identifier = SystemInformationData<String?>(Sysctl.read("hw.product"))
+			static let identifier = SystemInformationData<String?>(IORegistry(class: "IOPlatformExpertDevice").read("model"))
 			static let number = SystemInformationData<String?>(
 				{
 					guard
