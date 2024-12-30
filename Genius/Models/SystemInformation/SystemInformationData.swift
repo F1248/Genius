@@ -21,12 +21,12 @@ struct SystemInformationData<T: Sendable>: SystemInformationDataProtocol {
 	}
 
 	init<W>(_ value: () -> T, applicable: Bool?) where T == W? {
-		self.applicable = applicable
 		self.value = applicable ?? true ? value() : nil
+		self.applicable = applicable
 	}
 
 	init<W>(_ value: () -> Any?, applicable: Bool?) where T == W? {
-		self.applicable = applicable
 		self.value = applicable ?? true ? value() as? W : nil
+		self.applicable = applicable
 	}
 }
