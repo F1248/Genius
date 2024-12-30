@@ -24,15 +24,12 @@ extension Bool: DataInitializable {
 			"no",
 			"false",
 			"disabled",
-			"spfirewall_globalstate_allow_all",
 		]) {
 			self = false
 		} else if string.contains(any: [
 			"yes",
 			"true",
 			"enabled",
-			"spfirewall_globalstate_limit_connections",
-			"spfirewall_globalstate_block_all",
 		]) {
 			self = true
 		} else { return nil }

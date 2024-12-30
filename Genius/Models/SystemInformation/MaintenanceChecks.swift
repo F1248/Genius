@@ -39,7 +39,7 @@ extension SystemInformation {
 				applicable: Software.OS.bootMode.value !=? .recovery
 			)
 			static let firewall = SystemInformationData<Bool?>(
-				{ Bool(SystemProfiler.firewall?["spfirewall_globalstate"]) },
+				{ Bool(Process("/usr/libexec/ApplicationFirewall/socketfilterfw", ["--getglobalstate"])?.runSafe()) },
 				applicable: Software.OS.bootMode.value !=? .recovery
 			)
 			static let gatekeeper = SystemInformationData<Bool?>(Bool(Process("/usr/sbin/spctl", ["--status"])?.runSafe()))
