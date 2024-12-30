@@ -27,7 +27,7 @@ extension SystemInformation {
 		enum DataSecurity {
 
 			static let fileVault = SystemInformationData<Bool?>(
-				{ Bool(Process("/usr/bin/fdesetup", ["isactive"])?.runSafe()) },
+				{ Bool(Process("/usr/bin/fdesetup", ["status"])?.runSafe()) },
 				applicable: Software.OS.bootMode.value !=? .recovery
 			)
 		}

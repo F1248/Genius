@@ -22,12 +22,14 @@ extension Bool: DataInitializable {
 		guard let string = (string as? String)?.lowercased() else { return nil }
 		if string.contains(any: [
 			"no",
+			"off",
 			"false",
 			"disabled",
 		]) {
 			self = false
 		} else if string.contains(any: [
 			"yes",
+			"on",
 			"true",
 			"enabled",
 		]) {
