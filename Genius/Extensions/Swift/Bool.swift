@@ -19,21 +19,23 @@ extension Bool: DataInitializable {
 	}
 
 	init?(_ string: String?) {
-		guard let string = string?.lowercased() else { return nil }
+		guard
+			let string = string.map({ $0[($0.range(of: ":", options: .backwards)?.upperBound ?? $0.startIndex)...] })?.lowercased()
+		else { return nil }
 		if string.contains(any: [
-			"no",
-			"off",
-			"false",
-			"disabled",
-		]) {
-			self = false
-		} else if string.contains(any: [
 			"yes",
 			"on",
 			"true",
 			"enabled",
 		]) {
 			self = true
+		} else if string.contains(any: [
+			"no",
+			"off",
+			"false",
+			"disabled",
+		]) {
+			self = false
 		} else { return nil }
 	}
 }
