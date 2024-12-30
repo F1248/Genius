@@ -35,7 +35,7 @@ extension SystemInformation {
 		enum MalwareProtection {
 
 			static let systemIntegrityProtection = SystemInformationData<Bool?>(
-				{ Bool(SystemProfiler.software?["system_integrity"]) },
+				{ Bool(SystemProfiler.software?["system_integrity"] as? String) },
 				applicable: Software.OS.bootMode.value !=? .recovery
 			)
 			static let firewall = SystemInformationData<Bool?>(

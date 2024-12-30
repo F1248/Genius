@@ -18,8 +18,8 @@ extension Bool: DataInitializable {
 		}
 	}
 
-	init?(_ string: Any?) {
-		guard let string = (string as? String)?.lowercased() else { return nil }
+	init?(_ string: String?) {
+		guard let string = string?.lowercased() else { return nil }
 		if string.contains(any: [
 			"no",
 			"off",
