@@ -16,7 +16,7 @@ extension SystemInformation {
 		enum SMC {
 
 			static let version = SystemInformationData<String?>(
-				{ SystemProfiler.hardware?["SMC_version_system"] },
+				{ SystemProfiler.hardware?["SMC_version_system"] as? String },
 				applicable: Hardware.securityChip.value <=? .t1 &&? OS.bootMode.value !=? .recovery
 			)
 		}
@@ -24,7 +24,7 @@ extension SystemInformation {
 		enum Firmware {
 
 			static let version = SystemInformationData<String?>(
-				{ SystemProfiler.hardware?["boot_rom_version"] },
+				{ SystemProfiler.hardware?["boot_rom_version"] as? String },
 				applicable: OS.bootMode.value !=? .recovery
 			)
 		}
@@ -57,15 +57,20 @@ extension SystemInformation {
 					safe ? .safe : .normal
 				} else { nil }
 			}())
-			static let bootVolume =
-				SystemInformationData<String?>({ SystemProfiler.software?["boot_volume"] }, applicable: bootMode.value !=? .recovery)
-			static let loaderVersion =
-				SystemInformationData<String?>({ SystemProfiler.hardware?["os_loader_version"] }, applicable: bootMode.value !=? .recovery)
+			static let bootVolume = SystemInformationData<String?>(
+				{ SystemProfiler.software?["boot_volume"] as? String },
+				applicable: bootMode.value !=? .recovery
+			)
+			static let loaderVersion = SystemInformationData<String?>(
+				{ SystemProfiler.hardware?["os_loader_version"] as? String },
+				applicable: bootMode.value !=? .recovery
+			)
 		}
 
 		enum Computer {
 
-			static let name = SystemInformationData<String?>(SystemProfiler.software?["local_host_name"] ?? Host.current().localizedName)
+			static let name =
+				SystemInformationData<String?>(SystemProfiler.software?["local_host_name"] as? String ?? Host.current().localizedName)
 			static let hostName = SystemInformationData<String?>(Sysctl.read("kern.hostname"))
 		}
 

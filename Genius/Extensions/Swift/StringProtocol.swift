@@ -19,8 +19,12 @@ extension StringProtocol {
 		self.init(data)
 	}
 
-	func contains(any strings: [some StringProtocol]) -> Bool {
-		strings.contains(where: contains)
+	func contains(anyWholeWord strings: [String]) -> Bool {
+		strings.contains { contains(wholeWord: $0) }
+	}
+
+	func contains(wholeWord: String) -> Bool {
+		components(separatedBy: .alphanumerics.inverted).contains(wholeWord)
 	}
 
 	func remove(_ string: some StringProtocol) -> String {

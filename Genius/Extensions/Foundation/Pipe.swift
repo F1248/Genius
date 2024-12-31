@@ -11,6 +11,6 @@ import Foundation
 extension Pipe {
 
 	func read() -> String? {
-		String(try? fileHandleForReading.readToEnd())
+		try? String(fileHandleForReading.readToEnd())
 	}
 }
