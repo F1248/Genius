@@ -69,7 +69,7 @@ struct SystemInformationTabView: View {
 				}
 				.frame(width: 512)
 			}
-			.padding(.bottom)
+			.padding()
 		}
 	}
 }
