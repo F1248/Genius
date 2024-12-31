@@ -18,23 +18,24 @@ extension Bool: DataInitializable {
 		}
 	}
 
-	init?(_ string: Any?) {
-		guard let string = (string as? String)?.lowercased() else { return nil }
-		if string.contains(any: [
-			"no",
-			"false",
-			"disabled",
-			"spfirewall_globalstate_allow_all",
-		]) {
-			self = false
-		} else if string.contains(any: [
+	init?(_ string: String?) {
+		guard
+			let string = string.map({ $0[($0.range(of: ":", options: .backwards)?.upperBound ?? $0.startIndex)...] })?.lowercased()
+		else { return nil }
+		if string.contains(anyWholeWord: [
 			"yes",
+			"on",
 			"true",
 			"enabled",
-			"spfirewall_globalstate_limit_connections",
-			"spfirewall_globalstate_block_all",
 		]) {
 			self = true
+		} else if string.contains(anyWholeWord: [
+			"no",
+			"off",
+			"false",
+			"disabled",
+		]) {
+			self = false
 		} else { return nil }
 	}
 }
