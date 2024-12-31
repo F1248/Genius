@@ -119,7 +119,7 @@ extension SystemInformation {
 			static let hardwareUUID =
 				SystemInformationData<String?>(IORegistry(class: "IOPlatformExpertDevice").read(kIOPlatformUUIDKey))
 			static let provisioningUDID = SystemInformationData<String?>(
-				{ SystemProfiler.hardware?["provisioning_UDID"] ?? (CPU.type.value == .intel ? hardwareUUID : nil) },
+				{ SystemProfiler.hardware?["provisioning_UDID"] as? String ?? (CPU.type.value == .intel ? hardwareUUID.value : nil) },
 				applicable: Software.OS.bootMode.value !=? .recovery ||? CPU.type.value == .intel
 			)
 		}

@@ -10,7 +10,6 @@ import Foundation
 
 enum SystemProfiler {
 
-	static let firewall = get("Firewall")
 	static let hardware = get("Hardware")
 	static let software = get("Software")
 
