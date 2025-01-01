@@ -10,6 +10,16 @@
 		A46854972D1729B500DB3E87 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = A46854962D1729B500DB3E87 /* Defaults */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A4D9A1AE2D257055008D91E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A42B35352BA2185B009E81AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A42B353C2BA2185B009E81AD;
+			remoteInfo = Genius;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		A42B353D2BA2185B009E81AD /* Genius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Genius.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A438B3FA2CA346C600F8DF17 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -20,6 +30,7 @@
 		A452AFF22BBF2CAB00760569 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; usesTabs = 0; };
 		A47BFC592C72116700B88607 /* README_DE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_DE.md; sourceTree = "<group>"; };
 		A4844FF82C73E08C0021E6E8 /* install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install.sh; sourceTree = "<group>"; };
+		A4D9A1AA2D257055008D91E7 /* GeniusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeniusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4EB1C9A2BCC3F8200DF01A6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -30,6 +41,13 @@
 				Info.plist,
 			);
 			target = A42B353C2BA2185B009E81AD /* Genius */;
+		};
+		A4D9A1BB2D257061008D91E7 /* Exceptions for "GeniusTests" folder in "GeniusTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				.swiftformat,
+			);
+			target = A4D9A1A92D257055008D91E7 /* GeniusTests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -48,6 +66,14 @@
 			path = Genius;
 			sourceTree = "<group>";
 		};
+		A4D9A1AB2D257055008D91E7 /* GeniusTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A4D9A1BB2D257061008D91E7 /* Exceptions for "GeniusTests" folder in "GeniusTests" target */,
+			);
+			path = GeniusTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +82,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A46854972D1729B500DB3E87 /* Defaults in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4D9A1A72D257055008D91E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +105,7 @@
 				A43BD9C32C729A680049953D /* .swiftformat */,
 				A452AFF22BBF2CAB00760569 /* .swiftlint.yml */,
 				A47D8B992C26145300A0E4CF /* Genius */,
+				A4D9A1AB2D257055008D91E7 /* GeniusTests */,
 				A4844FF82C73E08C0021E6E8 /* install.sh */,
 				A438B3FA2CA346C600F8DF17 /* LICENSE.txt */,
 				A47BFC592C72116700B88607 /* README_DE.md */,
@@ -85,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				A42B353D2BA2185B009E81AD /* Genius.app */,
+				A4D9A1AA2D257055008D91E7 /* GeniusTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,6 +149,30 @@
 			productReference = A42B353D2BA2185B009E81AD /* Genius.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A4D9A1A92D257055008D91E7 /* GeniusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4D9A1B22D257055008D91E7 /* Build configuration list for PBXNativeTarget "GeniusTests" */;
+			buildPhases = (
+				A4D9A1A62D257055008D91E7 /* Sources */,
+				A4D9A1A72D257055008D91E7 /* Frameworks */,
+				A4D9A1A82D257055008D91E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A4D9A1BD2D257090008D91E7 /* PBXTargetDependency */,
+				A4D9A1AF2D257055008D91E7 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A4D9A1AB2D257055008D91E7 /* GeniusTests */,
+			);
+			name = GeniusTests;
+			packageProductDependencies = (
+			);
+			productName = GeniusTests;
+			productReference = A4D9A1AA2D257055008D91E7 /* GeniusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -121,10 +180,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					A42B353C2BA2185B009E81AD = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					A4D9A1A92D257055008D91E7 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = A42B353C2BA2185B009E81AD;
 					};
 				};
 			};
@@ -147,12 +211,20 @@
 			projectRoot = "";
 			targets = (
 				A42B353C2BA2185B009E81AD /* Genius */,
+				A4D9A1A92D257055008D91E7 /* GeniusTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		A42B353B2BA2185B009E81AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4D9A1A82D257055008D91E7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -191,12 +263,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A4D9A1A62D257055008D91E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		A4672DDB2C61207100C933CB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = A4672DDA2C61207100C933CB /* SwiftLintBuildToolPlugin */;
+		};
+		A4D9A1AF2D257055008D91E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A42B353C2BA2185B009E81AD /* Genius */;
+			targetProxy = A4D9A1AE2D257055008D91E7 /* PBXContainerItemProxy */;
+		};
+		A4D9A1BD2D257090008D91E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = A4D9A1BC2D257090008D91E7 /* SwiftLintBuildToolPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -210,11 +298,13 @@
 				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_ANALYZER_OSOBJECT_C_STYLE_CAST = YES;
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
-				CLANG_CXX_STANDARD_LIBRARY_HARDENING = debug;
+				CLANG_CXX_STANDARD_LIBRARY_HARDENING = extensive;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
 				CLANG_TIDY_BUGPRONE_REDUNDANT_BRANCH_CONDITION = YES;
@@ -246,18 +336,20 @@
 				CLANG_WARN_OBJC_INTERFACE_IVARS = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
-				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES_AGGRESSIVE;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES_AGGRESSIVE;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
 				CODE_SIGN_ENTITLEMENTS = Genius/Genius.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -279,7 +371,7 @@
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
@@ -291,6 +383,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 F1248 <f1248@mailbox.org>";
 				LD_WARN_DUPLICATE_LIBRARIES = YES;
 				LD_WARN_UNUSED_DYLIBS = YES;
+				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 0.1.0;
 				ONLY_ACTIVE_ARCH = YES;
@@ -315,11 +408,13 @@
 				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_ANALYZER_OSOBJECT_C_STYLE_CAST = YES;
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
-				CLANG_CXX_STANDARD_LIBRARY_HARDENING = debug;
+				CLANG_CXX_STANDARD_LIBRARY_HARDENING = extensive;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
 				CLANG_TIDY_BUGPRONE_REDUNDANT_BRANCH_CONDITION = YES;
@@ -351,14 +446,15 @@
 				CLANG_WARN_OBJC_INTERFACE_IVARS = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
-				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES_AGGRESSIVE;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES_AGGRESSIVE;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
 				CODE_SIGN_ENTITLEMENTS = Genius/Genius.entitlements;
@@ -385,7 +481,7 @@
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
@@ -397,6 +493,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 F1248 <f1248@mailbox.org>";
 				LD_WARN_DUPLICATE_LIBRARIES = YES;
 				LD_WARN_UNUSED_DYLIBS = YES;
+				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.F1248.Genius;
@@ -423,6 +520,26 @@
 			};
 			name = Release;
 		};
+		A4D9A1B02D257055008D91E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_WARN_UNUSED_DYLIBS = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.F1248.GeniusTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Genius.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Genius";
+			};
+			name = Debug;
+		};
+		A4D9A1B12D257055008D91E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_WARN_UNUSED_DYLIBS = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.F1248.GeniusTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Genius.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Genius";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -440,6 +557,15 @@
 			buildConfigurations = (
 				A42B354F2BA2185C009E81AD /* Debug */,
 				A42B35502BA2185C009E81AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4D9A1B22D257055008D91E7 /* Build configuration list for PBXNativeTarget "GeniusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4D9A1B02D257055008D91E7 /* Debug */,
+				A4D9A1B12D257055008D91E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -475,6 +601,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A46854952D1729B500DB3E87 /* XCRemoteSwiftPackageReference "Defaults" */;
 			productName = Defaults;
+		};
+		A4D9A1BC2D257090008D91E7 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4672DD92C61205000C933CB /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
