@@ -14,13 +14,11 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-
     Trigger-Deploy-to-Pages:
         name: Trigger Deploy to Pages
         runs-on: macos-15
 
         steps:
-
             - name: Trigger Deploy to Pages
               uses: actions/github-script@main
               with:

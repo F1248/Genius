@@ -28,7 +28,6 @@ env:
     NSUnbufferedIO: YES
 
 jobs:
-
     Build-Genius:
         name: Build Genius
         runs-on: macos-15
@@ -38,14 +37,14 @@ jobs:
             attestations: write
 
         steps:
-
             - name: Prepare
               run: |
-                set -o pipefail
                 defaults write com.apple.dt.Xcode IDESkipPackagePluginFingerprintValidatation -boolean true
 
             - name: Checkout
               uses: actions/checkout@main
+              with:
+                fetch-depth: 0
 
             - name: Install SwiftFormat
               run: |
@@ -79,8 +78,15 @@ jobs:
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
+            - name: Test Genius
+              run: |
+                set -o pipefail
+                xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 | ./xcbeautify --disable-logging --renderer github-actions
+
             - name: Build Genius
-              run: xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
+              run: |
+                set -o pipefail
+                xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run SwiftLint Analyzer Rules
               run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log Genius
@@ -102,7 +108,8 @@ jobs:
 
             - name: Attest Build Provenance
               uses: actions/attest-build-provenance@main
-              with: { subject-path: Genius.zip }
+              with:
+                subject-path: Genius.zip
 
             - name: Upload Genius
               uses: actions/upload-artifact@main
