@@ -79,6 +79,9 @@ jobs:
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
+            - name: Test Genius
+              run: xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 | ./xcbeautify --disable-logging --renderer github-actions
+
             - name: Build Genius
               run: xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
 
