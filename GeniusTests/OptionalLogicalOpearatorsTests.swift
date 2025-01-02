@@ -9,38 +9,41 @@
 @testable import Genius
 import Testing
 
-struct OptionalLogicalOpearatorsTests {
+extension OptionalOpearatorsTests {
 
-	@Test
-	func negation() {
-		#expect(!?true == false)
-		#expect(!?false == true)
-		#expect(!?nil == nil)
-	}
+	struct OptionalLogicalOpearatorsTests {
 
-	@Test
-	func conjunction() {
-		#expect((true &&? true) == true)
-		#expect((false &&? false) == false)
-		#expect((false &&? true) == false)
-		#expect((true &&? false) == false)
-		#expect((false &&? nil) == false)
-		#expect((nil &&? false) == false)
-		#expect((true &&? nil) == nil)
-		#expect((nil &&? true) == nil)
-		#expect((nil &&? nil) == nil)
-	}
+		@Test
+		func negation() {
+			#expect(!?true == false)
+			#expect(!?false == true)
+			#expect(!?nil == nil)
+		}
 
-	@Test
-	func disjunction() {
-		#expect((false ||? false) == false)
-		#expect((true ||? true) == true)
-		#expect((true ||? false) == true)
-		#expect((false ||? true) == true)
-		#expect((true ||? nil) == true)
-		#expect((nil ||? true) == true)
-		#expect((false ||? nil) == nil)
-		#expect((nil ||? false) == nil)
-		#expect((nil ||? nil) == nil)
+		@Test
+		func conjunction() {
+			#expect((true &&? true) == true)
+			#expect((false &&? false) == false)
+			#expect((false &&? true) == false)
+			#expect((true &&? false) == false)
+			#expect((false &&? nil) == false)
+			#expect((nil &&? false) == false)
+			#expect((true &&? nil) == nil)
+			#expect((nil &&? true) == nil)
+			#expect((nil &&? nil) == nil)
+		}
+
+		@Test
+		func disjunction() {
+			#expect((false ||? false) == false)
+			#expect((true ||? true) == true)
+			#expect((true ||? false) == true)
+			#expect((false ||? true) == true)
+			#expect((true ||? nil) == true)
+			#expect((nil ||? true) == true)
+			#expect((false ||? nil) == nil)
+			#expect((nil ||? false) == nil)
+			#expect((nil ||? nil) == nil)
+		}
 	}
 }

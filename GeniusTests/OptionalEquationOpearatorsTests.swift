@@ -9,21 +9,24 @@
 @testable import Genius
 import Testing
 
-struct OptionalEquationOpearatorsTests {
+extension OptionalOpearatorsTests {
 
-	@Test
-	func equalTo() {
-		#expect((0 ==? 1) == false)
-		#expect((0 ==? nil) == nil)
-		#expect((nil ==? 0) == nil)
-		#expect((nil as Int? ==? nil) == nil)
-	}
+	struct OptionalEquationOpearatorsTests {
 
-	@Test
-	func notEqualTo() {
-		#expect((0 !=? 1) == true)
-		#expect((0 !=? nil) == nil)
-		#expect((nil !=? 0) == nil)
-		#expect((nil as Int? !=? nil) == nil)
+		@Test
+		func equalTo() {
+			#expect((0 ==? 1) == false)
+			#expect((0 ==? nil) == nil)
+			#expect((nil ==? 0) == nil)
+			#expect((nil as Int? ==? nil) == nil)
+		}
+
+		@Test
+		func notEqualTo() {
+			#expect((0 !=? 1) == true)
+			#expect((0 !=? nil) == nil)
+			#expect((nil !=? 0) == nil)
+			#expect((nil as Int? !=? nil) == nil)
+		}
 	}
 }
