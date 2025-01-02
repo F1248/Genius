@@ -14,7 +14,7 @@ extension OptionalOpearatorsTests {
 	struct OptionalComparisonOpearatorsTests {
 
 		@Test
-		func optionalGreaterThan() {
+		func optionalGreaterThanTests() {
 			#expect((1 >? 0) == true)
 			#expect((0 >? 1) == false)
 			#expect((0 >? nil) == nil)
@@ -23,7 +23,7 @@ extension OptionalOpearatorsTests {
 		}
 
 		@Test
-		func optionalLessThan() {
+		func optionalLessThanTests() {
 			#expect((0 <? 1) == true)
 			#expect((1 <? 0) == false)
 			#expect((0 <? nil) == nil)
@@ -32,7 +32,7 @@ extension OptionalOpearatorsTests {
 		}
 
 		@Test
-		func optionalGreaterThanOrEqualTo() {
+		func optionalGreaterThanOrEqualToTests() {
 			#expect((1 >=? 0) == true)
 			#expect((0 >=? 1) == false)
 			#expect((0 >=? nil) == nil)
@@ -41,7 +41,7 @@ extension OptionalOpearatorsTests {
 		}
 
 		@Test
-		func optionalLessThanOrEqualTo() {
+		func optionalLessThanOrEqualToTests() {
 			#expect((0 <=? 1) == true)
 			#expect((1 <=? 0) == false)
 			#expect((0 <=? nil) == nil)
