@@ -14,7 +14,7 @@ extension OptionalOpearatorsTests {
 	struct OptionalEquationOpearatorsTests {
 
 		@Test
-		func equalTo() {
+		func optionalEqualTo() {
 			#expect((0 ==? 1) == false)
 			#expect((0 ==? nil) == nil)
 			#expect((nil ==? 0) == nil)
@@ -22,7 +22,7 @@ extension OptionalOpearatorsTests {
 		}
 
 		@Test
-		func notEqualTo() {
+		func optionalNotEqualTo() {
 			#expect((0 !=? 1) == true)
 			#expect((0 !=? nil) == nil)
 			#expect((nil !=? 0) == nil)
