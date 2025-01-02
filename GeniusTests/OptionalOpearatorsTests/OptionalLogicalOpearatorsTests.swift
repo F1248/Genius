@@ -11,16 +11,17 @@ import Testing
 
 extension OptionalOpearatorsTests {
 
+	@Suite("Optional logical operators tests")
 	struct OptionalLogicalOpearatorsTests {
 
-		@Test
+		@Test("Optional negation tests")
 		func optionalNegationTests() {
 			#expect(!?true == false)
 			#expect(!?false == true)
 			#expect(!?nil == nil)
 		}
 
-		@Test
+		@Test("Optional conjunction tests")
 		func optionalConjunctionTests() {
 			#expect((true &&? true) == true)
 			#expect((false &&? false) == false)
@@ -33,7 +34,7 @@ extension OptionalOpearatorsTests {
 			#expect((nil &&? nil) == nil)
 		}
 
-		@Test
+		@Test("Optional disjunction tests")
 		func optionalDisjunctionTests() {
 			#expect((false ||? false) == false)
 			#expect((true ||? true) == true)

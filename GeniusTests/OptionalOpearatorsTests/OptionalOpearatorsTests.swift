@@ -6,4 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
+import Testing
+
+@Suite("Optional opearators tests")
 struct OptionalOpearatorsTests {}
