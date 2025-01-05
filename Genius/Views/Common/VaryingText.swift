@@ -7,13 +7,12 @@
 //
 
 import Defaults
-import SwiftUI
 import SwiftUICore
 
 struct VaryingText: View {
 
-	@AppStorage(Defaults.Keys.interfaceMode.name)
-	var interfaceMode: Settings.InterfaceMode = Defaults.Keys.interfaceMode.defaultValue
+	@Default(.interfaceMode)
+	var interfaceMode: Settings.InterfaceMode
 
 	let key: LocalizedStringKey
 
