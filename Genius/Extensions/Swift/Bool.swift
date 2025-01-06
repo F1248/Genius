@@ -46,19 +46,19 @@ extension Bool? {
 		bool.map(!)
 	}
 
-	static func &&? (lhs: Self, rhs: Self) -> Self {
-		if let lhs, let rhs {
-			lhs && rhs
-		} else if [lhs, rhs].contains(false) {
-			false
-		} else { nil }
+	static func &&? (lhs: Self, rhs: @autoclosure () -> Self) -> Self {
+		switch lhs {
+			case true: rhs()
+			case false: false
+			default: rhs() == false ? false : nil
+		}
 	}
 
-	static func ||? (lhs: Self, rhs: Self) -> Self {
-		if let lhs, let rhs {
-			lhs || rhs
-		} else if [lhs, rhs].contains(true) {
-			true
-		} else { nil }
+	static func ||? (lhs: Self, rhs: @autoclosure () -> Self) -> Self {
+		switch lhs {
+			case true: true
+			case false: rhs()
+			default: rhs() == true ? true : nil
+		}
 	}
 }
