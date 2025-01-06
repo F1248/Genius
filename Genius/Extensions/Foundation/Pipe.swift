@@ -11,6 +11,6 @@ import Foundation
 extension Pipe {
 
 	func read() -> String? {
-		try? String(fileHandleForReading.readToEnd())
+		try? String(fileHandleForReading.readToEnd())?.trimmingCharacters(in: .whitespacesAndNewlines)
 	}
 }

@@ -16,7 +16,7 @@ extension SystemInformation {
 		enum SMC {
 
 			static let version = SystemInformationData<String?>(
-				{ SystemProfiler.hardware?["SMC_version_system"] as? String },
+				SystemProfiler.hardware?["SMC_version_system"] as? String,
 				applicable: Hardware.securityChip.value <=? .t1 &&? OS.bootMode.value !=? .recovery
 			)
 		}
@@ -24,7 +24,7 @@ extension SystemInformation {
 		enum Firmware {
 
 			static let version = SystemInformationData<String?>(
-				{ SystemProfiler.hardware?["boot_rom_version"] as? String },
+				SystemProfiler.hardware?["boot_rom_version"] as? String,
 				applicable: OS.bootMode.value !=? .recovery
 			)
 		}
@@ -55,12 +55,10 @@ extension SystemInformation {
 					safe ? .safe : .normal
 				} else { nil }
 			}())
-			static let bootVolume = SystemInformationData<String?>(
-				{ SystemProfiler.software?["boot_volume"] as? String },
-				applicable: bootMode.value !=? .recovery
-			)
+			static let bootVolume =
+				SystemInformationData<String?>(SystemProfiler.software?["boot_volume"] as? String, applicable: bootMode.value !=? .recovery)
 			static let loaderVersion = SystemInformationData<String?>(
-				{ SystemProfiler.hardware?["os_loader_version"] as? String },
+				SystemProfiler.hardware?["os_loader_version"] as? String,
 				applicable: bootMode.value !=? .recovery
 			)
 		}
