@@ -16,7 +16,7 @@ struct SystemInformationData<T: Sendable>: SystemInformationDataProtocol {
 		self.applicable = true
 	}
 
-	init<W>(_ value: () -> T, applicable: Bool?) where T == W? {
+	init<W>(_ value: @autoclosure () -> T, applicable: Bool?) where T == W? {
 		self.value = applicable ?? true ? value() : nil
 		self.applicable = applicable
 	}
