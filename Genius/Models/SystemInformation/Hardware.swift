@@ -35,11 +35,11 @@ extension SystemInformation {
 						let regionInfo = IORegistry(class: "IOPlatformExpertDevice").read("region-info") as String?
 					else { return nil }
 					return modelNumber + regionInfo
-				},
+				}(),
 				applicable: CPU.type.value == .appleSilicon
 			)
 			static let regulatoryNumber = SystemInformationData<String?>(
-				{ IORegistry(class: "IOPlatformExpertDevice").read("regulatory-model-number") },
+				IORegistry(class: "IOPlatformExpertDevice").read("regulatory-model-number"),
 				applicable: CPU.type.value == .appleSilicon &&? !?isVirtualMachine.value
 			)
 			// periphery:ignore
@@ -91,9 +91,9 @@ extension SystemInformation {
 				static let differentTypes = SystemInformationData<Bool?>(type.value == .appleSilicon &&? !?Model.isVirtualMachine.value)
 				static let total = SystemInformationData<Int?>(Sysctl.read("hw.physicalcpu"))
 				static let performance =
-					SystemInformationData<Int?>({ Sysctl.read("hw.perflevel0.physicalcpu") }, applicable: differentTypes.value)
+					SystemInformationData<Int?>(Sysctl.read("hw.perflevel0.physicalcpu"), applicable: differentTypes.value)
 				static let efficiency =
-					SystemInformationData<Int?>({ Sysctl.read("hw.perflevel1.physicalcpu") }, applicable: differentTypes.value)
+					SystemInformationData<Int?>(Sysctl.read("hw.perflevel1.physicalcpu"), applicable: differentTypes.value)
 			}
 
 			static let type = SystemInformationData<CPUType>({
@@ -107,7 +107,7 @@ extension SystemInformation {
 			}())
 			static let name = SystemInformationData<String?>(Sysctl.read("machdep.cpu.brand_string"))
 			static let frequency =
-				SystemInformationData<Frequency?>({ Sysctl.read("hw.cpufrequency").map(Frequency.init) }, applicable: type.value == .intel)
+				SystemInformationData<Frequency?>(Sysctl.read("hw.cpufrequency").map(Frequency.init), applicable: type.value == .intel)
 		}
 
 		static let memory = SystemInformationData<InformationStorage?>(Sysctl.read("hw.memsize").map(InformationStorage.init))
@@ -119,7 +119,7 @@ extension SystemInformation {
 			static let hardwareUUID =
 				SystemInformationData<String?>(IORegistry(class: "IOPlatformExpertDevice").read(kIOPlatformUUIDKey))
 			static let provisioningUDID = SystemInformationData<String?>(
-				{ SystemProfiler.hardware?["provisioning_UDID"] as? String ?? (CPU.type.value == .intel ? hardwareUUID.value : nil) },
+				SystemProfiler.hardware?["provisioning_UDID"] as? String ?? (CPU.type.value == .intel ? hardwareUUID.value : nil),
 				applicable: Software.OS.bootMode.value !=? .recovery ||? CPU.type.value == .intel
 			)
 		}

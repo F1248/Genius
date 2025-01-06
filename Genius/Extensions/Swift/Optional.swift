@@ -20,21 +20,21 @@ extension Optional where Wrapped: Equatable {
 
 extension Optional where Wrapped: Comparable {
 
-	static func <? (lhs: Self, rhs: Self) -> Bool? {
-		guard let lhs, let rhs else { return nil }
-		return lhs < rhs
-	}
-
 	static func >? (lhs: Self, rhs: Self) -> Bool? {
 		guard let lhs, let rhs else { return nil }
 		return lhs > rhs
 	}
 
-	static func <=? (lhs: Self, rhs: Self) -> Bool? {
-		!?(lhs >? rhs)
+	static func <? (lhs: Self, rhs: Self) -> Bool? {
+		guard let lhs, let rhs else { return nil }
+		return lhs < rhs
 	}
 
 	static func >=? (lhs: Self, rhs: Self) -> Bool? {
 		!?(lhs <? rhs)
+	}
+
+	static func <=? (lhs: Self, rhs: Self) -> Bool? {
+		!?(lhs >? rhs)
 	}
 }
