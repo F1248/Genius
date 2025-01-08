@@ -24,25 +24,25 @@ extension OptionalOpearatorsTests {
 		@Test("Optional conjunction tests")
 		func optionalConjunctionTests() {
 			#expect((true &&? true) == true)
-			#expect((false &&? false) == false)
-			#expect((false &&? true) == false)
 			#expect((true &&? false) == false)
-			#expect((false &&? nil) == false)
-			#expect((nil &&? false) == false)
 			#expect((true &&? nil) == nil)
+			#expect((false &&? true) == false)
+			#expect((false &&? false) == false)
+			#expect((false &&? nil) == false)
 			#expect((nil &&? true) == nil)
+			#expect((nil &&? false) == false)
 			#expect((nil &&? nil) == nil)
 		}
 
 		@Test("Optional disjunction tests")
 		func optionalDisjunctionTests() {
-			#expect((false ||? false) == false)
 			#expect((true ||? true) == true)
 			#expect((true ||? false) == true)
-			#expect((false ||? true) == true)
 			#expect((true ||? nil) == true)
-			#expect((nil ||? true) == true)
+			#expect((false ||? true) == true)
+			#expect((false ||? false) == false)
 			#expect((false ||? nil) == nil)
+			#expect((nil ||? true) == true)
 			#expect((nil ||? false) == nil)
 			#expect((nil ||? nil) == nil)
 		}
