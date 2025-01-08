@@ -4,19 +4,23 @@ on:
     push:
         paths:
             - .github/workflows/Build-Genius.yml
+            - .periphery.yml
             - .swift-version
             - .swiftformat
             - .swiftlint.yml
             - Genius/**
             - Genius.xcodeproj/**
+            - GeniusTests/**
     pull_request:
         paths:
             - .github/workflows/Build-Genius.yml
+            - .periphery.yml
             - .swift-version
             - .swiftformat
             - .swiftlint.yml
             - Genius/**
             - Genius.xcodeproj/**
+            - GeniusTests/**
     workflow_dispatch:
 
 concurrency:
