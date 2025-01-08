@@ -25,7 +25,8 @@ curl --silent --remote-name --location https://nightly.link/F1248/Genius/workflo
 
 echo "Installing..."
 unzip -q -o Genius.zip
-unzip -q -o Genius.zip
+rm -r -f Genius.app
+unzip -q Genius.zip
 if [ ! -e /System/Library/CoreServices/Finder.app ]; then
 	echo "
 export PATH=\"${PWD}/Genius.app/Contents/MacOS:\$PATH\"" >> ~/.bash_profile
