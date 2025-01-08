@@ -32,6 +32,10 @@ extension OptionalOpearatorsTests {
 			#expect((nil &&? true) == nil)
 			#expect((nil &&? false) == false)
 			#expect((nil &&? nil) == nil)
+			_ = false &&? {
+				#expect(Bool(false))
+				return nil
+			}()
 		}
 
 		@Test("Optional disjunction tests")
@@ -45,6 +49,10 @@ extension OptionalOpearatorsTests {
 			#expect((nil ||? true) == true)
 			#expect((nil ||? false) == nil)
 			#expect((nil ||? nil) == nil)
+			_ = true ||? {
+				#expect(Bool(false))
+				return nil
+			}()
 		}
 	}
 }
