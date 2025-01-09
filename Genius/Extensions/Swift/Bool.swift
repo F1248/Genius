@@ -22,19 +22,9 @@ extension Bool: DataInitializable {
 		guard
 			let string = string.map({ $0[($0.range(of: ":", options: .backwards)?.upperBound ?? $0.startIndex)...] })?.lowercased()
 		else { return nil }
-		if string.contains(anyWholeWord: [
-			"yes",
-			"on",
-			"true",
-			"enabled",
-		]) {
+		if string.contains(anyWholeWord: "yes", "on", "true", "enabled") {
 			self = true
-		} else if string.contains(anyWholeWord: [
-			"no",
-			"off",
-			"false",
-			"disabled",
-		]) {
+		} else if string.contains(anyWholeWord: "no", "off", "false", "disabled") {
 			self = false
 		} else { return nil }
 	}

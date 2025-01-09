@@ -17,7 +17,7 @@ enum SystemProfiler {
 		let dataType = "SP\(dataType)DataType" // swiftlint:disable:this explicit_type_interface
 		return (
 			JSONSerialization.jsonOptionalObject(
-				with: Data(Process("/usr/sbin/system_profiler", ["-json", dataType])?.runSafe())
+				with: Data(Process("/usr/sbin/system_profiler", "-json", dataType)?.runSafe())
 			) as? [String: [[String: any Sendable]]]
 		)?[dataType]?.first
 	}

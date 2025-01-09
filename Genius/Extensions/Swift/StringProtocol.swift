@@ -19,7 +19,7 @@ extension StringProtocol {
 		self.init(data)
 	}
 
-	func contains(anyWholeWord strings: [String]) -> Bool {
+	func contains(anyWholeWord strings: String...) -> Bool {
 		strings.contains { contains(wholeWord: $0) }
 	}
 
