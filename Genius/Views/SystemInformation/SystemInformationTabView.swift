@@ -41,11 +41,9 @@ struct SystemInformationTabView: View {
 
 	var body: some View {
 		ScrollView {
-			ForEach(content.indices, id: \.self) { index in
-				let groupBoxContent: (LocalizedStringKey, [(LocalizedStringKey, String)]) = content[index]
+			ForEach(enumerated: content) { _, groupBoxContent in
 				GroupBox {
-					ForEach(groupBoxContent.1.indices, id: \.self) { index in
-						let rowContent: (LocalizedStringKey, String) = groupBoxContent.1[index]
+					ForEach(enumerated: groupBoxContent.1) { index, rowContent in
 						if index > 0 {
 							Divider()
 						}
