@@ -18,15 +18,65 @@ extension Bool: DataInitializable {
 		}
 	}
 
-	init?(_ string: String?) {
-		guard
-			let string = string.map({ $0[($0.range(of: ":", options: .backwards)?.upperBound ?? $0.startIndex)...] })?.lowercased()
-		else { return nil }
-		if string.contains(anyWholeWord: "yes", "on", "true", "enabled") {
+	init?<T: Equatable>(_ value: T?, valuesTrue: T?..., valuesFalse: T?...) {
+		if valuesTrue.contains(value) {
 			self = true
-		} else if string.contains(anyWholeWord: "no", "off", "false", "disabled") {
+		} else if valuesFalse.contains(value) {
 			self = false
 		} else { return nil }
+	}
+
+	init?(firmwarepasswdOutput: String?) {
+		self.init(
+			firmwarepasswdOutput?.betweenAnchored(start: "Password Enabled: "),
+			valuesTrue: "Yes",
+			valuesFalse: "No"
+		)
+	}
+
+	// swiftlint:disable vertical_parameter_alignment_on_call
+	// swiftformat:disable indent wrap wrapArguments
+
+	init?(fdesetupOutput: String?) {
+		self.init(
+			fdesetupOutput?.betweenAnchored(start: "FileVault is ", end: "."),
+			valuesTrue: "On",
+			valuesFalse:
+				"On, but needs to be restarted to finish",
+				"Off",
+				"Off, but needs to be restarted to finish",
+				"Off, but will be enabled after the next restart"
+		)
+	}
+
+	init?(csrutilOutput: String?) {
+		self.init(
+			csrutilOutput?.firstLine?.betweenAnchored(start: "System Integrity Protection status: ", end: "."),
+			valuesTrue: "enabled",
+			valuesFalse:
+				"enabled (Apple Internal)",
+				"disabled",
+				"disabled (Apple Internal)",
+				"unknown (Custom Configuration)"
+		)
+	}
+
+	// swiftlint:enable vertical_parameter_alignment_on_call
+
+	init?(socketfilterfwOutput: String?) {
+		self.init(
+			socketfilterfwOutput?.betweenAnchored(start: "Firewall is "),
+			valuesTrue: "enabled. (State = 1)",
+			valuesFalse: "disabled. (State = 0)"
+		)
+	}
+
+	init?(spctlOutput: String?) {
+		self.init(
+			spctlOutput?.betweenAnchored(start: "assessments "),
+			valuesTrue: "enabled",
+			valuesFalse: "disabled"
+		)
 	}
 }
 
