@@ -45,10 +45,25 @@ jobs:
               run: |
                 defaults write com.apple.dt.Xcode IDESkipPackagePluginFingerprintValidatation -boolean true
 
+            - name: Select Xcode Version
+              uses: maxim-lobanov/setup-xcode@master
+              with:
+                xcode-version: latest
+
             - name: Checkout
               uses: actions/checkout@main
               with:
                 fetch-depth: 0
+
+            - name: Install Periphery
+              run: |
+                latest_periphery_tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/peripheryapp/periphery/releases/download/"$latest_periphery_tag"/periphery-"$latest_periphery_tag".zip --output periphery.zip
+                unzip periphery.zip
+                echo "Periphery $(./periphery version) installed"
+
+            - name: Run Periphery
+              run: ./periphery scan --format github-actions --relative-results --strict
 
             - name: Install SwiftFormat
               run: |
@@ -67,11 +82,6 @@ jobs:
 
             - name: Run SwiftLint Lint Rules
               run: ./swiftlint lint --strict --reporter github-actions-logging
-
-            - name: Select Xcode Version
-              uses: maxim-lobanov/setup-xcode@master
-              with:
-                xcode-version: latest
 
             - name: Install xcbeautify
               run: |
@@ -92,16 +102,6 @@ jobs:
 
             - name: Run SwiftLint Analyzer Rules
               run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log Genius
-
-            - name: Install Periphery
-              run: |
-                latest_periphery_tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/peripheryapp/periphery/releases/download/"$latest_periphery_tag"/periphery-"$latest_periphery_tag".zip --output periphery.zip
-                unzip periphery.zip
-                echo "Periphery $(./periphery version) installed"
-
-            - name: Run Periphery
-              run: ./periphery scan --format github-actions --relative-results --strict
 
             - name: Zip Genius
               run: |
