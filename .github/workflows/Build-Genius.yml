@@ -69,11 +69,9 @@ jobs:
               run: ./swiftlint lint --strict --reporter github-actions-logging
 
             - name: Select Xcode Version
-              run: |
-                sudo xcode-select --switch /Applications/$(
-                    ls /Applications | grep "Xcode_\d*\.\d*\.app" | tail --lines=1
-                )
-                echo "$(xcodebuild -version | tr "\n" " ")selected"
+              uses: maxim-lobanov/setup-xcode@master
+              with:
+                xcode-version: latest
 
             - name: Install xcbeautify
               run: |
