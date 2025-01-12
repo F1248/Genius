@@ -19,7 +19,7 @@ extension SystemInformation {
 				applicable: Hardware.securityChip.value >=? .t2 &&? !?Hardware.Model.isVirtualMachine.value
 			)
 			static let firmwarePassword = SystemInformationData<Bool?>(
-				Bool(Process("/usr/sbin/firmwarepasswd", ["-check"], requiresRoot: true)?.runSafe()),
+				Bool(firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check", requiresRoot: true)?.runSafe()),
 				applicable: Hardware.CPU.type.value == .intel &&? !?Hardware.Model.isVirtualMachine.value
 			)
 		}
@@ -27,7 +27,7 @@ extension SystemInformation {
 		enum DataSecurity {
 
 			static let fileVault = SystemInformationData<Bool?>(
-				Bool(Process("/usr/bin/fdesetup", ["status"])?.runSafe()),
+				Bool(fdesetupOutput: Process("/usr/bin/fdesetup", "status")?.runSafe()),
 				applicable: Software.OS.bootMode.value !=? .recovery
 			)
 		}
@@ -35,14 +35,14 @@ extension SystemInformation {
 		enum MalwareProtection {
 
 			static let systemIntegrityProtection = SystemInformationData<Bool?>(
-				Bool(Process("/usr/bin/csrutil", ["status"])?.runSafe()),
+				Bool(csrutilOutput: Process("/usr/bin/csrutil", "status")?.runSafe()),
 				applicable: Software.OS.bootMode.value !=? .recovery
 			)
 			static let firewall = SystemInformationData<Bool?>(
-				Bool(Process("/usr/libexec/ApplicationFirewall/socketfilterfw", ["--getglobalstate"])?.runSafe()),
+				Bool(socketfilterfwOutput: Process("/usr/libexec/ApplicationFirewall/socketfilterfw", "--getglobalstate")?.runSafe()),
 				applicable: Software.OS.bootMode.value !=? .recovery
 			)
-			static let gatekeeper = SystemInformationData<Bool?>(Bool(Process("/usr/sbin/spctl", ["--status"])?.runSafe()))
+			static let gatekeeper = SystemInformationData<Bool?>(Bool(spctlOutput: Process("/usr/sbin/spctl", "--status")?.runSafe()))
 		}
 
 		enum AutomaticUpdates {
