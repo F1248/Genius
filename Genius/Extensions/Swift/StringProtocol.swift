@@ -10,6 +10,10 @@ import Foundation
 
 extension StringProtocol {
 
+	var firstLine: SubSequence? {
+		split(separator: "\n", maxSplits: 1).first
+	}
+
 	init(_ data: Data) {
 		self.init(decoding: data, as: UTF8.self)
 	}
@@ -19,16 +23,16 @@ extension StringProtocol {
 		self.init(data)
 	}
 
-	func contains(anyWholeWord strings: [String]) -> Bool {
-		strings.contains { contains(wholeWord: $0) }
-	}
-
-	func contains(wholeWord: String) -> Bool {
-		components(separatedBy: .alphanumerics.inverted).contains(wholeWord)
-	}
-
 	func remove(_ string: some StringProtocol) -> String {
 		replacingOccurrences(of: string, with: "")
+	}
+
+	func betweenAnchored(start: some StringProtocol, end: (some StringProtocol)? = nil as String?) -> SubSequence? {
+		guard
+			let startIndex = range(of: start, options: .anchored)?.upperBound,
+			let endIndex = end.map({ range(of: $0, options: [.anchored, .backwards])?.lowerBound }) ?? endIndex
+		else { return nil }
+		return self[startIndex..<endIndex]
 	}
 
 	func between(start: some StringProtocol, end: some StringProtocol) -> SubSequence? {
