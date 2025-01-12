@@ -32,19 +32,34 @@ env:
     NSUnbufferedIO: YES
 
 jobs:
-    Build-Genius:
-        name: Build Genius
+    Run-Periphery:
+        name: Run Periphery
         runs-on: macos-15
 
-        permissions:
-            id-token: write
-            attestations: write
+        steps:
+            - name: Select Xcode Version
+              uses: maxim-lobanov/setup-xcode@master
+              with:
+                xcode-version: latest
+
+            - name: Checkout
+              uses: actions/checkout@main
+
+            - name: Install Periphery
+              run: |
+                latest_periphery_tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/peripheryapp/periphery/releases/download/"$latest_periphery_tag"/periphery-"$latest_periphery_tag".zip --output periphery.zip
+                unzip periphery.zip
+                echo "Periphery $(./periphery version) installed"
+
+            - name: Run Periphery
+              run: ./periphery scan --format github-actions --relative-results --strict -- -skipPackagePluginValidation
+
+    Run-SwiftFormat:
+        name: Run SwiftFormat
+        runs-on: macos-15
 
         steps:
-            - name: Prepare
-              run: |
-                defaults write com.apple.dt.Xcode IDESkipPackagePluginFingerprintValidatation -boolean true
-
             - name: Checkout
               uses: actions/checkout@main
               with:
@@ -59,6 +74,19 @@ jobs:
             - name: Run SwiftFormat
               run: ./swiftformat --lint . --reporter github-actions-log
 
+    Run-SwiftLint:
+        name: Run SwiftLint
+        runs-on: macos-15
+
+        steps:
+            - name: Select Xcode Version
+              uses: maxim-lobanov/setup-xcode@master
+              with:
+                xcode-version: latest
+
+            - name: Checkout
+              uses: actions/checkout@main
+
             - name: Install SwiftLint
               run: |
                 curl --remote-name --location https://github.com/realm/SwiftLint/releases/latest/download/portable_swiftlint.zip
@@ -68,12 +96,33 @@ jobs:
             - name: Run SwiftLint Lint Rules
               run: ./swiftlint lint --strict --reporter github-actions-logging
 
-            - name: Select Xcode Version
+            - name: Install xcbeautify
               run: |
-                sudo xcode-select --switch /Applications/$(
-                    ls /Applications | grep "Xcode_\d*\.\d*\.app" | tail --lines=1
-                )
-                echo "$(xcodebuild -version | tr "\n" " ")selected"
+                latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+                unzip xcbeautify.zip
+                echo "xcbeautify $(./xcbeautify --version) installed"
+
+            - name: Build Genius
+              run: |
+                set -o pipefail
+                xcodebuild build -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
+
+            - name: Run SwiftLint Analyzer Rules
+              run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
+
+    Run-Tests:
+        name: Run Tests
+        runs-on: macos-15
+
+        steps:
+            - name: Select Xcode Version
+              uses: maxim-lobanov/setup-xcode@master
+              with:
+                xcode-version: latest
+
+            - name: Checkout
+              uses: actions/checkout@main
 
             - name: Install xcbeautify
               run: |
@@ -82,28 +131,39 @@ jobs:
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
-            - name: Test Genius
+            - name: Run Tests
               run: |
                 set -o pipefail
-                xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 | ./xcbeautify --disable-logging --renderer github-actions
+                xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+
+    Build-Genius:
+        name: Build Genius
+        runs-on: macos-15
+
+        permissions:
+            id-token: write
+            attestations: write
+
+        steps:
+            - name: Select Xcode Version
+              uses: maxim-lobanov/setup-xcode@master
+              with:
+                xcode-version: latest
+
+            - name: Checkout
+              uses: actions/checkout@main
+
+            - name: Install xcbeautify
+              run: |
+                latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+                unzip xcbeautify.zip
+                echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Build Genius
               run: |
                 set -o pipefail
-                xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
-
-            - name: Run SwiftLint Analyzer Rules
-              run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log Genius
-
-            - name: Install Periphery
-              run: |
-                latest_periphery_tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/peripheryapp/periphery/releases/download/"$latest_periphery_tag"/periphery-"$latest_periphery_tag".zip --output periphery.zip
-                unzip periphery.zip
-                echo "Periphery $(./periphery version) installed"
-
-            - name: Run Periphery
-              run: ./periphery scan --format github-actions --relative-results --strict
+                xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Zip Genius
               run: |

@@ -12,7 +12,7 @@ import os
 
 extension Process {
 
-	convenience init?(_ executable: String, _ arguments: [String] = [], requiresRoot: Bool = false) {
+	convenience init?(_ executable: String, _ arguments: String..., requiresRoot: Bool = false) {
 		self.init()
 		if requiresRoot, SystemInformation.Software.OS.bootMode.value != .recovery {
 			guard let executableURL = URL("/usr/bin/osascript") else { return nil }
