@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A46854972D1729B500DB3E87 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = A46854962D1729B500DB3E87 /* Defaults */; };
+		A4D6DC6E2D37EE4700E9A61D /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = A4D6DC6D2D37EE4700E9A61D /* SFSafeSymbols */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4D6DC6E2D37EE4700E9A61D /* SFSafeSymbols in Frameworks */,
 				A46854972D1729B500DB3E87 /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,6 +206,7 @@
 			packageReferences = (
 				A4672DD92C61205000C933CB /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 				A46854952D1729B500DB3E87 /* XCRemoteSwiftPackageReference "Defaults" */,
+				A4D6DC6C2D37EE4700E9A61D /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A42B353E2BA2185B009E81AD /* Products */;
@@ -589,6 +592,14 @@
 				kind = branch;
 			};
 		};
+		A4D6DC6C2D37EE4700E9A61D /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols";
+			requirement = {
+				branch = stable;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -601,6 +612,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A46854952D1729B500DB3E87 /* XCRemoteSwiftPackageReference "Defaults" */;
 			productName = Defaults;
+		};
+		A4D6DC6D2D37EE4700E9A61D /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4D6DC6C2D37EE4700E9A61D /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
 		};
 		A4D9A1BC2D257090008D91E7 /* SwiftLintBuildToolPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
