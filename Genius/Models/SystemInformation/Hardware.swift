@@ -46,7 +46,7 @@ extension SystemInformation {
 			// swiftlint:disable:next unused_declaration
 			static let isLaptop = SystemInformationData<Bool?>(name.value?.hasPrefix("MacBook"))
 			static let isVirtualMachine = SystemInformationData<Bool?>(Sysctl.read("kern.hv_vmm_present"))
-			static let systemImage = SystemInformationData<String>(systemImageFallback({
+			static let sfSymbol = SystemInformationData<String>(sfSymbolFallback({
 				switch true {
 					case isVirtualMachine.value: "macwindow"
 					case name.value.hasPrefix("MacBook"):

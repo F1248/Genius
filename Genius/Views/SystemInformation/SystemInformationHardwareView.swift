@@ -12,7 +12,7 @@ import SwiftUICore
 struct SystemInformationHardwareView: View {
 
 	var body: some View {
-		Label("Hardware", systemImage: SystemInformation.Hardware.Model.systemImage.value)
+		Label("Hardware", systemImage: SystemInformation.Hardware.Model.sfSymbol.value)
 			.font(.title)
 			.padding()
 		SystemInformationTabView(content: [
