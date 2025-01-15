@@ -6,13 +6,14 @@
 // See LICENSE.txt for license information.
 //
 
+import SFSafeSymbols
 import SwiftUI
 import SwiftUICore
 
 struct SystemInformationSoftwareView: View {
 
 	var body: some View {
-		Label("Software", systemImage: "macwindow.on.rectangle")
+		Label("Software", systemSymbol: .macwindowOnRectangle)
 			.font(.title)
 			.padding()
 		SystemInformationTabView(content: [

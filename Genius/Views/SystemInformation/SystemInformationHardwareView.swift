@@ -6,13 +6,14 @@
 // See LICENSE.txt for license information.
 //
 
+import SFSafeSymbols
 import SwiftUI
 import SwiftUICore
 
 struct SystemInformationHardwareView: View {
 
 	var body: some View {
-		Label("Hardware", systemImage: SystemInformation.Hardware.Model.systemImage.value)
+		Label("Hardware", systemSymbol: SystemInformation.Hardware.Model.sfSymbol.value)
 			.font(.title)
 			.padding()
 		SystemInformationTabView(content: [
