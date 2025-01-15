@@ -8,6 +8,7 @@
 
 import Foundation
 import IOKit
+import SFSafeSymbols
 
 extension SystemInformation {
 
@@ -46,29 +47,31 @@ extension SystemInformation {
 			// swiftlint:disable:next unused_declaration
 			static let isLaptop = SystemInformationData<Bool?>(name.value?.hasPrefix("MacBook"))
 			static let isVirtualMachine = SystemInformationData<Bool?>(Sysctl.read("kern.hv_vmm_present"))
-			static let systemImage = SystemInformationData<String>(systemImageFallback({
+			static let sfSymbol = SystemInformationData<SFSymbol>({
 				switch true {
-					case isVirtualMachine.value: "macwindow"
+					case isVirtualMachine.value: .macwindow
 					case name.value.hasPrefix("MacBook"):
-						switch identifier.value {
-							case "Mac14,7": "macbook.gen1"
-							case _ where identifier.value.hasPrefix("MacBookPro18"): "macbook.gen2"
-							case _ where identifier.value.hasPrefix("MacBook"): "macbook.gen1"
-							default: "macbook.gen2"
-						}
-					case name.value.hasPrefix("iMac"): "desktopcomputer"
-					case name.value.hasPrefix("Mac mini"): "macmini"
-					case name.value.hasPrefix("Mac Studio"): "macstudio"
+						if #available(macOS 14, *) {
+							switch identifier.value {
+								case "Mac14,7": .macbookGen1
+								case _ where identifier.value.hasPrefix("MacBookPro18"): .macbookGen2
+								case _ where identifier.value.hasPrefix("MacBook"): .macbookGen1
+								default: .macbookGen2
+							}
+						} else { .laptopcomputer }
+					case name.value.hasPrefix("iMac"): .desktopcomputer
+					case name.value.hasPrefix("Mac mini"): .macmini
+					case name.value.hasPrefix("Mac Studio"): if #available(macOS 13, *) { .macstudio } else { .macmini }
 					case name.value.hasPrefix("Mac Pro"):
 						switch identifier.value {
-							case "MacPro3,1", "MacPro4,1", "MacPro5,1": "macpro.gen1"
-							case "MacPro6,1": "macpro.gen2"
-							default: ["A2304", "A2787"].contains(regulatoryNumber.value) ? "macpro.gen3.server" : "macpro.gen3"
+							case "MacPro3,1", "MacPro4,1", "MacPro5,1": .macproGen1
+							case "MacPro6,1": .macproGen2
+							default: ["A2304", "A2787"].contains(regulatoryNumber.value) ? .macproGen3Server : .macproGen3
 						}
-					case name.value.hasPrefix("Xserve"): "xserve"
-					default: "desktopcomputer.and.macbook"
+					case name.value.hasPrefix("Xserve"): .xserve
+					default: if #available(macOS 15, *) { .desktopcomputerAndMacbook } else { .desktopcomputer }
 				}
-			}()))
+			}())
 		}
 
 		static let securityChip = SystemInformationData<SecurityChip?>({
