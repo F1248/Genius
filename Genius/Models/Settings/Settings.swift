@@ -17,7 +17,6 @@ enum Settings {
 		case advanced = "Advanced"
 		case powerUser = "Power User"
 
-		var index: Int { Self.allCases.firstIndex(of: self) ?? 0 }
 		var localizationTable: String { "Localizable\(rawValue.remove(" "))" }
 
 		static func < (lhs: Self, rhs: Self) -> Bool {

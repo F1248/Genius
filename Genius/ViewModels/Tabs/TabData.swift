@@ -22,7 +22,6 @@ extension TabData {
 
 	static var id: String { String(describing: self) }
 	@MainActor static var selection: Self? { allCases[safe: sharedData.selectedTabsIndices[id]] }
-	var index: Int { Self.allCases.firstIndex(of: self) ?? 0 }
 	var localizedString: String { rawValue.localized }
 	var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
