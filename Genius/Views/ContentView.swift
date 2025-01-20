@@ -12,7 +12,7 @@ import SwiftUICore
 struct ContentView: View {
 
 	var body: some View {
-		AdaptingTabView(tabData: ContentViewTab.self)
+		AdaptingTabView<ContentViewTab>()
 			.frame(minWidth: 686, minHeight: 256)
 	}
 }

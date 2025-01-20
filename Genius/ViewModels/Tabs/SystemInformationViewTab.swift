@@ -26,5 +26,5 @@ enum SystemInformationViewTab: String, TabData {
 }
 
 #Preview {
-	AdaptingTabView(tabData: SystemInformationViewTab.self)
+	AdaptingTabView<SystemInformationViewTab>()
 }
