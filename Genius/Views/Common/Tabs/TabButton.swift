@@ -9,19 +9,19 @@
 import SwiftUI
 import SwiftUICore
 
-struct TabButton<T: TabData>: View {
+struct TabButton<TabDataType: TabData>: View {
 
-	let tab: T
+	let tab: TabDataType
 
 	var body: some View {
 		Button {
-			sharedData.selectedTabsIndexes[T.id] = tab.index
+			sharedData.selectedTabsIndices[TabDataType.id] = tab.index
 		} label: {
 			VaryingText(tab.localizedStringKey)
 		}
 		.keyboardShortcut(
 			tab as? ContentViewTab == .settings ? "," : KeyEquivalent(Character(String(tab.index + 1))),
-			modifiers: T.keyboardShortcutModifiers
+			modifiers: TabDataType.keyboardShortcutModifiers
 		)
 	}
 }

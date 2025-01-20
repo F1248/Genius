@@ -9,21 +9,19 @@
 import SwiftUI
 import SwiftUICore
 
-struct AdaptingTabView<T: TabData>: View {
-
-	let tabData: T.Type
+struct AdaptingTabView<TabDataType: TabData>: View {
 
 	@ObservedObject var observedSharedData: SharedData = sharedData
 
 	var selection: Binding<Int> { Binding(
-		get: { observedSharedData.selectedTabsIndexes[tabData.id] ?? 0 },
-		set: { observedSharedData.selectedTabsIndexes[tabData.id] = $0 }
+		get: { observedSharedData.selectedTabsIndices[TabDataType.id] ?? 0 },
+		set: { observedSharedData.selectedTabsIndices[TabDataType.id] = $0 }
 	) }
 
 	var body: some View {
-		if tabData.entireWindow {
+		if TabDataType.entireWindow {
 			TabView(selection: selection) {
-				ForEach(tabData.allCases) { tab in
+				ForEach(TabDataType.allCases) { tab in
 					Tab(
 						tab.localizedStringKey,
 						value: tab.index
@@ -31,8 +29,8 @@ struct AdaptingTabView<T: TabData>: View {
 				}
 			}
 		} else {
-			CustomTabView(selection: selection, entireWindow: tabData.entireWindow) {
-				tabData.allCases.map { tab in
+			CustomTabView(selection: selection, entireWindow: TabDataType.entireWindow) {
+				TabDataType.allCases.map { tab in
 					CustomTab(
 						tab.localizedStringKey,
 						index: tab.index
