@@ -15,7 +15,7 @@ struct TabButton<TabDataType: TabData>: View {
 
 	var body: some View {
 		Button {
-			sharedData.selectedTabsIndexes[TabDataType.id] = tab.index
+			sharedData.selectedTabsIndices[TabDataType.id] = tab.index
 		} label: {
 			VaryingText(tab.localizedStringKey)
 		}

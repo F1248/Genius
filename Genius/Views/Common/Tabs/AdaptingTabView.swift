@@ -14,8 +14,8 @@ struct AdaptingTabView<TabDataType: TabData>: View {
 	@ObservedObject var observedSharedData: SharedData = sharedData
 
 	var selection: Binding<Int> { Binding(
-		get: { observedSharedData.selectedTabsIndexes[TabDataType.id] ?? 0 },
-		set: { observedSharedData.selectedTabsIndexes[TabDataType.id] = $0 }
+		get: { observedSharedData.selectedTabsIndices[TabDataType.id] ?? 0 },
+		set: { observedSharedData.selectedTabsIndices[TabDataType.id] = $0 }
 	) }
 
 	var body: some View {
