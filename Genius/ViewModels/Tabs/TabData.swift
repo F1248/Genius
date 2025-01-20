@@ -21,8 +21,7 @@ protocol TabData: RawRepresentable, CaseIterable, SelfIdentifiable where AllCase
 extension TabData {
 
 	static var id: String { String(describing: self) }
-	@MainActor static var selection: Self? { allCases[safe: sharedData.selectedTabsIndexes[id]] }
-	var index: Int { Self.allCases.firstIndex(of: self) ?? 0 }
+	@MainActor static var selection: Self? { allCases[safe: sharedData.selectedTabsIndices[id]] }
 	var localizedString: String { rawValue.localized }
 	var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }

@@ -15,7 +15,7 @@ struct SystemInformationView: View {
 		VaryingText("System Information")
 			.font(.largeTitle)
 			.padding()
-		AdaptingTabView(tabData: SystemInformationViewTab.self)
+		AdaptingTabView<SystemInformationViewTab>()
 	}
 }
 

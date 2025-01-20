@@ -17,10 +17,11 @@ extension Measurement: MeasurementProtocol {
 	func formatted() -> String {
 		switch self {
 			case let self as Frequency:
-				let formatter = MeasurementFormatter()
 				let units: [UnitFrequency] = [.terahertz, .gigahertz, .megahertz, .kilohertz, .hertz, .millihertz, .microhertz, .nanohertz]
-				return formatter.string(
-					from: units.lazy.map(self.converted).first { $0.value >= 1 } ?? self.converted(to: UnitFrequency.baseUnit())
+				return MeasurementFormatter().string(
+					from: value.isZero ?
+						self.converted(to: .baseUnit()) :
+						{ $0.first { $0.value >= 1 } ?? $0.last }(units.lazy.map(self.converted)) ?? self
 				)
 			case let self as InformationStorage:
 				let formatter = ByteCountFormatter()
@@ -37,6 +38,6 @@ extension Measurement: MeasurementProtocol {
 extension Measurement where UnitType: Dimension {
 
 	init(value: Int) {
-		self.init(value: Double(value), unit: UnitType.baseUnit())
+		self.init(value: Double(value), unit: .baseUnit())
 	}
 }

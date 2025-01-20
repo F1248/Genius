@@ -11,7 +11,7 @@ import Foundation
 
 class SharedData: ObservableObject {
 
-	@Published var selectedTabsIndexes: [String: Int] = [:]
+	@Published var selectedTabsIndices: [String: Int] = [:]
 }
 
 @MainActor let sharedData = SharedData()
