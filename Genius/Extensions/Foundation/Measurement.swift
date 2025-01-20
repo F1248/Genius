@@ -19,7 +19,7 @@ extension Measurement: MeasurementProtocol {
 			case let self as Frequency:
 				let units: [UnitFrequency] = [.terahertz, .gigahertz, .megahertz, .kilohertz, .hertz, .millihertz, .microhertz, .nanohertz]
 				return MeasurementFormatter().string(
-					from: self.value.isZero ?
+					from: value.isZero ?
 						self.converted(to: .baseUnit()) :
 						{ $0.first { $0.value >= 1 } ?? $0.last }(units.lazy.map(self.converted)) ?? self
 				)
@@ -38,6 +38,6 @@ extension Measurement: MeasurementProtocol {
 extension Measurement where UnitType: Dimension {
 
 	init(value: Int) {
-		self.init(value: Double(value), unit: UnitType.baseUnit())
+		self.init(value: Double(value), unit: .baseUnit())
 	}
 }
