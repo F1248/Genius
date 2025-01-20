@@ -20,9 +20,9 @@ struct AppCommands: Commands {
 		}
 		CommandGroup(replacing: .newItem) { EmptyView() }
 		CommandGroup(before: .toolbar) {
-			TabViewButtons(tabData: ContentViewTab.self)
+			TabViewButtons<ContentViewTab>()
 			switch ContentViewTab.selection {
-				case .systemInformation: TabViewButtons(tabData: SystemInformationViewTab.self)
+				case .systemInformation: TabViewButtons<SystemInformationViewTab>()
 				default: EmptyView()
 			}
 		}
