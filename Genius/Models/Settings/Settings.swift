@@ -10,7 +10,7 @@ import Defaults
 
 enum Settings {
 
-	enum InterfaceMode: String, CaseIterable, Comparable, SelfIdentifiable, Defaults.Serializable {
+	enum InterfaceMode: String, CaseIterable, IndexComparable, SelfIdentifiable, Defaults.Serializable {
 
 		case simple = "Simple"
 		case normal = "Normal"
@@ -18,9 +18,5 @@ enum Settings {
 		case powerUser = "Power User"
 
 		var localizationTable: String { "Localizable\(rawValue.remove(" "))" }
-
-		static func < (lhs: Self, rhs: Self) -> Bool {
-			lhs.index < rhs.index
-		}
 	}
 }
