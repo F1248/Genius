@@ -13,6 +13,15 @@ set -e
 
 echo "
 Preparing..."
+if [ -e /usr/bin/osascript ]; then
+	for _ in $(pgrep -x Genius); do
+		osascript -e "quit app \"Genius\""
+	done
+else
+	if pgrep -x Genius; then
+		killall Genius
+	fi
+fi
 if [ -w /Applications ]; then
 	cd /Applications
 else
