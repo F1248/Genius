@@ -30,6 +30,7 @@ extension Process {
 			self.executableURL = executableURL
 			self.arguments = arguments
 		}
+		self.qualityOfService = .userInitiated
 	}
 
 	func runSafe() -> String? {
