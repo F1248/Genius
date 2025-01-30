@@ -13,6 +13,15 @@ set -e
 
 echo "
 Preparing..."
+if [ -e /usr/bin/osascript ]; then
+	for _ in $(pgrep -x Genius); do
+		osascript -e "quit app \"Genius\""
+	done
+else
+	if pgrep -x Genius; then
+		killall Genius
+	fi
+fi
 if [ -w /Applications ]; then
 	cd /Applications
 else
@@ -21,7 +30,7 @@ else
 fi
 
 echo "Downloading..."
-curl --silent --remote-name --location https://nightly.link/F1248/Genius/workflows/Build-Genius/deployment-target-macos-13/Genius.zip
+curl --no-progress-meter --remote-name --location https://nightly.link/F1248/Genius/workflows/Build-Genius/deployment-target-macos-13/Genius.zip
 
 echo "Installing..."
 unzip -q -o Genius.zip

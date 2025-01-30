@@ -15,7 +15,7 @@ extension SystemInformation {
 		enum TheftProtection {
 
 			static let activationLock = SystemInformationData<Bool?>(
-				IORegistry(class: "IODTNVRAMVariables").keyExists("fmm-mobileme-token-FMM"),
+				IORegistry(class: IORegistryName.nvramVariables).keyExists("fmm-mobileme-token-FMM"),
 				applicable: Hardware.securityChip.value >=? .t2 &&? !?Hardware.Model.isVirtualMachine.value
 			)
 			static let firmwarePassword = SystemInformationData<Bool?>(
