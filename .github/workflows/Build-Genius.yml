@@ -27,6 +27,8 @@ concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true
 
+permissions: {}
+
 env:
     GH_TOKEN: ${{ github.token }}
     NSUnbufferedIO: YES
