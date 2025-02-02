@@ -36,7 +36,7 @@ jobs:
               uses: actions/checkout@main
 
             - name: Initialize CodeQL
-              uses: github/codeql-action/init@main
+              uses: github/codeql-action/init@v3.28.8
               with:
                 languages: swift
 
@@ -63,4 +63,4 @@ jobs:
                 xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run CodeQL
-              uses: github/codeql-action/analyze@main
+              uses: github/codeql-action/analyze@v3.28.8
