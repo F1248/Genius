@@ -39,7 +39,6 @@ jobs:
               uses: github/codeql-action/init@main
               with:
                 languages: swift
-                build-mode: manual
 
             - name: Select Xcode Version
               uses: maxim-lobanov/setup-xcode@master
@@ -65,5 +64,3 @@ jobs:
 
             - name: Run CodeQL
               uses: github/codeql-action/analyze@main
-              with:
-                category: "/language:swift"

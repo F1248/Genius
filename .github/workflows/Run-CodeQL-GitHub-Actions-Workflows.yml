@@ -36,5 +36,3 @@ jobs:
 
             - name: Run CodeQL
               uses: github/codeql-action/analyze@main
-              with:
-                category: "/language:actions"
