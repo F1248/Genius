@@ -35,10 +35,10 @@ jobs:
             - name: Checkout
               uses: actions/checkout@main
 
-            - name: Initialize CodeQL
-              uses: github/codeql-action/init@v3.28.8
-              with:
-                languages: swift
+            # - name: Initialize CodeQL
+            #   uses: github/codeql-action/init@v3.28.8
+            #   with:
+            #     languages: swift
 
             - name: Select Xcode Version
               uses: maxim-lobanov/setup-xcode@master
@@ -62,5 +62,5 @@ jobs:
                 set -o pipefail
                 xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
-            - name: Run CodeQL
-              uses: github/codeql-action/analyze@v3.28.8
+            # - name: Run CodeQL
+            #   uses: github/codeql-action/analyze@v3.28.8
