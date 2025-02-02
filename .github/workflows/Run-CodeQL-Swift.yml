@@ -51,6 +51,14 @@ jobs:
                 curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
+                
+            - name: CodeQL hack
+              run: |
+                XCODE_PATH=$(xcode-select -p)
+                mkdir -p $XCODE_PATH/Toolchains/XcodeDefault.xctoolchain/usr/lib
+                cp $XCODE_PATH/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib $XCODE_PATH/Toolchains/XcodeDefault.xctoolchain/usr/lib
+                sudo mkdir -p /usr/local/lib
+                sudo cp $XCODE_PATH/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib /usr/local/lib
 
             - name: Build Genius
               run: |
