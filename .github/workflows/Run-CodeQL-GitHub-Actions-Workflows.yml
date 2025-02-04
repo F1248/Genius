@@ -1,0 +1,34 @@
+name: Run CodeQL on GitHub Actions Workflows
+
+on:
+    push:
+        paths:
+            - .github/workflows/**
+    pull_request:
+        paths:
+            - .github/workflows/**
+    workflow_dispatch:
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    Run-CodeQL-GitHub-Actions-Workflows:
+        name: Run CodeQL on GitHub Actions Workflows
+        runs-on: macos-15
+
+        permissions:
+            security-events: write
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@main
+
+            - name: Initialize CodeQL
+              uses: github/codeql-action/init@main
+              with:
+                languages: actions
+
+            - name: Run CodeQL
+              uses: github/codeql-action/analyze@main

@@ -34,6 +34,56 @@ env:
     NSUnbufferedIO: YES
 
 jobs:
+    Run-CodeQL:
+        name: Run CodeQL
+        runs-on: macos-15
+
+        permissions:
+            security-events: write
+
+        steps:
+            - name: Select Xcode Version
+              uses: maxim-lobanov/setup-xcode@master
+              with:
+                xcode-version: latest
+
+            - name: Checkout
+              uses: actions/checkout@main
+
+            - name: Install xcbeautify
+              run: |
+                latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+                unzip xcbeautify.zip
+                echo "xcbeautify $(./xcbeautify --version) installed"
+
+            - name: Work around https://github.com/github/codeql-action/issues/2506
+              run: |
+                xcode_developer_directory=$(xcode-select --print-path)
+                ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib
+                sudo mkdir /usr/local/lib
+                sudo ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib /usr/local/lib
+
+            - name: Initialize CodeQL
+              uses: github/codeql-action/init@main
+              with:
+                languages: swift
+
+            - name: Build Genius
+              run: |
+                set -o pipefail
+                xcodebuild build -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+
+            - name: Run Tests
+              run: |
+                set -o pipefail
+                # Work around https://github.com/github/codeql-cli-binaries/issues/97 by testing with `arch=x86_64`
+                defaults write "$PWD"/Genius/Info.plist LSRequiresNativeExecution -boolean false
+                xcodebuild test -scheme Genius -destination platform=macOS,arch=x86_64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+
+            - name: Run CodeQL
+              uses: github/codeql-action/analyze@main
+
     Run-Periphery:
         name: Run Periphery
         runs-on: macos-15
