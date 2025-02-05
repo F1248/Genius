@@ -72,14 +72,7 @@ jobs:
             - name: Build Genius
               run: |
                 set -o pipefail
-                xcodebuild build -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
-
-            - name: Run Tests
-              run: |
-                set -o pipefail
-                # Work around https://github.com/github/codeql-cli-binaries/issues/97 by testing with `arch=x86_64`
-                defaults write "$PWD"/Genius/Info.plist LSRequiresNativeExecution -boolean false
-                xcodebuild test -scheme Genius -destination platform=macOS,arch=x86_64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+                xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run CodeQL
               uses: github/codeql-action/analyze@main
