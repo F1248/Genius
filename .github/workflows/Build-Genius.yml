@@ -33,6 +33,10 @@ env:
     GH_TOKEN: ${{ github.token }}
     NSUnbufferedIO: YES
 
+defaults:
+    run:
+        shell: bash
+
 jobs:
     Run-CodeQL:
         name: Run CodeQL
@@ -70,9 +74,7 @@ jobs:
                 languages: swift
 
             - name: Build Genius
-              run: |
-                set -o pipefail
-                xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run CodeQL
               uses: github/codeql-action/analyze@main
@@ -149,9 +151,7 @@ jobs:
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Build Genius
-              run: |
-                set -o pipefail
-                xcodebuild build -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
+              run: xcodebuild build -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run SwiftLint Analyzer Rules
               run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
@@ -177,9 +177,7 @@ jobs:
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Run Tests
-              run: |
-                set -o pipefail
-                xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+              run: xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
     Build-Genius:
         name: Build Genius
@@ -206,9 +204,7 @@ jobs:
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Build Genius
-              run: |
-                set -o pipefail
-                xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+              run: xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Zip Genius
               run: |
