@@ -9,7 +9,7 @@
 import Defaults
 import Foundation
 
-extension String: DataInitializable {
+extension String: DefaultInitializable, DataInitializable {
 
 	var isContainedInDefaultLocalizationTable: Bool {
 		NSLocalizedString(self, value: " ", comment: "") == " "

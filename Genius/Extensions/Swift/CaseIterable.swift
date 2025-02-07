@@ -8,5 +8,5 @@
 
 extension CaseIterable where Self: Equatable, AllCases.Index == Int {
 
-	var index: AllCases.Index { Self.allCases.firstIndex(of: self) ?? 0 }
+	var index: AllCases.Index { Self.allCases.firstIndex(of: self).safeForceUnwrapped() }
 }
