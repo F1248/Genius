@@ -68,10 +68,11 @@ jobs:
             #     sudo ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib /usr/local/lib
 
             - name: Initialize CodeQL
-              uses: github/codeql-action/init@v2.20.4
+              uses: github/codeql-action/init@v3
               with:
                 tools: linked
                 languages: swift
+                build-mode: manual
 
             - name: Build Genius
               run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
