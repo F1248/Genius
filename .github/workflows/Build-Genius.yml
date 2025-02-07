@@ -70,6 +70,7 @@ jobs:
             - name: Initialize CodeQL
               uses: github/codeql-action/init@main
               with:
+                tools: linked
                 languages: swift
 
             - name: Build Genius
