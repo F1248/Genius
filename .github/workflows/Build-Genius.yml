@@ -68,7 +68,7 @@ jobs:
             #     sudo ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib /usr/local/lib
 
             - name: Initialize CodeQL
-              uses: github/codeql-action/init@v2.20.3
+              uses: github/codeql-action/init@v2.20.4
               with:
                 tools: linked
                 languages: swift
