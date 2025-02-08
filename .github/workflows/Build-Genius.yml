@@ -71,6 +71,7 @@ jobs:
               uses: github/codeql-action/init@main
               with:
                 languages: swift
+                queries: security-and-quality
 
             - name: Build Genius
               run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions

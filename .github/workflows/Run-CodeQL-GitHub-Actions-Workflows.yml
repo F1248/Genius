@@ -28,6 +28,7 @@ jobs:
               uses: github/codeql-action/init@main
               with:
                 languages: actions
+                queries: security-and-quality
 
             - name: Run CodeQL
               uses: github/codeql-action/analyze@main
