@@ -16,6 +16,6 @@ enum Sysctl {
 		guard sysctlbyname(name, nil, &size, nil, 0) == 0, size > 0 else { return nil }
 		var result = [UInt8](repeating: 0, count: size)
 		guard sysctlbyname(name, &result, &size, nil, 0) == 0 else { return nil }
-		return W(Data(bytes: result, count: result.lastIndex { $0 != 0 }.map(result.index(after:)) ?? 0))
+		return W(Data(bytes: result, count: result.lastIndex { $0 != 0 }.map(result.index(after:)) ?? 1))
 	}
 }
