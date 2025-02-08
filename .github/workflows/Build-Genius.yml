@@ -79,6 +79,13 @@ jobs:
             - name: Run CodeQL
               uses: github/codeql-action/analyze@main
 
+            - name: Evaluate CodeQL results
+              run: |
+                if [[ $(jq ".runs[0].results | length == 0" ../results/swift.sarif) != true ]]; then
+                    echo "CodeQL alerts found!"
+                    exit 1
+                fi
+
     Run-Periphery:
         name: Run Periphery
         runs-on: macos-15

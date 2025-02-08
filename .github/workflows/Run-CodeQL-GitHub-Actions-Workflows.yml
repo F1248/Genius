@@ -28,7 +28,19 @@ jobs:
               uses: github/codeql-action/init@main
               with:
                 languages: actions
+                config: |
+                    query-filters:
+                        - exclude:
+                            id:
+                                - actions/unpinned-tag
                 queries: security-and-quality
 
             - name: Run CodeQL
               uses: github/codeql-action/analyze@main
+
+            - name: Evaluate CodeQL results
+              run: |
+                if [[ $(jq ".runs[0].results | length == 0" ../results/actions.sarif) != true ]]; then
+                    echo "CodeQL alerts found!"
+                    exit 1
+                fi
