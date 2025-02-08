@@ -158,7 +158,7 @@ jobs:
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Build Genius
-              run: xcodebuild build -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
+              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run SwiftLint Analyzer Rules
               run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
