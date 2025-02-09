@@ -9,7 +9,7 @@
 import Defaults
 import Foundation
 
-extension String: DataInitializable {
+extension String: DefaultInitializable, DataInitializable {
 
 	var isContainedInDefaultLocalizationTable: Bool {
 		NSLocalizedString(self, value: " ", comment: "") == " "
@@ -61,8 +61,7 @@ extension String: DataInitializable {
 					.localized
 				case let systemInformationData as VersionNumber: systemInformationData.versions.map(String.init).joined(separator: ".")
 				default: nil
-				// swiftlint:disable:next statement_position
-			}
+			} // swiftformat:enable indent
 		else { return nil }
 		self = string
 	}
