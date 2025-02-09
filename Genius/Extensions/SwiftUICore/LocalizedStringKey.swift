@@ -11,6 +11,6 @@ import SwiftUICore
 extension LocalizedStringKey {
 
 	var key: String {
-		Mirror(reflecting: self).children.first { $0.label == "key" }?.value as? String ?? ""
+		(Mirror(reflecting: self).children.first { $0.label == "key" }?.value as? String).safeForceUnwrapped()
 	}
 }

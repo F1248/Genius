@@ -125,4 +125,5 @@ extension SystemInformation {
 			)
 		}
 	}
+	// swiftformat:enable organizeDeclarations
 }
