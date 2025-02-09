@@ -63,8 +63,7 @@ extension String: DefaultInitializable, DataInitializable {
 					.localized
 				case let systemInformationData as VersionNumber: systemInformationData.versions.map(String.init).joined(separator: ".")
 				default: nil
-				// swiftlint:disable:next statement_position
-			}
+			} // swiftformat:enable indent
 		else { return nil }
 		self = string
 	}
