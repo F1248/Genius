@@ -27,6 +27,10 @@ struct IORegistry: ~Copyable {
 		self.matchingDictionary = IOServiceNameMatching(name)
 	}
 
+	deinit {
+		if let service { IOObjectRelease(service) }
+	}
+
 	func serviceExists() -> Bool? {
 		service >? 0
 	}
@@ -40,10 +44,5 @@ struct IORegistry: ~Copyable {
 	func keyExists(_ key: String) -> Bool? {
 		guard serviceExists() ?? false, let service else { return nil }
 		return IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0) != nil
-	}
-
-	// swiftformat:disable organizeDeclarations
-	deinit {
-		if let service { IOObjectRelease(service) }
 	}
 }

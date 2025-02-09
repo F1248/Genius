@@ -1,0 +1,46 @@
+name: Run CodeQL on GitHub Actions Workflows
+
+on:
+    push:
+        paths:
+            - .github/workflows/**
+    pull_request:
+        paths:
+            - .github/workflows/**
+    workflow_dispatch:
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    Run-CodeQL-GitHub-Actions-Workflows:
+        name: Run CodeQL on GitHub Actions Workflows
+        permissions:
+            security-events: write
+        runs-on: macos-15
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@main
+
+            - name: Initialize CodeQL
+              uses: github/codeql-action/init@main
+              with:
+                languages: actions
+                config: |
+                    query-filters:
+                        - exclude:
+                            id:
+                                - actions/unpinned-tag
+                queries: security-and-quality
+
+            - name: Run CodeQL
+              uses: github/codeql-action/analyze@main
+
+            - name: Evaluate CodeQL results
+              run: |
+                if [[ $(jq ".runs[0].results | length == 0" ../results/actions.sarif) != true ]]; then
+                    echo "CodeQL alerts found!"
+                    exit 1
+                fi

@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Int: DataInitializable {
+extension Int: DefaultInitializable, DataInitializable {
 
 	init(_ data: Data) {
 		self = data.reversed().reduce(0) { $0 << 8 | Int($1) }
