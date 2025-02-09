@@ -74,4 +74,5 @@ extension SystemInformation {
 			static let accountName = SystemInformationData<String>(NSUserName())
 		}
 	}
+	// swiftformat:enable organizeDeclarations
 }

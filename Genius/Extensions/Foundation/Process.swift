@@ -20,8 +20,8 @@ extension Process {
 			self.arguments = [
 				"-e",
 				"""
-				do shell script \"\(executable) \(arguments.joined(separator: " "))\"\
-				with prompt \"\("Genius requires administrator privileges.".localized)\"\
+				do shell script \"\(executable) \(arguments.joined(separator: " "))\" \
+				with prompt \"\("Genius requires administrator privileges.".localized)\" \
 				with administrator privileges
 				""",
 			]

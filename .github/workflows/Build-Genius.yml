@@ -23,15 +23,69 @@ on:
             - GeniusTests/**
     workflow_dispatch:
 
-concurrency:
-    group: ${{ github.workflow }}-${{ github.ref }}
-    cancel-in-progress: true
+permissions: {}
 
 env:
     GH_TOKEN: ${{ github.token }}
     NSUnbufferedIO: YES
 
+defaults:
+    run:
+        shell: bash
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
 jobs:
+    Run-CodeQL:
+        name: Run CodeQL
+        permissions:
+            security-events: write
+        runs-on: macos-15
+
+        steps:
+            - name: Select Xcode Version
+              uses: maxim-lobanov/setup-xcode@master
+              with:
+                xcode-version: latest
+
+            - name: Checkout
+              uses: actions/checkout@main
+
+            - name: Install xcbeautify
+              run: |
+                latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+                unzip xcbeautify.zip
+                echo "xcbeautify $(./xcbeautify --version) installed"
+
+            - name: Work around https://github.com/github/codeql-action/issues/2506
+              run: |
+                xcode_developer_directory=$(xcode-select --print-path)
+                ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib
+                sudo mkdir /usr/local/lib
+                sudo ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib /usr/local/lib
+
+            - name: Initialize CodeQL
+              uses: github/codeql-action/init@main
+              with:
+                languages: swift
+                queries: security-and-quality
+
+            - name: Build Genius
+              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+
+            - name: Run CodeQL
+              uses: github/codeql-action/analyze@main
+
+            - name: Evaluate CodeQL results
+              run: |
+                if [[ $(jq ".runs[0].results | length == 0" ../results/swift.sarif) != true ]]; then
+                    echo "CodeQL alerts found!"
+                    exit 1
+                fi
+
     Run-Periphery:
         name: Run Periphery
         runs-on: macos-15
@@ -104,9 +158,7 @@ jobs:
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Build Genius
-              run: |
-                set -o pipefail
-                xcodebuild build -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
+              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run SwiftLint Analyzer Rules
               run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
@@ -132,17 +184,14 @@ jobs:
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Run Tests
-              run: |
-                set -o pipefail
-                xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+              run: xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
     Build-Genius:
         name: Build Genius
-        runs-on: macos-15
-
         permissions:
-            id-token: write
             attestations: write
+            id-token: write
+        runs-on: macos-15
 
         steps:
             - name: Select Xcode Version
@@ -161,9 +210,7 @@ jobs:
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Build Genius
-              run: |
-                set -o pipefail
-                xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+              run: xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Zip Genius
               run: |

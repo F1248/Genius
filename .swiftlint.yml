@@ -57,6 +57,20 @@ trailing_comma:
     mandatory_comma: true
 trailing_whitespace:
     ignores_comments: false
+type_contents_order:
+    order:
+        - case
+        - type_alias
+        - associated_type
+        - subtype
+        - type_property
+        - instance_property
+        - initializer
+        - deinitializer
+        - type_method
+        - view_life_cycle_method
+        - other_method
+        - subscript
 type_name:
     excluded:
         - T
