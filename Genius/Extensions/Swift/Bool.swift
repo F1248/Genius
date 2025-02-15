@@ -18,7 +18,7 @@ extension Bool: DataInitializable {
 		}
 	}
 
-	init?<T: Equatable>(_ value: T?, valuesTrue: T?..., valuesFalse: T?...) {
+	init?<T: Equatable>(_ value: T, valuesTrue: T..., valuesFalse: T...) {
 		if valuesTrue.contains(value) {
 			self = true
 		} else if valuesFalse.contains(value) {
