@@ -6,7 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
-struct SystemInformationData<T: Sendable>: SystemInformationDataProtocol {
+struct SystemInformationData<T: Sendable>: SystemInformationProtocol {
 
 	let value: T
 	let applicable: Bool?

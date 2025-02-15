@@ -29,7 +29,7 @@ extension String: DefaultInitializable, DataInitializable {
 		self.init(string)
 	}
 
-	init?(_ systemInformationData: some SystemInformationDataProtocol) {
+	init?(_ systemInformationData: some SystemInformationProtocol) {
 		guard let string =
 			switch systemInformationData.value {
 				case let systemInformationData as Bool: (systemInformationData ? "Enabled" : "Disabled").localized
