@@ -41,7 +41,7 @@ struct SystemInformationTabView: View {
 
 	var body: some View {
 		ScrollView {
-			ForEach(enumerated: content) { _, groupBoxContent in
+			ForEach(content) { groupBoxContent in
 				GroupBox {
 					ForEach(enumerated: groupBoxContent.1) { index, rowContent in
 						if index > 0 {
