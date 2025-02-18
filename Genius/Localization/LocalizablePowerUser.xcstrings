@@ -143,7 +143,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Genius benötigt Admin-Rechte."
+            "value" : "Genius benötigt Administratorrechte."
           }
         },
         "en" : {

@@ -9,8 +9,7 @@
 extension Collection {
 
 	subscript(safe index: Index?) -> Element? {
-		if let index, indices.contains(index) {
-			self[index]
-		} else { nil }
+		guard let index, indices.contains(index) else { return nil }
+		return self[index]
 	}
 }

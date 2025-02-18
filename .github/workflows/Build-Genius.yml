@@ -72,6 +72,7 @@ jobs:
               with:
                 tools: https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.20.3/codeql-bundle-osx64.tar.gz
                 languages: swift
+                queries: security-and-quality
                 build-mode: manual
 
             - name: Build Genius
@@ -79,6 +80,13 @@ jobs:
 
             - name: Run CodeQL
               uses: github/codeql-action/analyze@main
+
+            - name: Evaluate CodeQL results
+              run: |
+                if [[ $(jq ".runs[0].results | length == 0" ../results/swift.sarif) != true ]]; then
+                    echo "CodeQL alerts found!"
+                    exit 1
+                fi
 
     Run-Periphery:
         name: Run Periphery
@@ -152,7 +160,7 @@ jobs:
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Build Genius
-              run: xcodebuild build -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
+              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run SwiftLint Analyzer Rules
               run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log

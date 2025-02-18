@@ -18,7 +18,7 @@ extension Bool: DataInitializable {
 		}
 	}
 
-	init?<T: Equatable>(_ value: T?, valuesTrue: T?..., valuesFalse: T?...) {
+	init?<Value: Equatable>(_ value: Value, valuesTrue: Value..., valuesFalse: Value...) {
 		if valuesTrue.contains(value) {
 			self = true
 		} else if valuesFalse.contains(value) {
@@ -34,8 +34,8 @@ extension Bool: DataInitializable {
 		)
 	}
 
-	// swiftlint:disable vertical_parameter_alignment_on_call
 	// swiftformat:disable indent wrap wrapArguments
+	// swiftlint:disable vertical_parameter_alignment_on_call
 
 	init?(fdesetupOutput: String?) {
 		self.init(
@@ -61,6 +61,7 @@ extension Bool: DataInitializable {
 		)
 	}
 
+	// swiftformat:enable indent wrap wrapArguments
 	// swiftlint:enable vertical_parameter_alignment_on_call
 
 	init?(socketfilterfwOutput: String?) {
