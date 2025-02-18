@@ -27,12 +27,10 @@ struct MaintenanceDataView: View {
 						} else {
 							String(value).map { (key, $0) }
 						}
+					} else if Defaults[.developmentMode] {
+						(key, "Not applicable".localized)
 					} else {
-						if Defaults[.developmentMode] {
-							(key, "Not applicable".localized)
-						} else {
-							nil
-						}
+						nil
 					}
 				})
 			}
