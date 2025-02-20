@@ -8,7 +8,11 @@
 
 import Foundation
 
-extension Int: DefaultInitializable, DataInitializable {
+extension Int: DefaultInitializable, DataInitializable, UIRepresentable {
+
+	var uiRepresentation: String? {
+		String(self)
+	}
 
 	init(_ data: Data) {
 		self = data.reversed().reduce(0) { $0 << 8 | Int($1) }

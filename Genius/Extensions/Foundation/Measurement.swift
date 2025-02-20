@@ -12,9 +12,9 @@ import ObjectiveC
 typealias Frequency = Measurement<UnitFrequency>
 typealias InformationStorage = Measurement<UnitInformationStorage>
 
-extension Measurement: MeasurementProtocol {
+extension Measurement: UIRepresentable {
 
-	func formatted() -> String {
+	var uiRepresentation: String? {
 		switch self {
 			case let self as Frequency:
 				let units: [UnitFrequency] = [.terahertz, .gigahertz, .megahertz, .kilohertz, .hertz, .millihertz, .microhertz, .nanohertz]
