@@ -8,8 +8,5 @@
 
 protocol SystemInformationProtocol {
 
-	associatedtype Value
-
-	var value: Value { get }
 	var applicable: Bool? { get }
 }
