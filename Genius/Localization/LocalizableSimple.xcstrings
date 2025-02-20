@@ -126,13 +126,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Genius benötigt die Erlaubnis eines Admins."
+            "value" : "Genius benötigt die Erlaubnis eines Administrators."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Genius requires an administrator's permission."
+            "value" : "Genius requires the permission of an administrator."
           }
         }
       }

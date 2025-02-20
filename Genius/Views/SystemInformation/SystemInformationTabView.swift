@@ -16,23 +16,21 @@ struct SystemInformationTabView: View {
 
 	// swiftlint:disable:next type_contents_order
 	init(
-		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any SystemInformationDataProtocol>>
+		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UIRepresentableSystemInformation>>
 	) {
 		self.content =
 			content.map { key, value in
 				(key, value.compactMap { key, value in
 					if value.applicable ?? true {
 						if Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced {
-							(key, String(value) ?? "Unknown".localized)
+							(key, value.uiRepresentation ?? "Unknown".localized)
 						} else {
-							String(value).map { (key, $0) }
+							value.uiRepresentation.map { (key, $0) }
 						}
+					} else if Defaults[.developmentMode] {
+						(key, "Not applicable".localized)
 					} else {
-						if Defaults[.developmentMode] {
-							(key, "Not applicable".localized)
-						} else {
-							nil
-						}
+						nil
 					}
 				})
 			}
@@ -41,7 +39,7 @@ struct SystemInformationTabView: View {
 
 	var body: some View {
 		ScrollView {
-			ForEach(enumerated: content) { _, groupBoxContent in
+			ForEach(content) { groupBoxContent in
 				GroupBox {
 					ForEach(enumerated: groupBoxContent.1) { index, rowContent in
 						if index > 0 {
