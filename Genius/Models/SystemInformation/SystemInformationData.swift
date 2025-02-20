@@ -6,18 +6,25 @@
 // See LICENSE.txt for license information.
 //
 
-struct SystemInformationData<T: Sendable>: SystemInformationDataProtocol {
+struct SystemInformationData<Value: Sendable>: SystemInformationProtocol {
 
-	let value: T
+	let value: Value
 	let applicable: Bool?
 
-	init(_ value: T) {
+	init(_ value: Value) {
 		self.value = value
 		self.applicable = true
 	}
 
-	init<W>(_ value: @autoclosure () -> T, applicable: Bool?) where T == W? {
+	init<Wrapped>(_ value: @autoclosure () -> Value, applicable: Bool?) where Value == Wrapped? {
 		self.value = applicable ?? true ? value() : nil
 		self.applicable = applicable
+	}
+}
+
+extension SystemInformationData: UIRepresentable, UIRepresentableSystemInformation where Value: UIRepresentable {
+
+	var uiRepresentation: String? {
+		value.uiRepresentation
 	}
 }

@@ -8,6 +8,13 @@
 
 import os
 
+extension Optional: UIRepresentable where Wrapped: UIRepresentable {
+
+	var uiRepresentation: String? {
+		self?.uiRepresentation
+	}
+}
+
 extension Optional where Wrapped: DefaultInitializable {
 
 	func safeForceUnwrapped(

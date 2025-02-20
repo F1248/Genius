@@ -35,10 +35,10 @@ struct IORegistry: ~Copyable {
 		service >? 0
 	}
 
-	func read<W: DataInitializable>(_ key: String) -> W? {
+	func read<Wrapped: DataInitializable>(_ key: String) -> Wrapped? {
 		guard serviceExists() ?? false, let service else { return nil }
 		let property = IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0)?.takeRetainedValue()
-		return property as? W ?? ((property as? Data)?.trimmingTrailingZeros()).flatMap(W.init)
+		return property as? Wrapped ?? ((property as? Data)?.trimmingTrailingZeros()).flatMap(Wrapped.init)
 	}
 
 	func keyExists(_ key: String) -> Bool? {
