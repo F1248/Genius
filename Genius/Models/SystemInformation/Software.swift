@@ -49,11 +49,10 @@ extension SystemInformation {
 			}())
 			static let buildNumber = SystemInformationData<String?>(Sysctl.read("kern.osversion"))
 			static let bootMode = SystemInformationData<BootMode?>({
-				if Sysctl.read("hw.osenvironment") == "recoveryos" {
-					.recovery
-				} else if let safe: Bool = Sysctl.read("kern.safeboot") {
-					safe ? .safe : .normal
-				} else { nil }
+				guard let recovery = Sysctl.read("hw.osenvironment") ==? "recoveryos" else { return nil }
+				if recovery { return .recovery }
+				guard let safe: Bool = Sysctl.read("kern.safeboot") else { return nil }
+				return safe ? .safe : .normal
 			}())
 			static let bootVolume =
 				SystemInformationData<String?>(SystemProfiler.software?["boot_volume"] as? String, applicable: bootMode.value !=? .recovery)
