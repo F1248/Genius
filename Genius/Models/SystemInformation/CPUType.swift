@@ -6,8 +6,18 @@
 // See LICENSE.txt for license information.
 //
 
-enum CPUType {
+enum CPUType: UIRepresentable {
 
 	case appleSilicon
 	case intel
+
+	var uiRepresentation: String? {
+		{
+			switch self {
+				case .appleSilicon: "Apple Silicon"
+				case .intel: "Intel"
+			}
+		}()
+			.localized
+	}
 }

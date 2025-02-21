@@ -10,7 +10,7 @@ import SwiftUICore
 
 extension ForEach where Content: View {
 
-	init<OuterData: RandomAccessCollection>(
+	init<OuterData: Sequence>(
 		_ data: OuterData,
 		@ViewBuilder content: @escaping (OuterData.Element) -> Content
 	) where Data == [(offset: Int, element: OuterData.Element)], ID == Int {
@@ -20,7 +20,7 @@ extension ForEach where Content: View {
 		) { content($0.element) }
 	}
 
-	init<OuterData: RandomAccessCollection>(
+	init<OuterData: Sequence>(
 		enumerated data: OuterData,
 		@ViewBuilder content: @escaping (Int, OuterData.Element) -> Content
 	) where Data == [(offset: Int, element: OuterData.Element)], ID == Int {

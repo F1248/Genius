@@ -6,9 +6,20 @@
 // See LICENSE.txt for license information.
 //
 
-enum BootMode {
+enum BootMode: UIRepresentable {
 
 	case normal
 	case safe
 	case recovery
+
+	var uiRepresentation: String? {
+		{
+			switch self {
+				case .normal: "Normal"
+				case .safe: "Safe"
+				case .recovery: "Recovery"
+			}
+		}()
+			.localized
+	}
 }

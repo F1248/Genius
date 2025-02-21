@@ -21,3 +21,10 @@ struct SystemInformationData<Value: Sendable>: SystemInformationProtocol {
 		self.applicable = applicable
 	}
 }
+
+extension SystemInformationData: UIRepresentable, UIRepresentableSystemInformation where Value: UIRepresentable {
+
+	var uiRepresentation: String? {
+		value.uiRepresentation
+	}
+}

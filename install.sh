@@ -18,9 +18,7 @@ if [ -e /usr/bin/osascript ]; then
 		osascript -e "quit app \"Genius\""
 	done
 else
-	if pgrep -x Genius; then
-		killall Genius
-	fi
+	killall -q Genius || true
 fi
 if [ -w /Applications ]; then
 	cd /Applications

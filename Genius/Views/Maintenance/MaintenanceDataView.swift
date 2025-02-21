@@ -16,16 +16,16 @@ struct MaintenanceDataView: View {
 
 	// swiftlint:disable:next type_contents_order
 	init(
-		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any SystemInformationProtocol>>
+		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UIRepresentableSystemInformation>>
 	) {
 		self.content =
 			content.map { key, value in
 				(key, value.compactMap { key, value in
 					if value.applicable ?? true {
 						if Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced {
-							(key, String(value) ?? "Unknown".localized)
+							(key, value.uiRepresentation ?? "Unknown".localized)
 						} else {
-							String(value).map { (key, $0) }
+							value.uiRepresentation.map { (key, $0) }
 						}
 					} else if Defaults[.developmentMode] {
 						(key, "Not applicable".localized)
