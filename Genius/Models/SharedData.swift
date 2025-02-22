@@ -7,7 +7,7 @@
 //
 
 import _Concurrency
-import Foundation
+import Combine
 
 class SharedData: ObservableObject {
 
