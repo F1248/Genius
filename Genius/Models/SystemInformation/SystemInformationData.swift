@@ -30,10 +30,8 @@ extension SystemInformationData: UIStringRepresentable where Value: UIStringRepr
 		if applicable ?? true {
 			value.uiRepresentation ??
 				(Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ? "Unknown".localized : nil)
-		} else if Defaults[.developmentMode] {
-			"Not applicable".localized
 		} else {
-			nil
+			Defaults[.developmentMode] ? "Not applicable".localized : nil
 		}
 	}
 }
