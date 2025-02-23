@@ -9,7 +9,7 @@
 import Defaults
 import Foundation
 
-extension String: DefaultInitializable, DataInitializable, UIRepresentable {
+extension String: DefaultInitializable, DataInitializable, UIStringRepresentable {
 
 	var uiRepresentation: String? {
 		self

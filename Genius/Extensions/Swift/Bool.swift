@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Bool: DataInitializable, UIRepresentable {
+extension Bool: DataInitializable, UIStringRepresentable {
 
 	var uiRepresentation: String? {
 		(self ? "Enabled" : "Disabled").localized

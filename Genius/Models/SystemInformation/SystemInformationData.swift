@@ -24,7 +24,7 @@ struct SystemInformationData<Value: Sendable> {
 	}
 }
 
-extension SystemInformationData: UIRepresentable where Value: UIRepresentable {
+extension SystemInformationData: UIStringRepresentable where Value: UIStringRepresentable {
 
 	var uiRepresentation: String? {
 		if applicable ?? true {

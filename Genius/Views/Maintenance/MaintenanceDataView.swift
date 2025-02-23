@@ -15,7 +15,7 @@ struct MaintenanceDataView: View {
 
 	// swiftlint:disable:next type_contents_order
 	init(
-		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UIRepresentable>>
+		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UIStringRepresentable>>
 	) {
 		self.content =
 			content.map { key, value in

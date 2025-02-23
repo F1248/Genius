@@ -8,7 +8,7 @@
 
 import os
 
-extension Optional: UIRepresentable where Wrapped: UIRepresentable {
+extension Optional: UIStringRepresentable where Wrapped: UIStringRepresentable {
 
 	var uiRepresentation: String? {
 		self?.uiRepresentation

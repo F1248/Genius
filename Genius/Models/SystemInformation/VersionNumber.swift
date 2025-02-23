@@ -6,7 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
-struct VersionNumber: UIRepresentable {
+struct VersionNumber: UIStringRepresentable {
 
 	let versions: [Int]
 
