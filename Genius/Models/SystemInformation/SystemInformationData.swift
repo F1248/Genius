@@ -6,7 +6,9 @@
 // See LICENSE.txt for license information.
 //
 
-struct SystemInformationData<Value: Sendable>: SystemInformationProtocol {
+import Defaults
+
+struct SystemInformationData<Value: Sendable> {
 
 	let value: Value
 	let applicable: Bool?
@@ -22,9 +24,16 @@ struct SystemInformationData<Value: Sendable>: SystemInformationProtocol {
 	}
 }
 
-extension SystemInformationData: UIRepresentable, UIRepresentableSystemInformation where Value: UIRepresentable {
+extension SystemInformationData: UIRepresentable where Value: UIRepresentable {
 
 	var uiRepresentation: String? {
-		value.uiRepresentation
+		if applicable ?? true {
+			value.uiRepresentation ??
+				(Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ? "Unknown".localized : nil)
+		} else if Defaults[.developmentMode] {
+			"Not applicable".localized
+		} else {
+			nil
+		}
 	}
 }

@@ -6,7 +6,6 @@
 // See LICENSE.txt for license information.
 //
 
-import Defaults
 import SwiftUI
 import SwiftUICore
 
@@ -16,22 +15,12 @@ struct SystemInformationTabView: View {
 
 	// swiftlint:disable:next type_contents_order
 	init(
-		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UIRepresentableSystemInformation>>
+		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UIRepresentable>>
 	) {
 		self.content =
 			content.map { key, value in
 				(key, value.compactMap { key, value in
-					if value.applicable ?? true {
-						if Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced {
-							(key, value.uiRepresentation ?? "Unknown".localized)
-						} else {
-							value.uiRepresentation.map { (key, $0) }
-						}
-					} else if Defaults[.developmentMode] {
-						(key, "Not applicable".localized)
-					} else {
-						nil
-					}
+					value.uiRepresentation.map { (key, $0) }
 				})
 			}
 			.filter { !$0.1.isEmpty }
