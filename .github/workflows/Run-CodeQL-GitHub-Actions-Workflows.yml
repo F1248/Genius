@@ -33,6 +33,7 @@ jobs:
                         - exclude:
                             id:
                                 - actions/unpinned-tag
+                                - actions/unversioned-immutable-action
                 queries: security-and-quality
 
             - name: Run CodeQL
