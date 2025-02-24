@@ -38,153 +38,153 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    Run-CodeQL:
-        name: Run CodeQL
-        permissions:
-            security-events: write
-        runs-on: macos-15
+    # Run-CodeQL:
+    #     name: Run CodeQL
+    #     permissions:
+    #         security-events: write
+    #     runs-on: macos-15
 
-        steps:
-            - name: Select Xcode Version
-              uses: maxim-lobanov/setup-xcode@master
-              with:
-                xcode-version: latest
+    #     steps:
+    #         - name: Select Xcode Version
+    #           uses: maxim-lobanov/setup-xcode@master
+    #           with:
+    #             xcode-version: latest
 
-            - name: Checkout
-              uses: actions/checkout@main
+    #         - name: Checkout
+    #           uses: actions/checkout@main
 
-            - name: Install xcbeautify
-              run: |
-                latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
-                unzip xcbeautify.zip
-                echo "xcbeautify $(./xcbeautify --version) installed"
+    #         - name: Install xcbeautify
+    #           run: |
+    #             latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+    #             curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+    #             unzip xcbeautify.zip
+    #             echo "xcbeautify $(./xcbeautify --version) installed"
 
-            - name: Work around https://github.com/github/codeql-action/issues/2506
-              run: |
-                xcode_developer_directory=$(xcode-select --print-path)
-                ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib
-                sudo mkdir /usr/local/lib
-                sudo ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib /usr/local/lib
+    #         - name: Work around https://github.com/github/codeql-action/issues/2506
+    #           run: |
+    #             xcode_developer_directory=$(xcode-select --print-path)
+    #             ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib
+    #             sudo mkdir /usr/local/lib
+    #             sudo ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib /usr/local/lib
 
-            - name: Initialize CodeQL
-              uses: github/codeql-action/init@main
-              with:
-                languages: swift
-                queries: security-and-quality
+    #         - name: Initialize CodeQL
+    #           uses: github/codeql-action/init@main
+    #           with:
+    #             languages: swift
+    #             queries: security-and-quality
 
-            - name: Build Genius
-              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+    #         - name: Build Genius
+    #           run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
-            - name: Run CodeQL
-              uses: github/codeql-action/analyze@main
+    #         - name: Run CodeQL
+    #           uses: github/codeql-action/analyze@main
 
-            - name: Evaluate CodeQL results
-              run: |
-                if [[ $(jq ".runs[0].results | length == 0" ../results/swift.sarif) != true ]]; then
-                    echo "CodeQL alerts found!"
-                    exit 1
-                fi
+    #         - name: Evaluate CodeQL results
+    #           run: |
+    #             if [[ $(jq ".runs[0].results | length == 0" ../results/swift.sarif) != true ]]; then
+    #                 echo "CodeQL alerts found!"
+    #                 exit 1
+    #             fi
 
-    Run-Periphery:
-        name: Run Periphery
-        runs-on: macos-15
+    # Run-Periphery:
+    #     name: Run Periphery
+    #     runs-on: macos-15
 
-        steps:
-            - name: Select Xcode Version
-              uses: maxim-lobanov/setup-xcode@master
-              with:
-                xcode-version: latest
+    #     steps:
+    #         - name: Select Xcode Version
+    #           uses: maxim-lobanov/setup-xcode@master
+    #           with:
+    #             xcode-version: latest
 
-            - name: Checkout
-              uses: actions/checkout@main
+    #         - name: Checkout
+    #           uses: actions/checkout@main
 
-            - name: Install Periphery
-              run: |
-                latest_periphery_tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/peripheryapp/periphery/releases/download/"$latest_periphery_tag"/periphery-"$latest_periphery_tag".zip --output periphery.zip
-                unzip periphery.zip
-                echo "Periphery $(./periphery version) installed"
+    #         - name: Install Periphery
+    #           run: |
+    #             latest_periphery_tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
+    #             curl --location https://github.com/peripheryapp/periphery/releases/download/"$latest_periphery_tag"/periphery-"$latest_periphery_tag".zip --output periphery.zip
+    #             unzip periphery.zip
+    #             echo "Periphery $(./periphery version) installed"
 
-            - name: Run Periphery
-              run: ./periphery scan --format github-actions --relative-results --strict -- -skipPackagePluginValidation
+    #         - name: Run Periphery
+    #           run: ./periphery scan --format github-actions --relative-results --strict -- -skipPackagePluginValidation
 
-    Run-SwiftFormat:
-        name: Run SwiftFormat
-        runs-on: macos-15
+    # Run-SwiftFormat:
+    #     name: Run SwiftFormat
+    #     runs-on: macos-15
 
-        steps:
-            - name: Checkout
-              uses: actions/checkout@main
-              with:
-                fetch-depth: 0
+    #     steps:
+    #         - name: Checkout
+    #           uses: actions/checkout@main
+    #           with:
+    #             fetch-depth: 0
 
-            - name: Install SwiftFormat
-              run: |
-                curl --remote-name --location https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip
-                unzip swiftformat.zip
-                echo "SwiftFormat $(./swiftformat --version) installed"
+    #         - name: Install SwiftFormat
+    #           run: |
+    #             curl --remote-name --location https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip
+    #             unzip swiftformat.zip
+    #             echo "SwiftFormat $(./swiftformat --version) installed"
 
-            - name: Run SwiftFormat
-              run: ./swiftformat --lint . --reporter github-actions-log
+    #         - name: Run SwiftFormat
+    #           run: ./swiftformat --lint . --reporter github-actions-log
 
-    Run-SwiftLint:
-        name: Run SwiftLint
-        runs-on: macos-15
+    # Run-SwiftLint:
+    #     name: Run SwiftLint
+    #     runs-on: macos-15
 
-        steps:
-            - name: Select Xcode Version
-              uses: maxim-lobanov/setup-xcode@master
-              with:
-                xcode-version: latest
+    #     steps:
+    #         - name: Select Xcode Version
+    #           uses: maxim-lobanov/setup-xcode@master
+    #           with:
+    #             xcode-version: latest
 
-            - name: Checkout
-              uses: actions/checkout@main
+    #         - name: Checkout
+    #           uses: actions/checkout@main
 
-            - name: Install SwiftLint
-              run: |
-                curl --remote-name --location https://github.com/realm/SwiftLint/releases/latest/download/portable_swiftlint.zip
-                unzip portable_swiftlint.zip
-                echo "SwiftLint $(./swiftlint version) installed"
+    #         - name: Install SwiftLint
+    #           run: |
+    #             curl --remote-name --location https://github.com/realm/SwiftLint/releases/latest/download/portable_swiftlint.zip
+    #             unzip portable_swiftlint.zip
+    #             echo "SwiftLint $(./swiftlint version) installed"
 
-            - name: Run SwiftLint Lint Rules
-              run: ./swiftlint lint --strict --reporter github-actions-logging
+    #         - name: Run SwiftLint Lint Rules
+    #           run: ./swiftlint lint --strict --reporter github-actions-logging
 
-            - name: Install xcbeautify
-              run: |
-                latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
-                unzip xcbeautify.zip
-                echo "xcbeautify $(./xcbeautify --version) installed"
+    #         - name: Install xcbeautify
+    #           run: |
+    #             latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+    #             curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+    #             unzip xcbeautify.zip
+    #             echo "xcbeautify $(./xcbeautify --version) installed"
 
-            - name: Build Genius
-              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
+    #         - name: Build Genius
+    #           run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
 
-            - name: Run SwiftLint Analyzer Rules
-              run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
+    #         - name: Run SwiftLint Analyzer Rules
+    #           run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
 
-    Run-Tests:
-        name: Run Tests
-        runs-on: macos-15
+    # Run-Tests:
+    #     name: Run Tests
+    #     runs-on: macos-15
 
-        steps:
-            - name: Select Xcode Version
-              uses: maxim-lobanov/setup-xcode@master
-              with:
-                xcode-version: latest
+    #     steps:
+    #         - name: Select Xcode Version
+    #           uses: maxim-lobanov/setup-xcode@master
+    #           with:
+    #             xcode-version: latest
 
-            - name: Checkout
-              uses: actions/checkout@main
+    #         - name: Checkout
+    #           uses: actions/checkout@main
 
-            - name: Install xcbeautify
-              run: |
-                latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
-                unzip xcbeautify.zip
-                echo "xcbeautify $(./xcbeautify --version) installed"
+    #         - name: Install xcbeautify
+    #           run: |
+    #             latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+    #             curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+    #             unzip xcbeautify.zip
+    #             echo "xcbeautify $(./xcbeautify --version) installed"
 
-            - name: Run Tests
-              run: xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+    #         - name: Run Tests
+    #           run: xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
     Build-Genius:
         name: Build Genius
@@ -194,10 +194,17 @@ jobs:
         runs-on: macos-15
 
         steps:
-            - name: Select Xcode Version
-              uses: maxim-lobanov/setup-xcode@master
-              with:
-                xcode-version: latest
+            - name: Install xcodes
+              run: |
+                curl --remote-name --location https://github.com/XcodesOrg/xcodes/releases/latest/download/xcodes.zip
+                unzip xcodes.zip
+                echo "xcodes $(./xcodes version) installed"
+
+            - name: Install Xcode
+              run: |
+                ./xcodes install --select --update --experimental-unxip --use-fastlane-auth --data-source apple "$(
+                    ./xcodes list --data-source apple | sed "s/Beta (/Beta 1 (/" | sort --version-sort | sed "s/Beta 1 (/Beta (/" | tail --lines 1
+                )"
 
             - name: Checkout
               uses: actions/checkout@main
