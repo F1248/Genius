@@ -202,7 +202,7 @@ jobs:
 
             - name: Install Xcode
               run: |
-                ./xcodes install --select --update --experimental-unxip --use-fastlane-auth --fastlane-user "${{ secrets.FASTLANE_SESSION }}" --data-source apple "$(
+                ./xcodes install --select --update --experimental-unxip --use-fastlane-auth --fastlane-user '${{ secrets.FASTLANE_SESSION }}' --data-source apple "$(
                     ./xcodes list --data-source apple | sed "s/Beta (/Beta 1 (/" | sort --version-sort | sed "s/Beta 1 (/Beta (/" | tail --lines 1
                 )"
 
