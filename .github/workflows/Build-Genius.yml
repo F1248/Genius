@@ -61,6 +61,9 @@ jobs:
               env:
                 FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
 
+            - name: Test
+              run: ls -l /Applications
+
             - name: Checkout
               uses: actions/checkout@main
 
@@ -74,7 +77,7 @@ jobs:
             - name: Work around https://github.com/github/codeql-action/issues/2506
               run: |
                 xcode_developer_directory=$(xcode-select --print-path)
-                sudo ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib
+                ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib
                 sudo mkdir /usr/local/lib
                 sudo ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib /usr/local/lib
 
