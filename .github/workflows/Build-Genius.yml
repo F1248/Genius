@@ -57,7 +57,7 @@ jobs:
                 sudo --preserve-env=FASTLANE_SESSION ./xcodes install --select --update --experimental-unxip --use-fastlane-auth --data-source apple "$(
                     ./xcodes list --data-source apple | sed "s/Beta (/Beta 1 (/" | sort --version-sort | sed "s/Beta 1 (/Beta (/" | tail --lines 1
                 )"
-                chown -R $(whoami) /Applications/Xcode.app
+                chown $(whoami) $(xcode-select --print-path)
                 echo "$(xcodebuild -version | tr "\n" " ")installed"
               env:
                 FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
