@@ -55,8 +55,8 @@ jobs:
 
             - name: Install xcbeautify
               run: |
-                latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
@@ -101,8 +101,8 @@ jobs:
 
             - name: Install Periphery
               run: |
-                latest_periphery_tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/peripheryapp/periphery/releases/download/"$latest_periphery_tag"/periphery-"$latest_periphery_tag".zip --output periphery.zip
+                tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip --output periphery.zip
                 unzip periphery.zip
                 echo "Periphery $(./periphery version) installed"
 
@@ -152,8 +152,8 @@ jobs:
 
             - name: Install xcbeautify
               run: |
-                latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
@@ -178,8 +178,8 @@ jobs:
 
             - name: Install xcbeautify
               run: |
-                latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
@@ -204,8 +204,8 @@ jobs:
 
             - name: Install xcbeautify
               run: |
-                latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
