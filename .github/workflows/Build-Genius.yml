@@ -101,7 +101,8 @@ jobs:
 
             - name: Install Periphery
               run: |
-                tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
+                # tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)  
+                tag="3.0.1" # Wait for https://github.com/peripheryapp/periphery/issues/885 to be fixed
                 curl --location https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip --output periphery.zip
                 unzip periphery.zip
                 echo "Periphery $(./periphery version) installed"
