@@ -17,6 +17,10 @@ extension SystemInformation {
 
 		enum Model {
 
+			static let isVirtualMachine = SystemInformationData<Bool?>(Sysctl.read("kern.hv_vmm_present"))
+			// periphery:ignore
+			// swiftlint:disable:next unused_declaration
+			static let isLaptop = SystemInformationData<Bool?>(name.value?.hasPrefix("MacBook"))
 			static let name = SystemInformationData<String?>(IORegistry(name: "product").read("product-name"))
 			static let localizedName = SystemInformationData<String?>({ () -> String? in
 				guard let serialNumber = Machine.serialNumber.value, [11, 12].contains(serialNumber.count) else { return nil }
@@ -43,10 +47,6 @@ extension SystemInformation {
 				IORegistry(class: "IOPlatformExpertDevice").read("regulatory-model-number"),
 				applicable: CPU.type.value == .appleSilicon &&? !?isVirtualMachine.value
 			)
-			// periphery:ignore
-			// swiftlint:disable:next unused_declaration
-			static let isLaptop = SystemInformationData<Bool?>(name.value?.hasPrefix("MacBook"))
-			static let isVirtualMachine = SystemInformationData<Bool?>(Sysctl.read("kern.hv_vmm_present"))
 			static let sfSymbol = SystemInformationData<SFSymbol>({
 				switch true {
 					case isVirtualMachine.value: .macwindow
