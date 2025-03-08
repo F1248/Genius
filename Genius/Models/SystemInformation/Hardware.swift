@@ -31,7 +31,8 @@ extension SystemInformation {
 				lang=\(Locale.currentLanguageCode ?? "")
 				"""
 				return String(Network.transferURL(url)?.between(start: "<configCode>", end: "</configCode>"))
-			}() ?? name.value)
+			}())
+			static let displayName = SystemInformationData<String?>(localizedName.value ?? name.value)
 			static let identifier = SystemInformationData<String?>(IORegistry(class: "IOPlatformExpertDevice").read("model"))
 			static let number = SystemInformationData<String?>(
 				{
