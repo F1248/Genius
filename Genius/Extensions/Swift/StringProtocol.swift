@@ -43,10 +43,3 @@ extension StringProtocol {
 		return self[startIndex..<endIndex]
 	}
 }
-
-extension Optional where Wrapped: StringProtocol {
-
-	func hasPrefix(_ prefix: some StringProtocol) -> Bool {
-		self?.hasPrefix(prefix) ?? false
-	}
-}

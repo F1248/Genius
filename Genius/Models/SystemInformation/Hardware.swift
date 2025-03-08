@@ -54,25 +54,25 @@ extension SystemInformation {
 			static let sfSymbol = SystemInformationData<SFSymbol>({
 				switch true {
 					case isVirtualMachine.value: .macwindow
-					case name.value.hasPrefix("MacBook"):
+					case name.value?.hasPrefix("MacBook"):
 						if #available(macOS 14, *) {
-							switch identifier.value {
-								case "Mac14,7": .macbookGen1
-								case _ where identifier.value.hasPrefix("MacBookPro18"): .macbookGen2
-								case _ where identifier.value.hasPrefix("MacBook"): .macbookGen1
+							switch true {
+								case identifier.value == "Mac14,7": .macbookGen1
+								case identifier.value?.hasPrefix("MacBookPro18"): .macbookGen2
+								case identifier.value?.hasPrefix("MacBook"): .macbookGen1
 								default: .macbookGen2
 							}
 						} else { .laptopcomputer }
-					case name.value.hasPrefix("iMac"): .desktopcomputer
-					case name.value.hasPrefix("Mac mini"): .macmini
-					case name.value.hasPrefix("Mac Studio"): if #available(macOS 13, *) { .macstudio } else { .macmini }
-					case name.value.hasPrefix("Mac Pro"):
+					case name.value?.hasPrefix("iMac"): .desktopcomputer
+					case name.value?.hasPrefix("Mac mini"): .macmini
+					case name.value?.hasPrefix("Mac Studio"): if #available(macOS 13, *) { .macstudio } else { .macmini }
+					case name.value?.hasPrefix("Mac Pro"):
 						switch identifier.value {
 							case "MacPro3,1", "MacPro4,1", "MacPro5,1": .macproGen1
 							case "MacPro6,1": .macproGen2
 							default: ["A2304", "A2787"].contains(regulatoryNumber.value) ? .macproGen3Server : .macproGen3
 						}
-					case name.value.hasPrefix("Xserve"): .xserve
+					case name.value?.hasPrefix("Xserve"): .xserve
 					default: if #available(macOS 15, *) { .desktopcomputerAndMacbook } else { .desktopcomputer }
 				}
 			}())
