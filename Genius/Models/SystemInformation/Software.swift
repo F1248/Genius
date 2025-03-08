@@ -55,8 +55,7 @@ extension SystemInformation {
 			}())
 			static let buildNumber = SystemInformationData<String?>(Sysctl.read("kern.osversion"))
 			static let bootMode = SystemInformationData<BootMode?>({
-				guard let recovery = Sysctl.read("hw.osenvironment") ==? "recoveryos" else { return nil }
-				if recovery { return .recovery }
+				if !FileManager.default.fileExists(atPath: "/System/Library/CoreServices/Finder.app") { return .recovery }
 				guard let safe: Bool = Sysctl.read("kern.safeboot") else { return nil }
 				return safe ? .safe : .normal
 			}())
