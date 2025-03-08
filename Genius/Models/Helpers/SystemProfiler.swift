@@ -10,6 +10,8 @@ import Foundation
 
 enum SystemProfiler {
 
+	static let available: Bool? = SystemInformation.Software.OS.bootMode.value !=? .recovery
+
 	static let hardware = get("Hardware")
 	static let software = get("Software")
 

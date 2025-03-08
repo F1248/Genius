@@ -49,27 +49,27 @@ extension SystemInformation {
 
 			static let checkMacOS = SystemInformationData<Bool?>(
 				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled"),
-				applicable: { if #unavailable(macOS 15) { true } else { false } }() &&? Software.OS.bootMode.value !=? .recovery
+				applicable: { if #unavailable(macOS 15) { true } else { false } }() &&? UserDefaults.available
 			)
 			static let downloadMacOS = SystemInformationData<Bool?>(
 				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"),
-				applicable: Software.OS.bootMode.value !=? .recovery
+				applicable: UserDefaults.available
 			)
 			static let installMacOS = SystemInformationData<Bool?>(
 				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates"),
-				applicable: Software.OS.bootMode.value !=? .recovery
+				applicable: UserDefaults.available
 			)
 			static let installCritical = SystemInformationData<Bool?>(
 				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"),
-				applicable: Software.OS.bootMode.value !=? .recovery
+				applicable: UserDefaults.available
 			)
 			static let installConfigurationData = SystemInformationData<Bool?>(
 				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"),
-				applicable: Software.OS.bootMode.value !=? .recovery
+				applicable: UserDefaults.available
 			)
 			static let installAppStoreApps = SystemInformationData<Bool?>(
 				UserDefaults.read("/Library/Preferences/com.apple.commerce", "AutoUpdate"),
-				applicable: Software.OS.bootMode.value !=? .recovery
+				applicable: UserDefaults.available
 			)
 		}
 	}
