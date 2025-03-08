@@ -22,16 +22,19 @@ extension SystemInformation {
 			// swiftlint:disable:next unused_declaration
 			static let isLaptop = SystemInformationData<Bool?>(name.value?.hasPrefix("MacBook"))
 			static let name = SystemInformationData<String?>(IORegistry(name: "product").read("product-name"))
-			static let localizedName = SystemInformationData<String?>({ () -> String? in
-				guard let serialNumber = Machine.serialNumber.value, [11, 12].contains(serialNumber.count) else { return nil }
-				// swiftlint:disable:next explicit_type_interface
-				let url = """
-				https://support-sp.apple.com/sp/product?\
-				cc=\(serialNumber.dropFirst(8))&\
-				lang=\(Locale.currentLanguageCode ?? "")
-				"""
-				return String(Network.transferURL(url)?.between(start: "<configCode>", end: "</configCode>"))
-			}())
+			static let localizedName = SystemInformationData<String?>(
+				{ () -> String? in
+					guard let serialNumber = Machine.serialNumber.value else { return nil }
+					// swiftlint:disable:next explicit_type_interface
+					let url = """
+					https://support-sp.apple.com/sp/product?\
+					cc=\(serialNumber.dropFirst(8))&\
+					lang=\(Locale.currentLanguageCode ?? "")
+					"""
+					return String(Network.transferURL(url)?.between(start: "<configCode>", end: "</configCode>"))
+				}(),
+				applicable: Machine.serialNumber.value.map { [11, 12].contains($0.count) }
+			)
 			static let displayName = SystemInformationData<String?>(localizedName.value ?? name.value)
 			static let identifier = SystemInformationData<String?>(IORegistry(class: "IOPlatformExpertDevice").read("model"))
 			static let number = SystemInformationData<String?>(
