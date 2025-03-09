@@ -17,10 +17,10 @@ extension SystemInformation {
 
 		enum Model {
 
-			static let isVirtualMachine = SystemInformationData<Bool?>(Sysctl.read("kern.hv_vmm_present"))
+			static let isVirtualMachine: Bool? = Sysctl.read("kern.hv_vmm_present")
 			// periphery:ignore
 			// swiftlint:disable:next unused_declaration
-			static let isLaptop = SystemInformationData<Bool?>(name.value?.hasPrefix("MacBook"))
+			static let isLaptop: Bool? = name.value?.hasPrefix("MacBook")
 			static let name = SystemInformationData<String?>(IORegistry(name: "product").read("product-name"))
 			static let localizedName = SystemInformationData<String?>(
 				{ () -> String? in
@@ -49,11 +49,11 @@ extension SystemInformation {
 			)
 			static let regulatoryNumber = SystemInformationData<String?>(
 				IORegistry(class: "IOPlatformExpertDevice").read("regulatory-model-number"),
-				applicable: CPU.type.value == .appleSilicon &&? !?isVirtualMachine.value
+				applicable: CPU.type.value == .appleSilicon &&? !?isVirtualMachine
 			)
 			static let sfSymbol = SystemInformationData<SFSymbol>({
 				switch true {
-					case isVirtualMachine.value: .macwindow
+					case isVirtualMachine: .macwindow
 					case name.value?.hasPrefix("MacBook"):
 						if #available(macOS 14, *) {
 							switch true {
@@ -95,7 +95,7 @@ extension SystemInformation {
 
 			enum Cores {
 
-				static let differentTypes = SystemInformationData<Bool?>(type.value == .appleSilicon &&? !?Model.isVirtualMachine.value)
+				static let differentTypes = SystemInformationData<Bool?>(type.value == .appleSilicon &&? !?Model.isVirtualMachine)
 				static let total = SystemInformationData<Int?>(Sysctl.read("hw.physicalcpu"))
 				static let performance =
 					SystemInformationData<Int?>(Sysctl.read("hw.perflevel0.physicalcpu"), applicable: differentTypes.value)

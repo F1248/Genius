@@ -16,11 +16,11 @@ extension SystemInformation {
 
 			static let activationLock = SystemInformationData<Bool?>(
 				IORegistry(class: IORegistryName.nvramVariables).keyExists("fmm-mobileme-token-FMM"),
-				applicable: Hardware.securityChip.value >=? .t2 &&? !?Hardware.Model.isVirtualMachine.value
+				applicable: Hardware.securityChip.value >=? .t2 &&? !?Hardware.Model.isVirtualMachine
 			)
 			static let firmwarePassword = SystemInformationData<Bool?>(
 				Bool(firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check", requiresRoot: true)?.runSafe()),
-				applicable: Hardware.CPU.type.value == .intel &&? !?Hardware.Model.isVirtualMachine.value
+				applicable: Hardware.CPU.type.value == .intel &&? !?Hardware.Model.isVirtualMachine
 			)
 		}
 
