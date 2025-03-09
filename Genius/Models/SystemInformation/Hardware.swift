@@ -20,8 +20,11 @@ extension SystemInformation {
 			static let isVirtualMachine: Bool? = Sysctl.read("kern.hv_vmm_present")
 			// periphery:ignore
 			// swiftlint:disable:next unused_declaration
-			static let isLaptop: Bool? = name.value?.hasPrefix("MacBook")
-			static let name = SystemInformationData<String?>(IORegistry(name: "product").read("product-name"))
+			static let isLaptop: Bool? = namePrefix?.hasPrefix("MacBook")
+			static let name = SystemInformationData<String?>(
+				IORegistry(name: "product").read("product-name"),
+				applicable: CPU.type.value == .appleSilicon
+			)
 			static let localizedName = SystemInformationData<String?>(
 				{ () -> String? in
 					guard let serialNumber = Machine.serialNumber.value else { return nil }
@@ -35,8 +38,10 @@ extension SystemInformation {
 				}(),
 				applicable: Machine.serialNumber.value.map { [11, 12].contains($0.count) }
 			)
-			static let displayName = SystemInformationData<String?>(localizedName.value ?? name.value)
+			static let displayName =
+				SystemInformationData<String?>(localizedName.value ?? name.value, applicable: localizedName.applicable ||? name.applicable)
 			static let identifier = SystemInformationData<String?>(IORegistry(class: "IOPlatformExpertDevice").read("model"))
+			static let namePrefix: String? = name.value?.remove(" ") ?? identifier.value
 			static let number = SystemInformationData<String?>(
 				{
 					guard
@@ -54,7 +59,7 @@ extension SystemInformation {
 			static let sfSymbol = SystemInformationData<SFSymbol>({
 				switch true {
 					case isVirtualMachine: .macwindow
-					case name.value?.hasPrefix("MacBook"):
+					case namePrefix?.hasPrefix("MacBook"):
 						if #available(macOS 14, *) {
 							switch true {
 								case identifier.value == "Mac14,7": .macbookGen1
@@ -63,16 +68,16 @@ extension SystemInformation {
 								default: .macbookGen2
 							}
 						} else { .laptopcomputer }
-					case name.value?.hasPrefix("iMac"): .desktopcomputer
-					case name.value?.hasPrefix("Mac mini"): .macmini
-					case name.value?.hasPrefix("Mac Studio"): if #available(macOS 13, *) { .macstudio } else { .macmini }
-					case name.value?.hasPrefix("Mac Pro"):
+					case namePrefix?.hasPrefix("iMac"): .desktopcomputer
+					case namePrefix?.hasPrefix("Macmini"): .macmini
+					case namePrefix?.hasPrefix("MacStudio"): if #available(macOS 13, *) { .macstudio } else { .macmini }
+					case namePrefix?.hasPrefix("MacPro"):
 						switch identifier.value {
 							case "MacPro3,1", "MacPro4,1", "MacPro5,1": .macproGen1
 							case "MacPro6,1": .macproGen2
 							default: ["A2304", "A2787"].contains(regulatoryNumber.value) ? .macproGen3Server : .macproGen3
 						}
-					case name.value?.hasPrefix("Xserve"): .xserve
+					case namePrefix?.hasPrefix("Xserve"): .xserve
 					default: if #available(macOS 15, *) { .desktopcomputerAndMacbook } else { .desktopcomputer }
 				}
 			}())
