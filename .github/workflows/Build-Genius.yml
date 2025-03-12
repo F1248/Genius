@@ -55,7 +55,7 @@ jobs:
               run: |
                 ./xcodes download --use-fastlane-auth --data-source apple 0 || true # Work around `xcodes list` not using fastlane spaceship authentication
                 ./xcodes install --select --update --experimental-unxip --no-superuser --use-fastlane-auth --data-source apple "$(
-                    ./xcodes list --data-source apple | sed "s/Beta (/Beta 1 (/" | sort --version-sort | sed "s/Beta 1 (/Beta (/" | tail --lines 1
+                    echo 16.2
                 )"
                 echo "$(xcodebuild -version | tr "\n" " ")installed"
               env:
