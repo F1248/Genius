@@ -17,7 +17,7 @@ extension SystemInformation {
 
 			static let version = SystemInformationData<String?>(
 				SystemProfiler.hardware?["SMC_version_system"] as? String,
-				applicable: Hardware.securityChip.value <=? .t1 &&? OS.bootMode.value !=? .recovery
+				applicable: Hardware.securityChip.value <=? .t1 &&? SystemProfiler.available
 			)
 		}
 
@@ -25,7 +25,7 @@ extension SystemInformation {
 
 			static let version = SystemInformationData<String?>(
 				SystemProfiler.hardware?["boot_rom_version"] as? String,
-				applicable: OS.bootMode.value !=? .recovery
+				applicable: SystemProfiler.available
 			)
 		}
 
@@ -55,16 +55,15 @@ extension SystemInformation {
 			}())
 			static let buildNumber = SystemInformationData<String?>(Sysctl.read("kern.osversion"))
 			static let bootMode = SystemInformationData<BootMode?>({
-				guard let recovery = Sysctl.read("hw.osenvironment") ==? "recoveryos" else { return nil }
-				if recovery { return .recovery }
+				if !FileManager.default.fileExists(atPath: "/System/Library/CoreServices/Finder.app") { return .recovery }
 				guard let safe: Bool = Sysctl.read("kern.safeboot") else { return nil }
 				return safe ? .safe : .normal
 			}())
 			static let bootVolume =
-				SystemInformationData<String?>(SystemProfiler.software?["boot_volume"] as? String, applicable: bootMode.value !=? .recovery)
+				SystemInformationData<String?>(SystemProfiler.software?["boot_volume"] as? String, applicable: SystemProfiler.available)
 			static let loaderVersion = SystemInformationData<String?>(
 				SystemProfiler.hardware?["os_loader_version"] as? String,
-				applicable: bootMode.value !=? .recovery
+				applicable: SystemProfiler.available
 			)
 		}
 

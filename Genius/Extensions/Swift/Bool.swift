@@ -7,11 +7,17 @@
 //
 
 import Foundation
+import SFSafeSymbols
+import SwiftUICore
 
-extension Bool: DataInitializable, UIStringRepresentable {
+extension Bool: DataInitializable, UISymbolRepresentable {
 
-	var uiRepresentation: String? {
-		(self ? "Enabled" : "Disabled").localized
+	var uiRepresentation: Symbol? {
+		Symbol(
+			symbol: self ? .checkmark : .xmark,
+			color: self ? .green : .red,
+			label: self ? "Enabled" : "Disabled"
+		)
 	}
 
 	init?(_ data: Data) {

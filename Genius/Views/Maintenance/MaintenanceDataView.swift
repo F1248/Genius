@@ -6,16 +6,17 @@
 // See LICENSE.txt for license information.
 //
 
+import SFSafeSymbols
 import SwiftUI
 import SwiftUICore
 
 struct MaintenanceDataView: View {
 
-	let content: [(LocalizedStringKey, [(LocalizedStringKey, String)])]
+	let content: [(LocalizedStringKey, [(LocalizedStringKey, Symbol)])]
 
 	// swiftlint:disable:next type_contents_order
 	init(
-		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UIStringRepresentable>>
+		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UISymbolRepresentable>>
 	) {
 		self.content =
 			content.map { key, value in
@@ -37,8 +38,10 @@ struct MaintenanceDataView: View {
 						HStack {
 							VaryingText(rowContent.0)
 							Spacer()
-							Text(rowContent.1)
-								.foregroundColor(.secondary)
+							Image(systemSymbol: rowContent.1.symbol)
+								.accessibilityLabel(Text(rowContent.1.label))
+								.foregroundColor(rowContent.1.color)
+								.frame(width: 14)
 						}
 						.padding(.vertical, 2)
 					}

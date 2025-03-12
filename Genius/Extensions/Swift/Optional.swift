@@ -15,6 +15,13 @@ extension Optional: UIStringRepresentable where Wrapped: UIStringRepresentable {
 	}
 }
 
+extension Optional: UISymbolRepresentable where Wrapped: UISymbolRepresentable {
+
+	var uiRepresentation: Symbol? {
+		self?.uiRepresentation
+	}
+}
+
 extension Optional where Wrapped: DefaultInitializable {
 
 	func safeForceUnwrapped(
