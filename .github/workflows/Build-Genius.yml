@@ -51,6 +51,8 @@ jobs:
                 unzip xcodes.zip
                 echo "xcodes $(./xcodes version) installed"
 
+            - run: sudo rm -rf /Applications/Xcode_16.2.app
+
             - name: Install Xcode
               run: |
                 ./xcodes download --use-fastlane-auth --data-source apple 0 || true # Work around `xcodes list` not using fastlane spaceship authentication
