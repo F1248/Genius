@@ -59,6 +59,7 @@ jobs:
                 ./xcodes install --select --update --experimental-unxip --no-superuser --use-fastlane-auth --data-source apple "$(
                     echo 16.3 Beta 2
                 )"
+                xcodebuild -runFirstLaunch
                 echo "$(xcodebuild -version | tr "\n" " ")installed"
               env:
                 FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
