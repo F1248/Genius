@@ -91,10 +91,21 @@ jobs:
         runs-on: macos-15
 
         steps:
-            - name: Select Xcode Version
-              uses: maxim-lobanov/setup-xcode@master
-              with:
-                xcode-version: latest
+            - name: Install xcodes
+              run: |
+                curl --remote-name --location https://github.com/XcodesOrg/xcodes/releases/latest/download/xcodes.zip
+                unzip xcodes.zip
+                echo "xcodes $(./xcodes version) installed"
+
+            - name: Install Xcode
+              run: |
+                ./xcodes download --use-fastlane-auth --data-source apple 0 || true # Work around `xcodes list` not using fastlane spaceship authentication
+                sudo --preserve-env=FASTLANE_SESSION ./xcodes install --select --update --experimental-unxip --use-fastlane-auth --data-source apple "$(
+                    ./xcodes list --data-source apple | sed "s/Beta (/Beta 1 (/" | sort --version-sort | sed "s/Beta 1 (/Beta (/" | tail --lines 1
+                )"
+                echo "$(xcodebuild -version | tr "\n" " ")installed"
+              env:
+                FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
 
             - name: Checkout
               uses: actions/checkout@main
@@ -136,10 +147,21 @@ jobs:
         runs-on: macos-15
 
         steps:
-            - name: Select Xcode Version
-              uses: maxim-lobanov/setup-xcode@master
-              with:
-                xcode-version: latest
+            - name: Install xcodes
+              run: |
+                curl --remote-name --location https://github.com/XcodesOrg/xcodes/releases/latest/download/xcodes.zip
+                unzip xcodes.zip
+                echo "xcodes $(./xcodes version) installed"
+
+            - name: Install Xcode
+              run: |
+                ./xcodes download --use-fastlane-auth --data-source apple 0 || true # Work around `xcodes list` not using fastlane spaceship authentication
+                sudo --preserve-env=FASTLANE_SESSION ./xcodes install --select --update --experimental-unxip --use-fastlane-auth --data-source apple "$(
+                    ./xcodes list --data-source apple | sed "s/Beta (/Beta 1 (/" | sort --version-sort | sed "s/Beta 1 (/Beta (/" | tail --lines 1
+                )"
+                echo "$(xcodebuild -version | tr "\n" " ")installed"
+              env:
+                FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
 
             - name: Checkout
               uses: actions/checkout@main
@@ -171,10 +193,21 @@ jobs:
         runs-on: macos-15
 
         steps:
-            - name: Select Xcode Version
-              uses: maxim-lobanov/setup-xcode@master
-              with:
-                xcode-version: latest
+            - name: Install xcodes
+              run: |
+                curl --remote-name --location https://github.com/XcodesOrg/xcodes/releases/latest/download/xcodes.zip
+                unzip xcodes.zip
+                echo "xcodes $(./xcodes version) installed"
+
+            - name: Install Xcode
+              run: |
+                ./xcodes download --use-fastlane-auth --data-source apple 0 || true # Work around `xcodes list` not using fastlane spaceship authentication
+                sudo --preserve-env=FASTLANE_SESSION ./xcodes install --select --update --experimental-unxip --use-fastlane-auth --data-source apple "$(
+                    ./xcodes list --data-source apple | sed "s/Beta (/Beta 1 (/" | sort --version-sort | sed "s/Beta 1 (/Beta (/" | tail --lines 1
+                )"
+                echo "$(xcodebuild -version | tr "\n" " ")installed"
+              env:
+                FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
 
             - name: Checkout
               uses: actions/checkout@main
@@ -197,10 +230,21 @@ jobs:
         runs-on: macos-15
 
         steps:
-            - name: Select Xcode Version
-              uses: maxim-lobanov/setup-xcode@master
-              with:
-                xcode-version: latest
+            - name: Install xcodes
+              run: |
+                curl --remote-name --location https://github.com/XcodesOrg/xcodes/releases/latest/download/xcodes.zip
+                unzip xcodes.zip
+                echo "xcodes $(./xcodes version) installed"
+
+            - name: Install Xcode
+              run: |
+                ./xcodes download --use-fastlane-auth --data-source apple 0 || true # Work around `xcodes list` not using fastlane spaceship authentication
+                sudo --preserve-env=FASTLANE_SESSION ./xcodes install --select --update --experimental-unxip --use-fastlane-auth --data-source apple "$(
+                    ./xcodes list --data-source apple | sed "s/Beta (/Beta 1 (/" | sort --version-sort | sed "s/Beta 1 (/Beta (/" | tail --lines 1
+                )"
+                echo "$(xcodebuild -version | tr "\n" " ")installed"
+              env:
+                FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
 
             - name: Checkout
               uses: actions/checkout@main
