@@ -112,7 +112,7 @@ jobs:
                 queries: security-and-quality
 
             - name: Build Genius
-              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation OTHER_SWIFT_FLAGS="\$(inherited) -Xfrontend -disable-autolink-framework -Xfrontend AppIntents" | ./xcbeautify --disable-logging --renderer github-actions
+              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation OTHER_SWIFT_FLAGS='$(inherited) -Xfrontend -disable-autolink-framework -Xfrontend AppIntents' | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run CodeQL
               uses: github/codeql-action/analyze@main
