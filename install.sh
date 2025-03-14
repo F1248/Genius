@@ -13,14 +13,14 @@ set -e
 
 echo "
 Preparing..."
-if [ -e /usr/bin/osascript ]; then
+if [[ -e /usr/bin/osascript ]]; then
 	for _ in $(pgrep -x Genius); do
 		osascript -e "quit app \"Genius\""
 	done
 else
 	killall -q Genius || true
 fi
-if [ -w /Applications ]; then
+if [[ -w /Applications ]]; then
 	cd /Applications
 else
 	mkdir -p ~/Applications
@@ -34,7 +34,7 @@ echo "Installing..."
 unzip -q -o Genius.zip
 rm -r -f Genius.app
 unzip -q Genius.zip
-if [ ! -e /System/Library/CoreServices/Finder.app ]; then
+if [[ ! -e /System/Library/CoreServices/Finder.app ]]; then
 	echo "
 alias genius=\"$PWD/Genius.app/Contents/MacOS/Genius &> /dev/null\"" >> ~/.bash_profile
 fi
@@ -43,7 +43,7 @@ echo "Cleaning up..."
 rm Genius.zip
 
 echo "Opening..."
-if [ -e /usr/bin/open ]; then
+if [[ -e /usr/bin/open ]]; then
 	open Genius.app
 else
 	Genius.app/Contents/MacOS/Genius &> /dev/null
