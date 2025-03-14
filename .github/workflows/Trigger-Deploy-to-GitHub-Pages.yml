@@ -1,11 +1,11 @@
-name: Trigger Deploy to Pages
+name: Trigger Deploy to GitHub Pages
 
 on:
     create:
     delete:
     push:
         paths:
-            - .github/workflows/Trigger-Deploy-to-Pages.yml
+            - .github/workflows/Trigger-Deploy-to-GitHub-Pages.yml
             - install.sh
     workflow_dispatch:
 
@@ -16,19 +16,19 @@ concurrency:
 permissions: {}
 
 jobs:
-    Trigger-Deploy-to-Pages:
-        name: Trigger Deploy to Pages
+    Trigger-Deploy-to-GitHub-Pages:
+        name: Trigger Deploy to GitHub Pages
         runs-on: macos-15
 
         steps:
-            - name: Trigger Deploy to Pages
+            - name: Trigger Deploy to GitHub Pages
               uses: actions/github-script@main
               with:
-                github-token: ${{ secrets.TRIGGER_DEPLOY_TO_PAGES_TOKEN }}
+                github-token: ${{ secrets.TRIGGER_DEPLOY_TO_GITHUB_PAGES_TOKEN }}
                 script: |
                     await github.rest.actions.createWorkflowDispatch({
                         owner: "F1248",
                         repo: "f1248.github.io",
-                        workflow_id: "Deploy-to-Pages.yml",
+                        workflow_id: "Deploy-to-GitHub-Pages.yml",
                         ref: "main",
                     });
