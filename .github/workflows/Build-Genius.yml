@@ -91,21 +91,47 @@ jobs:
         runs-on: macos-15
 
         steps:
-            - name: Install xcodes
-              run: |
-                curl --remote-name --location https://github.com/XcodesOrg/xcodes/releases/latest/download/xcodes.zip
-                unzip xcodes.zip
-                echo "xcodes $(./xcodes version) installed"
+            - name: Select latest installed Xcode version
+              uses: maxim-lobanov/setup-xcode@master
+              with:
+                xcode-version: latest
 
-            - name: Install Xcode
+            - name: Checkout Build.txt from Xcode mirror
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Build.txt
+                sparse-checkout-cone-mode: false
+
+            - name: Check if latest Xcode version is installed
               run: |
-                ./xcodes download --use-fastlane-auth --data-source apple 0 || true # Work around `xcodes list` not using fastlane spaceship authentication
-                sudo --preserve-env=FASTLANE_SESSION ./xcodes install --select --update --experimental-unxip --use-fastlane-auth --data-source apple "$(
-                    ./xcodes list --data-source apple | sed "s/Beta (/Beta 1 (/" | sort --version-sort | sed "s/Beta 1 (/Beta (/" | tail --lines 1
-                )"
+                if [[ "$(xcodebuild -version | sed -n "s/Build version //p")" == "$(cat Build.txt)" ]]; then
+                    echo latest_xcode_version_installed=true >> "$GITHUB_ENV"
+                else
+                    echo latest_xcode_version_installed=false >> "$GITHUB_ENV"
+                fi
+
+            - name: Checkout Xcode mirror
+              if: env.latest_xcode_version_installed == 'false'
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Xcode.xip-*
+
+            - name: Install unxip
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                curl --remote-name --location https://github.com/saagarjha/unxip/releases/latest/download/unxip
+                chmod +x unxip
+
+            - name: Install and select Xcode
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                cat Xcode.xip-* | ./unxip -
+                sudo xcode-select --switch Xcode*.app
                 echo "$(xcodebuild -version | tr "\n" " ")installed"
-              env:
-                FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
 
             - name: Checkout
               uses: actions/checkout@main
@@ -147,21 +173,47 @@ jobs:
         runs-on: macos-15
 
         steps:
-            - name: Install xcodes
-              run: |
-                curl --remote-name --location https://github.com/XcodesOrg/xcodes/releases/latest/download/xcodes.zip
-                unzip xcodes.zip
-                echo "xcodes $(./xcodes version) installed"
+            - name: Select latest installed Xcode version
+              uses: maxim-lobanov/setup-xcode@master
+              with:
+                xcode-version: latest
 
-            - name: Install Xcode
+            - name: Checkout Build.txt from Xcode mirror
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Build.txt
+                sparse-checkout-cone-mode: false
+
+            - name: Check if latest Xcode version is installed
               run: |
-                ./xcodes download --use-fastlane-auth --data-source apple 0 || true # Work around `xcodes list` not using fastlane spaceship authentication
-                sudo --preserve-env=FASTLANE_SESSION ./xcodes install --select --update --experimental-unxip --use-fastlane-auth --data-source apple "$(
-                    ./xcodes list --data-source apple | sed "s/Beta (/Beta 1 (/" | sort --version-sort | sed "s/Beta 1 (/Beta (/" | tail --lines 1
-                )"
+                if [[ "$(xcodebuild -version | sed -n "s/Build version //p")" == "$(cat Build.txt)" ]]; then
+                    echo latest_xcode_version_installed=true >> "$GITHUB_ENV"
+                else
+                    echo latest_xcode_version_installed=false >> "$GITHUB_ENV"
+                fi
+
+            - name: Checkout Xcode mirror
+              if: env.latest_xcode_version_installed == 'false'
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Xcode.xip-*
+
+            - name: Install unxip
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                curl --remote-name --location https://github.com/saagarjha/unxip/releases/latest/download/unxip
+                chmod +x unxip
+
+            - name: Install and select Xcode
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                cat Xcode.xip-* | ./unxip -
+                sudo xcode-select --switch Xcode*.app
                 echo "$(xcodebuild -version | tr "\n" " ")installed"
-              env:
-                FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
 
             - name: Checkout
               uses: actions/checkout@main
@@ -193,21 +245,47 @@ jobs:
         runs-on: macos-15
 
         steps:
-            - name: Install xcodes
-              run: |
-                curl --remote-name --location https://github.com/XcodesOrg/xcodes/releases/latest/download/xcodes.zip
-                unzip xcodes.zip
-                echo "xcodes $(./xcodes version) installed"
+            - name: Select latest installed Xcode version
+              uses: maxim-lobanov/setup-xcode@master
+              with:
+                xcode-version: latest
 
-            - name: Install Xcode
+            - name: Checkout Build.txt from Xcode mirror
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Build.txt
+                sparse-checkout-cone-mode: false
+
+            - name: Check if latest Xcode version is installed
               run: |
-                ./xcodes download --use-fastlane-auth --data-source apple 0 || true # Work around `xcodes list` not using fastlane spaceship authentication
-                sudo --preserve-env=FASTLANE_SESSION ./xcodes install --select --update --experimental-unxip --use-fastlane-auth --data-source apple "$(
-                    ./xcodes list --data-source apple | sed "s/Beta (/Beta 1 (/" | sort --version-sort | sed "s/Beta 1 (/Beta (/" | tail --lines 1
-                )"
+                if [[ "$(xcodebuild -version | sed -n "s/Build version //p")" == "$(cat Build.txt)" ]]; then
+                    echo latest_xcode_version_installed=true >> "$GITHUB_ENV"
+                else
+                    echo latest_xcode_version_installed=false >> "$GITHUB_ENV"
+                fi
+
+            - name: Checkout Xcode mirror
+              if: env.latest_xcode_version_installed == 'false'
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Xcode.xip-*
+
+            - name: Install unxip
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                curl --remote-name --location https://github.com/saagarjha/unxip/releases/latest/download/unxip
+                chmod +x unxip
+
+            - name: Install and select Xcode
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                cat Xcode.xip-* | ./unxip -
+                sudo xcode-select --switch Xcode*.app
                 echo "$(xcodebuild -version | tr "\n" " ")installed"
-              env:
-                FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
 
             - name: Checkout
               uses: actions/checkout@main
@@ -230,21 +308,47 @@ jobs:
         runs-on: macos-15
 
         steps:
-            - name: Install xcodes
-              run: |
-                curl --remote-name --location https://github.com/XcodesOrg/xcodes/releases/latest/download/xcodes.zip
-                unzip xcodes.zip
-                echo "xcodes $(./xcodes version) installed"
+            - name: Select latest installed Xcode version
+              uses: maxim-lobanov/setup-xcode@master
+              with:
+                xcode-version: latest
 
-            - name: Install Xcode
+            - name: Checkout Build.txt from Xcode mirror
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Build.txt
+                sparse-checkout-cone-mode: false
+
+            - name: Check if latest Xcode version is installed
               run: |
-                ./xcodes download --use-fastlane-auth --data-source apple 0 || true # Work around `xcodes list` not using fastlane spaceship authentication
-                sudo --preserve-env=FASTLANE_SESSION ./xcodes install --select --update --experimental-unxip --use-fastlane-auth --data-source apple "$(
-                    ./xcodes list --data-source apple | sed "s/Beta (/Beta 1 (/" | sort --version-sort | sed "s/Beta 1 (/Beta (/" | tail --lines 1
-                )"
+                if [[ "$(xcodebuild -version | sed -n "s/Build version //p")" == "$(cat Build.txt)" ]]; then
+                    echo latest_xcode_version_installed=true >> "$GITHUB_ENV"
+                else
+                    echo latest_xcode_version_installed=false >> "$GITHUB_ENV"
+                fi
+
+            - name: Checkout Xcode mirror
+              if: env.latest_xcode_version_installed == 'false'
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Xcode.xip-*
+
+            - name: Install unxip
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                curl --remote-name --location https://github.com/saagarjha/unxip/releases/latest/download/unxip
+                chmod +x unxip
+
+            - name: Install and select Xcode
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                cat Xcode.xip-* | ./unxip -
+                sudo xcode-select --switch Xcode*.app
                 echo "$(xcodebuild -version | tr "\n" " ")installed"
-              env:
-                FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
 
             - name: Checkout
               uses: actions/checkout@main
