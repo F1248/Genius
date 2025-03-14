@@ -45,7 +45,7 @@ jobs:
         runs-on: macos-15
 
         steps:
-            - name: Select Xcode Version
+            - name: Select Xcode version
               uses: maxim-lobanov/setup-xcode@master
               with:
                 xcode-version: latest
@@ -172,7 +172,7 @@ jobs:
                 unzip portable_swiftlint.zip
                 echo "SwiftLint $(./swiftlint version) installed"
 
-            - name: Run SwiftLint Lint Rules
+            - name: Run SwiftLint lint rules
               run: ./swiftlint lint --strict --reporter github-actions-logging
 
             - name: Install xcbeautify
@@ -185,11 +185,11 @@ jobs:
             - name: Build Genius
               run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
 
-            - name: Run SwiftLint Analyzer Rules
+            - name: Run SwiftLint analyzer rules
               run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
 
-    Run-Tests:
-        name: Run Tests
+    Run-tests:
+        name: Run tests
         runs-on: macos-15
 
         steps:
@@ -219,7 +219,7 @@ jobs:
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
-            - name: Run Tests
+            - name: Run tests
               run: xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
     Build-Genius:
@@ -264,7 +264,7 @@ jobs:
                 mv Genius.xcarchive/Products/Applications/Genius.app .
                 zip --recurse-paths Genius.zip Genius.app
 
-            - name: Attest Build Provenance
+            - name: Attest build provenance
               uses: actions/attest-build-provenance@main
               with:
                 subject-path: Genius.zip
@@ -275,13 +275,13 @@ jobs:
                 name: Genius
                 path: Genius.zip
 
-            - name: Zip Debug Symbols
+            - name: Zip debug symbols
               run: |
                 mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
-                zip --recurse-paths DebugSymbols.zip Genius.app.dSYM
+                zip --recurse-paths Debug-Symbols.zip Genius.app.dSYM
 
-            - name: Upload Debug Symbols
+            - name: Upload debug symbols
               uses: actions/upload-artifact@main
               with:
                 name: Debug Symbols
-                path: DebugSymbols.zip
+                path: Debug-Symbols.zip
