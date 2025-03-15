@@ -138,12 +138,9 @@ jobs:
 
             - name: Install Periphery
               run: |
-                # Work around https://github.com/peripheryapp/periphery/issues/885
-                # tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)  
-                # curl --location https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip --output periphery.zip
-                # unzip periphery.zip
-                brew install periphery
-                cp /opt/homebrew/bin/periphery .
+                tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip --output periphery.zip
+                unzip periphery.zip
                 echo "Periphery $(./periphery version) installed"
 
             - name: Run Periphery
