@@ -102,9 +102,9 @@ jobs:
             - name: Work around https://github.com/github/codeql-action/issues/2506
               run: |
                 xcode_developer_directory=$(xcode-select --print-path)
-                ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/* "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib
+                cp -r "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/* "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib
                 sudo mkdir /usr/local/lib
-                sudo ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/* /usr/local/lib
+                sudo cp -r "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/* /usr/local/lib
 
             - name: Initialize CodeQL
               uses: github/codeql-action/init@main
