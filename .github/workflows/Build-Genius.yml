@@ -85,7 +85,9 @@ jobs:
               run: |
                 cat Xcode.xip-* | ./unxip -
                 sudo xcode-select --switch Xcode*.app
-                echo "$(xcodebuild -version | tr "\n" " ")installed"
+
+            - name: Log selected Xcode version
+              run: echo "$(xcodebuild -version | tr "\n" " ")selected"
 
             - name: Checkout
               uses: actions/checkout@main
@@ -101,9 +103,9 @@ jobs:
               run: |
                 xcode_developer_directory=$(xcode-select --print-path)
                 mkdir -p $xcode_developer_directory/Toolchains/XcodeDefault.xctoolchain/usr/lib
-                cp -r $xcode_developer_directory/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/* $xcode_developer_directory/Toolchains/XcodeDefault.xctoolchain/usr/lib
+                cp -r "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/* "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib
                 sudo mkdir -p /usr/local/lib
-                sudo cp -r $xcode_developer_directory/Toolchains/XcodeDefault.xctoolchain/usr/lib/* /usr/local/lib
+                sudo cp -r "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/* /usr/local/lib
 
             - name: Initialize CodeQL
               uses: github/codeql-action/init@main
@@ -169,19 +171,18 @@ jobs:
     #           run: |
     #             cat Xcode.xip-* | ./unxip -
     #             sudo xcode-select --switch Xcode*.app
-    #             echo "$(xcodebuild -version | tr "\n" " ")installed"
+
+    #         - name: Log selected Xcode version
+    #           run: echo "$(xcodebuild -version | tr "\n" " ")selected"
 
     #         - name: Checkout
     #           uses: actions/checkout@main
 
     #         - name: Install Periphery
     #           run: |
-    #             # Work around https://github.com/peripheryapp/periphery/issues/885
-    #             # tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
-    #             # curl --location https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip --output periphery.zip
-    #             # unzip periphery.zip
-    #             brew install periphery
-    #             cp /opt/homebrew/bin/periphery .
+    #             tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
+    #             curl --location https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip --output periphery.zip
+    #             unzip periphery.zip
     #             echo "Periphery $(./periphery version) installed"
 
     #         - name: Run Periphery
@@ -251,7 +252,9 @@ jobs:
     #           run: |
     #             cat Xcode.xip-* | ./unxip -
     #             sudo xcode-select --switch Xcode*.app
-    #             echo "$(xcodebuild -version | tr "\n" " ")installed"
+
+    #         - name: Log selected Xcode version
+    #           run: echo "$(xcodebuild -version | tr "\n" " ")selected"
 
     #         - name: Checkout
     #           uses: actions/checkout@main
@@ -323,7 +326,9 @@ jobs:
     #           run: |
     #             cat Xcode.xip-* | ./unxip -
     #             sudo xcode-select --switch Xcode*.app
-    #             echo "$(xcodebuild -version | tr "\n" " ")installed"
+
+    #         - name: Log selected Xcode version
+    #           run: echo "$(xcodebuild -version | tr "\n" " ")selected"
 
     #         - name: Checkout
     #           uses: actions/checkout@main
@@ -386,7 +391,9 @@ jobs:
     #           run: |
     #             cat Xcode.xip-* | ./unxip -
     #             sudo xcode-select --switch Xcode*.app
-    #             echo "$(xcodebuild -version | tr "\n" " ")installed"
+
+    #         - name: Log selected Xcode version
+    #           run: echo "$(xcodebuild -version | tr "\n" " ")selected"
 
     #         - name: Checkout
     #           uses: actions/checkout@main
