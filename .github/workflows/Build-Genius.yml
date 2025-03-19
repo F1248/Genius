@@ -131,7 +131,9 @@ jobs:
               run: |
                 cat Xcode.xip-* | ./unxip -
                 sudo xcode-select --switch Xcode*.app
-                echo "$(xcodebuild -version | tr "\n" " ")installed"
+
+            - name: Log selected Xcode version
+              run: echo "$(xcodebuild -version | tr "\n" " ")selected"
 
             - name: Checkout
               uses: actions/checkout@main
@@ -210,7 +212,9 @@ jobs:
               run: |
                 cat Xcode.xip-* | ./unxip -
                 sudo xcode-select --switch Xcode*.app
-                echo "$(xcodebuild -version | tr "\n" " ")installed"
+
+            - name: Log selected Xcode version
+              run: echo "$(xcodebuild -version | tr "\n" " ")selected"
 
             - name: Checkout
               uses: actions/checkout@main
@@ -282,7 +286,9 @@ jobs:
               run: |
                 cat Xcode.xip-* | ./unxip -
                 sudo xcode-select --switch Xcode*.app
-                echo "$(xcodebuild -version | tr "\n" " ")installed"
+
+            - name: Log selected Xcode version
+              run: echo "$(xcodebuild -version | tr "\n" " ")selected"
 
             - name: Checkout
               uses: actions/checkout@main
@@ -345,7 +351,9 @@ jobs:
               run: |
                 cat Xcode.xip-* | ./unxip -
                 sudo xcode-select --switch Xcode*.app
-                echo "$(xcodebuild -version | tr "\n" " ")installed"
+
+            - name: Log selected Xcode version
+              run: echo "$(xcodebuild -version | tr "\n" " ")selected"
 
             - name: Checkout
               uses: actions/checkout@main
