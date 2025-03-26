@@ -1,5 +1,5 @@
 //
-// OptionalComparisonOpearatorsTests.swift
+// OptionalComparisonOperatorsTests.swift
 // GeniusTests
 //
 // © 2025 F1248 <f1248@mailbox.org>
@@ -9,10 +9,10 @@
 @testable import Genius
 import Testing
 
-extension OptionalOpearatorsTests {
+extension OptionalOperatorsTests {
 
 	@Suite("Optional comparison operators tests")
-	struct OptionalComparisonOpearatorsTests {
+	struct OptionalComparisonOperatorsTests {
 
 		@Test("Optional greater than tests")
 		func optionalGreaterThanTests() {
