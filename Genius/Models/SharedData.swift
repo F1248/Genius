@@ -9,9 +9,9 @@
 import _Concurrency
 import Combine
 
-class SharedData: ObservableObject {
+actor SharedData: ObservableObject {
 
-	@Published var selectedTabsIndices: [String: Int] = [:]
+	@MainActor @Published var selectedTabsIndices: [String: Int] = [:]
 }
 
-@MainActor let sharedData = SharedData()
+let sharedData = SharedData()
