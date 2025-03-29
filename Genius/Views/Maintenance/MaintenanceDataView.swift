@@ -6,7 +6,6 @@
 // See LICENSE.txt for license information.
 //
 
-import SFSafeSymbols
 import SwiftUI
 import SwiftUICore
 
@@ -38,9 +37,7 @@ struct MaintenanceDataView: View {
 						HStack {
 							VaryingText(rowContent.0)
 							Spacer()
-							Image(systemSymbol: rowContent.1.symbol)
-								.accessibilityLabel(Text(rowContent.1.label))
-								.foregroundColor(rowContent.1.color)
+							rowContent.1.image
 								.frame(width: 14)
 						}
 						.padding(.vertical, 2)

@@ -7,6 +7,7 @@
 //
 
 import SFSafeSymbols
+import SwiftUI
 import SwiftUICore
 
 struct Symbol {
@@ -14,4 +15,10 @@ struct Symbol {
 	let symbol: SFSymbol
 	let color: Color
 	let label: LocalizedStringKey
+
+	var image: some View {
+		Image(systemSymbol: symbol)
+			.accessibilityLabel(Text(label))
+			.foregroundColor(color)
+	}
 }
