@@ -34,7 +34,7 @@ extension SystemInformation {
 					cc=\(serialNumber.dropFirst(8))&\
 					lang=\(Locale.currentLanguageCode ?? "")
 					"""
-					return String(Network.transferURL(url)?.between(start: "<configCode>", end: "</configCode>"))
+					return String(Network.string(from: url)?.between(start: "<configCode>", end: "</configCode>"))
 				}(),
 				applicable: Machine.serialNumber.value.map { [11, 12].contains($0.count) }
 			)

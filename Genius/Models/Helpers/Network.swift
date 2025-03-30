@@ -10,7 +10,7 @@ import Foundation
 
 enum Network {
 
-	static func transferURL(_ url: String) -> String? {
+	static func string(from url: String) -> String? {
 		Process("/usr/bin/curl", "--silent", "--show-error", url)?.runSafe()
 	}
 }
