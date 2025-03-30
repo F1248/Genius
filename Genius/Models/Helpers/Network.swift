@@ -11,6 +11,6 @@ import Foundation
 enum Network {
 
 	static func string(from url: String) -> String? {
-		Process("/usr/bin/curl", "--silent", "--show-error", url)?.runSafe()
+		Process("/usr/bin/curl", "--no-progress-meter", url)?.runSafe()
 	}
 }
