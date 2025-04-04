@@ -75,14 +75,14 @@ jobs:
                 # sparse-checkout: Xcode.xip-*
 
             - name: Install unxip
-              #   if: env.latest_xcode_version_installed == 'false' # Work around workaround for https://github.com/github/codeql-action/issues/2506 not working with preinstalled Xcode
+            #   if: env.latest_xcode_version_installed == 'false' # Work around workaround for https://github.com/github/codeql-action/issues/2506 not working with preinstalled Xcode
               run: |
                 curl --remote-name --location https://github.com/saagarjha/unxip/releases/latest/download/unxip
                 chmod +x unxip
                 echo "$(./unxip --version) installed"
 
             - name: Install and select Xcode
-              #   if: env.latest_xcode_version_installed == 'false' # Work around workaround for https://github.com/github/codeql-action/issues/2506 not working with preinstalled Xcode
+            #   if: env.latest_xcode_version_installed == 'false' # Work around workaround for https://github.com/github/codeql-action/issues/2506 not working with preinstalled Xcode
               run: |
                 cat Xcode.xip-* | ./unxip -
                 sudo xcode-select --switch Xcode*.app
