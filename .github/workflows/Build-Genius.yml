@@ -86,6 +86,7 @@ jobs:
               run: |
                 cat Xcode.xip-* | ./unxip -
                 sudo xcode-select --switch Xcode*.app
+                sudo xcodebuild -runFirstLaunch
 
             - name: Log selected Xcode version
               run: echo "$(xcodebuild -version | tr "\n" " ")selected"
@@ -172,6 +173,7 @@ jobs:
               run: |
                 cat Xcode.xip-* | ./unxip -
                 sudo xcode-select --switch Xcode*.app
+                sudo xcodebuild -runFirstLaunch
 
             - name: Log selected Xcode version
               run: echo "$(xcodebuild -version | tr "\n" " ")selected"
@@ -254,6 +256,7 @@ jobs:
               run: |
                 cat Xcode.xip-* | ./unxip -
                 sudo xcode-select --switch Xcode*.app
+                sudo xcodebuild -runFirstLaunch
 
             - name: Log selected Xcode version
               run: echo "$(xcodebuild -version | tr "\n" " ")selected"
@@ -329,6 +332,7 @@ jobs:
               run: |
                 cat Xcode.xip-* | ./unxip -
                 sudo xcode-select --switch Xcode*.app
+                sudo xcodebuild -runFirstLaunch
 
             - name: Log selected Xcode version
               run: echo "$(xcodebuild -version | tr "\n" " ")selected"
@@ -395,6 +399,7 @@ jobs:
               run: |
                 cat Xcode.xip-* | ./unxip -
                 sudo xcode-select --switch Xcode*.app
+                sudo xcodebuild -runFirstLaunch
 
             - name: Log selected Xcode version
               run: echo "$(xcodebuild -version | tr "\n" " ")selected"
