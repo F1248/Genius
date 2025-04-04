@@ -84,8 +84,8 @@ jobs:
             # - name: Install and select Xcode
             #   if: env.latest_xcode_version_installed == 'false'
             #   run: |
-            #     cat Xcode.xip-* | ./unxip -
-            #     sudo xcode-select --switch Xcode*.app
+            #     cat Xcode.xip-* | ./unxip - ~
+            #     sudo xcode-select --switch ~/Xcode*.app
             #     sudo xcodebuild -runFirstLaunch
 
             - name: Log selected Xcode version
@@ -171,8 +171,8 @@ jobs:
             - name: Install and select Xcode
               if: env.latest_xcode_version_installed == 'false'
               run: |
-                cat Xcode.xip-* | ./unxip -
-                sudo xcode-select --switch Xcode*.app
+                cat Xcode.xip-* | ./unxip - ~
+                sudo xcode-select --switch ~/Xcode*.app
                 sudo xcodebuild -runFirstLaunch
 
             - name: Log selected Xcode version
@@ -254,8 +254,8 @@ jobs:
             - name: Install and select Xcode
               if: env.latest_xcode_version_installed == 'false'
               run: |
-                cat Xcode.xip-* | ./unxip -
-                sudo xcode-select --switch Xcode*.app
+                cat Xcode.xip-* | ./unxip - ~
+                sudo xcode-select --switch ~/Xcode*.app
                 sudo xcodebuild -runFirstLaunch
 
             - name: Log selected Xcode version
@@ -330,8 +330,8 @@ jobs:
             - name: Install and select Xcode
               if: env.latest_xcode_version_installed == 'false'
               run: |
-                cat Xcode.xip-* | ./unxip -
-                sudo xcode-select --switch Xcode*.app
+                cat Xcode.xip-* | ./unxip - ~
+                sudo xcode-select --switch ~/Xcode*.app
                 sudo xcodebuild -runFirstLaunch
 
             - name: Log selected Xcode version
@@ -397,8 +397,8 @@ jobs:
             - name: Install and select Xcode
               if: env.latest_xcode_version_installed == 'false'
               run: |
-                cat Xcode.xip-* | ./unxip -
-                sudo xcode-select --switch Xcode*.app
+                cat Xcode.xip-* | ./unxip - ~
+                sudo xcode-select --switch ~/Xcode*.app
                 sudo xcodebuild -runFirstLaunch
 
             - name: Log selected Xcode version
