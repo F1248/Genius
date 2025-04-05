@@ -12,7 +12,6 @@ import IOKit
 
 struct IORegistry: ~Copyable {
 
-	// periphery:ignore
 	let matchingDictionary: CFMutableDictionary?
 
 	var service: UInt32? {
