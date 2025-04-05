@@ -35,8 +35,7 @@ unzip -q -o Genius.zip
 rm -r -f Genius.app
 unzip -q Genius.zip
 if [[ ! -e /System/Library/CoreServices/Finder.app ]]; then
-	echo "
-alias genius=\"$PWD/Genius.app/Contents/MacOS/Genius &> /dev/null\"" >> ~/.bash_profile
+	echo "\nalias genius=\"$PWD/Genius.app/Contents/MacOS/Genius &> /dev/null\"" >> ~/.bash_profile
 fi
 
 echo "Cleaning up..."
