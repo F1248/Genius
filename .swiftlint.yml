@@ -62,8 +62,7 @@ type_contents_order:
         - case
         - type_alias
         - associated_type
-        - subtype
-        - type_property
+        - [subtype, type_property]
         - instance_property
         - initializer
         - deinitializer
