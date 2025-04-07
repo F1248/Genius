@@ -11,7 +11,7 @@ import SwiftUICore
 
 struct SystemInformationTabView: View {
 
-	let content: [(LocalizedStringKey, [(LocalizedStringKey, String)])]
+	let content: CustomKeyValuePairs<LocalizedStringKey, CustomKeyValuePairs<LocalizedStringKey, String>>
 
 	// swiftlint:disable:next type_contents_order
 	init(
@@ -20,28 +20,28 @@ struct SystemInformationTabView: View {
 	) {
 		self.content =
 			content.map { key, value in
-				(key, value.compactMap { key, value in
-					value.uiRepresentation.map { (key, $0) }
+				(key: key, value: value.compactMap { key, value in
+					value.uiRepresentation.map { (key: key, value: $0) }
 				})
 			}
-			.filter { !$0.1.isEmpty }
+			.filter { !$0.value.isEmpty }
 	}
 
 	var body: some View {
 		ScrollView {
 			ForEach(content) { groupBoxContent in
 				GroupBox {
-					ForEach(enumerated: groupBoxContent.1) { index, rowContent in
+					ForEach(enumerated: groupBoxContent.value) { index, rowContent in
 						if index > 0 {
 							Divider()
 						}
 						HStack {
-							VaryingText(rowContent.0)
+							VaryingText(rowContent.key)
 							Spacer()
 							Button {
-								Pasteboard.write(rowContent.1)
+								Pasteboard.write(rowContent.value)
 							} label: {
-								Text(rowContent.1)
+								Text(rowContent.value)
 							}
 							.buttonStyle(.borderless)
 						}
@@ -49,7 +49,7 @@ struct SystemInformationTabView: View {
 					}
 					.padding(.horizontal, 2)
 				} label: {
-					Text(groupBoxContent.0)
+					Text(groupBoxContent.key)
 						.font(.title2)
 						.padding()
 				}

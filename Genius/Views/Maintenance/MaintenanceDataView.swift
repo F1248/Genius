@@ -11,7 +11,7 @@ import SwiftUICore
 
 struct MaintenanceDataView: View {
 
-	let content: [(LocalizedStringKey, [(LocalizedStringKey, Symbol)])]
+	let content: CustomKeyValuePairs<LocalizedStringKey, CustomKeyValuePairs<LocalizedStringKey, Symbol>>
 
 	// swiftlint:disable:next type_contents_order
 	init(
@@ -20,32 +20,32 @@ struct MaintenanceDataView: View {
 	) {
 		self.content =
 			content.map { key, value in
-				(key, value.compactMap { key, value in
-					value.uiRepresentation.map { (key, $0) }
+				(key: key, value: value.compactMap { key, value in
+					value.uiRepresentation.map { (key: key, value: $0) }
 				})
 			}
-			.filter { !$0.1.isEmpty }
+			.filter { !$0.value.isEmpty }
 	}
 
 	var body: some View {
 		ScrollView {
 			ForEach(content) { groupBoxContent in
 				GroupBox {
-					ForEach(enumerated: groupBoxContent.1) { index, rowContent in
+					ForEach(enumerated: groupBoxContent.value) { index, rowContent in
 						if index > 0 {
 							Divider()
 						}
 						HStack {
-							VaryingText(rowContent.0)
+							VaryingText(rowContent.key)
 							Spacer()
-							rowContent.1.image
+							rowContent.value.image
 								.frame(width: 14)
 						}
 						.padding(.vertical, 2)
 					}
 					.padding(.horizontal, 2)
 				} label: {
-					VaryingText(groupBoxContent.0)
+					VaryingText(groupBoxContent.key)
 						.font(.title2)
 						.padding()
 				}
