@@ -18,6 +18,7 @@ permissions: {}
 jobs:
     Trigger-Deploy-to-GitHub-Pages:
         name: Trigger Deploy to GitHub Pages
+        if: false
         runs-on: macos-15
 
         steps:

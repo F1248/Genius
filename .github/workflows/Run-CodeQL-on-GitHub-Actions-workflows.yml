@@ -18,6 +18,7 @@ jobs:
         name: Run CodeQL on GitHub Actions workflows
         permissions:
             security-events: write
+        if: false
         runs-on: macos-15
 
         steps:

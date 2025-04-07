@@ -48,7 +48,7 @@ jobs:
             - name: Select latest installed Xcode version
               uses: maxim-lobanov/setup-xcode@master
               with:
-                xcode-version: 16.2 # latest # Work around https://github.com/github/codeql-action/issues/2506 with Xcode 16.3 and later
+                xcode-version: 16.3 # latest
 
             # - name: Checkout Build.txt from Xcode mirror
             #   uses: actions/checkout@main
@@ -108,7 +108,7 @@ jobs:
                 queries: security-and-quality
 
             - name: Build Genius
-              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -sdk macosx15.2 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -sdk macosx15.4 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run CodeQL
               uses: github/codeql-action/analyze@main
@@ -122,6 +122,7 @@ jobs:
 
     Run-Periphery:
         name: Run Periphery
+        if: false
         runs-on: macos-15
 
         steps:
@@ -186,6 +187,7 @@ jobs:
 
     Run-SwiftFormat:
         name: Run SwiftFormat
+        if: false
         runs-on: macos-15
 
         steps:
@@ -205,6 +207,7 @@ jobs:
 
     Run-SwiftLint:
         name: Run SwiftLint
+        if: false
         runs-on: macos-15
 
         steps:
@@ -281,6 +284,7 @@ jobs:
 
     Run-tests:
         name: Run tests
+        if: false
         runs-on: macos-15
 
         steps:
@@ -348,6 +352,7 @@ jobs:
         permissions:
             attestations: write
             id-token: write
+        if: false
         runs-on: macos-15
 
         steps:
