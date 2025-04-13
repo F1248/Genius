@@ -110,7 +110,7 @@ jobs:
                 debug: true
 
             - name: Build Genius
-              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS,arch=x86_64 -sdk macosx15.4 -skipPackagePluginValidation CODE_SIGNING_ALLOWED=NO | ./xcbeautify --disable-logging --renderer github-actions
+              run: xcodebuild build-for-testing -scheme Genius -destination platform=macOS,arch=x86_64 -sdk macosx15.4 -skipPackagePluginValidation CODE_SIGNING_ALLOWED=NO | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Debug CodeQL
               run: |
