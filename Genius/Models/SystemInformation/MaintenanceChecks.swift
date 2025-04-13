@@ -14,11 +14,11 @@ extension SystemInformation {
 
 		enum TheftProtection {
 
-			static let activationLock = SystemInformationData<Bool?>(
+			static let activationLock = SystemInformationData<Bool?, _>(
 				IORegistry(class: IORegistryName.nvramVariables).keyExists("fmm-mobileme-token-FMM"),
 				applicable: Hardware.securityChip.value >=? .t2 &&? !?Hardware.Model.isVirtualMachine
 			)
-			static let firmwarePassword = SystemInformationData<Bool?>(
+			static let firmwarePassword = SystemInformationData<Bool?, _>(
 				Bool(firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check", requiresRoot: true)?.runSafe()),
 				applicable: Hardware.CPU.type.value == .intel &&? !?Hardware.Model.isVirtualMachine
 			)
@@ -26,7 +26,7 @@ extension SystemInformation {
 
 		enum DataSecurity {
 
-			static let fileVault = SystemInformationData<Bool?>(
+			static let fileVault = SystemInformationData<Bool?, _>(
 				Bool(fdesetupOutput: Process("/usr/bin/fdesetup", "status")?.runSafe()),
 				applicable: Software.OS.bootMode.value !=? .recovery
 			)
@@ -34,40 +34,40 @@ extension SystemInformation {
 
 		enum MalwareProtection {
 
-			static let systemIntegrityProtection = SystemInformationData<Bool?>(
+			static let systemIntegrityProtection = SystemInformationData<Bool?, _>(
 				Bool(csrutilOutput: Process("/usr/bin/csrutil", "status")?.runSafe()),
 				applicable: Software.OS.bootMode.value !=? .recovery
 			)
-			static let firewall = SystemInformationData<Bool?>(
+			static let firewall = SystemInformationData<Bool?, _>(
 				Bool(socketfilterfwOutput: Process("/usr/libexec/ApplicationFirewall/socketfilterfw", "--getglobalstate")?.runSafe()),
 				applicable: Software.OS.bootMode.value !=? .recovery
 			)
-			static let gatekeeper = SystemInformationData<Bool?>(Bool(spctlOutput: Process("/usr/sbin/spctl", "--status")?.runSafe()))
+			static let gatekeeper = SystemInformationData<Bool?, _>(Bool(spctlOutput: Process("/usr/sbin/spctl", "--status")?.runSafe()))
 		}
 
 		enum AutomaticUpdates {
 
-			static let checkMacOS = SystemInformationData<Bool?>(
+			static let checkMacOS = SystemInformationData<Bool?, _>(
 				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled"),
 				applicable: { if #unavailable(macOS 15) { true } else { false } }() &&? UserDefaults.available
 			)
-			static let downloadMacOS = SystemInformationData<Bool?>(
+			static let downloadMacOS = SystemInformationData<Bool?, _>(
 				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"),
 				applicable: UserDefaults.available
 			)
-			static let installMacOS = SystemInformationData<Bool?>(
+			static let installMacOS = SystemInformationData<Bool?, _>(
 				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates"),
 				applicable: UserDefaults.available
 			)
-			static let installCritical = SystemInformationData<Bool?>(
+			static let installCritical = SystemInformationData<Bool?, _>(
 				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"),
 				applicable: UserDefaults.available
 			)
-			static let installConfigurationData = SystemInformationData<Bool?>(
+			static let installConfigurationData = SystemInformationData<Bool?, _>(
 				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"),
 				applicable: UserDefaults.available
 			)
-			static let installAppStoreApps = SystemInformationData<Bool?>(
+			static let installAppStoreApps = SystemInformationData<Bool?, _>(
 				UserDefaults.read("/Library/Preferences/com.apple.commerce", "AutoUpdate"),
 				applicable: UserDefaults.available
 			)

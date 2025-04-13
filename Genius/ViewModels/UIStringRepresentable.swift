@@ -6,7 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
-protocol UIStringRepresentable {
+protocol UIStringRepresentable: Sendable {
 
-	var uiRepresentation: String? { get }
+	var uiRepresentation: String? { get async }
 }
