@@ -112,10 +112,6 @@ jobs:
             - name: Build Genius
               run: xcodebuild build-for-testing -scheme Genius -destination platform=macOS,arch=x86_64 -sdk macosx15.4 -skipPackagePluginValidation CODE_SIGNING_ALLOWED=NO | ./xcbeautify --disable-logging --renderer github-actions
 
-            - name: Debug CodeQL
-              run: |
-                /Users/runner/hostedtoolcache/CodeQL/2.21.0/arm64/codeql/codeql database analyze /Users/runner/work/_temp/codeql_databases/swift --debug
-
             - name: Run CodeQL
               uses: github/codeql-action/analyze@v3
 
