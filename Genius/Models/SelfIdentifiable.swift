@@ -6,7 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
-protocol SelfIdentifiable: Identifiable where Self: Hashable {}
+protocol SelfIdentifiable: Identifiable where Self: Equatable {}
 
 extension SelfIdentifiable {
 

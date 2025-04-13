@@ -7,12 +7,10 @@
 //
 
 import _Concurrency
-import Foundation
 import SwiftUICore
 
-struct CustomTab: Identifiable {
+struct CustomTab {
 
-	let id = UUID()
 	let title: VaryingText
 	let index: Int
 	let content: AnyView

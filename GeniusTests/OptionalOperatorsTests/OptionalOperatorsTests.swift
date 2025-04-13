@@ -1,5 +1,5 @@
 //
-// OptionalOpearatorsTests.swift
+// OptionalOperatorsTests.swift
 // GeniusTests
 //
 // © 2025 F1248 <f1248@mailbox.org>
@@ -8,5 +8,5 @@
 
 import Testing
 
-@Suite("Optional opearators tests")
-struct OptionalOpearatorsTests {}
+@Suite("Optional operators tests")
+struct OptionalOperatorsTests {}

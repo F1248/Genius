@@ -42,30 +42,65 @@ jobs:
         name: Run CodeQL
         permissions:
             security-events: write
+        if: false # Work around https://github.com/github/codeql-action/issues/2506 with Xcode 16.3 and later
         runs-on: macos-15
 
         steps:
-            - name: Select Xcode Version
+            - name: Select latest installed Xcode version
               uses: maxim-lobanov/setup-xcode@master
               with:
                 xcode-version: latest
+
+            - name: Checkout Build.txt from Xcode mirror
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Build.txt
+                sparse-checkout-cone-mode: false
+
+            - name: Check if latest Xcode version is installed
+              run: |
+                if [[ "$(xcodebuild -version | sed -n "s/Build version //p")" == "$(cat Build.txt)" ]]; then
+                    echo "latest_xcode_version_installed=true" >> "$GITHUB_ENV"
+                else
+                    echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
+                fi
+
+            - name: Checkout Xcode mirror
+              if: env.latest_xcode_version_installed == 'false'
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Xcode.xip-*
+
+            - name: Install unxip
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                curl --remote-name --location https://github.com/saagarjha/unxip/releases/latest/download/unxip
+                chmod +x unxip
+                echo "$(./unxip --version) installed"
+
+            - name: Install and select Xcode
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                cat Xcode.xip-* | ./unxip - ~
+                sudo xcode-select --switch ~/Xcode*.app
+                sudo xcodebuild -runFirstLaunch
+
+            - name: Log selected Xcode version
+              run: echo "$(xcodebuild -version | tr "\n" " ")selected"
 
             - name: Checkout
               uses: actions/checkout@main
 
             - name: Install xcbeautify
               run: |
-                latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
-
-            - name: Work around https://github.com/github/codeql-action/issues/2506
-              run: |
-                xcode_developer_directory=$(xcode-select --print-path)
-                ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib
-                sudo mkdir /usr/local/lib
-                sudo ln "$xcode_developer_directory"/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/*.dylib /usr/local/lib
 
             - name: Initialize CodeQL
               uses: github/codeql-action/init@main
@@ -74,7 +109,7 @@ jobs:
                 queries: security-and-quality
 
             - name: Build Genius
-              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -sdk macosx15.2 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run CodeQL
               uses: github/codeql-action/analyze@main
@@ -91,18 +126,59 @@ jobs:
         runs-on: macos-15
 
         steps:
-            - name: Select Xcode Version
+            - name: Select latest installed Xcode version
               uses: maxim-lobanov/setup-xcode@master
               with:
                 xcode-version: latest
+
+            - name: Checkout Build.txt from Xcode mirror
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Build.txt
+                sparse-checkout-cone-mode: false
+
+            - name: Check if latest Xcode version is installed
+              run: |
+                if [[ "$(xcodebuild -version | sed -n "s/Build version //p")" == "$(cat Build.txt)" ]]; then
+                    echo "latest_xcode_version_installed=true" >> "$GITHUB_ENV"
+                else
+                    echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
+                fi
+
+            - name: Checkout Xcode mirror
+              if: env.latest_xcode_version_installed == 'false'
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Xcode.xip-*
+
+            - name: Install unxip
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                curl --remote-name --location https://github.com/saagarjha/unxip/releases/latest/download/unxip
+                chmod +x unxip
+                echo "$(./unxip --version) installed"
+
+            - name: Install and select Xcode
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                cat Xcode.xip-* | ./unxip - ~
+                sudo xcode-select --switch ~/Xcode*.app
+                sudo xcodebuild -runFirstLaunch
+
+            - name: Log selected Xcode version
+              run: echo "$(xcodebuild -version | tr "\n" " ")selected"
 
             - name: Checkout
               uses: actions/checkout@main
 
             - name: Install Periphery
               run: |
-                latest_periphery_tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/peripheryapp/periphery/releases/download/"$latest_periphery_tag"/periphery-"$latest_periphery_tag".zip --output periphery.zip
+                tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip --output periphery.zip
                 unzip periphery.zip
                 echo "Periphery $(./periphery version) installed"
 
@@ -133,10 +209,51 @@ jobs:
         runs-on: macos-15
 
         steps:
-            - name: Select Xcode Version
+            - name: Select latest installed Xcode version
               uses: maxim-lobanov/setup-xcode@master
               with:
                 xcode-version: latest
+
+            - name: Checkout Build.txt from Xcode mirror
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Build.txt
+                sparse-checkout-cone-mode: false
+
+            - name: Check if latest Xcode version is installed
+              run: |
+                if [[ "$(xcodebuild -version | sed -n "s/Build version //p")" == "$(cat Build.txt)" ]]; then
+                    echo "latest_xcode_version_installed=true" >> "$GITHUB_ENV"
+                else
+                    echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
+                fi
+
+            - name: Checkout Xcode mirror
+              if: env.latest_xcode_version_installed == 'false'
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Xcode.xip-*
+
+            - name: Install unxip
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                curl --remote-name --location https://github.com/saagarjha/unxip/releases/latest/download/unxip
+                chmod +x unxip
+                echo "$(./unxip --version) installed"
+
+            - name: Install and select Xcode
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                cat Xcode.xip-* | ./unxip - ~
+                sudo xcode-select --switch ~/Xcode*.app
+                sudo xcodebuild -runFirstLaunch
+
+            - name: Log selected Xcode version
+              run: echo "$(xcodebuild -version | tr "\n" " ")selected"
 
             - name: Checkout
               uses: actions/checkout@main
@@ -147,43 +264,84 @@ jobs:
                 unzip portable_swiftlint.zip
                 echo "SwiftLint $(./swiftlint version) installed"
 
-            - name: Run SwiftLint Lint Rules
+            - name: Run SwiftLint lint rules
               run: ./swiftlint lint --strict --reporter github-actions-logging
 
             - name: Install xcbeautify
               run: |
-                latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Build Genius
               run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
 
-            - name: Run SwiftLint Analyzer Rules
+            - name: Run SwiftLint analyzer rules
               run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
 
-    Run-Tests:
-        name: Run Tests
+    Run-tests:
+        name: Run tests
         runs-on: macos-15
 
         steps:
-            - name: Select Xcode Version
+            - name: Select latest installed Xcode version
               uses: maxim-lobanov/setup-xcode@master
               with:
                 xcode-version: latest
+
+            - name: Checkout Build.txt from Xcode mirror
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Build.txt
+                sparse-checkout-cone-mode: false
+
+            - name: Check if latest Xcode version is installed
+              run: |
+                if [[ "$(xcodebuild -version | sed -n "s/Build version //p")" == "$(cat Build.txt)" ]]; then
+                    echo "latest_xcode_version_installed=true" >> "$GITHUB_ENV"
+                else
+                    echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
+                fi
+
+            - name: Checkout Xcode mirror
+              if: env.latest_xcode_version_installed == 'false'
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Xcode.xip-*
+
+            - name: Install unxip
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                curl --remote-name --location https://github.com/saagarjha/unxip/releases/latest/download/unxip
+                chmod +x unxip
+                echo "$(./unxip --version) installed"
+
+            - name: Install and select Xcode
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                cat Xcode.xip-* | ./unxip - ~
+                sudo xcode-select --switch ~/Xcode*.app
+                sudo xcodebuild -runFirstLaunch
+
+            - name: Log selected Xcode version
+              run: echo "$(xcodebuild -version | tr "\n" " ")selected"
 
             - name: Checkout
               uses: actions/checkout@main
 
             - name: Install xcbeautify
               run: |
-                latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
-            - name: Run Tests
+            - name: Run tests
               run: xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
     Build-Genius:
@@ -194,18 +352,59 @@ jobs:
         runs-on: macos-15
 
         steps:
-            - name: Select Xcode Version
+            - name: Select latest installed Xcode version
               uses: maxim-lobanov/setup-xcode@master
               with:
                 xcode-version: latest
+
+            - name: Checkout Build.txt from Xcode mirror
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Build.txt
+                sparse-checkout-cone-mode: false
+
+            - name: Check if latest Xcode version is installed
+              run: |
+                if [[ "$(xcodebuild -version | sed -n "s/Build version //p")" == "$(cat Build.txt)" ]]; then
+                    echo "latest_xcode_version_installed=true" >> "$GITHUB_ENV"
+                else
+                    echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
+                fi
+
+            - name: Checkout Xcode mirror
+              if: env.latest_xcode_version_installed == 'false'
+              uses: actions/checkout@main
+              with:
+                repository: F1248/Xcode-Mirror
+                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                sparse-checkout: Xcode.xip-*
+
+            - name: Install unxip
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                curl --remote-name --location https://github.com/saagarjha/unxip/releases/latest/download/unxip
+                chmod +x unxip
+                echo "$(./unxip --version) installed"
+
+            - name: Install and select Xcode
+              if: env.latest_xcode_version_installed == 'false'
+              run: |
+                cat Xcode.xip-* | ./unxip - ~
+                sudo xcode-select --switch ~/Xcode*.app
+                sudo xcodebuild -runFirstLaunch
+
+            - name: Log selected Xcode version
+              run: echo "$(xcodebuild -version | tr "\n" " ")selected"
 
             - name: Checkout
               uses: actions/checkout@main
 
             - name: Install xcbeautify
               run: |
-                latest_xcbeautify_tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$latest_xcbeautify_tag"/xcbeautify-"$latest_xcbeautify_tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
@@ -217,7 +416,7 @@ jobs:
                 mv Genius.xcarchive/Products/Applications/Genius.app .
                 zip --recurse-paths Genius.zip Genius.app
 
-            - name: Attest Build Provenance
+            - name: Attest build provenance
               uses: actions/attest-build-provenance@main
               with:
                 subject-path: Genius.zip
@@ -228,13 +427,13 @@ jobs:
                 name: Genius
                 path: Genius.zip
 
-            - name: Zip Debug Symbols
+            - name: Zip debug symbols
               run: |
                 mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
-                zip --recurse-paths DebugSymbols.zip Genius.app.dSYM
+                zip --recurse-paths Debug-Symbols.zip Genius.app.dSYM
 
-            - name: Upload Debug Symbols
+            - name: Upload debug symbols
               uses: actions/upload-artifact@main
               with:
                 name: Debug Symbols
-                path: DebugSymbols.zip
+                path: Debug-Symbols.zip
