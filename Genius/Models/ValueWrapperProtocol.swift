@@ -10,5 +10,5 @@ protocol ValueWrapperProtocol<Value>: Sendable {
 
 	associatedtype Value
 
-	var value: Value { get }
+	var value: Value { get async }
 }

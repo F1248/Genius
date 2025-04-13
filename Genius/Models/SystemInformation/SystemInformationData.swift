@@ -15,12 +15,18 @@ struct SystemInformationData<Value: Sendable, ValueWrapper: ValueWrapperProtocol
 	let valueWrapper: ValueWrapper
 	let applicable: Bool?
 
+	// periphery:ignore
+	// swiftlint:disable:next unused_declaration
 	var value: Value {
-		valueWrapper.value
+		get async { await valueWrapper.value }
 	}
 }
 
 extension SystemInformationData where ValueWrapper == SyncValueWrapper<Value> {
+
+	var value: Value {
+		valueWrapper.value
+	}
 
 	init(_ value: Value) {
 		self.valueWrapper = SyncValueWrapper(value: value)
@@ -29,6 +35,22 @@ extension SystemInformationData where ValueWrapper == SyncValueWrapper<Value> {
 
 	init<Wrapped>(_ value: @autoclosure () -> Value, applicable: Bool?) where Value == Wrapped? {
 		self.valueWrapper = SyncValueWrapper(value: applicable ?? true ? value() : nil)
+		self.applicable = applicable
+	}
+}
+
+// periphery:ignore
+extension SystemInformationData where ValueWrapper == AsyncValueWrapper<Value> {
+
+	init(_ valueClosure: @escaping @Sendable () async -> Value) {
+		self.valueWrapper = AsyncValueWrapper(valueClosure: valueClosure)
+		self.applicable = true
+	}
+
+	init<Wrapped>(_ valueClosure: @escaping @Sendable () async -> Value, applicable: Bool?) where Value == Wrapped? {
+		self.valueWrapper = AsyncValueWrapper(
+			valueClosure: applicable ?? true ? valueClosure : { @Sendable in nil }
+		)
 		self.applicable = applicable
 	}
 }
