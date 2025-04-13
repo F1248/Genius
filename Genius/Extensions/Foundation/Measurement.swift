@@ -12,7 +12,7 @@ import ObjectiveC
 typealias Frequency = Measurement<UnitFrequency>
 typealias InformationStorage = Measurement<UnitInformationStorage>
 
-extension Measurement: UIRepresentable {
+extension Measurement: UIStringRepresentable {
 
 	var uiRepresentation: String? {
 		switch self {

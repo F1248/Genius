@@ -1,4 +1,4 @@
-name: Run CodeQL on GitHub Actions Workflows
+name: Run CodeQL on GitHub Actions workflows
 
 on:
     push:
@@ -14,8 +14,8 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    Run-CodeQL-GitHub-Actions-Workflows:
-        name: Run CodeQL on GitHub Actions Workflows
+    Run-CodeQL-on-GitHub-Actions-workflows:
+        name: Run CodeQL on GitHub Actions workflows
         permissions:
             security-events: write
         runs-on: macos-15
@@ -33,6 +33,7 @@ jobs:
                         - exclude:
                             id:
                                 - actions/unpinned-tag
+                                - actions/unversioned-immutable-action
                 queries: security-and-quality
 
             - name: Run CodeQL

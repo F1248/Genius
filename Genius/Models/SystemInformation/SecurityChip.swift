@@ -6,7 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
-enum SecurityChip: Comparable, UIRepresentable {
+enum SecurityChip: Comparable, UIStringRepresentable {
 
 	case none
 	case t1

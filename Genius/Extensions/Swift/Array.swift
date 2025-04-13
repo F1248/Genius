@@ -10,7 +10,6 @@ extension Array {}
 
 extension [Int] {
 
-	// periphery:ignore
 	init?(_ strings: [some StringProtocol]?) {
 		guard let map = strings?.map(Int.init), !map.contains(nil) else { return nil }
 		self = map.compactMap(\.self)

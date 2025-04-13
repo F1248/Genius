@@ -11,7 +11,6 @@ import SwiftUICore
 
 struct AppCommands: Commands {
 
-	// periphery:ignore
 	@ObservedObject var observedSharedData: SharedData = sharedData // swiftlint:disable:this unused_declaration
 
 	var body: some Commands {

@@ -8,10 +8,17 @@
 
 import os
 
-extension Optional: UIRepresentable where Wrapped: UIRepresentable {
+extension Optional: UIStringRepresentable where Wrapped: UIStringRepresentable {
 
 	var uiRepresentation: String? {
-		self?.uiRepresentation
+		get async { await self?.uiRepresentation }
+	}
+}
+
+extension Optional: UISymbolRepresentable where Wrapped: UISymbolRepresentable {
+
+	var uiRepresentation: Symbol? {
+		get async { await self?.uiRepresentation }
 	}
 }
 

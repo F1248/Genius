@@ -18,7 +18,7 @@ struct SystemInformationHardwareView: View {
 			.padding()
 		SystemInformationTabView(content: [
 			"Model": [
-				"Name": SystemInformation.Hardware.Model.localizedName,
+				"Name": SystemInformation.Hardware.Model.displayName,
 				"Identifier": SystemInformation.Hardware.Model.identifier,
 				"Number": SystemInformation.Hardware.Model.number,
 				"Regulatory Number": SystemInformation.Hardware.Model.regulatoryNumber,
