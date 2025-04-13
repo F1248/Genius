@@ -21,11 +21,11 @@ extension SystemInformation {
 			// periphery:ignore
 			// swiftlint:disable:next unused_declaration
 			static let isLaptop: Bool? = namePrefix?.hasPrefix("MacBook")
-			static let name = SystemInformationData<String?>(
+			static let name = SystemInformationData<String?, _>(
 				IORegistry(name: "product").read("product-name"),
 				applicable: CPU.type.value == .appleSilicon
 			)
-			static let localizedName = SystemInformationData<String?>(
+			static let localizedName = SystemInformationData<String?, _>(
 				{ () -> String? in
 					guard let serialNumber = Machine.serialNumber.value else { return nil }
 					// swiftlint:disable:next explicit_type_interface
@@ -38,11 +38,13 @@ extension SystemInformation {
 				}(),
 				applicable: Machine.serialNumber.value.map { [11, 12].contains($0.count) }
 			)
-			static let displayName =
-				SystemInformationData<String?>(localizedName.value ?? name.value, applicable: localizedName.applicable ||? name.applicable)
-			static let identifier = SystemInformationData<String?>(IORegistry(class: "IOPlatformExpertDevice").read("model"))
+			static let displayName = SystemInformationData<String?, _>(
+				localizedName.value ?? name.value,
+				applicable: localizedName.applicable ||? name.applicable
+			)
+			static let identifier = SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read("model"))
 			static let namePrefix: String? = name.value?.remove(" ") ?? identifier.value
-			static let number = SystemInformationData<String?>(
+			static let number = SystemInformationData<String?, _>(
 				{
 					guard
 						let modelNumber = IORegistry(class: "IOPlatformExpertDevice").read("model-number") as String?,
@@ -52,11 +54,11 @@ extension SystemInformation {
 				}(),
 				applicable: CPU.type.value == .appleSilicon
 			)
-			static let regulatoryNumber = SystemInformationData<String?>(
+			static let regulatoryNumber = SystemInformationData<String?, _>(
 				IORegistry(class: "IOPlatformExpertDevice").read("regulatory-model-number"),
 				applicable: CPU.type.value == .appleSilicon &&? !?isVirtualMachine
 			)
-			static let sfSymbol = SystemInformationData<SFSymbol>({
+			static let sfSymbol = SystemInformationData<SFSymbol, _>({
 				switch true {
 					case isVirtualMachine: .macwindow
 					case namePrefix?.hasPrefix("MacBook"):
@@ -83,7 +85,7 @@ extension SystemInformation {
 			}())
 		}
 
-		static let securityChip = SystemInformationData<SecurityChip?>({
+		static let securityChip = SystemInformationData<SecurityChip?, _>({
 			switch CPU.type.value {
 				case .appleSilicon: return .mSeries
 				case .intel:
@@ -100,15 +102,15 @@ extension SystemInformation {
 
 			enum Cores {
 
-				static let differentTypes = SystemInformationData<Bool?>(type.value == .appleSilicon &&? !?Model.isVirtualMachine)
-				static let total = SystemInformationData<Int?>(Sysctl.read("hw.physicalcpu"))
+				static let differentTypes = SystemInformationData<Bool?, _>(type.value == .appleSilicon &&? !?Model.isVirtualMachine)
+				static let total = SystemInformationData<Int?, _>(Sysctl.read("hw.physicalcpu"))
 				static let performance =
-					SystemInformationData<Int?>(Sysctl.read("hw.perflevel0.physicalcpu"), applicable: differentTypes.value)
+					SystemInformationData<Int?, _>(Sysctl.read("hw.perflevel0.physicalcpu"), applicable: differentTypes.value)
 				static let efficiency =
-					SystemInformationData<Int?>(Sysctl.read("hw.perflevel1.physicalcpu"), applicable: differentTypes.value)
+					SystemInformationData<Int?, _>(Sysctl.read("hw.perflevel1.physicalcpu"), applicable: differentTypes.value)
 			}
 
-			static let type = SystemInformationData<CPUType>({
+			static let type = SystemInformationData<CPUType, _>({
 				#if arch(arm64)
 					.appleSilicon
 				#elseif arch(x86_64)
@@ -117,20 +119,20 @@ extension SystemInformation {
 					#error("Unsupported architecture")
 				#endif
 			}())
-			static let name = SystemInformationData<String?>(Sysctl.read("machdep.cpu.brand_string"))
+			static let name = SystemInformationData<String?, _>(Sysctl.read("machdep.cpu.brand_string"))
 			static let frequency =
-				SystemInformationData<Frequency?>(Sysctl.read("hw.cpufrequency").map(Frequency.init), applicable: type.value == .intel)
+				SystemInformationData<Frequency?, _>(Sysctl.read("hw.cpufrequency").map(Frequency.init), applicable: type.value == .intel)
 		}
 
-		static let memory = SystemInformationData<InformationStorage?>(Sysctl.read("hw.memsize").map(InformationStorage.init))
+		static let memory = SystemInformationData<InformationStorage?, _>(Sysctl.read("hw.memsize").map(InformationStorage.init))
 
 		enum Machine {
 
 			static let serialNumber =
-				SystemInformationData<String?>(IORegistry(class: "IOPlatformExpertDevice").read(kIOPlatformSerialNumberKey))
+				SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read(kIOPlatformSerialNumberKey))
 			static let hardwareUUID =
-				SystemInformationData<String?>(IORegistry(class: "IOPlatformExpertDevice").read(kIOPlatformUUIDKey))
-			static let provisioningUDID = SystemInformationData<String?>(
+				SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read(kIOPlatformUUIDKey))
+			static let provisioningUDID = SystemInformationData<String?, _>(
 				SystemProfiler.hardware?["provisioning_UDID"] as? String ?? (CPU.type.value == .intel ? hardwareUUID.value : nil),
 				applicable: SystemProfiler.available ||? CPU.type.value == .intel
 			)

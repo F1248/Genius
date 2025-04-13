@@ -10,23 +10,31 @@ import Defaults
 import SFSafeSymbols
 import SwiftUICore
 
-struct SystemInformationData<Value: Sendable> {
+struct SystemInformationData<Value: Sendable, ValueWrapper: ValueWrapperProtocol<Value>> {
 
-	let value: Value
+	let valueWrapper: ValueWrapper
 	let applicable: Bool?
 
+	var value: Value {
+		valueWrapper.value
+	}
+}
+
+extension SystemInformationData where ValueWrapper == SyncValueWrapper<Value> {
+
 	init(_ value: Value) {
-		self.value = value
+		self.valueWrapper = SyncValueWrapper(value: value)
 		self.applicable = true
 	}
 
 	init<Wrapped>(_ value: @autoclosure () -> Value, applicable: Bool?) where Value == Wrapped? {
-		self.value = applicable ?? true ? value() : nil
+		self.valueWrapper = SyncValueWrapper(value: applicable ?? true ? value() : nil)
 		self.applicable = applicable
 	}
 }
 
-extension SystemInformationData: UIStringRepresentable where Value: UIStringRepresentable {
+extension SystemInformationData: UIStringRepresentable
+where Value: UIStringRepresentable, ValueWrapper == SyncValueWrapper<Value> {
 
 	var uiRepresentation: String? {
 		if applicable ?? true {
@@ -38,7 +46,8 @@ extension SystemInformationData: UIStringRepresentable where Value: UIStringRepr
 	}
 }
 
-extension SystemInformationData: UISymbolRepresentable where Value: UISymbolRepresentable {
+extension SystemInformationData: UISymbolRepresentable
+where Value: UISymbolRepresentable, ValueWrapper == SyncValueWrapper<Value> {
 
 	var uiRepresentation: Symbol? {
 		if applicable ?? true {
