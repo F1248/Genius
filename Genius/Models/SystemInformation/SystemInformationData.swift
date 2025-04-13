@@ -37,9 +37,9 @@ extension SystemInformationData where ValueWrapper == SyncValueWrapper<Value> {
 	}
 }
 
-// periphery:ignore
 extension SystemInformationData where ValueWrapper == AsyncValueWrapper<Value> {
 
+	// periphery:ignore
 	init(_ valueClosure: @escaping @Sendable () async -> Value) {
 		self.valueWrapper = AsyncValueWrapper(valueClosure: valueClosure)
 		self.applicable = true

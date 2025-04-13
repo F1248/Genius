@@ -34,12 +34,12 @@ extension SystemInformation {
 					cc=\(serialNumber.dropFirst(8))&\
 					lang=\(Locale.currentLanguageCode ?? "")
 					"""
-					return String(Network.string(from: url)?.between(start: "<configCode>", end: "</configCode>"))
-				}(),
+					return await String(Network.string(from: url)?.between(start: "<configCode>", end: "</configCode>"))
+				},
 				applicable: Machine.serialNumber.value.map { [11, 12].contains($0.count) }
 			)
 			static let displayName = SystemInformationData<String?, _>(
-				localizedName.value ?? name.value,
+				{ await localizedName.value ?? name.value },
 				applicable: localizedName.applicable ||? name.applicable
 			)
 			static let identifier = SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read("model"))
