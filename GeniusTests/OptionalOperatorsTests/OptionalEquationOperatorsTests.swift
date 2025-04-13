@@ -1,5 +1,5 @@
 //
-// OptionalEquationOpearatorsTests.swift
+// OptionalEquationOperatorsTests.swift
 // GeniusTests
 //
 // © 2025 F1248 <f1248@mailbox.org>
@@ -9,10 +9,10 @@
 @testable import Genius
 import Testing
 
-extension OptionalOpearatorsTests {
+extension OptionalOperatorsTests {
 
 	@Suite("Optional equation operators tests")
-	struct OptionalEquationOpearatorsTests {
+	struct OptionalEquationOperatorsTests {
 
 		@Test("Optional equal to tests")
 		func optionalEqualToTests() {

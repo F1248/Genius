@@ -1,5 +1,5 @@
 //
-// OptionalLogicalOpearatorsTests.swift
+// OptionalLogicalOperatorsTests.swift
 // GeniusTests
 //
 // © 2025 F1248 <f1248@mailbox.org>
@@ -9,10 +9,10 @@
 @testable import Genius
 import Testing
 
-extension OptionalOpearatorsTests {
+extension OptionalOperatorsTests {
 
 	@Suite("Optional logical operators tests")
-	struct OptionalLogicalOpearatorsTests {
+	struct OptionalLogicalOperatorsTests {
 
 		@Test("Optional negation tests")
 		func optionalNegationTests() {

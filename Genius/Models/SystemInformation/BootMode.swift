@@ -6,7 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
-enum BootMode: UIRepresentable {
+enum BootMode: UIStringRepresentable {
 
 	case normal
 	case safe

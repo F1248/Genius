@@ -9,7 +9,7 @@
 import _Concurrency
 import SwiftUICore
 
-protocol TabData: RawRepresentable, CaseIterable, SelfIdentifiable where AllCases == [Self], RawValue == String {
+protocol TabData: RawRepresentable<String>, CaseIterable, SelfIdentifiable where AllCases == [Self] {
 
 	associatedtype ViewType: View
 
