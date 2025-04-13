@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>LSRequiresNativeExecution</key>
-	<true/>
+	<false/>
 </dict>
 </plist>
