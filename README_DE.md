@@ -34,7 +34,7 @@
 3. Verschiebe `Genius.app` in `/Programme`.
 4. Doppelklicke auf die App.
 5. Klicke auf `Fertig`.
-6. Öffne [`Datenschutz & Sicherheit` in den Systemeinstellungen](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension), scrolle nach unten zu der Nachricht `„Genius“ wurde blockiert, um deinen Mac zu schützen.` und klicke auf `Dennoch öffnen`.
+6. Öffne [`Datenschutz & Sicherheit` in den Systemeinstellungen, scrolle nach unten zu der Nachricht `„Genius“ wurde blockiert, um deinen Mac zu schützen.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity?Security) und klicke auf `Dennoch öffnen`.
 7. Klicke erneut auf `Dennoch öffnen`.
 8. Authentifiziere dich.
 

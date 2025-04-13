@@ -6,7 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
-enum CPUType: UIRepresentable {
+enum CPUType: UIStringRepresentable {
 
 	case appleSilicon
 	case intel

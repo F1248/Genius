@@ -34,7 +34,7 @@
 3. Move `Genius.app` into `/Applications`.
 4. Double-click the app.
 5. Click `Done`.
-6. Open [`Privacy & Security` in System Settings](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension), scroll down to the message `“Genius.app” was blocked to protect your Mac.` and click `Open Anyway`.
+6. Open [`Privacy & Security` in System Settings, scroll down to the message `“Genius.app” was blocked to protect your Mac.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity?Security) and click `Open Anyway`.
 7. Click `Open Anyway` again.
 8. Authenticate yourself.
 

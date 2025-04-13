@@ -10,11 +10,11 @@ import _Concurrency
 import AppKit
 import ObjectiveC
 
-class AppDelegate: NSObject, NSApplicationDelegate {
+actor AppDelegate: NSObject, NSApplicationDelegate {
 
-	func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool { true }
+	nonisolated func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool { true }
 
-	func applicationDockMenu(_: NSApplication) -> NSMenu? {
+	nonisolated func applicationDockMenu(_: NSApplication) -> NSMenu? {
 		let dockMenu = NSMenu()
 		for tab in ContentViewTab.allCases {
 			let menuItem = NSMenuItem(title: tab.localizedString, action: #selector(changeTab(_:)), keyEquivalent: "")
