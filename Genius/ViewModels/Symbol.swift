@@ -6,10 +6,12 @@
 // See LICENSE.txt for license information.
 //
 
+import _Concurrency
 import SFSafeSymbols
 import SwiftUI
 import SwiftUICore
 
+@MainActor
 struct Symbol {
 
 	let symbol: SFSymbol

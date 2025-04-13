@@ -10,13 +10,11 @@ import Defaults
 import SFSafeSymbols
 import SwiftUICore
 
-struct SystemInformationData<Value: Sendable, ValueWrapper: ValueWrapperProtocol<Value>> {
+struct SystemInformationData<Value, ValueWrapper: ValueWrapperProtocol<Value>>: Sendable {
 
 	let valueWrapper: ValueWrapper
 	let applicable: Bool?
 
-	// periphery:ignore
-	// swiftlint:disable:next unused_declaration
 	var value: Value {
 		get async { await valueWrapper.value }
 	}
@@ -55,31 +53,33 @@ extension SystemInformationData where ValueWrapper == AsyncValueWrapper<Value> {
 	}
 }
 
-extension SystemInformationData: UIStringRepresentable
-where Value: UIStringRepresentable, ValueWrapper == SyncValueWrapper<Value> {
+extension SystemInformationData: UIStringRepresentable where Value: UIStringRepresentable {
 
 	var uiRepresentation: String? {
-		if applicable ?? true {
-			value.uiRepresentation ??
-				(Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ? "Unknown".localized : nil)
-		} else {
-			Defaults[.developmentMode] ? "Not applicable".localized : nil
+		get async {
+			if applicable ?? true {
+				await value.uiRepresentation ??
+					(Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ? "Unknown".localized : nil)
+			} else {
+				Defaults[.developmentMode] ? "Not applicable".localized : nil
+			}
 		}
 	}
 }
 
-extension SystemInformationData: UISymbolRepresentable
-where Value: UISymbolRepresentable, ValueWrapper == SyncValueWrapper<Value> {
+extension SystemInformationData: UISymbolRepresentable where Value: UISymbolRepresentable {
 
 	var uiRepresentation: Symbol? {
-		if applicable ?? true {
-			value.uiRepresentation ??
-				(
-					Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
-						Symbol(symbol: .questionmark, color: .red, label: "Unknown") : nil
-				)
-		} else {
-			Defaults[.developmentMode] ? Symbol(symbol: .minus, color: .primary, label: "Not applicable") : nil
+		get async {
+			if applicable ?? true {
+				await value.uiRepresentation ??
+					(
+						Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
+							Symbol(symbol: .questionmark, color: .red, label: "Unknown") : nil
+					)
+			} else {
+				Defaults[.developmentMode] ? Symbol(symbol: .minus, color: .primary, label: "Not applicable") : nil
+			}
 		}
 	}
 }

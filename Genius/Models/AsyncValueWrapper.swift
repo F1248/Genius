@@ -6,7 +6,6 @@
 // See LICENSE.txt for license information.
 //
 
-// periphery:ignore
 actor AsyncValueWrapper<Value: Sendable>: ValueWrapperProtocol {
 
 	let valueClosure: () async -> Value

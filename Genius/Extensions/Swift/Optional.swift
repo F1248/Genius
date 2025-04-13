@@ -11,14 +11,14 @@ import os
 extension Optional: UIStringRepresentable where Wrapped: UIStringRepresentable {
 
 	var uiRepresentation: String? {
-		self?.uiRepresentation
+		get async { await self?.uiRepresentation }
 	}
 }
 
 extension Optional: UISymbolRepresentable where Wrapped: UISymbolRepresentable {
 
 	var uiRepresentation: Symbol? {
-		self?.uiRepresentation
+		get async { await self?.uiRepresentation }
 	}
 }
 

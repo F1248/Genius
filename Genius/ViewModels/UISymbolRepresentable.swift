@@ -6,7 +6,9 @@
 // See LICENSE.txt for license information.
 //
 
-protocol UISymbolRepresentable {
+import _Concurrency
 
-	var uiRepresentation: Symbol? { get }
+protocol UISymbolRepresentable: Sendable {
+
+	@MainActor var uiRepresentation: Symbol? { get async }
 }
