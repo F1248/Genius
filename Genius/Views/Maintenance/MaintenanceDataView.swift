@@ -54,20 +54,18 @@ struct MaintenanceDataView: View {
 				ProgressView()
 			}
 		}
-		.onAppear {
-			Task(priority: .userInitiated) {
-				let values: [[Symbol?]] = await contentData.map { $0.value.map(\.value) }.concurrentAsyncMap { value in
-					await value.concurrentAsyncMap { value in
-						await value.uiRepresentation
-					}
+		.task(priority: .userInitiated) {
+			let values: [[Symbol?]] = await contentData.map { $0.value.map(\.value) }.concurrentAsyncMap { value in
+				await value.concurrentAsyncMap { value in
+					await value.uiRepresentation
 				}
-				content = zip(contentData, values).map { keyValuePair, values in
-					(key: keyValuePair.key, value: zip(keyValuePair.value, values).compactMap { keyValuePair, value in
-						value.map { (key: keyValuePair.key, value: $0) }
-					})
-				}
-				.filter { !$0.value.isEmpty }
 			}
+			content = zip(contentData, values).map { keyValuePair, values in
+				(key: keyValuePair.key, value: zip(keyValuePair.value, values).compactMap { keyValuePair, value in
+					value.map { (key: keyValuePair.key, value: $0) }
+				})
+			}
+			.filter { !$0.value.isEmpty }
 		}
 	}
 }
