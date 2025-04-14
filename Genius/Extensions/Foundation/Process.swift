@@ -15,7 +15,7 @@ extension Process {
 	convenience init?(_ executable: String, _ arguments: String..., requiresRoot: Bool = false) {
 		self.init()
 		if requiresRoot, SystemInformation.Software.OS.bootMode.value != .recovery {
-			guard let executableURL = URL("/usr/bin/osascript") else { return nil }
+			guard let executableURL = URL(filePath: "/usr/bin/osascript") else { return nil }
 			self.executableURL = executableURL
 			self.arguments = [
 				"-e",
@@ -26,7 +26,7 @@ extension Process {
 				""",
 			]
 		} else {
-			guard let executableURL = URL(executable) else { return nil }
+			guard let executableURL = URL(filePath: executable) else { return nil }
 			self.executableURL = executableURL
 			self.arguments = arguments
 		}
