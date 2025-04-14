@@ -56,8 +56,8 @@ struct MaintenanceDataView: View {
 		}
 		.onAppear {
 			Task(priority: .userInitiated) {
-				let values: [[Symbol?]] = await contentData.map { $0.value.map(\.value) }.concurrentAsyncMap { value in
-					await value.concurrentAsyncMap { value in
+				let values: [[Symbol?]] = await contentData.map { $0.value.map(\.value) }.concurrentMap { value in
+					await value.concurrentMap { value in
 						await value.uiRepresentation
 					}
 				}
