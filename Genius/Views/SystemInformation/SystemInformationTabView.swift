@@ -18,7 +18,6 @@ struct SystemInformationTabView: View {
 
 	// swiftlint:disable:next type_contents_order
 	init(
-		// swiftlint:disable:next opaque_over_existential
 		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UIStringRepresentable>>
 	) {
 		self.contentData = content
