@@ -36,10 +36,8 @@ struct SystemInformationTabView: View {
 							HStack {
 								VaryingText(rowContent.key)
 								Spacer()
-								Button {
+								Button(rowContent.value) {
 									Pasteboard.write(rowContent.value)
-								} label: {
-									Text(rowContent.value)
 								}
 								.buttonStyle(.borderless)
 							}
