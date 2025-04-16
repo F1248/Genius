@@ -60,7 +60,7 @@ struct CustomTabView: View {
 			Text("Preview content 2")
 		}
 	}
-	.frame(minWidth: 512)
+	.frame(width: 512)
 }
 
 #Preview {
