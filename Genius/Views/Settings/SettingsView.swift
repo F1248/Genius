@@ -38,8 +38,7 @@ struct SettingsView: View {
 				.padding(.vertical, 2)
 				if developmentMode || interfaceMode >= .powerUser {
 					Divider()
-					Toggle(spacedTitle: "Development Mode", isOn: $developmentMode)
-						.toggleStyle(.switch)
+					SpacedToggle("Development Mode", isOn: $developmentMode)
 						.padding(.vertical, 2)
 				}
 			}
