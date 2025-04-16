@@ -46,7 +46,7 @@ struct MaintenanceDataView: View {
 							.font(.title2)
 							.padding()
 					}
-					.frame(width: 512)
+					.frame(maxWidth: 512)
 				}
 				.padding()
 			} else {
