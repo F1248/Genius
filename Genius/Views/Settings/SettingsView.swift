@@ -22,18 +22,16 @@ struct SettingsView: View {
 			.font(.largeTitle)
 			.padding()
 		GroupBox {
-			VStack {
+			VStack(alignment: .leading) {
 				VStack {
 					Text("Interface Mode")
 						.padding(.leading, 8)
-						.frame(width: 512, alignment: .leading)
 					Picker(selection: $interfaceMode) {
 						ForEach(Settings.InterfaceMode.allCases) { interfaceMode in
 							Text(LocalizedStringKey(interfaceMode.rawValue))
 						}
 					}
 					.pickerStyle(.inline)
-					.frame(width: 512, alignment: .leading)
 				}
 				.padding(.vertical, 2)
 				if developmentMode || interfaceMode >= .powerUser {
