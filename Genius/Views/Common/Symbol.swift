@@ -18,7 +18,7 @@ struct Symbol: View {
 
 	var body: some View {
 		Image(systemSymbol: symbol)
-			.accessibilityLabel(Text(label))
 			.foregroundColor(color)
+			.accessibilityLabel(Text(label))
 	}
 }
