@@ -36,7 +36,6 @@ struct MaintenanceDataView: View {
 								VaryingText(rowContent.key)
 								Spacer()
 								rowContent.value
-									.frame(width: 14)
 							}
 							.padding(.vertical, 2)
 						}
