@@ -6,19 +6,17 @@
 // See LICENSE.txt for license information.
 //
 
-import _Concurrency
 import SFSafeSymbols
 import SwiftUI
 import SwiftUICore
 
-@MainActor
-struct Symbol {
+struct Symbol: View {
 
 	let symbol: SFSymbol
 	let color: Color
 	let label: LocalizedStringKey
 
-	var image: some View {
+	var body: some View {
 		Image(systemSymbol: symbol)
 			.accessibilityLabel(Text(label))
 			.foregroundColor(color)

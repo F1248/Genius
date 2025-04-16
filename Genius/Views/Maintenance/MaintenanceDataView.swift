@@ -35,7 +35,7 @@ struct MaintenanceDataView: View {
 							HStack {
 								VaryingText(rowContent.key)
 								Spacer()
-								rowContent.value.image
+								rowContent.value
 									.frame(width: 14)
 							}
 							.padding(.vertical, 2)
