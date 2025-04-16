@@ -19,7 +19,7 @@ struct CustomTab {
 	init(
 		_ titleKey: LocalizedStringKey,
 		index: Int,
-		content: () -> some View
+		@ViewBuilder content: () -> some View
 	) {
 		self.title = VaryingText(titleKey)
 		self.index = index
