@@ -6,18 +6,19 @@
 // See LICENSE.txt for license information.
 //
 
-import CoreFoundation
+import _Concurrency
 import SwiftUI
 import SwiftUICore
 
 extension Toggle {
 
-	init(spacedTitle titleKey: LocalizedStringKey, isOn: Binding<Bool>) where Label == AnyView {
+	@MainActor
+	init(spacedTitle titleKey: LocalizedStringKey, isOn: Binding<Bool>) where Label == HStack<TupleView<(Text, Spacer)>> {
 		self.init(isOn: isOn) {
-			AnyView(
+			HStack {
 				Text(titleKey)
-					.frame(maxWidth: .infinity, alignment: .leading)
-			)
+				Spacer()
+			}
 		}
 	}
 }
