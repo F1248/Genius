@@ -53,6 +53,8 @@ redundant_type_annotation:
     consider_default_literal_types_redundant: true
 switch_case_alignment:
     indented_cases: true
+trailing_closure:
+    only_single_muted_parameter: true
 trailing_comma:
     mandatory_comma: true
 trailing_whitespace:

@@ -6,6 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
+import Defaults
 import SFSafeSymbols
 import SwiftUI
 import SwiftUICore
@@ -17,9 +18,13 @@ struct Symbol: View {
 	let label: LocalizedStringKey
 
 	var body: some View {
-		Image(systemSymbol: symbol)
-			.foregroundColor(color)
-			.frame(width: 14)
-			.accessibilityLabel(Text(label))
+		if Defaults[.useTextInsteadOfSymbols] {
+			Text(label)
+		} else {
+			Image(systemSymbol: symbol)
+				.foregroundColor(color)
+				.frame(width: 14)
+				.accessibilityLabel(Text(label))
+		}
 	}
 }

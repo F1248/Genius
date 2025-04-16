@@ -12,6 +12,8 @@ import SwiftUICore
 
 struct SettingsView: View {
 
+	@Default(.useTextInsteadOfSymbols)
+	var useTextInsteadOfSymbols: Bool
 	@Default(.interfaceMode)
 	var interfaceMode: Settings.InterfaceMode
 	@Default(.developmentMode)
@@ -23,6 +25,9 @@ struct SettingsView: View {
 			.padding()
 		GroupBox {
 			VStack(alignment: .leading) {
+				SpacedToggle("Use Text Instead of Symbols", isOn: $useTextInsteadOfSymbols)
+					.padding(.vertical, 2)
+				Divider()
 				VStack {
 					Text("Interface Mode")
 						.padding(.leading, 8)

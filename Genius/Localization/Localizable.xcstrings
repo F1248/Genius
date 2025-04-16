@@ -975,6 +975,22 @@
         }
       }
     },
+    "Use Text Instead of Symbols" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text statt Symbole verwenden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Text Instead of Symbols"
+          }
+        }
+      }
+    },
     "User" : {
       "localizations" : {
         "de" : {
