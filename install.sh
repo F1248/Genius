@@ -49,6 +49,7 @@ rm Genius.zip
 echo "Opening..."
 if $is_recoveryos; then
 	Genius.app/Contents/MacOS/Genius &> /dev/null
+	echo "\nNote: To reopen Genius run \`genius\` in a new shell.\n"
 else
 	open Genius.app
 fi
