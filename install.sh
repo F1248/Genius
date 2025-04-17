@@ -11,8 +11,13 @@
 PATH="/usr/bin:/bin"
 set -e
 
-echo "\nPreparing..."
 is_recoveryos=$([[ ! -e /System/Library/CoreServices/Finder.app ]] && echo true || echo false)
+
+if $is_recoveryos; then
+	echo "\nNote: Genius only remains installed until restarting."
+fi
+
+echo "\nPreparing..."
 if $is_recoveryos; then
 	killall -q Genius || true
 else
