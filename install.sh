@@ -11,8 +11,7 @@
 PATH="/usr/bin:/bin"
 set -e
 
-echo "
-Preparing..."
+echo "\nPreparing..."
 if [[ -e /usr/bin/osascript ]]; then
 	for _ in $(pgrep -x Genius); do
 		osascript -e "quit app \"Genius\""
