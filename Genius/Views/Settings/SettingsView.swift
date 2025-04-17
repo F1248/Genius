@@ -28,15 +28,15 @@ struct SettingsView: View {
 				SpacedToggle("Use Text Instead of Symbols", isOn: $useTextInsteadOfSymbols)
 					.padding(.vertical, 2)
 				Divider()
-				VStack {
+				VStack(alignment: .leading) {
 					Text("Interface Mode")
-						.padding(.leading, 8)
 					Picker(selection: $interfaceMode) {
 						ForEach(Settings.InterfaceMode.allCases) { interfaceMode in
 							Text(LocalizedStringKey(interfaceMode.rawValue))
 						}
 					}
 					.pickerStyle(.inline)
+					.labelsHidden()
 				}
 				.padding(.vertical, 2)
 				if developmentMode || interfaceMode >= .powerUser {
