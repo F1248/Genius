@@ -12,12 +12,13 @@ PATH="/usr/bin:/bin"
 set -e
 
 echo "\nPreparing..."
-if [[ -e /usr/bin/osascript ]]; then
+is_recoveryos=$([[ ! -e /System/Library/CoreServices/Finder.app ]] && echo true || echo false)
+if $is_recoveryos; then
+	killall -q Genius || true
+else
 	for _ in $(pgrep -x Genius); do
 		osascript -e "quit app \"Genius\""
 	done
-else
-	killall -q Genius || true
 fi
 if [[ -w /Applications ]]; then
 	cd /Applications
@@ -33,7 +34,7 @@ echo "Installing..."
 unzip -q -o Genius.zip
 rm -r -f Genius.app
 unzip -q Genius.zip
-if [[ ! -e /System/Library/CoreServices/Finder.app ]]; then
+if $is_recoveryos; then
 	echo "\nalias genius=\"$PWD/Genius.app/Contents/MacOS/Genius &> /dev/null\"" >> ~/.bash_profile
 fi
 
@@ -41,10 +42,10 @@ echo "Cleaning up..."
 rm Genius.zip
 
 echo "Opening..."
-if [[ -e /usr/bin/open ]]; then
-	open Genius.app
-else
+if $is_recoveryos; then
 	Genius.app/Contents/MacOS/Genius &> /dev/null
+else
+	open Genius.app
 fi
 
 echo "Done."
