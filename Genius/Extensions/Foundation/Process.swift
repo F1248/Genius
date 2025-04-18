@@ -6,6 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
+import _Concurrency
 import Foundation
 import ObjectiveC
 import os
@@ -33,7 +34,15 @@ extension Process {
 		self.qualityOfService = .userInitiated
 	}
 
-	func runSafe() -> String? {
+	func waitUntilExitAsync() async {
+		await withCheckedContinuation { continuation in
+			terminationHandler = { _ in
+				continuation.resume()
+			}
+		}
+	}
+
+	func runSafe() async -> String? {
 		let outputPipe = Pipe()
 		let errorPipe = Pipe()
 		standardOutput = outputPipe
@@ -44,7 +53,7 @@ extension Process {
 			logError(outputPipeData: outputPipe.read(), errorPipeData: errorPipe.read())
 			return nil
 		}
-		waitUntilExit()
+		await waitUntilExitAsync()
 		let errorPipeData = errorPipe.read()
 		let outputPipeData = outputPipe.read()
 		guard terminationStatus == 0, terminationReason == .exit, errorPipeData == nil, let outputPipeData else {
