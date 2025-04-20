@@ -75,10 +75,10 @@ extension SystemInformationData: UISymbolRepresentable where Value: UISymbolRepr
 				await value.uiRepresentation ??
 					(
 						Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
-							Symbol(symbol: .questionmark, color: .red, label: "Unknown") : nil
+							Symbol(.questionmark, color: .red, label: "Unknown") : nil
 					)
 			} else {
-				Defaults[.developmentMode] ? Symbol(symbol: .minus, color: .primary, label: "Not applicable") : nil
+				Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: "Not applicable") : nil
 			}
 		}
 	}

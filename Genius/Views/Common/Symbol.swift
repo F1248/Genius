@@ -17,6 +17,13 @@ struct Symbol: View {
 	let color: Color
 	let label: LocalizedStringKey
 
+	// swiftlint:disable:next type_contents_order
+	init(_ symbol: SFSymbol, color: Color, label: LocalizedStringKey) {
+		self.symbol = symbol
+		self.color = color
+		self.label = label
+	}
+
 	var body: some View {
 		if Defaults[.useTextInsteadOfSymbols] {
 			Text(label)

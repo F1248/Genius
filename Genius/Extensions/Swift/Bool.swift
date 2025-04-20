@@ -14,7 +14,7 @@ extension Bool: DataInitializable, UISymbolRepresentable {
 
 	var uiRepresentation: Symbol? {
 		Symbol(
-			symbol: self ? .checkmark : .xmark,
+			self ? .checkmark : .xmark,
 			color: self ? .green : .red,
 			label: self ? "Enabled" : "Disabled"
 		)
