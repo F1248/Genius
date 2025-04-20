@@ -47,7 +47,7 @@ extension SystemInformationData where ValueWrapper == AsyncValueWrapper<Value> {
 
 	init<Wrapped>(_ valueClosure: @escaping @Sendable () async -> Value, applicable: Bool?) where Value == Wrapped? {
 		self.valueWrapper = AsyncValueWrapper(
-			valueClosure: applicable ?? true ? valueClosure : { @Sendable in nil }
+			valueClosure: applicable ?? true ? valueClosure : { @Sendable in nil },
 		)
 		self.applicable = applicable
 	}
@@ -75,7 +75,7 @@ extension SystemInformationData: UISymbolRepresentable where Value: UISymbolRepr
 				await value.uiRepresentation ??
 					(
 						Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
-							Symbol(.questionmark, color: .red, label: "Unknown") : nil
+							Symbol(.questionmark, color: .red, label: "Unknown") : nil,
 					)
 			} else {
 				Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: "Not applicable") : nil

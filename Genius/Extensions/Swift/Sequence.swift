@@ -11,7 +11,7 @@ import _Concurrency
 extension Sequence {
 
 	func asyncMap<T>(
-		_ transform: (Element) async -> T
+		_ transform: (Element) async -> T,
 	) async -> [T] {
 		var results = [T]()
 		for element in self {
@@ -21,7 +21,7 @@ extension Sequence {
 	}
 
 	func concurrentMap<T: Sendable>(
-		_ transform: @escaping @Sendable (Element) async -> T
+		_ transform: @escaping @Sendable (Element) async -> T,
 	) async -> [T] where Element: Sendable {
 		await map { element in
 			Task {

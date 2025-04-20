@@ -23,7 +23,7 @@ extension SystemInformation {
 			static let isLaptop: Bool? = namePrefix?.hasPrefix("MacBook")
 			static let name = SystemInformationData<String?, _>(
 				IORegistry(name: "product").read("product-name"),
-				applicable: CPU.type.value == .appleSilicon
+				applicable: CPU.type.value == .appleSilicon,
 			)
 			static let localizedName = SystemInformationData<String?, _>(
 				{ () -> String? in
@@ -36,11 +36,11 @@ extension SystemInformation {
 					"""
 					return await String(Network.string(from: url)?.between(start: "<configCode>", end: "</configCode>"))
 				},
-				applicable: Machine.serialNumber.value.map { [11, 12].contains($0.count) }
+				applicable: Machine.serialNumber.value.map { [11, 12].contains($0.count) },
 			)
 			static let displayName = SystemInformationData<String?, _>(
 				{ await localizedName.value ?? name.value },
-				applicable: localizedName.applicable ||? name.applicable
+				applicable: localizedName.applicable ||? name.applicable,
 			)
 			static let identifier = SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read("model"))
 			static let namePrefix: String? = name.value?.remove(" ") ?? identifier.value
@@ -52,11 +52,11 @@ extension SystemInformation {
 					else { return nil }
 					return modelNumber + regionInfo
 				}(),
-				applicable: CPU.type.value == .appleSilicon
+				applicable: CPU.type.value == .appleSilicon,
 			)
 			static let regulatoryNumber = SystemInformationData<String?, _>(
 				IORegistry(class: "IOPlatformExpertDevice").read("regulatory-model-number"),
-				applicable: CPU.type.value == .appleSilicon &&? !?isVirtualMachine
+				applicable: CPU.type.value == .appleSilicon &&? !?isVirtualMachine,
 			)
 			static let sfSymbol = SystemInformationData<SFSymbol, _>({
 				switch true {
@@ -134,7 +134,7 @@ extension SystemInformation {
 				SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read(kIOPlatformUUIDKey))
 			static let provisioningUDID = SystemInformationData<String?, _>(
 				{ await SystemProfiler.hardware?["provisioning_UDID"] as? String ?? (CPU.type.value == .intel ? hardwareUUID.value : nil) },
-				applicable: SystemProfiler.available ||? CPU.type.value == .intel
+				applicable: SystemProfiler.available ||? CPU.type.value == .intel,
 			)
 		}
 	}

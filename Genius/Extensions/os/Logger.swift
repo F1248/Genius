@@ -15,7 +15,7 @@ extension Logger {
 		file: String,
 		line: Int,
 		column: Int,
-		function: String
+		function: String,
 	) {
 		error("\(file):\(line):\(column) in function \(function): Error: \(message)")
 	}

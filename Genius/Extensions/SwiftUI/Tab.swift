@@ -17,7 +17,7 @@ extension Tab where Value: Hashable, Content: View {
 	init(
 		_ titleKey: LocalizedStringKey,
 		value: Value,
-		content: () -> Content
+		content: () -> Content,
 	) where Label == VaryingText {
 		self.init(value: value, content: content) {
 			VaryingText(titleKey)
