@@ -53,22 +53,22 @@ struct CustomTabView: View {
 
 #Preview {
 	CustomTabView {
-		CustomTab("Preview Title 1", index: 0) {
-			Text("Preview content 1")
+		CustomTab("Title 1", index: 0) {
+			Text("Content 1")
 		}
-		CustomTab("Preview Title 2", index: 1) {
-			Text("Preview content 2")
+		CustomTab("Title 2", index: 1) {
+			Text("Content 2")
 		}
 	}
 }
 
 #Preview("CustomTabView in entire window") {
 	CustomTabView(entireWindow: true) {
-		CustomTab("Preview Title 1", index: 0) {
-			Text("Preview content 1")
+		CustomTab("Title 1", index: 0) {
+			Text("Content 1")
 		}
-		CustomTab("Preview Title 2", index: 1) {
-			Text("Preview content 2")
+		CustomTab("Title 2", index: 1) {
+			Text("Content 2")
 		}
 	}
 	.frame(width: 512)
