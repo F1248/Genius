@@ -33,6 +33,9 @@ explicit_init:
     include_bare_init: true
 explicit_type_interface:
     allow_redundancy: true
+file_name:
+    excluded:
+        - Array.swift
 identifier_name:
     min_length: 2
 indentation_width:

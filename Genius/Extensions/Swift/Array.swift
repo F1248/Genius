@@ -6,8 +6,6 @@
 // See LICENSE.txt for license information.
 //
 
-extension Array {}
-
 extension [Int] {
 
 	init?(_ strings: [some StringProtocol]?) {
