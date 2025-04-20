@@ -30,3 +30,13 @@ struct SpacedToggle: View {
 		.toggleStyle(.switch)
 	}
 }
+
+#Preview("SpacedToggle off") {
+	SpacedToggle("Title", isOn: .constant(false))
+		.padding()
+}
+
+#Preview("SpacedToggle on") {
+	SpacedToggle("Title", isOn: .constant(true))
+		.padding()
+}

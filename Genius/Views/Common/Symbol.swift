@@ -35,3 +35,8 @@ struct Symbol: View {
 		}
 	}
 }
+
+#Preview {
+	Symbol(.character, color: .red, label: "Label")
+		.padding()
+}

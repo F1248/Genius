@@ -7,6 +7,7 @@
 //
 
 import Defaults
+import SwiftUI
 import SwiftUICore
 
 struct VaryingText: View {
@@ -24,4 +25,9 @@ struct VaryingText: View {
 	var body: some View {
 		Text(key, tableName: key.key.isContainedInDefaultLocalizationTable ? interfaceMode.localizationTable : nil)
 	}
+}
+
+#Preview {
+	VaryingText("Text")
+		.padding()
 }
