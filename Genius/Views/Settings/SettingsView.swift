@@ -55,5 +55,8 @@ struct SettingsView: View {
 }
 
 #Preview {
-	SettingsView()
+	VStack {
+		SettingsView()
+	}
+	.frame(width: 686, height: 256)
 }

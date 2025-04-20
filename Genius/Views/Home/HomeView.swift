@@ -19,5 +19,8 @@ struct HomeView: View {
 }
 
 #Preview {
-	HomeView()
+	VStack {
+		HomeView()
+	}
+	.frame(width: 686, height: 256)
 }

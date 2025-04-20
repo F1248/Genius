@@ -48,5 +48,8 @@ struct SystemInformationSoftwareView: View {
 }
 
 #Preview {
-	SystemInformationSoftwareView()
+	VStack {
+		SystemInformationSoftwareView()
+	}
+	.frame(width: 686, height: 256)
 }

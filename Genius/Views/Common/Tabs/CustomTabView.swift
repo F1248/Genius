@@ -55,21 +55,27 @@ struct CustomTabView: View {
 	CustomTabView {
 		CustomTab("Title 1", index: 0) {
 			Text("Content 1")
+				.padding()
 		}
 		CustomTab("Title 2", index: 1) {
 			Text("Content 2")
+				.padding()
 		}
 	}
+	.padding()
 }
 
 #Preview("CustomTabView in entire window") {
 	CustomTabView(entireWindow: true) {
 		CustomTab("Title 1", index: 0) {
 			Text("Content 1")
+				.padding()
 		}
 		CustomTab("Title 2", index: 1) {
 			Text("Content 2")
+				.padding()
 		}
 	}
 	.frame(width: 512)
+	.padding()
 }

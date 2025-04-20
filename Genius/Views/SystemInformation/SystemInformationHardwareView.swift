@@ -44,5 +44,8 @@ struct SystemInformationHardwareView: View {
 }
 
 #Preview {
-	SystemInformationHardwareView()
+	VStack {
+		SystemInformationHardwareView()
+	}
+	.frame(width: 686, height: 256)
 }

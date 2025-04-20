@@ -41,5 +41,8 @@ struct MaintenanceView: View {
 }
 
 #Preview {
-	MaintenanceView()
+	VStack {
+		MaintenanceView()
+	}
+	.frame(width: 686, height: 256)
 }

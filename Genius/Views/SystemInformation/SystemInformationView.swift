@@ -20,5 +20,8 @@ struct SystemInformationView: View {
 }
 
 #Preview {
-	SystemInformationView()
+	VStack {
+		SystemInformationView()
+	}
+	.frame(width: 686, height: 256)
 }
