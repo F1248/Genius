@@ -11,19 +11,19 @@ import SwiftUICore
 
 struct SpacedToggle: View {
 
-	let titleKey: LocalizedStringKey
+	let label: LocalizedStringKey
 	let isOn: Binding<Bool>
 
 	// swiftlint:disable:next type_contents_order
-	init(_ titleKey: LocalizedStringKey, isOn: Binding<Bool>) {
-		self.titleKey = titleKey
+	init(_ label: LocalizedStringKey, isOn: Binding<Bool>) {
+		self.label = label
 		self.isOn = isOn
 	}
 
 	var body: some View {
 		Toggle(isOn: isOn) {
 			HStack {
-				Text(titleKey)
+				Text(label)
 				Spacer()
 			}
 		}
