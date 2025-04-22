@@ -25,35 +25,37 @@ struct SystemInformationTabView: View {
 
 	var body: some View {
 		ScrollView {
-			if let content {
-				ForEach(content) { groupBoxContent in
-					GroupBox {
-						ForEach(enumerated: groupBoxContent.value) { index, rowContent in
-							if index > 0 {
-								Divider()
-							}
-							HStack {
-								VaryingText(rowContent.key)
-								Spacer()
-								Button(rowContent.value) {
-									Pasteboard.write(rowContent.value)
+			Group {
+				if let content {
+					ForEach(content) { groupBoxContent in
+						GroupBox {
+							ForEach(enumerated: groupBoxContent.value) { index, rowContent in
+								if index > 0 {
+									Divider()
 								}
-								.buttonStyle(.borderless)
+								HStack {
+									VaryingText(rowContent.key)
+									Spacer()
+									Button(rowContent.value) {
+										Pasteboard.write(rowContent.value)
+									}
+									.buttonStyle(.borderless)
+								}
+								.padding(.vertical, 2)
 							}
-							.padding(.vertical, 2)
+							.padding(.horizontal, 2)
+						} label: {
+							Text(groupBoxContent.key)
+								.font(.title2)
+								.padding()
 						}
-						.padding(.horizontal, 2)
-					} label: {
-						Text(groupBoxContent.key)
-							.font(.title2)
-							.padding()
+						.frame(maxWidth: 512)
 					}
-					.frame(maxWidth: 512)
+				} else {
+					ProgressView()
 				}
-				.padding()
-			} else {
-				ProgressView()
 			}
+			.padding()
 		}
 		.onAppear {
 			Task(priority: .userInitiated) {

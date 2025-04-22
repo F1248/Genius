@@ -25,32 +25,34 @@ struct MaintenanceDataView: View {
 
 	var body: some View {
 		ScrollView {
-			if let content {
-				ForEach(content) { groupBoxContent in
-					GroupBox {
-						ForEach(enumerated: groupBoxContent.value) { index, rowContent in
-							if index > 0 {
-								Divider()
+			Group {
+				if let content {
+					ForEach(content) { groupBoxContent in
+						GroupBox {
+							ForEach(enumerated: groupBoxContent.value) { index, rowContent in
+								if index > 0 {
+									Divider()
+								}
+								HStack {
+									VaryingText(rowContent.key)
+									Spacer()
+									rowContent.value
+								}
+								.padding(.vertical, 2)
 							}
-							HStack {
-								VaryingText(rowContent.key)
-								Spacer()
-								rowContent.value
-							}
-							.padding(.vertical, 2)
+							.padding(.horizontal, 2)
+						} label: {
+							VaryingText(groupBoxContent.key)
+								.font(.title2)
+								.padding()
 						}
-						.padding(.horizontal, 2)
-					} label: {
-						VaryingText(groupBoxContent.key)
-							.font(.title2)
-							.padding()
+						.frame(maxWidth: 512)
 					}
-					.frame(maxWidth: 512)
+				} else {
+					ProgressView()
 				}
-				.padding()
-			} else {
-				ProgressView()
 			}
+			.padding()
 		}
 		.onAppear {
 			Task(priority: .userInitiated) {
