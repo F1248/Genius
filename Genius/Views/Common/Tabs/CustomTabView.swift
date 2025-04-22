@@ -38,15 +38,17 @@ struct CustomTabView: View {
 
 	var body: some View {
 		if entireWindow {
-			VStack { selectedTab?.content }
+			selectedTab?.content
 				.toolbar {
 					ToolbarItem(placement: .principal) { picker }
 				}
 		} else {
-			picker
-				.controlSize(.large)
-				.fixedSize()
-			selectedTab?.content
+			VStack {
+				picker
+					.controlSize(.large)
+					.fixedSize()
+				selectedTab?.content
+			}
 		}
 	}
 }

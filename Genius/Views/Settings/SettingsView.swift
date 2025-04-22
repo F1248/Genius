@@ -20,43 +20,43 @@ struct SettingsView: View {
 	var developmentMode: Bool
 
 	var body: some View {
-		Text("Settings")
-			.font(.largeTitle)
-			.padding()
-		ScrollView {
-			GroupBox {
-				VStack(alignment: .leading) {
-					SpacedToggle("Use Text Instead of Symbols", isOn: $useTextInsteadOfSymbols)
-						.padding(.vertical, 2)
-					Divider()
+		VStack {
+			Text("Settings")
+				.font(.largeTitle)
+				.padding()
+			ScrollView {
+				GroupBox {
 					VStack(alignment: .leading) {
-						Text("Interface Mode")
-						Picker(selection: $interfaceMode) {
-							ForEach(Settings.InterfaceMode.allCases) { interfaceMode in
-								Text(LocalizedStringKey(interfaceMode.rawValue))
-							}
-						}
-						.pickerStyle(.inline)
-						.labelsHidden()
-					}
-					.padding(.vertical, 2)
-					if developmentMode || interfaceMode >= .powerUser {
-						Divider()
-						SpacedToggle("Development Mode", isOn: $developmentMode)
+						SpacedToggle("Use Text Instead of Symbols", isOn: $useTextInsteadOfSymbols)
 							.padding(.vertical, 2)
+						Divider()
+						VStack(alignment: .leading) {
+							Text("Interface Mode")
+							Picker(selection: $interfaceMode) {
+								ForEach(Settings.InterfaceMode.allCases) { interfaceMode in
+									Text(LocalizedStringKey(interfaceMode.rawValue))
+								}
+							}
+							.pickerStyle(.inline)
+							.labelsHidden()
+						}
+						.padding(.vertical, 2)
+						if developmentMode || interfaceMode >= .powerUser {
+							Divider()
+							SpacedToggle("Development Mode", isOn: $developmentMode)
+								.padding(.vertical, 2)
+						}
 					}
+					.padding(.horizontal, 2)
 				}
-				.padding(.horizontal, 2)
+				.frame(maxWidth: 512)
+				.padding()
 			}
-			.frame(maxWidth: 512)
-			.padding()
 		}
 	}
 }
 
 #Preview {
-	VStack {
-		SettingsView()
-	}
-	.frame(width: 686, height: 256)
+	SettingsView()
+		.frame(width: 686, height: 256)
 }
