@@ -19,5 +19,10 @@ struct ContentView: View {
 }
 
 #Preview {
-	ContentView()
+	if #available(macOS 15, *) {
+		ContentView()
+	} else {
+		ContentView()
+			.frame(width: 802, height: 256)
+	}
 }
