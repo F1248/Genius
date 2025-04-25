@@ -24,4 +24,8 @@ extension URL {
 		let versionNumberComponent = SystemInformation.Software.OS.version.value?.uiRepresentation.map { "/\($0)" } ?? ""
 		self.init(string: "https://support.apple.com/guide/mac-help/\(appleUserGuideArticle)/mac\(versionNumberComponent)")
 	}
+
+	init?(systemSetting: SystemSetting) {
+		self.init(string: "x-apple.systempreferences:\(systemSetting.pane)\(systemSetting.anchor.map { "?\($0)" } ?? "")")
+	}
 }

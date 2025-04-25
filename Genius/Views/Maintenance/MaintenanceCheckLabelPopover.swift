@@ -15,6 +15,7 @@ struct MaintenanceCheckLabelPopover: View {
 
 	let name: LocalizedStringKey
 	let help: URL?
+	let systemSetting: URL?
 
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -25,6 +26,15 @@ struct MaintenanceCheckLabelPopover: View {
 					if let help {
 						Link(destination: help) {
 							Symbol(.questionmarkCircle, label: "Help")
+								.focusable() // Prevent symbol from receiving focus automatically
+						}
+						.buttonStyle(.borderless)
+					}
+					if let systemSetting {
+						Link(destination: systemSetting) {
+							Symbol(.gear, label: {
+								if #unavailable(macOS 13) { "Open in System Preferences" } else { "Open in System Settings" }
+							}())
 								.focusable() // Prevent symbol from receiving focus automatically
 						}
 						.buttonStyle(.borderless)
@@ -40,6 +50,7 @@ struct MaintenanceCheckLabelPopover: View {
 	MaintenanceCheckLabelPopover(
 		name: "Name",
 		help: URL(string: "https://example.com"),
+		systemSetting: URL(string: "https://example.com"),
 	)
 	.frame(width: 256)
 }

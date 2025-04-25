@@ -711,6 +711,38 @@
         }
       }
     },
+    "Open in System Preferences" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In den Systemeinstellungen öffnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open in System Preferences"
+          }
+        }
+      }
+    },
+    "Open in System Settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In den Systemeinstellungen öffnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open in System Settings"
+          }
+        }
+      }
+    },
     "Performance Cores" : {
       "localizations" : {
         "de" : {

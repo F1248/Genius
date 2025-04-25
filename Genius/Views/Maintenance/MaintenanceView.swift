@@ -22,6 +22,7 @@ struct MaintenanceView: View {
 					MaintenanceCheckLabel(
 						"Activation Lock",
 						help: URL(appleSupportArticle: 102_541),
+						systemSetting: URL(systemSetting: .iCloud),
 					): SystemInformation.MaintenanceChecks.TheftProtection.activationLock,
 					MaintenanceCheckLabel(
 						"Firmware Password",
@@ -32,6 +33,7 @@ struct MaintenanceView: View {
 					MaintenanceCheckLabel(
 						"FileVault",
 						help: URL(appleUserGuideArticle: "mh11785"),
+						systemSetting: URL(systemSetting: .fileVault),
 					): SystemInformation.MaintenanceChecks.DataSecurity.fileVault,
 				],
 				"Malware Protection": [
@@ -42,36 +44,44 @@ struct MaintenanceView: View {
 					MaintenanceCheckLabel(
 						"Firewall",
 						help: URL(appleUserGuideArticle: "mh34041"),
+						systemSetting: URL(systemSetting: .firewall),
 					): SystemInformation.MaintenanceChecks.MalwareProtection.firewall,
 					MaintenanceCheckLabel(
 						"Gatekeeper",
 						help: URL(appleSupportArticle: 102_445),
+						systemSetting: URL(systemSetting: .security),
 					): SystemInformation.MaintenanceChecks.MalwareProtection.gatekeeper,
 				],
 				"Automatic Updates": [
 					MaintenanceCheckLabel(
 						"Check for macOS updates",
 						help: URL(appleSupportArticle: 108_382),
+						systemSetting: URL(systemSetting: .softwareUpdate),
 					): SystemInformation.MaintenanceChecks.AutomaticUpdates.checkMacOS,
 					MaintenanceCheckLabel(
 						"Download macOS updates",
 						help: URL(appleSupportArticle: 108_382),
+						systemSetting: URL(systemSetting: .softwareUpdate),
 					): SystemInformation.MaintenanceChecks.AutomaticUpdates.downloadMacOS,
 					MaintenanceCheckLabel(
 						"Install macOS updates",
 						help: URL(appleSupportArticle: 108_382),
+						systemSetting: URL(systemSetting: .softwareUpdate),
 					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installMacOS,
 					MaintenanceCheckLabel(
 						"Install critical updates",
 						help: URL(appleSupportArticle: 101_591),
+						systemSetting: URL(systemSetting: .softwareUpdate),
 					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installCritical,
 					MaintenanceCheckLabel(
 						"Install configuration data updates",
 						help: URL(appleSupportArticle: 101_591),
+						systemSetting: URL(systemSetting: .softwareUpdate),
 					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installConfigurationData,
 					MaintenanceCheckLabel(
 						"Install app updates from the App Store",
 						help: URL(appleSupportArticle: 102_629),
+						systemSetting: URL(systemSetting: .softwareUpdate),
 					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installAppStoreApps,
 				],
 			])
