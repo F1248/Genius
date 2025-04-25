@@ -842,6 +842,22 @@
         }
       }
     },
+    "Show Detail" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Details einblenden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Detail"
+          }
+        }
+      }
+    },
     "Simple" : {
       "extractionState" : "manual",
       "localizations" : {

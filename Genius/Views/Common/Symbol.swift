@@ -14,11 +14,11 @@ import SwiftUICore
 struct Symbol: View {
 
 	let symbol: SFSymbol
-	let color: Color
+	let color: Color?
 	let label: LocalizedStringKey
 
 	// swiftlint:disable:next type_contents_order
-	init(_ symbol: SFSymbol, color: Color, label: LocalizedStringKey) {
+	init(_ symbol: SFSymbol, color: Color? = nil, label: LocalizedStringKey) {
 		self.symbol = symbol
 		self.color = color
 		self.label = label

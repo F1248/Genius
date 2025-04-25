@@ -6,10 +6,13 @@
 // See LICENSE.txt for license information.
 //
 
+import SFSafeSymbols
 import SwiftUI
 import SwiftUICore
 
 struct MaintenanceCheckLabel: View {
+
+	@State private var popoverPresented = false // swiftlint:disable:this explicit_type_interface
 
 	let name: LocalizedStringKey
 
@@ -21,6 +24,15 @@ struct MaintenanceCheckLabel: View {
 	var body: some View {
 		HStack {
 			VaryingText(name)
+			Button {
+				popoverPresented.toggle()
+			} label: {
+				Symbol(.infoCircle, label: "Show Detail")
+			}
+			.buttonStyle(.borderless)
+			.popover(isPresented: $popoverPresented) {
+				MaintenanceCheckLabelPopover(name: name)
+			}
 		}
 	}
 }
