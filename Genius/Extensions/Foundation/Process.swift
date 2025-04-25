@@ -6,6 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
+import _Concurrency
 import Foundation
 import ObjectiveC
 import os
@@ -15,7 +16,7 @@ extension Process {
 	convenience init?(_ executable: String, _ arguments: String..., requiresRoot: Bool = false) {
 		self.init()
 		if requiresRoot, SystemInformation.Software.OS.bootMode.value != .recovery {
-			guard let executableURL = URL("/usr/bin/osascript") else { return nil }
+			guard let executableURL = URL(filePath: "/usr/bin/osascript") else { return nil }
 			self.executableURL = executableURL
 			self.arguments = [
 				"-e",
@@ -26,14 +27,22 @@ extension Process {
 				""",
 			]
 		} else {
-			guard let executableURL = URL(executable) else { return nil }
+			guard let executableURL = URL(filePath: executable) else { return nil }
 			self.executableURL = executableURL
 			self.arguments = arguments
 		}
 		self.qualityOfService = .userInitiated
 	}
 
-	func runSafe() -> String? {
+	func waitUntilExitAsync() async {
+		await withCheckedContinuation { continuation in
+			terminationHandler = { _ in
+				continuation.resume()
+			}
+		}
+	}
+
+	func runSafe() async -> String? {
 		let outputPipe = Pipe()
 		let errorPipe = Pipe()
 		standardOutput = outputPipe
@@ -44,7 +53,7 @@ extension Process {
 			logError(outputPipeData: outputPipe.read(), errorPipeData: errorPipe.read())
 			return nil
 		}
-		waitUntilExit()
+		await waitUntilExitAsync()
 		let errorPipeData = errorPipe.read()
 		let outputPipeData = outputPipe.read()
 		guard terminationStatus == 0, terminationReason == .exit, errorPipeData == nil, let outputPipeData else {

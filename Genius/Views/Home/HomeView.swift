@@ -12,12 +12,15 @@ import SwiftUICore
 struct HomeView: View {
 
 	var body: some View {
-		Text("Genius")
-			.font(.largeTitle)
-			.padding()
+		VStack {
+			Text("Genius")
+				.font(.largeTitle)
+				.padding()
+		}
 	}
 }
 
 #Preview {
 	HomeView()
+		.frame(width: 686, height: 256)
 }

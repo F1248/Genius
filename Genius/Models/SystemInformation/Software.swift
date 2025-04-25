@@ -16,16 +16,16 @@ extension SystemInformation {
 		enum SMC {
 
 			static let version = SystemInformationData<String?, _>(
-				SystemProfiler.hardware?["SMC_version_system"] as? String,
-				applicable: Hardware.securityChip.value <=? .t1 &&? SystemProfiler.available
+				{ await SystemProfiler.hardware?["SMC_version_system"] as? String },
+				applicable: Hardware.securityChip.value <=? .t1 &&? SystemProfiler.available,
 			)
 		}
 
 		enum Firmware {
 
 			static let version = SystemInformationData<String?, _>(
-				SystemProfiler.hardware?["boot_rom_version"] as? String,
-				applicable: SystemProfiler.available
+				{ await SystemProfiler.hardware?["boot_rom_version"] as? String },
+				applicable: SystemProfiler.available,
 			)
 		}
 
@@ -39,10 +39,10 @@ extension SystemInformation {
 
 			static let version = SystemInformationData<VersionNumber?, _>(VersionNumber(Sysctl.read("kern.osproductversion")))
 			static let codeName = SystemInformationData<String?, _>({
-				if #available(macOS 16, *) {
-					nil
-				} else {
+				if #unavailable(macOS 16) {
 					"Sequoia"
+				} else {
+					nil
 				}
 			}())
 			static let buildNumber = SystemInformationData<String?, _>(Sysctl.read("kern.osversion"))
@@ -51,18 +51,21 @@ extension SystemInformation {
 				guard let safe: Bool = Sysctl.read("kern.safeboot") else { return nil }
 				return safe ? .safe : .normal
 			}())
-			static let bootVolume =
-				SystemInformationData<String?, _>(SystemProfiler.software?["boot_volume"] as? String, applicable: SystemProfiler.available)
+			static let bootVolume = SystemInformationData<String?, _>(
+				{ await SystemProfiler.software?["boot_volume"] as? String },
+				applicable: SystemProfiler.available,
+			)
 			static let loaderVersion = SystemInformationData<String?, _>(
-				SystemProfiler.hardware?["os_loader_version"] as? String,
-				applicable: SystemProfiler.available
+				{ await SystemProfiler.hardware?["os_loader_version"] as? String },
+				applicable: SystemProfiler.available,
 			)
 		}
 
 		enum Computer {
 
-			static let name =
-				SystemInformationData<String?, _>(SystemProfiler.software?["local_host_name"] as? String ?? Host.current().localizedName)
+			static let name = SystemInformationData<String?, _>(
+				{ await SystemProfiler.software?["local_host_name"] as? String ?? Host.current().localizedName },
+			)
 			static let hostName = SystemInformationData<String?, _>(Sysctl.read("kern.hostname"))
 		}
 

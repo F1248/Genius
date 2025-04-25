@@ -12,51 +12,51 @@ import SwiftUICore
 
 struct MaintenanceDataView: View {
 
-	@State private var content: CustomKeyValuePairs<LocalizedStringKey, CustomKeyValuePairs<LocalizedStringKey, Symbol>>?
+	@State private var content: CustomKeyValuePairs<LocalizedStringKey, CustomKeyValuePairs<MaintenanceCheckLabel, Symbol>>?
 
-	let contentData: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UISymbolRepresentable>>
+	let contentData: KeyValuePairs<LocalizedStringKey, KeyValuePairs<MaintenanceCheckLabel, any UISymbolRepresentable>>
 
 	// swiftlint:disable:next type_contents_order
 	init(
-		// swiftlint:disable:next opaque_over_existential
-		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UISymbolRepresentable>>
+		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<MaintenanceCheckLabel, any UISymbolRepresentable>>,
 	) {
 		self.contentData = content
 	}
 
 	var body: some View {
 		ScrollView {
-			if let content {
-				ForEach(content) { groupBoxContent in
-					GroupBox {
-						ForEach(enumerated: groupBoxContent.value) { index, rowContent in
-							if index > 0 {
-								Divider()
+			Group {
+				if let content {
+					ForEach(content) { groupBoxContent in
+						GroupBox {
+							ForEach(enumerated: groupBoxContent.value) { index, rowContent in
+								if index > 0 {
+									Divider()
+								}
+								HStack {
+									rowContent.key
+									Spacer()
+									rowContent.value
+								}
+								.padding(.vertical, 2)
 							}
-							HStack {
-								VaryingText(rowContent.key)
-								Spacer()
-								rowContent.value.image
-									.frame(width: 14)
-							}
-							.padding(.vertical, 2)
+							.padding(.horizontal, 2)
+						} label: {
+							VaryingText(groupBoxContent.key)
+								.font(.title2)
+								.padding()
 						}
-						.padding(.horizontal, 2)
-					} label: {
-						VaryingText(groupBoxContent.key)
-							.font(.title2)
-							.padding()
+						.frame(maxWidth: 512)
 					}
-					.frame(width: 512)
+				} else {
+					ProgressView()
 				}
-				.padding()
-			} else {
-				ProgressView()
 			}
+			.padding()
 		}
 		.task(priority: .userInitiated) {
-			let values: [[Symbol?]] = await contentData.map { $0.value.map(\.value) }.concurrentAsyncMap { value in
-				await value.concurrentAsyncMap { value in
+			let values: [[Symbol?]] = await contentData.map { $0.value.map(\.value) }.concurrentMap { value in
+				await value.concurrentMap { value in
 					await value.uiRepresentation
 				}
 			}

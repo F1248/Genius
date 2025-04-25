@@ -14,9 +14,9 @@ extension Bool: DataInitializable, UISymbolRepresentable {
 
 	var uiRepresentation: Symbol? {
 		Symbol(
-			symbol: self ? .checkmark : .xmark,
+			self ? .checkmark : .xmark,
 			color: self ? .green : .red,
-			label: self ? "Enabled" : "Disabled"
+			label: self ? "Enabled" : "Disabled",
 		)
 	}
 
@@ -40,7 +40,7 @@ extension Bool: DataInitializable, UISymbolRepresentable {
 		self.init(
 			firmwarepasswdOutput?.betweenAnchored(start: "Password Enabled: "),
 			valuesTrue: "Yes",
-			valuesFalse: "No"
+			valuesFalse: "No",
 		)
 	}
 
@@ -55,7 +55,7 @@ extension Bool: DataInitializable, UISymbolRepresentable {
 				"On, but needs to be restarted to finish",
 				"Off",
 				"Off, but needs to be restarted to finish",
-				"Off, but will be enabled after the next restart"
+				"Off, but will be enabled after the next restart",
 		)
 	}
 
@@ -67,7 +67,7 @@ extension Bool: DataInitializable, UISymbolRepresentable {
 				"enabled (Apple Internal)",
 				"disabled",
 				"disabled (Apple Internal)",
-				"unknown (Custom Configuration)"
+				"unknown (Custom Configuration)",
 		)
 	}
 
@@ -78,7 +78,7 @@ extension Bool: DataInitializable, UISymbolRepresentable {
 		self.init(
 			socketfilterfwOutput?.betweenAnchored(start: "Firewall is "),
 			valuesTrue: "enabled. (State = 1)",
-			valuesFalse: "disabled. (State = 0)"
+			valuesFalse: "disabled. (State = 0)",
 		)
 	}
 
@@ -86,7 +86,7 @@ extension Bool: DataInitializable, UISymbolRepresentable {
 		self.init(
 			spctlOutput?.betweenAnchored(start: "assessments "),
 			valuesTrue: "enabled",
-			valuesFalse: "disabled"
+			valuesFalse: "disabled",
 		)
 	}
 }

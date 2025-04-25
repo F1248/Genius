@@ -28,7 +28,7 @@ extension Optional where Wrapped: DefaultInitializable {
 		file: String = #file,
 		line: Int = #line,
 		column: Int = #column,
-		function: String = #function
+		function: String = #function,
 	) -> Wrapped {
 		guard let self else {
 			Logger().error(
@@ -36,7 +36,7 @@ extension Optional where Wrapped: DefaultInitializable {
 				file: file,
 				line: line,
 				column: column,
-				function: function
+				function: function,
 			)
 			return Wrapped()
 		}
@@ -51,7 +51,7 @@ extension Optional {
 		file: String = #file,
 		line: Int = #line,
 		column: Int = #column,
-		function: String = #function
+		function: String = #function,
 	) -> Wrapped {
 		guard let self else {
 			Logger().error(
@@ -59,7 +59,7 @@ extension Optional {
 				file: file,
 				line: line,
 				column: column,
-				function: function
+				function: function,
 			)
 			return fallback()
 		}

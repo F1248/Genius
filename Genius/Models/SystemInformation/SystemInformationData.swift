@@ -39,7 +39,6 @@ extension SystemInformationData where ValueWrapper == SyncValueWrapper<Value> {
 
 extension SystemInformationData where ValueWrapper == AsyncValueWrapper<Value> {
 
-	// periphery:ignore
 	init(_ valueClosure: @escaping @Sendable () async -> Value) {
 		self.valueWrapper = AsyncValueWrapper(valueClosure: valueClosure)
 		self.applicable = true
@@ -47,7 +46,7 @@ extension SystemInformationData where ValueWrapper == AsyncValueWrapper<Value> {
 
 	init<Wrapped>(_ valueClosure: @escaping @Sendable () async -> Value, applicable: Bool?) where Value == Wrapped? {
 		self.valueWrapper = AsyncValueWrapper(
-			valueClosure: applicable ?? true ? valueClosure : { @Sendable in nil }
+			valueClosure: applicable ?? true ? valueClosure : { @Sendable in nil },
 		)
 		self.applicable = applicable
 	}
@@ -75,10 +74,10 @@ extension SystemInformationData: UISymbolRepresentable where Value: UISymbolRepr
 				await value.uiRepresentation ??
 					(
 						Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
-							Symbol(symbol: .questionmark, color: .red, label: "Unknown") : nil
+							Symbol(.questionmark, color: .red, label: "Unknown") : nil,
 					)
 			} else {
-				Defaults[.developmentMode] ? Symbol(symbol: .minus, color: .primary, label: "Not applicable") : nil
+				Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: "Not applicable") : nil
 			}
 		}
 	}

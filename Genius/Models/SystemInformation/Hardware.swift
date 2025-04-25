@@ -19,11 +19,10 @@ extension SystemInformation {
 
 			static let isVirtualMachine: Bool? = Sysctl.read("kern.hv_vmm_present")
 			// periphery:ignore
-			// swiftlint:disable:next unused_declaration
-			static let isLaptop: Bool? = namePrefix?.hasPrefix("MacBook")
+			static let isLaptop: Bool? = namePrefix?.hasPrefix("MacBook") // swiftlint:disable:this unused_declaration
 			static let name = SystemInformationData<String?, _>(
 				IORegistry(name: "product").read("product-name"),
-				applicable: CPU.type.value == .appleSilicon
+				applicable: CPU.type.value == .appleSilicon,
 			)
 			static let localizedName = SystemInformationData<String?, _>(
 				{ () -> String? in
@@ -36,11 +35,11 @@ extension SystemInformation {
 					"""
 					return await String(Network.string(from: url)?.between(start: "<configCode>", end: "</configCode>"))
 				},
-				applicable: Machine.serialNumber.value.map { [11, 12].contains($0.count) }
+				applicable: Machine.serialNumber.value.map { [11, 12].contains($0.count) },
 			)
 			static let displayName = SystemInformationData<String?, _>(
 				{ await localizedName.value ?? name.value },
-				applicable: localizedName.applicable ||? name.applicable
+				applicable: localizedName.applicable ||? name.applicable,
 			)
 			static let identifier = SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read("model"))
 			static let namePrefix: String? = name.value?.remove(" ") ?? identifier.value
@@ -50,13 +49,13 @@ extension SystemInformation {
 						let modelNumber = IORegistry(class: "IOPlatformExpertDevice").read("model-number") as String?,
 						let regionInfo = IORegistry(class: "IOPlatformExpertDevice").read("region-info") as String?
 					else { return nil }
-					return modelNumber + regionInfo
+					return "\(modelNumber)\(regionInfo)"
 				}(),
-				applicable: CPU.type.value == .appleSilicon
+				applicable: CPU.type.value == .appleSilicon,
 			)
 			static let regulatoryNumber = SystemInformationData<String?, _>(
 				IORegistry(class: "IOPlatformExpertDevice").read("regulatory-model-number"),
-				applicable: CPU.type.value == .appleSilicon &&? !?isVirtualMachine
+				applicable: CPU.type.value == .appleSilicon &&? !?isVirtualMachine,
 			)
 			static let sfSymbol = SystemInformationData<SFSymbol, _>({
 				switch true {
@@ -131,8 +130,8 @@ extension SystemInformation {
 			static let hardwareUUID =
 				SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read(kIOPlatformUUIDKey))
 			static let provisioningUDID = SystemInformationData<String?, _>(
-				SystemProfiler.hardware?["provisioning_UDID"] as? String ?? (CPU.type.value == .intel ? hardwareUUID.value : nil),
-				applicable: SystemProfiler.available ||? CPU.type.value == .intel
+				{ await SystemProfiler.hardware?["provisioning_UDID"] as? String ?? (CPU.type.value == .intel ? hardwareUUID.value : nil) },
+				applicable: SystemProfiler.available ||? CPU.type.value == .intel,
 			)
 		}
 	}
