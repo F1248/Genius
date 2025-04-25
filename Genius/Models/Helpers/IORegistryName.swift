@@ -8,7 +8,8 @@
 
 enum IORegistryName {
 
-	static let nvramVariables: String =
+	// swiftlint:disable:next explicit_type_interface
+	static let nvramVariables =
 		switch SystemInformation.Hardware.CPU.type.value {
 			case .appleSilicon: "IODTNVRAMVariables"
 			case .intel: "AppleEFINVRAM"

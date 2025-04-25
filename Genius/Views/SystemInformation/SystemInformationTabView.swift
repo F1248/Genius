@@ -18,49 +18,48 @@ struct SystemInformationTabView: View {
 
 	// swiftlint:disable:next type_contents_order
 	init(
-		// swiftlint:disable:next opaque_over_existential
-		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UIStringRepresentable>>
+		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UIStringRepresentable>>,
 	) {
 		self.contentData = content
 	}
 
 	var body: some View {
 		ScrollView {
-			if let content {
-				ForEach(content) { groupBoxContent in
-					GroupBox {
-						ForEach(enumerated: groupBoxContent.value) { index, rowContent in
-							if index > 0 {
-								Divider()
-							}
-							HStack {
-								VaryingText(rowContent.key)
-								Spacer()
-								Button {
-									Pasteboard.write(rowContent.value)
-								} label: {
-									Text(rowContent.value)
+			Group {
+				if let content {
+					ForEach(content) { groupBoxContent in
+						GroupBox {
+							ForEach(enumerated: groupBoxContent.value) { index, rowContent in
+								if index > 0 {
+									Divider()
 								}
-								.buttonStyle(.borderless)
+								HStack {
+									VaryingText(rowContent.key)
+									Spacer()
+									Button(rowContent.value) {
+										Pasteboard.write(rowContent.value)
+									}
+									.buttonStyle(.borderless)
+								}
+								.padding(.vertical, 2)
 							}
-							.padding(.vertical, 2)
+							.padding(.horizontal, 2)
+						} label: {
+							Text(groupBoxContent.key)
+								.font(.title2)
+								.padding()
 						}
-						.padding(.horizontal, 2)
-					} label: {
-						Text(groupBoxContent.key)
-							.font(.title2)
-							.padding()
+						.frame(maxWidth: 512)
 					}
-					.frame(width: 512)
+				} else {
+					ProgressView()
 				}
-				.padding()
-			} else {
-				ProgressView()
 			}
+			.padding()
 		}
 		.task(priority: .userInitiated) {
-			let values: [[String?]] = await contentData.map { $0.value.map(\.value) }.concurrentAsyncMap { value in
-				await value.concurrentAsyncMap { value in
+			let values: [[String?]] = await contentData.map { $0.value.map(\.value) }.concurrentMap { value in
+				await value.concurrentMap { value in
 					await value.uiRepresentation
 				}
 			}

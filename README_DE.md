@@ -19,7 +19,7 @@
 ### Unterstützte macOS-Versionen
 
 - macOS Monterey 12 und neuer, inklusive macOS Sequoia 15
-- Unterstützt auch recoveryOS
+- Unterstützt auch recoveryOS unter macOS Sonoma 14 und neuer
 
 ### Unterstützte Modelle
 

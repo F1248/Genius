@@ -12,13 +12,16 @@ import SwiftUICore
 struct SystemInformationView: View {
 
 	var body: some View {
-		VaryingText("System Information")
-			.font(.largeTitle)
-			.padding()
-		AdaptingTabView<SystemInformationViewTab>()
+		VStack {
+			VaryingText("System Information")
+				.font(.largeTitle)
+				.padding()
+			AdaptingTabView<SystemInformationViewTab>()
+		}
 	}
 }
 
 #Preview {
 	SystemInformationView()
+		.frame(width: 686, height: 256)
 }

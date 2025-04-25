@@ -386,6 +386,22 @@
         }
       }
     },
+    "Help" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hilfe"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help"
+          }
+        }
+      }
+    },
     "Home" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -695,6 +711,38 @@
         }
       }
     },
+    "Open in System Preferences" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In den Systemeinstellungen öffnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open in System Preferences"
+          }
+        }
+      }
+    },
+    "Open in System Settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In den Systemeinstellungen öffnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open in System Settings"
+          }
+        }
+      }
+    },
     "Performance Cores" : {
       "localizations" : {
         "de" : {
@@ -842,6 +890,22 @@
         }
       }
     },
+    "Show Detail" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Details einblenden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Detail"
+          }
+        }
+      }
+    },
     "Simple" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -971,6 +1035,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Unknown"
+          }
+        }
+      }
+    },
+    "Use Text Instead of Symbols" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text statt Symbole verwenden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Text Instead of Symbols"
           }
         }
       }

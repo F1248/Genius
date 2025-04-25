@@ -21,7 +21,7 @@ struct TabButton<TabDataType: TabData>: View {
 		}
 		.keyboardShortcut(
 			tab as? ContentViewTab == .settings ? "," : KeyEquivalent(Character(String(tab.index + 1))),
-			modifiers: TabDataType.keyboardShortcutModifiers
+			modifiers: TabDataType.keyboardShortcutModifiers,
 		)
 	}
 }
