@@ -6,7 +6,6 @@
 // See LICENSE.txt for license information.
 //
 
-import SwiftUI
 import SwiftUICore
 
 enum SystemInformationViewTab: String, TabData {
@@ -23,8 +22,4 @@ enum SystemInformationViewTab: String, TabData {
 			case .software: SystemInformationSoftwareView()
 		}
 	}
-}
-
-#Preview {
-	AdaptingTabView<SystemInformationViewTab>()
 }

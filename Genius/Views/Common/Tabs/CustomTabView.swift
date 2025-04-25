@@ -38,38 +38,46 @@ struct CustomTabView: View {
 
 	var body: some View {
 		if entireWindow {
-			VStack { selectedTab?.content }
+			selectedTab?.content
 				.toolbar {
 					ToolbarItem(placement: .principal) { picker }
 				}
 		} else {
-			picker
-				.controlSize(.large)
-				.fixedSize()
-			selectedTab?.content
+			VStack {
+				picker
+					.controlSize(.large)
+					.fixedSize()
+				selectedTab?.content
+			}
 		}
 	}
-}
-
-#Preview("CustomTabView in entire window") {
-	CustomTabView(entireWindow: true) {
-		CustomTab("Preview Title 1", index: 0) {
-			Text("Preview content 1")
-		}
-		CustomTab("Preview Title 2", index: 1) {
-			Text("Preview content 2")
-		}
-	}
-	.frame(minWidth: 512)
 }
 
 #Preview {
 	CustomTabView {
-		CustomTab("Preview Title 1", index: 0) {
-			Text("Preview content 1")
+		CustomTab("Title 1", index: 0) {
+			Text("Content 1")
+				.padding()
 		}
-		CustomTab("Preview Title 2", index: 1) {
-			Text("Preview content 2")
+		CustomTab("Title 2", index: 1) {
+			Text("Content 2")
+				.padding()
 		}
 	}
+	.padding()
+}
+
+#Preview("CustomTabView in entire window") {
+	CustomTabView(entireWindow: true) {
+		CustomTab("Title 1", index: 0) {
+			Text("Content 1")
+				.padding()
+		}
+		CustomTab("Title 2", index: 1) {
+			Text("Content 2")
+				.padding()
+		}
+	}
+	.padding()
+	.frame(width: 382)
 }

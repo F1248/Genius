@@ -8,14 +8,14 @@
 
 enum CPUType: UIStringRepresentable {
 
-	case appleSilicon
 	case intel
+	case appleSilicon
 
 	var uiRepresentation: String? {
 		{
 			switch self {
-				case .appleSilicon: "Apple Silicon"
 				case .intel: "Intel"
+				case .appleSilicon: "Apple Silicon"
 			}
 		}()
 			.localized

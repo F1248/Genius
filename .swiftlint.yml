@@ -3,6 +3,7 @@ opt_in_rules: all
 analyzer_rules: all
 
 disabled_rules:
+    - closure_body_length
     - conditional_returns_on_newline
     - contrasted_opening_brace
     - discouraged_none_name
@@ -20,10 +21,10 @@ disabled_rules:
     - required_deinit
     - sorted_enum_cases
     - switch_case_on_newline
+    - trailing_closure
     - vertical_whitespace_between_cases
     - vertical_whitespace_opening_braces
 
-closure_body_length: 32
 cyclomatic_complexity:
     ignores_case_statements: true
 deployment_target:
@@ -32,6 +33,9 @@ explicit_init:
     include_bare_init: true
 explicit_type_interface:
     allow_redundancy: true
+file_name:
+    excluded:
+        - Array.swift
 identifier_name:
     min_length: 2
 indentation_width:
