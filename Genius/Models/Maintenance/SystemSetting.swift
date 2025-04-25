@@ -24,7 +24,7 @@ struct SystemSetting {
 		systemPreferencesPane: "com.apple.preferences.softwareupdate",
 		systemSettingsPane: "com.apple.Software-Update-Settings.extension",
 		systemPreferencesAnchor: nil,
-		systemSettingsAnchor: "action=showAdvancedOptions",
+		systemSettingsAnchor: { if #unavailable(macOS 15) { nil } else { "action=showAdvancedOptions" } }(),
 	)
 	static let security = Self(
 		systemPreferencesPane: "com.apple.preference.security",
