@@ -11,32 +11,27 @@ struct SystemSetting {
 	static let iCloud = Self(
 		systemPreferencesPane: "com.apple.preferences.AppleIDPrefPane",
 		systemSettingsPane: "com.apple.systempreferences.AppleIDSettings",
-		systemPreferencesAnchor: "iCloud",
-		systemSettingsAnchor: "iCloud",
+		anchor: "iCloud",
 	)
 	static let firewall = Self(
 		systemPreferencesPane: "com.apple.preference.security",
 		systemSettingsPane: "com.apple.Network-Settings.extension",
-		systemPreferencesAnchor: "Firewall",
-		systemSettingsAnchor: "Firewall",
+		anchor: "Firewall",
 	)
 	static let softwareUpdate = Self(
 		systemPreferencesPane: "com.apple.preferences.softwareupdate",
 		systemSettingsPane: "com.apple.Software-Update-Settings.extension",
-		systemPreferencesAnchor: nil,
-		systemSettingsAnchor: { if #unavailable(macOS 15) { nil } else { "action=showAdvancedOptions" } }(),
+		anchor: { if #unavailable(macOS 15) { nil } else { "action=showAdvancedOptions" } }(),
 	)
 	static let security = Self(
 		systemPreferencesPane: "com.apple.preference.security",
 		systemSettingsPane: "com.apple.settings.PrivacySecurity.extension",
-		systemPreferencesAnchor: "General",
-		systemSettingsAnchor: "Security",
+		anchor: { if #unavailable(macOS 13) { "General" } else { "Security" } }(),
 	)
 	static let fileVault = Self(
 		systemPreferencesPane: "com.apple.preference.security",
 		systemSettingsPane: "com.apple.settings.PrivacySecurity.extension",
-		systemPreferencesAnchor: "FDE",
-		systemSettingsAnchor: { if #unavailable(macOS 14) { "Security" } else { "FileVault" } }(),
+		anchor: { if #unavailable(macOS 13) { "FDE" } else if #unavailable(macOS 14) { "Security" } else { "FileVault" } }(),
 	)
 
 	let pane: String
@@ -45,15 +40,9 @@ struct SystemSetting {
 	init(
 		systemPreferencesPane: String,
 		systemSettingsPane: String,
-		systemPreferencesAnchor: String?,
-		systemSettingsAnchor: String?,
+		anchor: String?,
 	) {
-		if #unavailable(macOS 13) {
-			self.pane = systemPreferencesPane
-			self.anchor = systemPreferencesAnchor
-		} else {
-			self.pane = systemSettingsPane
-			self.anchor = systemSettingsAnchor
-		}
+		self.pane = if #unavailable(macOS 13) { systemPreferencesPane } else { systemSettingsPane }
+		self.anchor = anchor
 	}
 }
