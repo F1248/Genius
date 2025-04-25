@@ -25,19 +25,17 @@ struct MaintenanceCheckLabelPopover: View {
 					Spacer(minLength: 32)
 					if let help {
 						Link(destination: help) {
-							Symbol(.questionmarkCircle, label: "Help")
+							Symbol(.questionmarkCircle, color: .secondary, label: "Help")
 								.focusable() // Prevent symbol from receiving focus automatically
 						}
-						.buttonStyle(.borderless)
 					}
 					if let systemSetting {
 						Link(destination: systemSetting) {
-							Symbol(.gear, label: {
+							Symbol(.gear, color: .secondary, label: {
 								if #unavailable(macOS 13) { "Open in System Preferences" } else { "Open in System Settings" }
 							}())
 								.focusable() // Prevent symbol from receiving focus automatically
 						}
-						.buttonStyle(.borderless)
 					}
 				}
 			}
