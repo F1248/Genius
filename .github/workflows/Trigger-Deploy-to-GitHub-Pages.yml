@@ -18,7 +18,7 @@ permissions: {}
 jobs:
     Trigger-Deploy-to-GitHub-Pages:
         name: Trigger Deploy to GitHub Pages
-        runs-on: macos-15
+        runs-on: ubuntu-latest
 
         steps:
             - name: Trigger Deploy to GitHub Pages
