@@ -17,11 +17,11 @@ struct CustomTab {
 
 	@MainActor
 	init(
-		_ titleKey: LocalizedStringKey,
+		_ title: LocalizedStringKey,
 		index: Int,
-		content: () -> some View
+		@ViewBuilder content: () -> some View,
 	) {
-		self.title = VaryingText(titleKey)
+		self.title = VaryingText(title)
 		self.index = index
 		self.content = AnyView(content())
 	}

@@ -19,7 +19,7 @@
 ### Supported macOS Versions
 
 - macOS Ventura 13 and later, including macOS Sequoia 15
-- Also supports recoveryOS
+- Also supports recoveryOS on macOS Sonoma 14 and later
 
 ### Supported Models
 

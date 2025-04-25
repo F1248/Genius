@@ -6,40 +6,90 @@
 // See LICENSE.txt for license information.
 //
 
+import Foundation
 import SwiftUI
 import SwiftUICore
 
 struct MaintenanceView: View {
 
 	var body: some View {
-		Text("Maintenance")
-			.font(.largeTitle)
-			.padding()
-		MaintenanceDataView(content: [
-			"Theft Protection": [
-				"Activation Lock": SystemInformation.MaintenanceChecks.TheftProtection.activationLock,
-				"Firmware Password": SystemInformation.MaintenanceChecks.TheftProtection.firmwarePassword,
-			],
-			"Data Security": [
-				"FileVault": SystemInformation.MaintenanceChecks.DataSecurity.fileVault,
-			],
-			"Malware Protection": [
-				"System Integrity Protection": SystemInformation.MaintenanceChecks.MalwareProtection.systemIntegrityProtection,
-				"Firewall": SystemInformation.MaintenanceChecks.MalwareProtection.firewall,
-				"Gatekeeper": SystemInformation.MaintenanceChecks.MalwareProtection.gatekeeper,
-			],
-			"Automatic Updates": [
-				"Check for macOS updates": SystemInformation.MaintenanceChecks.AutomaticUpdates.checkMacOS,
-				"Download macOS updates": SystemInformation.MaintenanceChecks.AutomaticUpdates.downloadMacOS,
-				"Install macOS updates": SystemInformation.MaintenanceChecks.AutomaticUpdates.installMacOS,
-				"Install critical updates": SystemInformation.MaintenanceChecks.AutomaticUpdates.installCritical,
-				"Install configuration data updates": SystemInformation.MaintenanceChecks.AutomaticUpdates.installConfigurationData,
-				"Install app updates from the App Store": SystemInformation.MaintenanceChecks.AutomaticUpdates.installAppStoreApps,
-			],
-		])
+		VStack {
+			Text("Maintenance")
+				.font(.largeTitle)
+				.padding()
+			MaintenanceDataView(content: [
+				"Theft Protection": [
+					MaintenanceCheckLabel(
+						"Activation Lock",
+						help: URL(appleSupportArticle: 102_541),
+						systemSetting: URL(systemSetting: .iCloud),
+					): SystemInformation.MaintenanceChecks.TheftProtection.activationLock,
+					MaintenanceCheckLabel(
+						"Firmware Password",
+						help: URL(appleSupportArticle: 102_384),
+					): SystemInformation.MaintenanceChecks.TheftProtection.firmwarePassword,
+				],
+				"Data Security": [
+					MaintenanceCheckLabel(
+						"FileVault",
+						help: URL(appleUserGuideArticle: "mh11785"),
+						systemSetting: URL(systemSetting: .fileVault),
+					): SystemInformation.MaintenanceChecks.DataSecurity.fileVault,
+				],
+				"Malware Protection": [
+					MaintenanceCheckLabel(
+						"System Integrity Protection",
+						help: URL(appleSupportArticle: 102_149),
+					): SystemInformation.MaintenanceChecks.MalwareProtection.systemIntegrityProtection,
+					MaintenanceCheckLabel(
+						"Firewall",
+						help: URL(appleUserGuideArticle: "mh34041"),
+						systemSetting: URL(systemSetting: .firewall),
+					): SystemInformation.MaintenanceChecks.MalwareProtection.firewall,
+					MaintenanceCheckLabel(
+						"Gatekeeper",
+						help: URL(appleSupportArticle: 102_445),
+						systemSetting: URL(systemSetting: .security),
+					): SystemInformation.MaintenanceChecks.MalwareProtection.gatekeeper,
+				],
+				"Automatic Updates": [
+					MaintenanceCheckLabel(
+						"Check for macOS updates",
+						help: URL(appleSupportArticle: 108_382),
+						systemSetting: URL(systemSetting: .softwareUpdate),
+					): SystemInformation.MaintenanceChecks.AutomaticUpdates.checkMacOS,
+					MaintenanceCheckLabel(
+						"Download macOS updates",
+						help: URL(appleSupportArticle: 108_382),
+						systemSetting: URL(systemSetting: .softwareUpdate),
+					): SystemInformation.MaintenanceChecks.AutomaticUpdates.downloadMacOS,
+					MaintenanceCheckLabel(
+						"Install macOS updates",
+						help: URL(appleSupportArticle: 108_382),
+						systemSetting: URL(systemSetting: .softwareUpdate),
+					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installMacOS,
+					MaintenanceCheckLabel(
+						"Install critical updates",
+						help: URL(appleSupportArticle: 101_591),
+						systemSetting: URL(systemSetting: .softwareUpdate),
+					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installCritical,
+					MaintenanceCheckLabel(
+						"Install configuration data updates",
+						help: URL(appleSupportArticle: 101_591),
+						systemSetting: URL(systemSetting: .softwareUpdate),
+					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installConfigurationData,
+					MaintenanceCheckLabel(
+						"Install app updates from the App Store",
+						help: URL(appleSupportArticle: 102_629),
+						systemSetting: URL(systemSetting: .softwareUpdate),
+					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installAppStoreApps,
+				],
+			])
+		}
 	}
 }
 
 #Preview {
 	MaintenanceView()
+		.frame(width: 686, height: 256)
 }

@@ -16,10 +16,10 @@ enum SecurityChip: Comparable, UIStringRepresentable {
 	var uiRepresentation: String? {
 		{
 			switch self {
-				case .mSeries: "M-series"
-				case .t2: "Apple T2"
-				case .t1: "Apple T1"
 				case .none: "None (Security Chip)"
+				case .t1: "Apple T1"
+				case .t2: "Apple T2"
+				case .mSeries: "M-series"
 			}
 		}()
 			.localized

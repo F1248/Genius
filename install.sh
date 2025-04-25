@@ -11,15 +11,31 @@
 PATH="/usr/bin:/bin"
 set -e
 
-echo "
-Preparing..."
-if [[ -e /usr/bin/osascript ]]; then
+is_recoveryos=$([[ ! -e /System/Library/CoreServices/Finder.app ]] && echo true || echo false)
+
+if $is_recoveryos; then
+	if [[ ! $(sw_vers -productVersion | cut -d "." -f 1) -ge 14 ]]; then
+		echo "\nError: Genius requires macOS Sonoma 14 or later in recoveryOS!\n"
+		exit 1
+	fi
+	echo "\nNote: Genius only remains installed until restarting."
+else
+	if [[ ! $(sw_vers -productVersion | cut -d "." -f 1) -ge 13 ]]; then
+		echo "\nError: Genius requires macOS Ventura 13 or later!\n"
+		exit 1
+	fi
+fi
+
+echo "\nQuitting Genius..."
+if $is_recoveryos; then
+	killall -q Genius || true
+else
 	for _ in $(pgrep -x Genius); do
 		osascript -e "quit app \"Genius\""
 	done
-else
-	killall -q Genius || true
 fi
+
+echo "Preparing..."
 if [[ -w /Applications ]]; then
 	cd /Applications
 else
@@ -34,7 +50,9 @@ echo "Installing..."
 unzip -q -o Genius.zip
 rm -r -f Genius.app
 unzip -q Genius.zip
-if [[ ! -e /System/Library/CoreServices/Finder.app ]]; then
+
+if $is_recoveryos; then
+	echo "Creating alias..."
 	echo "\nalias genius=\"$PWD/Genius.app/Contents/MacOS/Genius &> /dev/null\"" >> ~/.bash_profile
 fi
 
@@ -42,10 +60,11 @@ echo "Cleaning up..."
 rm Genius.zip
 
 echo "Opening..."
-if [[ -e /usr/bin/open ]]; then
-	open Genius.app
-else
+if $is_recoveryos; then
 	Genius.app/Contents/MacOS/Genius &> /dev/null
+	echo "\nNote: To reopen Genius run \`genius\` in a new shell.\n"
+else
+	open Genius.app
 fi
 
 echo "Done."

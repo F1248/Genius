@@ -15,7 +15,7 @@ struct AdaptingTabView<TabDataType: TabData>: View {
 
 	var selection: Binding<Int> { Binding(
 		get: { observedSharedData.selectedTabsIndices[TabDataType.id] ?? 0 },
-		set: { observedSharedData.selectedTabsIndices[TabDataType.id] = $0 }
+		set: { observedSharedData.selectedTabsIndices[TabDataType.id] = $0 },
 	) }
 
 	var body: some View {
@@ -24,7 +24,7 @@ struct AdaptingTabView<TabDataType: TabData>: View {
 				ForEach(TabDataType.allCases) { tab in
 					Tab(
 						tab.localizedStringKey,
-						value: tab.index
+						value: tab.index,
 					) { tab.content }
 				}
 			}
@@ -33,7 +33,7 @@ struct AdaptingTabView<TabDataType: TabData>: View {
 				TabDataType.allCases.map { tab in
 					CustomTab(
 						tab.localizedStringKey,
-						index: tab.index
+						index: tab.index,
 					) { tab.content }
 				}
 			}
