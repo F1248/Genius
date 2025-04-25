@@ -36,7 +36,7 @@ struct SystemSetting {
 		systemPreferencesPane: "com.apple.preference.security",
 		systemSettingsPane: "com.apple.settings.PrivacySecurity.extension",
 		systemPreferencesAnchor: "FDE",
-		systemSettingsAnchor: "FileVault",
+		systemSettingsAnchor: { if #unavailable(macOS 14) { "Security" } else { "FileVault" } }(),
 	)
 
 	let pane: String
