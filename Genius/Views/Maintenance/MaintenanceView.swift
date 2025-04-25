@@ -18,24 +18,48 @@ struct MaintenanceView: View {
 				.padding()
 			MaintenanceDataView(content: [
 				"Theft Protection": [
-					"Activation Lock": SystemInformation.MaintenanceChecks.TheftProtection.activationLock,
-					"Firmware Password": SystemInformation.MaintenanceChecks.TheftProtection.firmwarePassword,
+					MaintenanceCheckLabel(
+						"Activation Lock",
+					): SystemInformation.MaintenanceChecks.TheftProtection.activationLock,
+					MaintenanceCheckLabel(
+						"Firmware Password",
+					): SystemInformation.MaintenanceChecks.TheftProtection.firmwarePassword,
 				],
 				"Data Security": [
-					"FileVault": SystemInformation.MaintenanceChecks.DataSecurity.fileVault,
+					MaintenanceCheckLabel(
+						"FileVault",
+					): SystemInformation.MaintenanceChecks.DataSecurity.fileVault,
 				],
 				"Malware Protection": [
-					"System Integrity Protection": SystemInformation.MaintenanceChecks.MalwareProtection.systemIntegrityProtection,
-					"Firewall": SystemInformation.MaintenanceChecks.MalwareProtection.firewall,
-					"Gatekeeper": SystemInformation.MaintenanceChecks.MalwareProtection.gatekeeper,
+					MaintenanceCheckLabel(
+						"System Integrity Protection",
+					): SystemInformation.MaintenanceChecks.MalwareProtection.systemIntegrityProtection,
+					MaintenanceCheckLabel(
+						"Firewall",
+					): SystemInformation.MaintenanceChecks.MalwareProtection.firewall,
+					MaintenanceCheckLabel(
+						"Gatekeeper",
+					): SystemInformation.MaintenanceChecks.MalwareProtection.gatekeeper,
 				],
 				"Automatic Updates": [
-					"Check for macOS updates": SystemInformation.MaintenanceChecks.AutomaticUpdates.checkMacOS,
-					"Download macOS updates": SystemInformation.MaintenanceChecks.AutomaticUpdates.downloadMacOS,
-					"Install macOS updates": SystemInformation.MaintenanceChecks.AutomaticUpdates.installMacOS,
-					"Install critical updates": SystemInformation.MaintenanceChecks.AutomaticUpdates.installCritical,
-					"Install configuration data updates": SystemInformation.MaintenanceChecks.AutomaticUpdates.installConfigurationData,
-					"Install app updates from the App Store": SystemInformation.MaintenanceChecks.AutomaticUpdates.installAppStoreApps,
+					MaintenanceCheckLabel(
+						"Check for macOS updates",
+					): SystemInformation.MaintenanceChecks.AutomaticUpdates.checkMacOS,
+					MaintenanceCheckLabel(
+						"Download macOS updates",
+					): SystemInformation.MaintenanceChecks.AutomaticUpdates.downloadMacOS,
+					MaintenanceCheckLabel(
+						"Install macOS updates",
+					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installMacOS,
+					MaintenanceCheckLabel(
+						"Install critical updates",
+					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installCritical,
+					MaintenanceCheckLabel(
+						"Install configuration data updates",
+					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installConfigurationData,
+					MaintenanceCheckLabel(
+						"Install app updates from the App Store",
+					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installAppStoreApps,
 				],
 			])
 		}

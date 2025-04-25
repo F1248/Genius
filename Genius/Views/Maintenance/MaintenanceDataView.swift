@@ -12,13 +12,13 @@ import SwiftUICore
 
 struct MaintenanceDataView: View {
 
-	@State private var content: CustomKeyValuePairs<LocalizedStringKey, CustomKeyValuePairs<LocalizedStringKey, Symbol>>?
+	@State private var content: CustomKeyValuePairs<LocalizedStringKey, CustomKeyValuePairs<MaintenanceCheckLabel, Symbol>>?
 
-	let contentData: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UISymbolRepresentable>>
+	let contentData: KeyValuePairs<LocalizedStringKey, KeyValuePairs<MaintenanceCheckLabel, any UISymbolRepresentable>>
 
 	// swiftlint:disable:next type_contents_order
 	init(
-		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UISymbolRepresentable>>,
+		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<MaintenanceCheckLabel, any UISymbolRepresentable>>,
 	) {
 		self.contentData = content
 	}
@@ -34,7 +34,7 @@ struct MaintenanceDataView: View {
 									Divider()
 								}
 								HStack {
-									VaryingText(rowContent.key)
+									rowContent.key
 									Spacer()
 									rowContent.value
 								}
