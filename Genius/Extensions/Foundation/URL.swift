@@ -14,4 +14,14 @@ extension URL {
 		guard FileManager.default.fileExists(atPath: filePath) else { return nil }
 		self.init(fileURLWithPath: filePath)
 	}
+
+	init?(appleSupportArticle: Int) {
+		self.init(string: "https://support.apple.com/\(appleSupportArticle)")
+	}
+
+	init?(appleUserGuideArticle: String) {
+		// swiftlint:disable:next explicit_type_interface
+		let versionNumberComponent = SystemInformation.Software.OS.version.value?.uiRepresentation.map { "/\($0)" } ?? ""
+		self.init(string: "https://support.apple.com/guide/mac-help/\(appleUserGuideArticle)/mac\(versionNumberComponent)")
+	}
 }

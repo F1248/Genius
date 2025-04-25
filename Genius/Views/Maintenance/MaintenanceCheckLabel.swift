@@ -6,6 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
+import Foundation
 import SFSafeSymbols
 import SwiftUI
 import SwiftUICore
@@ -15,10 +16,12 @@ struct MaintenanceCheckLabel: View {
 	@State private var popoverPresented = false // swiftlint:disable:this explicit_type_interface
 
 	let name: LocalizedStringKey
+	let help: URL?
 
 	// swiftlint:disable:next type_contents_order
-	init(_ name: LocalizedStringKey) {
+	init(_ name: LocalizedStringKey, help: URL?) {
 		self.name = name
+		self.help = help
 	}
 
 	var body: some View {
@@ -31,7 +34,7 @@ struct MaintenanceCheckLabel: View {
 			}
 			.buttonStyle(.borderless)
 			.popover(isPresented: $popoverPresented) {
-				MaintenanceCheckLabelPopover(name: name)
+				MaintenanceCheckLabelPopover(name: name, help: help)
 			}
 		}
 	}
@@ -40,6 +43,7 @@ struct MaintenanceCheckLabel: View {
 #Preview {
 	MaintenanceCheckLabel(
 		"Name",
+		help: URL(string: "https://example.com"),
 	)
 	.padding()
 }

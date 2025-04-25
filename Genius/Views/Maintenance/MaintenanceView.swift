@@ -6,6 +6,7 @@
 // See LICENSE.txt for license information.
 //
 
+import Foundation
 import SwiftUI
 import SwiftUICore
 
@@ -20,45 +21,57 @@ struct MaintenanceView: View {
 				"Theft Protection": [
 					MaintenanceCheckLabel(
 						"Activation Lock",
+						help: URL(appleSupportArticle: 102_541),
 					): SystemInformation.MaintenanceChecks.TheftProtection.activationLock,
 					MaintenanceCheckLabel(
 						"Firmware Password",
+						help: URL(appleSupportArticle: 102_384),
 					): SystemInformation.MaintenanceChecks.TheftProtection.firmwarePassword,
 				],
 				"Data Security": [
 					MaintenanceCheckLabel(
 						"FileVault",
+						help: URL(appleUserGuideArticle: "mh11785"),
 					): SystemInformation.MaintenanceChecks.DataSecurity.fileVault,
 				],
 				"Malware Protection": [
 					MaintenanceCheckLabel(
 						"System Integrity Protection",
+						help: URL(appleSupportArticle: 102_149),
 					): SystemInformation.MaintenanceChecks.MalwareProtection.systemIntegrityProtection,
 					MaintenanceCheckLabel(
 						"Firewall",
+						help: URL(appleUserGuideArticle: "mh34041"),
 					): SystemInformation.MaintenanceChecks.MalwareProtection.firewall,
 					MaintenanceCheckLabel(
 						"Gatekeeper",
+						help: URL(appleSupportArticle: 102_445),
 					): SystemInformation.MaintenanceChecks.MalwareProtection.gatekeeper,
 				],
 				"Automatic Updates": [
 					MaintenanceCheckLabel(
 						"Check for macOS updates",
+						help: URL(appleSupportArticle: 108_382),
 					): SystemInformation.MaintenanceChecks.AutomaticUpdates.checkMacOS,
 					MaintenanceCheckLabel(
 						"Download macOS updates",
+						help: URL(appleSupportArticle: 108_382),
 					): SystemInformation.MaintenanceChecks.AutomaticUpdates.downloadMacOS,
 					MaintenanceCheckLabel(
 						"Install macOS updates",
+						help: URL(appleSupportArticle: 108_382),
 					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installMacOS,
 					MaintenanceCheckLabel(
 						"Install critical updates",
+						help: URL(appleSupportArticle: 101_591),
 					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installCritical,
 					MaintenanceCheckLabel(
 						"Install configuration data updates",
+						help: URL(appleSupportArticle: 101_591),
 					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installConfigurationData,
 					MaintenanceCheckLabel(
 						"Install app updates from the App Store",
+						help: URL(appleSupportArticle: 102_629),
 					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installAppStoreApps,
 				],
 			])
