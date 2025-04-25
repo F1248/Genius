@@ -21,7 +21,7 @@ struct SystemSetting {
 		systemSettingsAnchor: "Firewall",
 	)
 	static let softwareUpdate = Self(
-		systemPreferencesPane: "com.apple.preference.security",
+		systemPreferencesPane: "com.apple.preferences.softwareupdate",
 		systemSettingsPane: "com.apple.Software-Update-Settings.extension",
 		systemPreferencesAnchor: nil,
 		systemSettingsAnchor: "action=showAdvancedOptions",
