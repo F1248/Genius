@@ -14,13 +14,13 @@ set -e
 is_recoveryos=$([[ ! -e /System/Library/CoreServices/Finder.app ]] && echo true || echo false)
 
 if $is_recoveryos; then
-	if [[ ! $(sw_vers --productVersion | cut -d "." -f 1) -ge 14 ]]; then
+	if [[ ! $(sw_vers -productVersion | cut -d "." -f 1) -ge 14 ]]; then
 		echo "\nError: Genius requires macOS Sonoma 14 or later in recoveryOS!\n"
 		exit 1
 	fi
 	echo "\nNote: Genius only remains installed until restarting."
 else
-	if [[ ! $(sw_vers --productVersion | cut -d "." -f 1) -ge 11 ]]; then
+	if [[ ! $(sw_vers -productVersion | cut -d "." -f 1) -ge 11 ]]; then
 		echo "\nError: Genius requires macOS Big Sur 11 or later!\n"
 		exit 1
 	fi
