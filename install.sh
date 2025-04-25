@@ -17,7 +17,7 @@ if $is_recoveryos; then
 	echo "\nNote: Genius only remains installed until restarting."
 fi
 
-echo "\nPreparing..."
+echo "\nQuitting Genius..."
 if $is_recoveryos; then
 	killall -q Genius || true
 else
@@ -25,6 +25,8 @@ else
 		osascript -e "quit app \"Genius\""
 	done
 fi
+
+echo "Preparing..."
 if [[ -w /Applications ]]; then
 	cd /Applications
 else
@@ -39,7 +41,9 @@ echo "Installing..."
 unzip -q -o Genius.zip
 rm -r -f Genius.app
 unzip -q Genius.zip
+
 if $is_recoveryos; then
+	echo "Creating alias..."
 	echo "\nalias genius=\"$PWD/Genius.app/Contents/MacOS/Genius &> /dev/null\"" >> ~/.bash_profile
 fi
 
