@@ -42,7 +42,6 @@ jobs:
         name: Run CodeQL
         permissions:
             security-events: write
-        if: false # Work around https://github.com/github/codeql-action/issues/2506 with Xcode 16.3 and later
         runs-on: macos-15
 
         steps:
@@ -105,11 +104,12 @@ jobs:
             - name: Initialize CodeQL
               uses: github/codeql-action/init@main
               with:
+                tools: https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.21.2/codeql-bundle-osx64.tar.zst
                 languages: swift
                 queries: security-and-quality
 
             - name: Build Genius
-              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -sdk macosx15.2 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -sdk macosx15.4 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run CodeQL
               uses: github/codeql-action/analyze@main
