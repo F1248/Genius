@@ -24,7 +24,6 @@
 /* Begin PBXFileReference section */
 		A42B353D2BA2185B009E81AD /* Genius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Genius.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A438B3FA2CA346C600F8DF17 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		A43BD9C22C729A680049953D /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
 		A43BD9C32C729A680049953D /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		A444562E2D0E4EB200CE6207 /* .periphery.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .periphery.yml; sourceTree = "<group>"; usesTabs = 0; };
 		A4528F1F2BCD9B400092CBB8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -103,7 +102,6 @@
 				A417A7ED2C5EC312001FD481 /* .github */,
 				A4528F1F2BCD9B400092CBB8 /* .gitignore */,
 				A444562E2D0E4EB200CE6207 /* .periphery.yml */,
-				A43BD9C22C729A680049953D /* .swift-version */,
 				A43BD9C32C729A680049953D /* .swiftformat */,
 				A452AFF22BBF2CAB00760569 /* .swiftlint.yml */,
 				A47D8B992C26145300A0E4CF /* Genius */,
