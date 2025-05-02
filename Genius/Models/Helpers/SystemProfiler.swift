@@ -20,10 +20,9 @@ enum SystemProfiler {
 
 	static func get(_ dataType: String) async -> [String: any Sendable]? {
 		let dataType = "SP\(dataType)DataType" // swiftlint:disable:this explicit_type_interface
-		return await (
-			JSONSerialization.jsonObject(
-				from: Process("/usr/sbin/system_profiler", "-json", dataType)?.runSafe(),
-			) as? [String: [[String: any Sendable]]],
+		guard let systemProfilerOutput = await Process("/usr/sbin/system_profiler", "-json", dataType)?.runSafe() else { return nil }
+		return (
+			JSONSerialization.jsonObject(from: systemProfilerOutput) as? [String: [[String: any Sendable]]],
 		)?[dataType]?.first
 	}
 }

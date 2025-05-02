@@ -27,9 +27,4 @@ extension String: DefaultInitializable, DataInitializable, UIStringRepresentable
 			NSLocalizedString(self, tableName: tableName, comment: "")
 		}
 	}
-
-	init?(_ string: (some StringProtocol)?) {
-		guard let string else { return nil }
-		self.init(string)
-	}
 }
