@@ -9,7 +9,7 @@
 extension [Int] {
 
 	init?(_ strings: [some StringProtocol]?) {
-		guard let map = strings?.map(Int.init), !map.contains(nil) else { return nil }
-		self = map.compactMap(\.self)
+		guard let map = strings?.compactMap(Int.init), map.count == strings?.count else { return nil }
+		self = map
 	}
 }
