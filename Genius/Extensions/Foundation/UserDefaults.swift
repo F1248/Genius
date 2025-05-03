@@ -10,8 +10,7 @@ import Foundation
 
 extension UserDefaults {
 
-	static func read<Wrapped>(_ suiteName: String, _ key: String, default defaultValue: Wrapped) -> Wrapped? {
-		guard let userDefaults = UserDefaults(suiteName: suiteName) else { return nil }
-		return userDefaults.object(forKey: key) as? Wrapped ?? defaultValue
+	func read<Wrapped>(key: String, default defaultValue: Wrapped) -> Wrapped? {
+		object(forKey: key) as? Wrapped ?? defaultValue
 	}
 }
