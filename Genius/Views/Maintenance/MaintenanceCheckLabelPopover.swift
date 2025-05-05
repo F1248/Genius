@@ -25,15 +25,17 @@ struct MaintenanceCheckLabelPopover: View {
 					Spacer(minLength: 32)
 					if let help {
 						Link(destination: help) {
-							Symbol(.questionmarkCircle, color: .secondary, label: "Help")
+							Symbol(.questionmarkCircle, label: "Help")
 								.focusable() // Prevent symbol from receiving focus automatically
 						}
+						.foregroundColor(.secondary)
 					}
 					if let systemSetting {
 						Link(destination: systemSetting) {
-							Symbol(.gear, color: .secondary, label: "Open in System Settings")
+							Symbol(.gear, label: "Open in System Settings")
 								.focusable() // Prevent symbol from receiving focus automatically
 						}
+						.foregroundColor(.secondary)
 					}
 				}
 			}

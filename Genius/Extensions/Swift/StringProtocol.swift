@@ -18,11 +18,6 @@ extension StringProtocol {
 		self.init(decoding: data, as: UTF8.self)
 	}
 
-	init?(_ data: Data?) {
-		guard let data else { return nil }
-		self.init(data)
-	}
-
 	func remove(_ string: some StringProtocol) -> String {
 		replacingOccurrences(of: string, with: "")
 	}

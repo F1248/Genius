@@ -10,7 +10,7 @@ import Foundation
 
 extension UserDefaults {
 
-	static func read<Wrapped>(_ domain: String, _ key: String) -> Wrapped? {
-		UserDefaults(suiteName: domain)?.object(forKey: key) as? Wrapped
+	func read<Wrapped>(key: String, default defaultValue: Wrapped) -> Wrapped? {
+		object(forKey: key) as? Wrapped ?? defaultValue
 	}
 }
