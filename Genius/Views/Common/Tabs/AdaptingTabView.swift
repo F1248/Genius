@@ -29,7 +29,7 @@ struct AdaptingTabView<TabDataType: TabData>: View {
 				}
 			}
 		} else {
-			CustomTabView(selection: selection, entireWindow: TabDataType.entireWindow) {
+			CustomTabView(selection: selection) {
 				TabDataType.allCases.map { tab in
 					CustomTab(
 						tab.localizedStringKey,
