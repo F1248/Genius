@@ -8,8 +8,8 @@
 
 extension [Int] {
 
-	init?(_ strings: [some StringProtocol]?) {
-		guard let map = strings?.map(Int.init), !map.contains(nil) else { return nil }
-		self = map.compactMap(\.self)
+	init?(_ strings: [some StringProtocol]) {
+		self = strings.compactMap { Int($0) }
+		guard self.count == strings.count else { return nil }
 	}
 }

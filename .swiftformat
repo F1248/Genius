@@ -1,3 +1,5 @@
+--swiftversion 99 # latest
+
 --enable \
 	acronyms,\
 	blankLinesBetweenImports,\

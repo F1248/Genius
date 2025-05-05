@@ -32,12 +32,14 @@ extension SystemInformation {
 		enum Kernel {
 
 			static let name = SystemInformationData<String?, _>(Sysctl.read("kern.ostype"))
-			static let version = SystemInformationData<VersionNumber?, _>(VersionNumber(Sysctl.read("kern.osrelease")))
+			static let version = SystemInformationData<VersionNumber?, _>(Sysctl.read("kern.osrelease").flatMap(VersionNumber.init))
 		}
 
 		enum OS {
 
-			static let version = SystemInformationData<VersionNumber?, _>(VersionNumber(Sysctl.read("kern.osproductversion")))
+			static let version = SystemInformationData<VersionNumber?, _>(
+				Sysctl.read("kern.osproductversion").flatMap(VersionNumber.init),
+			)
 			static let codeName = SystemInformationData<String?, _>({
 				if #unavailable(macOS 13) {
 					"Monterey"
