@@ -61,6 +61,8 @@ if $is_recoveryos; then
 	echo "\nNote: To reopen Genius run \`genius\` in a new shell.\n"
 else
 	open Genius.app
+	sleep 0.5
+	open Genius.app	# Work around `open` opening apps in the background when not already running
 fi
 
 echo "Done."
