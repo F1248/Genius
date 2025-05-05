@@ -9,34 +9,26 @@
 struct SystemSetting {
 
 	static let iCloud = Self(
-		systemSettingsPane: "com.apple.systempreferences.AppleIDSettings",
+		pane: "com.apple.systempreferences.AppleIDSettings",
 		anchor: "iCloud",
 	)
 	static let firewall = Self(
-		systemSettingsPane: "com.apple.Network-Settings.extension",
-		anchor: "Firewall",
+		pane: "com.apple.Network-Settings.extension",
+		anchor: "Firewall", // does not work on macOS 13 and newer
 	)
 	static let softwareUpdate = Self(
-		systemSettingsPane: "com.apple.Software-Update-Settings.extension",
+		pane: "com.apple.Software-Update-Settings.extension",
 		anchor: { if #unavailable(macOS 15) { nil } else { "action=showAdvancedOptions" } }(),
 	)
 	static let security = Self(
-		systemSettingsPane: "com.apple.settings.PrivacySecurity.extension",
+		pane: "com.apple.settings.PrivacySecurity.extension",
 		anchor: "Security",
 	)
 	static let fileVault = Self(
-		systemSettingsPane: "com.apple.settings.PrivacySecurity.extension",
+		pane: "com.apple.settings.PrivacySecurity.extension",
 		anchor: "FileVault",
 	)
 
 	let pane: String
 	let anchor: String?
-
-	init(
-		systemSettingsPane: String,
-		anchor: String?,
-	) {
-		self.pane = systemSettingsPane
-		self.anchor = anchor
-	}
 }

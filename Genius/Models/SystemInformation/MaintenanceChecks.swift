@@ -53,27 +53,33 @@ extension SystemInformation {
 		enum AutomaticUpdates {
 
 			static let checkMacOS = SystemInformationData<Bool?, _>(
-				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticCheckEnabled"),
+				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
+					.read(key: "AutomaticCheckEnabled", default: true),
 				applicable: { if #unavailable(macOS 15) { true } else { false } }() &&? Software.OS.bootMode.value !=? .recovery,
 			)
 			static let downloadMacOS = SystemInformationData<Bool?, _>(
-				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticDownload"),
+				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
+					.read(key: "AutomaticDownload", default: true),
 				applicable: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let installMacOS = SystemInformationData<Bool?, _>(
-				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "AutomaticallyInstallMacOSUpdates"),
+				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
+					.read(key: "AutomaticallyInstallMacOSUpdates", default: false),
 				applicable: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let installCritical = SystemInformationData<Bool?, _>(
-				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "CriticalUpdateInstall"),
+				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
+					.read(key: "CriticalUpdateInstall", default: true),
 				applicable: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let installConfigurationData = SystemInformationData<Bool?, _>(
-				UserDefaults.read("/Library/Preferences/com.apple.SoftwareUpdate", "ConfigDataInstall"),
+				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
+					.read(key: "ConfigDataInstall", default: true),
 				applicable: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let installAppStoreApps = SystemInformationData<Bool?, _>(
-				UserDefaults.read("/Library/Preferences/com.apple.commerce", "AutoUpdate"),
+				UserDefaults(suiteName: "/Library/Preferences/com.apple.commerce")?
+					.read(key: "AutoUpdate", default: false),
 				applicable: Software.OS.bootMode.value !=? .recovery,
 			)
 		}

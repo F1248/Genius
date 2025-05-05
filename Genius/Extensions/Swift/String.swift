@@ -25,9 +25,4 @@ extension String: DefaultInitializable, DataInitializable, UIStringRepresentable
 			table: isContainedInDefaultLocalizationTable ? Defaults[.interfaceMode].localizationTable : nil
 		)
 	}
-
-	init?(_ string: (some StringProtocol)?) {
-		guard let string else { return nil }
-		self.init(string)
-	}
 }
