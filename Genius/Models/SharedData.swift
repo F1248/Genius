@@ -12,6 +12,7 @@ import Combine
 actor SharedData: ObservableObject {
 
 	@MainActor @Published var selectedTabsIndices: [String: Int] = [:]
+	@MainActor @Published var showUninstallAlert = false // swiftlint:disable:this explicit_type_interface
 }
 
 let sharedData = SharedData()

@@ -101,6 +101,22 @@
         }
       }
     },
+    "Are you sure you want to uninstall Genius?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Möchtest du Genius wirklich deinstallieren?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to uninstall Genius?"
+          }
+        }
+      }
+    },
     "Automatic Updates" : {
       "shouldTranslate" : false
     },
@@ -363,6 +379,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Genius"
+          }
+        }
+      }
+    },
+    "Genius and all its data will be uninstalled. This action cannot be undone." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius und alle seine Daten werden deinstalliert. Diese Aktion kann nicht widerrufen werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius and all its data will be uninstalled. This action cannot be undone."
           }
         }
       }
@@ -1031,6 +1063,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Total Cores"
+          }
+        }
+      }
+    },
+    "Uninstall Genius" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius deinstallieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uninstall Genius"
+          }
+        }
+      }
+    },
+    "Uninstall Genius…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius deinstallieren…"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uninstall Genius…"
           }
         }
       }
