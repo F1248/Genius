@@ -22,9 +22,9 @@ struct ContentView: View {
 				set: { observedSharedData.showUninstallAlert = $0 },
 			)) {
 				Alert(
-					title: Text("Are you sure you want to uninstall Genius?"),
-					message: Text("Genius and all its data will be uninstalled. This action cannot be undone."),
-					primaryButton: .destructive(Text("Uninstall Genius"), action: AppHelper.uninstall),
+					title: Text("Are you sure you want to uninstall Genius?".localized),
+					message: Text("Genius and all its data will be uninstalled. This action cannot be undone.".localized),
+					primaryButton: .destructive(Text("Uninstall Genius".localized), action: AppHelper.uninstall),
 					secondaryButton: .cancel(),
 				)
 			}

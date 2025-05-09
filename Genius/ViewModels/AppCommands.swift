@@ -16,8 +16,10 @@ struct AppCommands: Commands {
 
 	var body: some Commands {
 		CommandGroup(replacing: .appSettings) {
-			Button("Uninstall Genius…") {
+			Button {
 				sharedData.showUninstallAlert = true
+			} label: {
+				VaryingText("Uninstall Genius…")
 			}
 			Divider()
 			TabButton(tab: ContentViewTab.settings)
