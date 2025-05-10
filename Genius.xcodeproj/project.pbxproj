@@ -374,7 +374,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Genius/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 F1248 <f1248@mailbox.org>";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 - 2025 F1248 <f1248@mailbox.org>";
 				LD_WARN_DUPLICATE_LIBRARIES = YES;
 				LD_WARN_UNUSED_DYLIBS = YES;
 				LLVM_LTO = YES;
@@ -479,7 +479,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Genius/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 F1248 <f1248@mailbox.org>";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 - 2025 F1248 <f1248@mailbox.org>";
 				LD_WARN_DUPLICATE_LIBRARIES = YES;
 				LD_WARN_UNUSED_DYLIBS = YES;
 				LLVM_LTO = YES;
