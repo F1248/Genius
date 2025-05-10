@@ -262,13 +262,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Schadsoftware-Schutz"
+            "value" : "Schadprogramm-Schutz"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Malicious Software Protection"
+            "value" : "Malicious Program Protection"
           }
         }
       }
