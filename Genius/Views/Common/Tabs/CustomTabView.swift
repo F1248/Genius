@@ -11,7 +11,7 @@ import SwiftUICore
 
 struct CustomTabView: View {
 
-	@State private var selectedTabIndexPrivate = 0 // swiftlint:disable:this explicit_type_interface
+	@State var selectedTabIndexPrivate = 0 // swiftlint:disable:this explicit_type_interface
 
 	let entireWindow: Bool
 	let tabs: [CustomTab]

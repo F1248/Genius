@@ -12,7 +12,7 @@ import SwiftUICore
 
 struct MaintenanceDataView: View {
 
-	@State private var content: CustomKeyValuePairs<LocalizedStringKey, CustomKeyValuePairs<MaintenanceCheckLabel, Symbol>>?
+	@State var content: CustomKeyValuePairs<LocalizedStringKey, CustomKeyValuePairs<MaintenanceCheckLabel, Symbol>>?
 
 	let contentData: KeyValuePairs<LocalizedStringKey, KeyValuePairs<MaintenanceCheckLabel, any UISymbolRepresentable>>
 
