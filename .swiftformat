@@ -9,6 +9,7 @@
 	organizeDeclarations,\
 	redundantProperty,\
 	unusedPrivateDeclarations,\
+	wrapEnumCases,\
 	wrapMultilineConditionalAssignment,\
 
 --acronyms "CPU,EFI,ID,IO,JSON,NVRAM,OS,SF,SMC,UDID,UI,URL,UUID"
