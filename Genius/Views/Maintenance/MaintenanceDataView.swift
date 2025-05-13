@@ -61,12 +61,13 @@ struct MaintenanceDataView: View {
 						await value.uiRepresentation
 					}
 				}
-				content = zip(contentData, values).map { keyValuePair, values in
-					(key: keyValuePair.key, value: zip(keyValuePair.value, values).compactMap { keyValuePair, value in
-						value.map { (key: keyValuePair.key, value: $0) }
-					})
-				}
-				.filter { !$0.value.isEmpty }
+				content = zip(contentData, values)
+					.map { keyValuePair, values in
+						(key: keyValuePair.key, value: zip(keyValuePair.value, values).compactMap { keyValuePair, value in
+							value.map { (key: keyValuePair.key, value: $0) }
+						})
+					}
+					.filter { !$0.value.isEmpty }
 			}
 		}
 	}
