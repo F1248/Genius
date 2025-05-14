@@ -17,12 +17,14 @@ enum AppHelper {
 	static func uninstall() {
 		Defaults.removeAll()
 		if let bundleIdentifier = Bundle.main.bundleIdentifier {
-			if let cacheDirectory: URL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first {
-				try? FileManager.default.removeItem(at: cacheDirectory.appendingPathComponent(bundleIdentifier))
-			}
-			if let libraryDirectory: URL = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first {
-				try? FileManager.default.removeItem(at: libraryDirectory.appendingPathComponent("HTTPStorages/\(bundleIdentifier)"))
-				try? FileManager.default.removeItem(at: libraryDirectory.appendingPathComponent("Preferences/\(bundleIdentifier).plist"))
+			let cacheDirectory: URL? = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
+			let libraryDirectory: URL? = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first
+			for url in [
+				cacheDirectory?.appendingPathComponent(bundleIdentifier),
+				libraryDirectory?.appendingPathComponent("HTTPStorages/\(bundleIdentifier)"),
+				libraryDirectory?.appendingPathComponent("Preferences/\(bundleIdentifier).plist"),
+			].compactMap(\.self) {
+				try? FileManager.default.removeItem(at: url)
 			}
 		}
 		try? FileManager.default.removeItem(at: Bundle.main.bundleURL)
