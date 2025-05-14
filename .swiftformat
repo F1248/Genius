@@ -32,5 +32,6 @@
 --selfrequired error
 --semicolons never
 --shortoptionals always
+--tabwidth 4
 --typeblanklines preserve
 --xcodeindentation enabled

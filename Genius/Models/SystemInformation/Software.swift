@@ -32,7 +32,9 @@ extension SystemInformation {
 		enum Kernel {
 
 			static let name = SystemInformationData<String?, _>(Sysctl.read("kern.ostype"))
-			static let version = SystemInformationData<VersionNumber?, _>(Sysctl.read("kern.osrelease").flatMap(VersionNumber.init))
+			static let version = SystemInformationData<VersionNumber?, _>(
+				Sysctl.read("kern.osrelease").flatMap(VersionNumber.init),
+			)
 		}
 
 		enum OS {
