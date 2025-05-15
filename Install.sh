@@ -26,21 +26,21 @@ else
 	fi
 fi
 
-echo "\nQuitting Genius..."
+echo "\nPreparing..."
+if [[ -w /Applications ]]; then
+	cd /Applications
+else
+	mkdir -p ~/Applications
+	cd ~/Applications
+fi
+
+echo "Quitting Genius..."
 if $is_recoveryos; then
 	killall -q Genius || true
 else
 	for _ in $(pgrep -x Genius); do
 		osascript -e "quit app \"Genius\""
 	done
-fi
-
-echo "Preparing..."
-if [[ -w /Applications ]]; then
-	cd /Applications
-else
-	mkdir -p ~/Applications
-	cd ~/Applications
 fi
 
 echo "Downloading..."
