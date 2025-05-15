@@ -33,6 +33,10 @@ else
 	mkdir -p ~/Applications
 	cd ~/Applications
 fi
+if [[ -e Genius.app && ((! -f Genius.app/Contents/Info.plist) || $(defaults read "$PWD/Genius.app/Contents/Info.plist" "CFBundleIdentifier") != "dev.F1248.Genius") ]]; then
+	echo "\nError: A different app already exists at $PWD/Genius.app!\n"
+	exit 1
+fi
 
 echo "Quitting Genius..."
 if $is_recoveryos; then
