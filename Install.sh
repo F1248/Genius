@@ -15,13 +15,13 @@ is_recoveryos=$([[ ! -e /System/Library/CoreServices/Finder.app ]] && echo true 
 
 if $is_recoveryos; then
 	if ! (( $(sw_vers -productVersion | cut -d "." -f 1) >= 14 )); then
-		echo "\nError: Genius requires macOS Sonoma 14 or later in recoveryOS!\n"
+		echo "\nError: Genius requires macOS Sonoma 14 or later in recoveryOS!\n" >&2
 		exit 1
 	fi
 	echo "\nNote: Genius only remains installed until restarting."
 else
 	if ! (( $(sw_vers -productVersion | cut -d "." -f 1) >= 11 )); then
-		echo "\nError: Genius requires macOS Big Sur 11 or later!\n"
+		echo "\nError: Genius requires macOS Big Sur 11 or later!\n" >&2
 		exit 1
 	fi
 fi
@@ -34,7 +34,7 @@ else
 	cd ~/Applications
 fi
 if [[ -e Genius.app && ((! -f Genius.app/Contents/Info.plist) || $(defaults read "$PWD/Genius.app/Contents/Info.plist" "CFBundleIdentifier") != "dev.F1248.Genius") ]]; then
-	echo "\nError: A different app already exists at $PWD/Genius.app!\n"
+	echo "\nError: A different app already exists at $PWD/Genius.app!\n" >&2
 	exit 1
 fi
 
