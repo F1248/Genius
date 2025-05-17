@@ -367,6 +367,9 @@
         }
       }
     },
+    "Genius and all its data will be uninstalled. This action cannot be undone." : {
+      "shouldTranslate" : false
+    },
     "Hardware" : {
       "localizations" : {
         "de" : {
@@ -1034,6 +1037,9 @@
           }
         }
       }
+    },
+    "Uninstall Genius" : {
+      "shouldTranslate" : false
     },
     "Uninstall Genius…" : {
       "shouldTranslate" : false
