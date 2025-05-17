@@ -4,12 +4,18 @@
 	acronyms,\
 	blankLinesBetweenImports,\
 	blockComments,\
+	emptyExtensions,\
+	environmentEntry,\
 	isEmpty,\
 	noExplicitOwnership,\
 	organizeDeclarations,\
+	preferSwiftTesting,\
+	redundantEquatable,\
 	redundantProperty,\
 	unusedPrivateDeclarations,\
+	wrapEnumCases,\
 	wrapMultilineConditionalAssignment,\
+	wrapMultilineFunctionChains,\
 
 --acronyms "CPU,EFI,ID,IO,JSON,NVRAM,OS,SF,SMC,UDID,UI,URL,UUID"
 --condassignment always
@@ -26,5 +32,6 @@
 --selfrequired error
 --semicolons never
 --shortoptionals always
+--tabwidth 4
 --typeblanklines preserve
 --xcodeindentation enabled

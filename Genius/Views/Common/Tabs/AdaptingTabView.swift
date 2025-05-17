@@ -13,10 +13,7 @@ struct AdaptingTabView<TabDataType: TabData>: View {
 
 	@ObservedObject var observedSharedData: SharedData = sharedData
 
-	var selection: Binding<Int> { Binding(
-		get: { observedSharedData.selectedTabsIndices[TabDataType.id] ?? 0 },
-		set: { observedSharedData.selectedTabsIndices[TabDataType.id] = $0 },
-	) }
+	var selection: Binding<Int> { $observedSharedData.selectedTabsIndices[TabDataType.id, default: 0] }
 
 	var body: some View {
 		if #available(macOS 15, *), TabDataType.entireWindow {

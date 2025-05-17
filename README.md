@@ -1,6 +1,6 @@
 [Zu Deutsch wechseln](README_DE.md)
 
-# Genius – The Intelligent Universal macOS Helper for Everyone!
+# Genius – The Intelligent Universal macOS Helper Tool for Everyone!
 
 ## Table of Contents
 
@@ -37,7 +37,7 @@
 On macOS Sequoia 15:
 
 5. Click `Done`.
-6. Open [`Privacy & Security` in System Settings, scroll down to the message `“Genius.app” was blocked to protect your Mac.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity?Security) and click `Open Anyway`.
+6. Open [`Privacy & Security` in System Settings, scroll down to the message `“Genius.app” was blocked to protect your Mac.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) and click `Open Anyway`.
 7. Click `Open Anyway` again.
 8. Authenticate yourself.
 
@@ -61,7 +61,7 @@ curl https://f1248.github.io/deployment-target-macos-14 | sh
 - Genius only remains installed until restarting.
 
 ## Copyright
-© 2024 F1248 <[f1248@mailbox.org](mailto:f1248@mailbox.org)>
+© 2024 - 2025 F1248 <[f1248@mailbox.org](mailto:f1248@mailbox.org)>
 
 ## License
 See [LICENSE.txt](LICENSE.txt) for license information.
