@@ -1035,6 +1035,9 @@
         }
       }
     },
+    "Uninstall Genius…" : {
+      "shouldTranslate" : false
+    },
     "Unknown" : {
       "extractionState" : "manual",
       "localizations" : {

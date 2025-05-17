@@ -18,6 +18,7 @@ disabled_rules:
     - nslocalizedstring_key
     - nslocalizedstring_require_bundle
     - prefixed_toplevel_constant
+    - private_swiftui_state
     - required_deinit
     - sorted_enum_cases
     - switch_case_on_newline

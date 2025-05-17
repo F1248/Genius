@@ -42,6 +42,6 @@ jobs:
             - name: Evaluate CodeQL results
               run: |
                 if [[ $(jq ".runs[0].results | length == 0" ../results/actions.sarif) != true ]]; then
-                    echo "CodeQL alerts found!"
+                    echo "CodeQL alerts found!" >&2
                     exit 1
                 fi
