@@ -101,6 +101,9 @@
         }
       }
     },
+    "Are you sure you want to uninstall Genius?" : {
+      "shouldTranslate" : false
+    },
     "Automatic Updates" : {
       "shouldTranslate" : false
     },
@@ -366,6 +369,9 @@
           }
         }
       }
+    },
+    "Genius and all its data will be uninstalled. This action cannot be undone." : {
+      "shouldTranslate" : false
     },
     "Hardware" : {
       "localizations" : {
@@ -1034,6 +1040,9 @@
           }
         }
       }
+    },
+    "Uninstall Genius" : {
+      "shouldTranslate" : false
     },
     "Uninstall Genius…" : {
       "shouldTranslate" : false
