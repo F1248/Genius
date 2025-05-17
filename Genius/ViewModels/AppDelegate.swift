@@ -17,7 +17,7 @@ actor AppDelegate: NSObject, NSApplicationDelegate {
 	nonisolated func applicationDockMenu(_: NSApplication) -> NSMenu? {
 		let dockMenu = NSMenu()
 		for tab in ContentViewTab.allCases {
-			let menuItem = NSMenuItem(title: tab.localizedString, action: #selector(changeTab(_:)), keyEquivalent: "")
+			let menuItem = NSMenuItem(title: tab.localized, action: #selector(changeTab(_:)), keyEquivalent: "")
 			menuItem.tag = tab.index
 			dockMenu.addItem(menuItem)
 		}
