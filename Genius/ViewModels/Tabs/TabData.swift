@@ -21,6 +21,6 @@ protocol TabData: RawRepresentable<String>, CaseIterable, SelfIdentifiable where
 extension TabData {
 
 	static var id: String { String(describing: self) }
-	var localizedString: String { rawValue.localized }
+	var localized: String { rawValue.localized }
 	var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
