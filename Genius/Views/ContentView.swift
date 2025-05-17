@@ -18,15 +18,15 @@ struct ContentView: View {
 		AdaptingTabView<ContentViewTab>()
 			.frame(minWidth: 686, maxWidth: .infinity, minHeight: 256, maxHeight: .infinity)
 			.confirmationDialog(
-				"Are you sure you want to uninstall Genius?".localized,
+				Text(varying: "Are you sure you want to uninstall Genius?"),
 				isPresented: $observedSharedData.showUninstallAlert,
 				actions: {
 					Button(role: .destructive, action: AppHelper.uninstall) {
-						VaryingText("Uninstall Genius")
+						Text(varying: "Uninstall Genius")
 					}
 				},
 				message: {
-					VaryingText("Genius and all its data will be uninstalled. This action cannot be undone.")
+					Text(varying: "Genius and all its data will be uninstalled. This action cannot be undone.")
 				},
 			)
 	}
