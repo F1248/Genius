@@ -19,7 +19,9 @@ extension SystemInformation {
 				applicable: Hardware.securityChip.value >=? .t2 &&? !?Hardware.Model.isVirtualMachine,
 			)
 			static let firmwarePassword = SystemInformationData<Bool?, _>(
-				{ await Bool(firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check", requiresRoot: true)?.runSafe()) },
+				{ await Bool(
+					firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check", requiresRoot: true)?.runSafe(),
+				) },
 				applicable: Hardware.CPU.type.value == .intel &&? !?Hardware.Model.isVirtualMachine,
 			)
 		}
@@ -39,9 +41,10 @@ extension SystemInformation {
 				applicable: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let firewall = SystemInformationData<Bool?, _>(
-				{
-					await Bool(socketfilterfwOutput: Process("/usr/libexec/ApplicationFirewall/socketfilterfw", "--getglobalstate")?.runSafe())
-				},
+				{ await Bool(
+					socketfilterfwOutput: Process("/usr/libexec/ApplicationFirewall/socketfilterfw", "--getglobalstate")?
+						.runSafe(),
+				) },
 				applicable: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let gatekeeper = SystemInformationData<Bool?, _>(

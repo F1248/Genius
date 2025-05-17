@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# install.sh
+# Install.sh
 # Genius
 #
 # © 2024 F1248 <f1248@mailbox.org>
@@ -13,8 +13,8 @@ set -e
 
 is_recoveryos=$([[ ! -e /System/Library/CoreServices/Finder.app ]] && echo true || echo false)
 
-if [[ ! $(sw_vers -productVersion | cut -d "." -f 1) -ge 15 ]]; then
-	echo "\nError: Genius requires macOS Sequoia 15 or later!\n"
+if ! (( $(sw_vers -productVersion | cut -d "." -f 1) >= 15 )); then
+	echo "\nError: Genius requires macOS Sequoia 15 or later!\n" >&2
 	exit 1
 fi
 
@@ -22,21 +22,25 @@ if $is_recoveryos; then
 	echo "\nNote: Genius only remains installed until restarting."
 fi
 
-echo "\nQuitting Genius..."
+echo "\nPreparing..."
+if [[ -w /Applications ]]; then
+	cd /Applications
+else
+	mkdir -p ~/Applications
+	cd ~/Applications
+fi
+if [[ -e Genius.app && ((! -f Genius.app/Contents/Info.plist) || $(defaults read "$PWD/Genius.app/Contents/Info.plist" "CFBundleIdentifier") != "dev.F1248.Genius") ]]; then
+	echo "\nError: A different app already exists at $PWD/Genius.app!\n" >&2
+	exit 1
+fi
+
+echo "Quitting Genius..."
 if $is_recoveryos; then
 	killall -q Genius || true
 else
 	for _ in $(pgrep -x Genius); do
 		osascript -e "quit app \"Genius\""
 	done
-fi
-
-echo "Preparing..."
-if [[ -w /Applications ]]; then
-	cd /Applications
-else
-	mkdir -p ~/Applications
-	cd ~/Applications
 fi
 
 echo "Downloading..."

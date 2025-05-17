@@ -33,7 +33,9 @@ extension SystemInformation {
 					cc=\(serialNumber.dropFirst(8))&\
 					lang=\(Locale.currentLanguageCode ?? "")
 					"""
-					return await Network.string(from: url)?.between(start: "<configCode>", end: "</configCode>").map(String.init)
+					return await Network.string(from: url)?
+						.between(start: "<configCode>", end: "</configCode>")
+						.map(String.init)
 				},
 				applicable: Machine.serialNumber.value.map { [11, 12].contains($0.count) },
 			)
@@ -99,13 +101,13 @@ extension SystemInformation {
 
 			enum Cores {
 
-				static let differentTypes = SystemInformationData<Bool?, _>(type.value == .appleSilicon &&? !?Model.isVirtualMachine)
+				static let differentTypes: Bool? = type.value == .appleSilicon &&? !?Model.isVirtualMachine
 				static let total = SystemInformationData<Int?, _>(Sysctl.read("hw.physicalcpu"))
 				static let performance = SystemInformationData<Int?, _>(
-					Sysctl.read("hw.perflevel0.physicalcpu"), applicable: differentTypes.value,
+					Sysctl.read("hw.perflevel0.physicalcpu"), applicable: differentTypes,
 				)
 				static let efficiency = SystemInformationData<Int?, _>(
-					Sysctl.read("hw.perflevel1.physicalcpu"), applicable: differentTypes.value,
+					Sysctl.read("hw.perflevel1.physicalcpu"), applicable: differentTypes,
 				)
 			}
 
@@ -125,7 +127,9 @@ extension SystemInformation {
 			)
 		}
 
-		static let memory = SystemInformationData<InformationStorage?, _>(Sysctl.read("hw.memsize").map(InformationStorage.init))
+		static let memory = SystemInformationData<InformationStorage?, _>(
+			Sysctl.read("hw.memsize").map(InformationStorage.init),
+		)
 
 		enum Machine {
 
@@ -136,7 +140,8 @@ extension SystemInformation {
 				IORegistry(class: "IOPlatformExpertDevice").read(kIOPlatformUUIDKey),
 			)
 			static let provisioningUDID = SystemInformationData<String?, _>(
-				{ await SystemProfiler.hardware?["provisioning_UDID"] as? String ?? (CPU.type.value == .intel ? hardwareUUID.value : nil) },
+				{ await SystemProfiler.hardware?["provisioning_UDID"] as? String ??
+					(CPU.type.value == .intel ? hardwareUUID.value : nil) },
 				applicable: SystemProfiler.available ||? CPU.type.value == .intel,
 			)
 		}
