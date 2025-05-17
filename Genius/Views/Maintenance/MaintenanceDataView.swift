@@ -12,7 +12,7 @@ import SwiftUICore
 
 struct MaintenanceDataView: View {
 
-	@State private var content: CustomKeyValuePairs<LocalizedStringKey, CustomKeyValuePairs<MaintenanceCheckLabel, Symbol>>?
+	@State var content: CustomKeyValuePairs<LocalizedStringKey, CustomKeyValuePairs<MaintenanceCheckLabel, Symbol>>?
 
 	let contentData: KeyValuePairs<LocalizedStringKey, KeyValuePairs<MaintenanceCheckLabel, any UISymbolRepresentable>>
 
@@ -60,12 +60,13 @@ struct MaintenanceDataView: View {
 					await value.uiRepresentation
 				}
 			}
-			content = zip(contentData, values).map { keyValuePair, values in
-				(key: keyValuePair.key, value: zip(keyValuePair.value, values).compactMap { keyValuePair, value in
-					value.map { (key: keyValuePair.key, value: $0) }
-				})
-			}
-			.filter { !$0.value.isEmpty }
+			content = zip(contentData, values)
+				.map { keyValuePair, values in
+					(key: keyValuePair.key, value: zip(keyValuePair.value, values).compactMap { keyValuePair, value in
+						value.map { (key: keyValuePair.key, value: $0) }
+					})
+				}
+				.filter { !$0.value.isEmpty }
 		}
 	}
 }

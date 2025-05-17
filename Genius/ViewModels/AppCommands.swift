@@ -11,18 +11,23 @@ import SwiftUICore
 
 struct AppCommands: Commands {
 
-	// periphery:ignore
-	@ObservedObject var observedSharedData: SharedData = sharedData // swiftlint:disable:this unused_declaration
+	@ObservedObject var observedSharedData: SharedData = sharedData
 
 	var body: some Commands {
 		CommandGroup(replacing: .appSettings) {
+			Button {
+				sharedData.showUninstallAlert = true
+			} label: {
+				VaryingText("Uninstall Genius…")
+			}
+			Divider()
 			TabButton(tab: ContentViewTab.settings)
 		}
 		CommandGroup(replacing: .newItem) { EmptyView() }
 		CommandGroup(before: .toolbar) {
 			TabViewButtons<ContentViewTab>()
-			switch ContentViewTab.selection {
-				case .systemInformation: TabViewButtons<SystemInformationViewTab>()
+			switch observedSharedData.selectedTabsIndices[ContentViewTab.id] {
+				case ContentViewTab.systemInformation.index: TabViewButtons<SystemInformationViewTab>()
 				default: EmptyView()
 			}
 		}

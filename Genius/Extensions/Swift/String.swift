@@ -22,7 +22,7 @@ extension String: DefaultInitializable, DataInitializable, UIStringRepresentable
 	var localized: String {
 		String(
 			localized: LocalizationValue(self),
-			table: isContainedInDefaultLocalizationTable ? Defaults[.interfaceMode].localizationTable : nil
+			table: isContainedInDefaultLocalizationTable ? Defaults[.interfaceMode].localizationTable : nil,
 		)
 	}
 }

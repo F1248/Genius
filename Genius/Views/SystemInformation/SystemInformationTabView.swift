@@ -12,7 +12,7 @@ import SwiftUICore
 
 struct SystemInformationTabView: View {
 
-	@State private var content: CustomKeyValuePairs<LocalizedStringKey, CustomKeyValuePairs<LocalizedStringKey, String>>?
+	@State var content: CustomKeyValuePairs<LocalizedStringKey, CustomKeyValuePairs<LocalizedStringKey, String>>?
 
 	let contentData: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UIStringRepresentable>>
 
@@ -63,12 +63,13 @@ struct SystemInformationTabView: View {
 					await value.uiRepresentation
 				}
 			}
-			content = zip(contentData, values).map { keyValuePair, values in
-				(key: keyValuePair.key, value: zip(keyValuePair.value, values).compactMap { keyValuePair, value in
-					value.map { (key: keyValuePair.key, value: $0) }
-				})
-			}
-			.filter { !$0.value.isEmpty }
+			content = zip(contentData, values)
+				.map { keyValuePair, values in
+					(key: keyValuePair.key, value: zip(keyValuePair.value, values).compactMap { keyValuePair, value in
+						value.map { (key: keyValuePair.key, value: $0) }
+					})
+				}
+				.filter { !$0.value.isEmpty }
 		}
 	}
 }
