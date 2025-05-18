@@ -21,8 +21,8 @@ struct ContentView: View {
 				Alert(
 					title: Text(varying: "Are you sure you want to uninstall Genius?"),
 					message: Text(varying: "Genius and all its data will be uninstalled. This action cannot be undone."),
-					primaryButton: .destructive(Text(varying: "Uninstall Genius"), action: AppHelper.uninstall),
-					secondaryButton: .cancel(),
+					primaryButton: .cancel(),
+					secondaryButton: .destructive(Text(varying: "Uninstall Genius"), action: AppHelper.uninstall),
 				)
 			}
 	}
