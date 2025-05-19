@@ -11,11 +11,11 @@
 PATH="/usr/bin:/bin"
 set -e
 
-if [[ $(realpath "$0") != */Genius.app/Contents/Resources/Uninstall ]]; then
+if [[ $0 != */Genius.app/Contents/Resources/Uninstall ]]; then
 	exit 1
 fi
 
-cd "$(dirname "$(realpath "$0")")"/../../..
+cd "$(dirname "$0")"/../../..
 
 while pgrep -x Genius > /dev/null; do
 	sleep 0.1
