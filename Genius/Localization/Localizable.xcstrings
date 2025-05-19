@@ -101,6 +101,9 @@
         }
       }
     },
+    "Are you sure you want to uninstall Genius?" : {
+      "shouldTranslate" : false
+    },
     "Automatic Updates" : {
       "shouldTranslate" : false
     },

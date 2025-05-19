@@ -19,7 +19,7 @@ struct MaintenanceCheckLabelPopover: View {
 
 	var body: some View {
 		VStack(alignment: .leading) {
-			VaryingText(name)
+			Text(varying: name)
 			if SystemInformation.Software.OS.bootMode.value != .recovery {
 				HStack {
 					Spacer(minLength: 32)

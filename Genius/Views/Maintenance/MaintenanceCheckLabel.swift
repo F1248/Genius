@@ -28,7 +28,7 @@ struct MaintenanceCheckLabel: View {
 
 	var body: some View {
 		HStack {
-			VaryingText(name)
+			Text(varying: name)
 			Button {
 				popoverPresented.toggle()
 			} label: {
