@@ -42,7 +42,7 @@ struct MaintenanceDataView: View {
 							}
 							.padding(.horizontal, 2)
 						} label: {
-							VaryingText(groupBoxContent.key)
+							Text(varying: groupBoxContent.key)
 								.font(.title2)
 								.padding()
 						}
