@@ -24,7 +24,11 @@ done
 set +e
 
 rm -r -f Genius.app
+rm -r -f ~/Library/Caches/dev.F1248.Genius
 rm -r -f /Users/*/Library/Caches/dev.F1248.Genius
+rm -r -f ~/Library/HTTPStorages/dev.F1248.Genius
 rm -r -f /Users/*/Library/HTTPStorages/dev.F1248.Genius
+defaults delete ~/Library/Preferences/dev.F1248.Genius.plist
 defaults delete /Users/*/Library/Preferences/dev.F1248.Genius.plist
+rm -f ~/Library/Preferences/dev.F1248.Genius.plist
 rm -f /Users/*/Library/Preferences/dev.F1248.Genius.plist
