@@ -1,5 +1,5 @@
 //
-// Pasteboard.swift
+// NSPasteboard.swift
 // Genius
 //
 // © 2024 F1248 <f1248@mailbox.org>
@@ -8,11 +8,10 @@
 
 import AppKit
 
-enum Pasteboard {
+extension NSPasteboard {
 
 	static func set(_ string: String) {
-		let pasteboard: NSPasteboard = .general
-		pasteboard.clearContents()
-		pasteboard.setString(string, forType: .string)
+		general.clearContents()
+		general.setString(string, forType: .string)
 	}
 }

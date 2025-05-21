@@ -7,6 +7,7 @@
 //
 
 import _Concurrency
+import AppKit
 import SwiftUI
 import SwiftUICore
 
@@ -37,7 +38,7 @@ struct SystemInformationTabView: View {
 									Text(varying: rowContent.key)
 									Spacer()
 									Button(rowContent.value) {
-										Pasteboard.set(rowContent.value)
+										NSPasteboard.set(rowContent.value)
 									}
 									.buttonStyle(.borderless)
 								}
