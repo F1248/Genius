@@ -37,7 +37,7 @@ struct SystemInformationTabView: View {
 									Text(varying: rowContent.key)
 									Spacer()
 									Button(rowContent.value) {
-										Pasteboard.write(rowContent.value)
+										Pasteboard.set(rowContent.value)
 									}
 									.buttonStyle(.borderless)
 								}
