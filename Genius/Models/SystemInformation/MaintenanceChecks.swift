@@ -51,6 +51,13 @@ extension SystemInformation {
 				{ await Bool(spctlOutput: Process("/usr/sbin/spctl", "--status")?.runSafe()) },
 				applicable: Software.OS.bootMode.value !=? .recovery,
 			)
+			static let askToAllowAccessoriesToConnect = SystemInformationData<Bool?, _>(
+				{ IORegistry(class: "AppleCredentialManager").read("TRM_EffectiveConfigProfile") ==? 1 },
+				applicable: { if #available(macOS 13, *) { true } else { false } }() &&?
+					Hardware.CPU.type.value == .appleSilicon &&?
+					Hardware.Model.isLaptop &&?
+					Software.OS.bootMode.value !=? .recovery,
+			)
 		}
 
 		enum AutomaticUpdates {

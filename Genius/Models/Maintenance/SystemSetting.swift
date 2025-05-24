@@ -33,16 +33,20 @@ struct SystemSetting {
 		systemSettingsPane: "com.apple.settings.PrivacySecurity.extension",
 		anchor: { if #unavailable(macOS 13) { "FDE" } else if #unavailable(macOS 14) { "Security" } else { "FileVault" } }(),
 	)
+	static let accessories = Self(
+		systemSettingsPane: "com.apple.settings.PrivacySecurity.extension",
+		anchor: { if #unavailable(macOS 15.4) { "Security" } else { "Accessories" } }(),
+	)
 
 	let pane: String
 	let anchor: String?
 
 	init(
-		systemPreferencesPane: String,
+		systemPreferencesPane: String? = nil,
 		systemSettingsPane: String,
 		anchor: String?,
 	) {
-		self.pane = if #unavailable(macOS 13) { systemPreferencesPane } else { systemSettingsPane }
+		self.pane = if #unavailable(macOS 13) { systemPreferencesPane ?? systemSettingsPane } else { systemSettingsPane }
 		self.anchor = anchor
 	}
 }

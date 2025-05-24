@@ -104,6 +104,22 @@
     "Are you sure you want to uninstall Genius?" : {
       "shouldTranslate" : false
     },
+    "Ask to allow accessories to connect" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fragen, um Verbinden von Zubehör zu erlauben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask to allow accessories to connect"
+          }
+        }
+      }
+    },
     "Automatic Updates" : {
       "shouldTranslate" : false
     },

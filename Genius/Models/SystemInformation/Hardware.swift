@@ -18,8 +18,7 @@ extension SystemInformation {
 		enum Model {
 
 			static let isVirtualMachine: Bool? = Sysctl.read("kern.hv_vmm_present")
-			// periphery:ignore
-			static let isLaptop: Bool? = namePrefix?.hasPrefix("MacBook") // swiftlint:disable:this unused_declaration
+			static let isLaptop: Bool? = namePrefix?.hasPrefix("MacBook")
 			static let name = SystemInformationData<String?, _>(
 				IORegistry(name: "product").read("product-name"),
 				applicable: CPU.type.value == .appleSilicon,
