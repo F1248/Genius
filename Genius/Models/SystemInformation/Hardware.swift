@@ -89,9 +89,9 @@ extension SystemInformation {
 			switch CPU.type.value {
 				case .appleSilicon: return .mSeries
 				case .intel:
-					let t2 = IORegistry(name: "Apple T2 Controller").serviceExists()
+					let t2 = IORegistry(name: "Apple T2 Controller").exists()
 					if t2 ?? false { return .t2 }
-					let t1 = IORegistry(name: "Apple T1 Controller").serviceExists()
+					let t1 = IORegistry(name: "Apple T1 Controller").exists()
 					if t1 ?? false { return .t1 }
 					if t2 == false, t1 == false { return SecurityChip.none }
 					return nil
