@@ -102,16 +102,84 @@
       }
     },
     "Are you sure you want to uninstall Genius?" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Möchtest du Genius wirklich deinstallieren?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to uninstall Genius?"
+          }
+        }
+      }
+    },
+    "Ask to allow accessories to connect" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fragen, um Verbinden von Zubehör zu erlauben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask to allow accessories to connect"
+          }
+        }
+      }
     },
     "Automatic Updates" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatische Updates"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic Updates"
+          }
+        }
+      }
     },
     "Boot Mode" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boot-Modus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boot Mode"
+          }
+        }
+      }
     },
     "Boot Volume" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boot-Volume"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boot Volume"
+          }
+        }
+      }
     },
     "Build Number" : {
       "localizations" : {
@@ -130,7 +198,20 @@
       }
     },
     "Check for macOS updates" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach macOS-Updates suchen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check for macOS updates"
+          }
+        }
+      }
     },
     "Code Name" : {
       "localizations" : {
@@ -181,13 +262,52 @@
       }
     },
     "CPU Frequency" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU-Frequenz"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU Frequency"
+          }
+        }
+      }
     },
     "CPU Name" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU-Name"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU Name"
+          }
+        }
+      }
     },
     "CPU Type" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU-Typ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU Type"
+          }
+        }
+      }
     },
     "Data Security" : {
       "localizations" : {
@@ -222,7 +342,6 @@
       }
     },
     "Disabled" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -239,7 +358,20 @@
       }
     },
     "Download macOS updates" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS-Updates herunterladen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download macOS updates"
+          }
+        }
+      }
     },
     "Efficiency Cores" : {
       "localizations" : {
@@ -258,7 +390,6 @@
       }
     },
     "Enabled" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -371,7 +502,37 @@
       }
     },
     "Genius and all its data will be uninstalled. This action cannot be undone." : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius und alle seine Daten werden deinstalliert. Diese Aktion kann nicht widerrufen werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius and all its data will be uninstalled. This action cannot be undone."
+          }
+        }
+      }
+    },
+    "Genius requires administrator privileges." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius benötigt Administratorrechte."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius requires administrator privileges."
+          }
+        }
+      }
     },
     "Hardware" : {
       "localizations" : {
@@ -471,16 +632,68 @@
       }
     },
     "Install app updates from the App Store" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Updates aus dem App Store installieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install app updates from the App Store"
+          }
+        }
+      }
     },
     "Install configuration data updates" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konfigurationsdaten-Updates installieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install configuration data updates"
+          }
+        }
+      }
     },
     "Install critical updates" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kritische Updates installieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install critical updates"
+          }
+        }
+      }
     },
     "Install macOS updates" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS-Updates installieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install macOS updates"
+          }
+        }
+      }
     },
     "Intel" : {
       "extractionState" : "manual",
@@ -613,7 +826,20 @@
       }
     },
     "Malware Protection" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Malware-Schutz"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Malware Protection"
+          }
+        }
+      }
     },
     "Memory" : {
       "localizations" : {
@@ -698,7 +924,6 @@
       }
     },
     "Not applicable" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -975,7 +1200,20 @@
       }
     },
     "System Information" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systeminformationen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System Information"
+          }
+        }
+      }
     },
     "System Integrity Protection" : {
       "localizations" : {
@@ -1026,13 +1264,38 @@
       }
     },
     "Uninstall Genius" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius deinstallieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uninstall Genius"
+          }
+        }
+      }
     },
     "Uninstall Genius…" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius deinstallieren…"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uninstall Genius…"
+          }
+        }
+      }
     },
     "Unknown" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {

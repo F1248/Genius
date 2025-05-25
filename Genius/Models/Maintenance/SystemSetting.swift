@@ -28,6 +28,10 @@ struct SystemSetting {
 		pane: "com.apple.settings.PrivacySecurity.extension",
 		anchor: { if #unavailable(macOS 14) { "Security" } else { "FileVault" } }(),
 	)
+	static let accessories = Self(
+		pane: "com.apple.settings.PrivacySecurity.extension",
+		anchor: { if #unavailable(macOS 15.4) { "Security" } else { "Accessories" } }(),
+	)
 
 	let pane: String
 	let anchor: String?

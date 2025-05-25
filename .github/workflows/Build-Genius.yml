@@ -100,7 +100,7 @@ jobs:
                 echo "Periphery $(./periphery version) installed"
 
             - name: Run Periphery
-              run: ./periphery scan --format github-actions --relative-results --strict -- -skipPackagePluginValidation
+              run: ./periphery scan --format github-actions --strict -- -skipPackagePluginValidation
 
     Run-SwiftFormat:
         name: Run SwiftFormat
