@@ -15,12 +15,12 @@ extension String: DefaultInitializable, DataInitializable, UIStringRepresentable
 		self
 	}
 
-	var isContainedInDefaultLocalizationTable: Bool {
+	var variesByInterfaceMode: Bool {
 		NSLocalizedString(self, value: " ", comment: "") == " "
 	}
 
 	var localized: String {
-		let tableName: String? = isContainedInDefaultLocalizationTable ? Defaults[.interfaceMode].localizationTable : nil
+		let tableName: String? = variesByInterfaceMode ? Defaults[.interfaceMode].localizationTable : nil
 		return if #available(macOS 12, *) {
 			String(localized: LocalizationValue(self), table: tableName)
 		} else {

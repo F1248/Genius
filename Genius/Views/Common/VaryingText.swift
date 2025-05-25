@@ -23,7 +23,7 @@ struct VaryingText: View {
 	}
 
 	var body: some View {
-		Text(key, tableName: key.key.isContainedInDefaultLocalizationTable ? interfaceMode.localizationTable : nil)
+		Text(key, tableName: key.key.variesByInterfaceMode ? interfaceMode.localizationTable : nil)
 	}
 }
 
