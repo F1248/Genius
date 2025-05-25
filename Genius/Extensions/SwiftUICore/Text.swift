@@ -14,7 +14,7 @@ extension Text {
 	init(varying key: LocalizedStringKey) {
 		self.init(
 			key,
-			tableName: key.key.variesByInterfaceMode ? Defaults[.interfaceMode].localizationTable : nil,
+			tableName: key.variesByInterfaceMode ? Defaults[.interfaceMode].localizationTable : nil,
 		)
 	}
 }
