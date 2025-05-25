@@ -14,7 +14,7 @@ struct SystemSetting {
 	)
 	static let firewall = Self(
 		pane: "com.apple.Network-Settings.extension",
-		anchor: "Firewall", // does not work on macOS 13 and newer
+		anchor: "Firewall", // does not work
 	)
 	static let softwareUpdate = Self(
 		pane: "com.apple.Software-Update-Settings.extension",
