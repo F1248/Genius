@@ -16,7 +16,7 @@ extension String: DefaultInitializable, DataInitializable, UIStringRepresentable
 	}
 
 	var variesByInterfaceMode: Bool {
-		NSLocalizedString(self, value: " ", comment: "") == " "
+		NSLocalizedString(self, tableName: "LocalizableNormal", value: " ", comment: "") != " "
 	}
 
 	var localized: String {
