@@ -14,7 +14,7 @@ struct SystemSetting {
 	)
 	static let firewall = Self(
 		pane: "com.apple.Network-Settings.extension",
-		anchor: "Firewall", // does not work on macOS 13 and newer
+		anchor: "Firewall", // does not work
 	)
 	static let softwareUpdate = Self(
 		pane: "com.apple.Software-Update-Settings.extension",
@@ -27,6 +27,10 @@ struct SystemSetting {
 	static let fileVault = Self(
 		pane: "com.apple.settings.PrivacySecurity.extension",
 		anchor: "FileVault",
+	)
+	static let accessories = Self(
+		pane: "com.apple.settings.PrivacySecurity.extension",
+		anchor: { if #unavailable(macOS 15.4) { "Security" } else { "Accessories" } }(),
 	)
 
 	let pane: String

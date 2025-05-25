@@ -56,11 +56,12 @@ extension SystemInformationData: UIStringRepresentable where Value: UIStringRepr
 
 	var uiRepresentation: String? {
 		get async {
-			if applicable ?? true {
-				await value.uiRepresentation ??
-					(Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ? "Unknown".localized : nil)
-			} else {
+			if !?applicable ?? false {
 				Defaults[.developmentMode] ? "Not applicable".localized : nil
+			} else if let uiRepresentation = await value.uiRepresentation {
+				uiRepresentation
+			} else {
+				Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ? "Unknown".localized : nil
 			}
 		}
 	}
@@ -70,14 +71,13 @@ extension SystemInformationData: UISymbolRepresentable where Value: UISymbolRepr
 
 	var uiRepresentation: Symbol? {
 		get async {
-			if applicable ?? true {
-				await value.uiRepresentation ??
-					(
-						Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
-							Symbol(.questionmark, color: .red, label: "Unknown") : nil,
-					)
-			} else {
+			if !?applicable ?? false {
 				Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: "Not applicable") : nil
+			} else if let uiRepresentation = await value.uiRepresentation {
+				uiRepresentation
+			} else {
+				Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
+					Symbol(.questionmark, color: .red, label: "Unknown") : nil
 			}
 		}
 	}
