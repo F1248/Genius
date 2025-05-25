@@ -51,6 +51,11 @@ struct MaintenanceView: View {
 						help: URL(appleSupportArticle: 102_445),
 						systemSetting: URL(systemSetting: .security),
 					): SystemInformation.MaintenanceChecks.MalwareProtection.gatekeeper,
+					MaintenanceCheckLabel(
+						"Ask to allow accessories to connect",
+						help: URL(appleSupportArticle: 102_282),
+						systemSetting: URL(systemSetting: .accessories),
+					): SystemInformation.MaintenanceChecks.MalwareProtection.askToAllowAccessoriesToConnect,
 				],
 				"Automatic Updates": [
 					MaintenanceCheckLabel(

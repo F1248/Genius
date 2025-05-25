@@ -15,7 +15,7 @@ extension SystemInformation {
 		enum TheftProtection {
 
 			static let activationLock = SystemInformationData<Bool?, _>(
-				IORegistry(class: IORegistryName.nvramVariables).keyExists("fmm-mobileme-token-FMM"),
+				IORegistry(class: IORegistryName.nvramVariables).contains("fmm-mobileme-token-FMM"),
 				applicable: Hardware.securityChip.value >=? .t2 &&? !?Hardware.Model.isVirtualMachine,
 			)
 			static let firmwarePassword = SystemInformationData<Bool?, _>(
@@ -50,6 +50,13 @@ extension SystemInformation {
 			static let gatekeeper = SystemInformationData<Bool?, _>(
 				{ await Bool(spctlOutput: Process("/usr/sbin/spctl", "--status")?.runSafe()) },
 				applicable: Software.OS.bootMode.value !=? .recovery,
+			)
+			static let askToAllowAccessoriesToConnect = SystemInformationData<Bool?, _>(
+				{ IORegistry(class: "AppleCredentialManager").read("TRM_EffectiveConfigProfile") ==? 1 },
+				applicable: { if #available(macOS 13, *) { true } else { false } }() &&?
+					Hardware.CPU.type.value == .appleSilicon &&?
+					Hardware.Model.isLaptop &&?
+					Software.OS.bootMode.value !=? .recovery,
 			)
 		}
 

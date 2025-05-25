@@ -15,14 +15,14 @@ extension String: DefaultInitializable, DataInitializable, UIStringRepresentable
 		self
 	}
 
-	var isContainedInDefaultLocalizationTable: Bool {
-		NSLocalizedString(self, value: " ", comment: "") == " "
+	var variesByInterfaceMode: Bool {
+		NSLocalizedString(self, tableName: "LocalizableNormal", value: " ", comment: "") != " "
 	}
 
 	var localized: String {
 		String(
 			localized: LocalizationValue(self),
-			table: isContainedInDefaultLocalizationTable ? Defaults[.interfaceMode].localizationTable : nil,
+			table: variesByInterfaceMode ? Defaults[.interfaceMode].localizationTable : nil,
 		)
 	}
 }
