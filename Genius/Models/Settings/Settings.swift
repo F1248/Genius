@@ -17,6 +17,8 @@ enum Settings {
 		case advanced = "Advanced"
 		case powerUser = "Power User"
 
-		var localizationTable: String { "Localizable\(rawValue.remove(" "))" }
+		var localizationTable: String? {
+			self == .powerUser ? nil : "Localizable\(rawValue)"
+		}
 	}
 }

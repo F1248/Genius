@@ -18,6 +18,23 @@
         }
       }
     },
+    "Ask to allow accessories to connect" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fragen, um Verbinden von Geräten zu erlauben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask to allow devices to connect"
+          }
+        }
+      }
+    },
     "Automatic Updates" : {
       "extractionState" : "manual",
       "localizations" : {

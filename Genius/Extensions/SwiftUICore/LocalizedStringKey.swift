@@ -10,7 +10,9 @@ import SwiftUICore
 
 extension LocalizedStringKey {
 
-	var key: String {
-		(Mirror(reflecting: self).children.first { $0.label == "key" }?.value as? String).safeForceUnwrapped()
+	var variesByInterfaceMode: Bool {
+		(Mirror(reflecting: self).children.first { $0.label == "key" }?.value as? String)
+			.safeForceUnwrapped()
+			.variesByInterfaceMode
 	}
 }
