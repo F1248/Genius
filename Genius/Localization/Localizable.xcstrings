@@ -238,7 +238,6 @@
       }
     },
     "Disabled" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -274,7 +273,6 @@
       }
     },
     "Enabled" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -714,7 +712,6 @@
       }
     },
     "Not applicable" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1064,7 +1061,6 @@
       "shouldTranslate" : false
     },
     "Unknown" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
