@@ -20,7 +20,7 @@
 --acronyms "CPU,EFI,ID,IO,JSON,NVRAM,OS,SF,SMC,UDID,UI,URL,UUID"
 --condassignment always
 --fractiongrouping enabled
---header "\n{file}\nGenius\n\n© {created.year} F1248 <f1248@mailbox.org>\nSee LICENSE.txt for license information.\n"
+--header "\n© {created.year} F1248 <f1248@mailbox.org>\nSee LICENSE.txt for license information.\n"
 --indent tab
 --indentcase true
 --markcategories false
