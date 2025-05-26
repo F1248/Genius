@@ -1,3 +1,8 @@
+<!--
+© 2024 F1248 <f1248@mailbox.org>
+See LICENSE.txt for license information.
+-->
+
 [Switch to English](README.md)
 
 # Genius – Das intelligente, universelle macOS-Hilfsprogramm für alle!
