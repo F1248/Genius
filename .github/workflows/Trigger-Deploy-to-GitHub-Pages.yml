@@ -6,7 +6,7 @@ on:
     push:
         paths:
             - .github/workflows/Trigger-Deploy-to-GitHub-Pages.yml
-            - Install.sh
+            - Install
     workflow_dispatch:
 
 concurrency:
