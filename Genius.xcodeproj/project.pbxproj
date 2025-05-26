@@ -29,7 +29,7 @@
 		A4528F1F2BCD9B400092CBB8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A452AFF22BBF2CAB00760569 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; usesTabs = 0; };
 		A47BFC592C72116700B88607 /* README_DE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_DE.md; sourceTree = "<group>"; };
-		A4844FF82C73E08C0021E6E8 /* Install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Install.sh; sourceTree = "<group>"; };
+		A4844FF82C73E08C0021E6E8 /* Install */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Install; sourceTree = "<group>"; };
 		A4D9A1AA2D257055008D91E7 /* GeniusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeniusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4EB1C9A2BCC3F8200DF01A6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,7 +106,7 @@
 				A452AFF22BBF2CAB00760569 /* .swiftlint.yml */,
 				A47D8B992C26145300A0E4CF /* Genius */,
 				A4D9A1AB2D257055008D91E7 /* GeniusTests */,
-				A4844FF82C73E08C0021E6E8 /* Install.sh */,
+				A4844FF82C73E08C0021E6E8 /* Install */,
 				A438B3FA2CA346C600F8DF17 /* LICENSE.txt */,
 				A47BFC592C72116700B88607 /* README_DE.md */,
 				A4EB1C9A2BCC3F8200DF01A6 /* README.md */,
