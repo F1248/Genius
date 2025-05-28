@@ -9,7 +9,7 @@ import SwiftUICore
 
 struct ContentView: View {
 
-	@ObservedObject var observedSharedData: SharedData = sharedData
+	@ObservedObject var observedSharedData: SharedData = .sharedData
 
 	var body: some View {
 		AdaptingTabView<ContentViewTab>()

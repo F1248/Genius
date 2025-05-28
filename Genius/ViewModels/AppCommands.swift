@@ -8,12 +8,12 @@ import SwiftUICore
 
 struct AppCommands: Commands {
 
-	@ObservedObject var observedSharedData: SharedData = sharedData
+	@ObservedObject var observedSharedData: SharedData = .sharedData
 
 	var body: some Commands {
 		CommandGroup(replacing: .appSettings) {
 			Button {
-				sharedData.showUninstallAlert = true
+				SharedData.sharedData.showUninstallAlert = true
 			} label: {
 				VaryingText("Uninstall Genius…")
 			}
