@@ -21,7 +21,7 @@ extension SystemInformation {
 				applicable: CPU.type.value == .appleSilicon,
 			)
 			static let localizedName = SystemInformationData<String?, _>(
-				{ () -> String? in
+				{
 					guard let serialNumber = Machine.serialNumber.value else { return nil }
 					// swiftlint:disable:next explicit_type_interface
 					let url = """
