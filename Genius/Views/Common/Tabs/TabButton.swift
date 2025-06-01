@@ -1,7 +1,4 @@
 //
-// TabButton.swift
-// Genius
-//
 // © 2024 F1248 <f1248@mailbox.org>
 // See LICENSE.txt for license information.
 //
@@ -15,7 +12,7 @@ struct TabButton<TabDataType: TabData>: View {
 
 	var body: some View {
 		Button {
-			sharedData.selectedTabsIndices[TabDataType.id] = tab.index
+			SharedData.sharedData.selectedTabsIndices[TabDataType.id] = tab.index
 		} label: {
 			VaryingText(tab.localizedStringKey)
 		}

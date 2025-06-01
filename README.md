@@ -1,3 +1,8 @@
+<!--
+© 2024 F1248 <f1248@mailbox.org>
+See LICENSE.txt for license information.
+-->
+
 [Zu Deutsch wechseln](README_DE.md)
 
 # Genius – The Intelligent Universal macOS Helper Tool for Everyone!
