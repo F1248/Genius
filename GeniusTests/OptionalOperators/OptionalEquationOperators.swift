@@ -11,7 +11,7 @@ extension OptionalOperators {
 	@Suite("Optional equation operators")
 	struct OptionalEquationOperators {
 
-		@Test("Optional equal to")
+		@Test("==?")
 		func optionalEqualTo() {
 			#expect((0 ==? 0) == true)
 			#expect((0 ==? 1) == false)
@@ -20,7 +20,7 @@ extension OptionalOperators {
 			#expect((nil as Int? ==? nil) == nil)
 		}
 
-		@Test("Optional not equal to")
+		@Test("!=?")
 		func optionalNotEqualTo() {
 			#expect((0 !=? 1) == true)
 			#expect((0 !=? 0) == false)

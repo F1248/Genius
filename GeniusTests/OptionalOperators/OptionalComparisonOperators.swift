@@ -11,7 +11,7 @@ extension OptionalOperators {
 	@Suite("Optional comparison operators")
 	struct OptionalComparisonOperators {
 
-		@Test("Optional greater than")
+		@Test(">?")
 		func optionalGreaterThan() {
 			#expect((1 >? 0) == true)
 			#expect((0 >? 1) == false)
@@ -20,7 +20,7 @@ extension OptionalOperators {
 			#expect((nil as Int? >? nil) == nil)
 		}
 
-		@Test("Optional less than")
+		@Test("<?")
 		func optionalLessThan() {
 			#expect((0 <? 1) == true)
 			#expect((1 <? 0) == false)
@@ -29,7 +29,7 @@ extension OptionalOperators {
 			#expect((nil as Int? <? nil) == nil)
 		}
 
-		@Test("Optional greater than or equal to")
+		@Test(">=?")
 		func optionalGreaterThanOrEqualTo() {
 			#expect((1 >=? 0) == true)
 			#expect((0 >=? 1) == false)
@@ -38,7 +38,7 @@ extension OptionalOperators {
 			#expect((nil as Int? >=? nil) == nil)
 		}
 
-		@Test("Optional less than or equal to")
+		@Test("<=?")
 		func optionalLessThanOrEqualTo() {
 			#expect((0 <=? 1) == true)
 			#expect((1 <=? 0) == false)

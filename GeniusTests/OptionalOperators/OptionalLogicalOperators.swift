@@ -11,14 +11,14 @@ extension OptionalOperators {
 	@Suite("Optional logical operators")
 	struct OptionalLogicalOperators {
 
-		@Test("Optional negation")
+		@Test("!?")
 		func optionalNegation() {
 			#expect(!?true == false)
 			#expect(!?false == true)
 			#expect(!?nil == nil)
 		}
 
-		@Test("Optional conjunction")
+		@Test("&&?")
 		func optionalConjunction() {
 			#expect((true &&? true) == true)
 			#expect((true &&? false) == false)
@@ -35,7 +35,7 @@ extension OptionalOperators {
 			}()
 		}
 
-		@Test("Optional disjunction")
+		@Test("||?")
 		func optionalDisjunction() {
 			#expect((true ||? true) == true)
 			#expect((true ||? false) == true)
