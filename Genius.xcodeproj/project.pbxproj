@@ -1,3 +1,8 @@
+//
+// © 2024 F1248 <f1248@mailbox.org>
+// See LICENSE.txt for license information.
+//
+
 // !$*UTF8*$!
 {
 	archiveVersion = 1;
@@ -42,13 +47,6 @@
 			);
 			target = A42B353C2BA2185B009E81AD /* Genius */;
 		};
-		A4D9A1BB2D257061008D91E7 /* Exceptions for "GeniusTests" folder in "GeniusTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				.swiftformat,
-			);
-			target = A4D9A1A92D257055008D91E7 /* GeniusTests */;
-		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -68,9 +66,6 @@
 		};
 		A4D9A1AB2D257055008D91E7 /* GeniusTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				A4D9A1BB2D257061008D91E7 /* Exceptions for "GeniusTests" folder in "GeniusTests" target */,
-			);
 			path = GeniusTests;
 			sourceTree = "<group>";
 		};
@@ -341,7 +336,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES_AGGRESSIVE;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
-				CODE_SIGN_ENTITLEMENTS = Genius/Genius.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -445,7 +439,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES_AGGRESSIVE;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
-				CODE_SIGN_ENTITLEMENTS = Genius/Genius.entitlements;
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

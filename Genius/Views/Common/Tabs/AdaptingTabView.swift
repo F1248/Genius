@@ -1,7 +1,4 @@
 //
-// AdaptingTabView.swift
-// Genius
-//
 // © 2024 F1248 <f1248@mailbox.org>
 // See LICENSE.txt for license information.
 //
@@ -11,7 +8,7 @@ import SwiftUICore
 
 struct AdaptingTabView<TabDataType: TabData>: View {
 
-	@ObservedObject var observedSharedData: SharedData = sharedData
+	@ObservedObject var observedSharedData: SharedData = .sharedData
 
 	var selection: Binding<Int> { $observedSharedData.selectedTabsIndices[TabDataType.id, default: 0] }
 

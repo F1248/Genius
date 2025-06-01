@@ -1,7 +1,4 @@
 //
-// AppCommands.swift
-// Genius
-//
 // © 2024 F1248 <f1248@mailbox.org>
 // See LICENSE.txt for license information.
 //
@@ -11,12 +8,12 @@ import SwiftUICore
 
 struct AppCommands: Commands {
 
-	@ObservedObject var observedSharedData: SharedData = sharedData
+	@ObservedObject var observedSharedData: SharedData = .sharedData
 
 	var body: some Commands {
 		CommandGroup(replacing: .appSettings) {
 			Button {
-				sharedData.showUninstallAlert = true
+				SharedData.sharedData.showUninstallAlert = true
 			} label: {
 				VaryingText("Uninstall Genius…")
 			}

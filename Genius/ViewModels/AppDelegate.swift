@@ -1,7 +1,4 @@
 //
-// AppDelegate.swift
-// Genius
-//
 // © 2024 F1248 <f1248@mailbox.org>
 // See LICENSE.txt for license information.
 //
@@ -27,6 +24,6 @@ actor AppDelegate: NSObject, NSApplicationDelegate {
 	@MainActor
 	@objc
 	func changeTab(_ sender: NSMenuItem) {
-		sharedData.selectedTabsIndices[ContentViewTab.id] = sender.tag
+		SharedData.sharedData.selectedTabsIndices[ContentViewTab.id] = sender.tag
 	}
 }
