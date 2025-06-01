@@ -369,6 +369,7 @@
 				INFOPLIST_FILE = Genius/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 - 2025 F1248 <f1248@mailbox.org>";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LD_WARN_DUPLICATE_LIBRARIES = YES;
 				LD_WARN_UNUSED_DYLIBS = YES;
 				LLVM_LTO = YES;
@@ -473,6 +474,7 @@
 				INFOPLIST_FILE = Genius/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 - 2025 F1248 <f1248@mailbox.org>";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LD_WARN_DUPLICATE_LIBRARIES = YES;
 				LD_WARN_UNUSED_DYLIBS = YES;
 				LLVM_LTO = YES;
