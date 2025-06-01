@@ -7,7 +7,6 @@ import Foundation
 
 extension SystemInformation {
 
-	// swiftformat:disable organizeDeclarations
 	enum Software {
 
 		enum SMC {
@@ -84,5 +83,4 @@ extension SystemInformation {
 			static let accountName = SystemInformationData<String, _>(NSUserName())
 		}
 	}
-	// swiftformat:enable organizeDeclarations
 }
