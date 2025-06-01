@@ -3,7 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
-struct SyncValueWrapper<Value: Sendable>: ValueWrapperProtocol {
+import Testing
 
-	let value: Value
-}
+@Suite("Optional operators")
+struct OptionalOperators {}
