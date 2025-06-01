@@ -6,13 +6,13 @@
 @testable import Genius
 import Testing
 
-extension OptionalOperatorsTests {
+extension OptionalOperators {
 
-	@Suite("Optional comparison operators tests")
-	struct OptionalComparisonOperatorsTests {
+	@Suite("Optional comparison operators")
+	struct OptionalComparisonOperators {
 
-		@Test("Optional greater than tests")
-		func optionalGreaterThanTests() {
+		@Test("Optional greater than")
+		func optionalGreaterThan() {
 			#expect((1 >? 0) == true)
 			#expect((0 >? 1) == false)
 			#expect((0 >? nil) == nil)
@@ -20,8 +20,8 @@ extension OptionalOperatorsTests {
 			#expect((nil as Int? >? nil) == nil)
 		}
 
-		@Test("Optional less than tests")
-		func optionalLessThanTests() {
+		@Test("Optional less than")
+		func optionalLessThan() {
 			#expect((0 <? 1) == true)
 			#expect((1 <? 0) == false)
 			#expect((0 <? nil) == nil)
@@ -29,8 +29,8 @@ extension OptionalOperatorsTests {
 			#expect((nil as Int? <? nil) == nil)
 		}
 
-		@Test("Optional greater than or equal to tests")
-		func optionalGreaterThanOrEqualToTests() {
+		@Test("Optional greater than or equal to")
+		func optionalGreaterThanOrEqualTo() {
 			#expect((1 >=? 0) == true)
 			#expect((0 >=? 1) == false)
 			#expect((0 >=? nil) == nil)
@@ -39,7 +39,7 @@ extension OptionalOperatorsTests {
 		}
 
 		@Test("Optional less than or equal to")
-		func optionalLessThanOrEqualToTests() {
+		func optionalLessThanOrEqualTo() {
 			#expect((0 <=? 1) == true)
 			#expect((1 <=? 0) == false)
 			#expect((0 <=? nil) == nil)

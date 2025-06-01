@@ -6,20 +6,20 @@
 @testable import Genius
 import Testing
 
-extension OptionalOperatorsTests {
+extension OptionalOperators {
 
-	@Suite("Optional logical operators tests")
-	struct OptionalLogicalOperatorsTests {
+	@Suite("Optional logical operators")
+	struct OptionalLogicalOperators {
 
-		@Test("Optional negation tests")
-		func optionalNegationTests() {
+		@Test("Optional negation")
+		func optionalNegation() {
 			#expect(!?true == false)
 			#expect(!?false == true)
 			#expect(!?nil == nil)
 		}
 
-		@Test("Optional conjunction tests")
-		func optionalConjunctionTests() {
+		@Test("Optional conjunction")
+		func optionalConjunction() {
 			#expect((true &&? true) == true)
 			#expect((true &&? false) == false)
 			#expect((true &&? nil) == nil)
@@ -35,8 +35,8 @@ extension OptionalOperatorsTests {
 			}()
 		}
 
-		@Test("Optional disjunction tests")
-		func optionalDisjunctionTests() {
+		@Test("Optional disjunction")
+		func optionalDisjunction() {
 			#expect((true ||? true) == true)
 			#expect((true ||? false) == true)
 			#expect((true ||? nil) == true)

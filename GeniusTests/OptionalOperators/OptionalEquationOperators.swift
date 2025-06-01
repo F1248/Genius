@@ -6,21 +6,21 @@
 @testable import Genius
 import Testing
 
-extension OptionalOperatorsTests {
+extension OptionalOperators {
 
-	@Suite("Optional equation operators tests")
-	struct OptionalEquationOperatorsTests {
+	@Suite("Optional equation operators")
+	struct OptionalEquationOperators {
 
-		@Test("Optional equal to tests")
-		func optionalEqualToTests() {
+		@Test("Optional equal to")
+		func optionalEqualTo() {
 			#expect((0 ==? 1) == false)
 			#expect((0 ==? nil) == nil)
 			#expect((nil ==? 0) == nil)
 			#expect((nil as Int? ==? nil) == nil)
 		}
 
-		@Test("Optional not equal to tests")
-		func optionalNotEqualToTests() {
+		@Test("Optional not equal to")
+		func optionalNotEqualTo() {
 			#expect((0 !=? 1) == true)
 			#expect((0 !=? nil) == nil)
 			#expect((nil !=? 0) == nil)

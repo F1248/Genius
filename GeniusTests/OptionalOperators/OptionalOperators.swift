@@ -5,5 +5,5 @@
 
 import Testing
 
-@Suite("Optional operators tests")
-struct OptionalOperatorsTests {}
+@Suite("Optional operators")
+struct OptionalOperators {}
