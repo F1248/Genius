@@ -26,18 +26,20 @@ struct MaintenanceDataView: View {
 				if let content {
 					ForEach(content) { groupBoxContent in
 						GroupBox {
-							ForEach(enumerated: groupBoxContent.value) { index, rowContent in
-								if index > 0 {
-									Divider()
+							VStack {
+								ForEach(enumerated: groupBoxContent.value) { index, rowContent in
+									if index > 0 {
+										Divider()
+									}
+									HStack {
+										rowContent.key
+										Spacer()
+										rowContent.value
+									}
+									.padding(.vertical, 2)
 								}
-								HStack {
-									rowContent.key
-									Spacer()
-									rowContent.value
-								}
-								.padding(.vertical, 2)
+								.padding(.horizontal, 2)
 							}
-							.padding(.horizontal, 2)
 						} label: {
 							Text(varying: groupBoxContent.key)
 								.font(.title2)

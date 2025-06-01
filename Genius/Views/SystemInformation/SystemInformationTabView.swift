@@ -27,21 +27,23 @@ struct SystemInformationTabView: View {
 				if let content {
 					ForEach(content) { groupBoxContent in
 						GroupBox {
-							ForEach(enumerated: groupBoxContent.value) { index, rowContent in
-								if index > 0 {
-									Divider()
-								}
-								HStack {
-									Text(varying: rowContent.key)
-									Spacer()
-									Button(rowContent.value) {
-										NSPasteboard.set(rowContent.value)
+							VStack {
+								ForEach(enumerated: groupBoxContent.value) { index, rowContent in
+									if index > 0 {
+										Divider()
 									}
-									.buttonStyle(.borderless)
+									HStack {
+										Text(varying: rowContent.key)
+										Spacer()
+										Button(rowContent.value) {
+											NSPasteboard.set(rowContent.value)
+										}
+										.buttonStyle(.borderless)
+									}
+									.padding(.vertical, 2)
 								}
-								.padding(.vertical, 2)
+								.padding(.horizontal, 2)
 							}
-							.padding(.horizontal, 2)
 						} label: {
 							Text(groupBoxContent.key)
 								.font(.title2)
