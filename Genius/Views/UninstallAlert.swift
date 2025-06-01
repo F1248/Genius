@@ -19,11 +19,11 @@ struct UninstallAlert: ViewModifier {
 					title: Text(varying: "Are you sure you want to uninstall Genius?"),
 					message: Text(varying: "Genius and all its data will be uninstalled. This action cannot be undone."),
 					primaryButton: .cancel(),
-					secondaryButton: .destructive(Text(varying: "Uninstall Genius"), action: {
+					secondaryButton: .destructive(Text(varying: "Uninstall Genius")) {
 						guard let uninstallPath = Bundle.main.path(forResource: "Uninstall", ofType: nil) else { return }
 						try? Process(uninstallPath)?.run()
 						NSApp.terminate(nil)
-					}),
+					},
 				)
 			}
 	}
