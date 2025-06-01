@@ -1,7 +1,4 @@
 //
-// SystemInformationData.swift
-// Genius
-//
 // © 2024 F1248 <f1248@mailbox.org>
 // See LICENSE.txt for license information.
 //
@@ -15,9 +12,9 @@ struct SystemInformationData<Value, ValueWrapper: ValueWrapperProtocol<Value>>: 
 	let valueWrapper: ValueWrapper
 	let applicable: Bool?
 
-	var value: Value {
-		get async { await valueWrapper.value }
-	}
+	var value: Value { get async {
+		await valueWrapper.value
+	} }
 }
 
 extension SystemInformationData where ValueWrapper == SyncValueWrapper<Value> {
@@ -54,31 +51,27 @@ extension SystemInformationData where ValueWrapper == AsyncValueWrapper<Value> {
 
 extension SystemInformationData: UIStringRepresentable where Value: UIStringRepresentable {
 
-	var uiRepresentation: String? {
-		get async {
-			if !?applicable ?? false {
-				Defaults[.developmentMode] ? "Not applicable".localized : nil
-			} else if let uiRepresentation = await value.uiRepresentation {
-				uiRepresentation
-			} else {
-				Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ? "Unknown".localized : nil
-			}
+	var uiRepresentation: String? { get async {
+		if !?applicable ?? false {
+			Defaults[.developmentMode] ? "Not applicable".localized : nil
+		} else if let uiRepresentation = await value.uiRepresentation {
+			uiRepresentation
+		} else {
+			Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ? "Unknown".localized : nil
 		}
-	}
+	} }
 }
 
 extension SystemInformationData: UISymbolRepresentable where Value: UISymbolRepresentable {
 
-	var uiRepresentation: Symbol? {
-		get async {
-			if !?applicable ?? false {
-				Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: "Not applicable") : nil
-			} else if let uiRepresentation = await value.uiRepresentation {
-				uiRepresentation
-			} else {
-				Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
-					Symbol(.questionmark, color: .red, label: "Unknown") : nil
-			}
+	var uiRepresentation: Symbol? { get async {
+		if !?applicable ?? false {
+			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: "Not applicable") : nil
+		} else if let uiRepresentation = await value.uiRepresentation {
+			uiRepresentation
+		} else {
+			Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
+				Symbol(.questionmark, color: .red, label: "Unknown") : nil
 		}
-	}
+	} }
 }

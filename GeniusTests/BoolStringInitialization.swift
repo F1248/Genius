@@ -1,7 +1,4 @@
 //
-// BoolStringInitializationTests.swift
-// GeniusTests
-//
 // © 2025 F1248 <f1248@mailbox.org>
 // See LICENSE.txt for license information.
 //
@@ -9,17 +6,17 @@
 @testable import Genius
 import Testing
 
-@Suite("Bool string initialization tests")
-struct BoolStringInitializationTests {
+@Suite("Bool string initialization")
+struct BoolStringInitialization {
 
-	@Test("Firmware Password tests")
-	func firmwarePasswordTests() {
+	@Test("Firmware Password")
+	func firmwarePassword() {
 		#expect(Bool(firmwarepasswdOutput: "Password Enabled: Yes") == true)
 		#expect(Bool(firmwarepasswdOutput: "Password Enabled: No") == false)
 	}
 
-	@Test("FileVault tests")
-	func fileVaultTests() {
+	@Test("FileVault")
+	func fileVault() {
 		#expect(Bool(fdesetupOutput: "FileVault is On.") == true)
 		#expect(Bool(fdesetupOutput: "FileVault is On, but needs to be restarted to finish.") == false)
 		#expect(Bool(fdesetupOutput: "FileVault is Off.") == false)
@@ -27,8 +24,8 @@ struct BoolStringInitializationTests {
 		#expect(Bool(fdesetupOutput: "FileVault is Off, but needs to be restarted to finish.") == false)
 	}
 
-	@Test("System Integrity Protection tests")
-	func systemIntegrityProtectionTests() {
+	@Test("System Integrity Protection")
+	func systemIntegrityProtection() {
 		#expect(Bool(csrutilOutput: "System Integrity Protection status: enabled.") == true)
 		#expect(Bool(csrutilOutput: "System Integrity Protection status: enabled (Apple Internal).") == false)
 		#expect(Bool(csrutilOutput: "System Integrity Protection status: disabled.") == false)
@@ -36,14 +33,14 @@ struct BoolStringInitializationTests {
 		#expect(Bool(csrutilOutput: "System Integrity Protection status: unknown (Custom Configuration).\n") == false)
 	}
 
-	@Test("Firewall tests")
-	func firewallTests() {
+	@Test("Firewall")
+	func firewall() {
 		#expect(Bool(socketfilterfwOutput: "Firewall is enabled. (State = 1)") == true)
 		#expect(Bool(socketfilterfwOutput: "Firewall is disabled. (State = 0)") == false)
 	}
 
-	@Test("Gatekeeper tests")
-	func gatekeeperTests() {
+	@Test("Gatekeeper")
+	func gatekeeper() {
 		#expect(Bool(spctlOutput: "assessments enabled") == true)
 		#expect(Bool(spctlOutput: "assessments disabled") == false)
 	}

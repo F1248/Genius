@@ -1,7 +1,4 @@
 //
-// Hardware.swift
-// Genius
-//
 // © 2024 F1248 <f1248@mailbox.org>
 // See LICENSE.txt for license information.
 //
@@ -24,7 +21,7 @@ extension SystemInformation {
 				applicable: CPU.type.value == .appleSilicon,
 			)
 			static let localizedName = SystemInformationData<String?, _>(
-				{ () -> String? in
+				{
 					guard let serialNumber = Machine.serialNumber.value else { return nil }
 					// swiftlint:disable:next explicit_type_interface
 					let url = """

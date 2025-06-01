@@ -1,7 +1,4 @@
 //
-// Optional.swift
-// Genius
-//
 // © 2024 F1248 <f1248@mailbox.org>
 // See LICENSE.txt for license information.
 //
@@ -10,16 +7,16 @@ import os
 
 extension Optional: UIStringRepresentable where Wrapped: UIStringRepresentable {
 
-	var uiRepresentation: String? {
-		get async { await self?.uiRepresentation }
-	}
+	var uiRepresentation: String? { get async {
+		await self?.uiRepresentation
+	} }
 }
 
 extension Optional: UISymbolRepresentable where Wrapped: UISymbolRepresentable {
 
-	var uiRepresentation: Symbol? {
-		get async { await self?.uiRepresentation }
-	}
+	var uiRepresentation: Symbol? { get async {
+		await self?.uiRepresentation
+	} }
 }
 
 extension Optional where Wrapped: DefaultInitializable {

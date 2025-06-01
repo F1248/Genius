@@ -1,7 +1,4 @@
 //
-// OptionalEquationOperatorsTests.swift
-// GeniusTests
-//
 // © 2025 F1248 <f1248@mailbox.org>
 // See LICENSE.txt for license information.
 //
@@ -9,22 +6,24 @@
 @testable import Genius
 import Testing
 
-extension OptionalOperatorsTests {
+extension OptionalOperators {
 
-	@Suite("Optional equation operators tests")
-	struct OptionalEquationOperatorsTests {
+	@Suite("Optional equation operators")
+	struct OptionalEquationOperators {
 
-		@Test("Optional equal to tests")
-		func optionalEqualToTests() {
+		@Test("==?")
+		func optionalEqualTo() {
+			#expect((0 ==? 0) == true)
 			#expect((0 ==? 1) == false)
 			#expect((0 ==? nil) == nil)
 			#expect((nil ==? 0) == nil)
 			#expect((nil as Int? ==? nil) == nil)
 		}
 
-		@Test("Optional not equal to tests")
-		func optionalNotEqualToTests() {
+		@Test("!=?")
+		func optionalNotEqualTo() {
 			#expect((0 !=? 1) == true)
+			#expect((0 !=? 0) == false)
 			#expect((0 !=? nil) == nil)
 			#expect((nil !=? 0) == nil)
 			#expect((nil as Int? !=? nil) == nil)
