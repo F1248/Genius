@@ -108,6 +108,7 @@
 				A42B353E2BA2185B009E81AD /* Products */,
 			);
 			sourceTree = "<group>";
+			tabWidth = 4;
 			usesTabs = 1;
 		};
 		A42B353E2BA2185B009E81AD /* Products */ = {
