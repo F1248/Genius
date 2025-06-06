@@ -19,20 +19,14 @@
       "id" : "2FB0D931-88AF-4539-897F-426DECF332E5",
       "name" : "Thread Sanitizer",
       "options" : {
-
+        "threadSanitizerEnabled" : true
       }
     },
     {
       "id" : "AD7939E7-146A-4408-B7DD-861CA1FABD5B",
       "name" : "Memory Management",
       "options" : {
-        "guardMallocEnabled" : true,
-        "mallocGuardEdgesEnabled" : true,
-        "mallocScribbleEnabled" : true,
-        "mallocStackLoggingOptions" : {
-          "loggingType" : "liveAllocations"
-        },
-        "nsZombieEnabled" : true
+
       }
     }
   ],
