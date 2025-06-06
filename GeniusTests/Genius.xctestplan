@@ -8,7 +8,11 @@
       "id" : "51513233-2C20-4DFF-9D1C-C2C755638F92",
       "name" : "Address Sanitizer and Undefined Behavior Sanitizer",
       "options" : {
-
+        "addressSanitizer" : {
+          "detectStackUseAfterReturn" : true,
+          "enabled" : true
+        },
+        "undefinedBehaviorSanitizerEnabled" : true
       }
     },
     {
