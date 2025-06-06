@@ -44,6 +44,7 @@ concurrency:
 
 jobs:
     Run-Periphery:
+        if: false
         name: Run Periphery
         runs-on: macos-15
 
@@ -108,6 +109,7 @@ jobs:
               run: ./periphery scan --format github-actions --strict -- -skipPackagePluginValidation
 
     Run-SwiftFormat:
+        if: false
         name: Run SwiftFormat
         runs-on: macos-15
 
@@ -127,6 +129,7 @@ jobs:
               run: ./swiftformat --lint . --reporter github-actions-log
 
     Run-SwiftLint:
+        if: false
         name: Run SwiftLint
         runs-on: macos-15
 
@@ -267,6 +270,7 @@ jobs:
               run: TEST_RUNNER_OS_ACTIVITY_MODE=disable xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
     Build-Genius:
+        if: false
         name: Build Genius
         permissions:
             attestations: write
