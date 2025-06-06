@@ -26,8 +26,6 @@
       "id" : "AD7939E7-146A-4408-B7DD-861CA1FABD5B",
       "name" : "Memory Management",
       "options" : {
-        "guardMallocEnabled" : true,
-        "mallocGuardEdgesEnabled" : true,
         "mallocScribbleEnabled" : true
       }
     }
