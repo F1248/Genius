@@ -511,9 +511,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				LD_WARN_UNUSED_DYLIBS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 15.3;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.F1248.GeniusTests;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Genius.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Genius";
 			};
 			name = Debug;
