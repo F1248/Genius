@@ -264,7 +264,7 @@ jobs:
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Run tests
-              run: xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+              run: TEST_RUNNER_OS_ACTIVITY_MODE=disable xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
 
     Build-Genius:
         name: Build Genius
