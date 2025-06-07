@@ -63,9 +63,8 @@ extension SystemInformationTests {
 			}
 
 			@Test("sfSymbol")
-			func sfSymbol() async {
-				#expect(await SystemInformation.Hardware.Model.sfSymbol.testCondition)
-				#expect(SystemInformation.Hardware.Model.sfSymbol.value != .desktopcomputerAndMacbook)
+			func sfSymbol() {
+				#expect(SystemInformation.Hardware.Model.sfSymbol != .desktopcomputerAndMacbook)
 			}
 		}
 

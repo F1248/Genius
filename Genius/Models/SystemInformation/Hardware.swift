@@ -55,7 +55,7 @@ extension SystemInformation {
 				IORegistry(class: "IOPlatformExpertDevice").read("regulatory-model-number"),
 				applicable: CPU.type.value == .appleSilicon &&? !?isVirtualMachine,
 			)
-			static let sfSymbol = SystemInformationData<SFSymbol, _>({
+			static let sfSymbol: SFSymbol =
 				switch true {
 					case isVirtualMachine: .macwindow
 					case namePrefix?.hasPrefix("MacBook"):
@@ -79,7 +79,6 @@ extension SystemInformation {
 					case namePrefix?.hasPrefix("Xserve"): .xserve
 					default: if #available(macOS 15, *) { .desktopcomputerAndMacbook } else { .desktopcomputer }
 				}
-			}())
 		}
 
 		static let securityChip = SystemInformationData<SecurityChip?, _>({
