@@ -4,7 +4,7 @@
 See LICENSE.txt for license information.
 -->
 <Scheme
-   LastUpgradeVersion = "1640"
+   LastUpgradeVersion = "2600"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
