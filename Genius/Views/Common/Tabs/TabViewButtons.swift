@@ -4,7 +4,6 @@
 //
 
 import SwiftUI
-import SwiftUICore
 
 struct TabViewButtons<TabDataType: TabData>: View {
 

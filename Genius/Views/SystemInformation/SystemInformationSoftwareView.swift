@@ -5,7 +5,6 @@
 
 import SFSafeSymbols
 import SwiftUI
-import SwiftUICore
 
 struct SystemInformationSoftwareView: View {
 

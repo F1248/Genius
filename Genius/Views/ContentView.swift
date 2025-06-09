@@ -5,7 +5,6 @@
 
 import CoreFoundation
 import SwiftUI
-import SwiftUICore
 
 struct ContentView: View {
 

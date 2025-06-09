@@ -5,7 +5,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftUICore
 
 struct MaintenanceView: View {
 

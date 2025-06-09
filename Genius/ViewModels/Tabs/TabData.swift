@@ -4,7 +4,7 @@
 //
 
 import _Concurrency
-import SwiftUICore
+import SwiftUI
 
 protocol TabData: RawRepresentable<String>, CaseIterable, SelfIdentifiable where AllCases == [Self] {
 

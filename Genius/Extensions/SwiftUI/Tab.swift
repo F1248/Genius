@@ -5,7 +5,6 @@
 
 import _Concurrency
 import SwiftUI
-import SwiftUICore
 
 @available(macOS 15, *)
 extension Tab where Value: Hashable, Content: View {

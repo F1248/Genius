@@ -6,7 +6,6 @@
 import _Concurrency
 import AppKit
 import SwiftUI
-import SwiftUICore
 
 struct SystemInformationTabView: View {
 
