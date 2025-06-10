@@ -49,6 +49,10 @@ extension SystemInformation {
 					"Sonoma"
 				} else if #unavailable(macOS 16) {
 					"Sequoia"
+				} else if #unavailable(macOS 26) {
+					nil
+				} else if #unavailable(macOS 27) {
+					"Tahoe"
 				} else { nil }
 			}())
 			static let buildNumber = SystemInformationData<String?, _>(Sysctl.read("kern.osversion"))
