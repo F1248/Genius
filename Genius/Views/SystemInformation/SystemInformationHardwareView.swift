@@ -5,13 +5,12 @@
 
 import SFSafeSymbols
 import SwiftUI
-import SwiftUICore
 
 struct SystemInformationHardwareView: View {
 
 	var body: some View {
 		VStack {
-			Label("Hardware", systemSymbol: SystemInformation.Hardware.Model.sfSymbol.value)
+			Label("Hardware", systemSymbol: SystemInformation.Hardware.Model.sfSymbol)
 				.font(.title)
 				.padding()
 			SystemInformationTabView(content: [

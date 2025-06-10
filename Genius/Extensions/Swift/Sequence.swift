@@ -19,7 +19,7 @@ extension Sequence {
 
 	func concurrentMap<T: Sendable>(
 		_ transform: @escaping @Sendable (Element) async -> T,
-	) async -> [T] where Element: Sendable {
+	) async -> [T] where Self: Sendable, Element: Sendable {
 		await map { element in
 			Task {
 				await transform(element)

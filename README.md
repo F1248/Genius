@@ -23,7 +23,7 @@ See LICENSE.txt for license information.
 
 ### Supported macOS Versions
 
-- macOS Monterey 12 and later, including macOS Sequoia 15
+- macOS Monterey 12 and later, including macOS Tahoe 26
 - Also supports recoveryOS on macOS Sonoma 14 and later
 
 ### Supported Models
@@ -39,7 +39,7 @@ See LICENSE.txt for license information.
 3. Move `Genius.app` into `/Applications`.
 4. Double-click the app.
 
-On macOS Sequoia 15:
+On macOS Sequoia 15 and newer:
 
 5. Click `Done`.
 6. Open [`Privacy & Security` in System Settings, scroll down to the message `“Genius.app” was blocked to protect your Mac.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) and click `Open Anyway`.

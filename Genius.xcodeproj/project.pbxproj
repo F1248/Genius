@@ -108,6 +108,7 @@
 				A42B353E2BA2185B009E81AD /* Products */,
 			);
 			sourceTree = "<group>";
+			tabWidth = 4;
 			usesTabs = 1;
 		};
 		A42B353E2BA2185B009E81AD /* Products */ = {
@@ -175,14 +176,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1640;
-				LastUpgradeCheck = 1640;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					A42B353C2BA2185B009E81AD = {
-						CreatedOnToolsVersion = 16.4;
+						CreatedOnToolsVersion = 26.0;
 					};
 					A4D9A1A92D257055008D91E7 = {
-						CreatedOnToolsVersion = 16.4;
+						CreatedOnToolsVersion = 26.0;
 						TestTargetID = A42B353C2BA2185B009E81AD;
 					};
 				};
@@ -508,8 +509,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				LD_WARN_UNUSED_DYLIBS = NO;
+				MACOSX_DEPLOYMENT_TARGET = 15.3;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.F1248.GeniusTests;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Genius.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Genius";
 			};
 			name = Debug;
@@ -519,6 +523,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				LD_WARN_UNUSED_DYLIBS = NO;
+				MACOSX_DEPLOYMENT_TARGET = 15.3;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.F1248.GeniusTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Genius.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Genius";
 			};

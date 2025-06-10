@@ -85,4 +85,8 @@ type_name:
 unused_declaration:
     include_public_and_open: true
 unused_import:
+    allowed_transitive_imports:
+        - module: SwiftUI
+          allowed_transitive_imports:
+            - SwiftUICore
     require_explicit_imports: true

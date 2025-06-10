@@ -6,7 +6,6 @@
 import Foundation
 import SFSafeSymbols
 import SwiftUI
-import SwiftUICore
 
 struct MaintenanceCheckLabel: View {
 

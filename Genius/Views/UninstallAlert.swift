@@ -6,7 +6,6 @@
 import AppKit
 import Foundation
 import SwiftUI
-import SwiftUICore
 
 struct UninstallAlert: ViewModifier {
 
