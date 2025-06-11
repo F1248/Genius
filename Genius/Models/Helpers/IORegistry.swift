@@ -21,11 +21,11 @@ struct IORegistry: ~Copyable {
 	}
 
 	init(class className: String) {
-		self.matchingDictionary = IOServiceMatching(className)
+		self.matchingDictionary = unsafe IOServiceMatching(className)
 	}
 
 	init(name: String) {
-		self.matchingDictionary = IOServiceNameMatching(name)
+		self.matchingDictionary = unsafe IOServiceNameMatching(name)
 	}
 
 	deinit {
@@ -34,12 +34,13 @@ struct IORegistry: ~Copyable {
 
 	func read<Wrapped: DataInitializable>(_ key: String) -> Wrapped? {
 		guard exists ?? false, let service else { return nil }
-		let property = IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0)?.takeRetainedValue()
+		let property: CFTypeRef? =
+			unsafe IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0)?.takeRetainedValue()
 		return property as? Wrapped ?? ((property as? Data)?.trimmingTrailingZeros).flatMap(Wrapped.init)
 	}
 
 	func contains(_ key: String) -> Bool? {
 		guard exists ?? false, let service else { return nil }
-		return IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0) != nil
+		return unsafe IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0) != nil
 	}
 }
