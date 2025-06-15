@@ -57,7 +57,7 @@ extension SystemInformation {
 			)
 			static let sfSymbol: SFSymbol =
 				switch true {
-					case isVirtualMachine: .macwindow
+					case isVirtualMachine: if #available(macOS 14, *) { .macwindowAndCursorarrow } else { .macwindow }
 					case namePrefix?.hasPrefix("MacBook"):
 						if #available(macOS 14, *) {
 							switch true {
