@@ -22,7 +22,7 @@ struct CustomTabView: View {
 		self.tabs = content()
 	}
 
-	var picker: some View {
+	@ViewBuilder var picker: some View {
 		Picker(selection: selectedTabIndexParameter ?? $selectedTabIndexPrivate) {
 			ForEach(tabs) { tab in
 				tab.title
