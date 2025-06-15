@@ -12,7 +12,7 @@ protocol TabData: RawRepresentable<String>, CaseIterable, SelfIdentifiable where
 
 	static var entireWindow: Bool { get }
 	static var keyboardShortcutModifiers: EventModifiers { get }
-	@MainActor var content: ViewType { get }
+	@MainActor @ViewBuilder var content: ViewType { get }
 }
 
 extension TabData {
