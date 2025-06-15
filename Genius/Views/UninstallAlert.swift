@@ -29,6 +29,7 @@ struct UninstallAlert: ViewModifier {
 }
 
 extension View {
+
 	func uninstallAlert() -> some View {
 		modifier(UninstallAlert())
 	}
