@@ -15,7 +15,7 @@ enum ContentViewTab: String, TabData {
 	static let entireWindow = true // swiftlint:disable:this explicit_type_interface
 	static let keyboardShortcutModifiers: EventModifiers = .command
 
-	var content: some View {
+	var body: some View {
 		switch self {
 			case .home: HomeView()
 			case .systemInformation: SystemInformationView()

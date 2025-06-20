@@ -11,7 +11,8 @@ actor AppDelegate: NSObject, NSApplicationDelegate {
 
 	nonisolated func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool { true }
 
-	nonisolated func applicationDockMenu(_: NSApplication) -> NSMenu? {
+	@MainActor
+	func applicationDockMenu(_: NSApplication) -> NSMenu? {
 		let dockMenu = NSMenu()
 		for tab in ContentViewTab.allCases {
 			let menuItem = NSMenuItem(title: tab.localized, action: #selector(changeTab(_:)), keyEquivalent: "")

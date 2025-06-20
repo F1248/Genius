@@ -3,16 +3,12 @@
 // See LICENSE.txt for license information.
 //
 
-import _Concurrency
 import SwiftUI
 
-protocol TabData: RawRepresentable<String>, CaseIterable, SelfIdentifiable where AllCases == [Self] {
-
-	associatedtype ViewType: View
+protocol TabData: View, RawRepresentable<String>, CaseIterable, SelfIdentifiable where AllCases == [Self] {
 
 	static var entireWindow: Bool { get }
 	static var keyboardShortcutModifiers: EventModifiers { get }
-	@MainActor @ViewBuilder var content: ViewType { get }
 }
 
 extension TabData {
