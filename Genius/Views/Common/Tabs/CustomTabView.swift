@@ -51,12 +51,12 @@ struct CustomTabView: View {
 
 #Preview {
 	CustomTabView {
-		CustomTab("Title 1", index: 0) {
-			Text("Content 1")
+		CustomTab("Title 0", index: 0) {
+			Text("Content 0")
 				.padding()
 		}
-		CustomTab("Title 2", index: 1) {
-			Text("Content 2")
+		CustomTab("Title 1", index: 1) {
+			Text("Content 1")
 				.padding()
 		}
 	}
@@ -65,15 +65,15 @@ struct CustomTabView: View {
 
 #Preview("CustomTabView in entire window") {
 	CustomTabView(entireWindow: true) {
-		CustomTab("Title 1", index: 0) {
-			Text("Content 1")
+		CustomTab("Title 0", index: 0) {
+			Text("Content 0")
 				.padding()
 		}
-		CustomTab("Title 2", index: 1) {
-			Text("Content 2")
+		CustomTab("Title 1", index: 1) {
+			Text("Content 1")
 				.padding()
 		}
 	}
 	.padding()
-	.frame(width: 382)
+	.frame(width: 383)
 }
