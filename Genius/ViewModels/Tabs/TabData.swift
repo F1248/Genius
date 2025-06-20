@@ -13,7 +13,7 @@ protocol TabData: View, RawRepresentable<String>, CaseIterable, SelfIdentifiable
 
 extension TabData {
 
-	static var id: String { String(describing: self) }
+	static var id: ObjectIdentifier { ObjectIdentifier(self) }
 	var localized: String { rawValue.localized }
 	var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
