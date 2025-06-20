@@ -3,6 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
+import SFSafeSymbols
 import SwiftUI
 
 enum ContentViewTab: String, TabData {
@@ -14,6 +15,16 @@ enum ContentViewTab: String, TabData {
 
 	static let entireWindow = true // swiftlint:disable:this explicit_type_interface
 	static let keyboardShortcutModifiers: EventModifiers = .command
+
+	var sfSymbol: SFSymbol {
+		switch self {
+			case .home: .house
+			case .systemInformation:
+				if #available(macOS 15.4, *) { SFSymbol(rawValue: "info.circle.text.page") } else { .docTextBelowEcg }
+			case .maintenance: .stethoscope
+			case .settings: .gear
+		}
+	}
 
 	var body: some View {
 		switch self {

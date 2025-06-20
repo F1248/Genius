@@ -3,6 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
+import SFSafeSymbols
 import SwiftUI
 
 struct TabButton<TabDataType: TabData>: View {
@@ -13,6 +14,8 @@ struct TabButton<TabDataType: TabData>: View {
 		Button {
 			SharedData.sharedData.selectedTabsIndices[TabDataType.id] = tab.index
 		} label: {
+			Image(systemSymbol: tab.sfSymbol)
+				.accessibilityHidden(true)
 			VaryingText(
 				tab as? ContentViewTab == .settings ? "Settings…" : tab.localizedStringKey,
 			)

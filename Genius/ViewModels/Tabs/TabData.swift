@@ -3,12 +3,15 @@
 // See LICENSE.txt for license information.
 //
 
+import SFSafeSymbols
 import SwiftUI
 
 protocol TabData: View, RawRepresentable<String>, CaseIterable, SelfIdentifiable where AllCases == [Self] {
 
 	static var entireWindow: Bool { get }
 	static var keyboardShortcutModifiers: EventModifiers { get }
+
+	var sfSymbol: SFSymbol { get }
 }
 
 extension TabData {
