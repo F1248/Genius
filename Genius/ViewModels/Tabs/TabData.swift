@@ -8,10 +8,15 @@ import SwiftUI
 
 protocol TabData: View, RawRepresentable<String>, CaseIterable, SelfIdentifiable where AllCases == [Self] {
 
+	associatedtype ContentViewType: View
+
 	static var entireWindow: Bool { get }
 	static var keyboardShortcutModifiers: EventModifiers { get }
 
+	var displayTitleInBody: Bool { get }
 	var sfSymbol: SFSymbol { get }
+
+	@ViewBuilder var content: ContentViewType { get }
 }
 
 extension TabData {
@@ -20,4 +25,13 @@ extension TabData {
 
 	var localized: String { rawValue.localized }
 	var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
+
+	@ViewBuilder var body: some View {
+		if displayTitleInBody {
+			Label(localizedStringKey, systemSymbol: sfSymbol)
+				.font(.title)
+				.padding()
+		}
+		content
+	}
 }

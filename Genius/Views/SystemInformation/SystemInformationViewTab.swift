@@ -14,6 +14,10 @@ enum SystemInformationViewTab: String, TabData {
 	static let entireWindow = false // swiftlint:disable:this explicit_type_interface
 	static let keyboardShortcutModifiers: EventModifiers = [.command, .option]
 
+	var displayTitleInBody: Bool {
+		true
+	}
+
 	var sfSymbol: SFSymbol {
 		switch self {
 			case .hardware: SystemInformation.Hardware.Model.sfSymbol
@@ -21,7 +25,7 @@ enum SystemInformationViewTab: String, TabData {
 		}
 	}
 
-	var body: some View {
+	var content: some View {
 		switch self {
 			case .hardware: SystemInformationHardwareView()
 			case .software: SystemInformationSoftwareView()
