@@ -3,7 +3,6 @@
 // See LICENSE.txt for license information.
 //
 
-import SFSafeSymbols
 import SwiftUI
 
 struct SystemInformationHardwareView: View {
