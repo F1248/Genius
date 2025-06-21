@@ -10,7 +10,7 @@ struct SystemInformationView: View {
 	var body: some View {
 		VStack {
 			Text(varying: "System Information")
-				.font(.largeTitle)
+				.font(.title)
 				.padding()
 			AdaptingTabView<SystemInformationViewTab>()
 		}

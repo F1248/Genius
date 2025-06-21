@@ -11,7 +11,7 @@ struct MaintenanceView: View {
 	var body: some View {
 		VStack {
 			Text("Maintenance")
-				.font(.largeTitle)
+				.font(.title)
 				.padding()
 			MaintenanceDataView(content: [
 				"Theft Protection": [
