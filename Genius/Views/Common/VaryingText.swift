@@ -5,7 +5,6 @@
 
 import Defaults
 import SwiftUI
-import SwiftUICore
 
 struct VaryingText: View {
 

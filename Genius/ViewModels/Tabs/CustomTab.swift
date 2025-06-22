@@ -4,7 +4,7 @@
 //
 
 import _Concurrency
-import SwiftUICore
+import SwiftUI
 
 struct CustomTab {
 

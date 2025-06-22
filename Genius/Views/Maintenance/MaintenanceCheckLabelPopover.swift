@@ -6,13 +6,12 @@
 import Foundation
 import SFSafeSymbols
 import SwiftUI
-import SwiftUICore
 
 struct MaintenanceCheckLabelPopover: View {
 
 	let name: LocalizedStringKey
 	let help: URL?
-	let systemSetting: URL?
+	let setting: URL?
 
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -27,8 +26,8 @@ struct MaintenanceCheckLabelPopover: View {
 						}
 						.foregroundColor(.secondary)
 					}
-					if let systemSetting {
-						Link(destination: systemSetting) {
+					if let setting {
+						Link(destination: setting) {
 							Symbol(.gear, label: "Open in System Settings")
 								.focusable() // Prevent symbol from receiving focus automatically
 						}
@@ -45,7 +44,7 @@ struct MaintenanceCheckLabelPopover: View {
 	MaintenanceCheckLabelPopover(
 		name: "Name",
 		help: URL(string: "https://example.com"),
-		systemSetting: URL(string: "https://example.com"),
+		setting: URL(string: "https://example.com"),
 	)
 	.frame(width: 256)
 }

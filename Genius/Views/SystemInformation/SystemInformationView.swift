@@ -4,17 +4,11 @@
 //
 
 import SwiftUI
-import SwiftUICore
 
 struct SystemInformationView: View {
 
 	var body: some View {
-		VStack {
-			Text(varying: "System Information")
-				.font(.largeTitle)
-				.padding()
-			AdaptingTabView<SystemInformationViewTab>()
-		}
+		AdaptingTabView<SystemInformationViewTab>()
 	}
 }
 

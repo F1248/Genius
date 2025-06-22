@@ -6,7 +6,6 @@
 import Foundation
 import SFSafeSymbols
 import SwiftUI
-import SwiftUICore
 
 struct MaintenanceCheckLabel: View {
 
@@ -14,13 +13,13 @@ struct MaintenanceCheckLabel: View {
 
 	let name: LocalizedStringKey
 	let help: URL?
-	let systemSetting: URL?
+	let setting: URL?
 
 	// swiftlint:disable:next type_contents_order
-	init(_ name: LocalizedStringKey, help: URL?, systemSetting: URL? = nil) {
+	init(_ name: LocalizedStringKey, help: URL?, setting: URL? = nil) {
 		self.name = name
 		self.help = help
-		self.systemSetting = systemSetting
+		self.setting = setting
 	}
 
 	var body: some View {
@@ -33,7 +32,7 @@ struct MaintenanceCheckLabel: View {
 			}
 			.buttonStyle(.borderless)
 			.popover(isPresented: $popoverPresented) {
-				MaintenanceCheckLabelPopover(name: name, help: help, systemSetting: systemSetting)
+				MaintenanceCheckLabelPopover(name: name, help: help, setting: setting)
 			}
 		}
 	}
@@ -43,7 +42,7 @@ struct MaintenanceCheckLabel: View {
 	MaintenanceCheckLabel(
 		"Name",
 		help: URL(string: "https://example.com"),
-		systemSetting: URL(string: "https://example.com"),
+		setting: URL(string: "https://example.com"),
 	)
 	.padding()
 }
