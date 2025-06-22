@@ -4,7 +4,7 @@
 //
 
 import Defaults
-import SwiftUICore
+import SwiftUI
 
 extension Text {
 

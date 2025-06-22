@@ -7,7 +7,6 @@ import Foundation
 
 extension SystemInformation {
 
-	// swiftformat:disable organizeDeclarations
 	enum Software {
 
 		enum SMC {
@@ -42,9 +41,11 @@ extension SystemInformation {
 			static let codeName = SystemInformationData<String?, _>({
 				if #unavailable(macOS 16) {
 					"Sequoia"
-				} else {
+				} else if #unavailable(macOS 26) {
 					nil
-				}
+				} else if #unavailable(macOS 27) {
+					"Tahoe"
+				} else { nil }
 			}())
 			static let buildNumber = SystemInformationData<String?, _>(Sysctl.read("kern.osversion"))
 			static let bootMode = SystemInformationData<BootMode?, _>({
@@ -76,5 +77,4 @@ extension SystemInformation {
 			static let accountName = SystemInformationData<String, _>(NSUserName())
 		}
 	}
-	// swiftformat:enable organizeDeclarations
 }

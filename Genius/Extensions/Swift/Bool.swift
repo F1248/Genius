@@ -5,7 +5,7 @@
 
 import Foundation
 import SFSafeSymbols
-import SwiftUICore
+import SwiftUI
 
 extension Bool: DataInitializable, UISymbolRepresentable {
 

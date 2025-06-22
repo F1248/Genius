@@ -3,7 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
-import SwiftUICore
+import SwiftUI
 
 extension ForEach where Content: View {
 

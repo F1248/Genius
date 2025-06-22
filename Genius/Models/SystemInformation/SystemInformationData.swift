@@ -5,7 +5,7 @@
 
 import Defaults
 import SFSafeSymbols
-import SwiftUICore
+import SwiftUI
 
 struct SystemInformationData<Value, ValueWrapper: ValueWrapperProtocol<Value>>: Sendable {
 

@@ -23,7 +23,7 @@ See LICENSE.txt for license information.
 
 ### Supported macOS Versions
 
-- macOS Sonoma 15
+- macOS Sequoia 15 and later, including macOS Tahoe 26
 - Also supports recoveryOS
 
 ### Supported Models

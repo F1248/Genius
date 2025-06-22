@@ -23,7 +23,7 @@ See LICENSE.txt for license information.
 
 ### Unterstützte macOS-Versionen
 
-- macOS Sequoia 15
+- macOS Sequoia 15 und neuer, inklusive macOS Tahoe 26
 - Unterstützt auch recoveryOS
 
 ### Unterstützte Modelle

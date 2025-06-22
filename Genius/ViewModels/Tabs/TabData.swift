@@ -3,21 +3,35 @@
 // See LICENSE.txt for license information.
 //
 
-import _Concurrency
-import SwiftUICore
+import SFSafeSymbols
+import SwiftUI
 
-protocol TabData: RawRepresentable<String>, CaseIterable, SelfIdentifiable where AllCases == [Self] {
+protocol TabData: View, RawRepresentable<String>, CaseIterable, SelfIdentifiable where AllCases == [Self] {
 
-	associatedtype ViewType: View
+	associatedtype ContentViewType: View
 
 	static var entireWindow: Bool { get }
 	static var keyboardShortcutModifiers: EventModifiers { get }
-	@MainActor var content: ViewType { get }
+
+	var displayTitleInBody: Bool { get }
+	var symbol: SFSymbol { get }
+
+	@ViewBuilder var content: ContentViewType { get }
 }
 
 extension TabData {
 
-	static var id: String { String(describing: self) }
+	static var id: ObjectIdentifier { ObjectIdentifier(self) }
+
 	var localized: String { rawValue.localized }
 	var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
+
+	@ViewBuilder var body: some View {
+		if displayTitleInBody {
+			Label(localizedStringKey, systemSymbol: symbol)
+				.font(.title)
+				.padding()
+		}
+		content
+	}
 }
