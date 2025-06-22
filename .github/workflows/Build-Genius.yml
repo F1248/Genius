@@ -101,7 +101,9 @@ jobs:
             - name: Install Periphery
               run: |
                 tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip --output periphery.zip
+                curl \
+                    --location https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip \
+                    --output periphery.zip
                 unzip periphery.zip
                 echo "Periphery $(./periphery version) installed"
 
@@ -120,7 +122,9 @@ jobs:
 
             - name: Install SwiftFormat
               run: |
-                curl --remote-name --location https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip
+                curl \
+                    --remote-name \
+                    --location https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip
                 unzip swiftformat.zip
                 echo "SwiftFormat $(./swiftformat --version) installed"
 
@@ -184,7 +188,9 @@ jobs:
 
             - name: Install SwiftLint
               run: |
-                curl --remote-name --location https://github.com/realm/SwiftLint/releases/latest/download/portable_swiftlint.zip
+                curl \
+                    --remote-name \
+                    --location https://github.com/realm/SwiftLint/releases/latest/download/portable_swiftlint.zip
                 unzip portable_swiftlint.zip
                 echo "SwiftLint $(./swiftlint version) installed"
 
@@ -194,13 +200,18 @@ jobs:
             - name: Install xcbeautify
               run: |
                 tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+                curl \
+                    --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip \
+                    --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Build Genius
               run: |
-                xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | tee xcodebuild.log | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" | ./xcbeautify --disable-logging --renderer github-actions
+                xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation \
+                    | tee xcodebuild.log \
+                    | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
+                    | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run SwiftLint analyzer rules
               run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
@@ -263,13 +274,17 @@ jobs:
             - name: Install xcbeautify
               run: |
                 tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+                curl \
+                    --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip \
+                    --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Run tests
               run: |
-                xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" | ./xcbeautify --disable-logging --renderer github-actions
+                xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation \
+                    | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
+                    | ./xcbeautify --disable-logging --renderer github-actions
 
     Build-Genius:
         name: Build Genius
@@ -332,12 +347,16 @@ jobs:
             - name: Install xcbeautify
               run: |
                 tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip --output xcbeautify.zip
+                curl \
+                    --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip \
+                    --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Build Genius
-              run: xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+              run: |
+                xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation \
+                    | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Zip Genius
               run: |
