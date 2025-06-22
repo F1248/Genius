@@ -62,9 +62,9 @@ extension SystemInformationTests {
 				#expect(await SystemInformation.Hardware.Model.regulatoryNumber.testCondition)
 			}
 
-			@Test("sfSymbol")
-			func sfSymbol() {
-				#expect(SystemInformation.Hardware.Model.sfSymbol != .desktopcomputerAndMacbook)
+			@Test("symbol")
+			func symbol() {
+				#expect(SystemInformation.Hardware.Model.symbol != .desktopcomputerAndMacbook)
 			}
 		}
 

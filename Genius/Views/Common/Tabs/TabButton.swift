@@ -15,7 +15,7 @@ struct TabButton<TabDataType: TabData>: View {
 		} label: {
 			Label(
 				tab as? ContentViewTab == .settings ? "Settings…" : tab.localizedStringKey,
-				systemSymbol: tab.sfSymbol,
+				systemSymbol: tab.symbol,
 			)
 		}
 		.keyboardShortcut(

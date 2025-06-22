@@ -14,7 +14,7 @@ protocol TabData: View, RawRepresentable<String>, CaseIterable, SelfIdentifiable
 	static var keyboardShortcutModifiers: EventModifiers { get }
 
 	var displayTitleInBody: Bool { get }
-	var sfSymbol: SFSymbol { get }
+	var symbol: SFSymbol { get }
 
 	@ViewBuilder var content: ContentViewType { get }
 }
@@ -28,7 +28,7 @@ extension TabData {
 
 	@ViewBuilder var body: some View {
 		if displayTitleInBody {
-			Label(localizedStringKey, systemSymbol: sfSymbol)
+			Label(localizedStringKey, systemSymbol: symbol)
 				.font(.title)
 				.padding()
 		}

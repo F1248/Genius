@@ -23,7 +23,7 @@ enum ContentViewTab: String, TabData {
 		}
 	}
 
-	var sfSymbol: SFSymbol {
+	var symbol: SFSymbol {
 		switch self {
 			case .home: .house
 			case .systemInformation:

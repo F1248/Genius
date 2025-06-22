@@ -18,9 +18,9 @@ enum SystemInformationViewTab: String, TabData {
 		true
 	}
 
-	var sfSymbol: SFSymbol {
+	var symbol: SFSymbol {
 		switch self {
-			case .hardware: SystemInformation.Hardware.Model.sfSymbol
+			case .hardware: SystemInformation.Hardware.Model.symbol
 			case .software: .macwindowOnRectangle
 		}
 	}
