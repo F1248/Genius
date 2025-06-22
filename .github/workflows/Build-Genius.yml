@@ -199,7 +199,8 @@ jobs:
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Build Genius
-              run: xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | tee xcodebuild.log | ./xcbeautify --disable-logging --renderer github-actions
+              run: |
+                xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation | tee xcodebuild.log | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Run SwiftLint analyzer rules
               run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
@@ -267,7 +268,8 @@ jobs:
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Run tests
-              run: TEST_RUNNER_OS_ACTIVITY_MODE=disable xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | ./xcbeautify --disable-logging --renderer github-actions
+              run: |
+                xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" | ./xcbeautify --disable-logging --renderer github-actions
 
     Build-Genius:
         name: Build Genius

@@ -55,9 +55,9 @@ extension SystemInformation {
 				IORegistry(class: "IOPlatformExpertDevice").read("regulatory-model-number"),
 				applicable: CPU.type.value == .appleSilicon &&? !?isVirtualMachine,
 			)
-			static let sfSymbol: SFSymbol =
+			static let symbol: SFSymbol =
 				switch true {
-					case isVirtualMachine: .macwindow
+					case isVirtualMachine: if #available(macOS 14, *) { .macwindowAndCursorarrow } else { .macwindow }
 					case namePrefix?.hasPrefix("MacBook"):
 						if #available(macOS 14, *) {
 							switch true {

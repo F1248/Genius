@@ -18,7 +18,7 @@ struct AdaptingTabView<TabDataType: TabData>: View {
 					Tab(
 						tab.localizedStringKey,
 						value: tab.index,
-					) { tab.content }
+					) { tab }
 				}
 			}
 		} else {
@@ -27,7 +27,7 @@ struct AdaptingTabView<TabDataType: TabData>: View {
 					CustomTab(
 						tab.localizedStringKey,
 						index: tab.index,
-					) { tab.content }
+					) { tab }
 				}
 			}
 		}

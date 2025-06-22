@@ -3,6 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
+import SFSafeSymbols
 import SwiftUI
 
 struct AppCommands: Commands {
@@ -14,7 +15,7 @@ struct AppCommands: Commands {
 			Button {
 				SharedData.sharedData.showUninstallAlert = true
 			} label: {
-				VaryingText("Uninstall Genius…")
+				Label("Uninstall Genius…", systemSymbol: .trash)
 			}
 			Divider()
 			TabButton(tab: ContentViewTab.settings)

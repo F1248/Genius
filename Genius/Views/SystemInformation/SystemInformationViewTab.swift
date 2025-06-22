@@ -3,6 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
+import SFSafeSymbols
 import SwiftUI
 
 enum SystemInformationViewTab: String, TabData {
@@ -13,7 +14,18 @@ enum SystemInformationViewTab: String, TabData {
 	static let entireWindow = false // swiftlint:disable:this explicit_type_interface
 	static let keyboardShortcutModifiers: EventModifiers = [.command, .option]
 
-	@ViewBuilder var content: some View {
+	var displayTitleInBody: Bool {
+		true
+	}
+
+	var symbol: SFSymbol {
+		switch self {
+			case .hardware: SystemInformation.Hardware.Model.symbol
+			case .software: .macwindowOnRectangle
+		}
+	}
+
+	var content: some View {
 		switch self {
 			case .hardware: SystemInformationHardwareView()
 			case .software: SystemInformationSoftwareView()

@@ -1,0 +1,72 @@
+{
+  "comment" : [
+    "© 2025 F1248 <f1248@mailbox.org>",
+    "See LICENSE.txt for license information."
+  ],
+  "configurations" : [
+    {
+      "id" : "51513233-2C20-4DFF-9D1C-C2C755638F92",
+      "name" : "Address Sanitizer and Undefined Behavior Sanitizer",
+      "options" : {
+        "addressSanitizer" : {
+          "detectStackUseAfterReturn" : true,
+          "enabled" : true
+        },
+        "undefinedBehaviorSanitizerEnabled" : true
+      }
+    },
+    {
+      "id" : "2FB0D931-88AF-4539-897F-426DECF332E5",
+      "name" : "Thread Sanitizer",
+      "options" : {
+        "threadSanitizerEnabled" : true
+      }
+    },
+    {
+      "id" : "AD7939E7-146A-4408-B7DD-861CA1FABD5B",
+      "name" : "Memory Management",
+      "options" : {
+        "guardMallocEnabled" : false, "comment" : "work around tests failing on GitHub runner",
+        "mallocGuardEdgesEnabled" : true,
+        "mallocScribbleEnabled" : true,
+        "mallocStackLoggingOptions" : {
+          "loggingType" : "liveAllocations"
+        },
+        "nsZombieEnabled" : true
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "environmentVariableEntries" : [
+      {
+        "key" : "OS_ACTIVITY_MODE",
+        "value" : "disable"
+      }
+    ],
+    "mainThreadCheckerDetectionPolicy" : {
+      "severity" : "failure"
+    },
+    "runtimeIssueDetection" : {
+      "severity" : "failure"
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Genius.xcodeproj",
+      "identifier" : "A42B353C2BA2185B009E81AD",
+      "name" : "Genius"
+    },
+    "threadPerformanceCheckerRuntimeIssueDetection" : {
+      "severity" : "failure"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Genius.xcodeproj",
+        "identifier" : "A4D9A1A92D257055008D91E7",
+        "name" : "GeniusTests"
+      }
+    }
+  ],
+  "version" : 2
+}
