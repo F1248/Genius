@@ -6,7 +6,6 @@
 import AppKit
 import Foundation
 import SwiftUI
-import SwiftUICore
 
 struct UninstallAlert: ViewModifier {
 
@@ -32,6 +31,7 @@ struct UninstallAlert: ViewModifier {
 }
 
 extension View {
+
 	func uninstallAlert() -> some View {
 		modifier(UninstallAlert())
 	}

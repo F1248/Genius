@@ -41,7 +41,7 @@ else
 fi
 
 echo "Downloading..."
-curl --no-progress-meter --remote-name --location https://nightly.link/F1248/Genius/workflows/Build-Genius/deployment-target-macos-14/Genius.zip
+curl --no-progress-meter --remote-name --location https://nightly.link/F1248/Genius/workflows/Build-Genius/main/Genius.zip
 
 echo "Installing..."
 unzip -q -o Genius.zip
@@ -63,7 +63,7 @@ if $is_recoveryos; then
 else
 	open Genius.app
 	sleep 0.5
-	open Genius.app	# Work around `open` opening apps in the background when not already running
+	open Genius.app	# work around `open` opening apps in the background when not already running
 fi
 
 echo "Done."

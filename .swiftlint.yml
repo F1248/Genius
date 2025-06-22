@@ -28,6 +28,7 @@ disabled_rules:
     - sorted_enum_cases
     - switch_case_on_newline
     - trailing_closure
+    - unused_declaration # work around analysis getting stuck
     - vertical_whitespace_between_cases
     - vertical_whitespace_opening_braces
 
@@ -82,7 +83,11 @@ type_contents_order:
         - subscript
 type_name:
     min_length: 2
-unused_declaration:
-    include_public_and_open: true
+# unused_declaration:
+#     include_public_and_open: true
 unused_import:
+    allowed_transitive_imports:
+        - module: SwiftUI
+          allowed_transitive_imports:
+            - SwiftUICore
     require_explicit_imports: true

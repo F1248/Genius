@@ -1,6 +1,8 @@
 {
-  "comment" : "© 2024 F1248 <f1248@mailbox.org>",
-  "comment" : "See LICENSE.txt for license information.",
+  "comment" : [
+    "© 2024 F1248 <f1248@mailbox.org>",
+    "See LICENSE.txt for license information."
+  ],
   "sourceLanguage" : "en",
   "strings" : {
     "Account Name" : {
@@ -537,6 +539,7 @@
       }
     },
     "Hardware" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -812,6 +815,7 @@
       }
     },
     "Maintenance" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1105,6 +1109,7 @@
       }
     },
     "Settings" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1116,6 +1121,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Settings"
+          }
+        }
+      }
+    },
+    "Settings…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen…"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings…"
           }
         }
       }
@@ -1170,6 +1191,7 @@
       }
     },
     "Software" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1202,6 +1224,7 @@
       }
     },
     "System Information" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {

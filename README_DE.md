@@ -23,7 +23,7 @@ See LICENSE.txt for license information.
 
 ### Unterstützte macOS-Versionen
 
-- macOS Sonoma 14 und neuer, inklusive macOS Sequoia 15
+- macOS Sonoma 14 und neuer, inklusive macOS Tahoe 26
 - Unterstützt auch recoveryOS
 
 ### Unterstützte Modelle
@@ -39,7 +39,7 @@ See LICENSE.txt for license information.
 3. Verschiebe `Genius.app` in `/Programme`.
 4. Doppelklicke auf die App.
 
-Unter macOS Sequoia 15:
+Unter macOS Sequoia 15 und neuer:
 
 5. Klicke auf `Fertig`.
 6. Öffne [`Datenschutz & Sicherheit` in den Systemeinstellungen, scrolle nach unten zu der Nachricht `„Genius“ wurde blockiert, um deinen Mac zu schützen.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) und klicke auf `Dennoch öffnen`.

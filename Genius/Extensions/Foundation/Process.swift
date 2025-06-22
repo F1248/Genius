@@ -31,7 +31,7 @@ extension Process {
 		self.qualityOfService = .userInitiated
 	}
 
-	func waitUntilExitAsync() async {
+	func waitUntilExit() async {
 		await withCheckedContinuation { continuation in
 			terminationHandler = { _ in
 				continuation.resume()
@@ -50,7 +50,7 @@ extension Process {
 			logError(outputPipeData: outputPipe.read(), errorPipeData: errorPipe.read())
 			return nil
 		}
-		await waitUntilExitAsync()
+		await waitUntilExit()
 		let errorPipeData = errorPipe.read()
 		let outputPipeData = outputPipe.read()
 		guard terminationStatus == 0, terminationReason == .exit, errorPipeData == nil, let outputPipeData else {

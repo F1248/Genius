@@ -4,16 +4,13 @@
 //
 
 import SwiftUI
-import SwiftUICore
 
 struct HomeView: View {
 
 	var body: some View {
-		VStack {
-			Text("Genius")
-				.font(.largeTitle)
-				.padding()
-		}
+		Text("Genius")
+			.font(.largeTitle)
+			.padding()
 	}
 }
 

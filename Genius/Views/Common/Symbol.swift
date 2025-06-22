@@ -6,7 +6,6 @@
 import Defaults
 import SFSafeSymbols
 import SwiftUI
-import SwiftUICore
 
 struct Symbol: View {
 

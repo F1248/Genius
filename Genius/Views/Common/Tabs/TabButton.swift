@@ -4,7 +4,6 @@
 //
 
 import SwiftUI
-import SwiftUICore
 
 struct TabButton<TabDataType: TabData>: View {
 
@@ -14,7 +13,10 @@ struct TabButton<TabDataType: TabData>: View {
 		Button {
 			SharedData.sharedData.selectedTabsIndices[TabDataType.id] = tab.index
 		} label: {
-			VaryingText(tab.localizedStringKey)
+			Label(
+				tab as? ContentViewTab == .settings ? "Settings…" : tab.localizedStringKey,
+				systemSymbol: tab.symbol,
+			)
 		}
 		.keyboardShortcut(
 			tab as? ContentViewTab == .settings ? "," : KeyEquivalent(Character(String(tab.index + 1))),
