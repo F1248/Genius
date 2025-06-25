@@ -11,7 +11,7 @@ typealias InformationStorage = Measurement<UnitInformationStorage>
 
 extension Measurement: UIStringRepresentable {
 
-	var uiRepresentation: String? {
+	nonisolated var uiRepresentation: String? {
 		switch self {
 			case let self as Frequency:
 				let units: [UnitFrequency] =

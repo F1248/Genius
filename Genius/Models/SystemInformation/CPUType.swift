@@ -8,7 +8,7 @@ enum CPUType: UIStringRepresentable {
 	case intel
 	case appleSilicon
 
-	var uiRepresentation: String? {
+	nonisolated var uiRepresentation: String? {
 		{
 			switch self {
 				case .intel: "Intel"

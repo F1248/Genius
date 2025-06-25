@@ -10,7 +10,7 @@ enum SecurityChip: Comparable, UIStringRepresentable {
 	case t2
 	case mSeries
 
-	var uiRepresentation: String? {
+	nonisolated var uiRepresentation: String? {
 		{
 			switch self {
 				case .none: "None (Security Chip)"

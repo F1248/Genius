@@ -9,7 +9,7 @@ enum BootMode: UIStringRepresentable {
 	case safe
 	case recovery
 
-	var uiRepresentation: String? {
+	nonisolated var uiRepresentation: String? {
 		{
 			switch self {
 				case .normal: "Normal"

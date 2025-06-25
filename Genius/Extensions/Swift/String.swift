@@ -8,7 +8,7 @@ import Foundation
 
 extension String: DefaultInitializable, DataInitializable, UIStringRepresentable {
 
-	var uiRepresentation: String? {
+	nonisolated var uiRepresentation: String? {
 		self
 	}
 
