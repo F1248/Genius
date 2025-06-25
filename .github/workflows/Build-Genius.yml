@@ -69,6 +69,10 @@ jobs:
                     echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
                 fi
 
+            - name: Free up disk space
+              if: env.latest_xcode_version_installed == 'false'
+              run: rm -r ~/Library/Android
+
             - name: Checkout Xcode mirror
               if: env.latest_xcode_version_installed == 'false'
               uses: actions/checkout@main
@@ -157,6 +161,10 @@ jobs:
                     echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
                 fi
 
+            - name: Free up disk space
+              if: env.latest_xcode_version_installed == 'false'
+              run: rm -r ~/Library/Android
+
             - name: Checkout Xcode mirror
               if: env.latest_xcode_version_installed == 'false'
               uses: actions/checkout@main
@@ -242,6 +250,10 @@ jobs:
                     echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
                 fi
 
+            - name: Free up disk space
+              if: env.latest_xcode_version_installed == 'false'
+              run: rm -r ~/Library/Android
+
             - name: Checkout Xcode mirror
               if: env.latest_xcode_version_installed == 'false'
               uses: actions/checkout@main
@@ -314,6 +326,10 @@ jobs:
                 else
                     echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
                 fi
+
+            - name: Free up disk space
+              if: env.latest_xcode_version_installed == 'false'
+              run: rm -r ~/Library/Android
 
             - name: Checkout Xcode mirror
               if: env.latest_xcode_version_installed == 'false'
