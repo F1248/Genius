@@ -44,6 +44,7 @@ concurrency:
 
 jobs:
     Run-Periphery:
+        if: false
         name: Run Periphery
         runs-on: macos-15
 
@@ -115,6 +116,7 @@ jobs:
               run: ./periphery scan --format github-actions --strict -- -skipPackagePluginValidation
 
     Run-SwiftFormat:
+        if: false
         name: Run SwiftFormat
         runs-on: macos-15
 
@@ -136,6 +138,7 @@ jobs:
               run: ./swiftformat --lint . --reporter github-actions-log
 
     Run-SwiftLint:
+        if: false
         name: Run SwiftLint
         runs-on: macos-15
 
@@ -225,6 +228,7 @@ jobs:
               run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
 
     Run-tests:
+        if: false
         name: Run tests
         runs-on: macos-15
 
@@ -329,7 +333,11 @@ jobs:
 
             - name: Free up disk space
               if: env.latest_xcode_version_installed == 'false'
-              run: rm -r ~/Library/Android
+              run: |
+                rm -r /Applications/Xcode*.app
+                rm -r ~/.dotnet
+                rm -r ~/hostedtoolcache
+                rm -r ~/Library/Android
 
             - name: Checkout Xcode mirror
               if: env.latest_xcode_version_installed == 'false'

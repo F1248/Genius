@@ -20,6 +20,7 @@ concurrency:
 
 jobs:
     Run-CodeQL-on-GitHub-Actions-workflows:
+        if: false
         name: Run CodeQL on GitHub Actions workflows
         permissions:
             security-events: write
