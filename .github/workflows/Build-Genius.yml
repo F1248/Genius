@@ -333,7 +333,7 @@ jobs:
 
             - name: Free up disk space
               if: env.latest_xcode_version_installed == 'false'
-              run: rm -r /Library/Developer/CoreSimulator/Caches
+              run: sudo rm -r /Library/Developer/CoreSimulator/Caches
 
             - name: Checkout Xcode mirror
               if: env.latest_xcode_version_installed == 'false'
