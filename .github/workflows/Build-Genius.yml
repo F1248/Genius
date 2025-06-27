@@ -333,11 +333,7 @@ jobs:
 
             - name: Free up disk space
               if: env.latest_xcode_version_installed == 'false'
-              run: |
-                rm -r /Applications/Xcode*.app
-                rm -r ~/.dotnet
-                rm -r ~/hostedtoolcache
-                rm -r ~/Library/Android
+              run: rm -r /Library/Developer/CoreSimulator/Caches
 
             - name: Checkout Xcode mirror
               if: env.latest_xcode_version_installed == 'false'
