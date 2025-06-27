@@ -373,7 +373,7 @@ jobs:
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
-            - uses: appleboy/ssh-action@master
+            - uses: mxschmitt/action-tmate@master
             
 
             # - name: Build Genius
