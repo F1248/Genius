@@ -310,6 +310,13 @@ jobs:
         runs-on: macos-15
 
         steps:
+            - run: diskutil info disk3s5
+
+            - name: Free up disk space
+              run: sudo rm -r /System/Library/AssetsV2/com_apple_MobileAsset_*OSSimulatorRuntime
+
+            - run: diskutil info disk3s5
+
             - name: Select latest installed Xcode version
               uses: maxim-lobanov/setup-xcode@master
               with:
@@ -330,16 +337,6 @@ jobs:
                 else
                     echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
                 fi
-
-            - run: diskutil info disk3s5
-
-            - name: Free up disk space
-              if: env.latest_xcode_version_installed == 'false'
-              run: |
-                rm -r /Applications/Xcode*.app
-                rm -r ~/.dotnet
-                rm -r ~/hostedtoolcache
-                rm -r ~/Library/Android
 
             - run: diskutil info disk3s5
 
@@ -368,7 +365,6 @@ jobs:
               run: |
                 sudo xcodebuild -license accept
                 sudo xcodebuild -runFirstLaunch
-                xcrun simctl delete all
                 echo "$(xcodebuild -version | tr "\n" " ")selected"
 
             - name: Checkout
