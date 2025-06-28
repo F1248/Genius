@@ -331,9 +331,17 @@ jobs:
                     echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
                 fi
 
+            - run: diskutil info disk3s5
+
             - name: Free up disk space
               if: env.latest_xcode_version_installed == 'false'
-              run: rm -r /Applications/Xcode*.app
+              run: |
+                rm -r /Applications/Xcode*.app
+                rm -r ~/.dotnet
+                rm -r ~/hostedtoolcache
+                rm -r ~/Library/Android
+
+            - run: diskutil info disk3s5
 
             - name: Checkout Xcode mirror
               if: env.latest_xcode_version_installed == 'false'
@@ -373,9 +381,6 @@ jobs:
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
-            - uses: mxschmitt/action-tmate@master
-            
-
             - name: Build Genius
               run: |
                 xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation \
@@ -407,3 +412,5 @@ jobs:
               with:
                 name: Debug Symbols
                 path: Debug-Symbols.zip
+
+            - run: diskutil info disk3s5
