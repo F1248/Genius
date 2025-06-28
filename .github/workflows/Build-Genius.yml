@@ -385,14 +385,10 @@ jobs:
 
             - run: diskutil info disk3s5
 
-            - run: sudo du -h -t 1G / 2> /dev/null
-
             - name: Build Genius
               run: |
                 xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation \
                     | ./xcbeautify --disable-logging --renderer github-actions
-
-            - run: sudo du -h -t 1G / 2> /dev/null
 
             - run: diskutil info disk3s5
 
