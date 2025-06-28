@@ -331,9 +331,9 @@ jobs:
                     echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
                 fi
 
-            # - name: Free up disk space
-            #   if: env.latest_xcode_version_installed == 'false'
-            #   run: sudo rm -r /Library/Developer/CoreSimulator/Caches
+            - name: Free up disk space
+              if: env.latest_xcode_version_installed == 'false'
+              run: rm -r /Applications/Xcode*.app
 
             - name: Checkout Xcode mirror
               if: env.latest_xcode_version_installed == 'false'
@@ -376,34 +376,34 @@ jobs:
             - uses: mxschmitt/action-tmate@master
             
 
-            # - name: Build Genius
-            #   run: |
-            #     xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation \
-            #         | ./xcbeautify --disable-logging --renderer github-actions
+            - name: Build Genius
+              run: |
+                xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation \
+                    | ./xcbeautify --disable-logging --renderer github-actions
 
-            # - name: Zip Genius
-            #   run: |
-            #     mv Genius.xcarchive/Products/Applications/Genius.app .
-            #     zip --recurse-paths Genius.zip Genius.app
+            - name: Zip Genius
+              run: |
+                mv Genius.xcarchive/Products/Applications/Genius.app .
+                zip --recurse-paths Genius.zip Genius.app
 
-            # - name: Attest build provenance
-            #   uses: actions/attest-build-provenance@main
-            #   with:
-            #     subject-path: Genius.zip
+            - name: Attest build provenance
+              uses: actions/attest-build-provenance@main
+              with:
+                subject-path: Genius.zip
 
-            # - name: Upload Genius
-            #   uses: actions/upload-artifact@main
-            #   with:
-            #     name: Genius
-            #     path: Genius.zip
+            - name: Upload Genius
+              uses: actions/upload-artifact@main
+              with:
+                name: Genius
+                path: Genius.zip
 
-            # - name: Zip debug symbols
-            #   run: |
-            #     mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
-            #     zip --recurse-paths Debug-Symbols.zip Genius.app.dSYM
+            - name: Zip debug symbols
+              run: |
+                mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
+                zip --recurse-paths Debug-Symbols.zip Genius.app.dSYM
 
-            # - name: Upload debug symbols
-            #   uses: actions/upload-artifact@main
-            #   with:
-            #     name: Debug Symbols
-            #     path: Debug-Symbols.zip
+            - name: Upload debug symbols
+              uses: actions/upload-artifact@main
+              with:
+                name: Debug Symbols
+                path: Debug-Symbols.zip
