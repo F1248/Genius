@@ -363,11 +363,13 @@ jobs:
               run: |
                 cat Xcode.xip-* | ./unxip - ~
                 sudo xcode-select --switch ~/Xcode*.app
+
+            - name: Prepare Xcode
+              run: |
+                xcrun simctl delete all
                 sudo xcodebuild -license accept
                 sudo xcodebuild -runFirstLaunch
-
-            - name: Log selected Xcode version
-              run: echo "$(xcodebuild -version | tr "\n" " ")selected"
+                echo "$(xcodebuild -version | tr "\n" " ")selected"
 
             - name: Checkout
               uses: actions/checkout@main
