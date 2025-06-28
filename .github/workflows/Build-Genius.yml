@@ -48,6 +48,9 @@ jobs:
         runs-on: macos-15
 
         steps:
+            - name: Free up disk space
+              run: sudo rm -r /System/Library/AssetsV2/com_apple_MobileAsset_*OSSimulatorRuntime
+
             - name: Select latest installed Xcode version
               uses: maxim-lobanov/setup-xcode@master
               with:
@@ -136,6 +139,9 @@ jobs:
         runs-on: macos-15
 
         steps:
+            - name: Free up disk space
+              run: sudo rm -r /System/Library/AssetsV2/com_apple_MobileAsset_*OSSimulatorRuntime
+
             - name: Select latest installed Xcode version
               uses: maxim-lobanov/setup-xcode@master
               with:
@@ -221,6 +227,9 @@ jobs:
         runs-on: macos-15
 
         steps:
+            - name: Free up disk space
+              run: sudo rm -r /System/Library/AssetsV2/com_apple_MobileAsset_*OSSimulatorRuntime
+
             - name: Select latest installed Xcode version
               uses: maxim-lobanov/setup-xcode@master
               with:
@@ -294,6 +303,9 @@ jobs:
         runs-on: macos-15
 
         steps:
+            - name: Free up disk space
+              run: sudo rm -r /System/Library/AssetsV2/com_apple_MobileAsset_*OSSimulatorRuntime
+
             - name: Select latest installed Xcode version
               uses: maxim-lobanov/setup-xcode@master
               with:
