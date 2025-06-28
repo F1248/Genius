@@ -366,9 +366,9 @@ jobs:
 
             - name: Prepare Xcode
               run: |
-                xcrun simctl delete all
                 sudo xcodebuild -license accept
                 sudo xcodebuild -runFirstLaunch
+                xcrun simctl delete all
                 echo "$(xcodebuild -version | tr "\n" " ")selected"
 
             - name: Checkout
