@@ -381,10 +381,14 @@ jobs:
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
+            - run: diskutil info disk3s5
+
             - name: Build Genius
               run: |
                 xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation \
                     | ./xcbeautify --disable-logging --renderer github-actions
+
+            - run: diskutil info disk3s5
 
             - name: Zip Genius
               run: |
