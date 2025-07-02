@@ -6,12 +6,12 @@
 @testable import Genius
 import Testing
 
-@Suite("SystemInformationData")
-struct SystemInformationDataTests {
+@Suite("MaintenanceCheck")
+struct MaintenanceCheckTests {
 
-	@Test("SystemInformationData with SyncValueWrapper")
+	@Test("MaintenanceCheck with SyncValueWrapper")
 	func systemInformationDataSyncValueWrapper() {
-		_ = SystemInformationData<Int?, SyncValueWrapper>(
+		_ = MaintenanceCheck<Bool?, SyncValueWrapper>(
 			{
 				#expect(Bool(false))
 				return nil
@@ -20,9 +20,9 @@ struct SystemInformationDataTests {
 		).value
 	}
 
-	@Test("SystemInformationData with AsyncValueWrapper")
+	@Test("MaintenanceCheck with AsyncValueWrapper")
 	func systemInformationDataAsyncValueWrapper() async {
-		_ = await SystemInformationData<Int?, AsyncValueWrapper>(
+		_ = await MaintenanceCheck<Bool?, AsyncValueWrapper>(
 			{
 				#expect(Bool(false))
 				return nil

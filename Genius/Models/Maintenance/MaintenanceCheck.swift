@@ -4,28 +4,32 @@
 //
 
 import Defaults
+import SFSafeSymbols
+import SwiftUI
 
-struct SystemInformationData<
-	Value: UIStringRepresentable,
+struct MaintenanceCheck<
+	Value: UISymbolRepresentable,
 	ValueWrapper: ValueWrapperProtocol<Value>,
->: SystemInformationProtocol, UIStringRepresentable {
+>: SystemInformationProtocol, UISymbolRepresentable {
 
 	let valueWrapper: ValueWrapper
 	let applicable: Bool?
 
-	var uiRepresentation: String? { get async {
+	var uiRepresentation: Symbol? { get async {
 		if !?applicable ?? false {
-			Defaults[.developmentMode] ? "Not applicable".localized : nil
+			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: "Not applicable") : nil
 		} else if let uiRepresentation = await value.uiRepresentation {
 			uiRepresentation
 		} else {
-			Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ? "Unknown".localized : nil
+			Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
+				Symbol(.questionmark, color: .red, label: "Unknown") : nil
 		}
 	} }
 }
 
-extension SystemInformationData where ValueWrapper == SyncValueWrapper<Value> {
+extension MaintenanceCheck where ValueWrapper == SyncValueWrapper<Value> {
 
+	// periphery:ignore
 	init(_ value: Value) {
 		self.valueWrapper = SyncValueWrapper(value: value)
 		self.applicable = true
@@ -37,8 +41,9 @@ extension SystemInformationData where ValueWrapper == SyncValueWrapper<Value> {
 	}
 }
 
-extension SystemInformationData where ValueWrapper == AsyncValueWrapper<Value> {
+extension MaintenanceCheck where ValueWrapper == AsyncValueWrapper<Value> {
 
+	// periphery:ignore
 	init(_ valueClosure: @escaping @Sendable () async -> Value) {
 		self.valueWrapper = AsyncValueWrapper(valueClosure: valueClosure)
 		self.applicable = true
