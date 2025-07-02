@@ -16,7 +16,7 @@ extension Optional {
 	}
 }
 
-extension SystemInformationData {
+extension SystemInformationProtocol {
 
 	var testCondition: Bool { get async {
 		if let applicable {

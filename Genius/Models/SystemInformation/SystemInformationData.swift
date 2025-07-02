@@ -7,21 +7,13 @@ import Defaults
 import SFSafeSymbols
 import SwiftUI
 
-struct SystemInformationData<Value, ValueWrapper: ValueWrapperProtocol<Value>>: Sendable {
+struct SystemInformationData<Value, ValueWrapper: ValueWrapperProtocol<Value>>: SystemInformationProtocol {
 
 	let valueWrapper: ValueWrapper
 	let applicable: Bool?
-
-	var value: Value { get async {
-		await valueWrapper.value
-	} }
 }
 
 extension SystemInformationData where ValueWrapper == SyncValueWrapper<Value> {
-
-	var value: Value {
-		valueWrapper.value
-	}
 
 	init(_ value: Value) {
 		self.valueWrapper = SyncValueWrapper(value: value)
