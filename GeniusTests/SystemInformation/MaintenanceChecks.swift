@@ -54,9 +54,7 @@ extension SystemInformationTests {
 
 			@Test("askToAllowAccessoriesToConnect")
 			func askToAllowAccessoriesToConnect() async {
-				#expect(
-					await SystemInformation.MaintenanceChecks.MalwareProtection.askToAllowAccessoriesToConnect.testCondition,
-				)
+				#expect(await SystemInformation.MaintenanceChecks.MalwareProtection.allowAccessoriesToConnect.testCondition)
 			}
 		}
 

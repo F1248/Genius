@@ -48,8 +48,16 @@ extension SystemInformation {
 				{ await Bool(spctlOutput: Process("/usr/sbin/spctl", "--status")?.runSafe()) },
 				applicable: Software.OS.bootMode.value !=? .recovery,
 			)
-			static let askToAllowAccessoriesToConnect = MaintenanceCheck<Bool?, _>(
-				IORegistry(class: "AppleCredentialManager").read("TRM_EffectiveConfigProfile") ==? 1,
+			static let allowAccessoriesToConnect = MaintenanceCheck<AllowAccessoriesToConnectSetting?, _>(
+				{
+					switch IORegistry(class: "AppleCredentialManager").read("TRM_EffectiveConfigProfile") as Int? {
+						case 1: .alwaysAsk
+						case 2: .askForNewAccessories
+						case 3: .automaticallyAllowWhenUnlocked
+						case 4: .alwaysAllow
+						default: nil
+					}
+				}(),
 				applicable: { if #available(macOS 13, *) { true } else { false } }() &&?
 					Hardware.CPU.type.value == .appleSilicon &&?
 					Hardware.Model.isLaptop &&?
