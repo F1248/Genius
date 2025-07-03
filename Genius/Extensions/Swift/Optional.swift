@@ -12,13 +12,6 @@ extension Optional: UIStringRepresentable where Wrapped: UIStringRepresentable {
 	} }
 }
 
-extension Optional: UISymbolRepresentable where Wrapped: UISymbolRepresentable {
-
-	var uiRepresentation: Symbol? { get async {
-		await self?.uiRepresentation
-	} }
-}
-
 extension Optional where Wrapped: DefaultInitializable {
 
 	func safeForceUnwrapped(
