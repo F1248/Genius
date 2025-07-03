@@ -49,7 +49,7 @@ extension SystemInformation {
 				applicable: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let askToAllowAccessoriesToConnect = MaintenanceCheck<Bool?, _>(
-				{ IORegistry(class: "AppleCredentialManager").read("TRM_EffectiveConfigProfile") ==? 1 },
+				IORegistry(class: "AppleCredentialManager").read("TRM_EffectiveConfigProfile") ==? 1,
 				applicable: { if #available(macOS 13, *) { true } else { false } }() &&?
 					Hardware.CPU.type.value == .appleSilicon &&?
 					Hardware.Model.isLaptop &&?
