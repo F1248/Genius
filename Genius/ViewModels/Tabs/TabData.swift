@@ -6,7 +6,7 @@
 import SFSafeSymbols
 import SwiftUI
 
-protocol TabData: View, RawRepresentable<String>, CaseIterable, SelfIdentifiable where AllCases == [Self] {
+protocol TabData: View, RawRepresentable<String>, CaseIterable, Equatable, SelfIdentifiable where AllCases == [Self] {
 
 	associatedtype ContentViewType: View
 
