@@ -3,7 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
-protocol SystemInformationProtocol: Sendable {
+protocol SystemInformationProtocol {
 
 	associatedtype Value
 	associatedtype ValueWrapper: ValueWrapperProtocol<Value>
