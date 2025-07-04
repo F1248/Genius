@@ -8,7 +8,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 90;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -74,19 +74,15 @@
 /* Begin PBXFrameworksBuildPhase section */
 		A46854942D1729A800DB3E87 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A4D6DC6E2D37EE4700E9A61D /* SFSafeSymbols in Frameworks */,
 				A46854972D1729B500DB3E87 /* Defaults in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A4D9A1A72D257055008D91E7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -163,8 +159,6 @@
 				A4D9A1AB2D257055008D91E7 /* GeniusTests */,
 			);
 			name = GeniusTests;
-			packageProductDependencies = (
-			);
 			productName = GeniusTests;
 			productReference = A4D9A1AA2D257055008D91E7 /* GeniusTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -202,7 +196,7 @@
 				A46854952D1729B500DB3E87 /* XCRemoteSwiftPackageReference "Defaults" */,
 				A4D6DC6C2D37EE4700E9A61D /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 			);
-			preferredProjectObjectVersion = 77;
+			preferredProjectObjectVersion = 90;
 			productRefGroup = A42B353E2BA2185B009E81AD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -216,17 +210,13 @@
 /* Begin PBXResourcesBuildPhase section */
 		A42B353B2BA2185B009E81AD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A4D9A1A82D257055008D91E7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
@@ -234,19 +224,7 @@
 		A42660D12C729D04000E0507 /* SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
 			name = SwiftFormat;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
 			shellScript = "if [[ ${COMMAND_MODE} && ${CONFIGURATION} == Debug ]]; then\n\tif which -s swiftformat; then\n\t\tswiftformat --lint --lenient .\n\telse\n\t\techo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"\n\tfi\nfi\n";
 		};
@@ -255,17 +233,13 @@
 /* Begin PBXSourcesBuildPhase section */
 		A42B35392BA2185B009E81AD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A4D9A1A62D257055008D91E7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -286,7 +260,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		A42B354C2BA2185C009E81AD /* Debug */ = {
+		A42B354C2BA2185C009E81AD /* Debug configuration for PBXProject "Genius" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -398,7 +372,7 @@
 			};
 			name = Debug;
 		};
-		A42B354D2BA2185C009E81AD /* Release */ = {
+		A42B354D2BA2185C009E81AD /* Release configuration for PBXProject "Genius" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -512,19 +486,19 @@
 			};
 			name = Release;
 		};
-		A42B354F2BA2185C009E81AD /* Debug */ = {
+		A42B354F2BA2185C009E81AD /* Debug configuration for PBXNativeTarget "Genius" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
 			name = Debug;
 		};
-		A42B35502BA2185C009E81AD /* Release */ = {
+		A42B35502BA2185C009E81AD /* Release configuration for PBXNativeTarget "Genius" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
 			name = Release;
 		};
-		A4D9A1B02D257055008D91E7 /* Debug */ = {
+		A4D9A1B02D257055008D91E7 /* Debug configuration for PBXNativeTarget "GeniusTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -538,7 +512,7 @@
 			};
 			name = Debug;
 		};
-		A4D9A1B12D257055008D91E7 /* Release */ = {
+		A4D9A1B12D257055008D91E7 /* Release configuration for PBXNativeTarget "GeniusTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -556,28 +530,25 @@
 		A42B35382BA2185B009E81AD /* Build configuration list for PBXProject "Genius" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A42B354C2BA2185C009E81AD /* Debug */,
-				A42B354D2BA2185C009E81AD /* Release */,
+				A42B354C2BA2185C009E81AD /* Debug configuration for PBXProject "Genius" */,
+				A42B354D2BA2185C009E81AD /* Release configuration for PBXProject "Genius" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		A42B354E2BA2185C009E81AD /* Build configuration list for PBXNativeTarget "Genius" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A42B354F2BA2185C009E81AD /* Debug */,
-				A42B35502BA2185C009E81AD /* Release */,
+				A42B354F2BA2185C009E81AD /* Debug configuration for PBXNativeTarget "Genius" */,
+				A42B35502BA2185C009E81AD /* Release configuration for PBXNativeTarget "Genius" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		A4D9A1B22D257055008D91E7 /* Build configuration list for PBXNativeTarget "GeniusTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A4D9A1B02D257055008D91E7 /* Debug */,
-				A4D9A1B12D257055008D91E7 /* Release */,
+				A4D9A1B02D257055008D91E7 /* Debug configuration for PBXNativeTarget "GeniusTests" */,
+				A4D9A1B12D257055008D91E7 /* Release configuration for PBXNativeTarget "GeniusTests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
