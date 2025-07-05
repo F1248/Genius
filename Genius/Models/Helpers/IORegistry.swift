@@ -9,6 +9,13 @@ import IOKit
 
 struct IORegistry: ~Copyable {
 
+	// swiftlint:disable:next explicit_type_interface
+	static let nvramVariablesClassName =
+		switch SystemInformation.Hardware.CPU.type.value {
+			case .appleSilicon: "IODTNVRAMVariables"
+			case .intel: "AppleEFINVRAM"
+		}
+
 	let matchingDictionary: CFMutableDictionary?
 
 	var service: UInt32? {
