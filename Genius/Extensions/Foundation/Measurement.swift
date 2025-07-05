@@ -17,10 +17,12 @@ extension Measurement: UIStringRepresentable {
 				let units: [UnitFrequency] =
 					[.terahertz, .gigahertz, .megahertz, .kilohertz, .hertz, .millihertz, .microhertz, .nanohertz]
 				return MeasurementFormatter().string(
-					from: value.isZero ?
-						self.converted(to: .baseUnit()) :
-						{ $0.first { $0.value >= 1 } ?? $0.last }(units.lazy.map(self.converted))
-							.safeForceUnwrapped(fallback: self),
+					from: { () -> Measurement<UnitFrequency> in
+						if value.isZero { return self.converted(to: .baseUnit()) }
+						let convertedMeasurements = units.lazy.map(self.converted)
+						return convertedMeasurements.first { $0.value >= 1 } ?? convertedMeasurements.last
+							.safeForceUnwrapped(fallback: self)
+					}(),
 				)
 			case let self as InformationStorage:
 				let formatter = ByteCountFormatter()
