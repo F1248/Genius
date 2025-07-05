@@ -3,9 +3,9 @@
 // See LICENSE.txt for license information.
 //
 
-extension CaseIterable where Self: Equatable, AllCases.Index: DefaultInitializable {
+extension CaseIterable where Self: Equatable {
 
 	var index: AllCases.Index {
-		Self.allCases.firstIndex(of: self).safeForceUnwrapped()
+		Self.allCases.firstIndex(of: self)! // swiftlint:disable:this force_unwrapping
 	}
 }

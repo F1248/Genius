@@ -6,7 +6,7 @@
 import Defaults
 import Foundation
 
-extension String: DefaultInitializable, DataInitializable, UIStringRepresentable {
+extension String: DataInitializable, UIStringRepresentable {
 
 	nonisolated var uiRepresentation: String? {
 		self
