@@ -89,5 +89,5 @@ unused_import:
     allowed_transitive_imports:
         - module: SwiftUI
           allowed_transitive_imports:
-            - SwiftUICore
+            - SwiftUICore # work around Xcode prohibiting importing implementation details
     require_explicit_imports: true
