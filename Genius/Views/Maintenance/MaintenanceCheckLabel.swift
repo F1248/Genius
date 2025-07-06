@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MaintenanceCheckLabel: View {
 
-	@State var popoverPresented = false // swiftlint:disable:this explicit_type_interface
+	@State var popoverPresented: Bool = false
 
 	let name: LocalizedStringKey
 	let help: URL?

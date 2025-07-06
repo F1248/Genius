@@ -31,7 +31,7 @@
 --markcategories false
 --maxwidth 128
 --organizationmode type
---propertytypes inferred
+--propertytypes explicit
 --ranges no-space
 --self init-only
 --selfrequired error

@@ -11,7 +11,7 @@ enum SystemInformationViewTab: String, TabData {
 	case hardware = "Hardware"
 	case software = "Software"
 
-	static let entireWindow = false // swiftlint:disable:this explicit_type_interface
+	static let entireWindow: Bool = false
 	static let keyboardShortcutModifiers: EventModifiers = [.command, .option]
 
 	var displayTitleInBody: Bool {

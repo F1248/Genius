@@ -13,7 +13,7 @@ enum ContentViewTab: String, TabData {
 	case maintenance = "Maintenance"
 	case settings = "Settings"
 
-	static let entireWindow = true // swiftlint:disable:this explicit_type_interface
+	static let entireWindow: Bool = true
 	static let keyboardShortcutModifiers: EventModifiers = .command
 
 	var displayTitleInBody: Bool {
