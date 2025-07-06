@@ -57,9 +57,11 @@ extension SystemInformation {
 			}())
 			static let buildNumber = SystemInformationData<String?, _>(Sysctl.read("kern.osversion"))
 			static let bootMode = SystemInformationData<BootMode?, _>({
-				if !FileManager.default.fileExists(atPath: "/System/Library/CoreServices/Finder.app") { return .recovery }
-				guard let safe: Bool = Sysctl.read("kern.safeboot") else { return nil }
-				return safe ? .safe : .normal
+				if FileManager.default.fileExists(atPath: "/System/Library/CoreServices/Finder.app") {
+					Sysctl.read("kern.safeboot").map { $0 ? .safe : .normal }
+				} else {
+					.recovery
+				}
 			}())
 			static let bootVolume = SystemInformationData<String?, _>(
 				{ await SystemProfiler.software?["boot_volume"] as? String },
