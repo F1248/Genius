@@ -43,261 +43,6 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    Run-Periphery:
-        name: Run Periphery
-        runs-on: macos-15
-
-        steps:
-            - name: Free up disk space
-              run: sudo rm -r /System/Library/AssetsV2/com_apple_MobileAsset_*OSSimulatorRuntime
-
-            - name: Select latest installed Xcode version
-              uses: maxim-lobanov/setup-xcode@master
-              with:
-                xcode-version: latest
-
-            - name: Checkout Build.txt from Xcode mirror
-              uses: actions/checkout@main
-              with:
-                repository: F1248/Xcode-Mirror
-                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
-                sparse-checkout: Build.txt
-                sparse-checkout-cone-mode: false
-
-            - name: Check if latest Xcode version is installed
-              run: |
-                if [[ "$(xcodebuild -version | sed -n "s/Build version //p")" == "$(cat Build.txt)" ]]; then
-                    echo "latest_xcode_version_installed=true" >> "$GITHUB_ENV"
-                else
-                    echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
-                fi
-
-            - name: Checkout Xcode mirror
-              if: env.latest_xcode_version_installed == 'false'
-              uses: actions/checkout@main
-              with:
-                repository: F1248/Xcode-Mirror
-                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
-                sparse-checkout: Xcode.xip-*
-
-            - name: Install unxip
-              if: env.latest_xcode_version_installed == 'false'
-              run: |
-                curl --remote-name --location https://github.com/saagarjha/unxip/releases/latest/download/unxip
-                chmod +x unxip
-                echo "$(./unxip --version) installed"
-
-            - name: Install and select Xcode
-              if: env.latest_xcode_version_installed == 'false'
-              run: |
-                cat Xcode.xip-* | ./unxip - ~
-                sudo xcode-select --switch ~/Xcode*.app
-
-            - name: Prepare Xcode
-              run: |
-                sudo xcodebuild -license accept
-                sudo xcodebuild -runFirstLaunch
-                echo "$(xcodebuild -version | tr "\n" " ")selected"
-
-            - name: Checkout
-              uses: actions/checkout@main
-
-            - name: Install Periphery
-              run: |
-                tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl \
-                    --location https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip \
-                    --output periphery.zip
-                unzip periphery.zip
-                echo "Periphery $(./periphery version) installed"
-
-            - name: Run Periphery
-              run: ./periphery scan --format github-actions --strict -- -skipPackagePluginValidation
-
-    Run-SwiftFormat:
-        name: Run SwiftFormat
-        runs-on: macos-15
-
-        steps:
-            - name: Checkout
-              uses: actions/checkout@main
-              with:
-                fetch-depth: 0
-
-            - name: Install SwiftFormat
-              run: |
-                curl \
-                    --remote-name \
-                    --location https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip
-                unzip swiftformat.zip
-                echo "SwiftFormat $(./swiftformat --version) installed"
-
-            - name: Run SwiftFormat
-              run: ./swiftformat --lint . --reporter github-actions-log
-
-    Run-SwiftLint:
-        name: Run SwiftLint
-        runs-on: macos-15
-
-        steps:
-            - name: Free up disk space
-              run: sudo rm -r /System/Library/AssetsV2/com_apple_MobileAsset_*OSSimulatorRuntime
-
-            - name: Select latest installed Xcode version
-              uses: maxim-lobanov/setup-xcode@master
-              with:
-                xcode-version: latest
-
-            - name: Checkout Build.txt from Xcode mirror
-              uses: actions/checkout@main
-              with:
-                repository: F1248/Xcode-Mirror
-                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
-                sparse-checkout: Build.txt
-                sparse-checkout-cone-mode: false
-
-            - name: Check if latest Xcode version is installed
-              run: |
-                if [[ "$(xcodebuild -version | sed -n "s/Build version //p")" == "$(cat Build.txt)" ]]; then
-                    echo "latest_xcode_version_installed=true" >> "$GITHUB_ENV"
-                else
-                    echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
-                fi
-
-            - name: Checkout Xcode mirror
-              if: env.latest_xcode_version_installed == 'false'
-              uses: actions/checkout@main
-              with:
-                repository: F1248/Xcode-Mirror
-                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
-                sparse-checkout: Xcode.xip-*
-
-            - name: Install unxip
-              if: env.latest_xcode_version_installed == 'false'
-              run: |
-                curl --remote-name --location https://github.com/saagarjha/unxip/releases/latest/download/unxip
-                chmod +x unxip
-                echo "$(./unxip --version) installed"
-
-            - name: Install and select Xcode
-              if: env.latest_xcode_version_installed == 'false'
-              run: |
-                cat Xcode.xip-* | ./unxip - ~
-                sudo xcode-select --switch ~/Xcode*.app
-
-            - name: Prepare Xcode
-              run: |
-                sudo xcodebuild -license accept
-                sudo xcodebuild -runFirstLaunch
-                echo "$(xcodebuild -version | tr "\n" " ")selected"
-
-            - name: Checkout
-              uses: actions/checkout@main
-
-            - name: Install SwiftLint
-              run: |
-                curl \
-                    --remote-name \
-                    --location https://github.com/realm/SwiftLint/releases/latest/download/portable_swiftlint.zip
-                unzip portable_swiftlint.zip
-                echo "SwiftLint $(./swiftlint version) installed"
-
-            - name: Run SwiftLint lint rules
-              run: ./swiftlint lint --strict --reporter github-actions-logging
-
-            - name: Install xcbeautify
-              run: |
-                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl \
-                    --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip \
-                    --output xcbeautify.zip
-                unzip xcbeautify.zip
-                echo "xcbeautify $(./xcbeautify --version) installed"
-
-            - name: Build Genius
-              run: |
-                xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation \
-                    | tee xcodebuild.log \
-                    | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
-                    | ./xcbeautify --disable-logging --renderer github-actions
-
-            - name: Run SwiftLint analyzer rules
-              run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
-
-    Run-tests:
-        name: Run tests
-        runs-on: macos-15
-
-        steps:
-            - name: Free up disk space
-              run: sudo rm -r /System/Library/AssetsV2/com_apple_MobileAsset_*OSSimulatorRuntime
-
-            - name: Select latest installed Xcode version
-              uses: maxim-lobanov/setup-xcode@master
-              with:
-                xcode-version: latest
-
-            - name: Checkout Build.txt from Xcode mirror
-              uses: actions/checkout@main
-              with:
-                repository: F1248/Xcode-Mirror
-                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
-                sparse-checkout: Build.txt
-                sparse-checkout-cone-mode: false
-
-            - name: Check if latest Xcode version is installed
-              run: |
-                if [[ "$(xcodebuild -version | sed -n "s/Build version //p")" == "$(cat Build.txt)" ]]; then
-                    echo "latest_xcode_version_installed=true" >> "$GITHUB_ENV"
-                else
-                    echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
-                fi
-
-            - name: Checkout Xcode mirror
-              if: env.latest_xcode_version_installed == 'false'
-              uses: actions/checkout@main
-              with:
-                repository: F1248/Xcode-Mirror
-                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
-                sparse-checkout: Xcode.xip-*
-
-            - name: Install unxip
-              if: env.latest_xcode_version_installed == 'false'
-              run: |
-                curl --remote-name --location https://github.com/saagarjha/unxip/releases/latest/download/unxip
-                chmod +x unxip
-                echo "$(./unxip --version) installed"
-
-            - name: Install and select Xcode
-              if: env.latest_xcode_version_installed == 'false'
-              run: |
-                cat Xcode.xip-* | ./unxip - ~
-                sudo xcode-select --switch ~/Xcode*.app
-
-            - name: Prepare Xcode
-              run: |
-                sudo xcodebuild -license accept
-                sudo xcodebuild -runFirstLaunch
-                echo "$(xcodebuild -version | tr "\n" " ")selected"
-
-            - name: Checkout
-              uses: actions/checkout@main
-
-            - name: Install xcbeautify
-              run: |
-                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
-                curl \
-                    --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip \
-                    --output xcbeautify.zip
-                unzip xcbeautify.zip
-                echo "xcbeautify $(./xcbeautify --version) installed"
-
-            - name: Run tests
-              run: |
-                xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation \
-                    | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
-                    | ./xcbeautify --disable-logging --renderer github-actions
-
     Build-Genius:
         name: Build Genius
         permissions:
@@ -359,6 +104,42 @@ jobs:
 
             - name: Checkout
               uses: actions/checkout@main
+              with:
+                fetch-depth: 0
+
+            - name: Install Periphery
+              run: |
+                tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
+                curl \
+                    --location https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip \
+                    --output periphery.zip
+                unzip periphery.zip
+                echo "Periphery $(./periphery version) installed"
+
+            - name: Run Periphery
+              run: ./periphery scan --format github-actions --strict -- -skipPackagePluginValidation
+
+            - name: Install SwiftFormat
+              run: |
+                curl \
+                    --remote-name \
+                    --location https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip
+                unzip swiftformat.zip
+                echo "SwiftFormat $(./swiftformat --version) installed"
+
+            - name: Run SwiftFormat
+              run: ./swiftformat --lint . --reporter github-actions-log
+
+            - name: Install SwiftLint
+              run: |
+                curl \
+                    --remote-name \
+                    --location https://github.com/realm/SwiftLint/releases/latest/download/portable_swiftlint.zip
+                unzip portable_swiftlint.zip
+                echo "SwiftLint $(./swiftlint version) installed"
+
+            - name: Run SwiftLint lint rules
+              run: ./swiftlint lint --strict --reporter github-actions-logging
 
             - name: Install xcbeautify
               run: |
@@ -368,6 +149,22 @@ jobs:
                     --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
+
+            - name: Build Genius for testing
+              run: |
+                xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation \
+                    | tee xcodebuild.log \
+                    | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
+                    | ./xcbeautify --disable-logging --renderer github-actions
+
+            - name: Run SwiftLint analyzer rules
+              run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
+
+            - name: Run tests
+              run: |
+                xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation \
+                    | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
+                    | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Build Genius
               run: |
