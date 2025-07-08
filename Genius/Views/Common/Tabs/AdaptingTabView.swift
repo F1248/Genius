@@ -15,10 +15,11 @@ struct AdaptingTabView<TabDataType: TabData>: View {
 		if #available(macOS 15, *), TabDataType.entireWindow {
 			TabView(selection: selection) {
 				ForEach(TabDataType.allCases) { tab in
-					Tab(
-						tab.localizedStringKey,
-						value: tab.index,
-					) { tab }
+					Tab(value: tab.index) {
+						tab
+					} label: {
+						VaryingText(tab.localizedStringKey)
+					}
 				}
 			}
 		} else {
