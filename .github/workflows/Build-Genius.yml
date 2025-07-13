@@ -168,7 +168,9 @@ jobs:
 
             - name: Build Genius
               run: |
+                # work around warnings `*/ModuleCache.noindex/*.pcm: No such file or directory`
                 xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation \
+                    | grep --invert-match "warning: .*/ModuleCache.noindex/.*\.pcm: No such file or directory" \
                     | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Zip Genius
