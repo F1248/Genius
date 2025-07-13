@@ -22,7 +22,7 @@ struct MaintenanceCheckLabelPopover: View {
 					if let help {
 						Link(destination: help) {
 							Symbol(.questionmarkCircle, label: "Help")
-								.focusable() // Prevent symbol from receiving focus automatically
+								.focusable() // prevent symbol from receiving focus automatically
 						}
 						.foregroundColor(.secondary)
 					}
@@ -31,7 +31,7 @@ struct MaintenanceCheckLabelPopover: View {
 							Symbol(.gear, label: {
 								if #unavailable(macOS 13) { "Open in System Preferences" } else { "Open in System Settings" }
 							}())
-								.focusable() // Prevent symbol from receiving focus automatically
+								.focusable() // prevent symbol from receiving focus automatically
 						}
 						.foregroundColor(.secondary)
 					}
