@@ -72,7 +72,7 @@ if $is_recoveryos; then
 else
 	open Genius.app
 	sleep 0.5
-	open Genius.app	# work around `open` opening apps in the background when not already running
+	open Genius.app # work around `open` opening apps in the background when not already running
 fi
 
 echo "Done."
