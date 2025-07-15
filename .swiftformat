@@ -4,6 +4,7 @@
 #
 
 --swift-version 99 # latest
+--language-mode 99 # latest
 
 --enable \
 	acronyms,\
