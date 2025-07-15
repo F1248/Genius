@@ -13,7 +13,12 @@ struct GeniusApp: App {
 
 	var body: some Scene {
 		WindowGroup {
-			ContentView()
+			if #available(macOS 26, *) {
+				ContentView()
+					.toolbarBackgroundVisibility(.hidden, for: .automatic)
+			} else {
+				ContentView()
+			}
 		}
 		.windowToolbarStyle(.unified(showsTitle: false))
 		.commands {
