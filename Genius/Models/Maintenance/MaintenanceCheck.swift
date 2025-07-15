@@ -35,7 +35,7 @@ struct MaintenanceCheck<
 extension MaintenanceCheck where ValueWrapper == SyncValueWrapper<Value> {
 
 	// periphery:ignore
-	init(_ value: Value, requirement: Wrapped = Wrapped.max) {
+	init(_ value: Value, requirement: Wrapped = .max) {
 		self.valueWrapper = SyncValueWrapper(value: value)
 		self.requirement = requirement
 		self.applicable = true
@@ -43,7 +43,7 @@ extension MaintenanceCheck where ValueWrapper == SyncValueWrapper<Value> {
 
 	init<Wrapped>(
 		_ value: @autoclosure () -> Value,
-		requirement: Wrapped = Wrapped.max,
+		requirement: Wrapped = .max,
 		applicable: Bool?,
 	) where Value == Wrapped? {
 		self.valueWrapper = SyncValueWrapper(value: applicable ?? true ? value() : nil)
@@ -55,7 +55,7 @@ extension MaintenanceCheck where ValueWrapper == SyncValueWrapper<Value> {
 extension MaintenanceCheck where ValueWrapper == AsyncValueWrapper<Value> {
 
 	// periphery:ignore
-	init(_ valueClosure: @escaping @Sendable () async -> Value, requirement: Wrapped = Wrapped.max) {
+	init(_ valueClosure: @escaping @Sendable () async -> Value, requirement: Wrapped = .max) {
 		self.valueWrapper = AsyncValueWrapper(valueClosure: valueClosure)
 		self.requirement = requirement
 		self.applicable = true
@@ -63,7 +63,7 @@ extension MaintenanceCheck where ValueWrapper == AsyncValueWrapper<Value> {
 
 	init<Wrapped>(
 		_ valueClosure: @escaping @Sendable () async -> Value,
-		requirement: Wrapped = Wrapped.max,
+		requirement: Wrapped = .max,
 		applicable: Bool?,
 	) where Value == Wrapped? {
 		self.valueWrapper = AsyncValueWrapper(
