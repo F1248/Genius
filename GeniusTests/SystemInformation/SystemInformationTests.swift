@@ -19,12 +19,9 @@ extension Optional {
 extension SystemInformationProtocol {
 
 	var testCondition: Bool { get async {
-		if let applicable {
-			if applicable {
-				if case Optional<Any>.none = await value as Any {
-					false
-				} else { true }
-			} else { true }
-		} else { false }
+		guard let applicable else { return false }
+		guard applicable else { return true }
+		if case Optional<Any>.none = await value as Any { return false }
+		return true
 	} }
 }
