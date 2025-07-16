@@ -3,7 +3,15 @@
 // See LICENSE.txt for license information.
 //
 
+@testable import Genius
 import Testing
 
 @Suite("Bool")
-struct BoolTests {}
+struct BoolTests {
+
+	@Test("Comparable")
+	func comparable() {
+		#expect(false < true)
+		#expect(true > false)
+	}
+}
