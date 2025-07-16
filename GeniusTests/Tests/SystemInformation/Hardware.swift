@@ -11,10 +11,8 @@ extension SystemInformationTests {
 
 	// swiftformat:disable organizeDeclarations
 	// swiftlint:disable type_contents_order
-	@Suite("Hardware")
 	struct Hardware {
 
-		@Suite("Model")
 		struct Model {
 
 			@Test("isVirtualMachine")
@@ -73,10 +71,8 @@ extension SystemInformationTests {
 			#expect(await SystemInformation.Hardware.securityChip.testCondition)
 		}
 
-		@Suite("CPU")
 		struct CPU {
 
-			@Suite("Cores")
 			struct Cores {
 
 				@Test("differentTypes")
@@ -121,7 +117,6 @@ extension SystemInformationTests {
 			#expect(await SystemInformation.Hardware.memory.testCondition)
 		}
 
-		@Suite("Machine")
 		struct Machine {
 
 			@Test("serialNumber")

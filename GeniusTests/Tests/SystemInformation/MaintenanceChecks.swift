@@ -8,10 +8,8 @@ import Testing
 
 extension SystemInformationTests {
 
-	@Suite("MaintenanceChecks")
 	enum MaintenanceChecks {
 
-		@Suite("TheftProtection")
 		struct TheftProtection {
 
 			@Test("activationLock")
@@ -25,7 +23,6 @@ extension SystemInformationTests {
 			}
 		}
 
-		@Suite("DataSecurity")
 		struct DataSecurity {
 
 			@Test("fileVault")
@@ -34,7 +31,6 @@ extension SystemInformationTests {
 			}
 		}
 
-		@Suite("MalwareProtection")
 		struct MalwareProtection {
 
 			@Test("systemIntegrityProtection")
@@ -58,7 +54,6 @@ extension SystemInformationTests {
 			}
 		}
 
-		@Suite("AutomaticUpdates")
 		struct AutomaticUpdates {
 
 			@Test("checkMacOS")

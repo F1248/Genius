@@ -8,10 +8,8 @@ import Testing
 
 extension SystemInformationTests {
 
-	@Suite("Software")
 	enum Software {
 
-		@Suite("SMC")
 		struct SMC {
 
 			@Test("version")
@@ -20,7 +18,6 @@ extension SystemInformationTests {
 			}
 		}
 
-		@Suite("Firmware")
 		struct Firmware {
 
 			@Test("version")
@@ -29,7 +26,6 @@ extension SystemInformationTests {
 			}
 		}
 
-		@Suite("Kernel")
 		struct Kernel {
 
 			@Test("name")
@@ -43,7 +39,6 @@ extension SystemInformationTests {
 			}
 		}
 
-		@Suite("OS")
 		struct OS {
 
 			@Test("version")
@@ -77,7 +72,6 @@ extension SystemInformationTests {
 			}
 		}
 
-		@Suite("Computer")
 		struct Computer {
 
 			@Test("name")
@@ -91,7 +85,6 @@ extension SystemInformationTests {
 			}
 		}
 
-		@Suite("User")
 		struct User {
 
 			@Test("name")
