@@ -10,7 +10,7 @@ import Testing
 struct MaintenanceCheckTests {
 
 	@Test("MaintenanceCheck with SyncValueWrapper")
-	func systemInformationDataSyncValueWrapper() {
+	func maintenanceCheckSyncValueWrapper() {
 		_ = MaintenanceCheck<Bool?, SyncValueWrapper>(
 			{
 				#expect(Bool(false))
@@ -21,7 +21,7 @@ struct MaintenanceCheckTests {
 	}
 
 	@Test("MaintenanceCheck with AsyncValueWrapper")
-	func systemInformationDataAsyncValueWrapper() async {
+	func maintenanceCheckAsyncValueWrapper() async {
 		_ = await MaintenanceCheck<Bool?, AsyncValueWrapper>(
 			{
 				#expect(Bool(false))
