@@ -10,7 +10,7 @@ import Testing
 struct SystemInformationDataTests {
 
 	@Test("SystemInformationData with SyncValueWrapper")
-	func systemInformationDataSyncValueWrapper() {
+	func systemInformationDataWithSyncValueWrapper() {
 		_ = SystemInformationData<Int?, SyncValueWrapper>(
 			{
 				#expect(Bool(false))
@@ -21,7 +21,7 @@ struct SystemInformationDataTests {
 	}
 
 	@Test("SystemInformationData with AsyncValueWrapper")
-	func systemInformationDataAsyncValueWrapper() async {
+	func systemInformationDataWithAsyncValueWrapper() async {
 		_ = await SystemInformationData<Int?, AsyncValueWrapper>(
 			{
 				#expect(Bool(false))
