@@ -3,7 +3,9 @@
 // See LICENSE.txt for license information.
 //
 
-import Testing
+extension Optional {
 
-@Suite("SystemInformation")
-struct SystemInformationTests {}
+	var testCondition: Bool {
+		self != nil
+	}
+}
