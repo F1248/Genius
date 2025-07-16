@@ -12,7 +12,7 @@ extension SystemInformationTests {
 
 		struct SMC {
 
-			@Test("version")
+			@Test
 			func version() async {
 				#expect(await SystemInformation.Software.SMC.version.testCondition)
 			}
@@ -20,7 +20,7 @@ extension SystemInformationTests {
 
 		struct Firmware {
 
-			@Test("version")
+			@Test
 			func version() async {
 				#expect(await SystemInformation.Software.Firmware.version.testCondition)
 			}
@@ -28,12 +28,12 @@ extension SystemInformationTests {
 
 		struct Kernel {
 
-			@Test("name")
+			@Test
 			func name() async {
 				#expect(await SystemInformation.Software.Kernel.name.testCondition)
 			}
 
-			@Test("version")
+			@Test
 			func version() async {
 				#expect(await SystemInformation.Software.Kernel.version.testCondition)
 			}
@@ -41,32 +41,32 @@ extension SystemInformationTests {
 
 		struct OS {
 
-			@Test("version")
+			@Test
 			func version() async {
 				#expect(await SystemInformation.Software.OS.version.testCondition)
 			}
 
-			@Test("codeName")
+			@Test
 			func codeName() async {
 				#expect(await SystemInformation.Software.OS.codeName.testCondition)
 			}
 
-			@Test("buildNumber")
+			@Test
 			func buildNumber() async {
 				#expect(await SystemInformation.Software.OS.buildNumber.testCondition)
 			}
 
-			@Test("bootMode")
+			@Test
 			func bootMode() async {
 				#expect(await SystemInformation.Software.OS.bootMode.testCondition)
 			}
 
-			@Test("bootVolume")
+			@Test
 			func bootVolume() async {
 				#expect(await SystemInformation.Software.OS.bootVolume.testCondition)
 			}
 
-			@Test("loaderVersion")
+			@Test
 			func loaderVersion() async {
 				#expect(await SystemInformation.Software.OS.loaderVersion.testCondition)
 			}
@@ -74,12 +74,12 @@ extension SystemInformationTests {
 
 		struct Computer {
 
-			@Test("name")
+			@Test
 			func name() async {
 				#expect(await SystemInformation.Software.Computer.name.testCondition)
 			}
 
-			@Test("hostName")
+			@Test
 			func hostName() async {
 				#expect(await SystemInformation.Software.Computer.hostName.testCondition)
 			}
@@ -87,12 +87,12 @@ extension SystemInformationTests {
 
 		struct User {
 
-			@Test("name")
+			@Test
 			func name() async {
 				#expect(await SystemInformation.Software.User.name.testCondition)
 			}
 
-			@Test("accountName")
+			@Test
 			func accountName() async {
 				#expect(await SystemInformation.Software.User.accountName.testCondition)
 			}
