@@ -8,8 +8,7 @@ import Testing
 
 extension OptionalOperators {
 
-	@Suite("Optional logical operators")
-	struct OptionalLogicalOperators {
+	struct Logical {
 
 		@Test("!?")
 		func optionalNegation() {
