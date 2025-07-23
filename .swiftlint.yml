@@ -43,6 +43,7 @@ explicit_type_interface:
 file_name:
     excluded:
         - Array.swift
+    require_fully_qualified_names: true
 identifier_name:
     min_length: 2
 indentation_width:
