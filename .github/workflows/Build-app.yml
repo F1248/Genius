@@ -3,12 +3,12 @@
 # See LICENSE.txt for license information.
 #
 
-name: Build Genius
+name: Build app
 
 on:
     push:
         paths:
-            - .github/workflows/Build-Genius.yml
+            - .github/workflows/Build-app.yml
             - .periphery.yml
             - .swift-version
             - .swiftformat
@@ -18,7 +18,7 @@ on:
             - GeniusTests/**
     pull_request:
         paths:
-            - .github/workflows/Build-Genius.yml
+            - .github/workflows/Build-app.yml
             - .periphery.yml
             - .swift-version
             - .swiftformat
@@ -43,8 +43,8 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    Build-Genius:
-        name: Build Genius
+    Build-app:
+        name: Build app
         permissions:
             attestations: write
             id-token: write
@@ -150,7 +150,7 @@ jobs:
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
-            - name: Build Genius for testing
+            - name: Build for testing
               run: |
                 # work around warning `duplicate -rpath '@executable_path' ignored`
                 xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation \
@@ -168,7 +168,7 @@ jobs:
                     | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
                     | ./xcbeautify --disable-logging --renderer github-actions
 
-            - name: Build Genius
+            - name: Build app
               run: |
                 # work around warnings `*/ModuleCache.noindex/*.pcm: No such file or directory`
                 xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation \
@@ -177,7 +177,7 @@ jobs:
                 mv Genius.xcarchive/Products/Applications/Genius.app .
                 mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
 
-            - name: Zip Genius
+            - name: Zip app
               run: zip --recurse-paths Genius.zip Genius.app
 
             - name: Attest build provenance
@@ -185,7 +185,7 @@ jobs:
               with:
                 subject-path: Genius.zip
 
-            - name: Upload Genius
+            - name: Upload app
               uses: actions/upload-artifact@main
               with:
                 name: Genius
