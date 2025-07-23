@@ -172,11 +172,11 @@ jobs:
                 xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation \
                     | grep --invert-match "warning: .*/ModuleCache.noindex/.*\.pcm: No such file or directory" \
                     | ./xcbeautify --disable-logging --renderer github-actions
+                mv Genius.xcarchive/Products/Applications/Genius.app .
+                mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
 
             - name: Zip Genius
-              run: |
-                mv Genius.xcarchive/Products/Applications/Genius.app .
-                zip --recurse-paths Genius.zip Genius.app
+              run: zip --recurse-paths Genius.zip Genius.app
 
             - name: Attest build provenance
               uses: actions/attest-build-provenance@main
@@ -190,9 +190,7 @@ jobs:
                 path: Genius.zip
 
             - name: Zip debug symbols
-              run: |
-                mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
-                zip --recurse-paths Debug-Symbols.zip Genius.app.dSYM
+              run: zip --recurse-paths Debug-Symbols.zip Genius.app.dSYM
 
             - name: Upload debug symbols
               uses: actions/upload-artifact@main
