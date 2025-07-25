@@ -10,7 +10,7 @@ import IOKit
 struct IORegistry: ~Copyable {
 
 	// swiftlint:disable:next explicit_type_interface
-	static let nvramVariablesClassName =
+	static let nvramVariablesClass =
 		switch SystemInformation.Hardware.CPU.type.value {
 			case .appleSilicon: "IODTNVRAMVariables"
 			case .intel: "AppleEFINVRAM"
@@ -26,8 +26,8 @@ struct IORegistry: ~Copyable {
 		service >? 0
 	}
 
-	init(class className: String) {
-		self.matchingDictionary = unsafe IOServiceMatching(className)
+	init(class: String) {
+		self.matchingDictionary = unsafe IOServiceMatching(`class`)
 	}
 
 	init(name: String) {

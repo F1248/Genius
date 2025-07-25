@@ -12,7 +12,7 @@ extension SystemInformation {
 		enum TheftProtection {
 
 			static let activationLock = MaintenanceCheck<Bool?, _>(
-				IORegistry(class: IORegistry.nvramVariablesClassName).contains("fmm-mobileme-token-FMM"),
+				IORegistry(class: IORegistry.nvramVariablesClass).contains("fmm-mobileme-token-FMM"),
 				applicable: Hardware.securityChip.value >=? .t2 &&? !?Hardware.Model.isVirtualMachine,
 			)
 			static let firmwarePassword = MaintenanceCheck<Bool?, _>(
