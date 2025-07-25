@@ -28,9 +28,13 @@ extension TabData {
 
 	@ViewBuilder var body: some View {
 		if displayTitleInBody {
-			Label(localizedStringKey, systemSymbol: symbol)
-				.font(.title)
-				.padding()
+			Label {
+				Text(varying: localizedStringKey)
+			} icon: {
+				Image(systemSymbol: symbol)
+			}
+			.font(.title)
+			.padding()
 		}
 		content
 	}
