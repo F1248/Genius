@@ -18,7 +18,7 @@ struct AdaptingTabView<TabDataType: TabData>: View {
 					Tab(value: tab.index) {
 						tab
 					} label: {
-						VaryingText(tab.localizedStringKey)
+						VaryingText(tab.title)
 					}
 				}
 			}
@@ -26,7 +26,7 @@ struct AdaptingTabView<TabDataType: TabData>: View {
 			CustomTabView(selection: selection, entireWindow: TabDataType.entireWindow) {
 				TabDataType.allCases.map { tab in
 					CustomTab(
-						tab.localizedStringKey,
+						tab.title,
 						index: tab.index,
 					) { tab }
 				}

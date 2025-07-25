@@ -24,12 +24,12 @@ extension TabData {
 	static var id: ObjectIdentifier { ObjectIdentifier(self) }
 
 	var localized: String { rawValue.localized }
-	var localizedStringKey: LocalizedStringKey { LocalizedStringKey(rawValue) }
+	var title: LocalizedStringKey { LocalizedStringKey(rawValue) }
 
 	@ViewBuilder var body: some View {
 		if displayTitleInBody {
 			Label {
-				Text(varying: localizedStringKey)
+				Text(varying: title)
 			} icon: {
 				Image(systemSymbol: symbol)
 			}
