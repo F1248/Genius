@@ -27,15 +27,17 @@ extension TabData {
 	var title: LocalizedStringKey { LocalizedStringKey(rawValue) }
 
 	@ViewBuilder var body: some View {
-		if displayTitleInBody {
-			Label {
-				Text(varying: title)
-			} icon: {
-				Image(systemSymbol: symbol)
+		VStack {
+			if displayTitleInBody {
+				Label {
+					Text(varying: title)
+				} icon: {
+					Image(systemSymbol: symbol)
+				}
+				.font(.title)
+				.padding()
 			}
-			.font(.title)
-			.padding()
+			content
 		}
-		content
 	}
 }
