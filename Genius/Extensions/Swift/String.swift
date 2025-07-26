@@ -13,7 +13,7 @@ extension String: DataInitializable, UIStringRepresentable {
 	}
 
 	var variesByInterfaceMode: Bool {
-		NSLocalizedString(self, tableName: "LocalizableNormal", value: " ", comment: "") != " "
+		NSLocalizedString(self, value: " ", comment: "") == " "
 	}
 
 	var localized: String {
