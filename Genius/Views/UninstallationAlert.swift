@@ -7,13 +7,13 @@ import AppKit
 import Foundation
 import SwiftUI
 
-struct UninstallAlert: ViewModifier {
+struct UninstallationAlert: ViewModifier {
 
 	@ObservedObject var observedSharedData: SharedData = .sharedData
 
 	func body(content: Content) -> some View {
 		content
-			.alert(isPresented: $observedSharedData.showUninstallAlert) {
+			.alert(isPresented: $observedSharedData.showUninstallationAlert) {
 				Alert(
 					title: Text(varying: "Are you sure you want to uninstall Genius?"),
 					message: Text(varying: "Genius and all its data will be uninstalled. This action cannot be undone."),
@@ -30,7 +30,7 @@ struct UninstallAlert: ViewModifier {
 
 extension View {
 
-	func uninstallAlert() -> some View {
-		modifier(UninstallAlert())
+	func uninstallationAlert() -> some View {
+		modifier(UninstallationAlert())
 	}
 }

@@ -13,7 +13,7 @@ struct AppCommands: Commands {
 	var body: some Commands {
 		CommandGroup(replacing: .appSettings) {
 			Button {
-				SharedData.sharedData.showUninstallAlert = true
+				SharedData.sharedData.showUninstallationAlert = true
 			} label: {
 				Label {
 					VaryingText("Uninstall Genius…")
