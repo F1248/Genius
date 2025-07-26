@@ -15,7 +15,7 @@ struct TabButton<TabDataType: TabData>: View {
 			SharedData.sharedData.selectedTabsIndices[TabDataType.id] = tab.index
 		} label: {
 			Label {
-				VaryingText(tab as? ContentViewTab == .settings ? "Settings…" : tab.title)
+				Text(varying: tab as? ContentViewTab == .settings ? "Settings…" : tab.title)
 			} icon: {
 				Image(systemSymbol: tab.symbol)
 					.accessibilityHidden(true)

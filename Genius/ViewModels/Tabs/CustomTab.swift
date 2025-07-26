@@ -8,7 +8,7 @@ import SwiftUI
 
 struct CustomTab {
 
-	let title: VaryingText
+	let title: LocalizedStringKey
 	let index: Int
 	let content: AnyView
 
@@ -18,7 +18,7 @@ struct CustomTab {
 		index: Int,
 		@ViewBuilder content: () -> some View,
 	) {
-		self.title = VaryingText(title)
+		self.title = title
 		self.index = index
 		self.content = AnyView(content())
 	}

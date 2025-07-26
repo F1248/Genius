@@ -25,7 +25,7 @@ struct CustomTabView: View {
 	@ViewBuilder var picker: some View {
 		Picker(selection: selectedTabIndexParameter ?? $selectedTabIndexPrivate) {
 			ForEach(tabs) { tab in
-				tab.title
+				Text(varying: tab.title)
 					.tag(tab.index)
 			}
 		}

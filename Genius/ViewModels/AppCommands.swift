@@ -3,10 +3,14 @@
 // See LICENSE.txt for license information.
 //
 
+import Defaults
 import SFSafeSymbols
 import SwiftUI
 
 struct AppCommands: Commands {
+
+	@Default(.interfaceMode)
+	var interfaceMode: Settings.InterfaceMode
 
 	@ObservedObject var observedSharedData: SharedData = .sharedData
 
@@ -16,7 +20,7 @@ struct AppCommands: Commands {
 				SharedData.sharedData.showUninstallationAlert = true
 			} label: {
 				Label {
-					VaryingText("Uninstall Genius…")
+					Text(varying: "Uninstall Genius…")
 				} icon: {
 					Image(systemSymbol: .trash)
 				}
@@ -27,6 +31,7 @@ struct AppCommands: Commands {
 		CommandGroup(replacing: .newItem) { EmptyView() }
 		CommandGroup(before: .toolbar) {
 			TabViewButtons<ContentViewTab>()
+				.id(interfaceMode)
 			switch observedSharedData.selectedTabsIndices[ContentViewTab.id] {
 				case ContentViewTab.systemInformation.index: TabViewButtons<SystemInformationViewTab>()
 				default: EmptyView()
