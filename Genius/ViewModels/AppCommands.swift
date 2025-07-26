@@ -15,7 +15,11 @@ struct AppCommands: Commands {
 			Button {
 				SharedData.sharedData.showUninstallAlert = true
 			} label: {
-				Label("Uninstall Genius…", systemSymbol: .trash)
+				Label {
+					VaryingText("Uninstall Genius…")
+				} icon: {
+					Image(systemSymbol: .trash)
+				}
 			}
 			Divider()
 			TabButton(tab: ContentViewTab.settings)
