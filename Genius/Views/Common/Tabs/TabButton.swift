@@ -11,15 +11,11 @@ struct TabButton<TabDataType: TabData>: View {
 	let tab: TabDataType
 
 	var body: some View {
-		Button {
+		Button(
+			tab as? ContentViewTab == .settings ? .settingsEllipsis : tab.title,
+			systemImage: tab.symbol.rawValue,
+		) {
 			SharedData.sharedData.selectedTabsIndices[TabDataType.id] = tab.index
-		} label: {
-			Label {
-				Text(varying: tab as? ContentViewTab == .settings ? "Settings…" : tab.title)
-			} icon: {
-				Image(systemSymbol: tab.symbol)
-					.accessibilityHidden(true)
-			}
 		}
 		.keyboardShortcut(
 			tab as? ContentViewTab == .settings ? "," : KeyEquivalent(Character(String(tab.index + 1))),

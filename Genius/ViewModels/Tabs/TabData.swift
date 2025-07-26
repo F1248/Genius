@@ -3,16 +3,18 @@
 // See LICENSE.txt for license information.
 //
 
+import Foundation
 import SFSafeSymbols
 import SwiftUI
 
-protocol TabData: View, RawRepresentable<String>, CaseIterable, Equatable, SelfIdentifiable where AllCases == [Self] {
+protocol TabData: View, CaseIterable, Equatable, SelfIdentifiable where AllCases == [Self] {
 
 	associatedtype ContentViewType: View
 
 	static var entireWindow: Bool { get }
 	static var keyboardShortcutModifiers: EventModifiers { get }
 
+	var title: LocalizedStringResource { get }
 	var displayTitleInBody: Bool { get }
 	var symbol: SFSymbol { get }
 
@@ -23,19 +25,12 @@ extension TabData {
 
 	static var id: ObjectIdentifier { ObjectIdentifier(self) }
 
-	var localized: String { rawValue.localized }
-	var title: LocalizedStringKey { LocalizedStringKey(rawValue) }
-
 	@ViewBuilder var body: some View {
 		VStack {
 			if displayTitleInBody {
-				Label {
-					Text(varying: title)
-				} icon: {
-					Image(systemSymbol: symbol)
-				}
-				.font(.title)
-				.padding()
+				Label(title, systemImage: symbol.rawValue)
+					.font(.title)
+					.padding()
 			}
 			content
 		}

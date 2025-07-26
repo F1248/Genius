@@ -4,6 +4,7 @@
 //
 
 import Defaults
+import Foundation
 
 struct SystemInformationData<
 	Value: UIStringRepresentable,
@@ -15,11 +16,11 @@ struct SystemInformationData<
 
 	var uiRepresentation: String? { get async {
 		if !?applicable ?? false {
-			Defaults[.developmentMode] ? "Not applicable".localized : nil
+			Defaults[.developmentMode] ? String(localized: .notApplicable) : nil
 		} else if let uiRepresentation = await value.uiRepresentation {
 			uiRepresentation
 		} else {
-			Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ? "Unknown".localized : nil
+			Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ? String(localized: .unknown) : nil
 		}
 	} }
 }

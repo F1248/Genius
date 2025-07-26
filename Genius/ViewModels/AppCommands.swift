@@ -16,14 +16,8 @@ struct AppCommands: Commands {
 
 	var body: some Commands {
 		CommandGroup(replacing: .appSettings) {
-			Button {
+			Button(.uninstallAppEllipsis, systemImage: SFSymbol.trash.rawValue) {
 				SharedData.sharedData.showUninstallationAlert = true
-			} label: {
-				Label {
-					Text(varying: "Uninstall Genius…")
-				} icon: {
-					Image(systemSymbol: .trash)
-				}
 			}
 			Divider()
 			TabButton(tab: ContentViewTab.settings)

@@ -3,16 +3,25 @@
 // See LICENSE.txt for license information.
 //
 
+import _Concurrency
+import Foundation
 import SFSafeSymbols
 import SwiftUI
 
-enum SystemInformationViewTab: String, TabData {
+enum SystemInformationViewTab: @MainActor TabData {
 
-	case hardware = "Hardware"
-	case software = "Software"
+	case hardware
+	case software
 
 	static let entireWindow: Bool = false
 	static let keyboardShortcutModifiers: EventModifiers = [.command, .option]
+
+	var title: LocalizedStringResource {
+		switch self {
+			case .hardware: .hardware
+			case .software: .software
+		}
+	}
 
 	var displayTitleInBody: Bool {
 		true

@@ -11,12 +11,12 @@ struct MaintenanceCheckLabel: View {
 
 	@State var popoverPresented: Bool = false
 
-	let name: LocalizedStringKey
+	let name: LocalizedStringResource
 	let help: URL?
 	let setting: URL?
 
 	// swiftlint:disable:next type_contents_order
-	init(_ name: LocalizedStringKey, help: URL?, setting: URL? = nil) {
+	init(_ name: LocalizedStringResource, help: URL?, setting: URL? = nil) {
 		self.name = name
 		self.help = help
 		self.setting = setting
@@ -24,11 +24,11 @@ struct MaintenanceCheckLabel: View {
 
 	var body: some View {
 		HStack {
-			Text(varying: name)
+			Text(name)
 			Button {
 				popoverPresented.toggle()
 			} label: {
-				Symbol(.infoCircle, label: "Show Detail")
+				Symbol(.infoCircle, label: .showDetail)
 			}
 			.buttonStyle(.borderless)
 			.popover(isPresented: $popoverPresented) {

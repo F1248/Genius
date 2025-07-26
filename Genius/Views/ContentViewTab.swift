@@ -3,18 +3,29 @@
 // See LICENSE.txt for license information.
 //
 
+import _Concurrency
+import Foundation
 import SFSafeSymbols
 import SwiftUI
 
-enum ContentViewTab: String, TabData {
+enum ContentViewTab: @MainActor TabData {
 
-	case home = "Home"
-	case systemInformation = "System Information"
-	case maintenance = "Maintenance"
-	case settings = "Settings"
+	case home
+	case systemInformation
+	case maintenance
+	case settings
 
 	static let entireWindow: Bool = true
 	static let keyboardShortcutModifiers: EventModifiers = .command
+
+	var title: LocalizedStringResource {
+		switch self {
+			case .home: .home
+			case .systemInformation: .systemInformation
+			case .maintenance: .maintenance
+			case .settings: .settings
+		}
+	}
 
 	var displayTitleInBody: Bool {
 		switch self {

@@ -9,26 +9,26 @@ import SwiftUI
 
 struct MaintenanceCheckLabelPopover: View {
 
-	let name: LocalizedStringKey
+	let name: LocalizedStringResource
 	let help: URL?
 	let setting: URL?
 
 	var body: some View {
 		VStack(alignment: .leading) {
-			Text(varying: name)
+			Text(name)
 			if SystemInformation.Software.OS.bootMode.value != .recovery {
 				HStack {
 					Spacer(minLength: 32)
 					if let help {
 						Link(destination: help) {
-							Symbol(.questionmarkCircle, label: "Help")
+							Symbol(.questionmarkCircle, label: .help)
 								.focusable() // prevent symbol from receiving focus automatically
 						}
 						.foregroundColor(.secondary)
 					}
 					if let setting {
 						Link(destination: setting) {
-							Symbol(.gear, label: "Open in System Settings")
+							Symbol(.gear, label: .openInSystemSettings)
 								.focusable() // prevent symbol from receiving focus automatically
 						}
 						.foregroundColor(.secondary)

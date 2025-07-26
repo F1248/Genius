@@ -20,14 +20,14 @@ struct MaintenanceCheck<
 
 	var uiRepresentation: Symbol? { get async {
 		if !?applicable ?? false {
-			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: "Not applicable") : nil
+			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .notApplicable) : nil
 		} else if let value = await value.optional {
 			value >= requirement ? // swiftlint:disable:this void_function_in_ternary
-				Symbol(.checkmark, color: .green, label: "Enabled") :
-				Symbol(.xmark, color: .red, label: "Disabled")
+				Symbol(.checkmark, color: .green, label: .enabled) :
+				Symbol(.xmark, color: .red, label: .disabled)
 		} else {
 			Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
-				Symbol(.questionmark, color: .red, label: "Unknown") : nil
+				Symbol(.questionmark, color: .red, label: .unknown) : nil
 		}
 	} }
 }

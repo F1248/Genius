@@ -19,14 +19,14 @@ struct SettingsView: View {
 		ScrollView {
 			GroupBox {
 				VStack(alignment: .leading) {
-					SpacedToggle("Use Text Instead of Symbols", isOn: $useTextInsteadOfSymbols)
+					SpacedToggle(.useTextInsteadOfSymbols, isOn: $useTextInsteadOfSymbols)
 						.padding(.vertical, 2)
 					Divider()
 					VStack(alignment: .leading) {
-						Text("Interface Mode")
+						Text(.interfaceMode)
 						Picker(selection: $interfaceMode) {
 							ForEach(Settings.InterfaceMode.allCases) { interfaceMode in
-								Text(LocalizedStringKey(interfaceMode.rawValue))
+								Text(interfaceMode.title)
 							}
 						}
 						.pickerStyle(.inline)
@@ -35,7 +35,7 @@ struct SettingsView: View {
 					.padding(.vertical, 2)
 					if developmentMode || interfaceMode >= .powerUser {
 						Divider()
-						SpacedToggle("Development Mode", isOn: $developmentMode)
+						SpacedToggle(.developmentMode, isOn: $developmentMode)
 							.padding(.vertical, 2)
 					}
 				}

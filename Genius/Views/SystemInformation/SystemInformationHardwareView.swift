@@ -9,27 +9,27 @@ struct SystemInformationHardwareView: View {
 
 	var body: some View {
 		SystemInformationTabView(content: [
-			"Model": [
-				"Name": SystemInformation.Hardware.Model.displayName,
-				"Identifier": SystemInformation.Hardware.Model.identifier,
-				"Number": SystemInformation.Hardware.Model.number,
-				"Regulatory Number": SystemInformation.Hardware.Model.regulatoryNumber,
+			.model: [
+				.name: SystemInformation.Hardware.Model.displayName,
+				.identifier: SystemInformation.Hardware.Model.identifier,
+				.number: SystemInformation.Hardware.Model.number,
+				.regulatoryNumber: SystemInformation.Hardware.Model.regulatoryNumber,
 			],
-			"Specifications": [
-				"Security Chip": SystemInformation.Hardware.securityChip,
-				"CPU Type": SystemInformation.Hardware.CPU.type,
-				"CPU Name": SystemInformation.Hardware.CPU.name,
-				"CPU Frequency": SystemInformation.Hardware.CPU.frequency,
-				SystemInformation.Hardware.CPU.Cores.differentTypes ?? true ? "Total Cores" : "Cores":
+			.specifications: [
+				.securityChip: SystemInformation.Hardware.securityChip,
+				.cpuType: SystemInformation.Hardware.CPU.type,
+				.cpuName: SystemInformation.Hardware.CPU.name,
+				.cpuFrequency: SystemInformation.Hardware.CPU.frequency,
+				SystemInformation.Hardware.CPU.Cores.differentTypes ?? true ? .totalCores : .cores:
 					SystemInformation.Hardware.CPU.Cores.total,
-				"Performance Cores": SystemInformation.Hardware.CPU.Cores.performance,
-				"Efficiency Cores": SystemInformation.Hardware.CPU.Cores.efficiency,
-				"Memory": SystemInformation.Hardware.memory,
+				.performanceCores: SystemInformation.Hardware.CPU.Cores.performance,
+				.efficiencyCores: SystemInformation.Hardware.CPU.Cores.efficiency,
+				.memory: SystemInformation.Hardware.memory,
 			],
-			"Machine": [
-				"Serial Number": SystemInformation.Hardware.Machine.serialNumber,
-				"Hardware UUID": SystemInformation.Hardware.Machine.hardwareUUID,
-				"Provisioning UDID": SystemInformation.Hardware.Machine.provisioningUDID,
+			.machine: [
+				.serialNumber: SystemInformation.Hardware.Machine.serialNumber,
+				.hardwareUUID: SystemInformation.Hardware.Machine.hardwareUUID,
+				.provisioningUDID: SystemInformation.Hardware.Machine.provisioningUDID,
 			],
 		])
 	}

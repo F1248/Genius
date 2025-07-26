@@ -3,6 +3,8 @@
 // See LICENSE.txt for license information.
 //
 
+import Foundation
+
 enum BootMode: UIStringRepresentable {
 
 	case normal
@@ -10,13 +12,12 @@ enum BootMode: UIStringRepresentable {
 	case recovery
 
 	nonisolated var uiRepresentation: String? {
-		{
+		String(localized: {
 			switch self {
-				case .normal: "Normal"
-				case .safe: "Safe"
-				case .recovery: "Recovery"
+				case .normal: .bootModeNormal
+				case .safe: .bootModeSafe
+				case .recovery: .bootModeRecovery
 			}
-		}()
-			.localized
+		}())
 	}
 }

@@ -14,18 +14,16 @@ struct UninstallationAlert: ViewModifier {
 	func body(content: Content) -> some View {
 		content
 			.confirmationDialog(
-				Text(varying: "Are you sure you want to uninstall Genius?"),
+				Text(.uninstallationTitle),
 				isPresented: $observedSharedData.showUninstallationAlert,
 			) {
-				Button(role: .destructive) {
+				Button(.uninstallApp, role: .destructive) {
 					guard let uninstallPath = Bundle.main.path(forResource: "Uninstall", ofType: nil) else { return }
 					try? Process(uninstallPath)?.run()
 					NSApp.terminate(nil)
-				} label: {
-					Text(varying: "Uninstall Genius")
 				}
 			} message: {
-				Text(varying: "Genius and all its data will be uninstalled. This action cannot be undone.")
+				Text(.uninstallationMessage)
 			}
 	}
 }

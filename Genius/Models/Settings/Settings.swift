@@ -4,6 +4,7 @@
 //
 
 import Defaults
+import Foundation
 
 enum Settings {
 
@@ -14,6 +15,22 @@ enum Settings {
 		case advanced = "Advanced"
 		case powerUser = "Power User"
 
-		var localizationTable: String { "Localizable\(rawValue.remove(" "))" }
+		var title: LocalizedStringResource {
+			switch self {
+				case .simple: .interfaceModeSimple
+				case .normal: .interfaceModeNormal
+				case .advanced: .interfaceModeAdvanced
+				case .powerUser: .interfaceModePowerUser
+			}
+		}
+
+		var localizationTable: any VaryingLocalizationTable.Type {
+			switch self {
+				case .simple: LocalizedStringResource.LocalizableSimple.self
+				case .normal: LocalizedStringResource.LocalizableNormal.self
+				case .advanced: LocalizedStringResource.LocalizableAdvanced.self
+				case .powerUser: LocalizedStringResource.LocalizablePowerUser.self
+			}
+		}
 	}
 }

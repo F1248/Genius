@@ -5,17 +5,18 @@
 
 import _Concurrency
 import AppKit
+import Foundation
 import SwiftUI
 
 struct SystemInformationTabView: View {
 
-	@State var content: CustomKeyValuePairs<LocalizedStringKey, CustomKeyValuePairs<LocalizedStringKey, String>>?
+	@State var content: CustomKeyValuePairs<LocalizedStringResource, CustomKeyValuePairs<LocalizedStringResource, String>>?
 
-	let contentData: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UIStringRepresentable>>
+	let contentData: KeyValuePairs<LocalizedStringResource, KeyValuePairs<LocalizedStringResource, any UIStringRepresentable>>
 
 	// swiftlint:disable:next type_contents_order
 	init(
-		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<LocalizedStringKey, any UIStringRepresentable>>,
+		content: KeyValuePairs<LocalizedStringResource, KeyValuePairs<LocalizedStringResource, any UIStringRepresentable>>,
 	) {
 		self.contentData = content
 	}
@@ -31,7 +32,7 @@ struct SystemInformationTabView: View {
 									Divider()
 								}
 								HStack {
-									Text(varying: rowContent.key)
+									Text(rowContent.key)
 									Spacer()
 									Button(rowContent.value) {
 										NSPasteboard.set(rowContent.value)

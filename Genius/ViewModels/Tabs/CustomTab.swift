@@ -4,17 +4,18 @@
 //
 
 import _Concurrency
+import Foundation
 import SwiftUI
 
 struct CustomTab {
 
-	let title: LocalizedStringKey
+	let title: LocalizedStringResource
 	let index: Int
 	let content: AnyView
 
 	@MainActor
 	init(
-		_ title: LocalizedStringKey,
+		_ title: LocalizedStringResource,
 		index: Int,
 		@ViewBuilder content: () -> some View,
 	) {

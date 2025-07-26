@@ -18,7 +18,7 @@ struct AdaptingTabView<TabDataType: TabData>: View {
 					Tab(value: tab.index) {
 						tab
 					} label: {
-						Text(varying: tab.title)
+						Text(tab.title)
 					}
 				}
 			}

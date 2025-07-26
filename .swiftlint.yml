@@ -20,8 +20,6 @@ disabled_rules:
     - function_default_parameter_at_end
     - nesting
     - no_magic_numbers
-    - nslocalizedstring_key
-    - nslocalizedstring_require_bundle
     - prefixed_toplevel_constant
     - private_swiftui_state
     - required_deinit
