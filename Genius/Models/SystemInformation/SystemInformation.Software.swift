@@ -39,11 +39,7 @@ extension SystemInformation {
 				Sysctl.read("kern.osproductversion").flatMap(VersionNumber.init),
 			)
 			static let codeName = SystemInformationData<String?, _>({
-				if #unavailable(macOS 12) {
-					"Big Sur"
-				} else if #unavailable(macOS 13) {
-					"Monterey"
-				} else if #unavailable(macOS 14) {
+				if #unavailable(macOS 14) {
 					"Ventura"
 				} else if #unavailable(macOS 15) {
 					"Sonoma"

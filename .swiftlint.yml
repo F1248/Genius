@@ -35,7 +35,7 @@ disabled_rules:
 cyclomatic_complexity:
     ignores_case_statements: true
 deployment_target:
-    macOS_deployment_target: 11.0
+    macOS_deployment_target: 13.0
 explicit_init:
     include_bare_init: true
 explicit_type_interface:

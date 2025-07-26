@@ -348,10 +348,9 @@
 				INFOPLIST_FILE = Genius/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 - 2025 F1248 <f1248@mailbox.org>";
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LD_WARN_DUPLICATE_LIBRARIES = YES;
 				LLVM_LTO = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 0.1.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.F1248.Genius;
@@ -462,11 +461,10 @@
 				INFOPLIST_FILE = Genius/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 - 2025 F1248 <f1248@mailbox.org>";
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LD_WARN_DUPLICATE_LIBRARIES = YES;
 				LD_WARN_UNUSED_DYLIBS = YES;
 				LLVM_LTO = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.F1248.Genius;
 				PRODUCT_NAME = "$(TARGET_NAME)";

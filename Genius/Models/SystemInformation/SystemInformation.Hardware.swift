@@ -69,7 +69,7 @@ extension SystemInformation {
 						} else { .laptopcomputer }
 					case namePrefix?.hasPrefix("iMac"): .desktopcomputer
 					case namePrefix?.hasPrefix("Macmini"): .macmini
-					case namePrefix?.hasPrefix("MacStudio"): if #available(macOS 13, *) { .macstudio } else { .macmini }
+					case namePrefix?.hasPrefix("MacStudio"): .macstudio
 					case namePrefix?.hasPrefix("MacPro"):
 						switch identifier.value {
 							case "MacPro3,1", "MacPro4,1", "MacPro5,1": .macproGen1

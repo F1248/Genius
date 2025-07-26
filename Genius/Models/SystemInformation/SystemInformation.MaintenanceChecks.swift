@@ -58,8 +58,7 @@ extension SystemInformation {
 						default: nil
 					}
 				}(),
-				applicable: { if #available(macOS 13, *) { true } else { false } }() &&?
-					Hardware.CPU.type.value == .appleSilicon &&?
+				applicable: Hardware.CPU.type.value == .appleSilicon &&?
 					Hardware.Model.isLaptop &&?
 					Software.OS.bootMode.value !=? .recovery,
 			)

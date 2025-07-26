@@ -28,9 +28,7 @@ struct MaintenanceCheckLabelPopover: View {
 					}
 					if let setting {
 						Link(destination: setting) {
-							Symbol(.gear, label: {
-								if #unavailable(macOS 13) { "Open in System Preferences" } else { "Open in System Settings" }
-							}())
+							Symbol(.gear, label: "Open in System Settings")
 								.focusable() // prevent symbol from receiving focus automatically
 						}
 						.foregroundColor(.secondary)

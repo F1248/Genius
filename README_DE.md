@@ -23,7 +23,7 @@ See LICENSE.txt for license information.
 
 ### Unterstützte macOS-Versionen
 
-- macOS Big Sur 11 und neuer, inklusive macOS Tahoe 26
+- macOS Ventura 13 und neuer, inklusive macOS Tahoe 26
 - Unterstützt auch recoveryOS unter macOS Sonoma 14 und neuer
 
 ### Unterstützte Modelle

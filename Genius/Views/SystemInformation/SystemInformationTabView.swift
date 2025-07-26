@@ -26,23 +26,21 @@ struct SystemInformationTabView: View {
 				if let content {
 					ForEach(content) { groupBoxContent in
 						GroupBox {
-							VStack {
-								ForEach(enumerated: groupBoxContent.value) { index, rowContent in
-									if index > 0 {
-										Divider()
-									}
-									HStack {
-										Text(varying: rowContent.key)
-										Spacer()
-										Button(rowContent.value) {
-											NSPasteboard.set(rowContent.value)
-										}
-										.buttonStyle(.borderless)
-									}
-									.padding(.vertical, 2)
+							ForEach(enumerated: groupBoxContent.value) { index, rowContent in
+								if index > 0 {
+									Divider()
 								}
-								.padding(.horizontal, 2)
+								HStack {
+									Text(varying: rowContent.key)
+									Spacer()
+									Button(rowContent.value) {
+										NSPasteboard.set(rowContent.value)
+									}
+									.buttonStyle(.borderless)
+								}
+								.padding(.vertical, 2)
 							}
+							.padding(.horizontal, 2)
 						} label: {
 							Text(groupBoxContent.key)
 								.font(.title2)
@@ -56,21 +54,19 @@ struct SystemInformationTabView: View {
 			}
 			.padding()
 		}
-		.onAppear {
-			Task(priority: .userInitiated) {
-				let values: [[String?]] = await contentData.map { $0.value.map(\.value) }.concurrentMap { value in
-					await value.concurrentMap { value in
-						await value.uiRepresentation
-					}
+		.task(priority: .userInitiated) {
+			let values: [[String?]] = await contentData.map { $0.value.map(\.value) }.concurrentMap { value in
+				await value.concurrentMap { value in
+					await value.uiRepresentation
 				}
-				content = zip(contentData, values)
-					.map { keyValuePair, values in
-						(key: keyValuePair.key, value: zip(keyValuePair.value, values).compactMap { keyValuePair, value in
-							value.map { (key: keyValuePair.key, value: $0) }
-						})
-					}
-					.filter { !$0.value.isEmpty }
 			}
+			content = zip(contentData, values)
+				.map { keyValuePair, values in
+					(key: keyValuePair.key, value: zip(keyValuePair.value, values).compactMap { keyValuePair, value in
+						value.map { (key: keyValuePair.key, value: $0) }
+					})
+				}
+				.filter { !$0.value.isEmpty }
 		}
 	}
 }

@@ -19,7 +19,7 @@ struct IORegistry: ~Copyable {
 	let matchingDictionary: CFMutableDictionary?
 
 	var service: UInt32? {
-		matchingDictionary.map { IOServiceGetMatchingService(kIOMasterPortDefault, $0) }
+		matchingDictionary.map { IOServiceGetMatchingService(kIOMainPortDefault, $0) }
 	}
 
 	var exists: Bool? {
