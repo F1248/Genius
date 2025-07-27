@@ -16,28 +16,22 @@ enum SystemInformationViewTab: @MainActor TabData {
 	static let entireWindow: Bool = false
 	static let keyboardShortcutModifiers: EventModifiers = [.command, .option]
 
-	var title: LocalizedStringResource {
-		switch self {
-			case .hardware: .hardware
-			case .software: .software
-		}
-	}
+	var title: LocalizedStringResource { switch self {
+		case .hardware: .hardware
+		case .software: .software
+	}}
 
 	var displayTitleInBody: Bool {
 		true
 	}
 
-	var symbol: SFSymbol {
-		switch self {
-			case .hardware: SystemInformation.Hardware.Model.symbol
-			case .software: .macwindowOnRectangle
-		}
-	}
+	var symbol: SFSymbol { switch self {
+		case .hardware: SystemInformation.Hardware.Model.symbol
+		case .software: .macwindowOnRectangle
+	}}
 
-	var content: some View {
-		switch self {
-			case .hardware: SystemInformationHardwareView()
-			case .software: SystemInformationSoftwareView()
-		}
-	}
+	var content: some View { switch self {
+		case .hardware: SystemInformationHardwareView()
+		case .software: SystemInformationSoftwareView()
+	}}
 }
