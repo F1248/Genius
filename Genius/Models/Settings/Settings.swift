@@ -13,7 +13,7 @@ enum Settings {
 		case simple = "Simple"
 		case normal = "Normal"
 		case advanced = "Advanced"
-		case powerUser = "Power User"
+		case powerUser = "PowerUser"
 
 		var title: LocalizedStringResource { switch self {
 			case .simple: .interfaceModeSimple
