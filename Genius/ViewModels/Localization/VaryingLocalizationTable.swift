@@ -34,26 +34,26 @@ extension LocalizedStringResource: VaryingLocalizationTable {
 
 	static var localizationTable: any VaryingLocalizationTable.Type { Defaults[.interfaceMode].localizationTable }
 
-	static var administratorPrivilegesRequest: LocalizedStringResource { localizationTable.administratorPrivilegesRequest }
-	static var askToAllowAccessoriesToConnect: LocalizedStringResource { localizationTable.askToAllowAccessoriesToConnect }
-	static var automaticUpdates: LocalizedStringResource { localizationTable.automaticUpdates }
-	static var bootMode: LocalizedStringResource { localizationTable.bootMode }
-	static var bootVolume: LocalizedStringResource { localizationTable.bootVolume }
-	static var checkForMacOSUpdates: LocalizedStringResource { localizationTable.checkForMacOSUpdates }
-	static var cpuFrequency: LocalizedStringResource { localizationTable.cpuFrequency }
-	static var cpuName: LocalizedStringResource { localizationTable.cpuName }
-	static var cpuType: LocalizedStringResource { localizationTable.cpuType }
-	static var downloadMacOSUpdates: LocalizedStringResource { localizationTable.downloadMacOSUpdates }
-	static var installAppStoreAppUpdates: LocalizedStringResource { localizationTable.installAppStoreAppUpdates }
-	static var installConfigurationDataUpdates: LocalizedStringResource { localizationTable.installConfigurationDataUpdates }
-	static var installCriticalUpdates: LocalizedStringResource { localizationTable.installCriticalUpdates }
-	static var installMacOSUpdates: LocalizedStringResource { localizationTable.installMacOSUpdates }
-	static var malwareProtection: LocalizedStringResource { localizationTable.malwareProtection }
-	static var systemInformation: LocalizedStringResource { localizationTable.systemInformation }
-	static var uninstallApp: LocalizedStringResource { localizationTable.uninstallApp }
-	static var uninstallAppEllipsis: LocalizedStringResource { localizationTable.uninstallAppEllipsis }
-	static var uninstallationMessage: LocalizedStringResource { localizationTable.uninstallationMessage }
-	static var uninstallationTitle: LocalizedStringResource { localizationTable.uninstallationTitle }
+	static var administratorPrivilegesRequest: Self { localizationTable.administratorPrivilegesRequest }
+	static var askToAllowAccessoriesToConnect: Self { localizationTable.askToAllowAccessoriesToConnect }
+	static var automaticUpdates: Self { localizationTable.automaticUpdates }
+	static var bootMode: Self { localizationTable.bootMode }
+	static var bootVolume: Self { localizationTable.bootVolume }
+	static var checkForMacOSUpdates: Self { localizationTable.checkForMacOSUpdates }
+	static var cpuFrequency: Self { localizationTable.cpuFrequency }
+	static var cpuName: Self { localizationTable.cpuName }
+	static var cpuType: Self { localizationTable.cpuType }
+	static var downloadMacOSUpdates: Self { localizationTable.downloadMacOSUpdates }
+	static var installAppStoreAppUpdates: Self { localizationTable.installAppStoreAppUpdates }
+	static var installConfigurationDataUpdates: Self { localizationTable.installConfigurationDataUpdates }
+	static var installCriticalUpdates: Self { localizationTable.installCriticalUpdates }
+	static var installMacOSUpdates: Self { localizationTable.installMacOSUpdates }
+	static var malwareProtection: Self { localizationTable.malwareProtection }
+	static var systemInformation: Self { localizationTable.systemInformation }
+	static var uninstallApp: Self { localizationTable.uninstallApp }
+	static var uninstallAppEllipsis: Self { localizationTable.uninstallAppEllipsis }
+	static var uninstallationMessage: Self { localizationTable.uninstallationMessage }
+	static var uninstallationTitle: Self { localizationTable.uninstallationTitle }
 }
 
 extension LocalizedStringResource.LocalizableSimple: VaryingLocalizationTable {}
