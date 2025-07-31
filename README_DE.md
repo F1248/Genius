@@ -34,7 +34,7 @@ See LICENSE.txt for license information.
 
 ### Manuelle Installation (in recoveryOS nicht möglich)
 
-1. Lade [den neusten Build](https://nightly.link/F1248/Genius/workflows/Build-Genius/deployment-target-macos-14/Genius.zip) herunter.
+1. Lade [den neusten Build](https://nightly.link/F1248/Genius/workflows/Build-app/deployment-target-macos-14/Genius.zip) herunter.
 2. Wenn nicht bereits automatisch entzippt, doppelklicke auf `Genius.zip`, um es zu entzippen.
 3. Verschiebe `Genius.app` in `/Programme`.
 4. Doppelklicke auf die App.

@@ -3,18 +3,17 @@
 // See LICENSE.txt for license information.
 //
 
+import Foundation
+
 enum CPUType: UIStringRepresentable {
 
 	case intel
 	case appleSilicon
 
-	var uiRepresentation: String? {
-		{
-			switch self {
-				case .intel: "Intel"
-				case .appleSilicon: "Apple Silicon"
-			}
-		}()
-			.localized
+	nonisolated var uiRepresentation: String? {
+		String(localized: { switch self {
+			case .intel: .intel
+			case .appleSilicon: .appleSilicon
+		}}())
 	}
 }

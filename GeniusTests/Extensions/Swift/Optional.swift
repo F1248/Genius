@@ -3,7 +3,9 @@
 // See LICENSE.txt for license information.
 //
 
-protocol DefaultInitializable {
+extension Optional {
 
-	init()
+	var testCondition: Bool {
+		self != nil
+	}
 }

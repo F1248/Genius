@@ -4,6 +4,7 @@
 //
 
 import Defaults
+import Foundation
 import SFSafeSymbols
 import SwiftUI
 
@@ -11,10 +12,10 @@ struct Symbol: View {
 
 	let symbol: SFSymbol
 	let color: Color?
-	let label: LocalizedStringKey
+	let label: LocalizedStringResource
 
 	// swiftlint:disable:next type_contents_order
-	init(_ symbol: SFSymbol, color: Color? = nil, label: LocalizedStringKey) {
+	init(_ symbol: SFSymbol, color: Color? = nil, label: LocalizedStringResource) {
 		self.symbol = symbol
 		self.color = color
 		self.label = label

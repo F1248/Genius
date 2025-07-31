@@ -20,8 +20,6 @@ disabled_rules:
     - function_default_parameter_at_end
     - nesting
     - no_magic_numbers
-    - nslocalizedstring_key
-    - nslocalizedstring_require_bundle
     - prefixed_toplevel_constant
     - private_swiftui_state
     - required_deinit
@@ -43,6 +41,7 @@ explicit_type_interface:
 file_name:
     excluded:
         - Array.swift
+    require_fully_qualified_names: true
 identifier_name:
     min_length: 2
 indentation_width:
@@ -60,8 +59,6 @@ prefer_key_path:
     restrict_to_standard_functions: false
 private_over_fileprivate:
     validate_extensions: true
-redundant_type_annotation:
-    consider_default_literal_types_redundant: true
 switch_case_alignment:
     indented_cases: true
 trailing_comma:
@@ -86,8 +83,4 @@ type_name:
 # unused_declaration:
 #     include_public_and_open: true
 unused_import:
-    allowed_transitive_imports:
-        - module: SwiftUI
-          allowed_transitive_imports:
-            - SwiftUICore
     require_explicit_imports: true

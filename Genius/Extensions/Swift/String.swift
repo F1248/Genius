@@ -3,23 +3,9 @@
 // See LICENSE.txt for license information.
 //
 
-import Defaults
-import Foundation
+extension String: DataInitializable, UIStringRepresentable {
 
-extension String: DefaultInitializable, DataInitializable, UIStringRepresentable {
-
-	var uiRepresentation: String? {
+	nonisolated var uiRepresentation: String? {
 		self
-	}
-
-	var variesByInterfaceMode: Bool {
-		NSLocalizedString(self, tableName: "LocalizableNormal", value: " ", comment: "") != " "
-	}
-
-	var localized: String {
-		String(
-			localized: LocalizationValue(self),
-			table: variesByInterfaceMode ? Defaults[.interfaceMode].localizationTable : nil,
-		)
 	}
 }

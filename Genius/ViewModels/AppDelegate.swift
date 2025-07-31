@@ -5,6 +5,7 @@
 
 import _Concurrency
 import AppKit
+import Foundation
 import ObjectiveC
 
 actor AppDelegate: NSObject, NSApplicationDelegate {
@@ -15,7 +16,7 @@ actor AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationDockMenu(_: NSApplication) -> NSMenu? {
 		let dockMenu = NSMenu()
 		for tab in ContentViewTab.allCases {
-			let menuItem = NSMenuItem(title: tab.localized, action: #selector(changeTab(_:)), keyEquivalent: "")
+			let menuItem = NSMenuItem(title: String(localized: tab.title), action: #selector(changeTab(_:)), keyEquivalent: "")
 			menuItem.tag = tab.index
 			dockMenu.addItem(menuItem)
 		}

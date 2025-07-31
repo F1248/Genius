@@ -19,7 +19,7 @@ struct SystemProfiler {
 
 	init(dataType: String) {
 		self.valueWrapper = AsyncValueWrapper(valueClosure: {
-			let dataType = "SP\(dataType)DataType" // swiftlint:disable:this explicit_type_interface
+			let dataType: String = "SP\(dataType)DataType"
 			guard
 				let systemProfilerOutput = await Process("/usr/sbin/system_profiler", "-json", dataType)?.runSafe()
 			else { return nil }

@@ -19,7 +19,7 @@ extension Process {
 				"-e",
 				"""
 				do shell script \"\(executable) \(arguments.joined(separator: " "))\" \
-				with prompt \"\("Genius requires administrator privileges.".localized)\" \
+				with prompt \"\(String(localized: .administratorPrivilegesRequest))\" \
 				with administrator privileges
 				""",
 			]

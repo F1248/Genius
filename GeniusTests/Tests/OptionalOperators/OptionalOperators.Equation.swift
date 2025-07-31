@@ -8,8 +8,7 @@ import Testing
 
 extension OptionalOperators {
 
-	@Suite("Optional equation operators")
-	struct OptionalEquationOperators {
+	struct Equation {
 
 		@Test("==?")
 		func optionalEqualTo() {

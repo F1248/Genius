@@ -47,7 +47,7 @@ extension SystemInformation {
 						let modelNumber = IORegistry(class: "IOPlatformExpertDevice").read("model-number") as String?,
 						let regionInfo = IORegistry(class: "IOPlatformExpertDevice").read("region-info") as String?
 					else { return nil }
-					return "\(modelNumber)\(regionInfo)"
+					return modelNumber + regionInfo
 				}(),
 				applicable: CPU.type.value == .appleSilicon,
 			)

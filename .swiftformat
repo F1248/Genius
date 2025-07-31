@@ -3,7 +3,8 @@
 # See LICENSE.txt for license information.
 #
 
---swiftversion 99 # latest
+--swift-version 99 # latest
+--language-mode 99 # latest
 
 --enable \
 	acronyms,\
@@ -13,30 +14,34 @@
 	environmentEntry,\
 	isEmpty,\
 	noExplicitOwnership,\
+	noGuardInTests,\
 	organizeDeclarations,\
 	preferSwiftTesting,\
 	redundantEquatable,\
+	redundantMemberwiseInit,\
 	redundantProperty,\
+	singlePropertyPerLine,\
+	throwingTests,\
 	unusedPrivateDeclarations,\
 	wrapEnumCases,\
 	wrapMultilineConditionalAssignment,\
 	wrapMultilineFunctionChains,\
 
 --acronyms "CPU,EFI,ID,IO,JSON,NVRAM,OS,SF,SMC,UDID,UI,URL,UUID"
---condassignment always
---fractiongrouping enabled
+--cond-assignment always
+--fraction-grouping enabled
 --header "\n© {created.year} F1248 <f1248@mailbox.org>\nSee LICENSE.txt for license information.\n"
 --indent tab
---indentcase true
---markcategories false
---maxwidth 128
---organizationmode type
---propertytypes inferred
+--indent-case true
+--mark-categories false
+--max-width 128
+--organization-mode type
+--property-types explicit
 --ranges no-space
 --self init-only
---selfrequired error
+--self-required error
 --semicolons never
---shortoptionals always
---tabwidth 4
---typeblanklines preserve
---xcodeindentation enabled
+--short-optionals always
+--tab-width 4
+--type-blank-lines preserve
+--xcode-indentation enabled
