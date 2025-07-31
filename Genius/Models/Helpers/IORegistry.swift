@@ -9,19 +9,25 @@ import IOKit
 
 struct IORegistry: ~Copyable {
 
+	// swiftlint:disable:next explicit_type_interface
+	static let nvramVariablesClass =
+		switch SystemInformation.Hardware.CPU.type.value {
+			case .appleSilicon: "IODTNVRAMVariables"
+			case .intel: "AppleEFINVRAM"
+		}
+
 	let matchingDictionary: CFMutableDictionary?
 
 	var service: UInt32? {
-		guard let matchingDictionary else { return nil }
-		return IOServiceGetMatchingService(kIOMainPortDefault, matchingDictionary)
+		matchingDictionary.map { IOServiceGetMatchingService(kIOMainPortDefault, $0) }
 	}
 
 	var exists: Bool? {
 		service >? 0
 	}
 
-	init(class className: String) {
-		self.matchingDictionary = unsafe IOServiceMatching(className)
+	init(class: String) {
+		self.matchingDictionary = unsafe IOServiceMatching(`class`)
 	}
 
 	init(name: String) {

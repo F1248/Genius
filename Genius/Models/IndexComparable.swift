@@ -3,7 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
-protocol IndexComparable: Comparable where Self: Indexable, Index: Comparable {}
+protocol IndexComparable: Comparable, Indexable where Index: Comparable {}
 
 extension IndexComparable {
 

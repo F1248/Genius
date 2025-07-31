@@ -11,130 +11,125 @@ extension SystemInformationTests {
 
 	// swiftformat:disable organizeDeclarations
 	// swiftlint:disable type_contents_order
-	@Suite("Hardware")
 	struct Hardware {
 
-		@Suite("Model")
 		struct Model {
 
-			@Test("isVirtualMachine")
+			@Test
 			func isVirtualMachine() {
 				#expect(SystemInformation.Hardware.Model.isVirtualMachine.testCondition)
 			}
 
-			@Test("isLaptop")
+			@Test
 			func isLaptop() {
 				#expect(SystemInformation.Hardware.Model.isLaptop.testCondition)
 			}
 
-			@Test("name")
+			@Test
 			func name() async {
 				#expect(await SystemInformation.Hardware.Model.name.testCondition)
 			}
 
-			@Test("localizedName")
+			@Test
 			func localizedName() async {
 				#expect(await SystemInformation.Hardware.Model.localizedName.testCondition)
 			}
 
-			@Test("displayName")
+			@Test
 			func displayName() async {
 				#expect(await SystemInformation.Hardware.Model.displayName.testCondition)
 			}
 
-			@Test("identifier")
+			@Test
 			func identifier() async {
 				#expect(await SystemInformation.Hardware.Model.identifier.testCondition)
 			}
 
-			@Test("namePrefix")
+			@Test
 			func namePrefix() {
 				#expect(SystemInformation.Hardware.Model.namePrefix.testCondition)
 			}
 
-			@Test("number")
+			@Test
 			func number() async {
 				#expect(await SystemInformation.Hardware.Model.number.testCondition)
 			}
 
-			@Test("regulatoryNumber")
+			@Test
 			func regulatoryNumber() async {
 				#expect(await SystemInformation.Hardware.Model.regulatoryNumber.testCondition)
 			}
 
-			@Test("symbol")
+			@Test
 			func symbol() {
 				#expect(SystemInformation.Hardware.Model.symbol != .desktopcomputerAndMacbook)
 			}
 		}
 
-		@Test("securityChip")
+		@Test
 		func securityChip() async {
 			#expect(await SystemInformation.Hardware.securityChip.testCondition)
 		}
 
-		@Suite("CPU")
 		struct CPU {
 
-			@Suite("Cores")
 			struct Cores {
 
-				@Test("differentTypes")
+				@Test
 				func differentTypes() {
 					#expect(SystemInformation.Hardware.CPU.Cores.differentTypes.testCondition)
 				}
 
-				@Test("total")
+				@Test
 				func total() async {
 					#expect(await SystemInformation.Hardware.CPU.Cores.total.testCondition)
 				}
 
-				@Test("performance")
+				@Test
 				func performance() async {
 					#expect(await SystemInformation.Hardware.CPU.Cores.performance.testCondition)
 				}
 
-				@Test("efficiency")
+				@Test
 				func efficiency() async {
 					#expect(await SystemInformation.Hardware.CPU.Cores.efficiency.testCondition)
 				}
 			}
 
-			@Test("type")
+			@Test
 			func type() async {
 				#expect(await SystemInformation.Hardware.CPU.type.testCondition)
 			}
 
-			@Test("name")
+			@Test
 			func name() async {
 				#expect(await SystemInformation.Hardware.CPU.name.testCondition)
 			}
 
-			@Test("frequency")
+			@Test
 			func frequency() async {
 				#expect(await SystemInformation.Hardware.CPU.frequency.testCondition)
 			}
 		}
 
-		@Test("memory")
+		@Test
 		func memory() async {
 			#expect(await SystemInformation.Hardware.memory.testCondition)
 		}
 
-		@Suite("Machine")
 		struct Machine {
 
-			@Test("serialNumber")
+			@Test
 			func serialNumber() async {
 				#expect(await SystemInformation.Hardware.Machine.serialNumber.testCondition)
 			}
 
-			@Test("hardwareUUID")
+			@Test
 			func hardwareUUID() async {
 				#expect(await SystemInformation.Hardware.Machine.hardwareUUID.testCondition)
 			}
 
-			@Test("provisioningUDID")
+			@Test
 			func provisioningUDID() async {
 				#expect(await SystemInformation.Hardware.Machine.provisioningUDID.testCondition)
 			}

@@ -9,31 +9,31 @@ struct SystemInformationSoftwareView: View {
 
 	var body: some View {
 		SystemInformationTabView(content: [
-			"SMC": [
-				"Version": SystemInformation.Software.SMC.version,
+			.smc: [
+				.version: SystemInformation.Software.SMC.version,
 			],
-			"Firmware": [
-				"Version": SystemInformation.Software.Firmware.version,
+			.firmware: [
+				.version: SystemInformation.Software.Firmware.version,
 			],
-			"Kernel": [
-				"Name": SystemInformation.Software.Kernel.name,
-				"Version": SystemInformation.Software.Kernel.version,
+			.kernel: [
+				.name: SystemInformation.Software.Kernel.name,
+				.version: SystemInformation.Software.Kernel.version,
 			],
-			"macOS": [
-				"Version": SystemInformation.Software.OS.version,
-				"Code Name": SystemInformation.Software.OS.codeName,
-				"Build Number": SystemInformation.Software.OS.buildNumber,
-				"Boot Mode": SystemInformation.Software.OS.bootMode,
-				"Boot Volume": SystemInformation.Software.OS.bootVolume,
-				"Loader Version": SystemInformation.Software.OS.loaderVersion,
+			.macOS: [
+				.version: SystemInformation.Software.OS.version,
+				.codeName: SystemInformation.Software.OS.codeName,
+				.buildNumber: SystemInformation.Software.OS.buildNumber,
+				.bootMode: SystemInformation.Software.OS.bootMode,
+				.bootVolume: SystemInformation.Software.OS.bootVolume,
+				.loaderVersion: SystemInformation.Software.OS.loaderVersion,
 			],
-			"Computer": [
-				"Name": SystemInformation.Software.Computer.name,
-				"Hostname": SystemInformation.Software.Computer.hostName,
+			.computer: [
+				.name: SystemInformation.Software.Computer.name,
+				.hostname: SystemInformation.Software.Computer.hostName,
 			],
-			"User": [
-				"Name": SystemInformation.Software.User.name,
-				"Account Name": SystemInformation.Software.User.accountName,
+			.user: [
+				.name: SystemInformation.Software.User.name,
+				.accountName: SystemInformation.Software.User.accountName,
 			],
 		])
 	}

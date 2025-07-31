@@ -3,6 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
+import SFSafeSymbols
 import SwiftUI
 
 struct TabButton<TabDataType: TabData>: View {
@@ -10,13 +11,11 @@ struct TabButton<TabDataType: TabData>: View {
 	let tab: TabDataType
 
 	var body: some View {
-		Button {
+		Button(
+			tab as? ContentViewTab == .settings ? .settingsEllipsis : tab.title,
+			systemImage: tab.symbol.rawValue,
+		) {
 			SharedData.sharedData.selectedTabsIndices[TabDataType.id] = tab.index
-		} label: {
-			Label(
-				tab as? ContentViewTab == .settings ? "Settings…" : tab.localizedStringKey,
-				systemSymbol: tab.symbol,
-			)
 		}
 		.keyboardShortcut(
 			tab as? ContentViewTab == .settings ? "," : KeyEquivalent(Character(String(tab.index + 1))),

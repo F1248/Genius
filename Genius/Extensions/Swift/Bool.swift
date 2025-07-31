@@ -4,18 +4,10 @@
 //
 
 import Foundation
-import SFSafeSymbols
-import SwiftUI
 
-extension Bool: DataInitializable, UISymbolRepresentable {
+extension Bool: @retroactive Comparable, Maximizable, PossiblyOptional, DataInitializable {
 
-	var uiRepresentation: Symbol? {
-		Symbol(
-			self ? .checkmark : .xmark,
-			color: self ? .green : .red,
-			label: self ? "Enabled" : "Disabled",
-		)
-	}
+	static var max: Self { true }
 
 	init?(_ data: Data) {
 		switch data.first {
@@ -85,6 +77,10 @@ extension Bool: DataInitializable, UISymbolRepresentable {
 			valuesTrue: "enabled",
 			valuesFalse: "disabled",
 		)
+	}
+
+	public static func < (lhs: Self, rhs: Self) -> Bool {
+		!lhs && rhs
 	}
 }
 

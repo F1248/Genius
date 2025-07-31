@@ -5,9 +5,9 @@
 
 import Foundation
 
-extension Int: DefaultInitializable, DataInitializable, UIStringRepresentable {
+extension Int: DataInitializable, UIStringRepresentable {
 
-	var uiRepresentation: String? {
+	nonisolated var uiRepresentation: String? {
 		String(self)
 	}
 

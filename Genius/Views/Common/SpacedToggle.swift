@@ -3,15 +3,16 @@
 // See LICENSE.txt for license information.
 //
 
+import Foundation
 import SwiftUI
 
 struct SpacedToggle: View {
 
-	let label: LocalizedStringKey
+	let label: LocalizedStringResource
 	let isOn: Binding<Bool>
 
 	// swiftlint:disable:next type_contents_order
-	init(_ label: LocalizedStringKey, isOn: Binding<Bool>) {
+	init(_ label: LocalizedStringResource, isOn: Binding<Bool>) {
 		self.label = label
 		self.isOn = isOn
 	}

@@ -8,8 +8,7 @@ import Testing
 
 extension OptionalOperators {
 
-	@Suite("Optional comparison operators")
-	struct OptionalComparisonOperators {
+	struct Comparison {
 
 		@Test(">?")
 		func optionalGreaterThan() {

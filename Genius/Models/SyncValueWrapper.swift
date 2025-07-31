@@ -5,5 +5,5 @@
 
 struct SyncValueWrapper<Value: Sendable>: ValueWrapperProtocol {
 
-	let value: Value
+	nonisolated let value: Value
 }

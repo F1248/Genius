@@ -5,177 +5,7 @@
   ],
   "sourceLanguage" : "en",
   "strings" : {
-    "Are you sure you want to uninstall Genius?" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Möchtest du Genius wirklich deinstallieren?"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Are you sure you want to uninstall Genius?"
-          }
-        }
-      }
-    },
-    "Ask to allow accessories to connect" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fragen, um Verbinden von Zubehör zu erlauben"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ask to allow accessories to connect"
-          }
-        }
-      }
-    },
-    "Automatic Updates" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Automatische Updates"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Automatic Updates"
-          }
-        }
-      }
-    },
-    "Boot Mode" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Startmodus"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Boot Mode"
-          }
-        }
-      }
-    },
-    "Boot Volume" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Startvolume"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Boot Volume"
-          }
-        }
-      }
-    },
-    "CPU Frequency" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CPU-Geschwindigkeit"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CPU Speed"
-          }
-        }
-      }
-    },
-    "CPU Name" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CPU-Name"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CPU Name"
-          }
-        }
-      }
-    },
-    "CPU Type" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CPU-Typ"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CPU Type"
-          }
-        }
-      }
-    },
-    "Download macOS updates" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "macOS-Updates herunterladen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Download macOS updates"
-          }
-        }
-      }
-    },
-    "Genius and all its data will be uninstalled. This action cannot be undone." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Genius und alle seine Daten werden deinstalliert. Diese Aktion kann nicht widerrufen werden."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Genius and all its data will be uninstalled. This action cannot be undone."
-          }
-        }
-      }
-    },
-    "Genius requires administrator privileges." : {
+    "administratorPrivilegesRequest" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -192,7 +22,143 @@
         }
       }
     },
-    "Install app updates from the App Store" : {
+    "askToAllowAccessoriesToConnect" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fragen, um Verbinden von Zubehör zu erlauben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask to allow accessories to connect"
+          }
+        }
+      }
+    },
+    "automaticUpdates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatische Updates"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic Updates"
+          }
+        }
+      }
+    },
+    "bootMode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startmodus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boot Mode"
+          }
+        }
+      }
+    },
+    "bootVolume" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startvolume"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boot Volume"
+          }
+        }
+      }
+    },
+    "cpuFrequency" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU-Geschwindigkeit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU Speed"
+          }
+        }
+      }
+    },
+    "cpuName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU-Name"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU Name"
+          }
+        }
+      }
+    },
+    "cpuType" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU-Typ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU Type"
+          }
+        }
+      }
+    },
+    "downloadMacOSUpdates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS-Updates herunterladen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download macOS updates"
+          }
+        }
+      }
+    },
+    "installAppStoreAppUpdates" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -209,7 +175,7 @@
         }
       }
     },
-    "Install configuration data updates" : {
+    "installConfigurationDataUpdates" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -226,7 +192,7 @@
         }
       }
     },
-    "Install critical updates" : {
+    "installCriticalUpdates" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -243,7 +209,7 @@
         }
       }
     },
-    "Install macOS updates" : {
+    "installMacOSUpdates" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -260,7 +226,7 @@
         }
       }
     },
-    "Malware Protection" : {
+    "malwareProtection" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -277,7 +243,7 @@
         }
       }
     },
-    "System Information" : {
+    "systemInformation" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -294,7 +260,7 @@
         }
       }
     },
-    "Uninstall Genius" : {
+    "uninstallApp" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -311,7 +277,7 @@
         }
       }
     },
-    "Uninstall Genius…" : {
+    "uninstallAppEllipsis" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -324,6 +290,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uninstall Genius…"
+          }
+        }
+      }
+    },
+    "uninstallationMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius und alle seine Daten werden deinstalliert. Diese Aktion kann nicht widerrufen werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius and all its data will be uninstalled. This action cannot be undone."
+          }
+        }
+      }
+    },
+    "uninstallationTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Möchtest du Genius wirklich deinstallieren?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to uninstall Genius?"
           }
         }
       }

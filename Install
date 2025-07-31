@@ -26,7 +26,12 @@ else
 	mkdir -p ~/Applications
 	cd ~/Applications
 fi
-if [[ -e Genius.app && ((! -f Genius.app/Contents/Info.plist) || $(defaults read "$PWD/Genius.app/Contents/Info.plist" "CFBundleIdentifier") != "dev.F1248.Genius") ]]; then
+if [[
+	-e Genius.app && (
+		! -f Genius.app/Contents/Info.plist ||
+			$(defaults read "$PWD/Genius.app/Contents/Info.plist" "CFBundleIdentifier") != "dev.F1248.Genius"
+	)
+]]; then
 	echo "\nError: A different app already exists at $PWD/Genius.app!\n" >&2
 	exit 1
 fi
@@ -41,7 +46,7 @@ else
 fi
 
 echo "Downloading..."
-curl --no-progress-meter --remote-name --location https://nightly.link/F1248/Genius/workflows/Build-Genius/main/Genius.zip
+curl --no-progress-meter --remote-name --location https://nightly.link/F1248/Genius/workflows/Build-app/main/Genius.zip
 
 echo "Installing..."
 unzip -q -o Genius.zip
@@ -63,7 +68,7 @@ if $is_recoveryos; then
 else
 	open Genius.app
 	sleep 0.5
-	open Genius.app	# work around `open` opening apps in the background when not already running
+	open Genius.app # work around `open` opening apps in the background when not already running
 fi
 
 echo "Done."

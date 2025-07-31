@@ -3,7 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
-protocol SelfIdentifiable: Identifiable where Self: Equatable {}
+protocol SelfIdentifiable: Identifiable {}
 
 extension SelfIdentifiable {
 

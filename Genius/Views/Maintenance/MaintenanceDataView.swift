@@ -4,17 +4,18 @@
 //
 
 import _Concurrency
+import Foundation
 import SwiftUI
 
 struct MaintenanceDataView: View {
 
-	@State var content: CustomKeyValuePairs<LocalizedStringKey, CustomKeyValuePairs<MaintenanceCheckLabel, Symbol>>?
+	@State var content: CustomKeyValuePairs<LocalizedStringResource, CustomKeyValuePairs<MaintenanceCheckLabel, Symbol>>?
 
-	let contentData: KeyValuePairs<LocalizedStringKey, KeyValuePairs<MaintenanceCheckLabel, any UISymbolRepresentable>>
+	let contentData: KeyValuePairs<LocalizedStringResource, KeyValuePairs<MaintenanceCheckLabel, any UISymbolRepresentable>>
 
 	// swiftlint:disable:next type_contents_order
 	init(
-		content: KeyValuePairs<LocalizedStringKey, KeyValuePairs<MaintenanceCheckLabel, any UISymbolRepresentable>>,
+		content: KeyValuePairs<LocalizedStringResource, KeyValuePairs<MaintenanceCheckLabel, any UISymbolRepresentable>>,
 	) {
 		self.contentData = content
 	}
@@ -38,7 +39,7 @@ struct MaintenanceDataView: View {
 							}
 							.padding(.horizontal, 2)
 						} label: {
-							Text(varying: groupBoxContent.key)
+							Text(groupBoxContent.key)
 								.font(.title2)
 								.padding()
 						}

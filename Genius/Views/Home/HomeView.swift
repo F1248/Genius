@@ -8,7 +8,7 @@ import SwiftUI
 struct HomeView: View {
 
 	var body: some View {
-		Text("Genius")
+		Text(.genius)
 			.font(.largeTitle)
 			.padding()
 	}

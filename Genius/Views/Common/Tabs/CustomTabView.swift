@@ -7,7 +7,7 @@ import SwiftUI
 
 struct CustomTabView: View {
 
-	@State var selectedTabIndexPrivate = 0 // swiftlint:disable:this explicit_type_interface
+	@State var selectedTabIndexPrivate: Int = 0
 
 	let selectedTabIndexParameter: Binding<Int>?
 	let entireWindow: Bool
@@ -25,7 +25,7 @@ struct CustomTabView: View {
 	@ViewBuilder var picker: some View {
 		Picker(selection: selectedTabIndexParameter ?? $selectedTabIndexPrivate) {
 			ForEach(tabs) { tab in
-				tab.title
+				Text(tab.title)
 					.tag(tab.index)
 			}
 		}

@@ -8,82 +8,75 @@ import Testing
 
 extension SystemInformationTests {
 
-	@Suite("MaintenanceChecks")
 	enum MaintenanceChecks {
 
-		@Suite("TheftProtection")
 		struct TheftProtection {
 
-			@Test("activationLock")
+			@Test
 			func activationLock() async {
 				#expect(await SystemInformation.MaintenanceChecks.TheftProtection.activationLock.testCondition)
 			}
 
-			@Test("firmwarePassword")
+			@Test
 			func firmwarePassword() async {
 				#expect(await SystemInformation.MaintenanceChecks.TheftProtection.firmwarePassword.testCondition)
 			}
 		}
 
-		@Suite("DataSecurity")
 		struct DataSecurity {
 
-			@Test("fileVault")
+			@Test
 			func fileVault() async {
 				#expect(await SystemInformation.MaintenanceChecks.DataSecurity.fileVault.testCondition)
 			}
 		}
 
-		@Suite("MalwareProtection")
 		struct MalwareProtection {
 
-			@Test("systemIntegrityProtection")
+			@Test
 			func systemIntegrityProtection() async {
 				#expect(await SystemInformation.MaintenanceChecks.MalwareProtection.systemIntegrityProtection.testCondition)
 			}
 
-			@Test("firewall")
+			@Test
 			func firewall() async {
 				#expect(await SystemInformation.MaintenanceChecks.MalwareProtection.firewall.testCondition)
 			}
 
-			@Test("gatekeeper")
+			@Test
 			func gatekeeper() async {
 				#expect(await SystemInformation.MaintenanceChecks.MalwareProtection.gatekeeper.testCondition)
 			}
 
-			@Test("askToAllowAccessoriesToConnect")
+			@Test
 			func askToAllowAccessoriesToConnect() async {
-				#expect(
-					await SystemInformation.MaintenanceChecks.MalwareProtection.askToAllowAccessoriesToConnect.testCondition,
-				)
+				#expect(await SystemInformation.MaintenanceChecks.MalwareProtection.allowAccessoriesToConnect.testCondition)
 			}
 		}
 
-		@Suite("AutomaticUpdates")
 		struct AutomaticUpdates {
 
-			@Test("downloadMacOS")
+			@Test
 			func downloadMacOS() async {
 				#expect(await SystemInformation.MaintenanceChecks.AutomaticUpdates.downloadMacOS.testCondition)
 			}
 
-			@Test("installMacOS")
+			@Test
 			func installMacOS() async {
 				#expect(await SystemInformation.MaintenanceChecks.AutomaticUpdates.installMacOS.testCondition)
 			}
 
-			@Test("installCritical")
+			@Test
 			func installCritical() async {
 				#expect(await SystemInformation.MaintenanceChecks.AutomaticUpdates.installCritical.testCondition)
 			}
 
-			@Test("installConfigurationData")
+			@Test
 			func installConfigurationData() async {
 				#expect(await SystemInformation.MaintenanceChecks.AutomaticUpdates.installConfigurationData.testCondition)
 			}
 
-			@Test("installAppStoreApps")
+			@Test
 			func installAppStoreApps() async {
 				#expect(await SystemInformation.MaintenanceChecks.AutomaticUpdates.installAppStoreApps.testCondition)
 			}

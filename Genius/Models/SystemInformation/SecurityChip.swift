@@ -3,6 +3,8 @@
 // See LICENSE.txt for license information.
 //
 
+import Foundation
+
 enum SecurityChip: Comparable, UIStringRepresentable {
 
 	case none
@@ -10,15 +12,12 @@ enum SecurityChip: Comparable, UIStringRepresentable {
 	case t2
 	case mSeries
 
-	var uiRepresentation: String? {
-		{
-			switch self {
-				case .none: "None (Security Chip)"
-				case .t1: "Apple T1"
-				case .t2: "Apple T2"
-				case .mSeries: "M-series"
-			}
-		}()
-			.localized
+	nonisolated var uiRepresentation: String? {
+		String(localized: { switch self {
+			case .none: .noneSecurityChip
+			case .t1: .appleT1
+			case .t2: .appleT2
+			case .mSeries: .mSeries
+		}}())
 	}
 }
