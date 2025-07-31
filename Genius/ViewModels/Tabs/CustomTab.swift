@@ -3,7 +3,6 @@
 // See LICENSE.txt for license information.
 //
 
-import _Concurrency
 import Foundation
 import SwiftUI
 
@@ -13,7 +12,6 @@ struct CustomTab {
 	let index: Int
 	let content: AnyView
 
-	@MainActor
 	init(
 		_ title: LocalizedStringResource,
 		index: Int,
