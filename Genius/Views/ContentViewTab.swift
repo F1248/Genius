@@ -23,12 +23,12 @@ enum ContentViewTab: @MainActor TabData {
 		case .systemInformation: .systemInformation
 		case .maintenance: .maintenance
 		case .settings: .settings
-	}}
+	} }
 
 	var displayTitleInBody: Bool { switch self {
 		case .home: false
 		default: true
-	}}
+	} }
 
 	var symbol: SFSymbol { switch self {
 		case .home: .house
@@ -36,12 +36,12 @@ enum ContentViewTab: @MainActor TabData {
 			if #available(macOS 15.4, *) { SFSymbol(rawValue: "info.circle.text.page") } else { .docTextBelowEcg }
 		case .maintenance: .stethoscope
 		case .settings: .gear
-	}}
+	} }
 
 	var content: some View { switch self {
 		case .home: HomeView()
 		case .systemInformation: SystemInformationView()
 		case .maintenance: MaintenanceView()
 		case .settings: SettingsView()
-	}}
+	} }
 }

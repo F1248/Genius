@@ -18,6 +18,6 @@ enum SecurityChip: Comparable, UIStringRepresentable {
 			case .t1: .appleT1
 			case .t2: .appleT2
 			case .mSeries: .mSeries
-		}}())
+		} }())
 	}
 }

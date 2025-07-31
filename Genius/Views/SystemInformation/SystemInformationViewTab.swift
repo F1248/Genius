@@ -19,7 +19,7 @@ enum SystemInformationViewTab: @MainActor TabData {
 	var title: LocalizedStringResource { switch self {
 		case .hardware: .hardware
 		case .software: .software
-	}}
+	} }
 
 	var displayTitleInBody: Bool {
 		true
@@ -28,10 +28,10 @@ enum SystemInformationViewTab: @MainActor TabData {
 	var symbol: SFSymbol { switch self {
 		case .hardware: SystemInformation.Hardware.Model.symbol
 		case .software: .macwindowOnRectangle
-	}}
+	} }
 
 	var content: some View { switch self {
 		case .hardware: SystemInformationHardwareView()
 		case .software: SystemInformationSoftwareView()
-	}}
+	} }
 }

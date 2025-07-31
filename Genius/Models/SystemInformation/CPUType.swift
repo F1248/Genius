@@ -14,6 +14,6 @@ enum CPUType: UIStringRepresentable {
 		String(localized: { switch self {
 			case .intel: .intel
 			case .appleSilicon: .appleSilicon
-		}}())
+		} }())
 	}
 }

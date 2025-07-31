@@ -16,6 +16,6 @@ enum BootMode: UIStringRepresentable {
 			case .normal: .bootModeNormal
 			case .safe: .bootModeSafe
 			case .recovery: .bootModeRecovery
-		}}())
+		} }())
 	}
 }
