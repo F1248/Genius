@@ -78,13 +78,11 @@ struct MaintenanceView: View {
 				MaintenanceCheckLabel(
 					.installAppStoreAppUpdates,
 					help: URL(appleSupportArticle: 102_629),
-					setting: {
-						if #available(macOS 26, *) {
-							URL(string: "macappstore:showSettingsPage")
-						} else {
-							URL(systemSetting: .softwareUpdate)
-						}
-					}(),
+					setting: { if #available(macOS 26, *) {
+						URL(string: "macappstore:showSettingsPage")
+					} else {
+						URL(systemSetting: .softwareUpdate)
+					} }(),
 				): SystemInformation.MaintenanceChecks.AutomaticUpdates.installAppStoreApps,
 			],
 		])
