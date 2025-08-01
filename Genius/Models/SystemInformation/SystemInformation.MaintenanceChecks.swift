@@ -16,9 +16,7 @@ extension SystemInformation {
 				applicable: Hardware.securityChip.value >=? .t2 &&? !?Hardware.Model.isVirtualMachine,
 			)
 			static let firmwarePassword = MaintenanceCheck<Bool?, _>(
-				{ await Bool(
-					firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check", requiresRoot: true)?.runSafe(),
-				) },
+				{ await Bool(firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check", asRoot: true)?.runSafe()) },
 				applicable: Hardware.CPU.type.value == .intel &&? !?Hardware.Model.isVirtualMachine,
 			)
 		}
