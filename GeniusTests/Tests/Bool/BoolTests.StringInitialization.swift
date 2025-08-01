@@ -11,6 +11,12 @@ extension BoolTests {
 	@Suite("String initialization")
 	struct StringInitialization {
 
+		@Test("system_profiler activation_lock_status")
+		func systemProfilerActivationLockStatus() {
+			#expect(Bool(systemProfilerActivationLockStatusOutput: "activation_lock_enabled") == true)
+			#expect(Bool(systemProfilerActivationLockStatusOutput: "activation_lock_disabled") == false)
+		}
+
 		@Test()
 		func firmwarepasswd() {
 			#expect(Bool(firmwarepasswdOutput: "Password Enabled: Yes") == true)

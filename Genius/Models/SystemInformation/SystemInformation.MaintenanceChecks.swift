@@ -12,8 +12,10 @@ extension SystemInformation {
 		enum TheftProtection {
 
 			static let activationLock = MaintenanceCheck<Bool?, _>(
-				IORegistry(class: IORegistry.nvramVariablesClass).contains("fmm-mobileme-token-FMM"),
-				applicable: Hardware.securityChip.value >=? .t2 &&? !?Hardware.Model.isVirtualMachine,
+				{ await Bool(systemProfilerActivationLockStatusOutput: SystemProfiler.hardware?["activation_lock_status"]) },
+				applicable: Hardware.securityChip.value >=? .t2 &&?
+					!?Hardware.Model.isVirtualMachine &&?
+					Software.OS.bootMode.value !=? .recovery,
 			)
 			static let firmwarePassword = MaintenanceCheck<Bool?, _>(
 				{ await Bool(firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check", asRoot: true)?.runSafe()) },

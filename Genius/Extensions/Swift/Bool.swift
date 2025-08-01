@@ -25,6 +25,14 @@ extension Bool: @retroactive Comparable, Maximizable, PossiblyOptional, DataInit
 		} else { return nil }
 	}
 
+	init?(systemProfilerActivationLockStatusOutput: (any Sendable)?) {
+		self.init(
+			(systemProfilerActivationLockStatusOutput as? String)?.betweenAnchored(start: "activation_lock_"),
+			valuesTrue: "enabled",
+			valuesFalse: "disabled",
+		)
+	}
+
 	init?(firmwarepasswdOutput: String?) {
 		self.init(
 			firmwarepasswdOutput?.betweenAnchored(start: "Password Enabled: "),
