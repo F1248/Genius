@@ -1076,13 +1076,30 @@
         }
       }
     },
-    "user" : {
+    "userWithInflection" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "^[Benutzerin](inflect: true, inflectionAlternative: \"Benutzer:in\")"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User"
+          }
+        }
+      }
+    },
+    "userWithoutInflection" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzer:in"
           }
         },
         "en" : {
