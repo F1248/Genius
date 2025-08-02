@@ -153,7 +153,10 @@ jobs:
             - name: Build for testing
               run: |
                 # work around warning `duplicate -rpath '@executable_path' ignored`
-                xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation \
+                xcodebuild build-for-testing \
+                    -scheme Genius \
+                    -destination generic/platform=macOS \
+                    -skipPackagePluginValidation \
                     | tee xcodebuild.log \
                     | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
                     | ./xcbeautify --disable-logging --renderer github-actions
@@ -164,14 +167,21 @@ jobs:
             - name: Run tests
               run: |
                 # work around warning `duplicate -rpath '@executable_path' ignored`
-                xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation \
+                xcodebuild test \
+                    -scheme Genius \
+                    -destination platform=macOS,arch=arm64 \
+                    -skipPackagePluginValidation \
                     | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
                     | ./xcbeautify --disable-logging --renderer github-actions
 
             - name: Build app
               run: |
                 # work around warnings `*/ModuleCache.noindex/*.pcm: No such file or directory`
-                xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation \
+                xcodebuild archive \
+                    -scheme Genius \
+                    -destination generic/platform=macOS \
+                    -archivePath Genius \
+                    -skipPackagePluginValidation \
                     | grep --invert-match "warning: .*/ModuleCache.noindex/.*\.pcm: No such file or directory" \
                     | ./xcbeautify --disable-logging --renderer github-actions
                 mv Genius.xcarchive/Products/Applications/Genius.app .
