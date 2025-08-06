@@ -7,7 +7,7 @@ struct VersionNumber: UIStringRepresentable {
 
 	let versions: [Int]
 
-	nonisolated var uiRepresentation: String? {
+	var uiRepresentation: String? {
 		versions.map(String.init).joined(separator: ".")
 	}
 

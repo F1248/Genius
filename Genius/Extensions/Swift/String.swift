@@ -5,7 +5,7 @@
 
 extension String: DataInitializable, UIStringRepresentable {
 
-	nonisolated var uiRepresentation: String? {
+	var uiRepresentation: String? {
 		self
 	}
 }
