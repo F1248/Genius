@@ -47,6 +47,13 @@
 			);
 			target = A42B353C2BA2185B009E81AD /* Genius */;
 		};
+		A47C883D2E4F6E6800DC9DCC /* Exceptions for "GeniusTests" folder in "GeniusTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Genius.xctestplan,
+			);
+			target = A4D9A1A92D257055008D91E7 /* GeniusTests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -66,6 +73,9 @@
 		};
 		A4D9A1AB2D257055008D91E7 /* GeniusTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A47C883D2E4F6E6800DC9DCC /* Exceptions for "GeniusTests" folder in "GeniusTests" target */,
+			);
 			path = GeniusTests;
 			sourceTree = "<group>";
 		};
