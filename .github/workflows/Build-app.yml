@@ -10,22 +10,24 @@ on:
         paths:
             - .github/workflows/Build-app.yml
             - .periphery.yml
-            - .swift-version
             - .swiftformat
             - .swiftlint.yml
             - Genius/**
+            - Genius.xcconfig
             - Genius.xcodeproj/**
             - GeniusTests/**
+            - Install
     pull_request:
         paths:
             - .github/workflows/Build-app.yml
             - .periphery.yml
-            - .swift-version
             - .swiftformat
             - .swiftlint.yml
             - Genius/**
+            - Genius.xcconfig
             - Genius.xcodeproj/**
             - GeniusTests/**
+            - Install
     workflow_dispatch:
 
 permissions: {}
