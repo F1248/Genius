@@ -12,7 +12,7 @@ if [[ $0 != */Genius.app/Contents/Resources/Uninstall ]]; then
 	exit 1
 fi
 
-cd "$(dirname "$0")"/../../..
+cd "$(dirname "$0")/../../.."
 
 while ps aux -c | grep -w Genius > /dev/null; do
 	sleep 0.1
