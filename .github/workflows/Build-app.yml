@@ -159,13 +159,17 @@ jobs:
                     -scheme Genius \
                     -destination generic/platform=macOS \
                     -skipPackagePluginValidation \
-                    | tee xcodebuild.log \
+                    | tee xcodebuild-SwiftLint.log \
                     | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
                     | ./xcbeautify --disable-logging --renderer github-actions \
-                    | sed "s/::warning/::error/g"
+                    | sed "s/::warning/::error/g" \
+                    | tee xcodebuild.log
+                if grep --quiet "::error" xcodebuild.log; then
+                    exit 1
+                fi
 
             - name: Run SwiftLint analyzer rules
-              run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
+              run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild-SwiftLint.log
 
             - name: Run tests
               run: |
@@ -176,7 +180,11 @@ jobs:
                     -skipPackagePluginValidation \
                     | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
                     | ./xcbeautify --disable-logging --renderer github-actions \
-                    | sed "s/::warning/::error/g"
+                    | sed "s/::warning/::error/g" \
+                    | tee xcodebuild.log
+                if grep --quiet "::error" xcodebuild.log; then
+                    exit 1
+                fi
 
             - name: Build app
               run: |
@@ -186,7 +194,11 @@ jobs:
                     -archivePath Genius \
                     -skipPackagePluginValidation \
                     | ./xcbeautify --disable-logging --renderer github-actions \
-                    | sed "s/::warning/::error/g"
+                    | sed "s/::warning/::error/g" \
+                    | tee xcodebuild.log
+                if grep --quiet "::error" xcodebuild.log; then
+                    exit 1
+                fi
                 mv Genius.xcarchive/Products/Applications/Genius.app .
                 mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
 
