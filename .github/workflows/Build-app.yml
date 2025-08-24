@@ -88,7 +88,7 @@ jobs:
             - name: Install unxip
               if: env.latest_xcode_version_installed == 'false'
               run: |
-                curl --remote-name --location https://github.com/saagarjha/unxip/releases/latest/download/unxip
+                curl https://github.com/saagarjha/unxip/releases/latest/download/unxip --location --remote-name
                 chmod +x unxip
                 echo "$(./unxip --version) installed"
 
@@ -113,7 +113,8 @@ jobs:
               run: |
                 tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
                 curl \
-                    --location https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip \
+                    https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip \
+                    --location \
                     --output periphery.zip
                 unzip periphery.zip
                 echo "Periphery $(./periphery version) installed"
@@ -124,8 +125,9 @@ jobs:
             - name: Install SwiftFormat
               run: |
                 curl \
-                    --remote-name \
-                    --location https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip
+                    https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip \
+                    --location \
+                    --remote-name
                 unzip swiftformat.zip
                 echo "SwiftFormat $(./swiftformat --version) installed"
 
@@ -135,8 +137,9 @@ jobs:
             - name: Install SwiftLint
               run: |
                 curl \
-                    --remote-name \
-                    --location https://github.com/realm/SwiftLint/releases/latest/download/portable_swiftlint.zip
+                    https://github.com/realm/SwiftLint/releases/latest/download/portable_swiftlint.zip \
+                    --location \
+                    --remote-name
                 unzip portable_swiftlint.zip
                 echo "SwiftLint $(./swiftlint version) installed"
 
@@ -147,7 +150,8 @@ jobs:
               run: |
                 tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
                 curl \
-                    --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip \
+                    https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip \
+                    --location \
                     --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"

@@ -50,7 +50,7 @@ else
 fi
 
 echo "Downloading..."
-curl --no-progress-meter --remote-name --location https://nightly.link/F1248/Genius/workflows/Build-app/main/Genius.zip
+curl --no-progress-meter https://nightly.link/F1248/Genius/workflows/Build-app/main/Genius.zip --location --remote-name
 
 echo "Installing..."
 unzip -q -o Genius.zip
