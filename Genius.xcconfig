@@ -97,6 +97,8 @@ LD_WARN_DUPLICATE_LIBRARIES = YES
 LD_WARN_UNUSED_DYLIBS = YES
 LD_WARN_UNUSED_DYLIBS[config=Test] = NO // work around warning `ld: linking with (@rpath/libclang_rt.tsan_osx_dynamic.dylib) but not using any symbols from it`
 LLVM_LTO = YES
+LLVM_LTO[config=Debug] = NO
+LLVM_LTO[config=Test] = NO
 MACOSX_DEPLOYMENT_TARGET = 13.0
 MARKETING_VERSION = 0.1.0
 ONLY_ACTIVE_ARCH[config=Debug] = YES
