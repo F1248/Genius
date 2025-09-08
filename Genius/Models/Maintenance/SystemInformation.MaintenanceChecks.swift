@@ -38,10 +38,12 @@ extension SystemInformation {
 				applicable: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let firewall = MaintenanceCheck<Bool?, _>(
-				{ await Bool(
-					socketfilterfwOutput: Process("/usr/libexec/ApplicationFirewall/socketfilterfw", "--getglobalstate")?
-						.runSafe(),
-				) },
+				{
+					await Bool(
+						socketfilterfwOutput: Process("/usr/libexec/ApplicationFirewall/socketfilterfw", "--getglobalstate")?
+							.runSafe(),
+					)
+				},
 				applicable: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let gatekeeper = MaintenanceCheck<Bool?, _>(

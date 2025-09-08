@@ -13,11 +13,13 @@ enum SecurityChip: Comparable, UIStringRepresentable {
 	case mSeries
 
 	var uiRepresentation: String? {
-		String(localized: { switch self {
-			case .none: .noneSecurityChip
-			case .t1: .appleT1
-			case .t2: .appleT2
-			case .mSeries: .mSeries
-		} }())
+		let localizedStringResource: LocalizedStringResource =
+			switch self {
+				case .none: .noneSecurityChip
+				case .t1: .appleT1
+				case .t2: .appleT2
+				case .mSeries: .mSeries
+			}
+		return String(localized: localizedStringResource)
 	}
 }
