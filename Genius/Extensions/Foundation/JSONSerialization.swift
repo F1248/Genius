@@ -8,6 +8,6 @@ import Foundation
 extension JSONSerialization {
 
 	class func jsonObject(from string: String) -> Any? {
-		try? Data(string).map { try jsonObject(with: $0) }
+		try? jsonObject(with: Data(string.utf8))
 	}
 }
