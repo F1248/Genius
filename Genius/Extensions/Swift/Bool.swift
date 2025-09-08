@@ -17,7 +17,11 @@ extension Bool: @retroactive Comparable, Maximizable, PossiblyOptional, DataInit
 		}
 	}
 
-	init?<Value: Equatable>(_ value: Value, valuesTrue: Value..., valuesFalse: Value...) {
+	init?<Value: Equatable>(
+		_ value: Value,
+		valuesTrue: Value...,
+		valuesFalse: Value...,
+	) {
 		if valuesTrue.contains(value) {
 			self = true
 		} else if valuesFalse.contains(value) {

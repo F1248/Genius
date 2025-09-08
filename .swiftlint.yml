@@ -50,6 +50,8 @@ large_tuple: 3
 line_length: 128
 multiline_arguments:
     first_argument_location: next_line
+multiline_parameters:
+    max_number_of_single_line_parameters: 2
 number_separator:
     minimum_length: 6
 operator_usage_whitespace:
