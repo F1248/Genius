@@ -192,11 +192,13 @@ jobs:
 
             - name: Build app
               run: |
+                # work around warnings `Users/*/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/*.pcm: No such file or directory`
                 xcodebuild archive \
                     -scheme Genius \
                     -destination generic/platform=macOS \
                     -archivePath Genius \
                     -skipPackagePluginValidation \
+                    | grep --invert-match "warning: Users/.*/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/.*.pcm: No such file or directory" \
                     | ./xcbeautify --disable-logging --renderer github-actions \
                     | sed "s/::warning/::error/g" \
                     | tee xcodebuild.log
