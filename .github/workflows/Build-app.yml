@@ -50,7 +50,7 @@ jobs:
         permissions:
             attestations: write
             id-token: write
-        runs-on: macos-15
+        runs-on: macos-26
 
         steps:
             - name: Free up disk space
