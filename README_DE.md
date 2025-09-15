@@ -34,7 +34,7 @@ See LICENSE.txt for license information.
 
 ### Manuelle Installation (in recoveryOS nicht möglich)
 
-1. Lade [den neusten Build](https://nightly.link/F1248/Genius/workflows/Build-app/main/Genius.zip) herunter.
+1. Lade [den neusten Build](https://nightly.link/F1248/Genius/workflows/Build-app/stable/Genius.zip) herunter.
 2. Wenn nicht bereits automatisch entzippt, doppelklicke auf `Genius.zip`, um es zu entzippen.
 3. Verschiebe `Genius.app` in `/Programme`.
 4. Doppelklicke auf die App.
@@ -57,7 +57,7 @@ In macOS Sonoma 14 oder älter:
 Füge diesen Befehl in ein Terminal ein und führe ihn aus:
 
 ```shellsession
-curl https://f1248.github.io | sh
+curl https://f1248.github.io/stable | sh
 ```
 
 ## Hinweise zur Verwendung in recoveryOS

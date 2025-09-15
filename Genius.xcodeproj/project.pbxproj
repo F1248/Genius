@@ -377,16 +377,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = exactVersion;
+				version = 9.0.3;
 			};
 		};
 		A4D6DC6C2D37EE4700E9A61D /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols";
 			requirement = {
-				branch = stable;
-				kind = branch;
+				kind = exactVersion;
+				version = 6.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
