@@ -239,7 +239,7 @@
 			alwaysOutOfDate = 1;
 			name = SwiftFormat;
 			shellPath = /bin/zsh;
-			shellScript = "if [[ ${COMMAND_MODE} && ${CONFIGURATION} == Debug ]]; then\n\tif which -s swiftformat; then\n\t\tswiftformat --lint --lenient .\n\telse\n\t\techo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"\n\tfi\nfi\n";
+			shellScript = "if [[ ${CONFIGURATION} == Debug ]]; then\n\tif which -s swiftformat; then\n\t\tswiftformat --lint --lenient .\n\telse\n\t\techo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"\n\tfi\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
