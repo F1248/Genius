@@ -177,12 +177,10 @@ jobs:
 
             - name: Run tests
               run: |
-                # work around warning `duplicate -rpath '@executable_path' ignored`
-                xcodebuild test \
+                xcodebuild test-without-building \
                     -scheme Genius \
                     -destination platform=macOS,arch=arm64 \
                     -skipPackagePluginValidation \
-                    | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
                     | ./xcbeautify --disable-logging --renderer github-actions \
                     | sed "s/::warning/::error/g" \
                     | tee xcodebuild.log
