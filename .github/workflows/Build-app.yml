@@ -163,17 +163,16 @@ jobs:
                     -scheme Genius \
                     -destination generic/platform=macOS \
                     -skipPackagePluginValidation \
-                    | tee xcodebuild-SwiftLint.log \
                     | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
-                    | ./xcbeautify --disable-logging --renderer github-actions \
-                    | sed "s/::warning/::error/g" \
-                    | tee xcodebuild.log
-                if grep --quiet "::error" xcodebuild.log; then
+                    | sed "s/warning:/error:/g" \
+                    | tee xcodebuild.log \
+                    | ./xcbeautify --disable-logging --renderer github-actions
+                if grep --quiet "error:" xcodebuild.log; then
                     exit 1
                 fi
 
             - name: Run SwiftLint analyzer rules
-              run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild-SwiftLint.log
+              run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
 
             - name: Run tests
               run: |
@@ -181,10 +180,10 @@ jobs:
                     -scheme Genius \
                     -destination platform=macOS,arch=arm64 \
                     -skipPackagePluginValidation \
-                    | ./xcbeautify --disable-logging --renderer github-actions \
-                    | sed "s/::warning/::error/g" \
-                    | tee xcodebuild.log
-                if grep --quiet "::error" xcodebuild.log; then
+                    | sed "s/warning:/error:/g" \
+                    | tee xcodebuild.log \
+                    | ./xcbeautify --disable-logging --renderer github-actions
+                if grep --quiet "error:" xcodebuild.log; then
                     exit 1
                 fi
 
@@ -197,10 +196,10 @@ jobs:
                     -archivePath Genius \
                     -skipPackagePluginValidation \
                     | grep --invert-match "warning: Users/.*/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/.*.pcm: No such file or directory" \
-                    | ./xcbeautify --disable-logging --renderer github-actions \
-                    | sed "s/::warning/::error/g" \
-                    | tee xcodebuild.log
-                if grep --quiet "::error" xcodebuild.log; then
+                    | sed "s/warning:/error:/g" \
+                    | tee xcodebuild.log \
+                    | ./xcbeautify --disable-logging --renderer github-actions
+                if grep --quiet "error:" xcodebuild.log; then
                     exit 1
                 fi
                 mv Genius.xcarchive/Products/Applications/Genius.app .
