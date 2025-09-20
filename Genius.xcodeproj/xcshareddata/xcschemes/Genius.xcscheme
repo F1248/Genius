@@ -38,19 +38,6 @@ See LICENSE.txt for license information.
             default = "YES">
          </TestPlanReference>
       </TestPlans>
-      <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A4D9A1A92D257055008D91E7"
-               BuildableName = "GeniusTests.xctest"
-               BlueprintName = "GeniusTests"
-               ReferencedContainer = "container:Genius.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
