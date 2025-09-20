@@ -162,6 +162,7 @@ jobs:
                 xcodebuild build-for-testing \
                     -scheme Genius \
                     -destination generic/platform=macOS \
+                    -configuration Test-Release \
                     -skipPackagePluginValidation \
                     | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
                     | sed "s/warning:/error:/g" \
@@ -179,6 +180,7 @@ jobs:
                 xcodebuild test-without-building \
                     -scheme Genius \
                     -destination platform=macOS,arch=arm64 \
+                    -configuration Test-Release \
                     -skipPackagePluginValidation \
                     | sed "s/warning:/error:/g" \
                     | tee xcodebuild.log \
