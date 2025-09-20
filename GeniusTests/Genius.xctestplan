@@ -26,7 +26,6 @@
       "id" : "AD7939E7-146A-4408-B7DD-861CA1FABD5B",
       "name" : "Memory Management",
       "options" : {
-        "guardMallocEnabled" : false, "comment" : "work around tests failing on GitHub runner",
         "mallocGuardEdgesEnabled" : true,
         "mallocScribbleEnabled" : true,
         "mallocStackLoggingOptions" : {
