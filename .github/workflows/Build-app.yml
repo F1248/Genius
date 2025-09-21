@@ -190,5 +190,5 @@ jobs:
             - name: Upload debug symbols
               uses: actions/upload-artifact@main
               with:
-                name: Debug Symbols
+                name: Debug-Symbols
                 path: Debug-Symbols.zip
