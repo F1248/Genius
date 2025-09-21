@@ -17,6 +17,7 @@ on:
             - Genius.xcodeproj/**
             - GeniusTests/**
             - Install
+            - Makefile
     pull_request:
         paths:
             - .github/workflows/Build-app.yml
@@ -28,6 +29,7 @@ on:
             - Genius.xcodeproj/**
             - GeniusTests/**
             - Install
+            - Makefile
     workflow_dispatch:
 
 permissions: {}
@@ -83,7 +85,7 @@ jobs:
                 echo "Periphery $(./periphery version) installed"
 
             - name: Run Periphery
-              run: ./periphery scan --format github-actions --strict -- -skipPackagePluginValidation
+              run: make periphery
 
             - name: Install SwiftFormat
               run: |
@@ -95,7 +97,7 @@ jobs:
                 echo "SwiftFormat $(./swiftformat --version) installed"
 
             - name: Run SwiftFormat
-              run: ./swiftformat --lint . --reporter github-actions-log
+              run: make swiftformat
 
             - name: Install SwiftLint
               run: |
@@ -107,7 +109,7 @@ jobs:
                 echo "SwiftLint $(./swiftlint version) installed"
 
             - name: Run SwiftLint lint rules
-              run: ./swiftlint lint --strict --reporter github-actions-logging
+              run: make swiftlint-lint
 
             - name: Install xcbeautify
               run: |
@@ -120,56 +122,16 @@ jobs:
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Build for testing
-              run: |
-                # work around warning `duplicate -rpath '@executable_path' ignored`
-                xcodebuild build-for-testing \
-                    -scheme Genius \
-                    -destination generic/platform=macOS \
-                    -skipPackagePluginValidation \
-                    | tee xcodebuild-SwiftLint.log \
-                    | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
-                    | ./xcbeautify --disable-logging --renderer github-actions \
-                    | sed "s/::warning/::error/g" \
-                    | tee xcodebuild.log
-                if grep --quiet "::error" xcodebuild.log; then
-                    exit 1
-                fi
+              run: make build-for-testing-keep-log
 
             - name: Run SwiftLint analyzer rules
-              run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild-SwiftLint.log
+              run: make swiftlint-analyze-log-exists
 
             - name: Run tests
-              run: |
-                # work around warning `duplicate -rpath '@executable_path' ignored`
-                xcodebuild test \
-                    -scheme Genius \
-                    -destination platform=macOS,arch=arm64 \
-                    -skipPackagePluginValidation \
-                    | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
-                    | ./xcbeautify --disable-logging --renderer github-actions \
-                    | sed "s/::warning/::error/g" \
-                    | tee xcodebuild.log
-                if grep --quiet "::error" xcodebuild.log; then
-                    exit 1
-                fi
+              run: make test-without-building
 
             - name: Build app
-              run: |
-                # work around warnings `Users/*/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/*.pcm: No such file or directory`
-                xcodebuild archive \
-                    -scheme Genius \
-                    -destination generic/platform=macOS \
-                    -archivePath Genius \
-                    -skipPackagePluginValidation \
-                    | grep --invert-match "warning: Users/.*/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/.*.pcm: No such file or directory" \
-                    | ./xcbeautify --disable-logging --renderer github-actions \
-                    | sed "s/::warning/::error/g" \
-                    | tee xcodebuild.log
-                if grep --quiet "::error" xcodebuild.log; then
-                    exit 1
-                fi
-                mv Genius.xcarchive/Products/Applications/Genius.app .
-                mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
+              run: make build
 
             - name: Zip app
               run: zip --recurse-paths Genius.zip Genius.app

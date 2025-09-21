@@ -33,6 +33,9 @@ extension Process {
 			self.arguments = arguments
 		}
 		self.qualityOfService = .userInitiated
+		#if TEST
+			self.environment = (environment ?? [:]).merging(["OS_ACTIVITY_MODE": "disable"]) { $1 }
+		#endif // TEST
 	}
 
 	func waitUntilExit() async {

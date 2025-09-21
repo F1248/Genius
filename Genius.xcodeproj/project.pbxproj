@@ -239,7 +239,7 @@
 			alwaysOutOfDate = 1;
 			name = SwiftFormat;
 			shellPath = /bin/zsh;
-			shellScript = "if [[ ${COMMAND_MODE} && ${CONFIGURATION} == Debug ]]; then\n\tif which -s swiftformat; then\n\t\tswiftformat --lint --lenient .\n\telse\n\t\techo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"\n\tfi\nfi\n";
+			shellScript = "if [[ ${CONFIGURATION} == Debug ]]; then\n\tif which -s swiftformat; then\n\t\tswiftformat --lint --lenient .\n\telse\n\t\techo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"\n\tfi\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -299,26 +299,26 @@
 			};
 			name = Release;
 		};
-		A4B529DB2E4DE6D900BBFD52 /* Test configuration for PBXProject "Genius" */ = {
+		A4B529DB2E4DE6D900BBFD52 /* Test-Release configuration for PBXProject "Genius" */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A4A9C4B62E51D8640050DF2C /* Genius.xcconfig */;
 			buildSettings = {
 			};
-			name = Test;
+			name = "Test-Release";
 		};
-		A4B529DC2E4DE6D900BBFD52 /* Test configuration for PBXNativeTarget "Genius" */ = {
+		A4B529DC2E4DE6D900BBFD52 /* Test-Release configuration for PBXNativeTarget "Genius" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
-			name = Test;
+			name = "Test-Release";
 		};
-		A4B529DD2E4DE6D900BBFD52 /* Test configuration for PBXNativeTarget "GeniusTests" */ = {
+		A4B529DD2E4DE6D900BBFD52 /* Test-Release configuration for PBXNativeTarget "GeniusTests" */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = A4D9A1AB2D257055008D91E7 /* GeniusTests */;
 			baseConfigurationReferenceRelativePath = GeniusTests.xcconfig;
 			buildSettings = {
 			};
-			name = Test;
+			name = "Test-Release";
 		};
 		A4D9A1B02D257055008D91E7 /* Debug configuration for PBXNativeTarget "GeniusTests" */ = {
 			isa = XCBuildConfiguration;
@@ -332,6 +332,27 @@
 			};
 			name = Release;
 		};
+		C8D3C35B2E7EFF4C005EC7BA /* Test-Debug configuration for PBXProject "Genius" */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4A9C4B62E51D8640050DF2C /* Genius.xcconfig */;
+			buildSettings = {
+			};
+			name = "Test-Debug";
+		};
+		C8D3C35C2E7EFF4C005EC7BA /* Test-Debug configuration for PBXNativeTarget "Genius" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = "Test-Debug";
+		};
+		C8D3C35D2E7EFF4C005EC7BA /* Test-Debug configuration for PBXNativeTarget "GeniusTests" */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = A4D9A1AB2D257055008D91E7 /* GeniusTests */;
+			baseConfigurationReferenceRelativePath = GeniusTests.xcconfig;
+			buildSettings = {
+			};
+			name = "Test-Debug";
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -339,8 +360,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A42B354C2BA2185C009E81AD /* Debug configuration for PBXProject "Genius" */,
-				A4B529DB2E4DE6D900BBFD52 /* Test configuration for PBXProject "Genius" */,
 				A42B354D2BA2185C009E81AD /* Release configuration for PBXProject "Genius" */,
+				C8D3C35B2E7EFF4C005EC7BA /* Test-Debug configuration for PBXProject "Genius" */,
+				A4B529DB2E4DE6D900BBFD52 /* Test-Release configuration for PBXProject "Genius" */,
 			);
 			defaultConfigurationName = Release;
 		};
@@ -348,8 +370,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A42B354F2BA2185C009E81AD /* Debug configuration for PBXNativeTarget "Genius" */,
-				A4B529DC2E4DE6D900BBFD52 /* Test configuration for PBXNativeTarget "Genius" */,
 				A42B35502BA2185C009E81AD /* Release configuration for PBXNativeTarget "Genius" */,
+				C8D3C35C2E7EFF4C005EC7BA /* Test-Debug configuration for PBXNativeTarget "Genius" */,
+				A4B529DC2E4DE6D900BBFD52 /* Test-Release configuration for PBXNativeTarget "Genius" */,
 			);
 			defaultConfigurationName = Release;
 		};
@@ -357,8 +380,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A4D9A1B02D257055008D91E7 /* Debug configuration for PBXNativeTarget "GeniusTests" */,
-				A4B529DD2E4DE6D900BBFD52 /* Test configuration for PBXNativeTarget "GeniusTests" */,
 				A4D9A1B12D257055008D91E7 /* Release configuration for PBXNativeTarget "GeniusTests" */,
+				C8D3C35D2E7EFF4C005EC7BA /* Test-Debug configuration for PBXNativeTarget "GeniusTests" */,
+				A4B529DD2E4DE6D900BBFD52 /* Test-Release configuration for PBXNativeTarget "GeniusTests" */,
 			);
 			defaultConfigurationName = Release;
 		};
