@@ -197,7 +197,7 @@ jobs:
                     -destination generic/platform=macOS \
                     -archivePath Genius \
                     -skipPackagePluginValidation \
-                    | grep --invert-match "warning: Users/.*/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/.*.pcm: No such file or directory" \
+                    | grep --invert-match "warning: Users/.*/Library/Developer/Xcode/DerivedData/ModuleCache\.noindex/.*\.pcm: No such file or directory" \
                     | sed "s/warning:/error:/g" \
                     | tee xcodebuild.log \
                     | ./xcbeautify --disable-logging --renderer github-actions
