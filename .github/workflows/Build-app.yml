@@ -136,16 +136,41 @@ jobs:
             - name: Zip app
               run: zip --recurse-paths Genius.zip Genius.app
 
-            - name: Attest build provenance
+            - name: Attest build provenance of Genius.zip
               uses: actions/attest-build-provenance@main
               with:
                 subject-path: Genius.zip
 
-            - name: Upload app
+            - name: Upload Genius.zip
               uses: actions/upload-artifact@main
               with:
-                name: Genius
+                name: Genius.zip
                 path: Genius.zip
+
+            - name: Install create-dmg
+              if: github.ref_type == 'tag'
+              run: |
+                npm install --global create-dmg
+                echo "create-dmg $(create-dmg --version) installed"
+
+            - name: Create DMG file
+              if: github.ref_type == 'tag'
+              run: |
+                rm LICENSE.txt # prevent license from being added to DMG file
+                create-dmg --no-version-in-filename --no-code-sign Genius.app
+
+            - name: Attest build provenance of Genius.dmg
+              if: github.ref_type == 'tag'
+              uses: actions/attest-build-provenance@main
+              with:
+                subject-path: Genius.dmg
+
+            - name: Upload Genius.dmg
+              if: github.ref_type == 'tag'
+              uses: actions/upload-artifact@main
+              with:
+                name: Genius.dmg
+                path: Genius.dmg
 
             - name: Zip debug symbols
               run: zip --recurse-paths Debug-Symbols.zip Genius.app.dSYM
@@ -153,5 +178,5 @@ jobs:
             - name: Upload debug symbols
               uses: actions/upload-artifact@main
               with:
-                name: Debug Symbols
+                name: Debug-Symbols
                 path: Debug-Symbols.zip
