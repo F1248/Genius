@@ -14,20 +14,25 @@
 	environmentEntry,\
 	isEmpty,\
 	noExplicitOwnership,\
+	noForceTryInTests,\
+	noForceUnwrapInTests,\
 	noGuardInTests,\
 	organizeDeclarations,\
+	preferFinalClasses,\
 	preferSwiftTesting,\
+	redundantAsync,\
 	redundantEquatable,\
 	redundantMemberwiseInit,\
 	redundantProperty,\
+	redundantThrows,\
 	singlePropertyPerLine,\
-	throwingTests,\
 	unusedPrivateDeclarations,\
 	wrapEnumCases,\
 	wrapMultilineConditionalAssignment,\
 	wrapMultilineFunctionChains,\
 
 --acronyms "CPU,EFI,ID,IO,JSON,NVRAM,OS,SF,SMC,UDID,UI,URL,UUID"
+--allow-partial-wrapping false
 --cond-assignment always
 --fraction-grouping enabled
 --header "\n© {created.year} F1248 <f1248@mailbox.org>\nSee LICENSE.txt for license information.\n"
@@ -38,6 +43,8 @@
 --organization-mode type
 --property-types explicit
 --ranges no-space
+--redundant-async always
+--redundant-throws always
 --self init-only
 --self-required error
 --semicolons never
