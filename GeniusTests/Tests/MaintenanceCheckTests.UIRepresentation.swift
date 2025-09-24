@@ -37,7 +37,7 @@ extension MaintenanceCheckTests {
 
 		@Test("Development mode enabled")
 		@MainActor
-		func developmentModeEnabledInterfaceModeNormal() async {
+		func developmentModeEnabled() async {
 			Defaults[.developmentMode] = true
 			#expect(await MaintenanceCheck<Bool?, _>(nil, applicable: false).uiRepresentation == .notApplicable)
 			#expect(await MaintenanceCheck<Bool?, _>(false, applicable: true).uiRepresentation == .disabled)
