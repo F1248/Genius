@@ -17,13 +17,13 @@ extension BoolTests {
 			#expect(Bool(systemProfilerActivationLockStatusOutput: "activation_lock_disabled") == false)
 		}
 
-		@Test()
+		@Test
 		func firmwarepasswd() {
 			#expect(Bool(firmwarepasswdOutput: "Password Enabled: Yes") == true)
 			#expect(Bool(firmwarepasswdOutput: "Password Enabled: No") == false)
 		}
 
-		@Test()
+		@Test
 		func fdesetup() {
 			#expect(Bool(fdesetupOutput: "FileVault is On.") == true)
 			#expect(Bool(fdesetupOutput: "FileVault is On, but needs to be restarted to finish.") == false)
@@ -32,7 +32,7 @@ extension BoolTests {
 			#expect(Bool(fdesetupOutput: "FileVault is Off, but needs to be restarted to finish.") == false)
 		}
 
-		@Test()
+		@Test
 		func csrutil() {
 			#expect(Bool(csrutilOutput: "System Integrity Protection status: enabled.") == true)
 			#expect(Bool(csrutilOutput: "System Integrity Protection status: enabled (Apple Internal).") == false)
@@ -41,13 +41,13 @@ extension BoolTests {
 			#expect(Bool(csrutilOutput: "System Integrity Protection status: unknown (Custom Configuration).\n") == false)
 		}
 
-		@Test()
+		@Test
 		func socketfilterfw() {
 			#expect(Bool(socketfilterfwOutput: "Firewall is enabled. (State = 1)") == true)
 			#expect(Bool(socketfilterfwOutput: "Firewall is disabled. (State = 0)") == false)
 		}
 
-		@Test()
+		@Test
 		func spctl() {
 			#expect(Bool(spctlOutput: "assessments enabled") == true)
 			#expect(Bool(spctlOutput: "assessments disabled") == false)
