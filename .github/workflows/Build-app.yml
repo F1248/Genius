@@ -181,7 +181,7 @@ jobs:
             - name: Upload Genius.zip
               uses: actions/upload-artifact@main
               with:
-                name: Genius.zip
+                name: Genius # omit `.zip` file extension as it will be added automatically
                 path: Genius.zip
 
             - name: Install create-dmg
@@ -215,5 +215,5 @@ jobs:
             - name: Upload debug symbols
               uses: actions/upload-artifact@main
               with:
-                name: Debug-Symbols
+                name: Debug-Symbols # omit `.zip` file extension as it will be added automatically
                 path: Debug-Symbols.zip
