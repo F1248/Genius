@@ -212,7 +212,7 @@ jobs:
             - name: Zip debug symbols
               run: zip --recurse-paths Debug-Symbols.zip Genius.app.dSYM
 
-            - name: Upload debug symbols
+            - name: Upload Debug-Symbols.zip
               uses: actions/upload-artifact@main
               with:
                 name: Debug-Symbols # omit `.zip` file extension as it will be added automatically
