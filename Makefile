@@ -91,3 +91,17 @@ build:
 	mv Genius.xcarchive/Products/Applications/Genius.app .
 	mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
 	rm -r Genius.xcarchive
+
+install-files:
+	mkdir _site
+	cd Genius && eval "$$( \
+		git for-each-ref --format=" \
+			git checkout %(refname) && \
+			sed -i '' 's|/main/|/%(refname:lstrip=-1)/|g' Install && \
+			cp Install ../_site/\$$( \
+				echo %(refname:lstrip=-1) \
+			).html && \
+			git reset --hard \
+		" "refs/remotes/origin/*" \
+	)"
+	cd _site && cp main.html index.html
