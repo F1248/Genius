@@ -34,23 +34,21 @@ See LICENSE.txt for license information.
 
 ### Manual Installation (not possible in recoveryOS)
 
-1. Download [the latest build](https://nightly.link/F1248/Genius/workflows/Build-app/main/Genius.zip).
-2. If not already unzipped automatically, double-click `Genius.zip` to unzip it.
-3. Move `Genius` into `/Applications`.
-4. Double-click the app to open it.
+1. Download [the latest version](https://github.com/F1248/Genius/releases/latest/download/Genius.dmg) and install it.
+2. Double-click the app in `/Applications` to open it.
 
 On macOS Sequoia 15 or later:
 
-5. Click `Done`.
-6. Open [`Privacy & Security` in System Settings, scroll down to the message `“Genius” was blocked to protect your Mac.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) and click `Open Anyway`.
-7. Click `Open Anyway` again.
-8. Authenticate yourself.
+3. Click `Done`.
+4. Open [`Privacy & Security` in System Settings, scroll down to the message `“Genius” was blocked to protect your Mac.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) and click `Open Anyway`.
+5. Click `Open Anyway` again.
+6. Authenticate yourself.
 
 On macOS Sonoma 14 or earlier:
 
-5. Click `Cancel`.
-6. Right-click the app and choose `Open`.
-7. Click `Open` again.
+3. Click `Cancel`.
+4. Right-click the app and choose `Open`.
+5. Click `Open` again.
 
 ### Command Line Installation
 
