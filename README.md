@@ -36,13 +36,13 @@ See LICENSE.txt for license information.
 
 1. Download [the latest build](https://nightly.link/F1248/Genius/workflows/Build-app/main/Genius.zip).
 2. If not already unzipped automatically, double-click `Genius.zip` to unzip it.
-3. Move `Genius.app` into `/Applications`.
+3. Move `Genius` into `/Applications`.
 4. Double-click the app to open it.
 
 On macOS Sequoia 15 or later:
 
 5. Click `Done`.
-6. Open [`Privacy & Security` in System Settings, scroll down to the message `“Genius.app” was blocked to protect your Mac.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) and click `Open Anyway`.
+6. Open [`Privacy & Security` in System Settings, scroll down to the message `“Genius” was blocked to protect your Mac.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) and click `Open Anyway`.
 7. Click `Open Anyway` again.
 8. Authenticate yourself.
 
