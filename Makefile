@@ -3,7 +3,6 @@
 # See LICENSE.txt for license information.
 #
 
-.ONESHELL:
 SHELL = /bin/bash -o pipefail
 .PHONY: *
 
