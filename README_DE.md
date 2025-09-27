@@ -37,7 +37,7 @@ See LICENSE.txt for license information.
 1. Lade [den neusten Build](https://nightly.link/F1248/Genius/workflows/Build-app/main/Genius.zip) herunter.
 2. Wenn nicht bereits automatisch entzippt, doppelklicke auf `Genius.zip`, um es zu entzippen.
 3. Verschiebe `Genius.app` in `/Programme`.
-4. Doppelklicke auf die App.
+4. Doppelklicke auf die App, um sie zu öffnen.
 
 In macOS Sequoia 15 oder neuer:
 
