@@ -113,7 +113,7 @@ jobs:
 
             - name: Install Periphery
               run: |
-                tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
+                tag=$(gh release --repo peripheryapp/periphery list --json tagName --jq ".[0].tagName")
                 curl \
                     https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip \
                     --location \
@@ -150,7 +150,7 @@ jobs:
 
             - name: Install xcbeautify
               run: |
-                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --jq ".[0].tagName")
                 curl \
                     https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip \
                     --location \
