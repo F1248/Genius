@@ -12,13 +12,13 @@ extension SystemInformation {
 		enum TheftProtection {
 
 			static let activationLock = MaintenanceCheck<Bool?, _>(
-				IORegistry(class: IORegistry.nvramVariablesClass).contains("fmm-mobileme-token-FMM"),
-				applicable: Hardware.securityChip.value >=? .t2 &&? !?Hardware.Model.isVirtualMachine,
+				{ await Bool(systemProfilerActivationLockStatusOutput: SystemProfiler.hardware?["activation_lock_status"]) },
+				applicable: Hardware.securityChip.value >=? .t2 &&?
+					!?Hardware.Model.isVirtualMachine &&?
+					Software.OS.bootMode.value !=? .recovery,
 			)
 			static let firmwarePassword = MaintenanceCheck<Bool?, _>(
-				{ await Bool(
-					firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check", requiresRoot: true)?.runSafe(),
-				) },
+				{ await Bool(firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check", asRoot: true)?.runSafe()) },
 				applicable: Hardware.CPU.type.value == .intel &&? !?Hardware.Model.isVirtualMachine,
 			)
 		}
@@ -38,10 +38,12 @@ extension SystemInformation {
 				applicable: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let firewall = MaintenanceCheck<Bool?, _>(
-				{ await Bool(
-					socketfilterfwOutput: Process("/usr/libexec/ApplicationFirewall/socketfilterfw", "--getglobalstate")?
-						.runSafe(),
-				) },
+				{
+					await Bool(
+						socketfilterfwOutput: Process("/usr/libexec/ApplicationFirewall/socketfilterfw", "--getglobalstate")?
+							.runSafe(),
+					)
+				},
 				applicable: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let gatekeeper = MaintenanceCheck<Bool?, _>(

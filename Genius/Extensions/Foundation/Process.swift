@@ -10,9 +10,13 @@ import os
 
 extension Process {
 
-	convenience init?(_ executable: String, _ arguments: String..., requiresRoot: Bool = false) {
+	convenience init?(
+		_ executable: String,
+		_ arguments: String...,
+		asRoot runAsRoot: Bool = false,
+	) {
 		self.init()
-		if requiresRoot, SystemInformation.Software.OS.bootMode.value != .recovery {
+		if runAsRoot, SystemInformation.Software.OS.bootMode.value != .recovery {
 			guard let executableURL = URL(filePath: "/usr/bin/osascript") else { return nil }
 			self.executableURL = executableURL
 			self.arguments = [
@@ -29,6 +33,9 @@ extension Process {
 			self.arguments = arguments
 		}
 		self.qualityOfService = .userInitiated
+		#if TEST
+			self.environment = (environment ?? [:]).merging(["OS_ACTIVITY_MODE": "disable"]) { $1 }
+		#endif // TEST
 	}
 
 	func waitUntilExit() async {

@@ -16,7 +16,11 @@ struct MaintenanceCheckLabel: View {
 	let setting: URL?
 
 	// swiftlint:disable:next type_contents_order
-	init(_ name: LocalizedStringResource, help: URL?, setting: URL? = nil) {
+	init(
+		_ name: LocalizedStringResource,
+		help: URL?,
+		setting: URL? = nil,
+	) {
 		self.name = name
 		self.help = help
 		self.setting = setting

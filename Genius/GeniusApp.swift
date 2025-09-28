@@ -12,17 +12,30 @@ struct GeniusApp: App {
 	@NSApplicationDelegateAdaptor var appDelegate: AppDelegate // swiftlint:disable:this unused_declaration
 
 	var body: some Scene {
-		WindowGroup {
-			if #available(macOS 26, *) {
-				ContentView()
-					.toolbarBackgroundVisibility(.hidden, for: .automatic)
-			} else {
+		if #available(macOS 15, *) {
+			// swiftformat:disable:next redundantReturn
+			return WindowGroup {
+				if #available(macOS 26, *) {
+					ContentView()
+						.toolbarBackgroundVisibility(.hidden, for: .automatic)
+				} else {
+					ContentView()
+				}
+			}
+			.windowToolbarStyle(.unified(showsTitle: false))
+			.windowToolbarLabelStyle(fixed: .iconOnly)
+			.commands {
+				AppCommands()
+			}
+		} else {
+			// swiftformat:disable:next redundantReturn
+			return WindowGroup {
 				ContentView()
 			}
-		}
-		.windowToolbarStyle(.unified(showsTitle: false))
-		.commands {
-			AppCommands()
+			.windowToolbarStyle(.unified(showsTitle: false))
+			.commands {
+				AppCommands()
+			}
 		}
 	}
 

@@ -50,6 +50,10 @@ large_tuple: 3
 line_length: 128
 multiline_arguments:
     first_argument_location: next_line
+multiline_parameters:
+    max_number_of_single_line_parameters: 2
+non_optional_string_data_conversion:
+    include_variables: true
 number_separator:
     minimum_length: 6
 operator_usage_whitespace:
@@ -65,6 +69,8 @@ trailing_comma:
     mandatory_comma: true
 trailing_whitespace:
     ignores_comments: false
+type_body_length:
+    excluded_types: []
 type_contents_order:
     order:
         - case
