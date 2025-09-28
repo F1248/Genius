@@ -54,12 +54,14 @@ else
 fi
 
 echo "Downloading..."
-curl --no-progress-meter https://nightly.link/F1248/Genius/workflows/Build-app/main/Genius.zip --location --remote-name
+curl --no-progress-meter download-url --location --remote-name
 
 echo "Installing..."
-unzip -q -o Genius.zip
 rm -r -f Genius.app
-unzip -q Genius.zip
+unzip -q -o Genius.zip
+if [[ ! -d Genius.app ]]; then
+	unzip -q Genius.zip
+fi
 
 if $is_recoveryos; then
 	echo "Creating alias..."
