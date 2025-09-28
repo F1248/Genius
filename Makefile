@@ -98,9 +98,7 @@ install-files:
 		git for-each-ref --format=" \
 			git checkout %(refname) && \
 			sed -i '' 's|/main/|/%(refname:lstrip=-1)/|g' Install && \
-			cp Install ../_site/\$$( \
-				echo %(refname:lstrip=-1) \
-			).html && \
+			cp Install ../_site/%(refname:lstrip=-1).html && \
 			git reset --hard \
 		" "refs/remotes/origin/*" \
 	)"
