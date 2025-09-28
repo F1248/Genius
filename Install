@@ -30,6 +30,10 @@ else
 	mkdir -p ~/Applications
 	cd ~/Applications
 fi
+if [[ -e Genius.zip ]]; then
+	echo "\nError: Genius.zip already exists in $PWD\n" >&2
+	exit 1
+fi
 if [[
 	-e Genius.app && (
 		! -f Genius.app/Contents/Info.plist ||
