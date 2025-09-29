@@ -34,21 +34,19 @@ See LICENSE.txt for license information.
 
 ### Manuelle Installation (in recoveryOS nicht möglich)
 
-1. Lade [den neusten Build](https://nightly.link/F1248/Genius/workflows/Build-app/deployment-target-macos-15/Genius.zip) herunter.
-2. Wenn nicht bereits automatisch entzippt, doppelklicke auf `Genius.zip`, um es zu entzippen.
-3. Verschiebe `Genius.app` in `/Programme`.
-4. Doppelklicke auf die App.
-5. Klicke auf `Fertig`.
-6. Öffne [`Datenschutz & Sicherheit` in den Systemeinstellungen, scrolle nach unten zu der Nachricht `„Genius“ wurde blockiert, um deinen Mac zu schützen.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) und klicke auf `Dennoch öffnen`.
-7. Klicke erneut auf `Dennoch öffnen`.
-8. Authentifiziere dich.
+1. Lade [die neuste Version](https://github.com/F1248/Genius/releases/latest/download/Genius.dmg) herunter und installiere sie.
+2. Doppelklicke auf die App in `/Programme`, um sie zu öffnen.
+3. Klicke auf `Fertig`.
+4. Öffne [`Datenschutz & Sicherheit` in den Systemeinstellungen, scrolle nach unten zu der Nachricht `„Genius“ wurde blockiert, um deinen Mac zu schützen.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) und klicke auf `Dennoch öffnen`.
+5. Klicke erneut auf `Dennoch öffnen`.
+6. Authentifiziere dich.
 
 ### Befehlszeilen-Installation
 
 Füge diesen Befehl in ein Terminal ein und führe ihn aus:
 
 ```shellsession
-curl https://f1248.github.io/deployment-target-macos-15 | sh
+curl https://f1248.github.io | sh
 ```
 
 ## Hinweise zur Verwendung in recoveryOS

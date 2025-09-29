@@ -6,32 +6,16 @@
 import Defaults
 import Foundation
 
-protocol VaryingLocalizationTable {
-
-	static var administratorPrivilegesRequest: LocalizedStringResource { get }
-	static var askToAllowAccessoriesToConnect: LocalizedStringResource { get }
-	static var automaticUpdates: LocalizedStringResource { get }
-	static var bootMode: LocalizedStringResource { get }
-	static var bootVolume: LocalizedStringResource { get }
-	static var cpuFrequency: LocalizedStringResource { get }
-	static var cpuName: LocalizedStringResource { get }
-	static var cpuType: LocalizedStringResource { get }
-	static var downloadMacOSUpdates: LocalizedStringResource { get }
-	static var installAppStoreAppUpdates: LocalizedStringResource { get }
-	static var installConfigurationDataUpdates: LocalizedStringResource { get }
-	static var installCriticalUpdates: LocalizedStringResource { get }
-	static var installMacOSUpdates: LocalizedStringResource { get }
-	static var malwareProtection: LocalizedStringResource { get }
-	static var systemInformation: LocalizedStringResource { get }
-	static var uninstallApp: LocalizedStringResource { get }
-	static var uninstallAppEllipsis: LocalizedStringResource { get }
-	static var uninstallationMessage: LocalizedStringResource { get }
-	static var uninstallationTitle: LocalizedStringResource { get }
-}
-
 extension LocalizedStringResource: VaryingLocalizationTable {
 
 	static var localizationTable: any VaryingLocalizationTable.Type { Defaults[.interfaceMode].localizationTable }
+	static var supportsInflection: Bool {
+		if #available(macOS 26, *) {
+			true
+		} else {
+			(SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? false
+		}
+	}
 
 	static var administratorPrivilegesRequest: Self { localizationTable.administratorPrivilegesRequest }
 	static var askToAllowAccessoriesToConnect: Self { localizationTable.askToAllowAccessoriesToConnect }
@@ -52,6 +36,8 @@ extension LocalizedStringResource: VaryingLocalizationTable {
 	static var uninstallAppEllipsis: Self { localizationTable.uninstallAppEllipsis }
 	static var uninstallationMessage: Self { localizationTable.uninstallationMessage }
 	static var uninstallationTitle: Self { localizationTable.uninstallationTitle }
+
+	static var user: Self { supportsInflection ? .userWithInflection : .userWithoutInflection }
 }
 
 extension LocalizedStringResource.LocalizableSimple: VaryingLocalizationTable {}

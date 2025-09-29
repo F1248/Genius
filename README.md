@@ -34,21 +34,19 @@ See LICENSE.txt for license information.
 
 ### Manual Installation (not possible in recoveryOS)
 
-1. Download [the latest build](https://nightly.link/F1248/Genius/workflows/Build-app/deployment-target-macos-15/Genius.zip).
-2. If not already unzipped automatically, double-click `Genius.zip` to unzip it.
-3. Move `Genius.app` into `/Applications`.
-4. Double-click the app.
-5. Click `Done`.
-6. Open [`Privacy & Security` in System Settings, scroll down to the message `“Genius.app” was blocked to protect your Mac.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) and click `Open Anyway`.
-7. Click `Open Anyway` again.
-8. Authenticate yourself.
+1. Download [the latest version](https://github.com/F1248/Genius/releases/latest/download/Genius.dmg) and install it.
+2. Double-click the app in `/Applications` to open it.
+3. Click `Done`.
+4. Open [`Privacy & Security` in System Settings, scroll down to the message `“Genius” was blocked to protect your Mac.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) and click `Open Anyway`.
+5. Click `Open Anyway` again.
+6. Authenticate yourself.
 
 ### Command Line Installation
 
 Paste and run this command in a terminal:
 
 ```shellsession
-curl https://f1248.github.io/deployment-target-macos-15 | sh
+curl https://f1248.github.io | sh
 ```
 
 ## Notes for use in recoveryOS

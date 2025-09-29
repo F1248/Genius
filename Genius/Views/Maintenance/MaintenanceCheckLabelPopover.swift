@@ -22,14 +22,12 @@ struct MaintenanceCheckLabelPopover: View {
 					if let help {
 						Link(destination: help) {
 							Symbol(.questionmarkCircle, label: .help)
-								.focusable() // prevent symbol from receiving focus automatically
 						}
 						.foregroundColor(.secondary)
 					}
 					if let setting {
 						Link(destination: setting) {
 							Symbol(.gear, label: .openInSystemSettings)
-								.focusable() // prevent symbol from receiving focus automatically
 						}
 						.foregroundColor(.secondary)
 					}

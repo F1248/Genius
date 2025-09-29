@@ -14,7 +14,7 @@ actor AsyncValueWrapper<Value: Sendable>: ValueWrapperProtocol {
 	var value: Value { get async {
 		if let cachedValue { return cachedValue }
 		if let pendingTask { return await pendingTask.value }
-		let task = Task(operation: valueClosure)
+		let task = Task { await valueClosure() }
 		pendingTask = task
 		let value: Value = await task.value
 		pendingTask = nil

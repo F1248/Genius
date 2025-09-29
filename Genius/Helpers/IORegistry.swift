@@ -9,13 +9,6 @@ import IOKit
 
 struct IORegistry: ~Copyable {
 
-	// swiftlint:disable:next explicit_type_interface
-	static let nvramVariablesClass =
-		switch SystemInformation.Hardware.CPU.type.value {
-			case .appleSilicon: "IODTNVRAMVariables"
-			case .intel: "AppleEFINVRAM"
-		}
-
 	let matchingDictionary: CFMutableDictionary?
 
 	var service: UInt32? {
@@ -45,6 +38,7 @@ struct IORegistry: ~Copyable {
 		return property as? Wrapped ?? ((property as? Data)?.trimmingTrailingZeros).flatMap(Wrapped.init)
 	}
 
+	// periphery:ignore
 	func contains(_ key: String) -> Bool? {
 		guard exists ?? false, let service else { return nil }
 		return unsafe IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0) != nil

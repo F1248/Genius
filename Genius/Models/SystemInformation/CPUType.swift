@@ -10,10 +10,12 @@ enum CPUType: UIStringRepresentable {
 	case intel
 	case appleSilicon
 
-	nonisolated var uiRepresentation: String? {
-		String(localized: { switch self {
-			case .intel: .intel
-			case .appleSilicon: .appleSilicon
-		}}())
+	var uiRepresentation: String? {
+		let localizedStringResource: LocalizedStringResource =
+			switch self {
+				case .intel: .intel
+				case .appleSilicon: .appleSilicon
+			}
+		return String(localized: localizedStringResource)
 	}
 }

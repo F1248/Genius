@@ -11,11 +11,13 @@ enum BootMode: UIStringRepresentable {
 	case safe
 	case recovery
 
-	nonisolated var uiRepresentation: String? {
-		String(localized: { switch self {
-			case .normal: .bootModeNormal
-			case .safe: .bootModeSafe
-			case .recovery: .bootModeRecovery
-		}}())
+	var uiRepresentation: String? {
+		let localizedStringResource: LocalizedStringResource =
+			switch self {
+				case .normal: .bootModeNormal
+				case .safe: .bootModeSafe
+				case .recovery: .bootModeRecovery
+			}
+		return String(localized: localizedStringResource)
 	}
 }

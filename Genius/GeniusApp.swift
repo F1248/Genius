@@ -21,6 +21,7 @@ struct GeniusApp: App {
 			}
 		}
 		.windowToolbarStyle(.unified(showsTitle: false))
+		.windowToolbarLabelStyle(fixed: .iconOnly)
 		.commands {
 			AppCommands()
 		}

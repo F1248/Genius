@@ -9,7 +9,7 @@ import Foundation
 enum Sysctl {
 
 	// periphery:ignore:parameters attribute
-	static func read<Wrapped: DataInitializable>(_ attribute: String) -> Wrapped? { // swiftlint:disable:this unused_parameter
+	static func read<Wrapped: DataInitializable>(_ attribute: String) -> Wrapped? {
 		var size: Int = 0
 		guard unsafe sysctlbyname(attribute, nil, &size, nil, 0) == 0, size > 0 else { return nil }
 		var result = [UInt8](repeating: 0, count: size)

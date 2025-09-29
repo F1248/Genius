@@ -17,12 +17,24 @@ extension Bool: @retroactive Comparable, Maximizable, PossiblyOptional, DataInit
 		}
 	}
 
-	init?<Value: Equatable>(_ value: Value, valuesTrue: Value..., valuesFalse: Value...) {
+	init?<Value: Equatable>(
+		_ value: Value,
+		valuesTrue: Value...,
+		valuesFalse: Value...,
+	) {
 		if valuesTrue.contains(value) {
 			self = true
 		} else if valuesFalse.contains(value) {
 			self = false
 		} else { return nil }
+	}
+
+	init?(systemProfilerActivationLockStatusOutput: (any Sendable)?) {
+		self.init(
+			(systemProfilerActivationLockStatusOutput as? String)?.betweenAnchored(start: "activation_lock_"),
+			valuesTrue: "enabled",
+			valuesFalse: "disabled",
+		)
 	}
 
 	init?(firmwarepasswdOutput: String?) {

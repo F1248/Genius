@@ -10,22 +10,26 @@ on:
         paths:
             - .github/workflows/Build-app.yml
             - .periphery.yml
-            - .swift-version
             - .swiftformat
             - .swiftlint.yml
             - Genius/**
+            - Genius.xcconfig
             - Genius.xcodeproj/**
             - GeniusTests/**
+            - Install
+            - Makefile
     pull_request:
         paths:
             - .github/workflows/Build-app.yml
             - .periphery.yml
-            - .swift-version
             - .swiftformat
             - .swiftlint.yml
             - Genius/**
+            - Genius.xcconfig
             - Genius.xcodeproj/**
             - GeniusTests/**
+            - Install
+            - Makefile
     workflow_dispatch:
 
 permissions: {}
@@ -48,7 +52,7 @@ jobs:
         permissions:
             attestations: write
             id-token: write
-        runs-on: macos-15
+        runs-on: macos-26
 
         steps:
             - name: Free up disk space
@@ -86,7 +90,7 @@ jobs:
             - name: Install unxip
               if: env.latest_xcode_version_installed == 'false'
               run: |
-                curl --remote-name --location https://github.com/saagarjha/unxip/releases/latest/download/unxip
+                curl https://github.com/saagarjha/unxip/releases/latest/download/unxip --location --remote-name
                 chmod +x unxip
                 echo "$(./unxip --version) installed"
 
@@ -109,93 +113,107 @@ jobs:
 
             - name: Install Periphery
               run: |
-                tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
+                tag=$(gh release --repo peripheryapp/periphery list --json tagName --jq ".[0].tagName")
                 curl \
-                    --location https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip \
+                    https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip \
+                    --location \
                     --output periphery.zip
                 unzip periphery.zip
                 echo "Periphery $(./periphery version) installed"
 
             - name: Run Periphery
-              run: ./periphery scan --format github-actions --strict -- -skipPackagePluginValidation
+              run: make periphery
 
             - name: Install SwiftFormat
               run: |
                 curl \
-                    --remote-name \
-                    --location https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip
+                    https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip \
+                    --location \
+                    --remote-name
                 unzip swiftformat.zip
                 echo "SwiftFormat $(./swiftformat --version) installed"
 
             - name: Run SwiftFormat
-              run: ./swiftformat --lint . --reporter github-actions-log
+              run: make swiftformat
 
             - name: Install SwiftLint
               run: |
                 curl \
-                    --remote-name \
-                    --location https://github.com/realm/SwiftLint/releases/latest/download/portable_swiftlint.zip
+                    https://github.com/realm/SwiftLint/releases/latest/download/portable_swiftlint.zip \
+                    --location \
+                    --remote-name
                 unzip portable_swiftlint.zip
                 echo "SwiftLint $(./swiftlint version) installed"
 
             - name: Run SwiftLint lint rules
-              run: ./swiftlint lint --strict --reporter github-actions-logging
+              run: make swiftlint-lint
 
             - name: Install xcbeautify
               run: |
-                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --jq ".[0].tagName")
                 curl \
-                    --location https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip \
+                    https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip \
+                    --location \
                     --output xcbeautify.zip
                 unzip xcbeautify.zip
                 echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Build for testing
-              run: |
-                # work around warning `duplicate -rpath '@executable_path' ignored`
-                xcodebuild build-for-testing -scheme Genius -destination generic/platform=macOS -skipPackagePluginValidation \
-                    | tee xcodebuild.log \
-                    | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
-                    | ./xcbeautify --disable-logging --renderer github-actions
+              run: make build-for-testing-keep-log
 
             - name: Run SwiftLint analyzer rules
-              run: ./swiftlint analyze --strict --reporter github-actions-logging --compiler-log-path xcodebuild.log
+              run: make swiftlint-analyze-log-exists
 
             - name: Run tests
-              run: |
-                # work around warning `duplicate -rpath '@executable_path' ignored`
-                xcodebuild test -scheme Genius -destination platform=macOS,arch=arm64 -skipPackagePluginValidation \
-                    | grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
-                    | ./xcbeautify --disable-logging --renderer github-actions
+              run: make test-without-building
 
             - name: Build app
-              run: |
-                # work around warnings `*/ModuleCache.noindex/*.pcm: No such file or directory`
-                xcodebuild archive -scheme Genius -destination generic/platform=macOS -archivePath Genius -skipPackagePluginValidation \
-                    | grep --invert-match "warning: .*/ModuleCache.noindex/.*\.pcm: No such file or directory" \
-                    | ./xcbeautify --disable-logging --renderer github-actions
-                mv Genius.xcarchive/Products/Applications/Genius.app .
-                mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
+              run: make build
 
             - name: Zip app
               run: zip --recurse-paths Genius.zip Genius.app
 
-            - name: Attest build provenance
+            - name: Attest build provenance of Genius.zip
               uses: actions/attest-build-provenance@main
               with:
                 subject-path: Genius.zip
 
-            - name: Upload app
+            - name: Upload Genius.zip
               uses: actions/upload-artifact@main
               with:
-                name: Genius
+                name: Genius # omit `.zip` file extension as it will be added automatically
                 path: Genius.zip
+
+            - name: Install create-dmg
+              if: github.ref_type == 'tag'
+              run: |
+                npm install --global create-dmg
+                echo "create-dmg $(create-dmg --version) installed"
+
+            - name: Create DMG file
+              if: github.ref_type == 'tag'
+              run: |
+                rm LICENSE.txt # prevent license from being added to DMG file
+                create-dmg --no-version-in-filename --no-code-sign Genius.app
+
+            - name: Attest build provenance of Genius.dmg
+              if: github.ref_type == 'tag'
+              uses: actions/attest-build-provenance@main
+              with:
+                subject-path: Genius.dmg
+
+            - name: Upload Genius.dmg
+              if: github.ref_type == 'tag'
+              uses: actions/upload-artifact@main
+              with:
+                name: Genius.dmg
+                path: Genius.dmg
 
             - name: Zip debug symbols
               run: zip --recurse-paths Debug-Symbols.zip Genius.app.dSYM
 
-            - name: Upload debug symbols
+            - name: Upload Debug-Symbols.zip
               uses: actions/upload-artifact@main
               with:
-                name: Debug Symbols
+                name: Debug-Symbols # omit `.zip` file extension as it will be added automatically
                 path: Debug-Symbols.zip

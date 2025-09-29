@@ -5,7 +5,7 @@
 # See LICENSE.txt for license information.
 #
 
-PATH="/usr/bin:/bin"
+PATH=/usr/bin:/bin
 set -e
 
 is_recoveryos=$([[ ! -e /System/Library/CoreServices/Finder.app ]] && echo true || echo false)
@@ -25,6 +25,10 @@ if [[ -w /Applications ]]; then
 else
 	mkdir -p ~/Applications
 	cd ~/Applications
+fi
+if [[ -e Genius.zip ]]; then
+	echo "\nError: Genius.zip already exists in $PWD\n" >&2
+	exit 1
 fi
 if [[
 	-e Genius.app && (
@@ -46,12 +50,14 @@ else
 fi
 
 echo "Downloading..."
-curl --no-progress-meter --remote-name --location https://nightly.link/F1248/Genius/workflows/Build-app/main/Genius.zip
+curl --no-progress-meter download-url --location --remote-name
 
 echo "Installing..."
-unzip -q -o Genius.zip
 rm -r -f Genius.app
-unzip -q Genius.zip
+unzip -q -o Genius.zip
+if [[ ! -d Genius.app ]]; then
+	unzip -q Genius.zip
+fi
 
 if $is_recoveryos; then
 	echo "Creating alias..."
