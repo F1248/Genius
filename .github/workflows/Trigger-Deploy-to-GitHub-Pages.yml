@@ -16,11 +16,11 @@ on:
     release:
     workflow_dispatch:
 
+permissions: {}
+
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true
-
-permissions: {}
 
 jobs:
     Trigger-Deploy-to-GitHub-Pages:
