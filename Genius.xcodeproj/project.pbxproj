@@ -137,14 +137,12 @@
 			buildConfigurationList = A42B354E2BA2185C009E81AD /* Build configuration list for PBXNativeTarget "Genius" */;
 			buildPhases = (
 				A42660D12C729D04000E0507 /* SwiftFormat */,
+				C8A4DA762E92F82D0038A2EE /* SwiftLint */,
 				A42B35392BA2185B009E81AD /* Sources */,
 				A46854942D1729A800DB3E87 /* Frameworks */,
 				A42B353B2BA2185B009E81AD /* Resources */,
 			);
 			buildRules = (
-			);
-			dependencies = (
-				A4672DDB2C61207100C933CB /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				A47D8B992C26145300A0E4CF /* Genius */,
@@ -165,7 +163,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A4D9A1BD2D257090008D91E7 /* PBXTargetDependency */,
 				A4D9A1AF2D257055008D91E7 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
@@ -205,7 +202,6 @@
 			mainGroup = A42B35342BA2185B009E81AD;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				A4672DD92C61205000C933CB /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 				A46854952D1729B500DB3E87 /* XCRemoteSwiftPackageReference "Defaults" */,
 				A4D6DC6C2D37EE4700E9A61D /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 			);
@@ -241,6 +237,13 @@
 			shellPath = /bin/zsh;
 			shellScript = "if [[ ${CONFIGURATION} == *Debug ]]; then\n\tif which -s swiftformat; then\n\t\tswiftformat --lint --lenient .\n\telse\n\t\techo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"\n\tfi\nfi\n";
 		};
+		C8A4DA762E92F82D0038A2EE /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			name = SwiftLint;
+			shellPath = /bin/zsh;
+			shellScript = "if [[ ${CONFIGURATION} == *Debug ]]; then\n\tif which -s swiftlint; then\n\t\tswiftlint lint\n\telse\n\t\techo \"warning: SwiftLint is not installed, see https://realm.github.io/SwiftLint#installation for installation instructions\"\n\tfi\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -257,18 +260,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A4672DDB2C61207100C933CB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = A4672DDA2C61207100C933CB /* SwiftLintBuildToolPlugin */;
-		};
 		A4D9A1AF2D257055008D91E7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A42B353C2BA2185B009E81AD /* Genius */;
 			targetProxy = A4D9A1AE2D257055008D91E7 /* PBXContainerItemProxy */;
-		};
-		A4D9A1BD2D257090008D91E7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = A4D9A1BC2D257090008D91E7 /* SwiftLintBuildToolPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -389,14 +384,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A4672DD92C61205000C933CB /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		A46854952D1729B500DB3E87 /* XCRemoteSwiftPackageReference "Defaults" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
@@ -416,11 +403,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A4672DDA2C61207100C933CB /* SwiftLintBuildToolPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A4672DD92C61205000C933CB /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
-		};
 		A46854962D1729B500DB3E87 /* Defaults */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A46854952D1729B500DB3E87 /* XCRemoteSwiftPackageReference "Defaults" */;
@@ -430,11 +412,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A4D6DC6C2D37EE4700E9A61D /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
-		};
-		A4D9A1BC2D257090008D91E7 /* SwiftLintBuildToolPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A4672DD92C61205000C933CB /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
