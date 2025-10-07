@@ -18,7 +18,7 @@ struct AppCommands: Commands {
 		CommandGroup(after: .appInfo) {
 			Divider()
 			Button(.uninstallAppEllipsis, systemImage: SFSymbol.trash.rawValue) {
-				SharedData.sharedData.showUninstallationAlert = true
+				SharedData.sharedData.showUninstallationDialog = true
 			}
 		}
 		CommandGroup(replacing: .appSettings) {
