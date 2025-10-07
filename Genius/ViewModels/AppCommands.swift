@@ -15,11 +15,13 @@ struct AppCommands: Commands {
 	@ObservedObject var observedSharedData: SharedData = .sharedData
 
 	var body: some Commands {
-		CommandGroup(replacing: .appSettings) {
+		CommandGroup(after: .appInfo) {
+			Divider()
 			Button(.uninstallAppEllipsis, systemImage: SFSymbol.trash.rawValue) {
 				SharedData.sharedData.showUninstallationAlert = true
 			}
-			Divider()
+		}
+		CommandGroup(replacing: .appSettings) {
 			TabButton(tab: ContentViewTab.settings)
 		}
 		CommandGroup(replacing: .newItem) { EmptyView() }
