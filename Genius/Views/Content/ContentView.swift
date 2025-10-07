@@ -14,7 +14,7 @@ struct ContentView: View {
 	var body: some View {
 		AdaptingTabView<ContentViewTab>()
 			.frame(minWidth: 686, minHeight: 256)
-			.uninstallationAlert()
+			.uninstallationDialog()
 			.id(interfaceMode)
 	}
 }
