@@ -99,13 +99,13 @@ install-files:
 		git for-each-ref --format=" \
 			git checkout %(refname) && \
 			sed -i $(sed_extension) 's|download-url|https://nightly.link/F1248/Genius/workflows/Build-app/%(refname:lstrip=3)/Genius.zip|g' Install && \
-			cp Install ../_site/%(refname:lstrip=3).html && \
+			mv Install ../_site/%(refname:lstrip=3).html && \
 			git reset --hard \
 		" "refs/remotes/origin/*" && \
 		git for-each-ref --format=" \
 			git checkout %(refname) && \
 			sed -i $(sed_extension) 's|download-url|https://github.com/F1248/Genius/releases/download/%(refname:lstrip=2)/Genius.zip|g' Install && \
-			cp Install ../_site/%(refname:lstrip=2).html && \
+			mv Install ../_site/%(refname:lstrip=2).html && \
 			git reset --hard \
 		" "refs/tags/*" \
 	)"
