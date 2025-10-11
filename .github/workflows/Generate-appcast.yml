@@ -1,0 +1,70 @@
+#
+# © 2025 F1248 <f1248@mailbox.org>
+# See LICENSE.txt for license information.
+#
+
+name: Generate appcast
+
+on:
+    push:
+        paths:
+            - .github/workflows/Generate-appcast.yml
+            - Makefile
+    release:
+    workflow_dispatch:
+
+permissions: {}
+
+env:
+    GH_TOKEN: ${{ github.token }}
+
+defaults:
+    run:
+        shell: bash
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    Generate-appcast:
+        name: Generate appcast
+        permissions:
+            attestations: write
+            id-token: write
+            pages: write
+        runs-on: macos-26
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@main
+
+            - name: Install Sparkle
+              run: |
+                tag=$(gh release --repo sparkle-project/Sparkle list --json tagName --jq ".[0].tagName")
+                curl \
+                    https://github.com/sparkle-project/Sparkle/releases/download/"$tag"/Sparkle-"$tag".tar.xz \
+                    --location \
+                    --output Sparkle.tar.xz
+                tar --extract --file Sparkle.tar.xz
+                mv bin/generate_appcast .
+                echo "Sparkle $(defaults read $PWD/Sparkle.framework/Versions/B/Resources/Info.plist CFBundleShortVersionString) installed"
+
+            - name: Generate appcast
+              run: make appcast
+              env:
+                sparkle_private_eddsa_key: ${{ secrets.SPARKLE_PRIVATE_EDDSA_KEY }}
+
+            - name: Configure GitHub Pages
+              uses: actions/configure-pages@main
+
+            - name: Attest build provenance
+              uses: actions/attest-build-provenance@main
+              with:
+                subject-path: _site
+
+            - name: Upload GitHub Pages artifact
+              uses: actions/upload-pages-artifact@main
+
+            - name: Deploy GitHub Pages site
+              uses: actions/deploy-pages@main
