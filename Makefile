@@ -17,6 +17,7 @@ xcodebuild_pipe = \
 ifeq ($(GITHUB_ACTIONS), true)
 	command_prefix = ./
 	periphery_arguments = --format github-actions -- -skipPackagePluginValidation
+	sparkle_generate_appcast_arguments += --ed-key-file -
 	swiftformat_arguments = --reporter github-actions-log
 	swiftlint_arguments = --reporter github-actions-logging
 	xcbeautify_arguments = --renderer github-actions
@@ -112,3 +113,36 @@ install-files:
 	cd _site && cp $$( \
 		gh release --repo F1248/Genius list --json tagName,isLatest --jq ".[] | select(.isLatest).tagName" \
 	).html index.html
+
+appcast:
+	mkdir _site
+	gh release list \
+		--exclude-drafts \
+		--exclude-pre-releases \
+		--json tagName \
+		--jq ".[].tagName" \
+		| xargs -I tag gh release download tag \
+		--output _site/prefix-placeholder-tag-postfix-placeholder.zip \
+		--pattern Genius.zip
+	echo $$sparkle_private_eddsa_key | $(command_prefix)generate_appcast _site \
+		$(sparkle_generate_appcast_arguments) \
+		--maximum-versions 0 \
+		--maximum-deltas 999
+	gh release list \
+		--exclude-drafts \
+		--json tagName \
+		--jq ".[].tagName" \
+		| xargs -I tag gh release download tag \
+		--output _site/prefix-placeholder-tag-postfix-placeholder.zip \
+		--pattern Genius.zip \
+		--skip-existing
+	echo $$sparkle_private_eddsa_key | $(command_prefix)generate_appcast _site \
+		$(sparkle_generate_appcast_arguments) \
+		--maximum-versions 0 \
+		--maximum-deltas 999 \
+		--channel beta
+	sed \
+		-i $(sed_extension) \
+		's|prefix-placeholder-|https://github.com/F1248/Genius/releases/download/|g;s|-postfix-placeholder|/Genius|g' \
+		_site/appcast.xml
+	rm _site/prefix-placeholder-*-postfix-placeholder.zip
