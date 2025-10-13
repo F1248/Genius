@@ -226,6 +226,23 @@
         }
       }
     },
+    "development" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entwicklung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Development"
+          }
+        }
+      }
+    },
     "developmentMode" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -511,6 +528,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Intel"
+          }
+        }
+      }
+    },
+    "interface" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oberfläche"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interface"
           }
         }
       }
