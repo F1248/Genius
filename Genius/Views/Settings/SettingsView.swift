@@ -37,12 +37,12 @@ struct SettingsView: View {
 						.padding(.vertical, 2)
 					}
 					.padding(.horizontal, 2)
+					.frame(width: 512, alignment: .leading)
 				} label: {
 					Text(.interface)
 						.font(.title2)
 						.padding()
 				}
-				.frame(maxWidth: 512)
 				if developmentMode || interfaceMode >= .powerUser {
 					GroupBox {
 						VStack(alignment: .leading) {
@@ -50,12 +50,12 @@ struct SettingsView: View {
 								.padding(.vertical, 2)
 						}
 						.padding(.horizontal, 2)
+						.frame(width: 512, alignment: .leading)
 					} label: {
 						Text(.development)
 							.font(.title2)
 							.padding()
 					}
-					.frame(maxWidth: 512)
 				}
 			}
 			.padding()

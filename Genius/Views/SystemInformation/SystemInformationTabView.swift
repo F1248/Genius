@@ -42,12 +42,12 @@ struct SystemInformationTabView: View {
 								.padding(.vertical, 2)
 							}
 							.padding(.horizontal, 2)
+							.frame(width: 512, alignment: .leading)
 						} label: {
 							Text(groupBoxContent.key)
 								.font(.title2)
 								.padding()
 						}
-						.frame(maxWidth: 512)
 					}
 				} else {
 					ProgressView()
