@@ -52,6 +52,9 @@ multiline_arguments:
     first_argument_location: next_line
 multiline_parameters:
     max_number_of_single_line_parameters: 2
+no_empty_block:
+    disabled_block_types:
+        - closure_blocks
 non_optional_string_data_conversion:
     include_variables: true
 number_separator:
