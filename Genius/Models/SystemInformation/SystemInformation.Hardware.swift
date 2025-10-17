@@ -116,7 +116,7 @@ extension SystemInformation {
 				#elseif arch(x86_64)
 					.intel
 				#else
-					#error("Unsupported architecture")
+					#error("Unsupported architecture") // swiftformat:disable:this indent
 				#endif
 			}())
 			static let name = SystemInformationData<String?, _>(Sysctl.read("machdep.cpu.brand_string"))
