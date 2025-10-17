@@ -28,12 +28,12 @@ struct SystemInformationData<
 extension SystemInformationData where ValueWrapper == SyncValueWrapper<Value> {
 
 	init(_ value: Value) {
-		self.valueWrapper = SyncValueWrapper(value: value)
+		self.valueWrapper = SyncValueWrapper(wrappedValue: value)
 		self.applicable = true
 	}
 
 	init<Wrapped>(_ value: @autoclosure () -> Value, applicable: Bool?) where Value == Wrapped? {
-		self.valueWrapper = SyncValueWrapper(value: applicable ?? true ? value() : nil)
+		self.valueWrapper = SyncValueWrapper(wrappedValue: applicable ?? true ? value() : nil)
 		self.applicable = applicable
 	}
 }

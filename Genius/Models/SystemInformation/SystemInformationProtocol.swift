@@ -15,13 +15,13 @@ protocol SystemInformationProtocol {
 extension SystemInformationProtocol {
 
 	var value: Value { get async {
-		await valueWrapper.value
+		await valueWrapper.wrappedValue
 	} }
 }
 
 extension SystemInformationProtocol where ValueWrapper == SyncValueWrapper<Value> {
 
 	var value: Value {
-		valueWrapper.value
+		valueWrapper.wrappedValue
 	}
 }
