@@ -12,8 +12,8 @@ struct SystemProfiler {
 	static let hardwareInstance = Self(dataType: "Hardware")
 	static let softwareInstance = Self(dataType: "Software")
 
-	static var hardware: [String: any Sendable]? { get async { await hardwareInstance.valueWrapper.value } }
-	static var software: [String: any Sendable]? { get async { await softwareInstance.valueWrapper.value } }
+	static var hardware: [String: any Sendable]? { get async { await hardwareInstance.valueWrapper.wrappedValue } }
+	static var software: [String: any Sendable]? { get async { await softwareInstance.valueWrapper.wrappedValue } }
 
 	let valueWrapper: AsyncValueWrapper<[String: any Sendable]?>
 

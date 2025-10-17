@@ -36,7 +36,7 @@ extension MaintenanceCheck where ValueWrapper == SyncValueWrapper<Value> {
 
 	// periphery:ignore
 	init(_ value: Value, requirement: Wrapped = .max) {
-		self.valueWrapper = SyncValueWrapper(value: value)
+		self.valueWrapper = SyncValueWrapper(wrappedValue: value)
 		self.requirement = requirement
 		self.applicable = true
 	}
@@ -46,7 +46,7 @@ extension MaintenanceCheck where ValueWrapper == SyncValueWrapper<Value> {
 		requirement: Wrapped = .max,
 		applicable: Bool?,
 	) where Value == Wrapped? {
-		self.valueWrapper = SyncValueWrapper(value: applicable ?? true ? value() : nil)
+		self.valueWrapper = SyncValueWrapper(wrappedValue: applicable ?? true ? value() : nil)
 		self.applicable = applicable
 		self.requirement = requirement
 	}
