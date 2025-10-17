@@ -24,7 +24,7 @@ struct AppCommands: Commands {
 		CommandGroup(replacing: .appSettings) {
 			TabButton(tab: ContentViewTab.settings)
 		}
-		CommandGroup(replacing: .newItem) { EmptyView() }
+		CommandGroup(replacing: .newItem) {}
 		CommandGroup(before: .toolbar) {
 			TabViewButtons<ContentViewTab>()
 				.id(interfaceMode)
@@ -33,6 +33,6 @@ struct AppCommands: Commands {
 				default: EmptyView()
 			}
 		}
-		CommandGroup(replacing: .help) { EmptyView() }
+		CommandGroup(replacing: .help) {}
 	}
 }
