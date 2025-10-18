@@ -38,6 +38,8 @@ extension LocalizedStringResource: VaryingLocalizationTable {
 	static var uninstallAppEllipsis: Self { localizationTable.uninstallAppEllipsis }
 	static var uninstallationMessage: Self { localizationTable.uninstallationMessage }
 	static var uninstallationTitle: Self { localizationTable.uninstallationTitle }
+	static var updateInProgressMessage: Self { localizationTable.updateInProgressMessage }
+	static var updateInProgressTitle: Self { localizationTable.updateInProgressTitle }
 
 	static var user: Self { supportsInflection ? .userWithInflection : .userWithoutInflection }
 }
