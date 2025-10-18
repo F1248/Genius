@@ -64,7 +64,9 @@ curl https://f1248.github.io | sh
 - Genius bleibt nur bis zum Neustarten installiert.
 
 ## Urheberrecht
+
 © 2024 - 2025 F1248 <[f1248@mailbox.org](mailto:f1248@mailbox.org)>
 
 ## Lizenz
+
 Siehe [LICENSE.txt](LICENSE.txt) (in Englisch) für Lizenzinformationen.
