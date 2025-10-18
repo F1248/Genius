@@ -16,5 +16,5 @@ struct HomeView: View {
 
 #Preview {
 	HomeView()
-		.frame(width: 686, height: 256)
+		.frame(width: 712, height: 256)
 }
