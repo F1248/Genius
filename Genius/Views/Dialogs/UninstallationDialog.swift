@@ -14,7 +14,7 @@ struct UninstallationDialog: ViewModifier {
 	func body(content: Content) -> some View {
 		content
 			.confirmationDialog(
-				Text(.uninstallationTitle),
+				.uninstallationTitle,
 				isPresented: $observedSharedData.showUninstallationDialog,
 			) {
 				Button(.uninstallApp, role: .destructive) {
