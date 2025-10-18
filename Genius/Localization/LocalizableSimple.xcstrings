@@ -361,6 +361,40 @@
           }
         }
       }
+    },
+    "updateInProgressMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Moment kann nicht nach Aktualisierungen gesucht werden, da eine Aktualisierung bereits läuft. Bitte versuche es in Kürze erneut."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to check for updates at the moment because an update is already in progress. Please try again shortly."
+          }
+        }
+      }
+    },
+    "updateInProgressTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualisierung läuft bereits"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update Already in Progress"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

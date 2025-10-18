@@ -28,4 +28,6 @@ protocol VaryingLocalizationTable {
 	static var uninstallAppEllipsis: LocalizedStringResource { get }
 	static var uninstallationMessage: LocalizedStringResource { get }
 	static var uninstallationTitle: LocalizedStringResource { get }
+	static var updateInProgressMessage: LocalizedStringResource { get }
+	static var updateInProgressTitle: LocalizedStringResource { get }
 }

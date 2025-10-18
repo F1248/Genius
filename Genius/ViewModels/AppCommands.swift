@@ -22,6 +22,10 @@ struct AppCommands: Commands {
 				.checkForUpdatesEllipsis,
 				systemImage: SFSymbol.arrowTriangle2Circlepath.rawValue,
 			) {
+				guard updater.canCheckForUpdates else {
+					SharedData.sharedData.showUpdateInProgressAlert = true
+					return
+				}
 				updater.checkForUpdates()
 			}
 			Button(.uninstallAppEllipsis, systemImage: SFSymbol.trash.rawValue) {

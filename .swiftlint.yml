@@ -18,6 +18,7 @@ disabled_rules:
     - explicit_self
     - explicit_top_level_acl
     - function_default_parameter_at_end
+    - multiple_closures_with_trailing_closure
     - nesting
     - no_magic_numbers
     - prefixed_toplevel_constant

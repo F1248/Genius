@@ -15,6 +15,7 @@ struct ContentView: View {
 		AdaptingTabView<ContentViewTab>()
 			.frame(minWidth: 712, minHeight: 256)
 			.uninstallationDialog()
+			.updateInProgressAlert()
 			.id(interfaceMode)
 	}
 }

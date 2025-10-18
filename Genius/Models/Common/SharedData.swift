@@ -12,4 +12,5 @@ actor SharedData: ObservableObject {
 
 	@MainActor @Published var selectedTabsIndices: [ObjectIdentifier: Int] = [:]
 	@MainActor @Published var showUninstallationDialog: Bool = false
+	@MainActor @Published var showUpdateInProgressAlert: Bool = false
 }
