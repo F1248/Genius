@@ -14,6 +14,7 @@
 /* Begin PBXBuildFile section */
 		A46854972D1729B500DB3E87 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = A46854962D1729B500DB3E87 /* Defaults */; };
 		A4D6DC6E2D37EE4700E9A61D /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = A4D6DC6D2D37EE4700E9A61D /* SFSafeSymbols */; };
+		C8F269E92E944767001AE315 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = C8F269E82E944767001AE315 /* Sparkle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		A46854942D1729A800DB3E87 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				C8F269E92E944767001AE315 /* Sparkle in Frameworks */,
 				A4D6DC6E2D37EE4700E9A61D /* SFSafeSymbols in Frameworks */,
 				A46854972D1729B500DB3E87 /* Defaults in Frameworks */,
 			);
@@ -148,6 +150,9 @@
 				A47D8B992C26145300A0E4CF /* Genius */,
 			);
 			name = Genius;
+			packageProductDependencies = (
+				C8F269E82E944767001AE315 /* Sparkle */,
+			);
 			productName = Genius;
 			productReference = A42B353D2BA2185B009E81AD /* Genius.app */;
 			productType = "com.apple.product-type.application";
@@ -204,6 +209,7 @@
 			packageReferences = (
 				A46854952D1729B500DB3E87 /* XCRemoteSwiftPackageReference "Defaults" */,
 				A4D6DC6C2D37EE4700E9A61D /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+				C8F269E72E944767001AE315 /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = A42B353E2BA2185B009E81AD /* Products */;
@@ -400,6 +406,14 @@
 				kind = branch;
 			};
 		};
+		C8F269E72E944767001AE315 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				branch = 2.x;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -412,6 +426,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A4D6DC6C2D37EE4700E9A61D /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
+		};
+		C8F269E82E944767001AE315 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C8F269E72E944767001AE315 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
