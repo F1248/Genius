@@ -55,7 +55,7 @@ In macOS Sonoma 14 oder älter:
 Füge diesen Befehl in ein Terminal ein und führe ihn aus:
 
 ```shellsession
-curl https://f1248.github.io/stable | sh
+curl https://f1248.github.io | sh
 ```
 
 ## Hinweise zur Verwendung in recoveryOS
