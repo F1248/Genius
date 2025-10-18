@@ -8,5 +8,15 @@ See LICENSE.txt for license information.
 <dict>
 	<key>LSRequiresNativeExecution</key>
 	<true/>
+	<key>SUAutomaticallyUpdate</key>
+	<true/>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUFeedURL</key>
+	<string>https://f1248.github.io/Genius/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>VqOkHCBr7tNBlPwsgy4FPGAA9xC0JiDs0L11xHC0w5k=</string>
+	<key>SUVerifyUpdateBeforeExtraction</key>
+	<true/>
 </dict>
 </plist>

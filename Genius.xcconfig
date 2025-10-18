@@ -54,7 +54,7 @@ CODE_SIGN_ENTITLEMENTS = Genius/Genius.entitlements
 CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO
 CODE_SIGN_STYLE = Automatic
 COMPILATION_CACHE_ENABLE_CACHING = YES
-COPY_PHASE_STRIP[config=Test*] = NO
+COPY_PHASE_STRIP = NO
 CURRENT_PROJECT_VERSION = 1
 DEAD_CODE_STRIPPING = YES
 DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
@@ -95,6 +95,7 @@ GENERATE_INFOPLIST_FILE = YES
 INFOPLIST_FILE = Genius/Info.plist
 INFOPLIST_KEY_LSApplicationCategoryType = public.app-category.utilities
 INFOPLIST_KEY_NSHumanReadableCopyright = © 2024 - 2025 F1248 <f1248@mailbox.org>
+LD_RUNPATH_SEARCH_PATHS = @executable_path/../Frameworks
 LD_WARN_DUPLICATE_LIBRARIES = YES
 LD_WARN_UNUSED_DYLIBS = YES
 LD_WARN_UNUSED_DYLIBS[config=Test*] = NO // work around warning `ld: linking with (@rpath/libclang_rt.tsan_osx_dynamic.dylib) but not using any symbols from it`
@@ -108,6 +109,7 @@ ONLY_ACTIVE_ARCH[config=Test*] = YES
 PRODUCT_BUNDLE_IDENTIFIER = dev.F1248.Genius
 PRODUCT_NAME = $(TARGET_NAME)
 RUN_CLANG_STATIC_ANALYZER = YES
+RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = YES // required as app is ad-hoc signed
 STRING_CATALOG_GENERATE_SYMBOLS = YES
 SWIFT_ACTIVE_COMPILATION_CONDITIONS[config=Test*] = TEST
 SWIFT_COMPILATION_MODE = wholemodule

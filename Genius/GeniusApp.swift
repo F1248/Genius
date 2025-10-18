@@ -41,5 +41,6 @@ struct GeniusApp: App {
 
 	init() {
 		NSWindow.allowsAutomaticWindowTabbing = false
+		_ = updater
 	}
 }
