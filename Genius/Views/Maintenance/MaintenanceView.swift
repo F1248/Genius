@@ -93,5 +93,5 @@ struct MaintenanceView: View {
 
 #Preview {
 	MaintenanceView()
-		.frame(width: 686, height: 256)
+		.frame(width: 712, height: 256)
 }

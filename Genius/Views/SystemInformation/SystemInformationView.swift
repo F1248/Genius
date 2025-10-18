@@ -14,5 +14,5 @@ struct SystemInformationView: View {
 
 #Preview {
 	SystemInformationView()
-		.frame(width: 686, height: 256)
+		.frame(width: 712, height: 256)
 }
