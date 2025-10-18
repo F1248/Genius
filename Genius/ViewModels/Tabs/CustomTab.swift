@@ -9,16 +9,13 @@ import SwiftUI
 struct CustomTab {
 
 	let title: LocalizedStringResource
-	let index: Int
 	let content: AnyView
 
 	init(
 		_ title: LocalizedStringResource,
-		index: Int,
 		@ViewBuilder content: () -> some View,
 	) {
 		self.title = title
-		self.index = index
 		self.content = AnyView(content())
 	}
 }

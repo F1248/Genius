@@ -30,7 +30,6 @@ struct CustomTabView: View {
 		Picker(selection: selectedTabIndexParameter ?? $selectedTabIndexPrivate) {
 			ForEach(tabs) { tab in
 				Text(tab.title)
-					.tag(tab.index)
 			}
 		}
 		.pickerStyle(.segmented)
@@ -55,11 +54,11 @@ struct CustomTabView: View {
 
 #Preview {
 	CustomTabView {
-		CustomTab("Title 0", index: 0) {
+		CustomTab("Title 0") {
 			Text("Content 0")
 				.padding()
 		}
-		CustomTab("Title 1", index: 1) {
+		CustomTab("Title 1") {
 			Text("Content 1")
 				.padding()
 		}
@@ -69,11 +68,11 @@ struct CustomTabView: View {
 
 #Preview("CustomTabView in entire window") {
 	CustomTabView(entireWindow: true) {
-		CustomTab("Title 0", index: 0) {
+		CustomTab("Title 0") {
 			Text("Content 0")
 				.padding()
 		}
-		CustomTab("Title 1", index: 1) {
+		CustomTab("Title 1") {
 			Text("Content 1")
 				.padding()
 		}
