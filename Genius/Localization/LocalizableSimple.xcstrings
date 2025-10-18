@@ -107,6 +107,23 @@
         }
       }
     },
+    "checkForUpdatesEllipsis" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach Aktualisierungen von Genius suchen…"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check for Updates of Genius…"
+          }
+        }
+      }
+    },
     "cpuFrequency" : {
       "extractionState" : "manual",
       "localizations" : {
