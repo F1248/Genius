@@ -158,6 +158,23 @@
         }
       }
     },
+    "checkOnlyUpdates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur suchen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check only"
+          }
+        }
+      }
+    },
     "codeName" : {
       "extractionState" : "manual",
       "localizations" : {

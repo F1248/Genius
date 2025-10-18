@@ -18,7 +18,9 @@ extension LocalizedStringResource: VaryingLocalizationTable {
 	}
 
 	static var administratorPrivilegesRequest: Self { localizationTable.administratorPrivilegesRequest }
+	static var appUpdates: Self { localizationTable.appUpdates }
 	static var askToAllowAccessoriesToConnect: Self { localizationTable.askToAllowAccessoriesToConnect }
+	static var automaticAppUpdates: Self { localizationTable.automaticAppUpdates }
 	static var automaticUpdates: Self { localizationTable.automaticUpdates }
 	static var bootMode: Self { localizationTable.bootMode }
 	static var bootVolume: Self { localizationTable.bootVolume }
