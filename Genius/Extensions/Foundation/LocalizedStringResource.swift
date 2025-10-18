@@ -23,6 +23,7 @@ extension LocalizedStringResource: VaryingLocalizationTable {
 	static var bootMode: Self { localizationTable.bootMode }
 	static var bootVolume: Self { localizationTable.bootVolume }
 	static var checkForMacOSUpdates: Self { localizationTable.checkForMacOSUpdates }
+	static var checkForUpdatesEllipsis: Self { localizationTable.checkForUpdatesEllipsis }
 	static var cpuFrequency: Self { localizationTable.cpuFrequency }
 	static var cpuName: Self { localizationTable.cpuName }
 	static var cpuType: Self { localizationTable.cpuType }

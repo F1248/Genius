@@ -5,6 +5,7 @@
 
 import Defaults
 import SFSafeSymbols
+import Sparkle
 import SwiftUI
 
 struct AppCommands: Commands {
@@ -17,6 +18,12 @@ struct AppCommands: Commands {
 	var body: some Commands {
 		CommandGroup(after: .appInfo) {
 			Divider()
+			Button(
+				.checkForUpdatesEllipsis,
+				systemImage: SFSymbol.arrowTriangle2Circlepath.rawValue,
+			) {
+				updater.checkForUpdates()
+			}
 			Button(.uninstallAppEllipsis, systemImage: SFSymbol.trash.rawValue) {
 				SharedData.sharedData.showUninstallationDialog = true
 			}

@@ -13,6 +13,7 @@ protocol VaryingLocalizationTable {
 	static var bootMode: LocalizedStringResource { get }
 	static var bootVolume: LocalizedStringResource { get }
 	static var checkForMacOSUpdates: LocalizedStringResource { get }
+	static var checkForUpdatesEllipsis: LocalizedStringResource { get }
 	static var cpuFrequency: LocalizedStringResource { get }
 	static var cpuName: LocalizedStringResource { get }
 	static var cpuType: LocalizedStringResource { get }
