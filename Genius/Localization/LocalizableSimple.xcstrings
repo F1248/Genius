@@ -22,6 +22,23 @@
         }
       }
     },
+    "appUpdates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualisierungen von Genius"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Updates of Genius"
+          }
+        }
+      }
+    },
     "askToAllowAccessoriesToConnect" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -35,6 +52,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ask to allow devices to connect"
+          }
+        }
+      }
+    },
+    "automaticAppUpdates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatische Aktualisierungen von Genius"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic Updates of Genius"
           }
         }
       }

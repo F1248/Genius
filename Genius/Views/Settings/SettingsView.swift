@@ -4,6 +4,7 @@
 //
 
 import Defaults
+import Sparkle
 import SwiftUI
 
 struct SettingsView: View {
@@ -12,6 +13,17 @@ struct SettingsView: View {
 	var useTextInsteadOfSymbols: Bool
 	@Default(.interfaceMode)
 	var interfaceMode: Settings.InterfaceMode
+
+	@State var automaticUpdates: Settings.AutomaticUpdates =
+		if updater.automaticallyChecksForUpdates {
+			if updater.automaticallyDownloadsUpdates {
+				.enabled
+			} else {
+				.checkOnly
+			}
+		} else {
+			.disabled
+		}
 
 	@Default(.developmentMode)
 	var developmentMode: Bool
@@ -40,6 +52,31 @@ struct SettingsView: View {
 					.frame(width: 512, alignment: .leading)
 				} label: {
 					Text(.interface)
+						.font(.title2)
+						.padding()
+				}
+				GroupBox {
+					VStack(alignment: .leading) {
+						HStack {
+							Text(.automaticAppUpdates)
+							Spacer()
+							Picker(selection: $automaticUpdates) {
+								ForEach(Settings.AutomaticUpdates.allCases) { automaticUpdatesSetting in
+									Text(automaticUpdatesSetting.title)
+								}
+							}
+							.onChange(of: automaticUpdates) { newValue in
+								updater.automaticallyChecksForUpdates = newValue != .disabled
+								updater.automaticallyDownloadsUpdates = newValue == .enabled
+							}
+							.pickerStyle(.menu)
+						}
+						.padding(.vertical, 2)
+					}
+					.padding(.horizontal, 2)
+					.frame(width: 512, alignment: .leading)
+				} label: {
+					Text(.appUpdates)
 						.font(.title2)
 						.padding()
 				}

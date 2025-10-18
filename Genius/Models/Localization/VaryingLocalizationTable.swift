@@ -10,6 +10,8 @@ protocol VaryingLocalizationTable {
 	static var administratorPrivilegesRequest: LocalizedStringResource { get }
 	static var askToAllowAccessoriesToConnect: LocalizedStringResource { get }
 	static var automaticUpdates: LocalizedStringResource { get }
+	static var automaticAppUpdates: LocalizedStringResource { get }
+	static var appUpdates: LocalizedStringResource { get }
 	static var bootMode: LocalizedStringResource { get }
 	static var bootVolume: LocalizedStringResource { get }
 	static var checkForMacOSUpdates: LocalizedStringResource { get }
