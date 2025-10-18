@@ -25,6 +25,9 @@ struct SettingsView: View {
 			.disabled
 		}
 
+	@Default(.betaUpdates)
+	var betaUpdates: Bool
+
 	@Default(.developmentMode)
 	var developmentMode: Bool
 
@@ -72,6 +75,11 @@ struct SettingsView: View {
 							.pickerStyle(.menu)
 						}
 						.padding(.vertical, 2)
+						if betaUpdates || developmentMode || interfaceMode >= .advanced {
+							Divider()
+							SpacedToggle(.enableBetaUpdates, isOn: $betaUpdates)
+								.padding(.vertical, 2)
+						}
 					}
 					.padding(.horizontal, 2)
 					.frame(width: 512, alignment: .leading)

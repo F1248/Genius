@@ -311,6 +311,23 @@
         }
       }
     },
+    "enableBetaUpdates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beta-Updates aktivieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable Beta Updates"
+          }
+        }
+      }
+    },
     "enabled" : {
       "extractionState" : "manual",
       "localizations" : {
