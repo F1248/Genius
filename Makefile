@@ -116,11 +116,13 @@ install-files:
 
 appcast:
 	mkdir _site
+	# exclude version 0.1.0 as it does not have Sparkle
 	gh release list \
 		--exclude-drafts \
 		--exclude-pre-releases \
 		--json tagName \
 		--jq ".[].tagName" \
+		| grep --invert-match v0.1.0 \
 		| xargs -I tag gh release download tag \
 		--output _site/prefix-placeholder-tag-postfix-placeholder.zip \
 		--pattern Genius.zip
@@ -129,10 +131,12 @@ appcast:
 		$(sparkle_generate_appcast_arguments) \
 		--maximum-versions 0 \
 		--maximum-deltas 999
+	# exclude version 0.1.0 as it does not have Sparkle
 	gh release list \
 		--exclude-drafts \
 		--json tagName \
 		--jq ".[].tagName" \
+		| grep --invert-match v0.1.0 \
 		| xargs -I tag gh release download tag \
 		--output _site/prefix-placeholder-tag-postfix-placeholder.zip \
 		--pattern Genius.zip \
