@@ -91,8 +91,6 @@ build:
 	$(evaluate-log)
 	$(remove-log)
 	mv Genius.xcarchive/Products/Applications/Genius.app .
-	rm -r Genius.app/Contents/Frameworks/Sparkle.framework/Versions/B/XPCServices
-	rm Genius.app/Contents/Frameworks/Sparkle.framework/XPCServices
 	mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
 	rm -r Genius.xcarchive
 
