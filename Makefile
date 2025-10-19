@@ -145,6 +145,6 @@ appcast:
 		--channel beta
 	sed \
 		-i $(sed_extension) \
-		's|prefix-placeholder-|https://github.com/F1248/Genius/releases/download/|g;s|-postfix-placeholder|/Genius|g' \
+		"s|prefix-placeholder-|https://github.com/F1248/Genius/releases/download/|g;s|-postfix-placeholder|/Genius|g" \
 		_site/appcast.xml
 	rm _site/prefix-placeholder-*-postfix-placeholder.zip
