@@ -124,7 +124,8 @@ appcast:
 		| xargs -I tag gh release download tag \
 		--output _site/prefix-placeholder-tag-postfix-placeholder.zip \
 		--pattern Genius.zip
-	echo $$sparkle_private_eddsa_key | $(command_prefix)generate_appcast _site \
+	echo $$sparkle_private_eddsa_key \
+		| $(command_prefix)generate_appcast _site \
 		$(sparkle_generate_appcast_arguments) \
 		--maximum-versions 0 \
 		--maximum-deltas 999
@@ -136,7 +137,8 @@ appcast:
 		--output _site/prefix-placeholder-tag-postfix-placeholder.zip \
 		--pattern Genius.zip \
 		--skip-existing
-	echo $$sparkle_private_eddsa_key | $(command_prefix)generate_appcast _site \
+	echo $$sparkle_private_eddsa_key \
+		| $(command_prefix)generate_appcast _site \
 		$(sparkle_generate_appcast_arguments) \
 		--maximum-versions 0 \
 		--maximum-deltas 999 \
