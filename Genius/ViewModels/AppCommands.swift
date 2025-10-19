@@ -5,6 +5,7 @@
 
 import Defaults
 import SFSafeSymbols
+import Sparkle
 import SwiftUI
 
 struct AppCommands: Commands {
@@ -15,14 +16,26 @@ struct AppCommands: Commands {
 	@ObservedObject var observedSharedData: SharedData = .sharedData
 
 	var body: some Commands {
-		CommandGroup(replacing: .appSettings) {
-			Button(.uninstallAppEllipsis, systemImage: SFSymbol.trash.rawValue) {
-				SharedData.sharedData.showUninstallationAlert = true
-			}
+		CommandGroup(after: .appInfo) {
 			Divider()
+			Button(
+				.checkForUpdatesEllipsis,
+				systemImage: SFSymbol.arrowTriangle2Circlepath.rawValue,
+			) {
+				guard updater.canCheckForUpdates else {
+					SharedData.sharedData.showUpdateInProgressAlert = true
+					return
+				}
+				updater.checkForUpdates()
+			}
+			Button(.uninstallAppEllipsis, systemImage: SFSymbol.trash.rawValue) {
+				SharedData.sharedData.showUninstallationDialog = true
+			}
+		}
+		CommandGroup(replacing: .appSettings) {
 			TabButton(tab: ContentViewTab.settings)
 		}
-		CommandGroup(replacing: .newItem) { EmptyView() }
+		CommandGroup(replacing: .newItem) {}
 		CommandGroup(before: .toolbar) {
 			TabViewButtons<ContentViewTab>()
 				.id(interfaceMode)
@@ -31,6 +44,6 @@ struct AppCommands: Commands {
 				default: EmptyView()
 			}
 		}
-		CommandGroup(replacing: .help) { EmptyView() }
+		CommandGroup(replacing: .help) {}
 	}
 }

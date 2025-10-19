@@ -76,7 +76,7 @@ jobs:
 
             - name: Install Periphery
               run: |
-                tag=$(gh release --repo peripheryapp/periphery list --json tagName --limit 1 | cut -d "\"" -f 4)
+                tag=$(gh release --repo peripheryapp/periphery list --json tagName --jq ".[0].tagName")
                 curl \
                     https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip \
                     --location \
@@ -113,7 +113,7 @@ jobs:
 
             - name: Install xcbeautify
               run: |
-                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --limit 1 | cut -d "\"" -f 4)
+                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --jq ".[0].tagName")
                 curl \
                     https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip \
                     --location \
@@ -134,7 +134,7 @@ jobs:
               run: make build
 
             - name: Zip app
-              run: zip --recurse-paths Genius.zip Genius.app
+              run: zip --recurse-paths --symlinks Genius.zip Genius.app
 
             - name: Attest build provenance of Genius.zip
               uses: actions/attest-build-provenance@main
@@ -144,7 +144,7 @@ jobs:
             - name: Upload Genius.zip
               uses: actions/upload-artifact@main
               with:
-                name: Genius.zip
+                name: Genius # omit `.zip` file extension as it will be added automatically
                 path: Genius.zip
 
             - name: Install create-dmg
@@ -175,8 +175,8 @@ jobs:
             - name: Zip debug symbols
               run: zip --recurse-paths Debug-Symbols.zip Genius.app.dSYM
 
-            - name: Upload debug symbols
+            - name: Upload Debug-Symbols.zip
               uses: actions/upload-artifact@main
               with:
-                name: Debug-Symbols
+                name: Debug-Symbols # omit `.zip` file extension as it will be added automatically
                 path: Debug-Symbols.zip

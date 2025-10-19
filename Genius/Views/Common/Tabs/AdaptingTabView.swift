@@ -27,7 +27,6 @@ struct AdaptingTabView<TabDataType: TabData>: View {
 				TabDataType.allCases.map { tab in
 					CustomTab(
 						tab.title,
-						index: tab.index,
 					) { tab }
 				}
 			}

@@ -9,5 +9,8 @@ extension Defaults.Keys {
 
 	static let useTextInsteadOfSymbols = Key<Bool>("UseTextInsteadOfSymbols", default: { Defaults[.interfaceMode] <= .simple })
 	static let interfaceMode = Key<Settings.InterfaceMode>("InterfaceMode", default: .normal)
+
+	static let betaUpdates = Key<Bool>("BetaUpdates", default: false)
+
 	static let developmentMode = Key<Bool>("DevelopmentMode", default: false)
 }

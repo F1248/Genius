@@ -10,9 +10,12 @@ protocol VaryingLocalizationTable {
 	static var administratorPrivilegesRequest: LocalizedStringResource { get }
 	static var askToAllowAccessoriesToConnect: LocalizedStringResource { get }
 	static var automaticUpdates: LocalizedStringResource { get }
+	static var automaticAppUpdates: LocalizedStringResource { get }
+	static var appUpdates: LocalizedStringResource { get }
 	static var bootMode: LocalizedStringResource { get }
 	static var bootVolume: LocalizedStringResource { get }
 	static var checkForMacOSUpdates: LocalizedStringResource { get }
+	static var checkForUpdatesEllipsis: LocalizedStringResource { get }
 	static var cpuFrequency: LocalizedStringResource { get }
 	static var cpuName: LocalizedStringResource { get }
 	static var cpuType: LocalizedStringResource { get }
@@ -27,4 +30,6 @@ protocol VaryingLocalizationTable {
 	static var uninstallAppEllipsis: LocalizedStringResource { get }
 	static var uninstallationMessage: LocalizedStringResource { get }
 	static var uninstallationTitle: LocalizedStringResource { get }
+	static var updateInProgressMessage: LocalizedStringResource { get }
+	static var updateInProgressTitle: LocalizedStringResource { get }
 }

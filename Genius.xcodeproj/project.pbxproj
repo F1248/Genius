@@ -14,6 +14,7 @@
 /* Begin PBXBuildFile section */
 		A46854972D1729B500DB3E87 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = A46854962D1729B500DB3E87 /* Defaults */; };
 		A4D6DC6E2D37EE4700E9A61D /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = A4D6DC6D2D37EE4700E9A61D /* SFSafeSymbols */; };
+		C8F269E92E944767001AE315 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = C8F269E82E944767001AE315 /* Sparkle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		A46854942D1729A800DB3E87 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				C8F269E92E944767001AE315 /* Sparkle in Frameworks */,
 				A4D6DC6E2D37EE4700E9A61D /* SFSafeSymbols in Frameworks */,
 				A46854972D1729B500DB3E87 /* Defaults in Frameworks */,
 			);
@@ -137,19 +139,20 @@
 			buildConfigurationList = A42B354E2BA2185C009E81AD /* Build configuration list for PBXNativeTarget "Genius" */;
 			buildPhases = (
 				A42660D12C729D04000E0507 /* SwiftFormat */,
+				C8A4DA762E92F82D0038A2EE /* SwiftLint */,
 				A42B35392BA2185B009E81AD /* Sources */,
 				A46854942D1729A800DB3E87 /* Frameworks */,
 				A42B353B2BA2185B009E81AD /* Resources */,
 			);
 			buildRules = (
 			);
-			dependencies = (
-				A4672DDB2C61207100C933CB /* PBXTargetDependency */,
-			);
 			fileSystemSynchronizedGroups = (
 				A47D8B992C26145300A0E4CF /* Genius */,
 			);
 			name = Genius;
+			packageProductDependencies = (
+				C8F269E82E944767001AE315 /* Sparkle */,
+			);
 			productName = Genius;
 			productReference = A42B353D2BA2185B009E81AD /* Genius.app */;
 			productType = "com.apple.product-type.application";
@@ -165,7 +168,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A4D9A1BD2D257090008D91E7 /* PBXTargetDependency */,
 				A4D9A1AF2D257055008D91E7 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
@@ -183,14 +185,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 2600;
-				LastUpgradeCheck = 2600;
+				LastSwiftUpdateCheck = 2610;
+				LastUpgradeCheck = 2610;
 				TargetAttributes = {
 					A42B353C2BA2185B009E81AD = {
-						CreatedOnToolsVersion = 26.0;
+						CreatedOnToolsVersion = 26.1;
 					};
 					A4D9A1A92D257055008D91E7 = {
-						CreatedOnToolsVersion = 26.0;
+						CreatedOnToolsVersion = 26.1;
 						TestTargetID = A42B353C2BA2185B009E81AD;
 					};
 				};
@@ -205,9 +207,9 @@
 			mainGroup = A42B35342BA2185B009E81AD;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				A4672DD92C61205000C933CB /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 				A46854952D1729B500DB3E87 /* XCRemoteSwiftPackageReference "Defaults" */,
 				A4D6DC6C2D37EE4700E9A61D /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+				C8F269E72E944767001AE315 /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = A42B353E2BA2185B009E81AD /* Products */;
@@ -239,7 +241,14 @@
 			alwaysOutOfDate = 1;
 			name = SwiftFormat;
 			shellPath = /bin/zsh;
-			shellScript = "if [[ ${CONFIGURATION} == Debug ]]; then\n\tif which -s swiftformat; then\n\t\tswiftformat --lint --lenient .\n\telse\n\t\techo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"\n\tfi\nfi\n";
+			shellScript = "if [[ ${CONFIGURATION} == *Debug ]]; then\n\tif which -s swiftformat; then\n\t\tswiftformat --lint --lenient .\n\telse\n\t\techo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"\n\tfi\nfi\n";
+		};
+		C8A4DA762E92F82D0038A2EE /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			name = SwiftLint;
+			shellPath = /bin/zsh;
+			shellScript = "if [[ ${CONFIGURATION} == *Debug ]]; then\n\tif which -s swiftlint; then\n\t\tswiftlint lint\n\telse\n\t\techo \"warning: SwiftLint is not installed, see https://realm.github.io/SwiftLint#installation for installation instructions\"\n\tfi\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -257,18 +266,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A4672DDB2C61207100C933CB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = A4672DDA2C61207100C933CB /* SwiftLintBuildToolPlugin */;
-		};
 		A4D9A1AF2D257055008D91E7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A42B353C2BA2185B009E81AD /* Genius */;
 			targetProxy = A4D9A1AE2D257055008D91E7 /* PBXContainerItemProxy */;
-		};
-		A4D9A1BD2D257090008D91E7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = A4D9A1BC2D257090008D91E7 /* SwiftLintBuildToolPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -389,14 +390,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A4672DD92C61205000C933CB /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		A46854952D1729B500DB3E87 /* XCRemoteSwiftPackageReference "Defaults" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
@@ -413,14 +406,17 @@
 				version = 6.2.0;
 			};
 		};
+		C8F269E72E944767001AE315 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				branch = 2.x;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A4672DDA2C61207100C933CB /* SwiftLintBuildToolPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A4672DD92C61205000C933CB /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
-		};
 		A46854962D1729B500DB3E87 /* Defaults */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A46854952D1729B500DB3E87 /* XCRemoteSwiftPackageReference "Defaults" */;
@@ -431,10 +427,10 @@
 			package = A4D6DC6C2D37EE4700E9A61D /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
 		};
-		A4D9A1BC2D257090008D91E7 /* SwiftLintBuildToolPlugin */ = {
+		C8F269E82E944767001AE315 /* Sparkle */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A4672DD92C61205000C933CB /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
+			package = C8F269E72E944767001AE315 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

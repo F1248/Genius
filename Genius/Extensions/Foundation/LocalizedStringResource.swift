@@ -18,11 +18,14 @@ extension LocalizedStringResource: VaryingLocalizationTable {
 	}
 
 	static var administratorPrivilegesRequest: Self { localizationTable.administratorPrivilegesRequest }
+	static var appUpdates: Self { localizationTable.appUpdates }
 	static var askToAllowAccessoriesToConnect: Self { localizationTable.askToAllowAccessoriesToConnect }
+	static var automaticAppUpdates: Self { localizationTable.automaticAppUpdates }
 	static var automaticUpdates: Self { localizationTable.automaticUpdates }
 	static var bootMode: Self { localizationTable.bootMode }
 	static var bootVolume: Self { localizationTable.bootVolume }
 	static var checkForMacOSUpdates: Self { localizationTable.checkForMacOSUpdates }
+	static var checkForUpdatesEllipsis: Self { localizationTable.checkForUpdatesEllipsis }
 	static var cpuFrequency: Self { localizationTable.cpuFrequency }
 	static var cpuName: Self { localizationTable.cpuName }
 	static var cpuType: Self { localizationTable.cpuType }
@@ -37,6 +40,8 @@ extension LocalizedStringResource: VaryingLocalizationTable {
 	static var uninstallAppEllipsis: Self { localizationTable.uninstallAppEllipsis }
 	static var uninstallationMessage: Self { localizationTable.uninstallationMessage }
 	static var uninstallationTitle: Self { localizationTable.uninstallationTitle }
+	static var updateInProgressMessage: Self { localizationTable.updateInProgressMessage }
+	static var updateInProgressTitle: Self { localizationTable.updateInProgressTitle }
 
 	static var user: Self { supportsInflection ? .userWithInflection : .userWithoutInflection }
 }

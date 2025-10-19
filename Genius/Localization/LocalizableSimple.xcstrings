@@ -22,6 +22,23 @@
         }
       }
     },
+    "appUpdates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualisierungen von Genius"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Updates of Genius"
+          }
+        }
+      }
+    },
     "askToAllowAccessoriesToConnect" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -35,6 +52,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ask to allow devices to connect"
+          }
+        }
+      }
+    },
+    "automaticAppUpdates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatische Aktualisierungen von Genius"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic Updates of Genius"
           }
         }
       }
@@ -103,6 +137,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Check for macOS updates"
+          }
+        }
+      }
+    },
+    "checkForUpdatesEllipsis" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach Aktualisierungen von Genius suchen…"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check for Updates of Genius…"
           }
         }
       }
@@ -341,6 +392,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Are you sure you want to remove Genius?"
+          }
+        }
+      }
+    },
+    "updateInProgressMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Moment kann nicht nach Aktualisierungen gesucht werden, da eine Aktualisierung bereits läuft. Bitte versuche es in Kürze erneut."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to check for updates at the moment because an update is already in progress. Please try again shortly."
+          }
+        }
+      }
+    },
+    "updateInProgressTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualisierung läuft bereits"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update Already in Progress"
           }
         }
       }

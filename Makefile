@@ -3,10 +3,10 @@
 # See LICENSE.txt for license information.
 #
 
-.ONESHELL:
 SHELL = /bin/bash -o pipefail
 .PHONY: *
 
+sed_extension = $(shell sed --version &> /dev/null && echo "" || echo "''")
 xcodebuild_arguments = -scheme Genius
 xcodebuild_test_arguments = -configuration Test-Release
 xcodebuild_pipe = \
@@ -17,6 +17,7 @@ xcodebuild_pipe = \
 ifeq ($(GITHUB_ACTIONS), true)
 	command_prefix = ./
 	periphery_arguments = --format github-actions -- -skipPackagePluginValidation
+	sparkle_generate_appcast_arguments += --ed-key-file -
 	swiftformat_arguments = --reporter github-actions-log
 	swiftlint_arguments = --reporter github-actions-logging
 	xcbeautify_arguments = --renderer github-actions
@@ -92,3 +93,66 @@ build:
 	mv Genius.xcarchive/Products/Applications/Genius.app .
 	mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
 	rm -r Genius.xcarchive
+
+install-files:
+	mkdir _site
+	cd Genius && eval "$$( \
+		git for-each-ref --format=" \
+			git checkout %(refname) && \
+			sed -i $(sed_extension) 's|download-url|https://nightly.link/F1248/Genius/workflows/Build-app/%(refname:lstrip=3)/Genius.zip|g' Install && \
+			mv Install ../_site/%(refname:lstrip=3).html && \
+			git reset --hard \
+		" "refs/remotes/origin/*" && \
+		git for-each-ref --format=" \
+			git checkout %(refname) && \
+			sed -i $(sed_extension) 's|download-url|https://github.com/F1248/Genius/releases/download/%(refname:lstrip=2)/Genius.zip|g' Install && \
+			mv Install ../_site/%(refname:lstrip=2).html && \
+			git reset --hard \
+		" "refs/tags/*" \
+	)"
+	cd _site && cp $$( \
+		gh release --repo F1248/Genius list --json tagName,isLatest --jq ".[] | select(.isLatest).tagName" \
+	).html index.html
+
+appcast:
+	mkdir _site
+	# exclude version 0.1.0 as it does not have Sparkle
+	gh release list \
+		--exclude-drafts \
+		--exclude-pre-releases \
+		--json tagName \
+		--jq ".[].tagName" \
+		| grep --invert-match v0.1.0 \
+		| xargs -I tag gh release download tag \
+		--output _site/prefix-placeholder-tag-postfix-placeholder.zip \
+		--pattern Genius.zip
+	# specify download URL prefix to prevent feed URL from getting prepended to download URL
+	echo $$sparkle_private_eddsa_key \
+		| $(command_prefix)generate_appcast _site \
+		$(sparkle_generate_appcast_arguments) \
+		--download-url-prefix " " \
+		--maximum-versions 0 \
+		--maximum-deltas 999
+	# exclude version 0.1.0 as it does not have Sparkle
+	gh release list \
+		--exclude-drafts \
+		--json tagName \
+		--jq ".[].tagName" \
+		| grep --invert-match v0.1.0 \
+		| xargs -I tag gh release download tag \
+		--output _site/prefix-placeholder-tag-postfix-placeholder.zip \
+		--pattern Genius.zip \
+		--skip-existing
+	# specify download URL prefix to prevent feed URL from getting prepended to download URL
+	echo $$sparkle_private_eddsa_key \
+		| $(command_prefix)generate_appcast _site \
+		$(sparkle_generate_appcast_arguments) \
+		--download-url-prefix " " \
+		--maximum-versions 0 \
+		--maximum-deltas 999 \
+		--channel beta
+	sed \
+		-i $(sed_extension) \
+		"s|prefix-placeholder-|https://github.com/F1248/Genius/releases/download/|g;s|-postfix-placeholder|/Genius|g" \
+		_site/appcast.xml
+	rm _site/prefix-placeholder-*-postfix-placeholder.zip

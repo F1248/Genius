@@ -3,7 +3,8 @@
 // See LICENSE.txt for license information.
 //
 
+@propertyWrapper
 struct SyncValueWrapper<Value: Sendable>: ValueWrapperProtocol {
 
-	let value: Value
+	let wrappedValue: Value
 }

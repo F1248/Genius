@@ -32,7 +32,7 @@ struct Symbol: View {
 			Image(systemSymbol: symbol)
 				.apply(modifier: { $0.foregroundColor(color) }, if: color != nil)
 				.frame(width: 14)
-				.accessibilityLabel(Text(label))
+				.accessibilityLabel(label)
 		}
 	}
 }

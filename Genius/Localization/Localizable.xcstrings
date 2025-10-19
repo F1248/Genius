@@ -158,6 +158,23 @@
         }
       }
     },
+    "checkOnlyUpdates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur suchen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check only"
+          }
+        }
+      }
+    },
     "codeName" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -226,6 +243,23 @@
         }
       }
     },
+    "development" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entwicklung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Development"
+          }
+        }
+      }
+    },
     "developmentMode" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -273,6 +307,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Efficiency Cores"
+          }
+        }
+      }
+    },
+    "enableBetaUpdates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beta-Updates aktivieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable Beta Updates"
           }
         }
       }
@@ -511,6 +562,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Intel"
+          }
+        }
+      }
+    },
+    "interface" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oberfläche"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interface"
           }
         }
       }
