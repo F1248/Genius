@@ -38,6 +38,8 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@main
+              with:
+                ref: main
 
             - name: Install Sparkle
               run: |
