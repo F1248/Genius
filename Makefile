@@ -126,9 +126,11 @@ appcast:
 		| xargs -I tag gh release download tag \
 		--output _site/prefix-placeholder-tag-postfix-placeholder.zip \
 		--pattern Genius.zip
+	# specify download URL prefix to prevent feed URL from getting prepended to download URL
 	echo $$sparkle_private_eddsa_key \
 		| $(command_prefix)generate_appcast _site \
 		$(sparkle_generate_appcast_arguments) \
+		--download-url-prefix " " \
 		--maximum-versions 0 \
 		--maximum-deltas 999
 	# exclude version 0.1.0 as it does not have Sparkle
@@ -141,9 +143,11 @@ appcast:
 		--output _site/prefix-placeholder-tag-postfix-placeholder.zip \
 		--pattern Genius.zip \
 		--skip-existing
+	# specify download URL prefix to prevent feed URL from getting prepended to download URL
 	echo $$sparkle_private_eddsa_key \
 		| $(command_prefix)generate_appcast _site \
 		$(sparkle_generate_appcast_arguments) \
+		--download-url-prefix " " \
 		--maximum-versions 0 \
 		--maximum-deltas 999 \
 		--channel beta
