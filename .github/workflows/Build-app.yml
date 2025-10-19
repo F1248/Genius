@@ -171,7 +171,7 @@ jobs:
               run: make build
 
             - name: Zip app
-              run: zip --recurse-paths Genius.zip Genius.app
+              run: zip --recurse-paths --symlinks Genius.zip Genius.app
 
             - name: Attest build provenance of Genius.zip
               uses: actions/attest-build-provenance@main
