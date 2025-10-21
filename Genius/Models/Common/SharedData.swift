@@ -8,7 +8,7 @@ import Combine
 
 actor SharedData: ObservableObject {
 
-	static let sharedData = SharedData()
+	static let shared = SharedData()
 
 	@MainActor @Published var selectedTabsIndices: [ObjectIdentifier: Int] = [:]
 	@MainActor @Published var showUninstallationDialog: Bool = false

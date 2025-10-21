@@ -7,7 +7,7 @@ import SwiftUI
 
 struct AdaptingTabView<TabDataType: TabData>: View {
 
-	@ObservedObject var observedSharedData: SharedData = .sharedData
+	@ObservedObject var observedSharedData: SharedData = .shared
 
 	var selection: Binding<Int> { $observedSharedData.selectedTabsIndices[TabDataType.id, default: 0] }
 

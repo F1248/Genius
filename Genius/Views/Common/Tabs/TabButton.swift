@@ -15,7 +15,7 @@ struct TabButton<TabDataType: TabData>: View {
 			tab as? ContentViewTab == .settings ? .settingsEllipsis : tab.title,
 			systemImage: tab.symbol.rawValue,
 		) {
-			SharedData.sharedData.selectedTabsIndices[TabDataType.id] = tab.index
+			SharedData.shared.selectedTabsIndices[TabDataType.id] = tab.index
 		}
 		.keyboardShortcut(
 			tab as? ContentViewTab == .settings ? "," : KeyEquivalent(Character(String(tab.index + 1))),
