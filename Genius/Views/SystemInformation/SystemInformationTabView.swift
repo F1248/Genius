@@ -56,11 +56,9 @@ struct SystemInformationTabView: View {
 			.padding()
 		}
 		.task(priority: .userInitiated) {
-			let values: [[String?]] = await contentData.map { $0.value.map(\.value) }.concurrentMap { value in
-				await value.concurrentMap { value in
-					await value.uiRepresentation
-				}
-			}
+			let values: [[String?]] = await contentData
+				.map { $0.value.map(\.value) }
+				.concurrentMap { await $0.concurrentMap { await $0.uiRepresentation } }
 			content = zip(contentData, values)
 				.map { keyValuePair, values in
 					(key: keyValuePair.key, value: zip(keyValuePair.value, values).compactMap { keyValuePair, value in
