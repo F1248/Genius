@@ -30,6 +30,11 @@ enum ContentViewTab: @MainActor TabData {
 		default: title
 	} }
 
+	var keyEquivalent: KeyEquivalent { switch self {
+		case .settings: ","
+		default: KeyEquivalent(Character(String(index + 1)))
+	} }
+
 	var displayTitleInBody: Bool { switch self {
 		case .home: false
 		default: true

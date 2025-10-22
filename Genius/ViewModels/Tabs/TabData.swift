@@ -16,6 +16,7 @@ protocol TabData: View, CaseIterable, Equatable, SelfIdentifiable where AllCases
 
 	var title: LocalizedStringResource { get }
 	var commandTitle: LocalizedStringResource { get }
+	var keyEquivalent: KeyEquivalent { get }
 	var displayTitleInBody: Bool { get }
 	var symbol: SFSymbol { get }
 
@@ -32,6 +33,7 @@ extension TabData {
 	}
 
 	var commandTitle: LocalizedStringResource { title }
+	var keyEquivalent: KeyEquivalent { KeyEquivalent(Character(String(index + 1))) }
 	var displayTitleInBody: Bool { true }
 
 	@ViewBuilder var body: some View {
@@ -49,9 +51,6 @@ extension TabData {
 		Button(commandTitle, systemImage: symbol.rawValue) {
 			SharedData.shared.selectedTabsIndices[Self.id] = index
 		}
-		.keyboardShortcut(
-			self as? ContentViewTab == .settings ? "," : KeyEquivalent(Character(String(index + 1))),
-			modifiers: Self.keyboardShortcutModifiers,
-		)
+		.keyboardShortcut(keyEquivalent, modifiers: Self.keyboardShortcutModifiers)
 	}
 }
