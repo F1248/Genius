@@ -30,6 +30,8 @@ extension TabData {
 		Divider()
 	}
 
+	var displayTitleInBody: Bool { true }
+
 	@ViewBuilder var body: some View {
 		VStack {
 			if displayTitleInBody {
