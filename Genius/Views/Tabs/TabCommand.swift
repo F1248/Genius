@@ -6,7 +6,7 @@
 import SFSafeSymbols
 import SwiftUI
 
-struct TabButton<TabDataType: TabData>: View {
+struct TabCommand<TabDataType: TabData>: View {
 
 	let tab: TabDataType
 

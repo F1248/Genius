@@ -5,11 +5,11 @@
 
 import SwiftUI
 
-struct TabViewButtons<TabDataType: TabData>: View {
+struct TabViewCommands<TabDataType: TabData>: View {
 
 	var body: some View {
 		ForEach(TabDataType.allCases.filter { $0 as? ContentViewTab != .settings }) { tab in
-			TabButton(tab: tab)
+			TabCommand(tab: tab)
 		}
 		Divider()
 	}

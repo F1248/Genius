@@ -33,14 +33,14 @@ struct AppCommands: Commands {
 			}
 		}
 		CommandGroup(replacing: .appSettings) {
-			TabButton(tab: ContentViewTab.settings)
+			TabCommand(tab: ContentViewTab.settings)
 		}
 		CommandGroup(replacing: .newItem) {}
 		CommandGroup(before: .toolbar) {
-			TabViewButtons<ContentViewTab>()
+			TabViewCommands<ContentViewTab>()
 				.id(interfaceMode)
 			switch observedSharedData.selectedTabsIndices[ContentViewTab.id] {
-				case ContentViewTab.systemInformation.index: TabViewButtons<SystemInformationViewTab>()
+				case ContentViewTab.systemInformation.index: TabViewCommands<SystemInformationViewTab>()
 				default: EmptyView()
 			}
 		}
