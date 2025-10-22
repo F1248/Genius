@@ -35,4 +35,17 @@ extension TabData {
 			content
 		}
 	}
+
+	@ViewBuilder var command: some View {
+		Button(
+			self as? ContentViewTab == .settings ? .settingsEllipsis : title,
+			systemImage: symbol.rawValue,
+		) {
+			SharedData.shared.selectedTabsIndices[Self.id] = index
+		}
+		.keyboardShortcut(
+			self as? ContentViewTab == .settings ? "," : KeyEquivalent(Character(String(index + 1))),
+			modifiers: Self.keyboardShortcutModifiers,
+		)
+	}
 }

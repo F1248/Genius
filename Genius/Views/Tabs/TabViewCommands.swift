@@ -8,9 +8,7 @@ import SwiftUI
 struct TabViewCommands<TabDataType: TabData>: View {
 
 	var body: some View {
-		ForEach(TabDataType.allCases.filter { $0 as? ContentViewTab != .settings }) { tab in
-			TabCommand(tab: tab)
-		}
+		ForEach(TabDataType.allCases.filter { $0 as? ContentViewTab != .settings }, content: \.command)
 		Divider()
 	}
 }

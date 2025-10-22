@@ -33,7 +33,7 @@ struct AppCommands: Commands {
 			}
 		}
 		CommandGroup(replacing: .appSettings) {
-			TabCommand(tab: ContentViewTab.settings)
+			ContentViewTab.settings.command
 		}
 		CommandGroup(replacing: .newItem) {}
 		CommandGroup(before: .toolbar) {
