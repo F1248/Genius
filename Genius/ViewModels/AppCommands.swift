@@ -37,10 +37,10 @@ struct AppCommands: Commands {
 		}
 		CommandGroup(replacing: .newItem) {}
 		CommandGroup(before: .toolbar) {
-			TabViewCommands<ContentViewTab>()
+			ContentViewTab.commands
 				.id(interfaceMode)
 			switch observedSharedData.selectedTabsIndices[ContentViewTab.id] {
-				case ContentViewTab.systemInformation.index: TabViewCommands<SystemInformationViewTab>()
+				case ContentViewTab.systemInformation.index: SystemInformationViewTab.commands
 				default: EmptyView()
 			}
 		}

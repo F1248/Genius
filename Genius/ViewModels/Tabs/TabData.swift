@@ -25,6 +25,11 @@ extension TabData {
 
 	static var id: ObjectIdentifier { ObjectIdentifier(self) }
 
+	@ViewBuilder static var commands: some View {
+		ForEach(allCases.filter { $0 as? ContentViewTab != .settings }, content: \.command)
+		Divider()
+	}
+
 	@ViewBuilder var body: some View {
 		VStack {
 			if displayTitleInBody {
