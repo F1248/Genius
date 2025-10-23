@@ -3,6 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
+import CoreFoundation
 import Foundation
 import SFSafeSymbols
 import SwiftUI
@@ -46,6 +47,7 @@ extension TabData {
 					.padding()
 			}
 			content
+				.frame(maxHeight: .infinity, alignment: .top)
 		}
 	}
 
