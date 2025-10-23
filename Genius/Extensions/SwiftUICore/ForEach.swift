@@ -16,14 +16,4 @@ extension ForEach where Content: View {
 			id: \.offset,
 		) { content($0.element) }
 	}
-
-	init<OuterData: Sequence>(
-		enumerated data: OuterData,
-		@ViewBuilder content: @escaping (Int, OuterData.Element) -> Content,
-	) where Data == [(offset: Int, element: OuterData.Element)], ID == Int {
-		self.init(
-			Array(data.enumerated()),
-			id: \.offset,
-		) { content($0.offset, $0.element) }
-	}
 }

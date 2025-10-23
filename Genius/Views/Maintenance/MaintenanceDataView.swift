@@ -20,35 +20,26 @@ struct MaintenanceDataView: View {
 	}
 
 	var body: some View {
-		ScrollView {
-			Group {
-				if let content {
-					ForEach(content) { groupBoxContent in
-						GroupBox {
-							ForEach(enumerated: groupBoxContent.value) { index, rowContent in
-								if index > 0 {
-									Divider()
-								}
-								HStack {
-									rowContent.key
-									Spacer()
+		Group {
+			if let content {
+				Form {
+					ForEach(content) { sectionContent in
+						Section(sectionContent.key) {
+							ForEach(sectionContent.value) { rowContent in
+								LabeledContent {
 									rowContent.value
+								} label: {
+									rowContent.key
 								}
-								.padding(.vertical, 2)
 							}
-							.padding(.horizontal, 2)
-							.frame(width: 512, alignment: .leading)
-						} label: {
-							Text(groupBoxContent.key)
-								.font(.title2)
-								.padding()
 						}
 					}
-				} else {
-					ProgressView()
 				}
+				.formStyle(.grouped)
+				.frame(width: 512)
+			} else {
+				ProgressView()
 			}
-			.padding()
 		}
 		.task {
 			let values: [[Symbol?]] = await contentData
