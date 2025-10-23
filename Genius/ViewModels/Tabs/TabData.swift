@@ -17,6 +17,7 @@ protocol TabData: View, CaseIterable, Equatable, SelfIdentifiable where AllCases
 	var title: LocalizedStringResource { get }
 	var commandTitle: LocalizedStringResource { get }
 	var keyEquivalent: KeyEquivalent { get }
+	var includeInCommands: Bool { get }
 	var displayTitleInBody: Bool { get }
 	var symbol: SFSymbol { get }
 
@@ -28,12 +29,13 @@ extension TabData {
 	static var id: ObjectIdentifier { ObjectIdentifier(self) }
 
 	@ViewBuilder static var commands: some View {
-		ForEach(allCases.filter { $0 as? ContentViewTab != .settings }, content: \.command)
+		ForEach(allCases.filter(\.includeInCommands), content: \.command)
 		Divider()
 	}
 
 	var commandTitle: LocalizedStringResource { title }
 	var keyEquivalent: KeyEquivalent { KeyEquivalent(Character(String(index + 1))) }
+	var includeInCommands: Bool { true }
 	var displayTitleInBody: Bool { true }
 
 	@ViewBuilder var body: some View {
