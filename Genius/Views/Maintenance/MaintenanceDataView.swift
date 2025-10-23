@@ -3,7 +3,6 @@
 // See LICENSE.txt for license information.
 //
 
-import _Concurrency
 import Foundation
 import SwiftUI
 
@@ -51,7 +50,7 @@ struct MaintenanceDataView: View {
 			}
 			.padding()
 		}
-		.task(priority: .userInitiated) {
+		.task {
 			let values: [[Symbol?]] = await contentData
 				.map { $0.value.map(\.value) }
 				.concurrentMap { await $0.concurrentMap { await $0.uiRepresentation } }

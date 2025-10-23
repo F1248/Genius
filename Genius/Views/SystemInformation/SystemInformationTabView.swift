@@ -3,7 +3,6 @@
 // See LICENSE.txt for license information.
 //
 
-import _Concurrency
 import AppKit
 import Foundation
 import SwiftUI
@@ -55,7 +54,7 @@ struct SystemInformationTabView: View {
 			}
 			.padding()
 		}
-		.task(priority: .userInitiated) {
+		.task {
 			let values: [[String?]] = await contentData
 				.map { $0.value.map(\.value) }
 				.concurrentMap { await $0.concurrentMap { await $0.uiRepresentation } }
