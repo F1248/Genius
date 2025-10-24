@@ -8,7 +8,7 @@ import SwiftUI
 extension ForEach where Content: View {
 
 	init<OuterData: Sequence>(
-		_ data: OuterData,
+		enumeratingID data: OuterData,
 		@ViewBuilder content: @escaping (OuterData.Element) -> Content,
 	) where Data == [(offset: Int, element: OuterData.Element)], ID == Int {
 		self.init(

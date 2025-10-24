@@ -24,9 +24,9 @@ struct SystemInformationTabView: View {
 		Group {
 			if let content {
 				Form {
-					ForEach(content) { sectionContent in
+					ForEach(enumeratingID: content) { sectionContent in
 						Section(sectionContent.key) {
-							ForEach(sectionContent.value) { rowContent in
+							ForEach(enumeratingID: sectionContent.value) { rowContent in
 								LabeledContent {
 									Button(rowContent.value) {
 										NSPasteboard.set(rowContent.value)
