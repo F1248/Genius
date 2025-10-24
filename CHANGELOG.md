@@ -2,7 +2,21 @@
 
 ## Unreleased
 
-### [Commit History](https://github.com/F1248/Genius/compare/v0.2.0...HEAD)
+### [Commit History](https://github.com/F1248/Genius/compare/v0.3.0...HEAD)
+
+## [0.3.0](https://github.com/F1248/Genius/releases/tag/v0.3.0)
+
+### Added
+
+- Add buttons to reset each setting to its default value
+- Add help text to `Symbol`s when showing symbol
+
+### Changed
+
+- Align `content` in `TabData.body` to the top
+- Use `Form`s instead of `GroupBox`es
+
+### [Commit History](https://github.com/F1248/Genius/compare/v0.2.0...v0.3.0)
 
 ## [0.2.0](https://github.com/F1248/Genius/releases/tag/v0.2.0)
 
