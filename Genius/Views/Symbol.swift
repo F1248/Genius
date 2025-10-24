@@ -36,6 +36,7 @@ struct Symbol: View {
 				.apply(modifier: { $0.foregroundColor(color) }, if: color != nil)
 				.frame(width: 14)
 				.accessibilityLabel(label)
+				.help(label)
 		}
 	}
 }
