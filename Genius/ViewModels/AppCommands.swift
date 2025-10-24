@@ -13,7 +13,7 @@ struct AppCommands: Commands {
 	@Default(.interfaceMode)
 	var interfaceMode: Settings.InterfaceMode
 
-	@ObservedObject var observedSharedData: SharedData = .sharedData
+	@ObservedObject var observedSharedData: SharedData = .shared
 
 	var body: some Commands {
 		CommandGroup(after: .appInfo) {
@@ -23,24 +23,24 @@ struct AppCommands: Commands {
 				systemImage: SFSymbol.arrowTriangle2Circlepath.rawValue,
 			) {
 				guard updater.canCheckForUpdates else {
-					SharedData.sharedData.showUpdateInProgressAlert = true
+					SharedData.shared.showUpdateInProgressAlert = true
 					return
 				}
 				updater.checkForUpdates()
 			}
 			Button(.uninstallAppEllipsis, systemImage: SFSymbol.trash.rawValue) {
-				SharedData.sharedData.showUninstallationDialog = true
+				SharedData.shared.showUninstallationDialog = true
 			}
 		}
 		CommandGroup(replacing: .appSettings) {
-			TabButton(tab: ContentViewTab.settings)
+			ContentViewTab.settings.command
 		}
 		CommandGroup(replacing: .newItem) {}
 		CommandGroup(before: .toolbar) {
-			TabViewButtons<ContentViewTab>()
+			ContentViewTab.commands
 				.id(interfaceMode)
 			switch observedSharedData.selectedTabsIndices[ContentViewTab.id] {
-				case ContentViewTab.systemInformation.index: TabViewButtons<SystemInformationViewTab>()
+				case ContentViewTab.systemInformation.index: SystemInformationViewTab.commands
 				default: EmptyView()
 			}
 		}

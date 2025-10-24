@@ -3,7 +3,6 @@
 // See LICENSE.txt for license information.
 //
 
-import _Concurrency
 import Foundation
 import SwiftUI
 
@@ -21,42 +20,31 @@ struct MaintenanceDataView: View {
 	}
 
 	var body: some View {
-		ScrollView {
-			Group {
-				if let content {
-					ForEach(content) { groupBoxContent in
-						GroupBox {
-							ForEach(enumerated: groupBoxContent.value) { index, rowContent in
-								if index > 0 {
-									Divider()
-								}
-								HStack {
-									rowContent.key
-									Spacer()
+		Group {
+			if let content {
+				Form {
+					ForEach(enumeratingID: content) { sectionContent in
+						Section(sectionContent.key) {
+							ForEach(enumeratingID: sectionContent.value) { rowContent in
+								LabeledContent {
 									rowContent.value
+								} label: {
+									rowContent.key
 								}
-								.padding(.vertical, 2)
 							}
-							.padding(.horizontal, 2)
-							.frame(width: 512, alignment: .leading)
-						} label: {
-							Text(groupBoxContent.key)
-								.font(.title2)
-								.padding()
 						}
 					}
-				} else {
-					ProgressView()
 				}
+				.formStyle(.grouped)
+				.frame(width: 512)
+			} else {
+				ProgressView()
 			}
-			.padding()
 		}
-		.task(priority: .userInitiated) {
-			let values: [[Symbol?]] = await contentData.map { $0.value.map(\.value) }.concurrentMap { value in
-				await value.concurrentMap { value in
-					await value.uiRepresentation
-				}
-			}
+		.task {
+			let values: [[Symbol?]] = await contentData
+				.map { $0.value.map(\.value) }
+				.concurrentMap { await $0.concurrentMap { await $0.uiRepresentation } }
 			content = zip(contentData, values)
 				.map { keyValuePair, values in
 					(key: keyValuePair.key, value: zip(keyValuePair.value, values).compactMap { keyValuePair, value in

@@ -21,10 +21,6 @@ enum SystemInformationViewTab: @MainActor TabData {
 		case .software: .software
 	} }
 
-	var displayTitleInBody: Bool {
-		true
-	}
-
 	var symbol: SFSymbol { switch self {
 		case .hardware: SystemInformation.Hardware.Model.symbol
 		case .software: .macwindowOnRectangle

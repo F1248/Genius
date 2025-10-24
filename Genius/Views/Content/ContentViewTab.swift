@@ -25,6 +25,21 @@ enum ContentViewTab: @MainActor TabData {
 		case .settings: .settings
 	} }
 
+	var commandTitle: LocalizedStringResource { switch self {
+		case .settings: .settingsEllipsis
+		default: title
+	} }
+
+	var keyEquivalent: KeyEquivalent { switch self {
+		case .settings: ","
+		default: KeyEquivalent(Character(String(index + 1)))
+	} }
+
+	var includeInCommands: Bool { switch self {
+		case .settings: false
+		default: true
+	} }
+
 	var displayTitleInBody: Bool { switch self {
 		case .home: false
 		default: true

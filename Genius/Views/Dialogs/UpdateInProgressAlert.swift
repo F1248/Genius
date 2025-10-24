@@ -7,7 +7,7 @@ import SwiftUI
 
 struct UpdateInProgressAlert: ViewModifier {
 
-	@ObservedObject var observedSharedData: SharedData = .sharedData
+	@ObservedObject var observedSharedData: SharedData = .shared
 
 	func body(content: Content) -> some View {
 		content
