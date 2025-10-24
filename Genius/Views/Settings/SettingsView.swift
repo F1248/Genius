@@ -35,23 +35,15 @@ struct SettingsView: View {
 		Form {
 			Section(.interface) {
 				Toggle(.useTextInsteadOfSymbols, isOn: $useTextInsteadOfSymbols)
-				Picker(.interfaceMode, selection: $interfaceMode) {
-					ForEach(Settings.InterfaceMode.allCases) { interfaceMode in
-						Text(interfaceMode.title)
-					}
-				}
-				.pickerStyle(.inline)
+				SettingPicker(.interfaceMode, value: $interfaceMode)
+					.pickerStyle(.inline)
 			}
 			Section(.appUpdates) {
-				Picker(.automaticAppUpdates, selection: $automaticUpdates) {
-					ForEach(Settings.AutomaticUpdates.allCases) { automaticUpdatesSetting in
-						Text(automaticUpdatesSetting.title)
+				SettingPicker(.automaticAppUpdates, value: $automaticUpdates)
+					.onChange(of: automaticUpdates) { newValue in
+						updater.automaticallyChecksForUpdates = newValue != .disabled
+						updater.automaticallyDownloadsUpdates = newValue == .enabled
 					}
-				}
-				.onChange(of: automaticUpdates) { newValue in
-					updater.automaticallyChecksForUpdates = newValue != .disabled
-					updater.automaticallyDownloadsUpdates = newValue == .enabled
-				}
 				if betaUpdates || developmentMode || interfaceMode >= .advanced {
 					Toggle(.enableBetaUpdates, isOn: $betaUpdates)
 				}

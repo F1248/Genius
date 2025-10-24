@@ -7,7 +7,7 @@ import Foundation
 
 extension Settings {
 
-	enum AutomaticUpdates: CaseIterable, SelfIdentifiable {
+	enum AutomaticUpdates: CaseIterable, SelfIdentifiable, PickerSetting {
 
 		case disabled
 		case checkOnly

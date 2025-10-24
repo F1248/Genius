@@ -8,7 +8,7 @@ import Foundation
 
 extension Settings {
 
-	enum InterfaceMode: String, CaseIterable, IndexComparable, SelfIdentifiable, Defaults.Serializable {
+	enum InterfaceMode: String, CaseIterable, IndexComparable, SelfIdentifiable, Defaults.Serializable, PickerSetting {
 
 		case simple = "Simple"
 		case normal = "Normal"
