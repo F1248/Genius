@@ -14,6 +14,9 @@ struct Symbol: View {
 	let color: Color?
 	let label: LocalizedStringResource
 
+	@Default(.useTextInsteadOfSymbols)
+	var useTextInsteadOfSymbols: Bool
+
 	// swiftlint:disable:next type_contents_order
 	init(
 		_ symbol: SFSymbol,
@@ -26,7 +29,7 @@ struct Symbol: View {
 	}
 
 	var body: some View {
-		if Defaults[.useTextInsteadOfSymbols] {
+		if useTextInsteadOfSymbols {
 			Text(label)
 		} else {
 			Image(systemSymbol: symbol)

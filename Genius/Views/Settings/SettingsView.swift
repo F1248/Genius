@@ -34,23 +34,23 @@ struct SettingsView: View {
 	var body: some View {
 		Form {
 			Section(.interface) {
-				Toggle(.useTextInsteadOfSymbols, isOn: $useTextInsteadOfSymbols)
-				SettingPicker(.interfaceMode, value: $interfaceMode)
+				SettingToggle(.useTextInsteadOfSymbols, value: $useTextInsteadOfSymbols, key: .useTextInsteadOfSymbols)
+				SettingPicker(.interfaceMode, value: $interfaceMode, key: .interfaceMode)
 					.pickerStyle(.inline)
 			}
 			Section(.appUpdates) {
-				SettingPicker(.automaticAppUpdates, value: $automaticUpdates)
+				SettingPicker(.automaticAppUpdates, value: $automaticUpdates, defaultValue: .enabled)
 					.onChange(of: automaticUpdates) { newValue in
 						updater.automaticallyChecksForUpdates = newValue != .disabled
 						updater.automaticallyDownloadsUpdates = newValue == .enabled
 					}
 				if betaUpdates || developmentMode || interfaceMode >= .advanced {
-					Toggle(.enableBetaUpdates, isOn: $betaUpdates)
+					SettingToggle(.enableBetaUpdates, value: $betaUpdates, key: .betaUpdates)
 				}
 			}
 			if developmentMode || interfaceMode >= .powerUser {
 				Section(.development) {
-					Toggle(.developmentMode, isOn: $developmentMode)
+					SettingToggle(.developmentMode, value: $developmentMode, key: .developmentMode)
 				}
 			}
 		}

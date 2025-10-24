@@ -940,6 +940,23 @@
         }
       }
     },
+    "resetSetting" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellung zurücksetzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Setting"
+          }
+        }
+      }
+    },
     "securityChip" : {
       "extractionState" : "manual",
       "localizations" : {
