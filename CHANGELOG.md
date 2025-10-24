@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### Added
+
+### Changed
+
+### Fixed
+
+### Security
+
+### Dependencies
+
 ### [Commit History](https://github.com/F1248/Genius/compare/v0.3.0...HEAD)
 
 ## [0.3.0](https://github.com/F1248/Genius/releases/tag/v0.3.0)
