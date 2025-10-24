@@ -78,5 +78,5 @@ struct CustomTabView: View {
 		}
 	}
 	.padding()
-	.frame(width: 383)
+	.frame(width: 392)
 }
