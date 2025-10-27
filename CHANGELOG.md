@@ -12,6 +12,8 @@
 
 ### Dependencies
 
+- Update [SFSafeSymbols](https://github.com/SFSafeSymbols/SFSafeSymbols) from [6.2.0](https://github.com/SFSafeSymbols/SFSafeSymbols/releases/tag/6.2.0) to [7.0.0](https://github.com/SFSafeSymbols/SFSafeSymbols/releases/tag/7.0.0)
+
 ### [Commit History](https://github.com/F1248/Genius/compare/v0.3.0...HEAD)
 
 ## [0.3.0](https://github.com/F1248/Genius/releases/tag/v0.3.0)
