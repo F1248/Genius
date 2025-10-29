@@ -106,7 +106,7 @@ extension Bool? {
 		switch lhs {
 			case true: rhs()
 			case false: false
-			default: rhs() == false ? false : nil
+			case nil: rhs() == false ? false : nil
 		}
 	}
 
@@ -114,7 +114,7 @@ extension Bool? {
 		switch lhs {
 			case true: true
 			case false: rhs()
-			default: rhs() == true ? true : nil
+			case nil: rhs() == true ? true : nil
 		}
 	}
 }
