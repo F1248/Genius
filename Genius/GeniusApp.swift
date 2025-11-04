@@ -37,6 +37,8 @@ struct GeniusApp: App {
 
 	init() {
 		NSWindow.allowsAutomaticWindowTabbing = false
-		_ = updater
+		if (SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true {
+			_ = updater
+		}
 	}
 }
