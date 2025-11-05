@@ -32,7 +32,7 @@ define remove-log
 	rm xcodebuild.log
 endef
 
-all: lint test-without-building build zip-app create-dmg zip-debug-symbols
+all: lint test-without-building build zip-app create-dmg zip-debug-symbols appcast
 
 lint: periphery swiftformat swiftlint
 
