@@ -35,6 +35,12 @@ endef
 .DEFAULT_GOAL = build-app
 
 all: lint test-without-building build zip-app create-dmg zip-debug-symbols appcast
+	rm -r _site
+	rm Debug-Symbols.zip
+	rm -r Genius.app
+	rm -r Genius.app.dSYM
+	rm Genius.dmg
+	rm Genius.zip
 
 lint: periphery swiftformat swiftlint
 
