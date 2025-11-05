@@ -98,8 +98,9 @@ zip-app:
 	zip --recurse-paths --symlinks Genius.zip Genius.app
 
 create-dmg:
-	rm LICENSE.txt # prevent license from being added to DMG file
+	mv LICENSE.txt LICENSE-TMP.txt # prevent license from being added to DMG file
 	create-dmg --no-version-in-filename --no-code-sign Genius.app
+	mv LICENSE-TMP.txt LICENSE.txt
 
 zip-debug-symbols:
 	zip --recurse-paths Debug-Symbols.zip Genius.app.dSYM
