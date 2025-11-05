@@ -32,7 +32,7 @@ define remove-log
 	rm xcodebuild.log
 endef
 
-all: lint test-without-building build
+all: lint test-without-building build zip-app create-dmg zip-debug-symbols
 
 lint: periphery swiftformat swiftlint
 
@@ -93,6 +93,16 @@ build:
 	mv Genius.xcarchive/Products/Applications/Genius.app .
 	mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
 	rm -r Genius.xcarchive
+
+zip-app:
+	zip --recurse-paths --symlinks Genius.zip Genius.app
+
+create-dmg:
+	rm LICENSE.txt # prevent license from being added to DMG file
+	create-dmg --no-version-in-filename --no-code-sign Genius.app
+
+zip-debug-symbols:
+	zip --recurse-paths Debug-Symbols.zip Genius.app.dSYM
 
 install-files:
 	mkdir _site
