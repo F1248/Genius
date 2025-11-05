@@ -80,6 +80,12 @@ test-without-building:
 	$(evaluate-log)
 	$(remove-log)
 
+build-zip: build-app zip-app
+	rm -r Genius.app
+
+build-app: build
+	rm -r Genius.app.dSYM
+
 build:
 	# work around warnings `Users/*/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/*.pcm: No such file or directory`
 	xcodebuild archive \
