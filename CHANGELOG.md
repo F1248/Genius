@@ -8,6 +8,8 @@
 
 ### Fixed
 
+- Disable app updates in recoveryOS as Sparkle does not work there
+
 ### Security
 
 ### Dependencies
