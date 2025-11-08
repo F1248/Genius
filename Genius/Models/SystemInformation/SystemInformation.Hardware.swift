@@ -82,16 +82,16 @@ extension SystemInformation {
 		}
 
 		static let securityChip = SystemInformationData<SecurityChip?, _>({
-			switch CPU.type.value {
-				case .appleSilicon: return .mSeries
-				case .intel:
-					let t2: Bool? = IORegistry(name: "Apple T2 Controller").exists
-					if t2 ?? false { return .t2 }
-					let t1: Bool? = IORegistry(name: "Apple T1 Controller").exists
-					if t1 ?? false { return .t1 }
-					if t2 == false, t1 == false { return SecurityChip.none }
-					return nil
-			}
+			#if arch(arm64)
+				.mSeries
+			#elseif arch(x86_64)
+				let t2: Bool? = IORegistry(name: "Apple T2 Controller").exists
+				if t2 ?? false { return .t2 }
+				let t1: Bool? = IORegistry(name: "Apple T1 Controller").exists
+				if t1 ?? false { return .t1 }
+				if t2 == false, t1 == false { return SecurityChip.none }
+				return nil
+			#endif
 		}())
 
 		enum CPU {
