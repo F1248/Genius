@@ -115,8 +115,6 @@ extension SystemInformation {
 					.appleSilicon
 				#elseif arch(x86_64)
 					.intel
-				#else
-					#error("Unsupported architecture")
 				#endif
 			}())
 			static let name = SystemInformationData<String?, _>(Sysctl.read("machdep.cpu.brand_string"))
