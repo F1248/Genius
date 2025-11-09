@@ -94,6 +94,12 @@ extension SystemInformation {
 					.read(key: "ConfigDataInstall", default: true),
 				applicable: Software.OS.bootMode.value !=? .recovery,
 			)
+			static let backgroundSecurityImprovements = MaintenanceCheck<Bool?, _>(
+				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
+					.read(key: "SplatEnabled", default: true),
+				applicable: { if #available(macOS 26.1, *) { true } else { false } }() &&?
+					Software.OS.bootMode.value !=? .recovery,
+			)
 			static let installAppStoreApps = MaintenanceCheck<Bool?, _>(
 				UserDefaults(suiteName: "/Library/Preferences/com.apple.commerce")?
 					.read(key: "AutoUpdate", default: false),

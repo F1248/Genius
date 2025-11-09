@@ -90,6 +90,23 @@
         }
       }
     },
+    "backgroundSecurityImprovements" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Hintergrund ausgeführte Sicherheitsverbesserungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Background Security Improvements"
+          }
+        }
+      }
+    },
     "bootModeNormal" : {
       "extractionState" : "manual",
       "localizations" : {
