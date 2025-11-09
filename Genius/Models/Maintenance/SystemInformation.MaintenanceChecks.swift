@@ -19,7 +19,13 @@ extension SystemInformation {
 			)
 			static let firmwarePassword = MaintenanceCheck<Bool?, _>(
 				{ await Bool(firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check", asRoot: true)?.runSafe()) },
-				applicable: Hardware.CPU.type.value == .intel &&? !?Hardware.Model.isVirtualMachine,
+				applicable: {
+					#if arch(arm64)
+						false
+					#elseif arch(x86_64)
+						!?Hardware.Model.isVirtualMachine
+					#endif
+				}(),
 			)
 		}
 
@@ -60,9 +66,13 @@ extension SystemInformation {
 						default: nil
 					}
 				}(),
-				applicable: Hardware.CPU.type.value == .appleSilicon &&?
-					Hardware.Model.isLaptop &&?
-					Software.OS.bootMode.value !=? .recovery,
+				applicable: {
+					#if arch(arm64)
+						Hardware.Model.isLaptop &&? Software.OS.bootMode.value !=? .recovery
+					#elseif arch(x86_64)
+						false
+					#endif
+				}(),
 			)
 		}
 

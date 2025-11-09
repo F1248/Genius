@@ -18,7 +18,13 @@ extension SystemInformation {
 			static let isLaptop: Bool? = namePrefix?.hasPrefix("MacBook")
 			static let name = SystemInformationData<String?, _>(
 				IORegistry(name: "product").read("product-name"),
-				applicable: CPU.type.value == .appleSilicon,
+				applicable: {
+					#if arch(arm64)
+						true
+					#elseif arch(x86_64)
+						false
+					#endif
+				}(),
 			)
 			static let localizedName = SystemInformationData<String?, _>(
 				{
@@ -49,11 +55,23 @@ extension SystemInformation {
 					else { return nil }
 					return modelNumber + regionInfo
 				}(),
-				applicable: CPU.type.value == .appleSilicon,
+				applicable: {
+					#if arch(arm64)
+						true
+					#elseif arch(x86_64)
+						false
+					#endif
+				}(),
 			)
 			static let regulatoryNumber = SystemInformationData<String?, _>(
 				IORegistry(class: "IOPlatformExpertDevice").read("regulatory-model-number"),
-				applicable: CPU.type.value == .appleSilicon &&? !?isVirtualMachine,
+				applicable: {
+					#if arch(arm64)
+						!?isVirtualMachine
+					#elseif arch(x86_64)
+						false
+					#endif
+				}(),
 			)
 			static let symbol: SFSymbol =
 				switch true {
@@ -98,7 +116,13 @@ extension SystemInformation {
 
 			enum Cores {
 
-				static let differentTypes: Bool? = type.value == .appleSilicon &&? !?Model.isVirtualMachine
+				static let differentTypes: Bool? = {
+					#if arch(arm64)
+						!?Model.isVirtualMachine
+					#elseif arch(x86_64)
+						false
+					#endif
+				}() // swiftformat:disable:this blankLinesBetweenScopes
 				static let total = SystemInformationData<Int?, _>(Sysctl.read("hw.physicalcpu"))
 				static let performance = SystemInformationData<Int?, _>(
 					Sysctl.read("hw.perflevel0.physicalcpu"),
@@ -120,7 +144,13 @@ extension SystemInformation {
 			static let name = SystemInformationData<String?, _>(Sysctl.read("machdep.cpu.brand_string"))
 			static let frequency = SystemInformationData<Frequency?, _>(
 				Sysctl.read("hw.cpufrequency").map(Frequency.init),
-				applicable: type.value == .intel,
+				applicable: {
+					#if arch(arm64)
+						false
+					#elseif arch(x86_64)
+						true
+					#endif
+				}(),
 			)
 		}
 
@@ -138,10 +168,21 @@ extension SystemInformation {
 			)
 			static let provisioningUDID = SystemInformationData<String?, _>(
 				{
-					await SystemProfiler.hardware?["provisioning_UDID"] as? String ??
-						(CPU.type.value == .intel ? hardwareUUID.value : nil)
+					await SystemProfiler.hardware?["provisioning_UDID"] as? String ?? {
+						#if arch(arm64)
+							nil
+						#elseif arch(x86_64)
+							hardwareUUID.value
+						#endif
+					}()
 				},
-				applicable: SystemProfiler.available ||? CPU.type.value == .intel,
+				applicable: {
+					#if arch(arm64)
+						SystemProfiler.available
+					#elseif arch(x86_64)
+						true
+					#endif
+				}(),
 			)
 		}
 	}
