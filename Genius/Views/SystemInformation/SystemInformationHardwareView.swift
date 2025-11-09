@@ -20,6 +20,7 @@ struct SystemInformationHardwareView: View {
 				.securityChip: SystemInformation.Hardware.securityChip,
 				.cpuType: SystemInformation.Hardware.CPU.type,
 				.cpuName: SystemInformation.Hardware.CPU.name,
+				.cpuIdentifier: SystemInformation.Hardware.CPU.identifier,
 				.cpuFrequency: SystemInformation.Hardware.CPU.frequency,
 				SystemInformation.Hardware.CPU.Cores.differentTypes ?? true ? .totalCores : .cores:
 					SystemInformation.Hardware.CPU.Cores.total,

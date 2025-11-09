@@ -149,6 +149,16 @@ extension SystemInformation {
 				#endif
 			}())
 			static let name = SystemInformationData<String?, _>(Sysctl.read("machdep.cpu.brand_string"))
+			static let identifier = SystemInformationData<String?, _>(
+				IORegistry(class: "IOPlatformExpertDevice").read("platform-name"),
+				applicable: {
+					#if arch(arm64)
+						true
+					#elseif arch(x86_64)
+						false
+					#endif
+				}(),
+			)
 			static let frequency = SystemInformationData<Frequency?, _>(
 				Sysctl.read("hw.cpufrequency").map(Frequency.init),
 				applicable: {

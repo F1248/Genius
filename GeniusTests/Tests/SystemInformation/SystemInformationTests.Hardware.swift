@@ -112,6 +112,11 @@ extension SystemInformationTests {
 			}
 
 			@Test
+			func identifier() {
+				#expect(SystemInformation.Hardware.CPU.identifier.testCondition)
+			}
+
+			@Test
 			func frequency() {
 				#expect(SystemInformation.Hardware.CPU.frequency.testCondition)
 			}

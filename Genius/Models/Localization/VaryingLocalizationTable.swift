@@ -18,6 +18,7 @@ protocol VaryingLocalizationTable {
 	static var checkForMacOSUpdates: LocalizedStringResource { get }
 	static var checkForUpdatesEllipsis: LocalizedStringResource { get }
 	static var cpuFrequency: LocalizedStringResource { get }
+	static var cpuIdentifier: LocalizedStringResource { get }
 	static var cpuName: LocalizedStringResource { get }
 	static var cpuType: LocalizedStringResource { get }
 	static var downloadMacOSUpdates: LocalizedStringResource { get }

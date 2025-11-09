@@ -192,6 +192,23 @@
         }
       }
     },
+    "cpuIdentifier" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU-Identifizierung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU Identifier"
+          }
+        }
+      }
+    },
     "cpuName" : {
       "extractionState" : "manual",
       "localizations" : {
