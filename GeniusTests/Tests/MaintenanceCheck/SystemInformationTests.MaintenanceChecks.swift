@@ -49,41 +49,41 @@ extension SystemInformationTests {
 			}
 
 			@Test
-			func askToAllowAccessoriesToConnect() async {
-				#expect(await SystemInformation.MaintenanceChecks.MalwareProtection.allowAccessoriesToConnect.testCondition)
+			func askToAllowAccessoriesToConnect() {
+				#expect(SystemInformation.MaintenanceChecks.MalwareProtection.allowAccessoriesToConnect.testCondition)
 			}
 		}
 
 		struct AutomaticUpdates {
 
 			@Test
-			func checkMacOS() async {
-				#expect(await SystemInformation.MaintenanceChecks.AutomaticUpdates.checkMacOS.testCondition)
+			func checkMacOS() {
+				#expect(SystemInformation.MaintenanceChecks.AutomaticUpdates.checkMacOS.testCondition)
 			}
 
 			@Test
-			func downloadMacOS() async {
-				#expect(await SystemInformation.MaintenanceChecks.AutomaticUpdates.downloadMacOS.testCondition)
+			func downloadMacOS() {
+				#expect(SystemInformation.MaintenanceChecks.AutomaticUpdates.downloadMacOS.testCondition)
 			}
 
 			@Test
-			func installMacOS() async {
-				#expect(await SystemInformation.MaintenanceChecks.AutomaticUpdates.installMacOS.testCondition)
+			func installMacOS() {
+				#expect(SystemInformation.MaintenanceChecks.AutomaticUpdates.installMacOS.testCondition)
 			}
 
 			@Test
-			func installCritical() async {
-				#expect(await SystemInformation.MaintenanceChecks.AutomaticUpdates.installCritical.testCondition)
+			func installCritical() {
+				#expect(SystemInformation.MaintenanceChecks.AutomaticUpdates.installCritical.testCondition)
 			}
 
 			@Test
-			func installConfigurationData() async {
-				#expect(await SystemInformation.MaintenanceChecks.AutomaticUpdates.installConfigurationData.testCondition)
+			func installConfigurationData() {
+				#expect(SystemInformation.MaintenanceChecks.AutomaticUpdates.installConfigurationData.testCondition)
 			}
 
 			@Test
-			func installAppStoreApps() async {
-				#expect(await SystemInformation.MaintenanceChecks.AutomaticUpdates.installAppStoreApps.testCondition)
+			func installAppStoreApps() {
+				#expect(SystemInformation.MaintenanceChecks.AutomaticUpdates.installAppStoreApps.testCondition)
 			}
 		}
 	}

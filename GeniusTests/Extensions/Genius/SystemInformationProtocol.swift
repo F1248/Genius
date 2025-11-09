@@ -14,3 +14,13 @@ extension SystemInformationProtocol {
 		return true
 	} }
 }
+
+extension SystemInformationProtocol where ValueWrapper == SyncValueWrapper<Value> {
+
+	var testCondition: Bool {
+		guard let applicable else { return false }
+		guard applicable else { return true }
+		if case Optional<Any>.none = value as Any { return false }
+		return true
+	}
+}

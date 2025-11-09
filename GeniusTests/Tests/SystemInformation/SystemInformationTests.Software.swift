@@ -29,36 +29,36 @@ extension SystemInformationTests {
 		struct Kernel {
 
 			@Test
-			func name() async {
-				#expect(await SystemInformation.Software.Kernel.name.testCondition)
+			func name() {
+				#expect(SystemInformation.Software.Kernel.name.testCondition)
 			}
 
 			@Test
-			func version() async {
-				#expect(await SystemInformation.Software.Kernel.version.testCondition)
+			func version() {
+				#expect(SystemInformation.Software.Kernel.version.testCondition)
 			}
 		}
 
 		struct OS {
 
 			@Test
-			func version() async {
-				#expect(await SystemInformation.Software.OS.version.testCondition)
+			func version() {
+				#expect(SystemInformation.Software.OS.version.testCondition)
 			}
 
 			@Test
-			func codeName() async {
-				#expect(await SystemInformation.Software.OS.codeName.testCondition)
+			func codeName() {
+				#expect(SystemInformation.Software.OS.codeName.testCondition)
 			}
 
 			@Test
-			func buildNumber() async {
-				#expect(await SystemInformation.Software.OS.buildNumber.testCondition)
+			func buildNumber() {
+				#expect(SystemInformation.Software.OS.buildNumber.testCondition)
 			}
 
 			@Test
-			func bootMode() async {
-				#expect(await SystemInformation.Software.OS.bootMode.testCondition)
+			func bootMode() {
+				#expect(SystemInformation.Software.OS.bootMode.testCondition)
 			}
 
 			@Test
@@ -80,21 +80,21 @@ extension SystemInformationTests {
 			}
 
 			@Test
-			func hostName() async {
-				#expect(await SystemInformation.Software.Computer.hostName.testCondition)
+			func hostName() {
+				#expect(SystemInformation.Software.Computer.hostName.testCondition)
 			}
 		}
 
 		struct User {
 
 			@Test
-			func name() async {
-				#expect(await SystemInformation.Software.User.name.testCondition)
+			func name() {
+				#expect(SystemInformation.Software.User.name.testCondition)
 			}
 
 			@Test
-			func accountName() async {
-				#expect(await SystemInformation.Software.User.accountName.testCondition)
+			func accountName() {
+				#expect(SystemInformation.Software.User.accountName.testCondition)
 			}
 		}
 	}

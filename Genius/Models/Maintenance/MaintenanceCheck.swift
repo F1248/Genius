@@ -3,6 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
+import _Concurrency
 import Defaults
 import SFSafeSymbols
 import SwiftUI
@@ -33,6 +34,19 @@ struct MaintenanceCheck<
 }
 
 extension MaintenanceCheck where ValueWrapper == SyncValueWrapper<Value> {
+
+	@MainActor var uiRepresentation: Symbol? {
+		if !?applicable ?? false {
+			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .notApplicable) : nil
+		} else if let value = value.optional {
+			value >= requirement ? // swiftlint:disable:this void_function_in_ternary
+				Symbol(.checkmark, color: .green, label: .enabled) :
+				Symbol(.xmark, color: .red, label: .disabled)
+		} else {
+			Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
+				Symbol(.questionmark, color: .red, label: .unknown) : nil
+		}
+	}
 
 	// periphery:ignore
 	init(_ value: Value, requirement: Wrapped = .max) {
