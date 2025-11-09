@@ -6,4 +6,4 @@
 import Testing
 
 @Suite("Value wrappers")
-struct ValueWrappers {}
+enum ValueWrappers {}

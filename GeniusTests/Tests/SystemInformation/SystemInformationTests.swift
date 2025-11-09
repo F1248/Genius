@@ -6,4 +6,4 @@
 import Testing
 
 @Suite("SystemInformation")
-struct SystemInformationTests {}
+enum SystemInformationTests {}
