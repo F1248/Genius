@@ -90,6 +90,23 @@
         }
       }
     },
+    "board" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Platine"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Board"
+          }
+        }
+      }
+    },
     "bootMode" : {
       "extractionState" : "manual",
       "localizations" : {

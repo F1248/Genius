@@ -5,6 +5,7 @@
 ### Added
 
 - Add Background Security Improvements introduced in macOS 26.1 to Maintenance → Automatic Updates
+- Add Board to System Information → Hardware → Model
 
 ### Changed
 

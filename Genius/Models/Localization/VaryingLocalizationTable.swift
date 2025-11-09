@@ -12,6 +12,7 @@ protocol VaryingLocalizationTable {
 	static var askToAllowAccessoriesToConnect: LocalizedStringResource { get }
 	static var automaticAppUpdates: LocalizedStringResource { get }
 	static var automaticUpdates: LocalizedStringResource { get }
+	static var board: LocalizedStringResource { get }
 	static var bootMode: LocalizedStringResource { get }
 	static var bootVolume: LocalizedStringResource { get }
 	static var checkForMacOSUpdates: LocalizedStringResource { get }

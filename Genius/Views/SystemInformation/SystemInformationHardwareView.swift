@@ -12,6 +12,7 @@ struct SystemInformationHardwareView: View {
 			.model: [
 				.name: SystemInformation.Hardware.Model.displayName,
 				.identifier: SystemInformation.Hardware.Model.identifier,
+				.board: SystemInformation.Hardware.Model.board,
 				.number: SystemInformation.Hardware.Model.number,
 				.regulatoryNumber: SystemInformation.Hardware.Model.regulatoryNumber,
 			],

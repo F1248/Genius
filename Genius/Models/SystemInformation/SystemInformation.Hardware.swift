@@ -47,6 +47,13 @@ extension SystemInformation {
 			)
 			static let identifier = SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read("model"))
 			static let namePrefix: String? = name.value?.remove(" ") ?? identifier.value
+			static let board = SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read({
+				#if arch(arm64)
+					"target-sub-type"
+				#elseif arch(x86_64)
+					"board-id"
+				#endif
+			}()))
 			static let number = SystemInformationData<String?, _>(
 				{
 					guard

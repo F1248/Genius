@@ -22,6 +22,7 @@ extension LocalizedStringResource: VaryingLocalizationTable {
 	static var askToAllowAccessoriesToConnect: Self { localizationTable.askToAllowAccessoriesToConnect }
 	static var automaticAppUpdates: Self { localizationTable.automaticAppUpdates }
 	static var automaticUpdates: Self { localizationTable.automaticUpdates }
+	static var board: Self { localizationTable.board }
 	static var bootMode: Self { localizationTable.bootMode }
 	static var bootVolume: Self { localizationTable.bootVolume }
 	static var checkForMacOSUpdates: Self { localizationTable.checkForMacOSUpdates }

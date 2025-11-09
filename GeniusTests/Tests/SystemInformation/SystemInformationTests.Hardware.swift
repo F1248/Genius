@@ -51,6 +51,11 @@ extension SystemInformationTests {
 			}
 
 			@Test
+			func board() {
+				#expect(SystemInformation.Hardware.Model.board.testCondition)
+			}
+
+			@Test
 			func number() {
 				#expect(SystemInformation.Hardware.Model.number.testCondition)
 			}
