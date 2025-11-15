@@ -20,6 +20,7 @@
 
 - Update [SFSafeSymbols](https://github.com/SFSafeSymbols/SFSafeSymbols) from [6.2.0](https://github.com/SFSafeSymbols/SFSafeSymbols/releases/tag/6.2.0) to [7.0.0](https://github.com/SFSafeSymbols/SFSafeSymbols/releases/tag/7.0.0)
 - Update [Xcode](https://developer.apple.com/xcode) from [26.0.1](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_0_1-release-notes) to [26.1.1](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_1-release-notes)
+- Update [Sparkle](https://github.com/sparkle-project/Sparkle) from [2.8.0](https://github.com/sparkle-project/Sparkle/releases/tag/2.8.0) to [2.8.1](https://github.com/sparkle-project/Sparkle/releases/tag/2.8.1)
 
 ### [Commit History](https://github.com/F1248/Genius/compare/v0.3.0...HEAD)
 
