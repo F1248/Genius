@@ -19,7 +19,7 @@
 ### Dependencies
 
 - Update [SFSafeSymbols](https://github.com/SFSafeSymbols/SFSafeSymbols) from [6.2.0](https://github.com/SFSafeSymbols/SFSafeSymbols/releases/tag/6.2.0) to [7.0.0](https://github.com/SFSafeSymbols/SFSafeSymbols/releases/tag/7.0.0)
-- Update [Xcode](https://developer.apple.com/xcode) from [26.0.1](https://developer.apple.com/news/releases/?id=09222025m) to [26.1.0](https://developer.apple.com/news/releases/?id=11032025g)
+- Update [Xcode](https://developer.apple.com/xcode) from [26.0.1](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_0_1-release-notes) to [26.1.0](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_1-release-notes)
 
 ### [Commit History](https://github.com/F1248/Genius/compare/v0.3.0...HEAD)
 
@@ -57,7 +57,7 @@
 
 ### Dependencies
 
-- Update [Xcode](https://developer.apple.com/xcode) from [26.0.0](https://developer.apple.com/news/releases/?id=09152025m) to [26.0.1](https://developer.apple.com/news/releases/?id=09222025m)
+- Update [Xcode](https://developer.apple.com/xcode) from [26.0.0](https://developer.apple.com/documentation/xcode-release-notes/xcode-26-release-notes) to [26.0.1](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_0_1-release-notes)
 - Update [Defaults](https://github.com/sindresorhus/Defaults) from [9.0.5](https://github.com/sindresorhus/Defaults/releases/tag/9.0.5) to [9.0.6](https://github.com/sindresorhus/Defaults/releases/tag/9.0.6)
 
 ### [Commit History](https://github.com/F1248/Genius/compare/v0.1.0...v0.2.0)
