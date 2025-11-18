@@ -24,7 +24,7 @@
     },
     {
       "id" : "AD7939E7-146A-4408-B7DD-861CA1FABD5B",
-      "name" : "Memory Management",
+      "name" : "Memory Management excluding Hardware Memory Tagging",
       "options" : {
         "mallocGuardEdgesEnabled" : true,
         "mallocScribbleEnabled" : true,
@@ -32,6 +32,16 @@
           "loggingType" : "liveAllocations"
         },
         "nsZombieEnabled" : true
+      }
+    },
+    {
+      "id" : "EEAC8F45-6C15-4AEC-9ACF-2B8EAD5F3C3D",
+      "name" : "Hardware Memory Tagging",
+      "options" : {
+        "checkedAllocations" : {
+          "enabled" : true,
+          "requiresHardwareAcceleration" : false
+        }
       }
     }
   ],
