@@ -13,6 +13,7 @@
 ### Fixed
 
 - Disable app updates in recoveryOS as Sparkle does not work there
+- Fix `SettingPicker` not always displaying options vertically
 
 ### Security
 
