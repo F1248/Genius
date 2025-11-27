@@ -81,8 +81,7 @@ extension SystemInformation {
 			static let checkMacOS = MaintenanceCheck<Bool?, _>(
 				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
 					.read(key: "AutomaticCheckEnabled", default: true),
-				applicable: { if #unavailable(macOS 15) { true } else { false } }() &&?
-					Software.OS.bootMode.value !=? .recovery,
+				applicable: { if #available(macOS 15, *) { false } else { Software.OS.bootMode.value !=? .recovery } }(),
 			)
 			static let downloadMacOS = MaintenanceCheck<Bool?, _>(
 				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
@@ -107,8 +106,7 @@ extension SystemInformation {
 			static let backgroundSecurityImprovements = MaintenanceCheck<Bool?, _>(
 				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
 					.read(key: "SplatEnabled", default: true),
-				applicable: { if #available(macOS 26.1, *) { true } else { false } }() &&?
-					Software.OS.bootMode.value !=? .recovery,
+				applicable: { if #available(macOS 26.1, *) { Software.OS.bootMode.value !=? .recovery } else { false } }(),
 			)
 			static let installAppStoreApps = MaintenanceCheck<Bool?, _>(
 				UserDefaults(suiteName: "/Library/Preferences/com.apple.commerce")?
