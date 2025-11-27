@@ -75,8 +75,8 @@ extension SystemInformationTests {
 		struct Computer {
 
 			@Test
-			func name() async {
-				#expect(await SystemInformation.Software.Computer.name.testCondition)
+			func name() {
+				#expect(SystemInformation.Software.Computer.name.testCondition)
 			}
 
 			@Test
