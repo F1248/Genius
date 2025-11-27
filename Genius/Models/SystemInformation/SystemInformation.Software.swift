@@ -40,15 +40,15 @@ extension SystemInformation {
 			)
 			static let codeName = SystemInformationData<String?, _>({
 				if #unavailable(macOS 14) {
-					"Ventura"
+					"macOS Ventura"
 				} else if #unavailable(macOS 15) {
-					"Sonoma"
+					"macOS Sonoma"
 				} else if #unavailable(macOS 16) {
-					"Sequoia"
+					"macOS Sequoia"
 				} else if #unavailable(macOS 26) {
 					nil
 				} else if #unavailable(macOS 27) {
-					"Tahoe"
+					"macOS Tahoe"
 				} else { nil }
 			}())
 			static let buildNumber = SystemInformationData<String?, _>(Sysctl.read("kern.osversion"))
