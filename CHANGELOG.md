@@ -7,6 +7,7 @@
 - Add Background Security Improvements introduced in macOS 26.1 to Maintenance → Automatic Updates
 - Add Board to System Information → Hardware → Model
 - Add CPU Identifier to System Information → Hardware → Specifications
+- Add Configuration Code to System Information → Hardware → Model
 
 ### Changed
 

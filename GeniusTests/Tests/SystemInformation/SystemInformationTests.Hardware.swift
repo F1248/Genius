@@ -61,6 +61,11 @@ extension SystemInformationTests {
 			}
 
 			@Test
+			func configCode() {
+				#expect(SystemInformation.Hardware.Model.configCode.testCondition)
+			}
+
+			@Test
 			func regulatoryNumber() {
 				#expect(SystemInformation.Hardware.Model.regulatoryNumber.testCondition)
 			}

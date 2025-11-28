@@ -28,18 +28,18 @@ extension SystemInformation {
 			)
 			static let localizedName = SystemInformationData<String?, _>(
 				{
-					guard let serialNumber = Machine.serialNumber.value else { return nil }
+					guard let configCode = configCode.value else { return nil }
 					// swiftlint:disable:next explicit_type_interface
 					let url = """
 					https://support-sp.apple.com/sp/product?\
-					cc=\(serialNumber.dropFirst(8))&\
+					cc=\(configCode)&\
 					lang=\(Locale.currentLanguageCode ?? "")
 					"""
 					return await Network.string(from: url)?
 						.between(start: "<configCode>", end: "</configCode>")
 						.map(String.init)
 				},
-				available: Machine.serialNumber.value.map { [11, 12].contains($0.count) },
+				available: configCode.available,
 			)
 			static let displayName = SystemInformationData<String?, _>(
 				{ await localizedName.value ?? name.value },
@@ -69,6 +69,10 @@ extension SystemInformation {
 						false
 					#endif
 				}(),
+			)
+			static let configCode = SystemInformationData<String?, _>(
+				(Machine.serialNumber.value?.dropFirst(8)).map(String.init),
+				available: !?isVirtualMachine &&? Machine.serialNumber.value.map { [11, 12].contains($0.count) },
 			)
 			static let regulatoryNumber = SystemInformationData<String?, _>(
 				IORegistry(class: "IOPlatformExpertDevice").read("regulatory-model-number"),

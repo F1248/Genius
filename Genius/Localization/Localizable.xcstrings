@@ -226,6 +226,23 @@
         }
       }
     },
+    "configurationCode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konfigurationscode"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuration Code"
+          }
+        }
+      }
+    },
     "cores" : {
       "extractionState" : "manual",
       "localizations" : {

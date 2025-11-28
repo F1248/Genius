@@ -14,6 +14,7 @@ struct SystemInformationHardwareView: View {
 				.identifier: SystemInformation.Hardware.Model.identifier,
 				.board: SystemInformation.Hardware.Model.board,
 				.number: SystemInformation.Hardware.Model.number,
+				.configurationCode: SystemInformation.Hardware.Model.configCode,
 				.regulatoryNumber: SystemInformation.Hardware.Model.regulatoryNumber,
 			],
 			.specifications: [
