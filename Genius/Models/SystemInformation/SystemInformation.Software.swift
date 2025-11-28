@@ -13,7 +13,7 @@ extension SystemInformation {
 
 			static let version = SystemInformationData<String?, _>(
 				{ await SystemProfiler.hardware?["SMC_version_system"] as? String },
-				applicable: Hardware.securityChip.value <=? .t1 &&? SystemProfiler.available,
+				available: Hardware.securityChip.value <=? .t1 &&? SystemProfiler.available,
 			)
 		}
 
@@ -21,7 +21,7 @@ extension SystemInformation {
 
 			static let version = SystemInformationData<String?, _>(
 				{ await SystemProfiler.hardware?["boot_rom_version"] as? String },
-				applicable: SystemProfiler.available,
+				available: SystemProfiler.available,
 			)
 		}
 
@@ -61,11 +61,11 @@ extension SystemInformation {
 			}())
 			static let bootVolume = SystemInformationData<String?, _>(
 				{ await SystemProfiler.software?["boot_volume"] as? String },
-				applicable: SystemProfiler.available,
+				available: SystemProfiler.available,
 			)
 			static let loaderVersion = SystemInformationData<String?, _>(
 				{ await SystemProfiler.hardware?["os_loader_version"] as? String },
-				applicable: SystemProfiler.available,
+				available: SystemProfiler.available,
 			)
 		}
 

@@ -18,7 +18,7 @@ extension SystemInformation {
 			static let isLaptop: Bool? = namePrefix?.hasPrefix("MacBook")
 			static let name = SystemInformationData<String?, _>(
 				IORegistry(name: "product").read("product-name"),
-				applicable: {
+				available: {
 					#if arch(arm64)
 						true
 					#elseif arch(x86_64)
@@ -39,11 +39,11 @@ extension SystemInformation {
 						.between(start: "<configCode>", end: "</configCode>")
 						.map(String.init)
 				},
-				applicable: Machine.serialNumber.value.map { [11, 12].contains($0.count) },
+				available: Machine.serialNumber.value.map { [11, 12].contains($0.count) },
 			)
 			static let displayName = SystemInformationData<String?, _>(
 				{ await localizedName.value ?? name.value },
-				applicable: localizedName.applicable ||? name.applicable,
+				available: localizedName.available ||? name.available,
 			)
 			static let identifier = SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read("model"))
 			static let namePrefix: String? = name.value?.remove(" ") ?? identifier.value
@@ -62,7 +62,7 @@ extension SystemInformation {
 					else { return nil }
 					return modelNumber + regionInfo
 				}(),
-				applicable: {
+				available: {
 					#if arch(arm64)
 						true
 					#elseif arch(x86_64)
@@ -72,7 +72,7 @@ extension SystemInformation {
 			)
 			static let regulatoryNumber = SystemInformationData<String?, _>(
 				IORegistry(class: "IOPlatformExpertDevice").read("regulatory-model-number"),
-				applicable: {
+				available: {
 					#if arch(arm64)
 						!?isVirtualMachine
 					#elseif arch(x86_64)
@@ -133,11 +133,11 @@ extension SystemInformation {
 				static let total = SystemInformationData<Int?, _>(Sysctl.read("hw.physicalcpu"))
 				static let performance = SystemInformationData<Int?, _>(
 					Sysctl.read("hw.perflevel0.physicalcpu"),
-					applicable: differentTypes,
+					available: differentTypes,
 				)
 				static let efficiency = SystemInformationData<Int?, _>(
 					Sysctl.read("hw.perflevel1.physicalcpu"),
-					applicable: differentTypes,
+					available: differentTypes,
 				)
 			}
 
@@ -151,7 +151,7 @@ extension SystemInformation {
 			static let name = SystemInformationData<String?, _>(Sysctl.read("machdep.cpu.brand_string"))
 			static let identifier = SystemInformationData<String?, _>(
 				IORegistry(class: "IOPlatformExpertDevice").read("platform-name"),
-				applicable: {
+				available: {
 					#if arch(arm64)
 						true
 					#elseif arch(x86_64)
@@ -161,7 +161,7 @@ extension SystemInformation {
 			)
 			static let frequency = SystemInformationData<Frequency?, _>(
 				Sysctl.read("hw.cpufrequency").map(Frequency.init),
-				applicable: {
+				available: {
 					#if arch(arm64)
 						false
 					#elseif arch(x86_64)
@@ -193,7 +193,7 @@ extension SystemInformation {
 						#endif
 					}()
 				},
-				applicable: {
+				available: {
 					#if arch(arm64)
 						SystemProfiler.available
 					#elseif arch(x86_64)

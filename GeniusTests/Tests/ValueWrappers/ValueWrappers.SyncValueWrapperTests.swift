@@ -18,7 +18,7 @@ extension ValueWrappers {
 					#expect(Bool(false))
 					return nil
 				}(),
-				applicable: false,
+				available: false,
 			).value
 		}
 
@@ -29,7 +29,7 @@ extension ValueWrappers {
 					#expect(Bool(false))
 					return nil
 				}(),
-				applicable: false,
+				available: false,
 			).value
 		}
 	}

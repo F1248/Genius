@@ -13,13 +13,13 @@ extension SystemInformation {
 
 			static let activationLock = MaintenanceCheck<Bool?, _>(
 				{ await Bool(systemProfilerActivationLockStatusOutput: SystemProfiler.hardware?["activation_lock_status"]) },
-				applicable: Hardware.securityChip.value >=? .t2 &&?
+				available: Hardware.securityChip.value >=? .t2 &&?
 					!?Hardware.Model.isVirtualMachine &&?
 					Software.OS.bootMode.value !=? .recovery,
 			)
 			static let firmwarePassword = MaintenanceCheck<Bool?, _>(
 				{ await Bool(firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check", asRoot: true)?.runSafe()) },
-				applicable: {
+				available: {
 					#if arch(arm64)
 						false
 					#elseif arch(x86_64)
@@ -33,7 +33,7 @@ extension SystemInformation {
 
 			static let fileVault = MaintenanceCheck<Bool?, _>(
 				{ await Bool(fdesetupOutput: Process("/usr/bin/fdesetup", "status")?.runSafe()) },
-				applicable: Software.OS.bootMode.value !=? .recovery,
+				available: Software.OS.bootMode.value !=? .recovery,
 			)
 		}
 
@@ -41,7 +41,7 @@ extension SystemInformation {
 
 			static let systemIntegrityProtection = MaintenanceCheck<Bool?, _>(
 				{ await Bool(csrutilOutput: Process("/usr/bin/csrutil", "status")?.runSafe()) },
-				applicable: Software.OS.bootMode.value !=? .recovery,
+				available: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let firewall = MaintenanceCheck<Bool?, _>(
 				{
@@ -50,11 +50,11 @@ extension SystemInformation {
 							.runSafe(),
 					)
 				},
-				applicable: Software.OS.bootMode.value !=? .recovery,
+				available: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let gatekeeper = MaintenanceCheck<Bool?, _>(
 				{ await Bool(spctlOutput: Process("/usr/sbin/spctl", "--status")?.runSafe()) },
-				applicable: Software.OS.bootMode.value !=? .recovery,
+				available: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let allowAccessoriesToConnect = MaintenanceCheck<AllowAccessoriesToConnectSetting?, _>(
 				{
@@ -66,7 +66,7 @@ extension SystemInformation {
 						default: nil
 					}
 				}(),
-				applicable: {
+				available: {
 					#if arch(arm64)
 						Hardware.Model.isLaptop &&? Software.OS.bootMode.value !=? .recovery
 					#elseif arch(x86_64)
@@ -81,37 +81,37 @@ extension SystemInformation {
 			static let checkMacOS = MaintenanceCheck<Bool?, _>(
 				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
 					.read(key: "AutomaticCheckEnabled", default: true),
-				applicable: { if #available(macOS 15, *) { false } else { Software.OS.bootMode.value !=? .recovery } }(),
+				available: { if #available(macOS 15, *) { false } else { Software.OS.bootMode.value !=? .recovery } }(),
 			)
 			static let downloadMacOS = MaintenanceCheck<Bool?, _>(
 				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
 					.read(key: "AutomaticDownload", default: true),
-				applicable: Software.OS.bootMode.value !=? .recovery,
+				available: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let installMacOS = MaintenanceCheck<Bool?, _>(
 				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
 					.read(key: "AutomaticallyInstallMacOSUpdates", default: false),
-				applicable: Software.OS.bootMode.value !=? .recovery,
+				available: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let installCritical = MaintenanceCheck<Bool?, _>(
 				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
 					.read(key: "CriticalUpdateInstall", default: true),
-				applicable: Software.OS.bootMode.value !=? .recovery,
+				available: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let installConfigurationData = MaintenanceCheck<Bool?, _>(
 				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
 					.read(key: "ConfigDataInstall", default: true),
-				applicable: Software.OS.bootMode.value !=? .recovery,
+				available: Software.OS.bootMode.value !=? .recovery,
 			)
 			static let backgroundSecurityImprovements = MaintenanceCheck<Bool?, _>(
 				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
 					.read(key: "SplatEnabled", default: true),
-				applicable: { if #available(macOS 26.1, *) { Software.OS.bootMode.value !=? .recovery } else { false } }(),
+				available: { if #available(macOS 26.1, *) { Software.OS.bootMode.value !=? .recovery } else { false } }(),
 			)
 			static let installAppStoreApps = MaintenanceCheck<Bool?, _>(
 				UserDefaults(suiteName: "/Library/Preferences/com.apple.commerce")?
 					.read(key: "AutoUpdate", default: false),
-				applicable: Software.OS.bootMode.value !=? .recovery,
+				available: Software.OS.bootMode.value !=? .recovery,
 			)
 		}
 	}

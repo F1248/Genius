@@ -11,6 +11,7 @@
 ### Changed
 
 - Add "macOS" to System Information → Software → macOS → Code Name
+- Rename "Not applicable" to "Not available"
 
 ### Fixed
 

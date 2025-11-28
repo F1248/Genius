@@ -8,8 +8,8 @@
 extension SystemInformationProtocol {
 
 	var testCondition: Bool { get async {
-		guard let applicable else { return false }
-		guard applicable else { return true }
+		guard let available else { return false }
+		guard available else { return true }
 		if case Optional<Any>.none = await value as Any { return false }
 		return true
 	} }
@@ -18,8 +18,8 @@ extension SystemInformationProtocol {
 extension SystemInformationProtocol where ValueWrapper == SyncValueWrapper<Value> {
 
 	var testCondition: Bool {
-		guard let applicable else { return false }
-		guard applicable else { return true }
+		guard let available else { return false }
+		guard available else { return true }
 		if case Optional<Any>.none = value as Any { return false }
 		return true
 	}

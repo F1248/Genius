@@ -855,19 +855,19 @@
         }
       }
     },
-    "notApplicable" : {
+    "notAvailable" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nicht zutreffend"
+            "value" : "Nicht verfügbar"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Not applicable"
+            "value" : "Not available"
           }
         }
       }

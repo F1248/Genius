@@ -12,11 +12,11 @@ struct SystemInformationProtocolTests {
 	@Test
 	func testCondition() { // swiftformat:disable:this swiftTestingTestCaseNames
 		#expect(SystemInformationData<Int, _>(0 as Int).testCondition == true)
-		#expect(SystemInformationData<Int?, _>(0, applicable: true).testCondition == true)
-		#expect(SystemInformationData<Int?, _>(nil, applicable: true).testCondition == false)
-		#expect(SystemInformationData<Int?, _>(0, applicable: false).testCondition == true)
-		#expect(SystemInformationData<Int?, _>(nil, applicable: false).testCondition == true)
-		#expect(SystemInformationData<Int?, _>(0, applicable: nil).testCondition == false)
-		#expect(SystemInformationData<Int?, _>(nil, applicable: nil).testCondition == false)
+		#expect(SystemInformationData<Int?, _>(0, available: true).testCondition == true)
+		#expect(SystemInformationData<Int?, _>(nil, available: true).testCondition == false)
+		#expect(SystemInformationData<Int?, _>(0, available: false).testCondition == true)
+		#expect(SystemInformationData<Int?, _>(nil, available: false).testCondition == true)
+		#expect(SystemInformationData<Int?, _>(0, available: nil).testCondition == false)
+		#expect(SystemInformationData<Int?, _>(nil, available: nil).testCondition == false)
 	}
 }

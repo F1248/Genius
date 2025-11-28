@@ -18,10 +18,10 @@ extension MaintenanceCheckTests {
 		func developmentModeDisabledInterfaceModeNormal() {
 			Defaults[.developmentMode] = false
 			Defaults[.interfaceMode] = .normal
-			#expect(MaintenanceCheck<Bool?, _>(nil, applicable: false).uiRepresentation == nil)
-			#expect(MaintenanceCheck<Bool?, _>(false, applicable: true).uiRepresentation == .disabled)
-			#expect(MaintenanceCheck<Bool?, _>(true, applicable: true).uiRepresentation == .enabled)
-			#expect(MaintenanceCheck<Bool?, _>(nil, applicable: true).uiRepresentation == nil)
+			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == nil)
+			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .disabled)
+			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .enabled)
+			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == nil)
 		}
 
 		@Test("Development mode disabled, interface mode advanced")
@@ -29,20 +29,20 @@ extension MaintenanceCheckTests {
 		func developmentModeDisabledInterfaceModeAdvanced() {
 			Defaults[.developmentMode] = false
 			Defaults[.interfaceMode] = .advanced
-			#expect(MaintenanceCheck<Bool?, _>(nil, applicable: false).uiRepresentation == nil)
-			#expect(MaintenanceCheck<Bool?, _>(false, applicable: true).uiRepresentation == .disabled)
-			#expect(MaintenanceCheck<Bool?, _>(true, applicable: true).uiRepresentation == .enabled)
-			#expect(MaintenanceCheck<Bool?, _>(nil, applicable: true).uiRepresentation == .unknown)
+			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == nil)
+			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .disabled)
+			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .enabled)
+			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == .unknown)
 		}
 
 		@Test("Development mode enabled")
 		@MainActor
 		func developmentModeEnabled() {
 			Defaults[.developmentMode] = true
-			#expect(MaintenanceCheck<Bool?, _>(nil, applicable: false).uiRepresentation == .notApplicable)
-			#expect(MaintenanceCheck<Bool?, _>(false, applicable: true).uiRepresentation == .disabled)
-			#expect(MaintenanceCheck<Bool?, _>(true, applicable: true).uiRepresentation == .enabled)
-			#expect(MaintenanceCheck<Bool?, _>(nil, applicable: true).uiRepresentation == .unknown)
+			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == .notAvailable)
+			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .disabled)
+			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .enabled)
+			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == .unknown)
 		}
 	}
 }
