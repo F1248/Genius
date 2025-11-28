@@ -33,7 +33,7 @@ extension SystemInformation {
 					let url = """
 					https://support-sp.apple.com/sp/product?\
 					cc=\(configCode)&\
-					lang=\(Locale.currentLanguageCode ?? "")
+					lang=\(Locale.autoupdatingCurrent.identifier.split(separator: "@", maxSplits: 1).first ?? "")
 					"""
 					return await Network.string(from: url)?
 						.between(start: "<configCode>", end: "</configCode>")
