@@ -9,14 +9,19 @@ import ObjectiveC
 @dynamicMemberLookup
 struct PrivateFramework {
 
-	init(name: String) {
+	let available: Bool?
+
+	init(name: String, available: Bool? = true) {
+		self.available = available
 		guard
+			available ?? true,
 			let bundle = Bundle(path: "/System/Library/PrivateFrameworks/\(name).framework"),
 			bundle.load()
 		else { return }
 	}
 
 	subscript(dynamicMember className: String) -> NSObjectWrapper? {
-		(NSClassFromString(className) as AnyObject as? NSObject).map(NSObjectWrapper.init)
+		guard available ?? true else { return nil }
+		return (NSClassFromString(className) as AnyObject as? NSObject).map(NSObjectWrapper.init)
 	}
 }
