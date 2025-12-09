@@ -9,6 +9,13 @@ import ObjectiveC
 @dynamicMemberLookup
 struct PrivateFramework {
 
+	static let aboutSettings = Self(
+		name: "AboutSettings",
+		available: {
+			if #available(macOS 15, *) { SystemInformation.Software.OS.bootMode.value !=? .recovery } else { false }
+		}(),
+	)
+
 	let available: Bool?
 
 	init(name: String, available: Bool? = true) {

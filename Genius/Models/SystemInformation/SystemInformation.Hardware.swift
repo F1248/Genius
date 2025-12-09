@@ -71,8 +71,17 @@ extension SystemInformation {
 				}(),
 			)
 			static let configCode = SystemInformationData<String?, _>(
-				(Machine.serialNumber.value?.dropFirst(8)).map(String.init),
-				available: !?isVirtualMachine &&? Machine.serialNumber.value.map { [11, 12].contains($0.count) },
+				{
+					guard
+						let serialNumber = Machine.serialNumber.value,
+						[11, 12].contains(serialNumber.count)
+					else { return nil }
+					return String(serialNumber.dropFirst(8))
+				}() ??
+					PrivateFramework.aboutSettings.ASPlatformInfo?.shared?.configCode,
+				available: !?isVirtualMachine &&? (
+					Machine.serialNumber.value.map { [11, 12].contains($0.count) } ||? PrivateFramework.aboutSettings.available
+				),
 			)
 			static let regulatoryNumber = SystemInformationData<String?, _>(
 				IORegistry(class: "IOPlatformExpertDevice").read("regulatory-model-number"),
