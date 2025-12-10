@@ -15,10 +15,6 @@ extension StringProtocol {
 		self.init(decoding: data, as: UTF8.self)
 	}
 
-	func remove(_ string: some StringProtocol) -> String {
-		replacingOccurrences(of: string, with: "")
-	}
-
 	func betweenAnchored(start: some StringProtocol, end: (some StringProtocol)? = nil as String?) -> SubSequence? {
 		guard
 			let startIndex = range(of: start, options: .anchored)?.upperBound,

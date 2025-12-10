@@ -46,11 +46,6 @@ extension SystemInformationTests {
 			}
 
 			@Test
-			func namePrefix() {
-				#expect(SystemInformation.Hardware.Model.namePrefix.testCondition)
-			}
-
-			@Test
 			func board() {
 				#expect(SystemInformation.Hardware.Model.board.testCondition)
 			}

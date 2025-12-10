@@ -15,7 +15,7 @@ extension SystemInformation {
 		enum Model {
 
 			static let isVirtualMachine: Bool? = Sysctl.read("kern.hv_vmm_present")
-			static let isLaptop: Bool? = namePrefix?.hasPrefix("MacBook")
+			static let isLaptop: Bool? = (name.value ?? identifier.value)?.hasPrefix("MacBook")
 			static let name = SystemInformationData<String?, _>(
 				IORegistry(name: "product").read("product-name"),
 				available: {
@@ -46,7 +46,6 @@ extension SystemInformation {
 				available: localizedName.available ||? name.available,
 			)
 			static let identifier = SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read("model"))
-			static let namePrefix: String? = name.value?.remove(" ") ?? identifier.value
 			static let board = SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read({
 				#if arch(arm64)
 					"target-sub-type"
