@@ -18,8 +18,8 @@ See LICENSE.txt for license information.
 ### Changed
 
 - Remove “Scale to fit below built-in camera” setting from Finder Info window
-- Add "macOS" to macOS → Code Name
-- Rename "Not applicable" to "Not available"
+- Add “macOS” to macOS → Code Name
+- Rename “Not applicable” to “Not available”
 
 ### Fixed
 
