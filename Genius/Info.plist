@@ -8,6 +8,8 @@ See LICENSE.txt for license information.
 <dict>
 	<key>LSRequiresNativeExecution</key>
 	<true/>
+	<key>NSPrefersDisplaySafeAreaCompatibilityMode</key>
+	<false/>
 	<key>SUAutomaticallyUpdate</key>
 	<true/>
 	<key>SUEnableAutomaticChecks</key>

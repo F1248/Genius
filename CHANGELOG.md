@@ -12,6 +12,7 @@
 
 ### Changed
 
+- Remove “Scale to fit below built-in camera” setting from Finder Info window
 - Add "macOS" to System Information → Software → macOS → Code Name
 - Rename "Not applicable" to "Not available"
 
