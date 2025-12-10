@@ -38,19 +38,21 @@ extension SystemInformation {
 			static let version = SystemInformationData<VersionNumber?, _>(
 				Sysctl.read("kern.osproductversion").flatMap(VersionNumber.init),
 			)
-			static let codeName = SystemInformationData<String?, _>({
-				if #unavailable(macOS 14) {
-					"macOS Ventura"
-				} else if #unavailable(macOS 15) {
-					"macOS Sonoma"
-				} else if #unavailable(macOS 16) {
-					"macOS Sequoia"
-				} else if #unavailable(macOS 26) {
-					nil
-				} else if #unavailable(macOS 27) {
-					"macOS Tahoe"
-				} else { nil }
-			}())
+			static let codeName = SystemInformationData<String?, _>(
+				PrivateFramework.aboutSettings.ASPlatformInfo?.shared?.osTitleString ?? {
+					if #unavailable(macOS 14) {
+						"macOS Ventura"
+					} else if #unavailable(macOS 15) {
+						"macOS Sonoma"
+					} else if #unavailable(macOS 16) {
+						"macOS Sequoia"
+					} else if #unavailable(macOS 26) {
+						nil
+					} else if #unavailable(macOS 27) {
+						"macOS Tahoe"
+					} else { nil }
+				}(),
+			)
 			static let buildNumber = SystemInformationData<String?, _>(Sysctl.read("kern.osversion"))
 			static let bootMode = SystemInformationData<BootMode?, _>({
 				if FileManager.default.fileExists(atPath: "/System/Library/CoreServices/Finder.app") {

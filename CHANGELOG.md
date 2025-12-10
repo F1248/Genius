@@ -18,6 +18,7 @@
 
 ### Fixed
 
+- Fix macOS → Code Name on future macOS versions
 - Disable app updates in recoveryOS as Sparkle does not work there
 - Fix `SettingPicker` not always displaying options vertically
 - Fix duplicate `Section`s on macOS 13
