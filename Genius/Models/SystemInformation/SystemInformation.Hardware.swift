@@ -94,28 +94,12 @@ extension SystemInformation {
 				}(),
 			)
 			static let symbol: SFSymbol =
-				switch true {
-					case isVirtualMachine: if #available(macOS 14, *) { .macwindowAndCursorarrow } else { .macwindow }
-					case namePrefix?.hasPrefix("MacBook"):
-						if #available(macOS 14, *) {
-							switch true {
-								case identifier.value == "Mac14,7": .macbookGen1
-								case identifier.value?.hasPrefix("MacBookPro18"): .macbookGen2
-								case identifier.value?.hasPrefix("MacBook"): .macbookGen1
-								default: .macbookGen2
-							}
-						} else { .laptopcomputer }
-					case namePrefix?.hasPrefix("iMac"): .desktopcomputer
-					case namePrefix?.hasPrefix("Macmini"): .macmini
-					case namePrefix?.hasPrefix("MacStudio"): .macstudio
-					case namePrefix?.hasPrefix("MacPro"):
-						switch identifier.value {
-							case "MacPro3,1", "MacPro4,1", "MacPro5,1": .macproGen1
-							case "MacPro6,1": .macproGen2
-							default: regulatoryNumber.value == "A2787" ? .macproGen3Server : .macproGen3
-						}
-					case namePrefix?.hasPrefix("Xserve"): .xserve
-					default: if #available(macOS 15, *) { .desktopcomputerAndMacbook } else { .desktopcomputer }
+				if isVirtualMachine ?? false {
+					if #available(macOS 14, *) { .macwindowAndCursorarrow } else { .macwindow }
+				} else {
+					PrivateFramework.iconServices.ISCurrentDeviceIcon?.sharedInstance?.symbol?.name.map(SFSymbol.init)
+						.flatMap { $0 == .display ? nil : $0 } ??
+						{ if #available(macOS 15, *) { .desktopcomputerAndMacbook } else { .desktopcomputer } }()
 				}
 		}
 

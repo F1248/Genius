@@ -29,7 +29,6 @@
 	unusedPrivateDeclarations, \
 	wrapEnumCases, \
 	wrapMultilineConditionalAssignment, \
-	wrapMultilineFunctionChains, \
 
 --acronyms "CPU,EFI,ID,IO,JSON,NVRAM,OS,SF,SMC,UDID,UI,URL,UUID"
 --allow-partial-wrapping false

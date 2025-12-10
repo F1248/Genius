@@ -15,6 +15,7 @@ struct PrivateFramework {
 			if #available(macOS 15, *) { SystemInformation.Software.OS.bootMode.value !=? .recovery } else { false }
 		}(),
 	)
+	static let iconServices = Self(name: "IconServices")
 
 	let available: Bool?
 
