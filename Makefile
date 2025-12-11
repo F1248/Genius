@@ -135,7 +135,8 @@ install-files:
 			git reset --hard \
 		" "refs/tags/*" \
 	)"
-	cd _site && cp $$( \
+	cd _site && \
+	cp $$( \
 		gh release --repo F1248/Genius list --json tagName,isLatest --jq ".[] | select(.isLatest).tagName" \
 	).html index.html
 
