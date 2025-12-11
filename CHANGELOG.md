@@ -15,7 +15,7 @@ See LICENSE.txt for license information.
 - Add CPU Identifier to System Information → Hardware → Specifications
 - Add Configuration Code to System Information → Hardware → Model
 
-### Changed
+### Improved
 
 - Remove “Scale to fit below built-in camera” setting from Finder Info window
 - Add “macOS” to macOS → Code Name
@@ -46,7 +46,7 @@ See LICENSE.txt for license information.
 - Add buttons to reset each setting to its default value
 - Add help text to `Symbol`s when showing symbol
 
-### Changed
+### Improved
 
 - Align `content` in `TabData.body` to the top
 - Use `Form`s instead of `GroupBox`es
@@ -59,7 +59,7 @@ See LICENSE.txt for license information.
 
 - Add app updates
 
-### Changed
+### Improved
 
 - Group settings
 
