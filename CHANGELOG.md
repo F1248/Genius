@@ -9,6 +9,20 @@ See LICENSE.txt for license information.
 
 ### Added
 
+### Improved
+
+### Fixed
+
+### Security
+
+### Dependencies
+
+### [Commit History](https://github.com/F1248/Genius/compare/v0.4.0...HEAD)
+
+## [0.4.0](https://github.com/F1248/Genius/releases/tag/v0.4.0)
+
+### Added
+
 - Make Model → Configuration Code and Name available on devices with 10-digit serial numbers
 - Add Background Security Improvements introduced in macOS 26.1 to Maintenance → Automatic Updates
 - Add Board to System Information → Hardware → Model
@@ -29,15 +43,13 @@ See LICENSE.txt for license information.
 - Fix `SettingPicker` not always displaying options vertically
 - Fix duplicate `Section`s on macOS 13
 
-### Security
-
 ### Dependencies
 
 - Update [SFSafeSymbols](https://github.com/SFSafeSymbols/SFSafeSymbols) from [6.2.0](https://github.com/SFSafeSymbols/SFSafeSymbols/releases/tag/6.2.0) to [7.0.0](https://github.com/SFSafeSymbols/SFSafeSymbols/releases/tag/7.0.0)
 - Update [Xcode](https://developer.apple.com/xcode) from [26.0.1](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_0_1-release-notes) to [26.1.1](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_1-release-notes)
 - Update [Sparkle](https://github.com/sparkle-project/Sparkle) from [2.8.0](https://github.com/sparkle-project/Sparkle/releases/tag/2.8.0) to [2.8.1](https://github.com/sparkle-project/Sparkle/releases/tag/2.8.1)
 
-### [Commit History](https://github.com/F1248/Genius/compare/v0.3.0...HEAD)
+### [Commit History](https://github.com/F1248/Genius/compare/v0.3.0...v0.4.0)
 
 ## [0.3.0](https://github.com/F1248/Genius/releases/tag/v0.3.0)
 
