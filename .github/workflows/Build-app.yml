@@ -61,7 +61,7 @@ jobs:
             - name: Select latest installed Xcode version
               uses: maxim-lobanov/setup-xcode@master
               with:
-                xcode-version: "26.0.1"
+                xcode-version: "26.1.1"
 
             - name: Prepare Xcode
               run: |
