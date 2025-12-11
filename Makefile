@@ -138,7 +138,8 @@ install-files:
 	cd _site && \
 	cp $$( \
 		gh release --repo F1248/Genius list --json tagName,isLatest --jq ".[] | select(.isLatest).tagName" \
-	).html index.html
+	).html index.html && \
+	rm stable.html
 
 appcast:
 	mkdir _site
