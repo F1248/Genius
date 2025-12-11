@@ -3,6 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
+import CoreFoundation
 import Defaults
 import Foundation
 import SwiftUI
@@ -42,6 +43,7 @@ struct SettingPicker<Value: PickerSetting>: View {
 		Picker(selection: value) {
 			ForEach(Value.allCases) { option in
 				Text(option.title)
+					.frame(idealWidth: .infinity)
 			}
 		} label: {
 			HStack {

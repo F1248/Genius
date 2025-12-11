@@ -18,15 +18,17 @@ struct AppCommands: Commands {
 	var body: some Commands {
 		CommandGroup(after: .appInfo) {
 			Divider()
-			Button(
-				.checkForUpdatesEllipsis,
-				systemImage: SFSymbol.arrowTriangle2Circlepath.rawValue,
-			) {
-				guard updater.canCheckForUpdates else {
-					SharedData.shared.showUpdateInProgressAlert = true
-					return
+			if (SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true {
+				Button(
+					.checkForUpdatesEllipsis,
+					systemImage: SFSymbol.arrowTriangle2Circlepath.rawValue,
+				) {
+					guard updater.canCheckForUpdates else {
+						SharedData.shared.showUpdateInProgressAlert = true
+						return
+					}
+					updater.checkForUpdates()
 				}
-				updater.checkForUpdates()
 			}
 			Button(.uninstallAppEllipsis, systemImage: SFSymbol.trash.rawValue) {
 				SharedData.shared.showUninstallationDialog = true

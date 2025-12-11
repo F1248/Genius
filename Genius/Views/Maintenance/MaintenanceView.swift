@@ -76,6 +76,11 @@ struct MaintenanceView: View {
 					setting: URL(systemSetting: .softwareUpdate),
 				): SystemInformation.MaintenanceChecks.AutomaticUpdates.installConfigurationData,
 				MaintenanceCheckLabel(
+					.backgroundSecurityImprovements,
+					help: URL(appleSupportArticle: 102_657),
+					setting: URL(systemSetting: .backgroundSecurityImprovements),
+				): SystemInformation.MaintenanceChecks.AutomaticUpdates.backgroundSecurityImprovements,
+				MaintenanceCheckLabel(
 					.installAppStoreAppUpdates,
 					help: URL(appleSupportArticle: 102_629),
 					setting: {

@@ -15,32 +15,44 @@ extension SystemInformation {
 		enum Model {
 
 			static let isVirtualMachine: Bool? = Sysctl.read("kern.hv_vmm_present")
-			static let isLaptop: Bool? = namePrefix?.hasPrefix("MacBook")
+			static let isLaptop: Bool? = (name.value ?? identifier.value)?.hasPrefix("MacBook")
 			static let name = SystemInformationData<String?, _>(
 				IORegistry(name: "product").read("product-name"),
-				applicable: CPU.type.value == .appleSilicon,
+				available: {
+					#if arch(arm64)
+						true
+					#elseif arch(x86_64)
+						false
+					#endif
+				}(),
 			)
 			static let localizedName = SystemInformationData<String?, _>(
 				{
-					guard let serialNumber = Machine.serialNumber.value else { return nil }
+					guard let configCode = configCode.value else { return nil }
 					// swiftlint:disable:next explicit_type_interface
 					let url = """
 					https://support-sp.apple.com/sp/product?\
-					cc=\(serialNumber.dropFirst(8))&\
-					lang=\(Locale.currentLanguageCode ?? "")
+					cc=\(configCode)&\
+					lang=\(Locale.autoupdatingCurrent.identifier.split(separator: "@", maxSplits: 1).first ?? "")
 					"""
 					return await Network.string(from: url)?
 						.between(start: "<configCode>", end: "</configCode>")
 						.map(String.init)
 				},
-				applicable: Machine.serialNumber.value.map { [11, 12].contains($0.count) },
+				available: configCode.available,
 			)
 			static let displayName = SystemInformationData<String?, _>(
 				{ await localizedName.value ?? name.value },
-				applicable: localizedName.applicable ||? name.applicable,
+				available: localizedName.available ||? name.available,
 			)
 			static let identifier = SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read("model"))
-			static let namePrefix: String? = name.value?.remove(" ") ?? identifier.value
+			static let board = SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read({
+				#if arch(arm64)
+					"target-sub-type"
+				#elseif arch(x86_64)
+					"board-id"
+				#endif
+			}()))
 			static let number = SystemInformationData<String?, _>(
 				{
 					guard
@@ -49,64 +61,79 @@ extension SystemInformation {
 					else { return nil }
 					return modelNumber + regionInfo
 				}(),
-				applicable: CPU.type.value == .appleSilicon,
+				available: {
+					#if arch(arm64)
+						true
+					#elseif arch(x86_64)
+						false
+					#endif
+				}(),
+			)
+			static let configCode = SystemInformationData<String?, _>(
+				{
+					guard
+						let serialNumber = Machine.serialNumber.value,
+						[11, 12].contains(serialNumber.count)
+					else { return nil }
+					return String(serialNumber.dropFirst(8))
+				}() ??
+					PrivateFramework.aboutSettings.ASPlatformInfo?.shared?.configCode,
+				available: !?isVirtualMachine &&? (
+					Machine.serialNumber.value.map { [11, 12].contains($0.count) } ||? PrivateFramework.aboutSettings.available
+				),
 			)
 			static let regulatoryNumber = SystemInformationData<String?, _>(
 				IORegistry(class: "IOPlatformExpertDevice").read("regulatory-model-number"),
-				applicable: CPU.type.value == .appleSilicon &&? !?isVirtualMachine,
+				available: {
+					#if arch(arm64)
+						!?isVirtualMachine
+					#elseif arch(x86_64)
+						false
+					#endif
+				}(),
 			)
 			static let symbol: SFSymbol =
-				switch true {
-					case isVirtualMachine: if #available(macOS 14, *) { .macwindowAndCursorarrow } else { .macwindow }
-					case namePrefix?.hasPrefix("MacBook"):
-						if #available(macOS 14, *) {
-							switch true {
-								case identifier.value == "Mac14,7": .macbookGen1
-								case identifier.value?.hasPrefix("MacBookPro18"): .macbookGen2
-								case identifier.value?.hasPrefix("MacBook"): .macbookGen1
-								default: .macbookGen2
-							}
-						} else { .laptopcomputer }
-					case namePrefix?.hasPrefix("iMac"): .desktopcomputer
-					case namePrefix?.hasPrefix("Macmini"): .macmini
-					case namePrefix?.hasPrefix("MacStudio"): .macstudio
-					case namePrefix?.hasPrefix("MacPro"):
-						switch identifier.value {
-							case "MacPro3,1", "MacPro4,1", "MacPro5,1": .macproGen1
-							case "MacPro6,1": .macproGen2
-							default: regulatoryNumber.value == "A2787" ? .macproGen3Server : .macproGen3
-						}
-					case namePrefix?.hasPrefix("Xserve"): .xserve
-					default: if #available(macOS 15, *) { .desktopcomputerAndMacbook } else { .desktopcomputer }
+				if isVirtualMachine ?? false {
+					if #available(macOS 14, *) { .macwindowAndCursorarrow } else { .macwindow }
+				} else {
+					PrivateFramework.iconServices.ISCurrentDeviceIcon?.sharedInstance?.symbol?.name.map(SFSymbol.init)
+						.flatMap { $0 == .display ? nil : $0 } ??
+						{ if #available(macOS 15, *) { .desktopcomputerAndMacbook } else { .desktopcomputer } }()
 				}
 		}
 
 		static let securityChip = SystemInformationData<SecurityChip?, _>({
-			switch CPU.type.value {
-				case .appleSilicon: return .mSeries
-				case .intel:
-					let t2: Bool? = IORegistry(name: "Apple T2 Controller").exists
-					if t2 ?? false { return .t2 }
-					let t1: Bool? = IORegistry(name: "Apple T1 Controller").exists
-					if t1 ?? false { return .t1 }
-					if t2 == false, t1 == false { return SecurityChip.none }
-					return nil
-			}
+			#if arch(arm64)
+				.mSeries
+			#elseif arch(x86_64)
+				let t2: Bool? = IORegistry(name: "Apple T2 Controller").exists
+				if t2 ?? false { return .t2 }
+				let t1: Bool? = IORegistry(name: "Apple T1 Controller").exists
+				if t1 ?? false { return .t1 }
+				if t2 == false, t1 == false { return SecurityChip.none }
+				return nil
+			#endif
 		}())
 
 		enum CPU {
 
 			enum Cores {
 
-				static let differentTypes: Bool? = type.value == .appleSilicon &&? !?Model.isVirtualMachine
+				static let differentTypes: Bool? = {
+					#if arch(arm64)
+						!?Model.isVirtualMachine
+					#elseif arch(x86_64)
+						false
+					#endif
+				}() // swiftformat:disable:this blankLinesBetweenScopes
 				static let total = SystemInformationData<Int?, _>(Sysctl.read("hw.physicalcpu"))
 				static let performance = SystemInformationData<Int?, _>(
 					Sysctl.read("hw.perflevel0.physicalcpu"),
-					applicable: differentTypes,
+					available: differentTypes,
 				)
 				static let efficiency = SystemInformationData<Int?, _>(
 					Sysctl.read("hw.perflevel1.physicalcpu"),
-					applicable: differentTypes,
+					available: differentTypes,
 				)
 			}
 
@@ -115,14 +142,28 @@ extension SystemInformation {
 					.appleSilicon
 				#elseif arch(x86_64)
 					.intel
-				#else
-					#error("Unsupported architecture")
 				#endif
 			}())
 			static let name = SystemInformationData<String?, _>(Sysctl.read("machdep.cpu.brand_string"))
+			static let identifier = SystemInformationData<String?, _>(
+				IORegistry(class: "IOPlatformExpertDevice").read("platform-name"),
+				available: {
+					#if arch(arm64)
+						true
+					#elseif arch(x86_64)
+						false
+					#endif
+				}(),
+			)
 			static let frequency = SystemInformationData<Frequency?, _>(
 				Sysctl.read("hw.cpufrequency").map(Frequency.init),
-				applicable: type.value == .intel,
+				available: {
+					#if arch(arm64)
+						false
+					#elseif arch(x86_64)
+						true
+					#endif
+				}(),
 			)
 		}
 
@@ -140,10 +181,21 @@ extension SystemInformation {
 			)
 			static let provisioningUDID = SystemInformationData<String?, _>(
 				{
-					await SystemProfiler.hardware?["provisioning_UDID"] as? String ??
-						(CPU.type.value == .intel ? hardwareUUID.value : nil)
+					await SystemProfiler.hardware?["provisioning_UDID"] as? String ?? {
+						#if arch(arm64)
+							nil
+						#elseif arch(x86_64)
+							hardwareUUID.value
+						#endif
+					}()
 				},
-				applicable: SystemProfiler.available ||? CPU.type.value == .intel,
+				available: {
+					#if arch(arm64)
+						SystemProfiler.available
+					#elseif arch(x86_64)
+						true
+					#endif
+				}(),
 			)
 		}
 	}

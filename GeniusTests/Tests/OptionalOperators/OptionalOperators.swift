@@ -6,4 +6,4 @@
 import Testing
 
 @Suite("Optional operators")
-struct OptionalOperators {}
+enum OptionalOperators {}

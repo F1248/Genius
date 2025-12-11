@@ -134,7 +134,7 @@ jobs:
               run: make build
 
             - name: Zip app
-              run: zip --recurse-paths --symlinks Genius.zip Genius.app
+              run: make zip-app
 
             - name: Attest build provenance of Genius.zip
               uses: actions/attest-build-provenance@main
@@ -155,9 +155,7 @@ jobs:
 
             - name: Create DMG file
               if: github.ref_type == 'tag'
-              run: |
-                rm LICENSE.txt # prevent license from being added to DMG file
-                create-dmg --no-version-in-filename --no-code-sign Genius.app
+              run: make create-dmg
 
             - name: Attest build provenance of Genius.dmg
               if: github.ref_type == 'tag'
@@ -173,7 +171,7 @@ jobs:
                 path: Genius.dmg
 
             - name: Zip debug symbols
-              run: zip --recurse-paths Debug-Symbols.zip Genius.app.dSYM
+              run: make zip-debug-symbols
 
             - name: Upload Debug-Symbols.zip
               uses: actions/upload-artifact@main

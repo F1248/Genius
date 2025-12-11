@@ -39,6 +39,8 @@
 		A4A9C4B62E51D8640050DF2C /* Genius.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Genius.xcconfig; sourceTree = "<group>"; };
 		A4D9A1AA2D257055008D91E7 /* GeniusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeniusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4EB1C9A2BCC3F8200DF01A6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C8C20D822ED12C9000368F3F /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		C8C20D832ED12CA200368F3F /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -111,9 +113,11 @@
 				A444562E2D0E4EB200CE6207 /* .periphery.yml */,
 				A43BD9C32C729A680049953D /* .swiftformat */,
 				A452AFF22BBF2CAB00760569 /* .swiftlint.yml */,
+				C8C20D822ED12C9000368F3F /* CHANGELOG.md */,
 				A4A9C4B62E51D8640050DF2C /* Genius.xcconfig */,
 				A4844FF82C73E08C0021E6E8 /* Install */,
 				A438B3FA2CA346C600F8DF17 /* LICENSE.txt */,
+				C8C20D832ED12CA200368F3F /* Makefile */,
 				A47BFC592C72116700B88607 /* README_DE.md */,
 				A4EB1C9A2BCC3F8200DF01A6 /* README.md */,
 				A42B353E2BA2185B009E81AD /* Products */,
@@ -185,8 +189,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 2610;
-				LastUpgradeCheck = 2610;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					A42B353C2BA2185B009E81AD = {
 						CreatedOnToolsVersion = 26.1;

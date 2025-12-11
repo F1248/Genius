@@ -24,23 +24,21 @@ struct GeniusApp: App {
 			}
 			.windowToolbarStyle(.unified(showsTitle: false))
 			.windowToolbarLabelStyle(fixed: .iconOnly)
-			.commands {
-				AppCommands()
-			}
+			.commands(content: AppCommands.init)
 		} else {
 			// swiftformat:disable:next redundantReturn
 			return WindowGroup {
 				ContentView()
 			}
 			.windowToolbarStyle(.unified(showsTitle: false))
-			.commands {
-				AppCommands()
-			}
+			.commands(content: AppCommands.init)
 		}
 	}
 
 	init() {
 		NSWindow.allowsAutomaticWindowTabbing = false
-		_ = updater
+		if (SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true {
+			_ = updater
+		}
 	}
 }

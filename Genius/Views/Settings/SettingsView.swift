@@ -15,15 +15,17 @@ struct SettingsView: View {
 	var interfaceMode: Settings.InterfaceMode
 
 	@State var automaticUpdates: Settings.AutomaticUpdates =
-		if updater.automaticallyChecksForUpdates {
-			if updater.automaticallyDownloadsUpdates {
-				.enabled
+		if (SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true {
+			if updater.automaticallyChecksForUpdates {
+				if updater.automaticallyDownloadsUpdates {
+					.enabled
+				} else {
+					.checkOnly
+				}
 			} else {
-				.checkOnly
+				.disabled
 			}
-		} else {
-			.disabled
-		}
+		} else { .disabled }
 
 	@Default(.betaUpdates)
 	var betaUpdates: Bool
@@ -38,14 +40,16 @@ struct SettingsView: View {
 				SettingPicker(.interfaceMode, value: $interfaceMode, key: .interfaceMode)
 					.pickerStyle(.inline)
 			}
-			Section(.appUpdates) {
-				SettingPicker(.automaticAppUpdates, value: $automaticUpdates, defaultValue: .enabled)
-					.onChange(of: automaticUpdates) { newValue in
-						updater.automaticallyChecksForUpdates = newValue != .disabled
-						updater.automaticallyDownloadsUpdates = newValue == .enabled
+			if (SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true {
+				Section(.appUpdates) {
+					SettingPicker(.automaticAppUpdates, value: $automaticUpdates, defaultValue: .enabled)
+						.onChange(of: automaticUpdates) { newValue in
+							updater.automaticallyChecksForUpdates = newValue != .disabled
+							updater.automaticallyDownloadsUpdates = newValue == .enabled
+						}
+					if betaUpdates || developmentMode || interfaceMode >= .advanced {
+						SettingToggle(.enableBetaUpdates, value: $betaUpdates, key: .betaUpdates)
 					}
-				if betaUpdates || developmentMode || interfaceMode >= .advanced {
-					SettingToggle(.enableBetaUpdates, value: $betaUpdates, key: .betaUpdates)
 				}
 			}
 			if developmentMode || interfaceMode >= .powerUser {

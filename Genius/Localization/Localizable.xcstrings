@@ -90,6 +90,23 @@
         }
       }
     },
+    "backgroundSecurityImprovements" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Hintergrund ausgeführte Sicherheitsverbesserungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Background Security Improvements"
+          }
+        }
+      }
+    },
     "bootModeNormal" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -205,6 +222,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Computer"
+          }
+        }
+      }
+    },
+    "configurationCode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konfigurationscode"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuration Code"
           }
         }
       }
@@ -838,19 +872,19 @@
         }
       }
     },
-    "notApplicable" : {
+    "notAvailable" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nicht zutreffend"
+            "value" : "Nicht verfügbar"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Not applicable"
+            "value" : "Not available"
           }
         }
       }

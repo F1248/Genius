@@ -26,8 +26,8 @@ extension SystemInformationTests {
 			}
 
 			@Test
-			func name() async {
-				#expect(await SystemInformation.Hardware.Model.name.testCondition)
+			func name() {
+				#expect(SystemInformation.Hardware.Model.name.testCondition)
 			}
 
 			@Test
@@ -41,23 +41,28 @@ extension SystemInformationTests {
 			}
 
 			@Test
-			func identifier() async {
-				#expect(await SystemInformation.Hardware.Model.identifier.testCondition)
+			func identifier() {
+				#expect(SystemInformation.Hardware.Model.identifier.testCondition)
 			}
 
 			@Test
-			func namePrefix() {
-				#expect(SystemInformation.Hardware.Model.namePrefix.testCondition)
+			func board() {
+				#expect(SystemInformation.Hardware.Model.board.testCondition)
 			}
 
 			@Test
-			func number() async {
-				#expect(await SystemInformation.Hardware.Model.number.testCondition)
+			func number() {
+				#expect(SystemInformation.Hardware.Model.number.testCondition)
 			}
 
 			@Test
-			func regulatoryNumber() async {
-				#expect(await SystemInformation.Hardware.Model.regulatoryNumber.testCondition)
+			func configCode() {
+				#expect(SystemInformation.Hardware.Model.configCode.testCondition)
+			}
+
+			@Test
+			func regulatoryNumber() {
+				#expect(SystemInformation.Hardware.Model.regulatoryNumber.testCondition)
 			}
 
 			@Test
@@ -67,8 +72,8 @@ extension SystemInformationTests {
 		}
 
 		@Test
-		func securityChip() async {
-			#expect(await SystemInformation.Hardware.securityChip.testCondition)
+		func securityChip() {
+			#expect(SystemInformation.Hardware.securityChip.testCondition)
 		}
 
 		struct CPU {
@@ -81,52 +86,57 @@ extension SystemInformationTests {
 				}
 
 				@Test
-				func total() async {
-					#expect(await SystemInformation.Hardware.CPU.Cores.total.testCondition)
+				func total() {
+					#expect(SystemInformation.Hardware.CPU.Cores.total.testCondition)
 				}
 
 				@Test
-				func performance() async {
-					#expect(await SystemInformation.Hardware.CPU.Cores.performance.testCondition)
+				func performance() {
+					#expect(SystemInformation.Hardware.CPU.Cores.performance.testCondition)
 				}
 
 				@Test
-				func efficiency() async {
-					#expect(await SystemInformation.Hardware.CPU.Cores.efficiency.testCondition)
+				func efficiency() {
+					#expect(SystemInformation.Hardware.CPU.Cores.efficiency.testCondition)
 				}
 			}
 
 			@Test
-			func type() async {
-				#expect(await SystemInformation.Hardware.CPU.type.testCondition)
+			func type() {
+				#expect(SystemInformation.Hardware.CPU.type.testCondition)
 			}
 
 			@Test
-			func name() async {
-				#expect(await SystemInformation.Hardware.CPU.name.testCondition)
+			func name() {
+				#expect(SystemInformation.Hardware.CPU.name.testCondition)
 			}
 
 			@Test
-			func frequency() async {
-				#expect(await SystemInformation.Hardware.CPU.frequency.testCondition)
+			func identifier() {
+				#expect(SystemInformation.Hardware.CPU.identifier.testCondition)
+			}
+
+			@Test
+			func frequency() {
+				#expect(SystemInformation.Hardware.CPU.frequency.testCondition)
 			}
 		}
 
 		@Test
-		func memory() async {
-			#expect(await SystemInformation.Hardware.memory.testCondition)
+		func memory() {
+			#expect(SystemInformation.Hardware.memory.testCondition)
 		}
 
 		struct Machine {
 
 			@Test
-			func serialNumber() async {
-				#expect(await SystemInformation.Hardware.Machine.serialNumber.testCondition)
+			func serialNumber() {
+				#expect(SystemInformation.Hardware.Machine.serialNumber.testCondition)
 			}
 
 			@Test
-			func hardwareUUID() async {
-				#expect(await SystemInformation.Hardware.Machine.hardwareUUID.testCondition)
+			func hardwareUUID() {
+				#expect(SystemInformation.Hardware.Machine.hardwareUUID.testCondition)
 			}
 
 			@Test

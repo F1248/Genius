@@ -10,10 +10,10 @@ import SwiftUI
 
 extension Symbol: @retroactive Equatable {
 
-	static let notApplicable: Self = Symbol(.minus, color: .primary, label: .notApplicable)
-	static let disabled: Self = Symbol(.xmark, color: .red, label: .disabled)
-	static let enabled: Self = Symbol(.checkmark, color: .green, label: .enabled)
-	static let unknown: Self = Symbol(.questionmark, color: .red, label: .unknown)
+	static let notAvailable = Self(.minus, color: .primary, label: .notAvailable)
+	static let disabled = Self(.xmark, color: .red, label: .disabled)
+	static let enabled = Self(.checkmark, color: .green, label: .enabled)
+	static let unknown = Self(.questionmark, color: .red, label: .unknown)
 
 	static func == (lhs: Self, rhs: Self) -> Bool {
 		lhs.symbol == rhs.symbol &&

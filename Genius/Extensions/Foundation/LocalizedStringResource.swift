@@ -22,11 +22,13 @@ extension LocalizedStringResource: VaryingLocalizationTable {
 	static var askToAllowAccessoriesToConnect: Self { localizationTable.askToAllowAccessoriesToConnect }
 	static var automaticAppUpdates: Self { localizationTable.automaticAppUpdates }
 	static var automaticUpdates: Self { localizationTable.automaticUpdates }
+	static var board: Self { localizationTable.board }
 	static var bootMode: Self { localizationTable.bootMode }
 	static var bootVolume: Self { localizationTable.bootVolume }
 	static var checkForMacOSUpdates: Self { localizationTable.checkForMacOSUpdates }
 	static var checkForUpdatesEllipsis: Self { localizationTable.checkForUpdatesEllipsis }
 	static var cpuFrequency: Self { localizationTable.cpuFrequency }
+	static var cpuIdentifier: Self { localizationTable.cpuIdentifier }
 	static var cpuName: Self { localizationTable.cpuName }
 	static var cpuType: Self { localizationTable.cpuType }
 	static var downloadMacOSUpdates: Self { localizationTable.downloadMacOSUpdates }

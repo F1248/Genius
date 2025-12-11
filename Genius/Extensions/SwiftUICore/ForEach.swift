@@ -5,15 +5,15 @@
 
 import SwiftUI
 
-extension ForEach where Content: View {
+extension ForEach where Content == AnyView {
 
 	init<OuterData: Sequence>(
 		enumeratingID data: OuterData,
-		@ViewBuilder content: @escaping (OuterData.Element) -> Content,
+		@ViewBuilder content: @escaping (OuterData.Element) -> some View,
 	) where Data == [(offset: Int, element: OuterData.Element)], ID == Int {
 		self.init(
 			Array(data.enumerated()),
 			id: \.offset,
-		) { content($0.element) }
+		) { AnyView(content($0.element)) } // Use `AnyView` to work around bug in macOS 13 causing duplicate `Section`s
 	}
 }

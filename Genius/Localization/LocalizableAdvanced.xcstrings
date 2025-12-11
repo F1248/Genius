@@ -90,6 +90,23 @@
         }
       }
     },
+    "board" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Board"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Board"
+          }
+        }
+      }
+    },
     "bootMode" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -171,6 +188,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CPU Frequency"
+          }
+        }
+      }
+    },
+    "cpuIdentifier" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU-Identifizierung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU Identifier"
           }
         }
       }

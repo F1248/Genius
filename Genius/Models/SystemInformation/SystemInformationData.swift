@@ -12,11 +12,11 @@ struct SystemInformationData<
 >: SystemInformationProtocol, UIStringRepresentable {
 
 	let valueWrapper: ValueWrapper
-	let applicable: Bool?
+	let available: Bool?
 
 	var uiRepresentation: String? { get async {
-		if !?applicable ?? false {
-			Defaults[.developmentMode] ? String(localized: .notApplicable) : nil
+		if !?available ?? false {
+			Defaults[.developmentMode] ? String(localized: .notAvailable) : nil
 		} else if let uiRepresentation = await value.uiRepresentation {
 			uiRepresentation
 		} else {
@@ -29,26 +29,27 @@ extension SystemInformationData where ValueWrapper == SyncValueWrapper<Value> {
 
 	init(_ value: Value) {
 		self.valueWrapper = SyncValueWrapper(wrappedValue: value)
-		self.applicable = true
+		self.available = true
 	}
 
-	init<Wrapped>(_ value: @autoclosure () -> Value, applicable: Bool?) where Value == Wrapped? {
-		self.valueWrapper = SyncValueWrapper(wrappedValue: applicable ?? true ? value() : nil)
-		self.applicable = applicable
+	init<Wrapped>(_ value: @autoclosure () -> Value, available: Bool?) where Value == Wrapped? {
+		self.valueWrapper = SyncValueWrapper(wrappedValue: available ?? true ? value() : nil)
+		self.available = available
 	}
 }
 
 extension SystemInformationData where ValueWrapper == AsyncValueWrapper<Value> {
 
+	// periphery:ignore
 	init(_ valueClosure: @escaping @Sendable () async -> Value) {
 		self.valueWrapper = AsyncValueWrapper(valueClosure: valueClosure)
-		self.applicable = true
+		self.available = true
 	}
 
-	init<Wrapped>(_ valueClosure: @escaping @Sendable () async -> Value, applicable: Bool?) where Value == Wrapped? {
+	init<Wrapped>(_ valueClosure: @escaping @Sendable () async -> Value, available: Bool?) where Value == Wrapped? {
 		self.valueWrapper = AsyncValueWrapper(
-			valueClosure: applicable ?? true ? valueClosure : { @Sendable in nil },
+			valueClosure: available ?? true ? valueClosure : { @Sendable in nil },
 		)
-		self.applicable = applicable
+		self.available = available
 	}
 }

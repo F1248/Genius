@@ -32,7 +32,15 @@ define remove-log
 	rm xcodebuild.log
 endef
 
-all: lint test-without-building build
+.DEFAULT_GOAL = build-app
+
+all: lint test-without-building build zip-app create-dmg zip-debug-symbols appcast
+	rm -r _site
+	rm Debug-Symbols.zip
+	rm -r Genius.app
+	rm -r Genius.app.dSYM
+	rm Genius.dmg
+	rm Genius.zip
 
 lint: periphery swiftformat swiftlint
 
@@ -80,6 +88,12 @@ test-without-building:
 	$(evaluate-log)
 	$(remove-log)
 
+build-zip: build-app zip-app
+	rm -r Genius.app
+
+build-app: build
+	rm -r Genius.app.dSYM
+
 build:
 	# work around warnings `Users/*/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/*.pcm: No such file or directory`
 	xcodebuild archive \
@@ -93,6 +107,17 @@ build:
 	mv Genius.xcarchive/Products/Applications/Genius.app .
 	mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
 	rm -r Genius.xcarchive
+
+zip-app:
+	zip --recurse-paths --symlinks Genius.zip Genius.app
+
+create-dmg:
+	mv LICENSE.txt LICENSE-TMP.txt # prevent license from being added to DMG file
+	create-dmg --no-version-in-filename --no-code-sign Genius.app
+	mv LICENSE-TMP.txt LICENSE.txt
+
+zip-debug-symbols:
+	zip --recurse-paths Debug-Symbols.zip Genius.app.dSYM
 
 install-files:
 	mkdir _site

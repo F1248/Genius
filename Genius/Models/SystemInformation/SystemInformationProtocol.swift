@@ -9,7 +9,7 @@ protocol SystemInformationProtocol {
 	associatedtype ValueWrapper: ValueWrapperProtocol<Value>
 
 	var valueWrapper: ValueWrapper { get }
-	var applicable: Bool? { get }
+	var available: Bool? { get }
 }
 
 extension SystemInformationProtocol {

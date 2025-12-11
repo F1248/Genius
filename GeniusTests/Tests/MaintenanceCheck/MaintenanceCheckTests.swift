@@ -6,4 +6,4 @@
 import Testing
 
 @Suite("MaintenanceCheck")
-struct MaintenanceCheckTests {}
+enum MaintenanceCheckTests {}
