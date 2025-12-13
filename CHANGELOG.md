@@ -17,6 +17,8 @@ See LICENSE.txt for license information.
 
 ### Dependencies
 
+- Update [Xcode](https://developer.apple.com/xcode) from [26.1.1](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_1-release-notes) to [26.2.0](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_2-release-notes)
+
 ### [Commit History](https://github.com/F1248/Genius/compare/v0.4.0...HEAD)
 
 ## [0.4.0](https://github.com/F1248/Genius/releases/tag/v0.4.0)
