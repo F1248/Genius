@@ -13,6 +13,8 @@ See LICENSE.txt for license information.
 
 ### Fixed
 
+- Fix uninstallation in recoveryOS
+
 ### Security
 
 ### Dependencies
