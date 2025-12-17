@@ -8,6 +8,12 @@
 PATH=/usr/bin:/bin
 set -o errexit
 set -o nounset
+
+if ! { [ -f /usr/bin/uname ] && [ -x /usr/bin/uname ] && [ "$(uname)" = "Darwin" ]; }; then
+	printf "\nError: Genius requires macOS!\n" >&2
+	exit 1
+fi
+
 set -o pipefail
 set -o privileged
 
