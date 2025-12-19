@@ -14,6 +14,11 @@ if ! { [ -f /usr/bin/uname ] && [ -x /usr/bin/uname ] && [ "$(uname)" = "Darwin"
 	exit 1
 fi
 
+if ! { [ -n "${BASH_VERSION-}" ] && [ -n "${POSIXLY_CORRECT-}" ]; }; then
+	printf "\nError: Installation script must be executed with \`sh\`!\n" >&2
+	exit 1
+fi
+
 set -o pipefail
 set -o privileged
 
