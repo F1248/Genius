@@ -21,7 +21,7 @@ while ps aux -c | grep -w Genius > /dev/null; do
 	sleep 0.1
 done
 
-set +e
+set +o errexit
 
 rm -r -f Genius.app
 rm -r -f ~/Library/Caches/dev.F1248.Genius
