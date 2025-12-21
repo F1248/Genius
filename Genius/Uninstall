@@ -24,10 +24,14 @@ done
 set +o errexit
 
 rm -r -f Genius.app
+rm -f ~/Library/Application\ Support/CrashReporter/Genius_*.plist
+rm -f /Users/*/Library/Application\ Support/CrashReporter/Genius_*.plist
 rm -r -f ~/Library/Caches/dev.F1248.Genius
 rm -r -f /Users/*/Library/Caches/dev.F1248.Genius
 rm -r -f ~/Library/HTTPStorages/dev.F1248.Genius
 rm -r -f /Users/*/Library/HTTPStorages/dev.F1248.Genius
+rm -f ~/Library/Logs/DiagnosticReports/Genius-*-*-*-*.ips
+rm -f /Users/*/Library/Logs/DiagnosticReports/Genius-*-*-*-*.ips
 defaults delete ~/Library/Preferences/dev.F1248.Genius.plist
 defaults delete /Users/*/Library/Preferences/dev.F1248.Genius.plist
 rm -f ~/Library/Preferences/dev.F1248.Genius.plist

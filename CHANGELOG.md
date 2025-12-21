@@ -11,6 +11,8 @@ See LICENSE.txt for license information.
 
 ### Improved
 
+- Remove logs when uninstalling Genius
+
 ### Fixed
 
 - Fix uninstallation in recoveryOS
