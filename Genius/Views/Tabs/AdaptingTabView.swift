@@ -23,13 +23,7 @@ struct AdaptingTabView<TabDataType: TabData>: View {
 				}
 			}
 		} else {
-			CustomTabView(selection: selection, entireWindow: TabDataType.entireWindow) {
-				TabDataType.allCases.map { tab in
-					CustomTab(
-						tab.title,
-					) { tab }
-				}
-			}
+			CustomTabView<TabDataType>(selection: selection)
 		}
 	}
 }

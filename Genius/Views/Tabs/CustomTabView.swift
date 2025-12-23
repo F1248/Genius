@@ -5,28 +5,15 @@
 
 import SwiftUI
 
-struct CustomTabView: View {
+struct CustomTabView<TabDataType: TabData>: View {
 
 	let selection: Binding<Int>
-	let entireWindow: Bool
-	let tabs: [CustomTab]
 
-	var selectedTab: CustomTab? { tabs[safe: selection.wrappedValue] }
-
-	// swiftlint:disable:next type_contents_order
-	init(
-		selection: Binding<Int>,
-		entireWindow: Bool = false,
-		@CustomTabContentBuilder content: () -> [CustomTab],
-	) {
-		self.selection = selection
-		self.entireWindow = entireWindow
-		self.tabs = content()
-	}
+	var selectedTab: TabDataType? { TabDataType.allCases[safe: selection.wrappedValue] }
 
 	@ViewBuilder var picker: some View {
 		Picker(selection: selection) {
-			ForEach(enumeratingID: tabs) { tab in
+			ForEach(enumeratingID: TabDataType.allCases) { tab in
 				Text(tab.title)
 			}
 		}
@@ -34,8 +21,8 @@ struct CustomTabView: View {
 	}
 
 	var body: some View {
-		if entireWindow {
-			selectedTab?.content
+		if TabDataType.entireWindow {
+			selectedTab
 				.toolbar {
 					ToolbarItem(placement: .principal) { picker }
 				}
@@ -44,7 +31,7 @@ struct CustomTabView: View {
 				picker
 					.controlSize(.large)
 					.fixedSize()
-				selectedTab?.content
+				selectedTab
 			}
 		}
 	}
