@@ -7,27 +7,25 @@ import SwiftUI
 
 struct CustomTabView: View {
 
-	@State var selectedTabIndexPrivate: Int = 0
-
-	let selectedTabIndexParameter: Binding<Int>?
+	let selection: Binding<Int>
 	let entireWindow: Bool
 	let tabs: [CustomTab]
 
-	var selectedTab: CustomTab? { tabs[safe: selectedTabIndexParameter?.wrappedValue ?? selectedTabIndexPrivate] }
+	var selectedTab: CustomTab? { tabs[safe: selection.wrappedValue] }
 
 	// swiftlint:disable:next type_contents_order
 	init(
-		selection: Binding<Int>? = nil,
+		selection: Binding<Int>,
 		entireWindow: Bool = false,
 		@CustomTabContentBuilder content: () -> [CustomTab],
 	) {
-		self.selectedTabIndexParameter = selection
+		self.selection = selection
 		self.entireWindow = entireWindow
 		self.tabs = content()
 	}
 
 	@ViewBuilder var picker: some View {
-		Picker(selection: selectedTabIndexParameter ?? $selectedTabIndexPrivate) {
+		Picker(selection: selection) {
 			ForEach(enumeratingID: tabs) { tab in
 				Text(tab.title)
 			}
@@ -50,33 +48,4 @@ struct CustomTabView: View {
 			}
 		}
 	}
-}
-
-#Preview {
-	CustomTabView {
-		CustomTab("Title 0") {
-			Text("Content 0")
-				.padding()
-		}
-		CustomTab("Title 1") {
-			Text("Content 1")
-				.padding()
-		}
-	}
-	.padding()
-}
-
-#Preview("CustomTabView in entire window") {
-	CustomTabView(entireWindow: true) {
-		CustomTab("Title 0") {
-			Text("Content 0")
-				.padding()
-		}
-		CustomTab("Title 1") {
-			Text("Content 1")
-				.padding()
-		}
-	}
-	.padding()
-	.frame(width: 392)
 }
