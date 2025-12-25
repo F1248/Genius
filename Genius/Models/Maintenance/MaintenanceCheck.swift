@@ -11,7 +11,7 @@ import SwiftUI
 struct MaintenanceCheck<
 	Value: PossiblyOptional & Sendable,
 	ValueWrapper: ValueWrapperProtocol<Value>,
->: SystemInformationProtocol, UISymbolRepresentable where Value.Wrapped: Comparable & Maximizable & Sendable {
+>: SystemInformationProtocol where Value.Wrapped: Comparable & Maximizable & Sendable {
 
 	typealias Wrapped = Value.Wrapped
 

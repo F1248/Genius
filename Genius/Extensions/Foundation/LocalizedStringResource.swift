@@ -5,8 +5,9 @@
 
 import Defaults
 import Foundation
+public import SwiftUI
 
-extension LocalizedStringResource: VaryingLocalizationTable {
+extension LocalizedStringResource: @retroactive View, VaryingLocalizationTable {
 
 	static var localizationTable: any VaryingLocalizationTable.Type { Defaults[.interfaceMode].localizationTable }
 	static var supportsInflection: Bool {
@@ -46,6 +47,10 @@ extension LocalizedStringResource: VaryingLocalizationTable {
 	static var updateInProgressTitle: Self { localizationTable.updateInProgressTitle }
 
 	static var user: Self { supportsInflection ? .userWithInflection : .userWithoutInflection }
+
+	public var body: some View {
+		Text(self)
+	}
 }
 
 extension LocalizedStringResource.LocalizableSimple: VaryingLocalizationTable {}

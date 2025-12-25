@@ -3,12 +3,13 @@
 // See LICENSE.txt for license information.
 //
 
+import Foundation
 import SwiftUI
 
 struct SystemInformationSoftwareView: View {
 
 	var body: some View {
-		SystemInformationTabView(content: [
+		FormView<LocalizedStringResource, _>(content: [
 			.smc: [
 				.version: SystemInformation.Software.SMC.version,
 			],

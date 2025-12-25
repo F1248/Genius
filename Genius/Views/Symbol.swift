@@ -8,7 +8,7 @@ import Foundation
 import SFSafeSymbols
 import SwiftUI
 
-struct Symbol: View {
+struct Symbol: View, FormValue {
 
 	let symbol: SFSymbol
 	let color: Color?
