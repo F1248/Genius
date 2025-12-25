@@ -9,7 +9,7 @@ import Foundation
 struct SystemInformationData<
 	Value: UIStringRepresentable,
 	ValueWrapper: ValueWrapperProtocol<Value>,
->: SystemInformationProtocol, UIStringRepresentable {
+>: SystemInformationProtocol {
 
 	let valueWrapper: ValueWrapper
 	let available: Bool?

@@ -9,7 +9,7 @@ import SwiftUI
 struct MaintenanceView: View {
 
 	var body: some View {
-		MaintenanceDataView(content: [
+		FormView(content: [
 			.theftProtection: [
 				MaintenanceCheckLabel(
 					.activationLock,

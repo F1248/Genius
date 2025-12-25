@@ -8,7 +8,7 @@ import Foundation
 import SFSafeSymbols
 import SwiftUI
 
-struct Symbol: View {
+struct Symbol: View, FormValue {
 
 	let symbol: SFSymbol
 	let color: Color?
@@ -27,6 +27,8 @@ struct Symbol: View {
 		self.color = color
 		self.label = label
 	}
+
+	var formView: some View { self }
 
 	var body: some View {
 		if useTextInsteadOfSymbols {

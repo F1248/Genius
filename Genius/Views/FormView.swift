@@ -6,15 +6,15 @@
 import Foundation
 import SwiftUI
 
-struct MaintenanceDataView: View {
+struct FormView<Label: View, Value: FormValue>: View {
 
-	@State var content: CustomKeyValuePairs<LocalizedStringResource, CustomKeyValuePairs<MaintenanceCheckLabel, Symbol>>?
+	@State var content: CustomKeyValuePairs<LocalizedStringResource, CustomKeyValuePairs<Label, Value>>?
 
-	let contentData: KeyValuePairs<LocalizedStringResource, KeyValuePairs<MaintenanceCheckLabel, any UISymbolRepresentable>>
+	let contentData: KeyValuePairs<LocalizedStringResource, KeyValuePairs<Label, any SystemInformationProtocol<Value>>>
 
 	// swiftlint:disable:next type_contents_order
 	init(
-		content: KeyValuePairs<LocalizedStringResource, KeyValuePairs<MaintenanceCheckLabel, any UISymbolRepresentable>>,
+		content: KeyValuePairs<LocalizedStringResource, KeyValuePairs<Label, any SystemInformationProtocol<Value>>>,
 	) {
 		self.contentData = content
 	}
@@ -27,7 +27,7 @@ struct MaintenanceDataView: View {
 						Section(sectionContent.key) {
 							ForEach(enumeratingID: sectionContent.value) { rowContent in
 								LabeledContent {
-									rowContent.value
+									rowContent.value.formView
 								} label: {
 									rowContent.key
 								}
@@ -42,7 +42,7 @@ struct MaintenanceDataView: View {
 			}
 		}
 		.task {
-			let values: [[Symbol?]] = await contentData
+			let values: [[Value?]] = await contentData
 				.map { $0.value.map(\.value) }
 				.concurrentMap { await $0.concurrentMap { await $0.uiRepresentation } }
 			content = zip(contentData, values)

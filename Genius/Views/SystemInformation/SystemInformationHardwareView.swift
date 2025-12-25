@@ -3,12 +3,13 @@
 // See LICENSE.txt for license information.
 //
 
+import Foundation
 import SwiftUI
 
 struct SystemInformationHardwareView: View {
 
 	var body: some View {
-		SystemInformationTabView(content: [
+		FormView<LocalizedStringResource, _>(content: [
 			.model: [
 				.name: SystemInformation.Hardware.Model.displayName,
 				.identifier: SystemInformation.Hardware.Model.identifier,

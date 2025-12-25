@@ -3,13 +3,17 @@
 // See LICENSE.txt for license information.
 //
 
-protocol SystemInformationProtocol {
+import _Concurrency
+
+protocol SystemInformationProtocol<Representation>: Sendable {
 
 	associatedtype Value
 	associatedtype ValueWrapper: ValueWrapperProtocol<Value>
+	associatedtype Representation
 
 	var valueWrapper: ValueWrapper { get }
 	var available: Bool? { get }
+	@MainActor var uiRepresentation: Representation? { get async }
 }
 
 extension SystemInformationProtocol {
