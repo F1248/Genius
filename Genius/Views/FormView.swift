@@ -23,13 +23,13 @@ struct FormView<Label: View, Value: FormValue>: View {
 		Group {
 			if let content {
 				Form {
-					ForEach(enumeratingID: content) { sectionContent in
-						Section(sectionContent.key) {
-							ForEach(enumeratingID: sectionContent.value) { rowContent in
+					ForEach(enumeratingID: content) { sectionTitle, sectionValues in
+						Section(sectionTitle) {
+							ForEach(enumeratingID: sectionValues) { valueLabel, value in
 								LabeledContent {
-									rowContent.value.formView
+									value.formView
 								} label: {
-									rowContent.key
+									valueLabel
 								}
 							}
 						}
