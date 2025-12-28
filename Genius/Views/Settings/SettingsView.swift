@@ -14,18 +14,18 @@ struct SettingsView: View {
 	@Default(.interfaceMode)
 	var interfaceMode: Settings.InterfaceMode
 
-	@State var automaticUpdates: Settings.AutomaticUpdates =
-		if (SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true {
-			if updater.automaticallyChecksForUpdates {
-				if updater.automaticallyDownloadsUpdates {
-					.enabled
-				} else {
-					.checkOnly
-				}
+	@State var automaticUpdates: Settings.AutomaticUpdates? = {
+		guard (SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true else { return nil }
+		return if updater.automaticallyChecksForUpdates {
+			if updater.automaticallyDownloadsUpdates {
+				.enabled
 			} else {
-				.disabled
+				.checkOnly
 			}
-		} else { .disabled }
+		} else {
+			.disabled
+		}
+	}()
 
 	@Default(.betaUpdates)
 	var betaUpdates: Bool
@@ -40,10 +40,10 @@ struct SettingsView: View {
 				SettingPicker(.interfaceMode, value: $interfaceMode, key: .interfaceMode)
 					.pickerStyle(.inline)
 			}
-			if (SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true {
+			if let automaticUpdates = Binding($automaticUpdates) {
 				Section(.appUpdates) {
-					SettingPicker(.automaticAppUpdates, value: $automaticUpdates, defaultValue: .enabled)
-						.onChange(of: automaticUpdates) { newValue in
+					SettingPicker(.automaticAppUpdates, value: automaticUpdates, defaultValue: .enabled)
+						.onChange(of: self.automaticUpdates) { newValue in
 							updater.automaticallyChecksForUpdates = newValue != .disabled
 							updater.automaticallyDownloadsUpdates = newValue == .enabled
 						}
