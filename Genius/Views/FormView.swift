@@ -8,7 +8,7 @@ import SwiftUI
 
 struct FormView<ValueLabel: View, Value: FormValue>: View {
 
-	@State var content: CustomKeyValuePairs<LocalizedStringResource, CustomKeyValuePairs<ValueLabel, Value>>?
+	@State var content: CustomKeyValuePairs<LocalizedStringResource, CustomKeyValuePairs<ValueLabel, Value?>>?
 
 	let contentData: KeyValuePairs<LocalizedStringResource, KeyValuePairs<ValueLabel, any SystemInformationProtocol<Value>>>
 
@@ -24,12 +24,16 @@ struct FormView<ValueLabel: View, Value: FormValue>: View {
 			if let content {
 				Form {
 					ForEach(enumeratingID: content) { sectionTitle, sectionValues in
-						Section(sectionTitle) {
-							ForEach(enumeratingID: sectionValues) { valueLabel, value in
-								LabeledContent {
-									value.formView
-								} label: {
-									valueLabel
+						if sectionValues.contains(where: { $0.value != nil }) {
+							Section(sectionTitle) {
+								ForEach(enumeratingID: sectionValues) { valueLabel, value in
+									if let value {
+										LabeledContent {
+											value.formView
+										} label: {
+											valueLabel
+										}
+									}
 								}
 							}
 						}
@@ -47,11 +51,10 @@ struct FormView<ValueLabel: View, Value: FormValue>: View {
 				.concurrentMap { await $0.concurrentMap { await $0.uiRepresentation } }
 			content = zip(contentData, values)
 				.map { keyValuePair, values in
-					(key: keyValuePair.key, value: zip(keyValuePair.value, values).compactMap { keyValuePair, value in
-						value.map { (key: keyValuePair.key, value: $0) }
+					(key: keyValuePair.key, value: zip(keyValuePair.value, values).map { keyValuePair, value in
+						(key: keyValuePair.key, value: value)
 					})
 				}
-				.filter { !$0.value.isEmpty }
 		}
 	}
 }
