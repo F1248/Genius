@@ -7,19 +7,19 @@ import _Concurrency
 
 extension Sequence {
 
-	func asyncMap<T>(
-		_ transform: (Element) async -> T,
-	) async -> [T] {
-		var results: [T] = []
+	func asyncMap<Result>(
+		_ transform: (Element) async -> Result,
+	) async -> [Result] {
+		var results: [Result] = []
 		for element in self {
 			await results.append(transform(element))
 		}
 		return results
 	}
 
-	func concurrentMap<T: Sendable>(
-		_ transform: @escaping @Sendable (Element) async -> T,
-	) async -> [T] where Self: Sendable, Element: Sendable {
+	func concurrentMap<Result: Sendable>(
+		_ transform: @escaping @Sendable (Element) async -> Result,
+	) async -> [Result] where Self: Sendable, Element: Sendable {
 		await map { element in
 			Task {
 				await transform(element)
