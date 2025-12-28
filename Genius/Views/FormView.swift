@@ -6,15 +6,15 @@
 import Foundation
 import SwiftUI
 
-struct FormView<Label: View, Value: FormValue>: View {
+struct FormView<ValueLabel: View, Value: FormValue>: View {
 
-	@State var content: CustomKeyValuePairs<LocalizedStringResource, CustomKeyValuePairs<Label, Value>>?
+	@State var content: CustomKeyValuePairs<LocalizedStringResource, CustomKeyValuePairs<ValueLabel, Value>>?
 
-	let contentData: KeyValuePairs<LocalizedStringResource, KeyValuePairs<Label, any SystemInformationProtocol<Value>>>
+	let contentData: KeyValuePairs<LocalizedStringResource, KeyValuePairs<ValueLabel, any SystemInformationProtocol<Value>>>
 
 	// swiftlint:disable:next type_contents_order
 	init(
-		content: KeyValuePairs<LocalizedStringResource, KeyValuePairs<Label, any SystemInformationProtocol<Value>>>,
+		content: KeyValuePairs<LocalizedStringResource, KeyValuePairs<ValueLabel, any SystemInformationProtocol<Value>>>,
 	) {
 		self.contentData = content
 	}
