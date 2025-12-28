@@ -10,7 +10,7 @@ extension Sequence {
 	func asyncMap<T>(
 		_ transform: (Element) async -> T,
 	) async -> [T] {
-		var results = [T]()
+		var results: [T] = []
 		for element in self {
 			await results.append(transform(element))
 		}
