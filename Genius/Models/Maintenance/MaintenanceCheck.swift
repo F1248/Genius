@@ -19,6 +19,24 @@ struct MaintenanceCheck<
 	let requirement: Wrapped
 	let available: Bool?
 
+	var syncUIRepresentation: Symbol?? {
+		if !?available ?? false {
+			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .notAvailable) : .none
+		} else if let syncValue {
+			if let value = syncValue.optional {
+				value >= requirement ? // swiftlint:disable:this void_function_in_ternary
+					Symbol(.checkmark, color: .green, label: .enabled) :
+					Symbol(.xmark, color: .red, label: .disabled)
+			} else {
+				Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
+					Symbol(.questionmark, color: .red, label: .unknown) :
+					.none
+			}
+		} else {
+			.some(nil)
+		}
+	}
+
 	var uiRepresentation: Symbol? { get async {
 		if !?available ?? false {
 			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .notAvailable) : nil

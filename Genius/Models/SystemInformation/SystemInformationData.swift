@@ -14,6 +14,20 @@ struct SystemInformationData<
 	let valueWrapper: ValueWrapper
 	let available: Bool?
 
+	var syncUIRepresentation: String?? {
+		if !?available ?? false {
+			Defaults[.developmentMode] ? String(localized: .notAvailable) : .none
+		} else if let syncValue {
+			if let uiRepresentation = syncValue.uiRepresentation {
+				uiRepresentation
+			} else {
+				Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ? String(localized: .unknown) : .none
+			}
+		} else {
+			.some(nil)
+		}
+	}
+
 	var uiRepresentation: String? { get async {
 		if !?available ?? false {
 			Defaults[.developmentMode] ? String(localized: .notAvailable) : nil

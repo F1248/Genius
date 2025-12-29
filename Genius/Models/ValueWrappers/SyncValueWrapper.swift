@@ -7,4 +7,6 @@
 struct SyncValueWrapper<Value: Sendable>: ValueWrapperProtocol {
 
 	let wrappedValue: Value
+
+	var syncWrappedValue: Value? { wrappedValue }
 }

@@ -10,6 +10,8 @@ struct ContentView: View {
 
 	@Default(.interfaceMode)
 	var interfaceMode: Settings.InterfaceMode
+	@Default(.developmentMode)
+	var developmentMode: Bool
 
 	var body: some View {
 		AdaptingTabView<ContentViewTab>()
@@ -17,6 +19,7 @@ struct ContentView: View {
 			.uninstallationDialog()
 			.updateInProgressAlert()
 			.id(interfaceMode)
+			.id(developmentMode)
 	}
 }
 

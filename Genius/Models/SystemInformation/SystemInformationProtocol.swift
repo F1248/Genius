@@ -13,6 +13,7 @@ protocol SystemInformationProtocol<Representation>: Sendable {
 
 	var valueWrapper: ValueWrapper { get }
 	var available: Bool? { get }
+	@MainActor var syncUIRepresentation: Representation?? { get }
 	@MainActor var uiRepresentation: Representation? { get async }
 }
 
@@ -21,6 +22,10 @@ extension SystemInformationProtocol {
 	var value: Value { get async {
 		await valueWrapper.wrappedValue
 	} }
+
+	@MainActor var syncValue: Value? {
+		valueWrapper.syncWrappedValue
+	}
 }
 
 extension SystemInformationProtocol where ValueWrapper == SyncValueWrapper<Value> {

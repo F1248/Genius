@@ -12,6 +12,8 @@ See LICENSE.txt for license information.
 ### Improved
 
 - Remove logs when uninstalling Genius
+- Show `ProgressView` in `FormView` only the first time
+- Show `ProgressView` in `FormView` for each entry individually
 
 ### Fixed
 
