@@ -23,10 +23,10 @@ struct FormView<ValueLabel: View, Value: FormValue>: View {
 		Group {
 			if let content {
 				Form {
-					ForEach(enumeratingID: content) { sectionTitle, sectionValues in
-						if sectionValues.contains(where: { $0.value != nil }) {
+					ForEach(enumeratingID: content) { sectionTitle, sectionEntries in
+						if sectionEntries.contains(where: { $0.value != nil }) {
 							Section(sectionTitle) {
-								ForEach(enumeratingID: sectionValues) { valueLabel, value in
+								ForEach(enumeratingID: sectionEntries) { valueLabel, value in
 									if let value {
 										LabeledContent {
 											value.formView
