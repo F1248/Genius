@@ -24,6 +24,7 @@
     },
     "NSHumanReadableCopyright" : {
       "comment" : "Copyright (human-readable)",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
