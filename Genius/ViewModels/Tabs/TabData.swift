@@ -39,6 +39,7 @@ extension TabData {
 	var includeInCommands: Bool { true }
 	var displayTitleInBody: Bool { true }
 
+	// swiftlint:disable:next unused_declaration
 	@ViewBuilder var body: some View {
 		VStack {
 			if displayTitleInBody {
