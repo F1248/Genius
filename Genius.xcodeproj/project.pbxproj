@@ -245,14 +245,32 @@
 			alwaysOutOfDate = 1;
 			name = SwiftFormat;
 			shellPath = /bin/zsh;
-			shellScript = "if [[ ${CONFIGURATION} == *Debug ]]; then\n\tif which -s swiftformat; then\n\t\tswiftformat --lint --lenient .\n\telse\n\t\techo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"\n\tfi\nfi\n";
+			shellScript = (
+				"if [[ ${CONFIGURATION} == *Debug ]]; then",
+				"\tif which -s swiftformat; then",
+				"\t\tswiftformat --lint --lenient .",
+				"	else",
+				"\t\techo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"",
+				"	fi",
+				"fi",
+				"",
+			);
 		};
 		C8A4DA762E92F82D0038A2EE /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			name = SwiftLint;
 			shellPath = /bin/zsh;
-			shellScript = "if [[ ${CONFIGURATION} == *Debug ]]; then\n\tif which -s swiftlint; then\n\t\tswiftlint lint\n\telse\n\t\techo \"warning: SwiftLint is not installed, see https://realm.github.io/SwiftLint#installation for installation instructions\"\n\tfi\nfi\n";
+			shellScript = (
+				"if [[ ${CONFIGURATION} == *Debug ]]; then",
+				"\tif which -s swiftlint; then",
+				"\t\tswiftlint lint",
+				"	else",
+				"\t\techo \"warning: SwiftLint is not installed, see https://realm.github.io/SwiftLint#installation for installation instructions\"",
+				"	fi",
+				"fi",
+				"",
+			);
 		};
 /* End PBXShellScriptBuildPhase section */
 
