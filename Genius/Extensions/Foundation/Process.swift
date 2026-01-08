@@ -60,7 +60,7 @@ extension Process {
 		await waitUntilExit()
 		let errorPipeData = errorPipe.read()
 		let outputPipeData = outputPipe.read()
-		guard terminationStatus == 0, terminationReason == .exit, errorPipeData == nil, let outputPipeData else {
+		guard terminationStatus == 0, terminationReason == .exit, errorPipeData == nil else {
 			logError(outputPipeData: outputPipeData, errorPipeData: errorPipeData)
 			return nil
 		}
