@@ -21,6 +21,8 @@ See LICENSE.txt for license information.
 
 ### Security
 
+- Require signed appcast feed
+
 ### Dependencies
 
 - Update [Xcode](https://developer.apple.com/xcode) from [26.1.1](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_1-release-notes) to [26.2.0](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_2-release-notes)

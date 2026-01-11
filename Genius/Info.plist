@@ -20,6 +20,10 @@ See LICENSE.txt for license information.
 	<string>https://f1248.github.io/Genius/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>VqOkHCBr7tNBlPwsgy4FPGAA9xC0JiDs0L11xHC0w5k=</string>
+	<key>SURequireSignedFeed</key>
+	<true/>
+	<key>SUSignedFeedFailureExpirationInterval</key>
+	<integer>0</integer>
 	<key>SUVerifyUpdateBeforeExtraction</key>
 	<true/>
 </dict>
