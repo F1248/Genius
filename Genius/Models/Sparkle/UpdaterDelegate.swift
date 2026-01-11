@@ -7,9 +7,9 @@ import Defaults
 import ObjectiveC
 import Sparkle
 
-actor UpdaterDelegate: NSObject, SPUUpdaterDelegate {
+final class UpdaterDelegate: NSObject, SPUUpdaterDelegate {
 
-	nonisolated func allowedChannels(for _: SPUUpdater) -> Set<String> {
+	func allowedChannels(for _: SPUUpdater) -> Set<String> {
 		Defaults[.betaUpdates] ? ["beta"] : []
 	}
 }
