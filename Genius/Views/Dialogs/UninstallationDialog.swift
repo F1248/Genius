@@ -7,15 +7,17 @@ import AppKit
 import Foundation
 import SwiftUI
 
-struct UninstallationDialog: ViewModifier {
+struct UninstallationDialog: PresentableDialog {
 
 	@ObservedObject var observedSharedData: SharedData = .shared
+
+	var observedSharedDataProjected: ObservedObject<SharedData>.Wrapper { $observedSharedData }
 
 	func body(content: Content) -> some View {
 		content
 			.confirmationDialog(
 				.uninstallationTitle,
-				isPresented: $observedSharedData.showUninstallationDialog,
+				isPresented: isPresented,
 			) {
 				Button(.uninstallApp, role: .destructive) {
 					guard let uninstallPath = Bundle.main.path(forResource: "Uninstall", ofType: nil) else { return }
@@ -25,12 +27,5 @@ struct UninstallationDialog: ViewModifier {
 			} message: {
 				Text(.uninstallationMessage)
 			}
-	}
-}
-
-extension View {
-
-	func uninstallationDialog() -> some View {
-		modifier(UninstallationDialog())
 	}
 }

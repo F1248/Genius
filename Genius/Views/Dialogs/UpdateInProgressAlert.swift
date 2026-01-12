@@ -5,25 +5,20 @@
 
 import SwiftUI
 
-struct UpdateInProgressAlert: ViewModifier {
+struct UpdateInProgressAlert: PresentableDialog {
 
 	@ObservedObject var observedSharedData: SharedData = .shared
+
+	var observedSharedDataProjected: ObservedObject<SharedData>.Wrapper { $observedSharedData }
 
 	func body(content: Content) -> some View {
 		content
 			.alert(
 				.updateInProgressTitle,
-				isPresented: $observedSharedData.showUpdateInProgressAlert,
+				isPresented: isPresented,
 				actions: {},
 			) {
 				Text(.updateInProgressMessage)
 			}
-	}
-}
-
-extension View {
-
-	func updateInProgressAlert() -> some View {
-		modifier(UpdateInProgressAlert())
 	}
 }
