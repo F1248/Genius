@@ -107,6 +107,23 @@
         }
       }
     },
+    "betaUpdates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beta-Updates"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beta Updates"
+          }
+        }
+      }
+    },
     "bootModeNormal" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -341,23 +358,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Efficiency Cores"
-          }
-        }
-      }
-    },
-    "enableBetaUpdates" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beta-Updates aktivieren"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enable Beta Updates"
           }
         }
       }

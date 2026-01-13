@@ -48,7 +48,7 @@ struct SettingsView: View {
 							updater.automaticallyDownloadsUpdates = newValue == .enabled
 						}
 					if !Defaults.Keys.betaUpdates.isDefaultValue || developmentMode || interfaceMode >= .advanced {
-						SettingToggle(.enableBetaUpdates, value: $betaUpdates, key: .betaUpdates)
+						SettingToggle(.betaUpdates, value: $betaUpdates, key: .betaUpdates)
 					}
 				}
 			}
