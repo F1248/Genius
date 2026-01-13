@@ -3,11 +3,11 @@
 // See LICENSE.txt for license information.
 //
 
+import _Concurrency
 import AppKit
-import Foundation
 import SwiftUI
 
-struct UninstallationDialog: PresentableDialog {
+struct RelaunchDialog: PresentableDialog {
 
 	@ObservedObject var observedSharedData: SharedData = .shared
 
@@ -16,16 +16,13 @@ struct UninstallationDialog: PresentableDialog {
 	func body(content: Content) -> some View {
 		content
 			.confirmationDialog(
-				.uninstallationTitle,
+				.relaunchTitle,
 				isPresented: isPresented,
 			) {
-				Button(.uninstallApp, role: .destructive) {
-					guard let uninstallPath = Bundle.main.path(forResource: "Uninstall", ofType: nil) else { return }
-					try? Process(uninstallPath)?.run()
-					NSApp.terminate(nil)
+				Button(.relaunchGenius) {
+					Task(operation: NSApp.relaunch)
 				}
-			} message: {
-				Text(.uninstallationMessage)
+				Button(.later, role: .cancel, action: {})
 			}
 	}
 }

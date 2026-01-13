@@ -17,7 +17,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Account Name"
+            "value" : "Account name"
           }
         }
       }
@@ -107,6 +107,23 @@
         }
       }
     },
+    "betaUpdates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beta-Updates"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beta updates"
+          }
+        }
+      }
+    },
     "bootModeNormal" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -170,7 +187,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Build Number"
+            "value" : "Build number"
           }
         }
       }
@@ -204,7 +221,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Code Name"
+            "value" : "Code name"
           }
         }
       }
@@ -238,7 +255,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Configuration Code"
+            "value" : "Configuration code"
           }
         }
       }
@@ -306,7 +323,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Development Mode"
+            "value" : "Development mode"
           }
         }
       }
@@ -328,6 +345,23 @@
         }
       }
     },
+    "disableLiquidGlass" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liquid Glass deaktivieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable Liquid Glass"
+          }
+        }
+      }
+    },
     "efficiencyCores" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -340,24 +374,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Efficiency Cores"
-          }
-        }
-      }
-    },
-    "enableBetaUpdates" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beta-Updates aktivieren"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enable Beta Updates"
+            "value" : "Efficiency cores"
           }
         }
       }
@@ -442,7 +459,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Firmware Password"
+            "value" : "Firmware password"
           }
         }
       }
@@ -528,6 +545,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Help"
+          }
+        }
+      }
+    },
+    "hideIconsInMenuBar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symbole in der Menüleiste ausblenden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide icons in menu bar"
           }
         }
       }
@@ -629,7 +663,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Interface Mode"
+            "value" : "Interface mode"
           }
         }
       }
@@ -680,7 +714,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Power User"
+            "value" : "Power user"
           }
         }
       }
@@ -719,6 +753,23 @@
         }
       }
     },
+    "later" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Später"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Later"
+          }
+        }
+      }
+    },
     "loaderVersion" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -731,7 +782,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Loader Version"
+            "value" : "Loader version"
           }
         }
       }
@@ -935,7 +986,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Performance Cores"
+            "value" : "Performance cores"
           }
         }
       }
@@ -969,7 +1020,41 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Regulatory Number"
+            "value" : "Regulatory number"
+          }
+        }
+      }
+    },
+    "relaunchGenius" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius neu starten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relaunch Genius"
+          }
+        }
+      }
+    },
+    "relaunchTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starte Genius neu, damit die Änderungen wirksam werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relaunch Genius for the changes to take effect."
           }
         }
       }
@@ -1003,7 +1088,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Security Chip"
+            "value" : "Security chip"
           }
         }
       }
@@ -1020,7 +1105,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Serial Number"
+            "value" : "Serial number"
           }
         }
       }
@@ -1173,7 +1258,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Total Cores"
+            "value" : "Total cores"
           }
         }
       }
@@ -1241,7 +1326,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Use Text Instead of Symbols"
+            "value" : "Use text instead of symbols"
           }
         }
       }

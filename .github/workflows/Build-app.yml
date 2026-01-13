@@ -7,6 +7,7 @@ name: Build app
 
 on:
     push:
+        branches-ignore: stable
         paths:
             - .github/workflows/Build-app.yml
             - .periphery.yml
@@ -19,6 +20,7 @@ on:
             - Install
             - Makefile
     pull_request:
+        branches-ignore: stable
         paths:
             - .github/workflows/Build-app.yml
             - .periphery.yml

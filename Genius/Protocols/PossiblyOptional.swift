@@ -12,7 +12,7 @@ protocol PossiblyOptional<Wrapped> {
 
 extension PossiblyOptional {
 
-	var optional: Self? { self }
+	var optional: Self? { self } // swiftlint:disable:this unused_declaration
 }
 
 extension Optional: PossiblyOptional {

@@ -24,20 +24,20 @@ struct AppCommands: Commands {
 					systemImage: SFSymbol.arrowTriangle2Circlepath.rawValue,
 				) {
 					guard updater.canCheckForUpdates else {
-						SharedData.shared.showUpdateInProgressAlert = true
+						UpdateInProgressAlert.present()
 						return
 					}
 					updater.checkForUpdates()
 				}
 			}
 			Button(.uninstallAppEllipsis, systemImage: SFSymbol.trash.rawValue) {
-				SharedData.shared.showUninstallationDialog = true
+				UninstallationDialog.present()
 			}
 		}
 		CommandGroup(replacing: .appSettings) {
 			ContentViewTab.settings.command
 		}
-		CommandGroup(replacing: .newItem) {}
+		CommandGroup(replacing: .newItem, addition: {})
 		CommandGroup(before: .toolbar) {
 			ContentViewTab.commands
 				.id(interfaceMode)
@@ -46,6 +46,6 @@ struct AppCommands: Commands {
 				default: EmptyView()
 			}
 		}
-		CommandGroup(replacing: .help) {}
+		CommandGroup(replacing: .help, addition: {})
 	}
 }

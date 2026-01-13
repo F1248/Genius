@@ -6,7 +6,7 @@
 import _Concurrency
 import Sparkle
 
-let updaterDelegate = UpdaterDelegate()
+@MainActor let updaterDelegate = UpdaterDelegate()
 @MainActor let updater: SPUUpdater = SPUStandardUpdaterController(
 	updaterDelegate: updaterDelegate,
 	userDriverDelegate: nil,

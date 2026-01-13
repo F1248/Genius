@@ -68,7 +68,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Automatic Updates"
+            "value" : "Automatic updates"
           }
         }
       }
@@ -119,7 +119,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Boot Mode"
+            "value" : "Boot mode"
           }
         }
       }
@@ -136,7 +136,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Boot Volume"
+            "value" : "Boot volume"
           }
         }
       }
@@ -187,7 +187,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CPU Frequency"
+            "value" : "CPU frequency"
           }
         }
       }
@@ -204,7 +204,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CPU Identifier"
+            "value" : "CPU identifier"
           }
         }
       }
@@ -221,7 +221,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CPU Name"
+            "value" : "CPU name"
           }
         }
       }
@@ -238,7 +238,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CPU Type"
+            "value" : "CPU type"
           }
         }
       }

@@ -13,19 +13,23 @@ struct SettingsView: View {
 	var useTextInsteadOfSymbols: Bool
 	@Default(.interfaceMode)
 	var interfaceMode: Settings.InterfaceMode
+	@Default(.disableLiquidGlass)
+	var disableLiquidGlass: Bool
+	@Default(.hideIconsInMenuBar)
+	var hideIconsInMenuBar: Bool
 
-	@State var automaticUpdates: Settings.AutomaticUpdates =
-		if (SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true {
-			if updater.automaticallyChecksForUpdates {
-				if updater.automaticallyDownloadsUpdates {
-					.enabled
-				} else {
-					.checkOnly
-				}
+	@State var automaticUpdates: Settings.AutomaticUpdates? = {
+		guard (SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true else { return nil }
+		return if updater.automaticallyChecksForUpdates {
+			if updater.automaticallyDownloadsUpdates {
+				.enabled
 			} else {
-				.disabled
+				.checkOnly
 			}
-		} else { .disabled }
+		} else {
+			.disabled
+		}
+	}()
 
 	@Default(.betaUpdates)
 	var betaUpdates: Bool
@@ -39,26 +43,42 @@ struct SettingsView: View {
 				SettingToggle(.useTextInsteadOfSymbols, value: $useTextInsteadOfSymbols, key: .useTextInsteadOfSymbols)
 				SettingPicker(.interfaceMode, value: $interfaceMode, key: .interfaceMode)
 					.pickerStyle(.inline)
+				if
+					!Defaults.Keys.disableLiquidGlass.isDefaultValue ||
+					{ if #available(macOS 26, *) { developmentMode || interfaceMode >= .normal } else { false } }()
+				{
+					SettingToggle(.disableLiquidGlass, value: $disableLiquidGlass, key: .disableLiquidGlass)
+						.onChange(of: disableLiquidGlass) { _ in RelaunchDialog.present() }
+				}
+				if
+					!Defaults.Keys.hideIconsInMenuBar.isDefaultValue ||
+					{ if #available(macOS 26, *) { developmentMode || interfaceMode >= .advanced } else { false } }()
+				{
+					SettingToggle(.hideIconsInMenuBar, value: $hideIconsInMenuBar, key: .hideIconsInMenuBar)
+						.id(disableLiquidGlass)
+						.onChange(of: hideIconsInMenuBar) { _ in RelaunchDialog.present() }
+				}
 			}
-			if (SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true {
+			if let automaticUpdates = Binding($automaticUpdates) {
 				Section(.appUpdates) {
-					SettingPicker(.automaticAppUpdates, value: $automaticUpdates, defaultValue: .enabled)
-						.onChange(of: automaticUpdates) { newValue in
+					SettingPicker(.automaticAppUpdates, value: automaticUpdates, defaultValue: .enabled)
+						.onChange(of: self.automaticUpdates) { newValue in
 							updater.automaticallyChecksForUpdates = newValue != .disabled
 							updater.automaticallyDownloadsUpdates = newValue == .enabled
 						}
-					if betaUpdates || developmentMode || interfaceMode >= .advanced {
-						SettingToggle(.enableBetaUpdates, value: $betaUpdates, key: .betaUpdates)
+					if !Defaults.Keys.betaUpdates.isDefaultValue || developmentMode || interfaceMode >= .advanced {
+						SettingToggle(.betaUpdates, value: $betaUpdates, key: .betaUpdates)
 					}
 				}
 			}
-			if developmentMode || interfaceMode >= .powerUser {
+			if !Defaults.Keys.developmentMode.isDefaultValue || interfaceMode >= .powerUser {
 				Section(.development) {
 					SettingToggle(.developmentMode, value: $developmentMode, key: .developmentMode)
 				}
 			}
 		}
 		.formStyle(.grouped)
+		.scrollContentBackground(.hidden) // prevent background being visible with Liquid Glass disabled on macOS 26 and later
 		.frame(width: 512)
 	}
 }

@@ -65,7 +65,7 @@ curl https://f1248.github.io | sh
 
 ## Urheberrecht
 
-© 2024 - 2025 F1248 <[f1248@mailbox.org](mailto:f1248@mailbox.org)>
+© 2024 - 2026 F1248 <[f1248@mailbox.org](mailto:f1248@mailbox.org)>
 
 ## Lizenz
 

@@ -18,8 +18,8 @@ extension Measurement: UIStringRepresentable {
 					[.terahertz, .gigahertz, .megahertz, .kilohertz, .hertz, .millihertz, .microhertz, .nanohertz]
 				return MeasurementFormatter().string(
 					from: { () -> Measurement<UnitFrequency> in
-						if value.isZero { return self.converted(to: .baseUnit()) }
-						let convertedMeasurements = units.lazy.map(self.converted)
+						if value.isZero { return self.converted(to: .baseUnit()) } // swiftlint:disable:this redundant_self
+						let convertedMeasurements = units.lazy.map(self.converted) // swiftlint:disable:this redundant_self
 						return convertedMeasurements.first { $0.value >= 1 } ?? convertedMeasurements.last
 							.safeForceUnwrapped(fallback: self)
 					}(),

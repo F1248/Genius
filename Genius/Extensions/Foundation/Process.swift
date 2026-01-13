@@ -46,6 +46,7 @@ extension Process {
 		}
 	}
 
+	@discardableResult
 	func runSafe() async -> String? {
 		let outputPipe = Pipe()
 		let errorPipe = Pipe()
@@ -60,7 +61,7 @@ extension Process {
 		await waitUntilExit()
 		let errorPipeData = errorPipe.read()
 		let outputPipeData = outputPipe.read()
-		guard terminationStatus == 0, terminationReason == .exit, errorPipeData == nil, let outputPipeData else {
+		guard terminationStatus == 0, terminationReason == .exit, errorPipeData == nil else {
 			logError(outputPipeData: outputPipeData, errorPipeData: errorPipeData)
 			return nil
 		}
@@ -68,6 +69,7 @@ extension Process {
 	}
 
 	func logError(outputPipeData: String?, errorPipeData: String?) {
+		// swiftlint:disable redundant_self
 		Logger().error("""
 		Process failed:
 			Executable: \(self.executableURL.debugDescription)
@@ -79,5 +81,6 @@ extension Process {
 			Standard error:
 		\(errorPipeData.debugDescription)
 		""")
+		// swiftlint:enable redundant_self
 	}
 }

@@ -3,9 +3,12 @@
 // See LICENSE.txt for license information.
 //
 
+import _Concurrency
+
 protocol ValueWrapperProtocol<Value>: Sendable {
 
 	associatedtype Value
 
 	var wrappedValue: Value { get async }
+	@MainActor var syncWrappedValue: Value? { get }
 }

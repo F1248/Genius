@@ -34,13 +34,24 @@ struct IORegistry: ~Copyable {
 	func read<Wrapped: DataInitializable>(_ key: String) -> Wrapped? {
 		guard exists ?? false, let service else { return nil }
 		let property: CFTypeRef? =
-			unsafe IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0)?.takeRetainedValue()
+			unsafe IORegistryEntryCreateCFProperty(
+				service,
+				key as CFString,
+				kCFAllocatorDefault,
+				0,
+			)?.takeRetainedValue()
 		return property as? Wrapped ?? ((property as? Data)?.trimmingTrailingZeros).flatMap(Wrapped.init)
 	}
 
 	// periphery:ignore
+	// swiftlint:disable:next unused_declaration
 	func contains(_ key: String) -> Bool? {
 		guard exists ?? false, let service else { return nil }
-		return unsafe IORegistryEntryCreateCFProperty(service, key as CFString, kCFAllocatorDefault, 0) != nil
+		return unsafe IORegistryEntryCreateCFProperty(
+			service,
+			key as CFString,
+			kCFAllocatorDefault,
+			0,
+		) != nil
 	}
 }

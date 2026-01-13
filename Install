@@ -6,20 +6,41 @@
 #
 
 PATH=/usr/bin:/bin
-set -e
+set -o errexit
+set -o nounset
+
+if ! { [ -f /usr/bin/uname ] && [ -x /usr/bin/uname ] && [ "$(uname)" = "Darwin" ]; }; then
+	printf "\nError: Genius requires macOS!\n" >&2
+	exit 1
+fi
+
+if ! { [ -n "${BASH_VERSION-}" ] && [ -n "${POSIXLY_CORRECT-}" ]; }; then
+	printf "\nError: Installation script must be executed with \`sh\`!\n" >&2
+	exit 1
+fi
+
+set -o pipefail
+set -o privileged
+
+note() {
+	echo "\nNote: $1\n"
+}
+
+fail() {
+	echo "\nError: $1\n" >&2
+	exit 1
+}
 
 is_recoveryos=$([[ ! -e /System/Library/CoreServices/Finder.app ]] && echo true || echo false)
 
 if $is_recoveryos; then
 	if ! (( $(sw_vers -productVersion | cut -d "." -f 1) >= 14 )); then
-		echo "\nError: Genius requires macOS Sonoma 14 or later in recoveryOS!\n" >&2
-		exit 1
+		fail "Genius requires macOS Sonoma 14 or later in recoveryOS!"
 	fi
-	echo "\nNote: Genius only remains installed until restarting."
+	note "Genius only remains installed until restarting."
 else
 	if ! (( $(sw_vers -productVersion | cut -d "." -f 1) >= 13 )); then
-		echo "\nError: Genius requires macOS Ventura 13 or later!\n" >&2
-		exit 1
+		fail "Genius requires macOS Ventura 13 or later!"
 	fi
 fi
 
@@ -31,8 +52,7 @@ else
 	cd ~/Applications
 fi
 if [[ -e Genius.zip ]]; then
-	echo "\nError: Genius.zip already exists in $PWD\n" >&2
-	exit 1
+	fail "Genius.zip already exists in $PWD"
 fi
 if [[
 	-e Genius.app && (
@@ -40,8 +60,7 @@ if [[
 			$(defaults read "$PWD/Genius.app/Contents/Info.plist" "CFBundleIdentifier") != "dev.F1248.Genius"
 	)
 ]]; then
-	echo "\nError: A different app already exists at $PWD/Genius.app!\n" >&2
-	exit 1
+	fail "A different app already exists at $PWD/Genius.app!"
 fi
 
 echo "Quitting Genius..."
@@ -74,7 +93,7 @@ rm Genius.zip
 echo "Opening..."
 if $is_recoveryos; then
 	Genius.app/Contents/MacOS/Genius &> /dev/null
-	echo "\nNote: To reopen Genius run \`genius\` in a new shell.\n"
+	note "To reopen Genius run \`genius\` in a new shell."
 else
 	open Genius.app
 	sleep 0.5

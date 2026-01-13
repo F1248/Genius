@@ -5,5 +5,5 @@
 
 protocol UIStringRepresentable: Sendable {
 
-	var uiRepresentation: String? { get async }
+	var uiRepresentation: String? { get }
 }
