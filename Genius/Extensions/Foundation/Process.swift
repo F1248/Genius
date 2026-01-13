@@ -46,6 +46,7 @@ extension Process {
 		}
 	}
 
+	@discardableResult
 	func runSafe() async -> String? {
 		let outputPipe = Pipe()
 		let errorPipe = Pipe()
