@@ -15,6 +15,7 @@ See LICENSE.txt for license information.
 - Show `ProgressView` in `FormView` only the first time
 - Show `ProgressView` in `FormView` for each entry individually
 - Simplify settings labels
+- Correct English settings labels capitalization
 
 ### Fixed
 

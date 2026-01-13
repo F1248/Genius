@@ -17,7 +17,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Account Name"
+            "value" : "Account name"
           }
         }
       }
@@ -119,7 +119,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beta Updates"
+            "value" : "Beta updates"
           }
         }
       }
@@ -187,7 +187,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Build Number"
+            "value" : "Build number"
           }
         }
       }
@@ -221,7 +221,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Code Name"
+            "value" : "Code name"
           }
         }
       }
@@ -255,7 +255,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Configuration Code"
+            "value" : "Configuration code"
           }
         }
       }
@@ -323,7 +323,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Development Mode"
+            "value" : "Development mode"
           }
         }
       }
@@ -357,7 +357,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Efficiency Cores"
+            "value" : "Efficiency cores"
           }
         }
       }
@@ -442,7 +442,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Firmware Password"
+            "value" : "Firmware password"
           }
         }
       }
@@ -629,7 +629,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Interface Mode"
+            "value" : "Interface mode"
           }
         }
       }
@@ -680,7 +680,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Power User"
+            "value" : "Power user"
           }
         }
       }
@@ -731,7 +731,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Loader Version"
+            "value" : "Loader version"
           }
         }
       }
@@ -935,7 +935,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Performance Cores"
+            "value" : "Performance cores"
           }
         }
       }
@@ -969,7 +969,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Regulatory Number"
+            "value" : "Regulatory number"
           }
         }
       }
@@ -1003,7 +1003,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Security Chip"
+            "value" : "Security chip"
           }
         }
       }
@@ -1020,7 +1020,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Serial Number"
+            "value" : "Serial number"
           }
         }
       }
@@ -1173,7 +1173,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Total Cores"
+            "value" : "Total cores"
           }
         }
       }
@@ -1241,7 +1241,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Use Text Instead of Symbols"
+            "value" : "Use text instead of symbols"
           }
         }
       }
