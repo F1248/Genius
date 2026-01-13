@@ -719,6 +719,23 @@
         }
       }
     },
+    "later" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Später"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Later"
+          }
+        }
+      }
+    },
     "loaderVersion" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -970,6 +987,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regulatory number"
+          }
+        }
+      }
+    },
+    "relaunchGenius" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius neu starten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relaunch Genius"
+          }
+        }
+      }
+    },
+    "relaunchTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starte Genius neu, damit die Änderungen wirksam werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relaunch Genius for the changes to take effect."
           }
         }
       }
