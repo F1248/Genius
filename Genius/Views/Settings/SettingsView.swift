@@ -15,6 +15,8 @@ struct SettingsView: View {
 	var interfaceMode: Settings.InterfaceMode
 	@Default(.disableLiquidGlass)
 	var disableLiquidGlass: Bool
+	@Default(.hideIconsInMenuBar)
+	var hideIconsInMenuBar: Bool
 
 	@State var automaticUpdates: Settings.AutomaticUpdates? = {
 		guard (SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true else { return nil }
@@ -47,6 +49,14 @@ struct SettingsView: View {
 				{
 					SettingToggle(.disableLiquidGlass, value: $disableLiquidGlass, key: .disableLiquidGlass)
 						.onChange(of: disableLiquidGlass) { _ in RelaunchDialog.present() }
+				}
+				if
+					!Defaults.Keys.hideIconsInMenuBar.isDefaultValue ||
+					{ if #available(macOS 26, *) { developmentMode || interfaceMode >= .advanced } else { false } }()
+				{
+					SettingToggle(.hideIconsInMenuBar, value: $hideIconsInMenuBar, key: .hideIconsInMenuBar)
+						.id(disableLiquidGlass)
+						.onChange(of: hideIconsInMenuBar) { _ in RelaunchDialog.present() }
 				}
 			}
 			if let automaticUpdates = Binding($automaticUpdates) {

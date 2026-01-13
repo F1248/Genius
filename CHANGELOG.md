@@ -10,6 +10,7 @@ See LICENSE.txt for license information.
 ### Added
 
 - Add setting to disable Liquid Glass
+- Add setting to hide icons in menu bar
 
 ### Improved
 
