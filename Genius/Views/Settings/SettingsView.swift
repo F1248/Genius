@@ -47,12 +47,12 @@ struct SettingsView: View {
 							updater.automaticallyChecksForUpdates = newValue != .disabled
 							updater.automaticallyDownloadsUpdates = newValue == .enabled
 						}
-					if betaUpdates || developmentMode || interfaceMode >= .advanced {
+					if !Defaults.Keys.betaUpdates.isDefaultValue || developmentMode || interfaceMode >= .advanced {
 						SettingToggle(.enableBetaUpdates, value: $betaUpdates, key: .betaUpdates)
 					}
 				}
 			}
-			if developmentMode || interfaceMode >= .powerUser {
+			if !Defaults.Keys.developmentMode.isDefaultValue || interfaceMode >= .powerUser {
 				Section(.development) {
 					SettingToggle(.developmentMode, value: $developmentMode, key: .developmentMode)
 				}
