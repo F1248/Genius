@@ -19,6 +19,7 @@ on:
             - GeniusTests/**
             - Install
             - Makefile
+        tags: "**"
     pull_request:
         branches-ignore: stable
         paths:
