@@ -37,7 +37,7 @@ struct AppCommands: Commands {
 		CommandGroup(replacing: .appSettings) {
 			ContentViewTab.settings.command
 		}
-		CommandGroup(replacing: .newItem) {}
+		CommandGroup(replacing: .newItem, addition: {})
 		CommandGroup(before: .toolbar) {
 			ContentViewTab.commands
 				.id(interfaceMode)
@@ -46,6 +46,6 @@ struct AppCommands: Commands {
 				default: EmptyView()
 			}
 		}
-		CommandGroup(replacing: .help) {}
+		CommandGroup(replacing: .help, addition: {})
 	}
 }
