@@ -50,6 +50,7 @@ struct FormView<ValueLabel: View, Value: FormValue>: View {
 			}
 		}
 		.formStyle(.grouped)
+		.scrollContentBackground(.hidden) // prevent background being visible with Liquid Glass disabled on macOS 26 and later
 		.frame(width: 512)
 		.task {
 			for sectionIndex in content.indices {

@@ -4,6 +4,7 @@
 //
 
 import AppKit
+import Defaults
 import SwiftUI
 
 @main
@@ -36,6 +37,9 @@ struct GeniusApp: App {
 	}
 
 	init() {
+		if #available(macOS 26, *) {
+			if Defaults[.disableLiquidGlass] { NSAppearance.disableLiquidGlass() }
+		}
 		NSWindow.allowsAutomaticWindowTabbing = false
 		if (SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true {
 			_ = updater

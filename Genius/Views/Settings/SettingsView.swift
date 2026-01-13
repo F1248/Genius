@@ -13,6 +13,8 @@ struct SettingsView: View {
 	var useTextInsteadOfSymbols: Bool
 	@Default(.interfaceMode)
 	var interfaceMode: Settings.InterfaceMode
+	@Default(.disableLiquidGlass)
+	var disableLiquidGlass: Bool
 
 	@State var automaticUpdates: Settings.AutomaticUpdates? = {
 		guard (SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true else { return nil }
@@ -39,6 +41,13 @@ struct SettingsView: View {
 				SettingToggle(.useTextInsteadOfSymbols, value: $useTextInsteadOfSymbols, key: .useTextInsteadOfSymbols)
 				SettingPicker(.interfaceMode, value: $interfaceMode, key: .interfaceMode)
 					.pickerStyle(.inline)
+				if
+					!Defaults.Keys.disableLiquidGlass.isDefaultValue ||
+					{ if #available(macOS 26, *) { developmentMode || interfaceMode >= .normal } else { false } }()
+				{
+					SettingToggle(.disableLiquidGlass, value: $disableLiquidGlass, key: .disableLiquidGlass)
+						.onChange(of: disableLiquidGlass) { _ in RelaunchDialog.present() }
+				}
 			}
 			if let automaticUpdates = Binding($automaticUpdates) {
 				Section(.appUpdates) {
@@ -59,6 +68,7 @@ struct SettingsView: View {
 			}
 		}
 		.formStyle(.grouped)
+		.scrollContentBackground(.hidden) // prevent background being visible with Liquid Glass disabled on macOS 26 and later
 		.frame(width: 512)
 	}
 }

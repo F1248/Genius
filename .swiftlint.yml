@@ -60,6 +60,8 @@ non_optional_string_data_conversion:
     include_variables: true
 number_separator:
     minimum_length: 6
+opening_brace:
+    ignore_multiline_statement_conditions: true
 operator_usage_whitespace:
     lines_look_around: 399
     skip_aligned_constants: false

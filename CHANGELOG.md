@@ -9,6 +9,8 @@ See LICENSE.txt for license information.
 
 ### Added
 
+- Add setting to disable Liquid Glass
+
 ### Improved
 
 - Remove logs when uninstalling Genius

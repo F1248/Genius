@@ -345,6 +345,23 @@
         }
       }
     },
+    "disableLiquidGlass" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liquid Glass deaktivieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable Liquid Glass"
+          }
+        }
+      }
+    },
     "efficiencyCores" : {
       "extractionState" : "manual",
       "localizations" : {
