@@ -48,7 +48,6 @@ struct SettingsView: View {
 					{ if #available(macOS 26, *) { developmentMode || interfaceMode >= .normal } else { false } }()
 				{
 					SettingToggle(.disableLiquidGlass, value: $disableLiquidGlass, key: .disableLiquidGlass)
-						.onChange(of: disableLiquidGlass) { _ in RelaunchDialog.present() }
 				}
 				if
 					!Defaults.Keys.hideIconsInMenuBar.isDefaultValue ||
@@ -56,9 +55,10 @@ struct SettingsView: View {
 				{
 					SettingToggle(.hideIconsInMenuBar, value: $hideIconsInMenuBar, key: .hideIconsInMenuBar)
 						.id(disableLiquidGlass)
-						.onChange(of: hideIconsInMenuBar) { _ in RelaunchDialog.present() }
 				}
 			}
+			.onChange(of: disableLiquidGlass) { _ in RelaunchDialog.present() }
+			.onChange(of: hideIconsInMenuBar) { _ in RelaunchDialog.present() }
 			if let automaticUpdates = Binding($automaticUpdates) {
 				Section(.appUpdates) {
 					SettingPicker(.automaticAppUpdates, value: automaticUpdates, defaultValue: .enabled)
