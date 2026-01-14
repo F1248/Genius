@@ -61,6 +61,61 @@ jobs:
             - name: Free up disk space
               run: sudo rm -r /System/Library/AssetsV2/com_apple_MobileAsset_*OSSimulatorRuntime
 
+            - name: Checkout
+              uses: actions/checkout@main
+              with:
+                fetch-depth: 0
+
+            - name: Install create-dmg
+              if: github.ref_type == 'tag'
+              run: |
+                npm install --global create-dmg
+                echo "create-dmg $(create-dmg --version) installed"
+
+            - name: Install Periphery
+              run: |
+                tag=$(gh release --repo peripheryapp/periphery list --json tagName --jq ".[0].tagName")
+                curl \
+                    https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip \
+                    --location \
+                    --output periphery.zip
+                unzip periphery.zip
+                echo "Periphery $(./periphery version) installed"
+
+            - name: Install SwiftFormat
+              run: |
+                curl \
+                    https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip \
+                    --location \
+                    --remote-name
+                unzip swiftformat.zip
+                echo "SwiftFormat $(./swiftformat --version) installed"
+
+            - name: Install SwiftLint
+              run: |
+                curl \
+                    https://github.com/realm/SwiftLint/releases/latest/download/portable_swiftlint.zip \
+                    --location \
+                    --remote-name
+                unzip portable_swiftlint.zip
+                echo "SwiftLint $(./swiftlint version) installed"
+
+            - name: Install xcbeautify
+              run: |
+                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --jq ".[0].tagName")
+                curl \
+                    https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip \
+                    --location \
+                    --output xcbeautify.zip
+                unzip xcbeautify.zip
+                echo "xcbeautify $(./xcbeautify --version) installed"
+
+            - name: Run SwiftFormat
+              run: make swiftformat
+
+            - name: Run SwiftLint lint rules
+              run: make swiftlint-lint
+
             - name: Select latest installed Xcode version
               uses: maxim-lobanov/setup-xcode@master
               with:
@@ -71,12 +126,13 @@ jobs:
               with:
                 repository: F1248/Xcode-Mirror
                 token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                path: Xcode-Mirror
                 sparse-checkout: Build.txt
                 sparse-checkout-cone-mode: false
 
             - name: Check if latest Xcode version is installed
               run: |
-                if [[ "$(xcodebuild -version | sed -n "s/Build version //p")" == "$(cat Build.txt)" ]]; then
+                if [[ "$(xcodebuild -version | sed -n "s/Build version //p")" == "$(cat Xcode-Mirror/Build.txt)" ]]; then
                     echo "latest_xcode_version_installed=true" >> "$GITHUB_ENV"
                 else
                     echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
@@ -88,6 +144,7 @@ jobs:
               with:
                 repository: F1248/Xcode-Mirror
                 token: ${{ secrets.XCODE_MIRROR_TOKEN }}
+                path: Xcode-Mirror
                 sparse-checkout: Xcode.xip-*
 
             - name: Install unxip
@@ -100,8 +157,8 @@ jobs:
             - name: Install and select Xcode
               if: env.latest_xcode_version_installed == 'false'
               run: |
-                cat Xcode.xip-* | ./unxip - ~
-                sudo xcode-select --switch ~/Xcode*.app
+                cat Xcode-Mirror/Xcode.xip-* | ./unxip -
+                sudo xcode-select --switch Xcode*.app
 
             - name: Prepare Xcode
               run: |
@@ -109,57 +166,8 @@ jobs:
                 sudo xcodebuild -runFirstLaunch
                 echo "$(xcodebuild -version | tr "\n" " ")selected"
 
-            - name: Checkout
-              uses: actions/checkout@main
-              with:
-                fetch-depth: 0
-
-            - name: Install Periphery
-              run: |
-                tag=$(gh release --repo peripheryapp/periphery list --json tagName --jq ".[0].tagName")
-                curl \
-                    https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip \
-                    --location \
-                    --output periphery.zip
-                unzip periphery.zip
-                echo "Periphery $(./periphery version) installed"
-
             - name: Run Periphery
               run: make periphery
-
-            - name: Install SwiftFormat
-              run: |
-                curl \
-                    https://github.com/nicklockwood/SwiftFormat/releases/latest/download/swiftformat.zip \
-                    --location \
-                    --remote-name
-                unzip swiftformat.zip
-                echo "SwiftFormat $(./swiftformat --version) installed"
-
-            - name: Run SwiftFormat
-              run: make swiftformat
-
-            - name: Install SwiftLint
-              run: |
-                curl \
-                    https://github.com/realm/SwiftLint/releases/latest/download/portable_swiftlint.zip \
-                    --location \
-                    --remote-name
-                unzip portable_swiftlint.zip
-                echo "SwiftLint $(./swiftlint version) installed"
-
-            - name: Run SwiftLint lint rules
-              run: make swiftlint-lint
-
-            - name: Install xcbeautify
-              run: |
-                tag=$(gh release --repo cpisciotta/xcbeautify list --json tagName --jq ".[0].tagName")
-                curl \
-                    https://github.com/cpisciotta/xcbeautify/releases/download/"$tag"/xcbeautify-"$tag"-arm64-apple-macosx.zip \
-                    --location \
-                    --output xcbeautify.zip
-                unzip xcbeautify.zip
-                echo "xcbeautify $(./xcbeautify --version) installed"
 
             - name: Build for testing
               run: make build-for-testing-keep-log
@@ -186,12 +194,6 @@ jobs:
               with:
                 name: Genius # omit `.zip` file extension as it will be added automatically
                 path: Genius.zip
-
-            - name: Install create-dmg
-              if: github.ref_type == 'tag'
-              run: |
-                npm install --global create-dmg
-                echo "create-dmg $(create-dmg --version) installed"
 
             - name: Create DMG file
               if: github.ref_type == 'tag'
