@@ -9,6 +9,8 @@ See LICENSE.txt for license information.
 
 ### Added
 
+- Add keywords to app
+
 ### Improved
 
 ### Fixed
