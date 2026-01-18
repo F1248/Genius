@@ -47,8 +47,7 @@ enum ContentViewTab: @MainActor TabData {
 
 	var symbol: SFSymbol { switch self {
 		case .home: .house
-		case .systemInformation:
-			if #available(macOS 15.4, *) { SFSymbol(rawValue: "info.circle.text.page") } else { .docTextBelowEcg }
+		case .systemInformation: if #available(macOS 15.4, *) { .infoCircleTextPage } else { .docTextBelowEcg }
 		case .maintenance: .stethoscope
 		case .settings: .gear
 	} }
