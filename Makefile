@@ -17,7 +17,7 @@ xcodebuild_pipe = \
 ifeq ($(GITHUB_ACTIONS), true)
 	command_prefix = ./
 	periphery_arguments = --format github-actions -- -skipPackagePluginValidation
-	sparkle_generate_appcast_arguments += --ed-key-file -
+	sparkle_arguments += --ed-key-file -
 	swiftformat_arguments = --reporter github-actions-log
 	swiftlint_arguments = --reporter github-actions-logging
 	xcbeautify_arguments = --renderer github-actions
@@ -156,7 +156,7 @@ appcast:
 	# specify download URL prefix to prevent feed URL from getting prepended to download URL
 	echo $$sparkle_private_eddsa_key \
 		| $(command_prefix)generate_appcast _site \
-		$(sparkle_generate_appcast_arguments) \
+		$(sparkle_arguments) \
 		--download-url-prefix " " \
 		--maximum-versions 0 \
 		--maximum-deltas 999
@@ -173,7 +173,7 @@ appcast:
 	# specify download URL prefix to prevent feed URL from getting prepended to download URL
 	echo $$sparkle_private_eddsa_key \
 		| $(command_prefix)generate_appcast _site \
-		$(sparkle_generate_appcast_arguments) \
+		$(sparkle_arguments) \
 		--download-url-prefix " " \
 		--maximum-versions 0 \
 		--maximum-deltas 999 \
