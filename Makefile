@@ -182,4 +182,7 @@ appcast:
 		-i $(sed_extension) \
 		"s|prefix-placeholder-|https://github.com/F1248/Genius/releases/download/|g;s|-postfix-placeholder|/Genius|g" \
 		_site/appcast.xml
+	echo $$sparkle_private_eddsa_key \
+		| $(command_prefix)sign_update _site/appcast.xml \
+		$(sparkle_generate_appcast_arguments)
 	rm _site/prefix-placeholder-*-postfix-placeholder.zip

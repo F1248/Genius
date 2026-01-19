@@ -49,7 +49,7 @@ jobs:
                     --location \
                     --output Sparkle.tar.xz
                 tar --extract --file Sparkle.tar.xz
-                mv bin/generate_appcast .
+                mv bin/generate_appcast bin/sign_update .
                 echo "Sparkle $(defaults read $PWD/Sparkle.framework/Versions/B/Resources/Info.plist CFBundleShortVersionString) installed"
 
             - name: Generate appcast
