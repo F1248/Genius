@@ -184,5 +184,9 @@ appcast:
 		_site/appcast.xml
 	echo $$sparkle_private_eddsa_key \
 		| $(command_prefix)sign_update _site/appcast.xml \
-		$(sparkle_generate_appcast_arguments)
+		$(sparkle_arguments)
+	echo $$sparkle_private_eddsa_key \
+		| $(command_prefix)sign_update _site/appcast.xml \
+		$(sparkle_arguments) \
+		--verify
 	rm _site/prefix-placeholder-*-postfix-placeholder.zip
