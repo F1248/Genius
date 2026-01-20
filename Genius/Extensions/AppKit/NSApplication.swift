@@ -12,7 +12,7 @@ extension NSApplication {
 	func relaunch() async {
 		let openConfiguration = NSWorkspace.OpenConfiguration()
 		openConfiguration.createsNewApplicationInstance = true
-		_ = try? await NSWorkspace().openApplication(at: Bundle.main.bundleURL, configuration: openConfiguration)
+		_ = try? await NSWorkspace.shared.openApplication(at: Bundle.main.bundleURL, configuration: openConfiguration)
 		terminate(nil)
 	}
 }
