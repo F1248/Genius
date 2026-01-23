@@ -27,7 +27,7 @@ struct MaintenanceCheckLabelPopover: View {
 					}
 					if let setting {
 						Link(destination: setting) {
-							Symbol(.gear, label: .openInSystemSettings)
+							Symbol(.gear, label: .openSetting)
 						}
 						.foregroundColor(.secondary)
 					}

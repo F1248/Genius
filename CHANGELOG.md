@@ -13,6 +13,8 @@ See LICENSE.txt for license information.
 
 ### Improved
 
+- Adjust “Open in System Settings” to “Open Setting” in `MaintenanceCheckLabelPopover`
+
 ### Fixed
 
 ### Security

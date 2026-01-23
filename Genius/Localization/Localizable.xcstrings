@@ -957,19 +957,19 @@
         }
       }
     },
-    "openInSystemSettings" : {
+    "openSetting" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "In den Systemeinstellungen öffnen"
+            "value" : "Einstellung öffnen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open in System Settings"
+            "value" : "Open Setting"
           }
         }
       }
