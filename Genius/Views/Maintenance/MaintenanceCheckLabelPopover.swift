@@ -3,6 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
+import _Concurrency
 import Foundation
 import SFSafeSymbols
 import SwiftUI
@@ -11,7 +12,7 @@ struct MaintenanceCheckLabelPopover: View {
 
 	let name: LocalizedStringResource
 	let help: URL?
-	let setting: URL?
+	let setting: (any Openable)?
 
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -26,9 +27,12 @@ struct MaintenanceCheckLabelPopover: View {
 						.foregroundColor(.secondary)
 					}
 					if let setting {
-						Link(destination: setting) {
+						Button {
+							Task { await setting.open() }
+						} label: {
 							Symbol(.gear, label: .openSetting)
 						}
+						.buttonStyle(.plain)
 						.foregroundColor(.secondary)
 					}
 				}

@@ -3,9 +3,10 @@
 // See LICENSE.txt for license information.
 //
 
+import AppKit
 import Foundation
 
-extension URL {
+extension URL: Openable {
 
 	init?(filePath: String) {
 		guard FileManager.default.fileExists(atPath: filePath) else { return nil }
@@ -22,7 +23,12 @@ extension URL {
 		self.init(string: "https://support.apple.com/guide/mac-help/\(appleUserGuideArticle)/mac\(versionNumberComponent)")
 	}
 
-	init?(systemSetting: SystemSetting) {
-		self.init(string: "x-apple.systempreferences:\(systemSetting.pane)\(systemSetting.anchor.map { "?\($0)" } ?? "")")
+	init?(string: String, available: Bool?) {
+		guard available ?? true else { return nil }
+		self.init(string: string)
+	}
+
+	func open() {
+		NSWorkspace.shared.open(self)
 	}
 }
