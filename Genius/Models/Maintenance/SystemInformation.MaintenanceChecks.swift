@@ -58,7 +58,7 @@ extension SystemInformation {
 			)
 			static let allowAccessoriesToConnect = MaintenanceCheck<AllowAccessoriesToConnectSetting?, _>(
 				{
-					switch IORegistry(class: "AppleCredentialManager").read("TRM_EffectiveConfigProfile") as Int? {
+					switch IORegistry(class: "AppleCredentialManager").read("TRM_ConfigProfile") as Int? {
 						case 1: .alwaysAsk
 						case 2: .askForNewAccessories
 						case 3: .automaticallyAllowWhenUnlocked
@@ -68,7 +68,8 @@ extension SystemInformation {
 				}(),
 				available: {
 					#if arch(arm64)
-						Hardware.Model.isLaptop &&? Software.OS.bootMode.value !=? .recovery
+						Hardware.Model.isLaptop &&?
+							{ if #available(macOS 26, *) { true } else { Software.OS.bootMode.value !=? .recovery } }()
 					#elseif arch(x86_64)
 						false
 					#endif

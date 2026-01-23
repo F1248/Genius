@@ -10,6 +10,7 @@ See LICENSE.txt for license information.
 ### Added
 
 - Add keywords to app
+- Make Maintenance → Ask to allow accessories to connect available in recoveryOS on macOS 26 and later
 
 ### Improved
 
