@@ -19,6 +19,7 @@ struct MaintenanceView: View {
 				MaintenanceCheckLabel(
 					.firmwarePassword,
 					help: URL(appleSupportArticle: 102_384),
+					setting: Application.startupSecurityUtility,
 				): SystemInformation.MaintenanceChecks.TheftProtection.firmwarePassword,
 			],
 			.dataSecurity: [
@@ -46,7 +47,7 @@ struct MaintenanceView: View {
 				MaintenanceCheckLabel(
 					.askToAllowAccessoriesToConnect,
 					help: URL(appleSupportArticle: 102_282),
-					setting: SystemSetting.accessories,
+					setting: SystemSetting.accessories ?? Application.startupSecurityUtility,
 				): SystemInformation.MaintenanceChecks.MalwareProtection.allowAccessoriesToConnect,
 			],
 			.automaticUpdates: [
