@@ -8,27 +8,24 @@
 
 --enable \
 	acronyms, \
-	blankLinesBetweenImports, \
 	blockComments, \
-	emptyExtensions, \
-	environmentEntry, \
 	isEmpty, \
 	noExplicitOwnership, \
-	noForceTryInTests, \
-	noForceUnwrapInTests, \
 	noGuardInTests, \
 	organizeDeclarations, \
 	preferFinalClasses, \
 	preferSwiftTesting, \
-	redundantAsync, \
-	redundantEquatable, \
-	redundantMemberwiseInit, \
-	redundantProperty, \
-	redundantThrows, \
 	singlePropertyPerLine, \
+	sortSwitchCases, \
 	unusedPrivateDeclarations, \
+	validateTestCases, \
 	wrapEnumCases, \
 	wrapMultilineConditionalAssignment, \
+
+--disable \
+	redundantViewBuilder, \
+	wrapFunctionBodies, \
+	wrapPropertyBodies, \
 
 --acronyms "CPU,EFI,ID,IO,JSON,NVRAM,OS,SF,SMC,UDID,UI,URL,UUID"
 --allow-partial-wrapping false
