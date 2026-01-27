@@ -26,7 +26,7 @@ actor AsyncValueWrapper<Value: Sendable>: ValueWrapperProtocol {
 		return value
 	} }
 
-	init(valueClosure: @escaping @Sendable () async -> Value) {
+	init(_ valueClosure: @escaping @Sendable () async -> Value) {
 		self.valueClosure = valueClosure
 	}
 }

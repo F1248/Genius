@@ -88,7 +88,7 @@ extension MaintenanceCheck where ValueWrapper == AsyncValueWrapper<Value> {
 
 	// periphery:ignore
 	init(_ valueClosure: @escaping @Sendable () async -> Value, requirement: Wrapped = .max) {
-		self.valueWrapper = AsyncValueWrapper(valueClosure: valueClosure)
+		self.valueWrapper = AsyncValueWrapper(valueClosure)
 		self.requirement = requirement
 		self.available = true
 	}
@@ -99,7 +99,7 @@ extension MaintenanceCheck where ValueWrapper == AsyncValueWrapper<Value> {
 		available: Bool?,
 	) where Value == Wrapped? {
 		self.valueWrapper = AsyncValueWrapper(
-			valueClosure: available ?? true ? valueClosure : { @Sendable in nil },
+			available ?? true ? valueClosure : { @Sendable in nil },
 		)
 		self.requirement = requirement
 		self.available = available

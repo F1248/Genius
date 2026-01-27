@@ -56,13 +56,13 @@ extension SystemInformationData where ValueWrapper == AsyncValueWrapper<Value> {
 
 	// periphery:ignore
 	init(_ valueClosure: @escaping @Sendable () async -> Value) {
-		self.valueWrapper = AsyncValueWrapper(valueClosure: valueClosure)
+		self.valueWrapper = AsyncValueWrapper(valueClosure)
 		self.available = true
 	}
 
 	init<Wrapped>(_ valueClosure: @escaping @Sendable () async -> Value, available: Bool?) where Value == Wrapped? {
 		self.valueWrapper = AsyncValueWrapper(
-			valueClosure: available ?? true ? valueClosure : { @Sendable in nil },
+			available ?? true ? valueClosure : { @Sendable in nil },
 		)
 		self.available = available
 	}
