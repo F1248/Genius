@@ -193,10 +193,10 @@
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					A42B353C2BA2185B009E81AD = {
-						CreatedOnToolsVersion = 26.1;
+						CreatedOnToolsVersion = 26.2;
 					};
 					A4D9A1A92D257055008D91E7 = {
-						CreatedOnToolsVersion = 26.1;
+						CreatedOnToolsVersion = 26.2;
 						TestTargetID = A42B353C2BA2185B009E81AD;
 					};
 				};
