@@ -23,6 +23,7 @@
 	wrapMultilineConditionalAssignment, \
 
 --disable \
+	blankLinesAtStartOfScope, \
 	redundantViewBuilder, \
 	wrapFunctionBodies, \
 	wrapPropertyBodies, \
@@ -46,5 +47,5 @@
 --semicolons never
 --short-optionals always
 --tab-width 4
---type-blank-lines preserve
+--type-blank-lines remove
 --xcode-indentation enabled
