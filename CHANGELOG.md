@@ -16,6 +16,7 @@ See LICENSE.txt for license information.
 ### Improved
 
 - Adjust “Open in System Settings” to “Open Setting” in `MaintenanceCheckLabelPopover`
+- Show correct app name and icon in administrator privileges dialog
 
 ### Fixed
 

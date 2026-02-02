@@ -18,7 +18,7 @@ extension SystemInformation {
 					Software.OS.bootMode.value !=? .recovery,
 			)
 			static let firmwarePassword = MaintenanceCheck<Bool?, _>(
-				{ await Bool(firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check", asRoot: true)?.runSafe()) },
+				{ await Bool(firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check")?.runSafe(asRoot: true)) },
 				available: {
 					#if arch(arm64)
 						false
