@@ -189,14 +189,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 2620;
-				LastUpgradeCheck = 2620;
+				LastSwiftUpdateCheck = 2630;
+				LastUpgradeCheck = 2630;
 				TargetAttributes = {
 					A42B353C2BA2185B009E81AD = {
-						CreatedOnToolsVersion = 26.2;
+						CreatedOnToolsVersion = 26.3;
 					};
 					A4D9A1A92D257055008D91E7 = {
-						CreatedOnToolsVersion = 26.2;
+						CreatedOnToolsVersion = 26.3;
 						TestTargetID = A42B353C2BA2185B009E81AD;
 					};
 				};
