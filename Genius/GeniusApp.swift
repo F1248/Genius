@@ -14,12 +14,8 @@ struct GeniusApp: App {
 
 	var body: some Scene {
 		WindowGroup {
-			if #available(macOS 26, *) {
-				ContentView()
-					.toolbarBackgroundVisibility(.hidden, for: .automatic)
-			} else {
-				ContentView()
-			}
+			ContentView()
+				.apply { if #available(macOS 26, *) { $0.toolbarBackgroundVisibility(.hidden, for: .automatic) } else { $0 } }
 		}
 		.windowToolbarStyle(.unified(showsTitle: false))
 		.customWindowToolbarLabelStyleFixedIconOnly()
