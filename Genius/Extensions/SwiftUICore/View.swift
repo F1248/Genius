@@ -8,7 +8,7 @@ import SwiftUI
 extension View {
 
 	@ViewBuilder
-	func apply(modifier: (Self) -> some View, if condition: Bool) -> some View {
+	func apply(if condition: Bool, modifier: (Self) -> some View) -> some View {
 		if condition {
 			modifier(self)
 		} else {
