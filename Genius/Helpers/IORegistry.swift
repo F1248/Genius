@@ -33,13 +33,12 @@ struct IORegistry: ~Copyable {
 
 	func read<Wrapped: DataInitializable>(_ key: String) -> Wrapped? {
 		guard exists ?? false, let service else { return nil }
-		let property: CFTypeRef? =
-			unsafe IORegistryEntryCreateCFProperty(
-				service,
-				key as CFString,
-				kCFAllocatorDefault,
-				0,
-			)?.takeRetainedValue()
+		let property: CFTypeRef? = unsafe IORegistryEntryCreateCFProperty(
+			service,
+			key as CFString,
+			kCFAllocatorDefault,
+			0,
+		)?.takeRetainedValue()
 		return property as? Wrapped ?? ((property as? Data)?.trimmingTrailingZeros).flatMap(Wrapped.init)
 	}
 
