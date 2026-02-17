@@ -42,7 +42,7 @@ all: lint test-without-building build zip-app create-dmg zip-debug-symbols appca
 	rm Genius.dmg
 	rm Genius.zip
 
-lint: periphery swiftformat swiftlint
+lint: swiftformat swiftlint-lint periphery swiftlint-analyze
 
 periphery:
 	$(command_prefix)periphery scan --strict $(periphery_arguments)
