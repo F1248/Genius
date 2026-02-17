@@ -3,7 +3,6 @@
 // See LICENSE.txt for license information.
 //
 
-import _Concurrency
 import Sparkle
 
 @MainActor let updaterDelegate = UpdaterDelegate()

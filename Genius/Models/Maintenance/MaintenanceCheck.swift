@@ -3,7 +3,6 @@
 // See LICENSE.txt for license information.
 //
 
-import _Concurrency
 import Defaults
 import SFSafeSymbols
 import SwiftUI
