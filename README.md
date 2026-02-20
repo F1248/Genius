@@ -7,6 +7,16 @@ See LICENSE.txt for license information.
 
 # Genius – The Intelligent Universal macOS Helper Tool for Everyone!
 
+<a href="https://notbyai.fyi">
+	<picture>
+		<source media="(prefers-color-scheme: dark)" srcset="Images/Not-By-AI-English-Dark.svg">
+		<source media="(prefers-color-scheme: light)" srcset="Images/Not-By-AI-English-Light.svg">
+		<img alt="Developed by Humans, Not by AI" src="Images/Not-By-AI-English-Light.svg">
+	</picture>
+</a>
+
+
+
 ## Table of Contents
 
 - [Requirements](#requirements)
