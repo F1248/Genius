@@ -26,6 +26,8 @@ See LICENSE.txt for license information.
 
 ### Dependencies
 
+- Update [Sparkle](https://github.com/sparkle-project/Sparkle) from [2.8.1](https://github.com/sparkle-project/Sparkle/releases/tag/2.8.1) to [2.9.0](https://github.com/sparkle-project/Sparkle/releases/tag/2.9.0)
+
 ### [Commit History](https://github.com/F1248/Genius/compare/v1.0.0...HEAD)
 
 ## [1.0.0](https://github.com/F1248/Genius/releases/tag/v1.0.0)
