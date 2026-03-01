@@ -246,7 +246,7 @@
 			name = SwiftFormat;
 			shellPath = /bin/zsh;
 			shellScript = (
-				"if [[ ${CONFIGURATION} == *Debug ]]; then",
+				"if [[ ${CONFIGURATION} == *Debug && ! ${PERIPHERY} ]]; then",
 				"\tif which -s swiftformat; then",
 				"\t\tswiftformat --lint --lenient .",
 				"	else",
@@ -262,7 +262,7 @@
 			name = SwiftLint;
 			shellPath = /bin/zsh;
 			shellScript = (
-				"if [[ ${CONFIGURATION} == *Debug ]]; then",
+				"if [[ ${CONFIGURATION} == *Debug && ! ${PERIPHERY} ]]; then",
 				"\tif which -s swiftlint; then",
 				"\t\tswiftlint lint",
 				"	else",

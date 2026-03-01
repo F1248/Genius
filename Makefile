@@ -46,7 +46,7 @@ all: lint test-without-building build zip-app create-dmg zip-debug-symbols appca
 lint: swiftformat swiftlint-lint periphery swiftlint-analyze
 
 periphery:
-	$(command_prefix)periphery scan --strict $(periphery_arguments) -- -configuration Test-Debug $(periphery_build_arguments)
+	$(command_prefix)periphery scan --strict $(periphery_arguments) -- -configuration Test-Debug PERIPHERY=true $(periphery_build_arguments)
 
 swiftformat:
 	$(command_prefix)swiftformat --lint . $(swiftformat_arguments)
