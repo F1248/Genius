@@ -16,7 +16,8 @@ xcodebuild_pipe = \
 
 ifeq ($(GITHUB_ACTIONS), true)
 	command_prefix = ./
-	periphery_arguments = --format github-actions -- -skipPackagePluginValidation
+	periphery_arguments = --format github-actions
+	periphery_build_arguments = -skipPackagePluginValidation
 	sparkle_arguments += --ed-key-file -
 	swiftformat_arguments = --reporter github-actions-log
 	swiftlint_arguments = --reporter github-actions-logging
@@ -45,7 +46,7 @@ all: lint test-without-building build zip-app create-dmg zip-debug-symbols appca
 lint: swiftformat swiftlint-lint periphery swiftlint-analyze
 
 periphery:
-	$(command_prefix)periphery scan --strict $(periphery_arguments)
+	$(command_prefix)periphery scan --strict $(periphery_arguments) -- -configuration Test-Debug $(periphery_build_arguments)
 
 swiftformat:
 	$(command_prefix)swiftformat --lint . $(swiftformat_arguments)
