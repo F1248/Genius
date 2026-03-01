@@ -24,8 +24,8 @@ struct MaintenanceCheck<
 		} else if let syncValue {
 			if let value = syncValue.optional {
 				value >= requirement ? // swiftlint:disable:this void_function_in_ternary
-					Symbol(.checkmark, color: .green, label: .enabled) :
-					Symbol(.xmark, color: .red, label: .disabled)
+					Symbol(.checkmark, color: .green, label: .passed) :
+					Symbol(.xmark, color: .red, label: .failed)
 			} else {
 				Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
 					Symbol(.questionmark, color: .red, label: .unknown) :
@@ -41,8 +41,8 @@ struct MaintenanceCheck<
 			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .notAvailable) : nil
 		} else if let value = await value.optional {
 			value >= requirement ? // swiftlint:disable:this void_function_in_ternary
-				Symbol(.checkmark, color: .green, label: .enabled) :
-				Symbol(.xmark, color: .red, label: .disabled)
+				Symbol(.checkmark, color: .green, label: .passed) :
+				Symbol(.xmark, color: .red, label: .failed)
 		} else {
 			Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
 				Symbol(.questionmark, color: .red, label: .unknown) : nil

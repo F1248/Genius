@@ -18,8 +18,8 @@ extension MaintenanceCheckTests {
 			Defaults[.developmentMode] = false
 			Defaults[.interfaceMode] = .normal
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == nil)
-			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .disabled)
-			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .enabled)
+			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .failed)
+			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .passed)
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == nil)
 		}
 
@@ -29,8 +29,8 @@ extension MaintenanceCheckTests {
 			Defaults[.developmentMode] = false
 			Defaults[.interfaceMode] = .advanced
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == nil)
-			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .disabled)
-			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .enabled)
+			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .failed)
+			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .passed)
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == .unknown)
 		}
 
@@ -39,8 +39,8 @@ extension MaintenanceCheckTests {
 		func developmentModeEnabled() {
 			Defaults[.developmentMode] = true
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == .notAvailable)
-			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .disabled)
-			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .enabled)
+			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .failed)
+			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .passed)
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == .unknown)
 		}
 	}

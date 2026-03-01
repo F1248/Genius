@@ -396,6 +396,23 @@
         }
       }
     },
+    "failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht erfüllt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed"
+          }
+        }
+      }
+    },
     "fileVault" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -970,6 +987,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Open Setting"
+          }
+        }
+      }
+    },
+    "passed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erfüllt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passed"
           }
         }
       }
