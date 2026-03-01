@@ -39,6 +39,23 @@
         }
       }
     },
+    "allChecksPassed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Überprüfungen erfüllt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All checks passed"
+          }
+        }
+      }
+    },
     "appleSilicon" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1208,6 +1225,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Show Detail"
+          }
+        }
+      }
+    },
+    "showPassedChecks" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erfüllte Überprüfungen anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show passed checks"
           }
         }
       }

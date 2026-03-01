@@ -13,6 +13,7 @@ See LICENSE.txt for license information.
 - Make Maintenance → Ask to allow accessories to connect available in recoveryOS on macOS 26 and later
 - Add Startup Security Utility in recoveryOS as firmware password and allow accessories to connect setting
 - Show text in System Information and Maintenance when no elements available
+- Add option to hide passed checks in Maintenance
 
 ### Improved
 
