@@ -9,7 +9,7 @@ import SwiftUI
 struct MaintenanceView: View {
 
 	var body: some View {
-		FormView(content: [
+		FormView(textWhenEmpty: .noChecksAvailable, content: [
 			.theftProtection: [
 				MaintenanceCheckLabel(
 					.activationLock,

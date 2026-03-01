@@ -27,6 +27,7 @@ protocol VaryingLocalizationTable {
 	static var installCriticalUpdates: LocalizedStringResource { get }
 	static var installMacOSUpdates: LocalizedStringResource { get }
 	static var malwareProtection: LocalizedStringResource { get }
+	static var noSystemInformationAvailable: LocalizedStringResource { get }
 	static var systemInformation: LocalizedStringResource { get }
 	static var uninstallApp: LocalizedStringResource { get }
 	static var uninstallAppEllipsis: LocalizedStringResource { get }
