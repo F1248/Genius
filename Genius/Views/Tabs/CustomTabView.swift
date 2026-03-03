@@ -11,7 +11,7 @@ struct CustomTabView<TabDataType: TabData>: View {
 
 	var selectedTab: TabDataType? { TabDataType.allCases[safe: selection.wrappedValue] }
 
-	@ViewBuilder var picker: some View {
+	var picker: some View {
 		Picker(selection: selection) {
 			ForEach(enumeratingID: TabDataType.allCases) { tab in
 				Text(tab.title)

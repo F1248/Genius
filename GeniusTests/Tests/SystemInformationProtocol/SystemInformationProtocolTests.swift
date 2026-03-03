@@ -7,7 +7,7 @@
 import Testing
 
 @Suite("SystemInformationProtocol")
-struct SystemInformationProtocolTests {
+struct SystemInformationProtocolTests { // swiftformat:disable:this swiftTestingTestCaseNames
 
 	@Test
 	func testCondition() { // swiftformat:disable:this swiftTestingTestCaseNames

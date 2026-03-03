@@ -24,7 +24,6 @@
 
 --disable \
 	blankLinesAtStartOfScope, \
-	redundantViewBuilder, \
 	wrapFunctionBodies, \
 	wrapPropertyBodies, \
 
@@ -33,6 +32,7 @@
 --cond-assignment always
 --fraction-grouping enabled
 --header "\n© {created.year} F1248 <f1248@mailbox.org>\nSee LICENSE.txt for license information.\n"
+--import-grouping alpha
 --indent tab
 --indent-case true
 --mark-categories false
@@ -46,6 +46,8 @@
 --self-required error
 --semicolons never
 --short-optionals always
+--suite-name-format raw-identifiers
 --tab-width 4
+--test-case-name-format preserve
 --type-blank-lines remove
 --xcode-indentation enabled

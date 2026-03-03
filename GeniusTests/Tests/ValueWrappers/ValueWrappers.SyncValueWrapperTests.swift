@@ -9,7 +9,7 @@ import Testing
 extension `Value wrappers` {
 
 	@Suite("SyncValueWrapper")
-	struct SyncValueWrapperTests {
+	struct SyncValueWrapperTests { // swiftformat:disable:this swiftTestingTestCaseNames
 
 		@Test("SystemInformationData")
 		func systemInformationData() {

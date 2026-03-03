@@ -6,7 +6,7 @@
 import Testing
 
 @Suite("Optional")
-struct OptionalTests {
+struct OptionalTests { // swiftformat:disable:this swiftTestingTestCaseNames
 
 	@Test
 	func testCondition() { // swiftformat:disable:this swiftTestingTestCaseNames
