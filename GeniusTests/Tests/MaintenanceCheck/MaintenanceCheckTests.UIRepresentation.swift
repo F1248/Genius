@@ -9,12 +9,11 @@ import Testing
 
 extension MaintenanceCheckTests {
 
-	@Suite("uiRepresentation")
-	struct UIRepresentation {
+	struct uiRepresentation {
 
-		@Test("Development mode disabled, interface mode normal")
+		@Test
 		@MainActor
-		func developmentModeDisabledInterfaceModeNormal() {
+		func `Development mode disabled, interface mode normal`() {
 			Defaults[.developmentMode] = false
 			Defaults[.interfaceMode] = .normal
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == nil)
@@ -23,9 +22,9 @@ extension MaintenanceCheckTests {
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == nil)
 		}
 
-		@Test("Development mode disabled, interface mode advanced")
+		@Test
 		@MainActor
-		func developmentModeDisabledInterfaceModeAdvanced() {
+		func `Development mode disabled, interface mode advanced`() {
 			Defaults[.developmentMode] = false
 			Defaults[.interfaceMode] = .advanced
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == nil)
@@ -34,9 +33,9 @@ extension MaintenanceCheckTests {
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == .unknown)
 		}
 
-		@Test("Development mode enabled")
+		@Test
 		@MainActor
-		func developmentModeEnabled() {
+		func `Development mode enabled`() {
 			Defaults[.developmentMode] = true
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == .notAvailable)
 			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .failed)

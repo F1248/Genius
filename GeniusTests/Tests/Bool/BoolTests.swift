@@ -9,8 +9,8 @@ import Testing
 @Suite("Bool")
 struct BoolTests {
 
-	@Test("Comparable")
-	func comparable() {
+	@Test
+	func Comparable() {
 		#expect(false < true)
 		#expect(true > false)
 	}

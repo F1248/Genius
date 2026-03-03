@@ -6,7 +6,7 @@
 @testable import Genius
 import Testing
 
-extension ValueWrappers {
+extension `Value wrappers` {
 
 	@Suite("SyncValueWrapper")
 	struct SyncValueWrapperTests {

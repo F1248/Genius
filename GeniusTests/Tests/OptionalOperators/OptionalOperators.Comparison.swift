@@ -6,7 +6,7 @@
 @testable import Genius
 import Testing
 
-extension OptionalOperators {
+extension `Optional operators` {
 
 	struct Comparison {
 

@@ -1,0 +1,9 @@
+#
+# © 2026 F1248 <f1248@mailbox.org>
+# See LICENSE.txt for license information.
+#
+
+disabled_rules:
+    - file_name
+    - identifier_name
+    - type_name
