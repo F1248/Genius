@@ -22,21 +22,21 @@ struct InterfaceSection: View {
 			SettingToggle(.useTextInsteadOfSymbols, value: $useTextInsteadOfSymbols, key: .useTextInsteadOfSymbols)
 			SettingPicker(.interfaceMode, value: $interfaceMode, key: .interfaceMode)
 				.pickerStyle(.inline)
-			if
-				!Defaults.Keys.disableLiquidGlass.isDefaultValue ||
-				{ if #available(macOS 26, *) { interfaceMode >= .normal } else { false } }()
-			{
-				SettingToggle(.disableLiquidGlass, value: $disableLiquidGlass, key: .disableLiquidGlass)
-			}
-			if
-				!Defaults.Keys.hideIconsInMenuBar.isDefaultValue ||
-				{ if #available(macOS 26, *) { interfaceMode >= .advanced } else { false } }()
-			{
-				SettingToggle(.hideIconsInMenuBar, value: $hideIconsInMenuBar, key: .hideIconsInMenuBar)
-					.id(disableLiquidGlass)
-			}
+			SettingToggle(
+				.disableLiquidGlass,
+				value: $disableLiquidGlass,
+				key: .disableLiquidGlass,
+				if: { if #available(macOS 26, *) { interfaceMode >= .normal } else { false } }(),
+			)
+			.onChange(of: disableLiquidGlass) { _ in RelaunchDialog.present() }
+			SettingToggle(
+				.hideIconsInMenuBar,
+				value: $hideIconsInMenuBar,
+				key: .hideIconsInMenuBar,
+				if: { if #available(macOS 26, *) { interfaceMode >= .advanced } else { false } }(),
+			)
+			.id(disableLiquidGlass)
+			.onChange(of: hideIconsInMenuBar) { _ in RelaunchDialog.present() }
 		}
-		.onChange(of: disableLiquidGlass) { _ in RelaunchDialog.present() }
-		.onChange(of: hideIconsInMenuBar) { _ in RelaunchDialog.present() }
 	}
 }

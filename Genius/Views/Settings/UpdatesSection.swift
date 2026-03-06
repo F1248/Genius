@@ -33,9 +33,12 @@ struct UpdatesSection: View {
 						updater.automaticallyChecksForUpdates = newValue != .disabled
 						updater.automaticallyDownloadsUpdates = newValue == .enabled
 					}
-				if !Defaults.Keys.betaUpdates.isDefaultValue || Defaults[.interfaceMode] >= .advanced {
-					SettingToggle(.betaUpdates, value: $betaUpdates, key: .betaUpdates)
-				}
+				SettingToggle(
+					.betaUpdates,
+					value: $betaUpdates,
+					key: .betaUpdates,
+					if: Defaults[.interfaceMode] >= .advanced,
+				)
 			}
 		}
 	}
