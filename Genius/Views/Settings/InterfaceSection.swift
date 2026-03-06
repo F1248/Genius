@@ -24,13 +24,13 @@ struct InterfaceSection: View {
 				.pickerStyle(.inline)
 			if
 				!Defaults.Keys.disableLiquidGlass.isDefaultValue ||
-				{ if #available(macOS 26, *) { Defaults[.developmentMode] || interfaceMode >= .normal } else { false } }()
+				{ if #available(macOS 26, *) { interfaceMode >= .normal } else { false } }()
 			{
 				SettingToggle(.disableLiquidGlass, value: $disableLiquidGlass, key: .disableLiquidGlass)
 			}
 			if
 				!Defaults.Keys.hideIconsInMenuBar.isDefaultValue ||
-				{ if #available(macOS 26, *) { Defaults[.developmentMode] || interfaceMode >= .advanced } else { false } }()
+				{ if #available(macOS 26, *) { interfaceMode >= .advanced } else { false } }()
 			{
 				SettingToggle(.hideIconsInMenuBar, value: $hideIconsInMenuBar, key: .hideIconsInMenuBar)
 					.id(disableLiquidGlass)

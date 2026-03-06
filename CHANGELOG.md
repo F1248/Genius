@@ -20,6 +20,7 @@ See LICENSE.txt for license information.
 - Adjust “Open in System Settings” to “Open Setting” in `MaintenanceCheckLabelPopover`
 - Show correct app name and icon in administrator privileges dialog
 - Rename “Enabled” to “Passed”, “Disabled” to “Failed” for maintenance checks
+- Do not display all settings in development mode
 
 ### Fixed
 
