@@ -13,8 +13,13 @@ struct MaintenanceView: View {
 
 	var body: some View {
 		VStack {
-			SettingToggle(.showPassedChecks, value: $showPassedChecks, key: .showPassedMaintenanceChecks)
-				.toggleStyle(.switch)
+			SettingToggle(
+				.showPassedChecks,
+				value: $showPassedChecks,
+				key: .showPassedMaintenanceChecks,
+				if: Defaults[.interfaceMode] >= .normal,
+			)
+			.toggleStyle(.switch)
 			MaintenanceFormView()
 		}
 	}
