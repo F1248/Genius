@@ -8,6 +8,8 @@ import Foundation
 extension UserDefaults {
 
 	func read<Wrapped>(key: String, default defaultValue: Wrapped) -> Wrapped? {
-		object(forKey: key) as? Wrapped ?? defaultValue
+		if let value = object(forKey: key) {
+			value as? Wrapped
+		} else { defaultValue }
 	}
 }
