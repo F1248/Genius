@@ -13,33 +13,43 @@ extension MaintenanceCheckTests {
 
 		@Test
 		@MainActor
-		func `Development mode disabled, interface mode normal`() {
+		func Unavailable() {
 			Defaults[.developmentMode] = false
-			Defaults[.interfaceMode] = .normal
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == nil)
-			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .failed)
-			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .passed)
-			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == nil)
-		}
 
-		@Test
-		@MainActor
-		func `Development mode disabled, interface mode advanced`() {
-			Defaults[.developmentMode] = false
-			Defaults[.interfaceMode] = .advanced
-			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == nil)
-			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .failed)
-			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .passed)
-			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == .unknown)
-		}
-
-		@Test
-		@MainActor
-		func `Development mode enabled`() {
 			Defaults[.developmentMode] = true
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == .unavailable)
+		}
+
+		@Test
+		@MainActor
+		func Failed() {
 			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .failed)
+		}
+
+		@Test
+		@MainActor
+		func Passed() {
+			Defaults[.showPassedMaintenanceChecks] = false
+			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == nil)
+
+			Defaults[.showPassedMaintenanceChecks] = true
 			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .passed)
+		}
+
+		@Test
+		@MainActor
+		func Unknown() {
+			Defaults[.developmentMode] = false
+			Defaults[.interfaceMode] = .normal
+			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == nil)
+
+			Defaults[.developmentMode] = false
+			Defaults[.interfaceMode] = .advanced
+			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == .unknown)
+
+			Defaults[.developmentMode] = true
+			Defaults[.interfaceMode] = .normal
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == .unknown)
 		}
 	}
