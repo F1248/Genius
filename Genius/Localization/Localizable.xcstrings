@@ -974,23 +974,6 @@
         }
       }
     },
-    "notAvailable" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nicht verfügbar"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Not available"
-          }
-        }
-      }
-    },
     "number" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1344,6 +1327,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Total cores"
+          }
+        }
+      }
+    },
+    "unavailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht verfügbar"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unavailable"
           }
         }
       }

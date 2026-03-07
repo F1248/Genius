@@ -37,7 +37,7 @@ extension MaintenanceCheckTests {
 		@MainActor
 		func `Development mode enabled`() {
 			Defaults[.developmentMode] = true
-			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == .notAvailable)
+			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == .unavailable)
 			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .failed)
 			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .passed)
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == .unknown)

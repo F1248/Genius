@@ -16,7 +16,7 @@ struct SystemInformationData<
 
 	var syncUIRepresentation: String?? {
 		if !?available ?? false {
-			Defaults[.developmentMode] ? String(localized: .notAvailable) : .none
+			Defaults[.developmentMode] ? String(localized: .unavailable) : .none
 		} else if let syncValue {
 			if let uiRepresentation = syncValue.uiRepresentation {
 				uiRepresentation
@@ -30,7 +30,7 @@ struct SystemInformationData<
 
 	var uiRepresentation: String? { get async {
 		if !?available ?? false {
-			Defaults[.developmentMode] ? String(localized: .notAvailable) : nil
+			Defaults[.developmentMode] ? String(localized: .unavailable) : nil
 		} else if let uiRepresentation = await value.uiRepresentation {
 			uiRepresentation
 		} else {

@@ -12,7 +12,7 @@ extension MaintenanceCheck where ValueWrapper == SyncValueWrapper<Value> {
 
 	@MainActor var uiRepresentation: Symbol? {
 		if !?available ?? false {
-			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .notAvailable) : nil
+			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .unavailable) : nil
 		} else if let value = value.optional {
 			if value >= requirement {
 				Defaults[.showPassedMaintenanceChecks] ? Symbol(.checkmark, color: .green, label: .passed) : nil

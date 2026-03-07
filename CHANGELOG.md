@@ -21,6 +21,7 @@ See LICENSE.txt for license information.
 - Show correct app name and icon in administrator privileges dialog
 - Rename “Enabled” to “Passed”, “Disabled” to “Failed” for maintenance checks
 - Do not display all settings in development mode
+- Rename “Not available” to “Unavailable”
 
 ### Fixed
 

@@ -20,7 +20,7 @@ struct MaintenanceCheck<
 
 	var syncUIRepresentation: Symbol?? {
 		if !?available ?? false {
-			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .notAvailable) : .none
+			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .unavailable) : .none
 		} else if let syncValue {
 			if let value = syncValue.optional {
 				if value >= requirement {
@@ -40,7 +40,7 @@ struct MaintenanceCheck<
 
 	var uiRepresentation: Symbol? { get async {
 		if !?available ?? false {
-			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .notAvailable) : nil
+			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .unavailable) : nil
 		} else if let value = await value.optional {
 			if value >= requirement {
 				Defaults[.showPassedMaintenanceChecks] ? Symbol(.checkmark, color: .green, label: .passed) : nil
