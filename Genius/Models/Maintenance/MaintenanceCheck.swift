@@ -4,6 +4,7 @@
 //
 
 import Defaults
+import Foundation
 import SFSafeSymbols
 import SwiftUI
 
@@ -70,6 +71,21 @@ extension MaintenanceCheck where ValueWrapper == SyncValueWrapper<Value> {
 	) where Value == Wrapped? {
 		self.valueWrapper = SyncValueWrapper(wrappedValue: available ?? true ? value() : nil)
 		self.available = available
+		self.requirement = requirement
+	}
+
+	init<Wrapped>(
+		defaultsDomain: String,
+		key: String,
+		default defaultValue: Wrapped,
+		requirement: Wrapped = .max,
+		available: Bool? = true,
+	) where Value == Wrapped? {
+		self.available = SystemInformation.Software.OS.bootMode.value !=? .recovery &&? available
+		self.valueWrapper = SyncValueWrapper(
+			wrappedValue: self.available ?? true ?
+				UserDefaults(suiteName: defaultsDomain)?.read(key: key, default: defaultValue) : nil,
+		)
 		self.requirement = requirement
 	}
 }

@@ -80,39 +80,41 @@ extension SystemInformation {
 		enum AutomaticUpdates {
 
 			static let checkMacOS = MaintenanceCheck<Bool?, _>(
-				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
-					.read(key: "AutomaticCheckEnabled", default: true),
-				available: { if #available(macOS 15, *) { false } else { Software.OS.bootMode.value !=? .recovery } }(),
+				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
+				key: "AutomaticCheckEnabled",
+				default: true,
+				available: { if #available(macOS 15, *) { false } else { true } }(),
 			)
 			static let downloadMacOS = MaintenanceCheck<Bool?, _>(
-				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
-					.read(key: "AutomaticDownload", default: true),
-				available: Software.OS.bootMode.value !=? .recovery,
+				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
+				key: "AutomaticDownload",
+				default: true,
 			)
 			static let installMacOS = MaintenanceCheck<Bool?, _>(
-				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
-					.read(key: "AutomaticallyInstallMacOSUpdates", default: false),
-				available: Software.OS.bootMode.value !=? .recovery,
+				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
+				key: "AutomaticallyInstallMacOSUpdates",
+				default: false,
 			)
 			static let installCritical = MaintenanceCheck<Bool?, _>(
-				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
-					.read(key: "CriticalUpdateInstall", default: true),
-				available: Software.OS.bootMode.value !=? .recovery,
+				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
+				key: "CriticalUpdateInstall",
+				default: true,
 			)
 			static let installConfigurationData = MaintenanceCheck<Bool?, _>(
-				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
-					.read(key: "ConfigDataInstall", default: true),
-				available: Software.OS.bootMode.value !=? .recovery,
+				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
+				key: "ConfigDataInstall",
+				default: true,
 			)
 			static let backgroundSecurityImprovements = MaintenanceCheck<Bool?, _>(
-				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
-					.read(key: "SplatEnabled", default: true),
-				available: { if #available(macOS 26.1, *) { Software.OS.bootMode.value !=? .recovery } else { false } }(),
+				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
+				key: "SplatEnabled",
+				default: true,
+				available: { if #available(macOS 26.1, *) { true } else { false } }(),
 			)
 			static let installAppStoreApps = MaintenanceCheck<Bool?, _>(
-				UserDefaults(suiteName: "/Library/Preferences/com.apple.commerce")?
-					.read(key: "AutoUpdate", default: false),
-				available: Software.OS.bootMode.value !=? .recovery,
+				defaultsDomain: "/Library/Preferences/com.apple.commerce",
+				key: "AutoUpdate",
+				default: false,
 			)
 		}
 	}
