@@ -417,7 +417,7 @@
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
 			requirement = {
 				kind = exactVersion;
-				version = 9.0.6;
+				version = 9.0.7;
 			};
 		};
 		A4D6DC6C2D37EE4700E9A61D /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
@@ -433,7 +433,7 @@
 			repositoryURL = "https://github.com/sparkle-project/Sparkle";
 			requirement = {
 				kind = exactVersion;
-				version = 2.8.1;
+				version = 2.9.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
