@@ -33,6 +33,7 @@ See LICENSE.txt for license information.
 
 - Update [Sparkle](https://github.com/sparkle-project/Sparkle) from [2.8.1](https://github.com/sparkle-project/Sparkle/releases/tag/2.8.1) to [2.9.0](https://github.com/sparkle-project/Sparkle/releases/tag/2.9.0)
 - Update [Defaults](https://github.com/sindresorhus/Defaults) from [9.0.6](https://github.com/sindresorhus/Defaults/releases/tag/9.0.6) to [9.0.7](https://github.com/sindresorhus/Defaults/releases/tag/9.0.7)
+- Update [Xcode](https://developer.apple.com/xcode) from [26.2.0](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_2-release-notes) to [26.4.0](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_4-release-notes)
 
 ### [Commit History](https://github.com/F1248/Genius/compare/v1.0.0...HEAD)
 
