@@ -6,9 +6,9 @@
 @testable import Genius
 import Testing
 
-extension OptionalOperators {
+extension `Optional operators` {
 
-	struct Equation {
+	struct Equation { // swiftformat:disable:this swiftTestingTestCaseNames
 
 		@Test("==?")
 		func optionalEqualTo() {

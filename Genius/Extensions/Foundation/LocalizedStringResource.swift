@@ -38,6 +38,7 @@ extension LocalizedStringResource: @retroactive View, VaryingLocalizationTable {
 	static var installCriticalUpdates: Self { localizationTable.installCriticalUpdates }
 	static var installMacOSUpdates: Self { localizationTable.installMacOSUpdates }
 	static var malwareProtection: Self { localizationTable.malwareProtection }
+	static var noSystemInformationAvailable: Self { localizationTable.noSystemInformationAvailable }
 	static var systemInformation: Self { localizationTable.systemInformation }
 	static var uninstallApp: Self { localizationTable.uninstallApp }
 	static var uninstallAppEllipsis: Self { localizationTable.uninstallAppEllipsis }

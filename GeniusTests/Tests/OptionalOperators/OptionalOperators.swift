@@ -3,7 +3,4 @@
 // See LICENSE.txt for license information.
 //
 
-import Testing
-
-@Suite("Optional operators")
-enum OptionalOperators {}
+enum `Optional operators` {}

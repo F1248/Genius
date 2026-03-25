@@ -3,7 +3,4 @@
 // See LICENSE.txt for license information.
 //
 
-import Testing
-
-@Suite("Value wrappers")
-enum ValueWrappers {}
+enum `Value wrappers` {}

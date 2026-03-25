@@ -7,6 +7,9 @@ import Defaults
 
 extension Defaults.Keys {
 
+	static let showPassedMaintenanceChecks =
+		Key<Bool>("ShowPassedMaintenanceChecks", default: { Defaults[.interfaceMode] >= .normal })
+
 	static let useTextInsteadOfSymbols = Key<Bool>("UseTextInsteadOfSymbols", default: { Defaults[.interfaceMode] <= .simple })
 	static let interfaceMode = Key<Settings.InterfaceMode>("InterfaceMode", default: .normal)
 	static let disableLiquidGlass = Key<Bool>("DisableLiquidGlass", default: false)

@@ -18,7 +18,7 @@ struct SystemProfiler {
 	let valueWrapper: AsyncValueWrapper<[String: any Sendable]?>
 
 	init(dataType: String) {
-		self.valueWrapper = AsyncValueWrapper(valueClosure: {
+		self.valueWrapper = AsyncValueWrapper {
 			let dataType: String = "SP\(dataType)DataType"
 			guard
 				let systemProfilerOutput = await Process("/usr/sbin/system_profiler", "-json", dataType)?.runSafe()
@@ -26,6 +26,6 @@ struct SystemProfiler {
 			return (
 				JSONSerialization.jsonObject(from: systemProfilerOutput) as? [String: [[String: any Sendable]]],
 			)?[dataType]?.first
-		})
+		}
 	}
 }

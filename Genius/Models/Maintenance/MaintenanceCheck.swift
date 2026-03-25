@@ -3,8 +3,8 @@
 // See LICENSE.txt for license information.
 //
 
-import _Concurrency
 import Defaults
+import Foundation
 import SFSafeSymbols
 import SwiftUI
 
@@ -21,12 +21,14 @@ struct MaintenanceCheck<
 
 	var syncUIRepresentation: Symbol?? {
 		if !?available ?? false {
-			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .notAvailable) : .none
+			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .unavailable) : .none
 		} else if let syncValue {
 			if let value = syncValue.optional {
-				value >= requirement ? // swiftlint:disable:this void_function_in_ternary
-					Symbol(.checkmark, color: .green, label: .enabled) :
-					Symbol(.xmark, color: .red, label: .disabled)
+				if value >= requirement {
+					Defaults[.showPassedMaintenanceChecks] ? Symbol(.checkmark, color: .green, label: .passed) : nil
+				} else {
+					Symbol(.xmark, color: .red, label: .failed)
+				}
 			} else {
 				Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
 					Symbol(.questionmark, color: .red, label: .unknown) :
@@ -39,11 +41,13 @@ struct MaintenanceCheck<
 
 	var uiRepresentation: Symbol? { get async {
 		if !?available ?? false {
-			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .notAvailable) : nil
+			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .unavailable) : nil
 		} else if let value = await value.optional {
-			value >= requirement ? // swiftlint:disable:this void_function_in_ternary
-				Symbol(.checkmark, color: .green, label: .enabled) :
-				Symbol(.xmark, color: .red, label: .disabled)
+			if value >= requirement {
+				Defaults[.showPassedMaintenanceChecks] ? Symbol(.checkmark, color: .green, label: .passed) : nil
+			} else {
+				Symbol(.xmark, color: .red, label: .failed)
+			}
 		} else {
 			Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
 				Symbol(.questionmark, color: .red, label: .unknown) : nil
@@ -52,19 +56,6 @@ struct MaintenanceCheck<
 }
 
 extension MaintenanceCheck where ValueWrapper == SyncValueWrapper<Value> {
-
-	@MainActor var uiRepresentation: Symbol? {
-		if !?available ?? false {
-			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .notAvailable) : nil
-		} else if let value = value.optional {
-			value >= requirement ? // swiftlint:disable:this void_function_in_ternary
-				Symbol(.checkmark, color: .green, label: .enabled) :
-				Symbol(.xmark, color: .red, label: .disabled)
-		} else {
-			Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
-				Symbol(.questionmark, color: .red, label: .unknown) : nil
-		}
-	}
 
 	// periphery:ignore
 	init(_ value: Value, requirement: Wrapped = .max) {
@@ -82,13 +73,28 @@ extension MaintenanceCheck where ValueWrapper == SyncValueWrapper<Value> {
 		self.available = available
 		self.requirement = requirement
 	}
+
+	init<Wrapped>(
+		defaultsDomain: String,
+		key: String,
+		default defaultValue: Wrapped,
+		requirement: Wrapped = .max,
+		available: Bool? = true,
+	) where Value == Wrapped? {
+		self.available = SystemInformation.Software.OS.bootMode.value !=? .recovery &&? available
+		self.valueWrapper = SyncValueWrapper(
+			wrappedValue: self.available ?? true ?
+				UserDefaults(suiteName: defaultsDomain)?.read(key: key, default: defaultValue) : nil,
+		)
+		self.requirement = requirement
+	}
 }
 
 extension MaintenanceCheck where ValueWrapper == AsyncValueWrapper<Value> {
 
 	// periphery:ignore
 	init(_ valueClosure: @escaping @Sendable () async -> Value, requirement: Wrapped = .max) {
-		self.valueWrapper = AsyncValueWrapper(valueClosure: valueClosure)
+		self.valueWrapper = AsyncValueWrapper(valueClosure)
 		self.requirement = requirement
 		self.available = true
 	}
@@ -99,7 +105,7 @@ extension MaintenanceCheck where ValueWrapper == AsyncValueWrapper<Value> {
 		available: Bool?,
 	) where Value == Wrapped? {
 		self.valueWrapper = AsyncValueWrapper(
-			valueClosure: available ?? true ? valueClosure : { @Sendable in nil },
+			available ?? true ? valueClosure : { @Sendable in nil },
 		)
 		self.requirement = requirement
 		self.available = available

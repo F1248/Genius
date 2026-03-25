@@ -3,8 +3,6 @@
 // See LICENSE.txt for license information.
 //
 
-import _Concurrency
-
 protocol SystemInformationProtocol<Representation>: Sendable {
 
 	associatedtype Value

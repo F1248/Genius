@@ -6,9 +6,9 @@
 @testable import Genius
 import Testing
 
-extension OptionalOperators {
+extension `Optional operators` {
 
-	struct Comparison {
+	struct Comparison { // swiftformat:disable:this swiftTestingTestCaseNames
 
 		@Test(">?")
 		func optionalGreaterThan() {

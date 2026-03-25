@@ -17,78 +17,58 @@ extension Bool: @retroactive Comparable, Maximizable, PossiblyOptional, DataInit
 		}
 	}
 
-	init?<Value: Equatable>(
-		_ value: Value,
-		valuesTrue: Value...,
-		valuesFalse: Value...,
-	) {
-		if valuesTrue.contains(value) {
-			self = true
-		} else if valuesFalse.contains(value) {
-			self = false
-		} else { return nil }
-	}
-
 	init?(systemProfilerActivationLockStatusOutput: (any Sendable)?) {
-		self.init(
-			(systemProfilerActivationLockStatusOutput as? String)?.betweenAnchored(start: "activation_lock_"),
-			valuesTrue: "enabled",
-			valuesFalse: "disabled",
-		)
+		switch (systemProfilerActivationLockStatusOutput as? String)?.betweenAnchored(start: "activation_lock_") {
+			case "enabled": self = true
+			case "disabled": self = false
+			default: return nil
+		}
 	}
 
 	init?(firmwarepasswdOutput: String?) {
-		self.init(
-			firmwarepasswdOutput?.betweenAnchored(start: "Password Enabled: "),
-			valuesTrue: "Yes",
-			valuesFalse: "No",
-		)
+		switch firmwarepasswdOutput?.betweenAnchored(start: "Password Enabled: ") {
+			case "Yes": self = true
+			case "No": self = false
+			default: return nil
+		}
 	}
 
-	// swiftformat:disable indent wrap wrapArguments
-	// swiftlint:disable vertical_parameter_alignment_on_call
-
 	init?(fdesetupOutput: String?) {
-		self.init(
-			fdesetupOutput?.betweenAnchored(start: "FileVault is ", end: "."),
-			valuesTrue: "On",
-			valuesFalse:
-				"On, but needs to be restarted to finish",
-				"Off",
-				"Off, but needs to be restarted to finish",
-				"Off, but will be enabled after the next restart",
-		)
+		switch fdesetupOutput?.betweenAnchored(start: "FileVault is ", end: ".") {
+			case "On": self = true
+			case "On, but needs to be restarted to finish": self = false
+			case "Off": self = false
+			case "Off, but needs to be restarted to finish": self = false
+			case "Off, but will be enabled after the next restart": self = false
+			default: return nil
+		}
 	}
 
 	init?(csrutilOutput: String?) {
-		self.init(
-			csrutilOutput?.firstLine?.betweenAnchored(start: "System Integrity Protection status: ", end: "."),
-			valuesTrue: "enabled",
-			valuesFalse:
-				"enabled (Apple Internal)",
-				"disabled",
-				"disabled (Apple Internal)",
-				"unknown (Custom Configuration)",
-		)
+		switch csrutilOutput?.firstLine?.betweenAnchored(start: "System Integrity Protection status: ", end: ".") {
+			case "enabled": self = true
+			case "enabled (Apple Internal)": self = false
+			case "disabled": self = false
+			case "disabled (Apple Internal)": self = false
+			case "unknown (Custom Configuration)": self = false
+			default: return nil
+		}
 	}
 
-	// swiftformat:enable indent wrap wrapArguments
-	// swiftlint:enable vertical_parameter_alignment_on_call
-
 	init?(socketfilterfwOutput: String?) {
-		self.init(
-			socketfilterfwOutput?.betweenAnchored(start: "Firewall is "),
-			valuesTrue: "enabled. (State = 1)",
-			valuesFalse: "disabled. (State = 0)",
-		)
+		switch socketfilterfwOutput?.betweenAnchored(start: "Firewall is ") {
+			case "enabled. (State = 1)": self = true
+			case "disabled. (State = 0)": self = false
+			default: return nil
+		}
 	}
 
 	init?(spctlOutput: String?) {
-		self.init(
-			spctlOutput?.betweenAnchored(start: "assessments "),
-			valuesTrue: "enabled",
-			valuesFalse: "disabled",
-		)
+		switch spctlOutput?.betweenAnchored(start: "assessments ") {
+			case "enabled": self = true
+			case "disabled": self = false
+			default: return nil
+		}
 	}
 
 	public static func < (lhs: Self, rhs: Self) -> Bool {

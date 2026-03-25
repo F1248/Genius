@@ -8,10 +8,8 @@ opt_in_rules: all
 analyzer_rules: all
 
 disabled_rules:
-    - closure_body_length
     - conditional_returns_on_newline
     - contrasted_opening_brace
-    - discouraged_none_name
     - discouraged_optional_boolean
     - discouraged_optional_collection
     - explicit_acl
@@ -19,16 +17,15 @@ disabled_rules:
     - explicit_top_level_acl
     - function_default_parameter_at_end
     - multiple_closures_with_trailing_closure
-    - nesting
     - no_magic_numbers
     - prefixed_toplevel_constant
     - private_swiftui_state
     - required_deinit
     - sorted_enum_cases
     - switch_case_on_newline
-    - trailing_closure
     - vertical_whitespace_opening_braces
 
+closure_body_length: 32
 cyclomatic_complexity:
     ignores_case_statements: true
 deployment_target:
@@ -53,6 +50,9 @@ multiline_call_arguments:
     max_number_of_single_line_parameters: 3
 multiline_parameters:
     max_number_of_single_line_parameters: 2
+nesting:
+    function_level: 0
+    type_level: 3
 no_empty_block:
     disabled_block_types:
         - closure_blocks
@@ -67,13 +67,13 @@ operator_usage_whitespace:
     skip_aligned_constants: false
 prefer_key_path:
     restrict_to_standard_functions: false
-private_over_fileprivate:
-    validate_extensions: true
 redundant_self:
     keep_in_initializers: true
     only_in_closures: false
 switch_case_alignment:
     indented_cases: true
+trailing_closure:
+    only_single_muted_parameter: true
 trailing_comma:
     mandatory_comma: true
 trailing_whitespace:

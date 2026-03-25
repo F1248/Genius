@@ -13,13 +13,13 @@ struct MaintenanceCheckLabel: View {
 
 	let name: LocalizedStringResource
 	let help: URL?
-	let setting: URL?
+	let setting: (any Openable)?
 
 	// swiftlint:disable:next type_contents_order
 	init(
 		_ name: LocalizedStringResource,
 		help: URL?,
-		setting: URL? = nil,
+		setting: (any Openable)? = nil,
 	) {
 		self.name = name
 		self.help = help

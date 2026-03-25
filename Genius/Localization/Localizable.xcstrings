@@ -39,6 +39,23 @@
         }
       }
     },
+    "allChecksPassed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Überprüfungen erfüllt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All checks passed"
+          }
+        }
+      }
+    },
     "appleSilicon" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -392,6 +409,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enabled"
+          }
+        }
+      }
+    },
+    "failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht erfüllt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed"
           }
         }
       }
@@ -906,6 +940,23 @@
         }
       }
     },
+    "noChecksAvailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Überprüfungen verfügbar"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No checks available"
+          }
+        }
+      }
+    },
     "noneSecurityChip" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -919,23 +970,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "None"
-          }
-        }
-      }
-    },
-    "notAvailable" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nicht verfügbar"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Not available"
           }
         }
       }
@@ -957,19 +991,36 @@
         }
       }
     },
-    "openInSystemSettings" : {
+    "openSetting" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "In den Systemeinstellungen öffnen"
+            "value" : "Einstellung öffnen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open in System Settings"
+            "value" : "Open Setting"
+          }
+        }
+      }
+    },
+    "passed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erfüllt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passed"
           }
         }
       }
@@ -1161,6 +1212,23 @@
         }
       }
     },
+    "showPassedChecks" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erfüllte Überprüfungen anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show passed checks"
+          }
+        }
+      }
+    },
     "smc" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1259,6 +1327,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Total cores"
+          }
+        }
+      }
+    },
+    "unavailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht verfügbar"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unavailable"
           }
         }
       }

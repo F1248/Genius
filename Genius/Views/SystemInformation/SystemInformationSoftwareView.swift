@@ -9,7 +9,7 @@ import SwiftUI
 struct SystemInformationSoftwareView: View {
 
 	var body: some View {
-		FormView<LocalizedStringResource, _>(content: [
+		FormView<LocalizedStringResource, _>(textWhenEmpty: .noSystemInformationAvailable, content: [
 			.smc: [
 				.version: SystemInformation.Software.SMC.version,
 			],

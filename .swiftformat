@@ -8,33 +8,31 @@
 
 --enable \
 	acronyms, \
-	blankLinesBetweenImports, \
 	blockComments, \
-	emptyExtensions, \
-	environmentEntry, \
 	isEmpty, \
 	noExplicitOwnership, \
-	noForceTryInTests, \
-	noForceUnwrapInTests, \
 	noGuardInTests, \
 	organizeDeclarations, \
 	preferFinalClasses, \
 	preferSwiftTesting, \
-	redundantAsync, \
-	redundantEquatable, \
-	redundantMemberwiseInit, \
-	redundantProperty, \
-	redundantThrows, \
 	singlePropertyPerLine, \
+	sortSwitchCases, \
 	unusedPrivateDeclarations, \
+	validateTestCases, \
 	wrapEnumCases, \
 	wrapMultilineConditionalAssignment, \
+
+--disable \
+	blankLinesAtStartOfScope, \
+	wrapFunctionBodies, \
+	wrapPropertyBodies, \
 
 --acronyms "CPU,EFI,ID,IO,JSON,NVRAM,OS,SF,SMC,UDID,UI,URL,UUID"
 --allow-partial-wrapping false
 --cond-assignment always
 --fraction-grouping enabled
 --header "\n© {created.year} F1248 <f1248@mailbox.org>\nSee LICENSE.txt for license information.\n"
+--import-grouping alpha
 --indent tab
 --indent-case true
 --mark-categories false
@@ -48,6 +46,8 @@
 --self-required error
 --semicolons never
 --short-optionals always
+--suite-name-format raw-identifiers
 --tab-width 4
---type-blank-lines preserve
+--test-case-name-format preserve
+--type-blank-lines remove
 --xcode-indentation enabled

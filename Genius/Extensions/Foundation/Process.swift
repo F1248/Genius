@@ -3,35 +3,17 @@
 // See LICENSE.txt for license information.
 //
 
-import _Concurrency
 import Foundation
 import ObjectiveC
 import os
 
 extension Process {
 
-	convenience init?(
-		_ executable: String,
-		_ arguments: String...,
-		asRoot runAsRoot: Bool = false,
-	) {
+	convenience init?(_ executable: String, _ arguments: String...) {
 		self.init()
-		if runAsRoot, SystemInformation.Software.OS.bootMode.value != .recovery {
-			guard let executableURL = URL(filePath: "/usr/bin/osascript") else { return nil }
-			self.executableURL = executableURL
-			self.arguments = [
-				"-e",
-				"""
-				do shell script \"\(executable) \(arguments.joined(separator: " "))\" \
-				with prompt \"\(String(localized: .administratorPrivilegesRequest))\" \
-				with administrator privileges
-				""",
-			]
-		} else {
-			guard let executableURL = URL(filePath: executable) else { return nil }
-			self.executableURL = executableURL
-			self.arguments = arguments
-		}
+		guard let executableURL = URL(filePath: executable) else { return nil }
+		self.executableURL = executableURL
+		self.arguments = arguments
 		self.qualityOfService = .userInitiated
 		#if TEST
 			self.environment = (environment ?? [:]).merging(["OS_ACTIVITY_MODE": "disable"]) { $1 }
@@ -47,7 +29,17 @@ extension Process {
 	}
 
 	@discardableResult
-	func runSafe() async -> String? {
+	func runSafe(asRoot runAsRoot: Bool = false) async -> String? {
+
+		if runAsRoot, SystemInformation.Software.OS.bootMode.value != .recovery {
+			guard let executableURL, let arguments else { return nil }
+			return unsafe NSAppleScript(source: """
+			do shell script \"\(executableURL.path()) \(arguments.joined(separator: " "))\" \
+			with prompt \"\(String(localized: .administratorPrivilegesRequest))\" \
+			with administrator privileges
+			""")?.executeAndReturnError(nil).stringValue
+		}
+
 		let outputPipe = Pipe()
 		let errorPipe = Pipe()
 		standardOutput = outputPipe

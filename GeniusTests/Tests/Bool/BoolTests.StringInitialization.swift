@@ -8,11 +8,10 @@ import Testing
 
 extension BoolTests {
 
-	@Suite("String initialization")
-	struct StringInitialization {
+	struct `String initialization` {
 
-		@Test("system_profiler activation_lock_status")
-		func systemProfilerActivationLockStatus() {
+		@Test
+		func `system_profiler activation_lock_status`() {
 			#expect(Bool(systemProfilerActivationLockStatusOutput: "activation_lock_enabled") == true)
 			#expect(Bool(systemProfilerActivationLockStatusOutput: "activation_lock_disabled") == false)
 		}

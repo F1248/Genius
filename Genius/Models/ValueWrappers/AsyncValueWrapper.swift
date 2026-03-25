@@ -3,8 +3,6 @@
 // See LICENSE.txt for license information.
 //
 
-import _Concurrency
-
 actor AsyncValueWrapper<Value: Sendable>: ValueWrapperProtocol {
 
 	let valueClosure: @Sendable () async -> Value
@@ -26,7 +24,7 @@ actor AsyncValueWrapper<Value: Sendable>: ValueWrapperProtocol {
 		return value
 	} }
 
-	init(valueClosure: @escaping @Sendable () async -> Value) {
+	init(_ valueClosure: @escaping @Sendable () async -> Value) {
 		self.valueClosure = valueClosure
 	}
 }

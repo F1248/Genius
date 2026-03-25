@@ -7,10 +7,10 @@
 import Testing
 
 @Suite("Bool")
-struct BoolTests {
+struct BoolTests { // swiftformat:disable:this swiftTestingTestCaseNames
 
-	@Test("Comparable")
-	func comparable() {
+	@Test
+	func Comparable() {
 		#expect(false < true)
 		#expect(true > false)
 	}

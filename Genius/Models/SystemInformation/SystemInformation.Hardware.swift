@@ -110,7 +110,7 @@ extension SystemInformation {
 				if t2 ?? false { return .t2 }
 				let t1: Bool? = IORegistry(name: "Apple T1 Controller").exists
 				if t1 ?? false { return .t1 }
-				if t2 == false, t1 == false { return SecurityChip.none }
+				if t2 == false, t1 == false { return .absent }
 				return nil
 			#endif
 		}())

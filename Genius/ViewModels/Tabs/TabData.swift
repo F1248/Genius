@@ -40,7 +40,7 @@ extension TabData {
 	var displayTitleInBody: Bool { true }
 
 	// swiftlint:disable:next unused_declaration
-	@ViewBuilder var body: some View {
+	var body: some View {
 		VStack {
 			if displayTitleInBody {
 				Label(title, systemImage: symbol.rawValue)
@@ -52,7 +52,7 @@ extension TabData {
 		}
 	}
 
-	@ViewBuilder var command: some View {
+	var command: some View {
 		Button(commandTitle, systemImage: symbol.rawValue) {
 			SharedData.shared.selectedTabsIndices[Self.id] = index
 		}

@@ -11,26 +11,27 @@ struct MaintenanceCheckLabelPopover: View {
 
 	let name: LocalizedStringResource
 	let help: URL?
-	let setting: URL?
+	let setting: (any Openable)?
 
 	var body: some View {
 		VStack(alignment: .leading) {
 			Text(name)
-			if SystemInformation.Software.OS.bootMode.value != .recovery {
-				HStack {
-					Spacer(minLength: 32)
-					if let help {
-						Link(destination: help) {
-							Symbol(.questionmarkCircle, label: .help)
-						}
-						.foregroundColor(.secondary)
+			HStack {
+				Spacer(minLength: 32)
+				if (SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true, let help {
+					Link(destination: help) {
+						Symbol(.questionmarkCircle, label: .help)
 					}
-					if let setting {
-						Link(destination: setting) {
-							Symbol(.gear, label: .openInSystemSettings)
-						}
-						.foregroundColor(.secondary)
+					.foregroundColor(.secondary)
+				}
+				if let setting {
+					Button {
+						Task { await setting.open() }
+					} label: {
+						Symbol(.gear, label: .openSetting)
 					}
+					.buttonStyle(.plain)
+					.foregroundColor(.secondary)
 				}
 			}
 		}

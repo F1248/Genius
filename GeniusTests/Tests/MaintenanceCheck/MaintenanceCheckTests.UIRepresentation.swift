@@ -3,45 +3,53 @@
 // See LICENSE.txt for license information.
 //
 
-import _Concurrency
 import Defaults
 @testable import Genius
 import Testing
 
 extension MaintenanceCheckTests {
 
-	@Suite("uiRepresentation")
-	struct UIRepresentation {
+	struct uiRepresentation {
 
-		@Test("Development mode disabled, interface mode normal")
+		@Test
 		@MainActor
-		func developmentModeDisabledInterfaceModeNormal() {
+		func Unavailable() {
+			Defaults[.developmentMode] = false
+			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == nil)
+
+			Defaults[.developmentMode] = true
+			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == .unavailable)
+		}
+
+		@Test
+		@MainActor
+		func Failed() {
+			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .failed)
+		}
+
+		@Test
+		@MainActor
+		func Passed() {
+			Defaults[.showPassedMaintenanceChecks] = false
+			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == nil)
+
+			Defaults[.showPassedMaintenanceChecks] = true
+			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .passed)
+		}
+
+		@Test
+		@MainActor
+		func Unknown() {
 			Defaults[.developmentMode] = false
 			Defaults[.interfaceMode] = .normal
-			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == nil)
-			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .disabled)
-			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .enabled)
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == nil)
-		}
 
-		@Test("Development mode disabled, interface mode advanced")
-		@MainActor
-		func developmentModeDisabledInterfaceModeAdvanced() {
 			Defaults[.developmentMode] = false
 			Defaults[.interfaceMode] = .advanced
-			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == nil)
-			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .disabled)
-			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .enabled)
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == .unknown)
-		}
 
-		@Test("Development mode enabled")
-		@MainActor
-		func developmentModeEnabled() {
 			Defaults[.developmentMode] = true
-			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == .notAvailable)
-			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .disabled)
-			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .enabled)
+			Defaults[.interfaceMode] = .normal
 			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == .unknown)
 		}
 	}

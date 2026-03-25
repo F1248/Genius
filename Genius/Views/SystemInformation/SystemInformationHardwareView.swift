@@ -9,7 +9,7 @@ import SwiftUI
 struct SystemInformationHardwareView: View {
 
 	var body: some View {
-		FormView<LocalizedStringResource, _>(content: [
+		FormView<LocalizedStringResource, _>(textWhenEmpty: .noSystemInformationAvailable, content: [
 			.model: [
 				.name: SystemInformation.Hardware.Model.displayName,
 				.identifier: SystemInformation.Hardware.Model.identifier,

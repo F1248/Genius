@@ -15,11 +15,39 @@ See LICENSE.txt for license information.
 
 ### Security
 
+### Dependencies
+
+### [Commit History](https://github.com/F1248/Genius/compare/v1.1.0...HEAD)
+
+## [1.1.0](https://github.com/F1248/Genius/releases/tag/v1.1.0)
+
+### Added
+
+- Add keywords to app
+- Make Maintenance → Ask to allow accessories to connect available in recoveryOS on macOS 26 and later
+- Add Startup Security Utility in recoveryOS as firmware password and allow accessories to connect setting
+- Show text in System Information and Maintenance when no elements available
+- Add option to hide passed checks in Maintenance
+
+### Improved
+
+- Adjust “Open in System Settings” to “Open Setting” in `MaintenanceCheckLabelPopover`
+- Show correct app name and icon in administrator privileges dialog
+- Rename “Enabled” to “Passed”, “Disabled” to “Failed” for maintenance checks
+- Do not display all settings in development mode
+- Rename “Not available” to “Unavailable”
+
+### Security
+
 - Require signed appcast feed
 
 ### Dependencies
 
-### [Commit History](https://github.com/F1248/Genius/compare/v1.0.0...HEAD)
+- Update [Sparkle](https://github.com/sparkle-project/Sparkle) from [2.8.1](https://github.com/sparkle-project/Sparkle/releases/tag/2.8.1) to [2.9.0](https://github.com/sparkle-project/Sparkle/releases/tag/2.9.0)
+- Update [Defaults](https://github.com/sindresorhus/Defaults) from [9.0.6](https://github.com/sindresorhus/Defaults/releases/tag/9.0.6) to [9.0.7](https://github.com/sindresorhus/Defaults/releases/tag/9.0.7)
+- Update [Xcode](https://developer.apple.com/xcode) from [26.2.0](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_2-release-notes) to [26.4.0](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_4-release-notes)
+
+### [Commit History](https://github.com/F1248/Genius/compare/v1.0.0...v1.1.0)
 
 ## [1.0.0](https://github.com/F1248/Genius/releases/tag/v1.0.0)
 

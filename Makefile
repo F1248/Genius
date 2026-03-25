@@ -16,8 +16,9 @@ xcodebuild_pipe = \
 
 ifeq ($(GITHUB_ACTIONS), true)
 	command_prefix = ./
-	periphery_arguments = --format github-actions -- -skipPackagePluginValidation
-	sparkle_generate_appcast_arguments += --ed-key-file -
+	periphery_arguments = --format github-actions
+	periphery_build_arguments = -skipPackagePluginValidation
+	sparkle_arguments += --ed-key-file -
 	swiftformat_arguments = --reporter github-actions-log
 	swiftlint_arguments = --reporter github-actions-logging
 	xcbeautify_arguments = --renderer github-actions
@@ -42,10 +43,10 @@ all: lint test-without-building build zip-app create-dmg zip-debug-symbols appca
 	rm Genius.dmg
 	rm Genius.zip
 
-lint: periphery swiftformat swiftlint
+lint: swiftformat swiftlint-lint periphery swiftlint-analyze
 
 periphery:
-	$(command_prefix)periphery scan --strict $(periphery_arguments)
+	$(command_prefix)periphery scan --strict $(periphery_arguments) -- -configuration Test-Debug PERIPHERY=true $(periphery_build_arguments)
 
 swiftformat:
 	$(command_prefix)swiftformat --lint . $(swiftformat_arguments)
@@ -156,7 +157,7 @@ appcast:
 	# specify download URL prefix to prevent feed URL from getting prepended to download URL
 	echo $$sparkle_private_eddsa_key \
 		| $(command_prefix)generate_appcast _site \
-		$(sparkle_generate_appcast_arguments) \
+		$(sparkle_arguments) \
 		--download-url-prefix " " \
 		--maximum-versions 0 \
 		--maximum-deltas 999
@@ -173,7 +174,7 @@ appcast:
 	# specify download URL prefix to prevent feed URL from getting prepended to download URL
 	echo $$sparkle_private_eddsa_key \
 		| $(command_prefix)generate_appcast _site \
-		$(sparkle_generate_appcast_arguments) \
+		$(sparkle_arguments) \
 		--download-url-prefix " " \
 		--maximum-versions 0 \
 		--maximum-deltas 999 \
@@ -182,4 +183,11 @@ appcast:
 		-i $(sed_extension) \
 		"s|prefix-placeholder-|https://github.com/F1248/Genius/releases/download/|g;s|-postfix-placeholder|/Genius|g" \
 		_site/appcast.xml
+	echo $$sparkle_private_eddsa_key \
+		| $(command_prefix)sign_update _site/appcast.xml \
+		$(sparkle_arguments)
+	echo $$sparkle_private_eddsa_key \
+		| $(command_prefix)sign_update _site/appcast.xml \
+		$(sparkle_arguments) \
+		--verify
 	rm _site/prefix-placeholder-*-postfix-placeholder.zip

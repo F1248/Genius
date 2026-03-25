@@ -3,7 +3,9 @@
 // See LICENSE.txt for license information.
 //
 
-struct SystemSetting {
+import Foundation
+
+struct SystemSetting: Openable {
 
 	static let iCloud = Self(
 		pane: "com.apple.systempreferences.AppleIDSettings",
@@ -34,6 +36,17 @@ struct SystemSetting {
 		anchor: "SecurityImprovements",
 	)
 
-	let pane: String
-	let anchor: String?
+	let url: URL
+
+	init?(pane: String, anchor: String?) {
+		guard
+			(SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true,
+			let url = URL(string: "x-apple.systempreferences:\(pane)\(anchor.map { "?\($0)" } ?? "")")
+		else { return nil }
+		self.url = url
+	}
+
+	func open() {
+		url.open()
+	}
 }

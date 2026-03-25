@@ -6,10 +6,10 @@
 @testable import Genius
 import Testing
 
-extension ValueWrappers {
+extension `Value wrappers` {
 
 	@Suite("AsyncValueWrapper")
-	struct AsyncValueWrapperTests {
+	struct AsyncValueWrapperTests { // swiftformat:disable:this swiftTestingTestCaseNames
 
 		@Test("SystemInformationData")
 		func systemInformationData() async {

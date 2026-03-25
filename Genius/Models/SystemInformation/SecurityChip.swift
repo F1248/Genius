@@ -7,7 +7,7 @@ import Foundation
 
 enum SecurityChip: Comparable, UIStringRepresentable {
 
-	case none
+	case absent
 	case t1
 	case t2
 	case mSeries
@@ -15,7 +15,7 @@ enum SecurityChip: Comparable, UIStringRepresentable {
 	var uiRepresentation: String? {
 		let localizedStringResource: LocalizedStringResource =
 			switch self {
-				case .none: .noneSecurityChip
+				case .absent: .noneSecurityChip
 				case .t1: .appleT1
 				case .t2: .appleT2
 				case .mSeries: .mSeries

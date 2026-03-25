@@ -18,7 +18,7 @@ extension SystemInformation {
 					Software.OS.bootMode.value !=? .recovery,
 			)
 			static let firmwarePassword = MaintenanceCheck<Bool?, _>(
-				{ await Bool(firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check", asRoot: true)?.runSafe()) },
+				{ await Bool(firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check")?.runSafe(asRoot: true)) },
 				available: {
 					#if arch(arm64)
 						false
@@ -58,7 +58,7 @@ extension SystemInformation {
 			)
 			static let allowAccessoriesToConnect = MaintenanceCheck<AllowAccessoriesToConnectSetting?, _>(
 				{
-					switch IORegistry(class: "AppleCredentialManager").read("TRM_EffectiveConfigProfile") as Int? {
+					switch IORegistry(class: "AppleCredentialManager").read("TRM_ConfigProfile") as Int? {
 						case 1: .alwaysAsk
 						case 2: .askForNewAccessories
 						case 3: .automaticallyAllowWhenUnlocked
@@ -68,7 +68,8 @@ extension SystemInformation {
 				}(),
 				available: {
 					#if arch(arm64)
-						Hardware.Model.isLaptop &&? Software.OS.bootMode.value !=? .recovery
+						Hardware.Model.isLaptop &&?
+							{ if #available(macOS 26, *) { true } else { Software.OS.bootMode.value !=? .recovery } }()
 					#elseif arch(x86_64)
 						false
 					#endif
@@ -79,39 +80,41 @@ extension SystemInformation {
 		enum AutomaticUpdates {
 
 			static let checkMacOS = MaintenanceCheck<Bool?, _>(
-				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
-					.read(key: "AutomaticCheckEnabled", default: true),
-				available: { if #available(macOS 15, *) { false } else { Software.OS.bootMode.value !=? .recovery } }(),
+				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
+				key: "AutomaticCheckEnabled",
+				default: true,
+				available: { if #available(macOS 15, *) { false } else { true } }(),
 			)
 			static let downloadMacOS = MaintenanceCheck<Bool?, _>(
-				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
-					.read(key: "AutomaticDownload", default: true),
-				available: Software.OS.bootMode.value !=? .recovery,
+				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
+				key: "AutomaticDownload",
+				default: true,
 			)
 			static let installMacOS = MaintenanceCheck<Bool?, _>(
-				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
-					.read(key: "AutomaticallyInstallMacOSUpdates", default: false),
-				available: Software.OS.bootMode.value !=? .recovery,
+				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
+				key: "AutomaticallyInstallMacOSUpdates",
+				default: false,
 			)
 			static let installCritical = MaintenanceCheck<Bool?, _>(
-				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
-					.read(key: "CriticalUpdateInstall", default: true),
-				available: Software.OS.bootMode.value !=? .recovery,
+				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
+				key: "CriticalUpdateInstall",
+				default: true,
 			)
 			static let installConfigurationData = MaintenanceCheck<Bool?, _>(
-				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
-					.read(key: "ConfigDataInstall", default: true),
-				available: Software.OS.bootMode.value !=? .recovery,
+				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
+				key: "ConfigDataInstall",
+				default: true,
 			)
 			static let backgroundSecurityImprovements = MaintenanceCheck<Bool?, _>(
-				UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")?
-					.read(key: "SplatEnabled", default: true),
-				available: { if #available(macOS 26.1, *) { Software.OS.bootMode.value !=? .recovery } else { false } }(),
+				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
+				key: "SplatEnabled",
+				default: true,
+				available: { if #available(macOS 26.1, *) { true } else { false } }(),
 			)
 			static let installAppStoreApps = MaintenanceCheck<Bool?, _>(
-				UserDefaults(suiteName: "/Library/Preferences/com.apple.commerce")?
-					.read(key: "AutoUpdate", default: false),
-				available: Software.OS.bootMode.value !=? .recovery,
+				defaultsDomain: "/Library/Preferences/com.apple.commerce",
+				key: "AutoUpdate",
+				default: false,
 			)
 		}
 	}

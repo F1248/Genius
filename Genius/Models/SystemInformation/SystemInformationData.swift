@@ -16,7 +16,7 @@ struct SystemInformationData<
 
 	var syncUIRepresentation: String?? {
 		if !?available ?? false {
-			Defaults[.developmentMode] ? String(localized: .notAvailable) : .none
+			Defaults[.developmentMode] ? String(localized: .unavailable) : .none
 		} else if let syncValue {
 			if let uiRepresentation = syncValue.uiRepresentation {
 				uiRepresentation
@@ -30,7 +30,7 @@ struct SystemInformationData<
 
 	var uiRepresentation: String? { get async {
 		if !?available ?? false {
-			Defaults[.developmentMode] ? String(localized: .notAvailable) : nil
+			Defaults[.developmentMode] ? String(localized: .unavailable) : nil
 		} else if let uiRepresentation = await value.uiRepresentation {
 			uiRepresentation
 		} else {
@@ -56,13 +56,13 @@ extension SystemInformationData where ValueWrapper == AsyncValueWrapper<Value> {
 
 	// periphery:ignore
 	init(_ valueClosure: @escaping @Sendable () async -> Value) {
-		self.valueWrapper = AsyncValueWrapper(valueClosure: valueClosure)
+		self.valueWrapper = AsyncValueWrapper(valueClosure)
 		self.available = true
 	}
 
 	init<Wrapped>(_ valueClosure: @escaping @Sendable () async -> Value, available: Bool?) where Value == Wrapped? {
 		self.valueWrapper = AsyncValueWrapper(
-			valueClosure: available ?? true ? valueClosure : { @Sendable in nil },
+			available ?? true ? valueClosure : { @Sendable in nil },
 		)
 		self.available = available
 	}

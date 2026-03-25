@@ -3,7 +3,6 @@
 // See LICENSE.txt for license information.
 //
 
-import _Concurrency
 import AppKit
 import Foundation
 import ObjectiveC
@@ -16,7 +15,11 @@ actor AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationDockMenu(_: NSApplication) -> NSMenu? {
 		let dockMenu = NSMenu()
 		for tab in ContentViewTab.allCases {
-			let menuItem = NSMenuItem(title: String(localized: tab.title), action: #selector(changeTab(_:)), keyEquivalent: "")
+			let menuItem = NSMenuItem(
+				title: String(localized: tab.title),
+				action: #selector(changeTab(menuItem:)),
+				keyEquivalent: "",
+			)
 			menuItem.tag = tab.index
 			dockMenu.addItem(menuItem)
 		}
@@ -25,7 +28,7 @@ actor AppDelegate: NSObject, NSApplicationDelegate {
 
 	@MainActor
 	@objc
-	func changeTab(_ sender: NSMenuItem) {
-		SharedData.shared.selectedTabsIndices[ContentViewTab.id] = sender.tag
+	func changeTab(menuItem: NSMenuItem) {
+		SharedData.shared.selectedTabsIndices[ContentViewTab.id] = menuItem.tag
 	}
 }
