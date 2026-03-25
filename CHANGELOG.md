@@ -32,6 +32,7 @@ See LICENSE.txt for license information.
 ### Dependencies
 
 - Update [Sparkle](https://github.com/sparkle-project/Sparkle) from [2.8.1](https://github.com/sparkle-project/Sparkle/releases/tag/2.8.1) to [2.9.0](https://github.com/sparkle-project/Sparkle/releases/tag/2.9.0)
+- Update [Defaults](https://github.com/sindresorhus/Defaults) from [9.0.6](https://github.com/sindresorhus/Defaults/releases/tag/9.0.6) to [9.0.7](https://github.com/sindresorhus/Defaults/releases/tag/9.0.7)
 
 ### [Commit History](https://github.com/F1248/Genius/compare/v1.0.0...HEAD)
 
