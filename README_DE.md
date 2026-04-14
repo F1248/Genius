@@ -48,7 +48,7 @@ See LICENSE.txt for license information.
 In macOS Sequoia 15 oder neuer:
 
 3. Klicke auf `Fertig`.
-4. Öffne [`Datenschutz & Sicherheit` in den Systemeinstellungen, scrolle nach unten zu der Nachricht `„Genius“ wurde blockiert, um deinen Mac zu schützen.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) und klicke auf `Dennoch öffnen`.
+4. Öffne [`Datenschutz & Sicherheit` in den Systemeinstellungen, scrolle nach unten zu der Nachricht `„Genius“ wurde blockiert, um deinen Mac zu schützen.`](https://f1248.codeberg.page/r/?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) und klicke auf `Dennoch öffnen`.
 5. Klicke erneut auf `Dennoch öffnen`.
 6. Authentifiziere dich.
 

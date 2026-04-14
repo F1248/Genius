@@ -50,7 +50,7 @@ See LICENSE.txt for license information.
 On macOS Sequoia 15 or later:
 
 3. Click `Done`.
-4. Open [`Privacy & Security` in System Settings, scroll down to the message `“Genius” was blocked to protect your Mac.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) and click `Open Anyway`.
+4. Open [`Privacy & Security` in System Settings, scroll down to the message `“Genius” was blocked to protect your Mac.`](https://f1248.codeberg.page/r/?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) and click `Open Anyway`.
 5. Click `Open Anyway` again.
 6. Authenticate yourself.
 
