@@ -149,7 +149,7 @@ appcast:
 		--json tagName \
 		--jq ".[].tagName" \
 		| grep --invert-match v0.1.0 \
-		| xargs -I tag gh release download tag \
+		| xargs -I tag gh release --repo F1248/Genius download tag \
 		--output _site/prefix-placeholder-tag-postfix-placeholder.zip \
 		--pattern Genius.zip
 	# specify download URL prefix to prevent feed URL from getting prepended to download URL
@@ -165,7 +165,7 @@ appcast:
 		--json tagName \
 		--jq ".[].tagName" \
 		| grep --invert-match v0.1.0 \
-		| xargs -I tag gh release download tag \
+		| xargs -I tag gh release --repo F1248/Genius download tag \
 		--output _site/prefix-placeholder-tag-postfix-placeholder.zip \
 		--pattern Genius.zip \
 		--skip-existing
