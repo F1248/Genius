@@ -126,14 +126,12 @@ install-files:
 		git for-each-ref --format=" \
 			git checkout %(refname) && \
 			sed -i $(sed_extension) 's|download-url|https://nightly.link/F1248/Genius/workflows/Build-app/%(refname:lstrip=3)/Genius.zip|g' Install && \
-			mv Install ../_site/%(refname:lstrip=3) && \
-			git reset --hard \
+			cp Install ../_site/%(refname:lstrip=3) \
 		" "refs/remotes/origin/*" && \
 		git for-each-ref --format=" \
 			git checkout %(refname) && \
 			sed -i $(sed_extension) 's|download-url|https://codeberg.org/F1248/Genius/releases/download/%(refname:lstrip=2)/Genius.zip|g' Install && \
-			mv Install ../_site/%(refname:lstrip=2) && \
-			git reset --hard \
+			cp Install ../_site/%(refname:lstrip=2) \
 		" "refs/tags/*" \
 	)"
 	cd _site && \
