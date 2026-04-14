@@ -31,7 +31,7 @@
 		A42B353D2BA2185B009E81AD /* Genius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Genius.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A438B3FA2CA346C600F8DF17 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		A43BD9C32C729A680049953D /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
-		A444562E2D0E4EB200CE6207 /* .periphery.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .periphery.yml; sourceTree = "<group>"; usesTabs = 0; };
+		A444562E2D0E4EB200CE6207 /* .periphery.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .periphery.yaml; sourceTree = "<group>"; usesTabs = 0; };
 		A4528F1F2BCD9B400092CBB8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A452AFF22BBF2CAB00760569 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; usesTabs = 0; };
 		A47BFC592C72116700B88607 /* README_DE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_DE.md; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 				A47D8B992C26145300A0E4CF /* Genius */,
 				A4D9A1AB2D257055008D91E7 /* GeniusTests */,
 				A4528F1F2BCD9B400092CBB8 /* .gitignore */,
-				A444562E2D0E4EB200CE6207 /* .periphery.yml */,
+				A444562E2D0E4EB200CE6207 /* .periphery.yaml */,
 				A43BD9C32C729A680049953D /* .swiftformat */,
 				A452AFF22BBF2CAB00760569 /* .swiftlint.yml */,
 				C8C20D822ED12C9000368F3F /* CHANGELOG.md */,

@@ -9,8 +9,8 @@ on:
     push:
         branches-ignore: stable
         paths:
-            - .github/workflows/Build-app.yml
-            - .periphery.yml
+            - .github/workflows/Build-app.yaml
+            - .periphery.yaml
             - .swiftformat
             - .swiftlint.yml
             - Genius/**
@@ -23,8 +23,8 @@ on:
     pull_request:
         branches-ignore: stable
         paths:
-            - .github/workflows/Build-app.yml
-            - .periphery.yml
+            - .github/workflows/Build-app.yaml
+            - .periphery.yaml
             - .swiftformat
             - .swiftlint.yml
             - Genius/**

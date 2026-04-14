@@ -8,7 +8,7 @@ name: Generate appcast
 on:
     push:
         paths:
-            - .github/workflows/Generate-appcast.yml
+            - .github/workflows/Generate-appcast.yaml
             - Makefile
     release:
     workflow_dispatch:

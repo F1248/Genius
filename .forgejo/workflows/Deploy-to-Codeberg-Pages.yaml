@@ -9,7 +9,7 @@ on:
     delete:
     push:
         paths:
-            - .forgejo/workflows/Deploy-to-Codeberg-Pages.yml
+            - .forgejo/workflows/Deploy-to-Codeberg-Pages.yaml
             - Install
             - Makefile
     release:
