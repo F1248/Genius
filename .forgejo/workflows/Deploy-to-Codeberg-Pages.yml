@@ -1,0 +1,42 @@
+#
+# © 2024 F1248 <f1248@mailbox.org>
+# See LICENSE.txt for license information.
+#
+
+name: Deploy to Codeberg Pages
+
+on:
+    delete:
+    push:
+        paths:
+            - .forgejo/workflows/Deploy-to-Codeberg-Pages.yml
+            - Install
+            - Makefile
+    release:
+    workflow_dispatch:
+
+concurrency:
+    cancel-in-progress: true
+
+jobs:
+    Deploy-to-Codeberg-Pages:
+        name: Deploy to Codeberg Pages
+        runs-on: codeberg-tiny
+
+        steps:
+            - name: Checkout Genius
+              uses: https://github.com/actions/checkout@main
+              with:
+                ref: main
+                path: Genius
+                fetch-depth: 0
+
+            - name: Copy scripts
+              run: |
+                mv Genius/Makefile .
+                make install-files
+
+            - uses: https://codeberg.org/git-pages/action@v2
+              with:
+                site: https://f1248.codeberg.page
+                token: ${{ secrets.GIT_PAGES_TOKEN }}

@@ -138,7 +138,7 @@ install-files:
 	)"
 	cd _site && \
 	cp $$( \
-		gh release --repo F1248/Genius list --json tagName,isLatest --jq ".[] | select(.isLatest).tagName" \
+		curl https://codeberg.org/api/v1/repos/F1248/Genius/releases/latest | jq --raw-output .tag_name \
 	) index.html && \
 	rm stable
 

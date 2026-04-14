@@ -65,7 +65,7 @@ On macOS Sonoma 14 or earlier:
 Paste and run this command in a terminal:
 
 ```shellsession
-curl https://f1248.github.io | sh
+curl https://f1248.codeberg.page | sh
 ```
 
 ## Notes for use in recoveryOS
