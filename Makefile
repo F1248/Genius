@@ -131,7 +131,7 @@ install-files:
 		" "refs/remotes/origin/*" && \
 		git for-each-ref --format=" \
 			git checkout %(refname) && \
-			sed -i $(sed_extension) 's|download-url|https://github.com/F1248/Genius/releases/download/%(refname:lstrip=2)/Genius.zip|g' Install && \
+			sed -i $(sed_extension) 's|download-url|https://codeberg.org/F1248/Genius/releases/download/%(refname:lstrip=2)/Genius.zip|g' Install && \
 			mv Install ../_site/%(refname:lstrip=2) && \
 			git reset --hard \
 		" "refs/tags/*" \
@@ -181,7 +181,7 @@ appcast:
 		--channel beta
 	sed \
 		-i $(sed_extension) \
-		"s|prefix-placeholder-|https://github.com/F1248/Genius/releases/download/|g;s|-postfix-placeholder|/Genius|g" \
+		"s|prefix-placeholder-|https://codeberg.org/F1248/Genius/releases/download/|g;s|-postfix-placeholder|/Genius|g" \
 		_site/appcast.xml
 	echo $$sparkle_private_eddsa_key \
 		| $(command_prefix)sign_update _site/appcast.xml \

@@ -44,7 +44,7 @@ See LICENSE.txt for license information.
 
 ### Manual Installation (not possible in recoveryOS)
 
-1. Download [the latest version](https://github.com/F1248/Genius/releases/latest/download/Genius.dmg) and install it.
+1. Download [the latest version](https://codeberg.org/F1248/Genius/releases/download/latest/Genius.dmg) and install it.
 2. Double-click the app in `/Applications` to open it.
 
 On macOS Sequoia 15 or later:
