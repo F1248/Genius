@@ -84,6 +84,12 @@
 			path = GeniusTests;
 			sourceTree = "<group>";
 		};
+		C88CDFD72F8EF94B006374F6 /* .forgejo */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = .forgejo;
+			sourceTree = "<group>";
+			usesTabs = 0;
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,7 @@
 		A42B35342BA2185B009E81AD = {
 			isa = PBXGroup;
 			children = (
+				C88CDFD72F8EF94B006374F6 /* .forgejo */,
 				A417A7ED2C5EC312001FD481 /* .github */,
 				A47D8B992C26145300A0E4CF /* Genius */,
 				A4D9A1AB2D257055008D91E7 /* GeniusTests */,
