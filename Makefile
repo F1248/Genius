@@ -125,13 +125,11 @@ install-files:
 	cd Genius && eval "$$( \
 		git for-each-ref --format=" \
 			git checkout %(refname) && \
-			sed -i $(sed_extension) 's|download-url|https://nightly.link/F1248/Genius/workflows/Build-app/%(refname:lstrip=3)/Genius.zip|g' Install && \
-			cp Install ../_site/%(refname:lstrip=3) \
+			sed 's|download-url|https://nightly.link/F1248/Genius/workflows/Build-app/%(refname:lstrip=3)/Genius.zip|g' Install > ../_site/%(refname:lstrip=3) \
 		" "refs/remotes/origin/*" && \
 		git for-each-ref --format=" \
 			git checkout %(refname) && \
-			sed -i $(sed_extension) 's|download-url|https://codeberg.org/F1248/Genius/releases/download/%(refname:lstrip=2)/Genius.zip|g' Install && \
-			cp Install ../_site/%(refname:lstrip=2) \
+			sed 's|download-url|https://codeberg.org/F1248/Genius/releases/download/%(refname:lstrip=2)/Genius.zip|g' Install > ../_site/%(refname:lstrip=2) \
 		" "refs/tags/*" \
 	)"
 	cd _site && \
@@ -156,7 +154,6 @@ appcast:
 		--download-url-prefix " " \
 		--maximum-versions 0 \
 		--maximum-deltas 999
-	# exclude version 0.1.0 as it does not have Sparkle
 	curl "https://codeberg.org/api/v1/repos/F1248/Genius/releases?draft=false&pre-release=true" \
 		| jq --raw-output ".[].tag_name" \
 		| xargs -I tag gh release --repo F1248/Genius download tag \

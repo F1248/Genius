@@ -33,7 +33,7 @@ jobs:
 
             - name: Copy scripts
               run: |
-                mv Genius/Makefile .
+                cp Genius/Makefile .
                 make install-files
 
             - uses: https://codeberg.org/git-pages/action@v2
