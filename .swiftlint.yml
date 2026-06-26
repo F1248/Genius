@@ -10,6 +10,7 @@ analyzer_rules: all
 disabled_rules:
     - conditional_returns_on_newline
     - contrasted_opening_brace
+    - discouraged_default_parameter
     - discouraged_optional_boolean
     - discouraged_optional_collection
     - explicit_acl
@@ -38,6 +39,8 @@ file_name:
     excluded:
         - Array.swift
     require_fully_qualified_names: true
+force_unwrapping:
+    ignored_literal_argument_functions: []
 identifier_name:
     min_length: 2
 indentation_width:
@@ -65,6 +68,8 @@ opening_brace:
 operator_usage_whitespace:
     lines_look_around: 399
     skip_aligned_constants: false
+optional_data_string_conversion:
+    include_implicit_init: true
 prefer_key_path:
     restrict_to_standard_functions: false
 redundant_self:
@@ -99,5 +104,7 @@ unused_declaration:
     include_public_and_open: true
 unused_import:
     require_explicit_imports: true
+variable_shadowing:
+    ignore_parameters: false
 vertical_whitespace_between_cases:
     separation: never

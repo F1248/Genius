@@ -41,9 +41,9 @@ struct SystemSetting: Openable {
 	init?(pane: String, anchor: String?) {
 		guard
 			(SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true,
-			let url = URL(string: "x-apple.systempreferences:\(pane)\(anchor.map { "?\($0)" } ?? "")")
+			let createdURL = URL(string: "x-apple.systempreferences:\(pane)\(anchor.map { "?\($0)" } ?? "")")
 		else { return nil }
-		self.url = url
+		self.url = createdURL
 	}
 
 	func open() {

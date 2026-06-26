@@ -7,9 +7,9 @@ import Foundation
 
 enum Network {
 
-	static func string(from url: String) async -> String? {
+	static func string(from urlString: String) async -> String? {
 		guard
-			let url = URL(string: url),
+			let url = URL(string: urlString),
 			let (data, response) = try? await URLSession.shared.data(from: url),
 			(response as? HTTPURLResponse)?.statusCode == 200
 		else { return nil }
