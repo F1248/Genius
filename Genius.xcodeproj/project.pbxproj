@@ -8,7 +8,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 100;
+	objectVersion = 110;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -196,14 +196,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 2650;
-				LastUpgradeCheck = 2650;
+				LastSwiftUpdateCheck = 2700;
+				LastUpgradeCheck = 2700;
 				TargetAttributes = {
 					A42B353C2BA2185B009E81AD = {
-						CreatedOnToolsVersion = 26.5;
+						CreatedOnToolsVersion = 27.0;
 					};
 					A4D9A1A92D257055008D91E7 = {
-						CreatedOnToolsVersion = 26.5;
+						CreatedOnToolsVersion = 27.0;
 						TestTargetID = A42B353C2BA2185B009E81AD;
 					};
 				};
@@ -222,7 +222,7 @@
 				A4D6DC6C2D37EE4700E9A61D /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				C8F269E72E944767001AE315 /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
-			preferredProjectObjectVersion = 100;
+			preferredProjectObjectVersion = 110;
 			productRefGroup = A42B353E2BA2185B009E81AD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -464,4 +464,5 @@
 /* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A42B35352BA2185B009E81AD /* Project object */;
+	validationLevel = 1;
 }
