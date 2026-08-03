@@ -30,7 +30,6 @@ extension Process {
 
 	@discardableResult
 	func runSafe(asRoot runAsRoot: Bool = false) async -> String? {
-
 		if runAsRoot, SystemInformation.Software.OS.bootMode.value != .recovery {
 			guard let executableURL, let arguments else { return nil }
 			return unsafe NSAppleScript(source: """

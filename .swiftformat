@@ -9,13 +9,20 @@
 --enable \
 	acronyms, \
 	blockComments, \
+	emptyExtensions, \
 	isEmpty, \
 	noExplicitOwnership, \
 	noGuardInTests, \
 	organizeDeclarations, \
+	preferContains, \
+	preferCountWhere, \
 	preferFinalClasses, \
+	preferFirstWhere, \
+	preferFlatMap, \
+	preferMinOverSorted, \
 	preferSwiftStringAPI, \
 	preferSwiftTesting, \
+	redundantSendable, \
 	singlePropertyPerLine, \
 	sortSwitchCases, \
 	unusedPrivateDeclarations, \
@@ -26,6 +33,8 @@
 --disable \
 	blankLinesAtStartOfScope, \
 	wrapFunctionBodies, \
+	wrapIfExpressionBodies, \
+	wrapIfStatementBodies, \
 	wrapPropertyBodies, \
 
 --acronyms "CPU,EFI,ID,IO,JSON,NVRAM,OS,SF,SMC,UDID,UI,URL,UUID"
@@ -45,10 +54,11 @@
 --redundant-throws always
 --self init-only
 --self-required error
+--guard-like-if-statements convert
 --semicolons never
 --short-optionals always
 --suite-name-format raw-identifiers
 --tab-width 4
 --test-case-name-format preserve
---type-blank-lines remove
+--type-blank-lines start-only
 --xcode-indentation enabled
