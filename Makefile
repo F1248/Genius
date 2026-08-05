@@ -145,7 +145,7 @@ appcast:
 	# exclude version 0.1.0 as it does not have Sparkle
 	curl "https://codeberg.org/api/v1/repos/F1248/Genius/releases?draft=false&pre-release=false" \
 		| jq --raw-output ".[].tag_name" \
-		| grep --invert-match v0.1.0 \
+		| grep --invert-match "v0\.1\.0" \
 		| xargs -I tag gh release --repo F1248/Genius download tag \
 		--output _site/prefix-placeholder-tag-postfix-placeholder.zip \
 		--pattern Genius.zip
