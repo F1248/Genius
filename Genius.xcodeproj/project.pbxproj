@@ -257,7 +257,7 @@
 				"\tif which -s swiftformat; then",
 				"\t\tswiftformat --lint --lenient .",
 				"	else",
-				"\t\techo \"warning: SwiftFormat is not installed, see https://github.com/nicklockwood/SwiftFormat#command-line-tool for installation instructions\"",
+				"\t\techo \"warning: SwiftFormat is not installed, see https://swiftformat.info#command-line-tool for installation instructions\"",
 				"	fi",
 				"fi",
 				"",
