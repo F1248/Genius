@@ -437,7 +437,7 @@
 		};
 		C8F269E72E944767001AE315 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			repositoryURL = "https://github.com/F1248/Sparkle"; // use fork to work around issue described in https://github.com/sparkle-project/Sparkle/pull/2892
 			requirement = {
 				branch = 2.x;
 				kind = branch;
