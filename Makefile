@@ -127,7 +127,7 @@ install-files:
 	cd Genius && eval "$$( \
 		git for-each-ref --format=" \
 			git checkout %(refname) && \
-			sed 's|download-url|https://nightly.link/F1248/Genius/workflows/Build-app/%(refname:lstrip=3)/Genius.zip|g' Install > ../_site/%(refname:lstrip=3) \
+			sed 's|download-url|https://nightly.link/F1248/Genius/workflows/Build-app.yaml/%(refname:lstrip=3)/Genius.zip|g' Install > ../_site/%(refname:lstrip=3) \
 		" "refs/remotes/origin/*" && \
 		git for-each-ref --format=" \
 			git checkout %(refname) && \
