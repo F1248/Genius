@@ -6,6 +6,7 @@
 extension CaseIterable where Self: Equatable {
 
 	var index: AllCases.Index {
+		// safe as `self` is guaranteed to be element of `Self.allCases`
 		Self.allCases.firstIndex(of: self)! // swiftlint:disable:this force_unwrapping
 	}
 }
