@@ -38,10 +38,10 @@ endef
 .DEFAULT_GOAL = build-app
 
 all: lint test-without-building build zip-app create-dmg zip-debug-symbols appcast
-	rm -r _site
+	rm -R _site
 	rm Debug-Symbols.zip
-	rm -r Genius.app
-	rm -r Genius.app.dSYM
+	rm -R Genius.app
+	rm -R Genius.app.dSYM
 	rm Genius.dmg
 	rm Genius.zip
 
@@ -61,7 +61,7 @@ swiftlint-lint:
 swiftlint-analyze: clean-test-build build-for-testing-keep-log swiftlint-analyze-log-exists
 
 clean-test-build:
-	rm -r -f ~/Library/Developer/Xcode/DerivedData/Genius-*/Build/Intermediates.noindex/Genius.build/Test-Release
+	rm -R -f ~/Library/Developer/Xcode/DerivedData/Genius-*/Build/Intermediates.noindex/Genius.build/Test-Release
 
 swiftlint-analyze-log-exists:
 	$(command_prefix)swiftlint analyze --strict --compiler-log-path xcodebuild.log $(swiftlint_arguments)
@@ -92,10 +92,10 @@ test-without-building:
 	$(remove-log)
 
 build-zip: build-app zip-app
-	rm -r Genius.app
+	rm -R Genius.app
 
 build-app: build
-	rm -r Genius.app.dSYM
+	rm -R Genius.app.dSYM
 
 build:
 	# work around warnings `Users/*/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/*.pcm: No such file or directory`
@@ -109,7 +109,7 @@ build:
 	$(remove-log)
 	mv Genius.xcarchive/Products/Applications/Genius.app .
 	mv Genius.xcarchive/dSYMs/Genius.app.dSYM .
-	rm -r Genius.xcarchive
+	rm -R Genius.xcarchive
 
 zip-app:
 	zip --recurse-paths --symlinks Genius.zip Genius.app
