@@ -3,6 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
+import Defaults
 import Foundation
 
 extension SystemInformation {
@@ -79,43 +80,61 @@ extension SystemInformation {
 
 		enum AutomaticUpdates {
 
+			// safe as `suiteName` is neither the globalDomain nor the app’s bundle identifier:
+			// https://developer.apple.com/documentation/foundation/userdefaults/init(suitename:)
+			// swiftlint:disable force_unwrapping
 			static let checkMacOS = MaintenanceCheck<Bool?, _>(
-				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
-				key: "AutomaticCheckEnabled",
-				default: true,
+				defaultsKey: Defaults.Key(
+					"AutomaticCheckEnabled",
+					default: true,
+					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")!,
+				),
 				available: { if #available(macOS 15, *) { false } else { true } }(),
 			)
 			static let downloadMacOS = MaintenanceCheck<Bool?, _>(
-				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
-				key: "AutomaticDownload",
-				default: true,
+				defaultsKey: Defaults.Key(
+					"AutomaticDownload",
+					default: true,
+					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")!,
+				),
 			)
 			static let installMacOS = MaintenanceCheck<Bool?, _>(
-				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
-				key: "AutomaticallyInstallMacOSUpdates",
-				default: false,
+				defaultsKey: Defaults.Key(
+					"AutomaticallyInstallMacOSUpdates",
+					default: false,
+					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")!,
+				),
 			)
 			static let installCritical = MaintenanceCheck<Bool?, _>(
-				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
-				key: "CriticalUpdateInstall",
-				default: true,
+				defaultsKey: Defaults.Key(
+					"CriticalUpdateInstall",
+					default: true,
+					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")!,
+				),
 			)
 			static let installConfigurationData = MaintenanceCheck<Bool?, _>(
-				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
-				key: "ConfigDataInstall",
-				default: true,
+				defaultsKey: Defaults.Key(
+					"ConfigDataInstall",
+					default: true,
+					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")!,
+				),
 			)
 			static let backgroundSecurityImprovements = MaintenanceCheck<Bool?, _>(
-				defaultsDomain: "/Library/Preferences/com.apple.SoftwareUpdate",
-				key: "SplatEnabled",
-				default: true,
+				defaultsKey: Defaults.Key(
+					"SplatEnabled",
+					default: true,
+					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")!,
+				),
 				available: { if #available(macOS 26.1, *) { true } else { false } }(),
 			)
 			static let installAppStoreApps = MaintenanceCheck<Bool?, _>(
-				defaultsDomain: "/Library/Preferences/com.apple.commerce",
-				key: "AutoUpdate",
-				default: false,
+				defaultsKey: Defaults.Key(
+					"AutoUpdate",
+					default: false,
+					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.commerce")!,
+				),
 			)
+			// swiftlint:enable force_unwrapping
 		}
 	}
 }
