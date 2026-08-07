@@ -69,7 +69,7 @@ extension MaintenanceCheck where ValueWrapper == SyncValueWrapper<Value> {
 		requirement: Wrapped = .max,
 		available: Bool?,
 	) where Value == Wrapped? {
-		self.valueWrapper = SyncValueWrapper(wrappedValue: available ?? true ? value() : nil)
+		self.valueWrapper = SyncValueWrapper(wrappedValue: (available ?? true) ? value() : nil)
 		self.available = available
 		self.requirement = requirement
 	}
@@ -83,7 +83,7 @@ extension MaintenanceCheck where ValueWrapper == SyncValueWrapper<Value> {
 	) where Value == Wrapped? {
 		self.available = SystemInformation.Software.OS.bootMode.value !=? .recovery &&? available
 		self.valueWrapper = SyncValueWrapper(
-			wrappedValue: self.available ?? true ?
+			wrappedValue: (self.available ?? true) ?
 				UserDefaults(suiteName: defaultsDomain)?.read(key: key, default: defaultValue) : nil,
 		)
 		self.requirement = requirement
@@ -105,7 +105,7 @@ extension MaintenanceCheck where ValueWrapper == AsyncValueWrapper<Value> {
 		available: Bool?,
 	) where Value == Wrapped? {
 		self.valueWrapper = AsyncValueWrapper(
-			available ?? true ? valueClosure : { @Sendable in nil },
+			(available ?? true) ? valueClosure : { @Sendable in nil },
 		)
 		self.requirement = requirement
 		self.available = available

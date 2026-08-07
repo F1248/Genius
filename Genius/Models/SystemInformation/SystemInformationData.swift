@@ -47,7 +47,7 @@ extension SystemInformationData where ValueWrapper == SyncValueWrapper<Value> {
 	}
 
 	init<Wrapped>(_ value: @autoclosure () -> Value, available: Bool?) where Value == Wrapped? {
-		self.valueWrapper = SyncValueWrapper(wrappedValue: available ?? true ? value() : nil)
+		self.valueWrapper = SyncValueWrapper(wrappedValue: (available ?? true) ? value() : nil)
 		self.available = available
 	}
 }
@@ -62,7 +62,7 @@ extension SystemInformationData where ValueWrapper == AsyncValueWrapper<Value> {
 
 	init<Wrapped>(_ valueClosure: @escaping @Sendable () async -> Value, available: Bool?) where Value == Wrapped? {
 		self.valueWrapper = AsyncValueWrapper(
-			available ?? true ? valueClosure : { @Sendable in nil },
+			(available ?? true) ? valueClosure : { @Sendable in nil },
 		)
 		self.available = available
 	}

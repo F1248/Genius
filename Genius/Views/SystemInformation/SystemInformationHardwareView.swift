@@ -24,7 +24,7 @@ struct SystemInformationHardwareView: View {
 				.cpuName: SystemInformation.Hardware.CPU.name,
 				.cpuIdentifier: SystemInformation.Hardware.CPU.identifier,
 				.cpuFrequency: SystemInformation.Hardware.CPU.frequency,
-				SystemInformation.Hardware.CPU.Cores.differentTypes ?? true ? .totalCores : .cores:
+				(SystemInformation.Hardware.CPU.Cores.differentTypes ?? true) ? .totalCores : .cores:
 					SystemInformation.Hardware.CPU.Cores.total,
 				.performanceCores: SystemInformation.Hardware.CPU.Cores.performance,
 				.efficiencyCores: SystemInformation.Hardware.CPU.Cores.efficiency,
