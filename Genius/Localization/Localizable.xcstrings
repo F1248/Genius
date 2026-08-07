@@ -736,23 +736,6 @@
         }
       }
     },
-    "interfaceModePowerUser" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Power User"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Power user"
-          }
-        }
-      }
-    },
     "interfaceModeSimple" : {
       "extractionState" : "manual",
       "localizations" : {

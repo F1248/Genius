@@ -57,4 +57,3 @@ extension LocalizedStringResource: @retroactive View, VaryingLocalizationTable {
 extension LocalizedStringResource.LocalizableSimple: VaryingLocalizationTable {}
 extension LocalizedStringResource.LocalizableNormal: VaryingLocalizationTable {}
 extension LocalizedStringResource.LocalizableAdvanced: VaryingLocalizationTable {}
-extension LocalizedStringResource.LocalizablePowerUser: VaryingLocalizationTable {}

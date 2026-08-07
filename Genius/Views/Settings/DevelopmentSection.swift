@@ -12,7 +12,7 @@ struct DevelopmentSection: View {
 	var developmentMode: Bool
 
 	var body: some View {
-		if !Defaults.Keys.developmentMode.isDefaultValue || Defaults[.interfaceMode] >= .powerUser {
+		if !Defaults.Keys.developmentMode.isDefaultValue || Defaults[.interfaceMode] >= .advanced {
 			Section(.development) {
 				SettingToggle(.developmentMode, value: $developmentMode, key: .developmentMode)
 			}

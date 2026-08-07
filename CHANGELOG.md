@@ -11,6 +11,8 @@ See LICENSE.txt for license information.
 
 ### Improved
 
+- Reduce number of interface modes to three by removing “power user” interface mode
+
 ### Fixed
 
 ### Security
