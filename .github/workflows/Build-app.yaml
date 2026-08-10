@@ -121,31 +121,13 @@ jobs:
               with:
                 xcode-version: latest
 
-            - name: Checkout Build.txt from Xcode mirror
-              uses: actions/checkout@main
-              with:
-                repository: F1248/Xcode-Mirror
-                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
-                path: Xcode-Mirror
-                sparse-checkout: Build.txt
-                sparse-checkout-cone-mode: false
-
             - name: Check if latest Xcode version is installed
+              env:
+                GH_TOKEN: ${{ secrets.XCODE_MIRROR_TOKEN }}
               run: |
-                if [[ "$(xcodebuild -version | sed -n "s/Build version //p")" == "$(cat Xcode-Mirror/Build.txt)" ]]; then
-                    echo "latest_xcode_version_installed=true" >> "$GITHUB_ENV"
-                else
-                    echo "latest_xcode_version_installed=false" >> "$GITHUB_ENV"
-                fi
-
-            - name: Checkout Xcode mirror
-              if: env.latest_xcode_version_installed == 'false'
-              uses: actions/checkout@main
-              with:
-                repository: F1248/Xcode-Mirror
-                token: ${{ secrets.XCODE_MIRROR_TOKEN }}
-                path: Xcode-Mirror
-                sparse-checkout: Xcode.xip-*
+                installed_version=$(xcodebuild -version | sed -n "s/Build version //p")
+                latest_version=$(gh release --repo https://github.com/F1248/Xcode-Mirror view --json tagName --jq ".tagName")
+                echo "latest_xcode_version_installed=$([[ $installed_version == $latest_version ]] && echo true || echo false)" >> "$GITHUB_ENV"
 
             - name: Install unxip
               if: env.latest_xcode_version_installed == 'false'
@@ -156,8 +138,10 @@ jobs:
 
             - name: Install and select Xcode
               if: env.latest_xcode_version_installed == 'false'
+              env:
+                GH_TOKEN: ${{ secrets.XCODE_MIRROR_TOKEN }}
               run: |
-                cat Xcode-Mirror/Xcode.xip-* | ./unxip -
+                gh release --repo https://github.com/F1248/Xcode-Mirror download --pattern Xcode.xip --output - | ./unxip -
                 sudo xcode-select --switch Xcode*.app
 
             - name: Prepare Xcode
