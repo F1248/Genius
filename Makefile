@@ -9,7 +9,7 @@ SHELL = /bin/bash -o pipefail
 sed_extension = $(shell sed --version &> /dev/null && echo "" || echo "''")
 xcodebuild_arguments = -scheme Genius
 xcodebuild_test_arguments = -configuration Test-Release
-# work around FB23632856: https://developer.apple.com/forums/thread/837162)
+# work around FB23632856 (https://developer.apple.com/forums/thread/837162)
 xcodebuild_pipe = \
 	| grep --invert-match --extended-regexp "ld: warning: address=0x[0-9A-F]{5} points before section\(\d+\) start and the target atom is ambiguous" \
 	| sed "s/warning:/error:/g" \
