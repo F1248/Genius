@@ -43,7 +43,7 @@ jobs:
 
             - name: Install Sparkle
               run: |
-                tag=$(gh release --repo sparkle-project/Sparkle list --json tagName --jq ".[0].tagName")
+                tag=$(gh release --repo https://github.com/sparkle-project/Sparkle list --json tagName --jq ".[0].tagName")
                 curl \
                     https://github.com/sparkle-project/Sparkle/releases/download/"$tag"/Sparkle-"$tag".tar.xz \
                     --location \

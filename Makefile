@@ -146,7 +146,7 @@ appcast:
 	curl "https://codeberg.org/api/v1/repos/F1248/Genius/releases?draft=false&pre-release=false" \
 		| jq --raw-output ".[].tag_name" \
 		| grep --invert-match "v0\.1\.0" \
-		| xargs -I tag gh release --repo F1248/Genius download tag \
+		| xargs -I tag gh release --repo https://github.com/F1248/Genius download tag \
 		--output _site/prefix-placeholder-tag-postfix-placeholder.zip \
 		--pattern Genius.zip
 	# specify download URL prefix to prevent feed URL from getting prepended to download URL
@@ -158,7 +158,7 @@ appcast:
 		--maximum-deltas 999
 	curl "https://codeberg.org/api/v1/repos/F1248/Genius/releases?draft=false&pre-release=true" \
 		| jq --raw-output ".[].tag_name" \
-		| xargs -I tag gh release --repo F1248/Genius download tag \
+		| xargs -I tag gh release --repo https://github.com/F1248/Genius download tag \
 		--output _site/prefix-placeholder-tag-postfix-placeholder.zip \
 		--pattern Genius.zip \
 		--skip-existing
