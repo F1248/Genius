@@ -16,6 +16,7 @@ See LICENSE.txt for license information.
 ### Fixed
 
 - Fix `SettingPicker` on macOS 27
+- Fix Maintenance → Install app updates from the App Store if setting was never changed
 
 ### Security
 

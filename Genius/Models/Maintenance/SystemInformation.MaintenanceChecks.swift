@@ -130,7 +130,7 @@ extension SystemInformation {
 			static let installAppStoreApps = MaintenanceCheck<Bool?, _>(
 				defaultsKey: Defaults.Key(
 					"AutoUpdate",
-					default: false,
+					default: { if #available(macOS 26, *) { true } else { false } }(),
 					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.commerce")!,
 				),
 			)
