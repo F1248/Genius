@@ -11,7 +11,7 @@ xcodebuild_arguments = -scheme Genius
 xcodebuild_test_arguments = -configuration Test-Release
 # work around FB23632856 (https://developer.apple.com/forums/thread/837162)
 xcodebuild_pipe = \
-	| grep --invert-match --extended-regexp "ld: warning: address=0x[0-9A-F]{5} points before section\(\d+\) start and the target atom is ambiguous" \
+	| grep --invert-match --line-regexp ".*/Genius/Genius\.xcodeproj: Genius: ld: warning: address=0x[0-9A-F]* points before section\(.*\) start and the target atom is ambiguous" \
 	| sed "s/warning:/error:/g" \
 	| tee xcodebuild.log \
 	| $(command_prefix)xcbeautify --disable-logging $(xcbeautify_arguments)
@@ -28,7 +28,7 @@ ifeq ($(GITHUB_ACTIONS), true)
 endif
 
 define evaluate-log
-	if grep --quiet "error:" xcodebuild.log; then exit 1; fi
+	if grep --fixed-strings --quiet "error:" xcodebuild.log; then exit 1; fi
 endef
 
 define remove-log
@@ -78,7 +78,7 @@ build-for-testing-keep-log:
 		$(xcodebuild_arguments) \
 		-destination generic/platform=macOS \
 		$(xcodebuild_test_arguments) \
-		| grep --invert-match "ld: warning: duplicate -rpath '@executable_path' ignored" \
+		| grep --invert-match --line-regexp ".*/Genius/Genius\.xcodeproj: Genius: ld: warning: duplicate -rpath '@executable_path' ignored" \
 		$(xcodebuild_pipe)
 	$(evaluate-log)
 
@@ -103,7 +103,7 @@ build:
 		$(xcodebuild_arguments) \
 		-destination generic/platform=macOS \
 		-archivePath Genius \
-		| grep --invert-match "warning: Users/.*/Library/Developer/Xcode/DerivedData/ModuleCache\.noindex/.*\.pcm: No such file or directory" \
+		| grep --invert-match --line-regexp "warning: Users/.*/Library/Developer/Xcode/DerivedData/ModuleCache\.noindex/.*\.pcm: No such file or directory" \
 		$(xcodebuild_pipe)
 	$(evaluate-log)
 	$(remove-log)
@@ -145,7 +145,7 @@ appcast:
 	# exclude version 0.1.0 as it does not have Sparkle
 	curl "https://codeberg.org/api/v1/repos/F1248/Genius/releases?draft=false&pre-release=false" \
 		| jq --raw-output ".[].tag_name" \
-		| grep --invert-match "v0\.1\.0" \
+		| grep --invert-match --line-regexp --fixed-strings "v0.1.0" \
 		| xargs -I tag gh release --repo https://github.com/F1248/Genius download tag \
 		--output _site/prefix-placeholder-tag-postfix-placeholder.zip \
 		--pattern Genius.zip
