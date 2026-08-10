@@ -15,6 +15,8 @@ See LICENSE.txt for license information.
 
 ### Fixed
 
+- Fix `SettingPicker` on macOS 27
+
 ### Security
 
 ### Dependencies

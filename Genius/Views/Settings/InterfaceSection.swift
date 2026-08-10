@@ -21,7 +21,7 @@ struct InterfaceSection: View {
 		Section(.interface) {
 			SettingToggle(.useTextInsteadOfSymbols, value: $useTextInsteadOfSymbols, key: .useTextInsteadOfSymbols)
 			SettingPicker(.interfaceMode, value: $interfaceMode, key: .interfaceMode)
-				.pickerStyle(.inline)
+				.pickerStyle(.radioGroup)
 			SettingToggle(
 				.disableLiquidGlass,
 				value: $disableLiquidGlass,
