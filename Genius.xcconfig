@@ -96,7 +96,7 @@ INFOPLIST_FILE = Genius/Info.plist
 LD_RUNPATH_SEARCH_PATHS = @executable_path/../Frameworks
 LD_WARN_DUPLICATE_LIBRARIES = YES
 LD_WARN_UNUSED_DYLIBS = YES
-LD_WARN_UNUSED_DYLIBS[config=Test*] = NO // work around warning `ld: linking with (@rpath/libclang_rt.tsan_osx_dynamic.dylib) but not using any symbols from it`
+LD_WARN_UNUSED_DYLIBS[config=Test*] = NO // work around warnings `ld: linking with (…) but not using any symbols from it`
 LLVM_LTO = YES
 LLVM_LTO[config=Debug] = NO
 LLVM_LTO[config=Test*] = NO
