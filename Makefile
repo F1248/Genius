@@ -98,12 +98,10 @@ build-app: build
 	rm -R Genius.app.dSYM
 
 build:
-	# work around warnings `Users/*/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/*.pcm: No such file or directory`
 	xcodebuild archive \
 		$(xcodebuild_arguments) \
 		-destination generic/platform=macOS \
 		-archivePath Genius \
-		| grep --invert-match --line-regexp "warning: Users/.*/Library/Developer/Xcode/DerivedData/ModuleCache\.noindex/.*\.pcm: No such file or directory" \
 		$(xcodebuild_pipe)
 	$(evaluate-log)
 	$(remove-log)
