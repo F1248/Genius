@@ -14,6 +14,7 @@ See LICENSE.txt for license information.
 - Reduce number of interface modes to three by removing “power user” interface mode
 - Disable Maintenance → Show passed checks by default
 - Rename Maintenance to Recommendations
+- Remove Home tab
 
 ### Fixed
 

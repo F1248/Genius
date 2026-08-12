@@ -498,23 +498,6 @@
         }
       }
     },
-    "genius" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Genius"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Genius"
-          }
-        }
-      }
-    },
     "hardware" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -579,23 +562,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hide icons in menu bar"
-          }
-        }
-      }
-    },
-    "home" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Start"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Home"
           }
         }
       }
