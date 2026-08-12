@@ -7,87 +7,87 @@ import Defaults
 import Foundation
 import SwiftUI
 
-struct MaintenanceFormView: View {
+struct RecommendationsFormView: View {
 
-	@Default(.showPassedMaintenanceChecks)
-	var showPassedChecks: Bool
+	@Default(.showResolvedRecommendations)
+	var showResolvedRecommendations: Bool
 
 	var body: some View {
 		FormView(
-			textWhenEmpty: showPassedChecks ? .noChecksAvailable : .allChecksPassed,
+			textWhenEmpty: showResolvedRecommendations ? .noRecommendationsAvailable : .allRecommendationsResolved,
 			content: [
 				.theftProtection: [
-					MaintenanceCheckLabel(
+					RecommendationLabel(
 						.activationLock,
 						help: URL(appleSupportArticle: 102_541),
 						setting: SystemSetting.iCloud,
-					): SystemInformation.MaintenanceChecks.TheftProtection.activationLock,
-					MaintenanceCheckLabel(
+					): SystemInformation.Recommendations.TheftProtection.activationLock,
+					RecommendationLabel(
 						.firmwarePassword,
 						help: URL(appleSupportArticle: 102_384),
 						setting: Application.startupSecurityUtility,
-					): SystemInformation.MaintenanceChecks.TheftProtection.firmwarePassword,
+					): SystemInformation.Recommendations.TheftProtection.firmwarePassword,
 				],
 				.dataSecurity: [
-					MaintenanceCheckLabel(
+					RecommendationLabel(
 						.fileVault,
 						help: URL(appleUserGuideArticle: "mh11785"),
 						setting: SystemSetting.fileVault,
-					): SystemInformation.MaintenanceChecks.DataSecurity.fileVault,
+					): SystemInformation.Recommendations.DataSecurity.fileVault,
 				],
 				.malwareProtection: [
-					MaintenanceCheckLabel(
+					RecommendationLabel(
 						.systemIntegrityProtection,
 						help: URL(appleSupportArticle: 102_149),
-					): SystemInformation.MaintenanceChecks.MalwareProtection.systemIntegrityProtection,
-					MaintenanceCheckLabel(
+					): SystemInformation.Recommendations.MalwareProtection.systemIntegrityProtection,
+					RecommendationLabel(
 						.firewall,
 						help: URL(appleUserGuideArticle: "mh34041"),
 						setting: SystemSetting.firewall,
-					): SystemInformation.MaintenanceChecks.MalwareProtection.firewall,
-					MaintenanceCheckLabel(
+					): SystemInformation.Recommendations.MalwareProtection.firewall,
+					RecommendationLabel(
 						.gatekeeper,
 						help: URL(appleSupportArticle: 102_445),
 						setting: SystemSetting.security,
-					): SystemInformation.MaintenanceChecks.MalwareProtection.gatekeeper,
-					MaintenanceCheckLabel(
+					): SystemInformation.Recommendations.MalwareProtection.gatekeeper,
+					RecommendationLabel(
 						.askToAllowAccessoriesToConnect,
 						help: URL(appleSupportArticle: 102_282),
 						setting: SystemSetting.accessories ?? Application.startupSecurityUtility,
-					): SystemInformation.MaintenanceChecks.MalwareProtection.allowAccessoriesToConnect,
+					): SystemInformation.Recommendations.MalwareProtection.allowAccessoriesToConnect,
 				],
 				.automaticUpdates: [
-					MaintenanceCheckLabel(
+					RecommendationLabel(
 						.checkForMacOSUpdates,
 						help: URL(appleSupportArticle: 108_382),
 						setting: SystemSetting.softwareUpdate,
-					): SystemInformation.MaintenanceChecks.AutomaticUpdates.checkMacOS,
-					MaintenanceCheckLabel(
+					): SystemInformation.Recommendations.AutomaticUpdates.checkMacOS,
+					RecommendationLabel(
 						.downloadMacOSUpdates,
 						help: URL(appleSupportArticle: 108_382),
 						setting: SystemSetting.softwareUpdate,
-					): SystemInformation.MaintenanceChecks.AutomaticUpdates.downloadMacOS,
-					MaintenanceCheckLabel(
+					): SystemInformation.Recommendations.AutomaticUpdates.downloadMacOS,
+					RecommendationLabel(
 						.installMacOSUpdates,
 						help: URL(appleSupportArticle: 108_382),
 						setting: SystemSetting.softwareUpdate,
-					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installMacOS,
-					MaintenanceCheckLabel(
+					): SystemInformation.Recommendations.AutomaticUpdates.installMacOS,
+					RecommendationLabel(
 						.installCriticalUpdates,
 						help: URL(appleSupportArticle: 101_591),
 						setting: SystemSetting.softwareUpdate,
-					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installCritical,
-					MaintenanceCheckLabel(
+					): SystemInformation.Recommendations.AutomaticUpdates.installCritical,
+					RecommendationLabel(
 						.installConfigurationDataUpdates,
 						help: URL(appleSupportArticle: 101_591),
 						setting: SystemSetting.softwareUpdate,
-					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installConfigurationData,
-					MaintenanceCheckLabel(
+					): SystemInformation.Recommendations.AutomaticUpdates.installConfigurationData,
+					RecommendationLabel(
 						.backgroundSecurityImprovements,
 						help: URL(appleSupportArticle: 102_657),
 						setting: SystemSetting.backgroundSecurityImprovements,
-					): SystemInformation.MaintenanceChecks.AutomaticUpdates.backgroundSecurityImprovements,
-					MaintenanceCheckLabel(
+					): SystemInformation.Recommendations.AutomaticUpdates.backgroundSecurityImprovements,
+					RecommendationLabel(
 						.installAppStoreAppUpdates,
 						help: URL(appleSupportArticle: 102_629),
 						setting: {
@@ -100,15 +100,15 @@ struct MaintenanceFormView: View {
 								SystemSetting.softwareUpdate
 							}
 						}(),
-					): SystemInformation.MaintenanceChecks.AutomaticUpdates.installAppStoreApps,
+					): SystemInformation.Recommendations.AutomaticUpdates.installAppStoreApps,
 				],
 			],
 		)
-		.id(showPassedChecks)
+		.id(showResolvedRecommendations)
 	}
 }
 
 #Preview {
-	MaintenanceFormView()
+	RecommendationsFormView()
 		.frame(width: 712, height: 256)
 }

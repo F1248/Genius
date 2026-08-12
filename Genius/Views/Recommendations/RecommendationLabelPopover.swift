@@ -7,7 +7,7 @@ import Foundation
 import SFSafeSymbols
 import SwiftUI
 
-struct MaintenanceCheckLabelPopover: View {
+struct RecommendationLabelPopover: View {
 
 	let name: LocalizedStringResource
 	let help: URL?
@@ -40,7 +40,7 @@ struct MaintenanceCheckLabelPopover: View {
 }
 
 #Preview {
-	MaintenanceCheckLabelPopover(
+	RecommendationLabelPopover(
 		name: "Name",
 		help: URL(string: "https://example.com"),
 		setting: URL(string: "https://example.com"),

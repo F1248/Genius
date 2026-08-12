@@ -39,19 +39,19 @@
         }
       }
     },
-    "allChecksPassed" : {
+    "allRecommendationsResolved" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle Überprüfungen erfüllt"
+            "value" : "Alle Empfehlungen umgesetzt"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "All checks passed"
+            "value" : "All recommendations resolved"
           }
         }
       }
@@ -409,23 +409,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enabled"
-          }
-        }
-      }
-    },
-    "failed" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nicht erfüllt"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Failed"
           }
         }
       }
@@ -838,23 +821,6 @@
         }
       }
     },
-    "maintenance" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wartung"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Maintenance"
-          }
-        }
-      }
-    },
     "memory" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -923,23 +889,6 @@
         }
       }
     },
-    "noChecksAvailable" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Keine Überprüfungen verfügbar"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No checks available"
-          }
-        }
-      }
-    },
     "noneSecurityChip" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -953,6 +902,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "None"
+          }
+        }
+      }
+    },
+    "noRecommendationsAvailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Empfehlungen verfügbar"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No recommendations available"
           }
         }
       }
@@ -991,19 +957,19 @@
         }
       }
     },
-    "passed" : {
+    "pending" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erfüllt"
+            "value" : "Nicht umgesetzt"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Passed"
+            "value" : "Pending"
           }
         }
       }
@@ -1038,6 +1004,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Provisioning UDID"
+          }
+        }
+      }
+    },
+    "recommendations" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empfehlungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recommendations"
           }
         }
       }
@@ -1106,6 +1089,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reset Setting"
+          }
+        }
+      }
+    },
+    "resolved" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umgesetzt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resolved"
           }
         }
       }
@@ -1195,19 +1195,19 @@
         }
       }
     },
-    "showPassedChecks" : {
+    "showResolvedRecommendations" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erfüllte Überprüfungen anzeigen"
+            "value" : "Umgesetzte Empfehlungen anzeigen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Show passed checks"
+            "value" : "Show resolved recommendations"
           }
         }
       }

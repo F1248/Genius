@@ -8,17 +8,17 @@ import Foundation
 
 extension SystemInformation {
 
-	enum MaintenanceChecks {
+	enum Recommendations {
 
 		enum TheftProtection {
 
-			static let activationLock = MaintenanceCheck<Bool?, _>(
+			static let activationLock = Recommendation<Bool?, _>(
 				{ await Bool(systemProfilerActivationLockStatusOutput: SystemProfiler.hardware?["activation_lock_status"]) },
 				available: Hardware.securityChip.value >=? .t2 &&?
 					!?Hardware.Model.isVirtualMachine &&?
 					Software.OS.bootMode.value !=? .recovery,
 			)
-			static let firmwarePassword = MaintenanceCheck<Bool?, _>(
+			static let firmwarePassword = Recommendation<Bool?, _>(
 				{ await Bool(firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check")?.runSafe(asRoot: true)) },
 				available: {
 					#if arch(arm64)
@@ -32,7 +32,7 @@ extension SystemInformation {
 
 		enum DataSecurity {
 
-			static let fileVault = MaintenanceCheck<Bool?, _>(
+			static let fileVault = Recommendation<Bool?, _>(
 				{ await Bool(fdesetupOutput: Process("/usr/bin/fdesetup", "status")?.runSafe()) },
 				available: Software.OS.bootMode.value !=? .recovery,
 			)
@@ -40,11 +40,11 @@ extension SystemInformation {
 
 		enum MalwareProtection {
 
-			static let systemIntegrityProtection = MaintenanceCheck<Bool?, _>(
+			static let systemIntegrityProtection = Recommendation<Bool?, _>(
 				{ await Bool(csrutilOutput: Process("/usr/bin/csrutil", "status")?.runSafe()) },
 				available: Software.OS.bootMode.value !=? .recovery,
 			)
-			static let firewall = MaintenanceCheck<Bool?, _>(
+			static let firewall = Recommendation<Bool?, _>(
 				{
 					await Bool(
 						socketfilterfwOutput: Process("/usr/libexec/ApplicationFirewall/socketfilterfw", "--getglobalstate")?
@@ -53,11 +53,11 @@ extension SystemInformation {
 				},
 				available: Software.OS.bootMode.value !=? .recovery,
 			)
-			static let gatekeeper = MaintenanceCheck<Bool?, _>(
+			static let gatekeeper = Recommendation<Bool?, _>(
 				{ await Bool(spctlOutput: Process("/usr/sbin/spctl", "--status")?.runSafe()) },
 				available: Software.OS.bootMode.value !=? .recovery,
 			)
-			static let allowAccessoriesToConnect = MaintenanceCheck<AllowAccessoriesToConnectSetting?, _>(
+			static let allowAccessoriesToConnect = Recommendation<AllowAccessoriesToConnectSetting?, _>(
 				{
 					switch IORegistry(class: "AppleCredentialManager").read("TRM_ConfigProfile") as Int? {
 						case 1: .alwaysAsk
@@ -83,7 +83,7 @@ extension SystemInformation {
 			// safe as `suiteName` is neither the globalDomain nor the app’s bundle identifier:
 			// https://developer.apple.com/documentation/foundation/userdefaults/init(suitename:)
 			// swiftlint:disable force_unwrapping
-			static let checkMacOS = MaintenanceCheck<Bool?, _>(
+			static let checkMacOS = Recommendation<Bool?, _>(
 				defaultsKey: Defaults.Key(
 					"AutomaticCheckEnabled",
 					default: true,
@@ -91,35 +91,35 @@ extension SystemInformation {
 				),
 				available: { if #available(macOS 15, *) { false } else { true } }(),
 			)
-			static let downloadMacOS = MaintenanceCheck<Bool?, _>(
+			static let downloadMacOS = Recommendation<Bool?, _>(
 				defaultsKey: Defaults.Key(
 					"AutomaticDownload",
 					default: true,
 					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")!,
 				),
 			)
-			static let installMacOS = MaintenanceCheck<Bool?, _>(
+			static let installMacOS = Recommendation<Bool?, _>(
 				defaultsKey: Defaults.Key(
 					"AutomaticallyInstallMacOSUpdates",
 					default: false,
 					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")!,
 				),
 			)
-			static let installCritical = MaintenanceCheck<Bool?, _>(
+			static let installCritical = Recommendation<Bool?, _>(
 				defaultsKey: Defaults.Key(
 					"CriticalUpdateInstall",
 					default: true,
 					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")!,
 				),
 			)
-			static let installConfigurationData = MaintenanceCheck<Bool?, _>(
+			static let installConfigurationData = Recommendation<Bool?, _>(
 				defaultsKey: Defaults.Key(
 					"ConfigDataInstall",
 					default: true,
 					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")!,
 				),
 			)
-			static let backgroundSecurityImprovements = MaintenanceCheck<Bool?, _>(
+			static let backgroundSecurityImprovements = Recommendation<Bool?, _>(
 				defaultsKey: Defaults.Key(
 					"SplatEnabled",
 					default: true,
@@ -127,7 +127,7 @@ extension SystemInformation {
 				),
 				available: { if #available(macOS 26.1, *) { true } else { false } }(),
 			)
-			static let installAppStoreApps = MaintenanceCheck<Bool?, _>(
+			static let installAppStoreApps = Recommendation<Bool?, _>(
 				defaultsKey: Defaults.Key(
 					"AutoUpdate",
 					default: { if #available(macOS 26, *) { true } else { false } }(),

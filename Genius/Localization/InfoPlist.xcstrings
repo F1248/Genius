@@ -28,13 +28,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hilfsprogramm, Dienstprogramm, Tool, Systeminformationen, Informationen, Wartung"
+            "value" : "Hilfsprogramm, Dienstprogramm, Tool, Systeminformationen, Informationen, Empfehlungen, Wartung"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Helper, Utility, Tool, System Information, Information, Maintenance"
+            "value" : "Helper, Utility, Tool, System Information, Information, Recommendations, Maintenance"
           }
         }
       }

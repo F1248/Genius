@@ -8,18 +8,18 @@ import Testing
 
 extension SystemInformationTests {
 
-	enum MaintenanceChecks {
+	enum Recommendations {
 
 		struct TheftProtection {
 
 			@Test
 			func activationLock() async {
-				#expect(await SystemInformation.MaintenanceChecks.TheftProtection.activationLock.testCondition)
+				#expect(await SystemInformation.Recommendations.TheftProtection.activationLock.testCondition)
 			}
 
 			@Test
 			func firmwarePassword() async {
-				#expect(await SystemInformation.MaintenanceChecks.TheftProtection.firmwarePassword.testCondition)
+				#expect(await SystemInformation.Recommendations.TheftProtection.firmwarePassword.testCondition)
 			}
 		}
 
@@ -27,7 +27,7 @@ extension SystemInformationTests {
 
 			@Test
 			func fileVault() async {
-				#expect(await SystemInformation.MaintenanceChecks.DataSecurity.fileVault.testCondition)
+				#expect(await SystemInformation.Recommendations.DataSecurity.fileVault.testCondition)
 			}
 		}
 
@@ -35,22 +35,22 @@ extension SystemInformationTests {
 
 			@Test
 			func systemIntegrityProtection() async {
-				#expect(await SystemInformation.MaintenanceChecks.MalwareProtection.systemIntegrityProtection.testCondition)
+				#expect(await SystemInformation.Recommendations.MalwareProtection.systemIntegrityProtection.testCondition)
 			}
 
 			@Test
 			func firewall() async {
-				#expect(await SystemInformation.MaintenanceChecks.MalwareProtection.firewall.testCondition)
+				#expect(await SystemInformation.Recommendations.MalwareProtection.firewall.testCondition)
 			}
 
 			@Test
 			func gatekeeper() async {
-				#expect(await SystemInformation.MaintenanceChecks.MalwareProtection.gatekeeper.testCondition)
+				#expect(await SystemInformation.Recommendations.MalwareProtection.gatekeeper.testCondition)
 			}
 
 			@Test
 			func askToAllowAccessoriesToConnect() {
-				#expect(SystemInformation.MaintenanceChecks.MalwareProtection.allowAccessoriesToConnect.testCondition)
+				#expect(SystemInformation.Recommendations.MalwareProtection.allowAccessoriesToConnect.testCondition)
 			}
 		}
 
@@ -58,32 +58,32 @@ extension SystemInformationTests {
 
 			@Test
 			func checkMacOS() {
-				#expect(SystemInformation.MaintenanceChecks.AutomaticUpdates.checkMacOS.testCondition)
+				#expect(SystemInformation.Recommendations.AutomaticUpdates.checkMacOS.testCondition)
 			}
 
 			@Test
 			func downloadMacOS() {
-				#expect(SystemInformation.MaintenanceChecks.AutomaticUpdates.downloadMacOS.testCondition)
+				#expect(SystemInformation.Recommendations.AutomaticUpdates.downloadMacOS.testCondition)
 			}
 
 			@Test
 			func installMacOS() {
-				#expect(SystemInformation.MaintenanceChecks.AutomaticUpdates.installMacOS.testCondition)
+				#expect(SystemInformation.Recommendations.AutomaticUpdates.installMacOS.testCondition)
 			}
 
 			@Test
 			func installCritical() {
-				#expect(SystemInformation.MaintenanceChecks.AutomaticUpdates.installCritical.testCondition)
+				#expect(SystemInformation.Recommendations.AutomaticUpdates.installCritical.testCondition)
 			}
 
 			@Test
 			func installConfigurationData() {
-				#expect(SystemInformation.MaintenanceChecks.AutomaticUpdates.installConfigurationData.testCondition)
+				#expect(SystemInformation.Recommendations.AutomaticUpdates.installConfigurationData.testCondition)
 			}
 
 			@Test
 			func installAppStoreApps() {
-				#expect(SystemInformation.MaintenanceChecks.AutomaticUpdates.installAppStoreApps.testCondition)
+				#expect(SystemInformation.Recommendations.AutomaticUpdates.installAppStoreApps.testCondition)
 			}
 		}
 	}

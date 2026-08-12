@@ -11,7 +11,7 @@ enum ContentViewTab: @MainActor TabData {
 
 	case home
 	case systemInformation
-	case maintenance
+	case recommendations
 	case settings
 
 	static let entireWindow: Bool = true
@@ -20,7 +20,7 @@ enum ContentViewTab: @MainActor TabData {
 	var title: LocalizedStringResource { switch self {
 		case .home: .home
 		case .systemInformation: .systemInformation
-		case .maintenance: .maintenance
+		case .recommendations: .recommendations
 		case .settings: .settings
 	} }
 
@@ -46,15 +46,15 @@ enum ContentViewTab: @MainActor TabData {
 
 	var symbol: SFSymbol { switch self {
 		case .home: .house
-		case .systemInformation: if #available(macOS 15.4, *) { .infoCircleTextPage } else { .docTextBelowEcg }
-		case .maintenance: .stethoscope
+		case .systemInformation: if #available(macOS 15.4, *) { .infoCircleTextPage } else { .infoCircle }
+		case .recommendations: .docTextBelowEcg
 		case .settings: .gear
 	} }
 
 	var content: some View { switch self {
 		case .home: HomeView()
 		case .systemInformation: SystemInformationView()
-		case .maintenance: MaintenanceView()
+		case .recommendations: RecommendationsView()
 		case .settings: SettingsView()
 	} }
 }

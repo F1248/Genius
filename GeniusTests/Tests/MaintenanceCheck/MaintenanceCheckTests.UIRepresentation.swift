@@ -7,7 +7,7 @@ import Defaults
 @testable import Genius
 import Testing
 
-extension MaintenanceCheckTests {
+extension RecommendationTests {
 
 	struct uiRepresentation {
 
@@ -15,26 +15,26 @@ extension MaintenanceCheckTests {
 		@MainActor
 		func Unavailable() {
 			Defaults[.developmentMode] = false
-			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == nil)
+			#expect(Recommendation<Bool?, _>(nil, available: false).uiRepresentation == nil)
 
 			Defaults[.developmentMode] = true
-			#expect(MaintenanceCheck<Bool?, _>(nil, available: false).uiRepresentation == .unavailable)
+			#expect(Recommendation<Bool?, _>(nil, available: false).uiRepresentation == .unavailable)
 		}
 
 		@Test
 		@MainActor
-		func Failed() {
-			#expect(MaintenanceCheck<Bool?, _>(false, available: true).uiRepresentation == .failed)
+		func Pending() {
+			#expect(Recommendation<Bool?, _>(false, available: true).uiRepresentation == .pending)
 		}
 
 		@Test
 		@MainActor
-		func Passed() {
-			Defaults[.showPassedMaintenanceChecks] = false
-			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == nil)
+		func Resolved() {
+			Defaults[.showResolvedRecommendations] = false
+			#expect(Recommendation<Bool?, _>(true, available: true).uiRepresentation == nil)
 
-			Defaults[.showPassedMaintenanceChecks] = true
-			#expect(MaintenanceCheck<Bool?, _>(true, available: true).uiRepresentation == .passed)
+			Defaults[.showResolvedRecommendations] = true
+			#expect(Recommendation<Bool?, _>(true, available: true).uiRepresentation == .resolved)
 		}
 
 		@Test
@@ -42,15 +42,15 @@ extension MaintenanceCheckTests {
 		func Unknown() {
 			Defaults[.developmentMode] = false
 			Defaults[.interfaceMode] = .normal
-			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == nil)
+			#expect(Recommendation<Bool?, _>(nil, available: true).uiRepresentation == nil)
 
 			Defaults[.developmentMode] = false
 			Defaults[.interfaceMode] = .advanced
-			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == .unknown)
+			#expect(Recommendation<Bool?, _>(nil, available: true).uiRepresentation == .unknown)
 
 			Defaults[.developmentMode] = true
 			Defaults[.interfaceMode] = .normal
-			#expect(MaintenanceCheck<Bool?, _>(nil, available: true).uiRepresentation == .unknown)
+			#expect(Recommendation<Bool?, _>(nil, available: true).uiRepresentation == .unknown)
 		}
 	}
 }

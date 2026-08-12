@@ -7,7 +7,7 @@ import Foundation
 import SFSafeSymbols
 import SwiftUI
 
-struct MaintenanceCheckLabel: View {
+struct RecommendationLabel: View {
 
 	@State var popoverPresented: Bool = false
 
@@ -36,14 +36,14 @@ struct MaintenanceCheckLabel: View {
 			}
 			.buttonStyle(.borderless)
 			.popover(isPresented: $popoverPresented) {
-				MaintenanceCheckLabelPopover(name: name, help: help, setting: setting)
+				RecommendationLabelPopover(name: name, help: help, setting: setting)
 			}
 		}
 	}
 }
 
 #Preview {
-	MaintenanceCheckLabel(
+	RecommendationLabel(
 		"Name",
 		help: URL(string: "https://example.com"),
 		setting: URL(string: "https://example.com"),

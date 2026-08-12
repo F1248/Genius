@@ -5,5 +5,5 @@
 
 import Testing
 
-@Suite("MaintenanceCheck")
-enum MaintenanceCheckTests {} // swiftformat:disable:this swiftTestingTestCaseNames
+@Suite("Recommendation")
+enum RecommendationTests {} // swiftformat:disable:this swiftTestingTestCaseNames

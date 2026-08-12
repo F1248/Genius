@@ -22,9 +22,9 @@ extension `Value wrappers` {
 			).value
 		}
 
-		@Test("MaintenanceCheck")
-		func maintenanceCheck() {
-			_ = MaintenanceCheck<Bool?, SyncValueWrapper>(
+		@Test("Recommendation")
+		func recommendation() {
+			_ = Recommendation<Bool?, SyncValueWrapper>(
 				{
 					#expect(Bool(false))
 					return nil

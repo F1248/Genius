@@ -11,8 +11,8 @@ import SwiftUI
 extension Symbol: @retroactive Equatable {
 
 	static let unavailable = Self(.minus, color: .primary, label: .unavailable)
-	static let failed = Self(.xmark, color: .red, label: .failed)
-	static let passed = Self(.checkmark, color: .green, label: .passed)
+	static let pending = Self(.xmark, color: .red, label: .pending)
+	static let resolved = Self(.checkmark, color: .green, label: .resolved)
 	static let unknown = Self(.questionmark, color: .red, label: .unknown)
 
 	static func == (lhs: Self, rhs: Self) -> Bool {

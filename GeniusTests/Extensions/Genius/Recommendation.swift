@@ -8,16 +8,16 @@ import Defaults
 import SFSafeSymbols
 import SwiftUI
 
-extension MaintenanceCheck where ValueWrapper == SyncValueWrapper<Value> {
+extension Recommendation where ValueWrapper == SyncValueWrapper<Value> {
 
 	@MainActor var uiRepresentation: Symbol? {
 		if !?available ?? false {
 			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .unavailable) : nil
 		} else if let value = value.optional {
 			if value >= requirement {
-				Defaults[.showPassedMaintenanceChecks] ? Symbol(.checkmark, color: .green, label: .passed) : nil
+				Defaults[.showResolvedRecommendations] ? Symbol(.checkmark, color: .green, label: .resolved) : nil
 			} else {
-				Symbol(.xmark, color: .red, label: .failed)
+				Symbol(.xmark, color: .red, label: .pending)
 			}
 		} else {
 			Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?

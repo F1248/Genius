@@ -7,7 +7,7 @@ import Defaults
 import SFSafeSymbols
 import SwiftUI
 
-struct MaintenanceCheck<
+struct Recommendation<
 	Value: PossiblyOptional & Sendable,
 	ValueWrapper: ValueWrapperProtocol<Value>,
 >: SystemInformationProtocol where Value.Wrapped: Comparable & Maximizable & Sendable {
@@ -24,9 +24,9 @@ struct MaintenanceCheck<
 		} else if let syncValue {
 			if let value = syncValue.optional {
 				if value >= requirement {
-					Defaults[.showPassedMaintenanceChecks] ? Symbol(.checkmark, color: .green, label: .passed) : nil
+					Defaults[.showResolvedRecommendations] ? Symbol(.checkmark, color: .green, label: .resolved) : nil
 				} else {
-					Symbol(.xmark, color: .red, label: .failed)
+					Symbol(.xmark, color: .red, label: .pending)
 				}
 			} else {
 				Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
@@ -43,9 +43,9 @@ struct MaintenanceCheck<
 			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .unavailable) : nil
 		} else if let value = await value.optional {
 			if value >= requirement {
-				Defaults[.showPassedMaintenanceChecks] ? Symbol(.checkmark, color: .green, label: .passed) : nil
+				Defaults[.showResolvedRecommendations] ? Symbol(.checkmark, color: .green, label: .resolved) : nil
 			} else {
-				Symbol(.xmark, color: .red, label: .failed)
+				Symbol(.xmark, color: .red, label: .pending)
 			}
 		} else {
 			Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
@@ -54,7 +54,7 @@ struct MaintenanceCheck<
 	} }
 }
 
-extension MaintenanceCheck where ValueWrapper == SyncValueWrapper<Value> {
+extension Recommendation where ValueWrapper == SyncValueWrapper<Value> {
 
 	// periphery:ignore
 	init(_ value: Value, requirement: Wrapped = .max) {
@@ -84,7 +84,7 @@ extension MaintenanceCheck where ValueWrapper == SyncValueWrapper<Value> {
 	}
 }
 
-extension MaintenanceCheck where ValueWrapper == AsyncValueWrapper<Value> {
+extension Recommendation where ValueWrapper == AsyncValueWrapper<Value> {
 
 	// periphery:ignore
 	init(_ valueClosure: @escaping @Sendable () async -> Value, requirement: Wrapped = .max) {
