@@ -16,6 +16,7 @@ See LICENSE.txt for license information.
 - Rename Maintenance to Recommendations
 - Remove Home tab
 - Make Recommendations the primary tab
+- Improve readability of tab symbols in menu bar
 
 ### Fixed
 

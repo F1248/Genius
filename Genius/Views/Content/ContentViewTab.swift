@@ -43,6 +43,12 @@ enum ContentViewTab: @MainActor TabData {
 		case .settings: .gear
 	} }
 
+	var largeSymbol: SFSymbol { switch self {
+		case .recommendations: .waveformPathEcg
+		case .systemInformation: .info
+		default: symbol
+	} }
+
 	var content: some View { switch self {
 		case .recommendations: RecommendationsView()
 		case .systemInformation: SystemInformationView()
