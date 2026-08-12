@@ -15,6 +15,7 @@ See LICENSE.txt for license information.
 - Disable Maintenance → Show passed checks by default
 - Rename Maintenance to Recommendations
 - Remove Home tab
+- Make Recommendations the primary tab
 
 ### Fixed
 
