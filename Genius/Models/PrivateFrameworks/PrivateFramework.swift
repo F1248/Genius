@@ -18,6 +18,7 @@ struct PrivateFramework {
 	static let iconServices = Self(name: "IconServices")
 
 	let available: Bool?
+	let loaded: Bool
 
 	init(name: String, available: Bool? = true) {
 		self.available = available
@@ -25,11 +26,15 @@ struct PrivateFramework {
 			available ?? true,
 			let bundle = Bundle(path: "/System/Library/PrivateFrameworks/\(name).framework"),
 			bundle.load()
-		else { return }
+		else {
+			self.loaded = false
+			return
+		}
+		self.loaded = true
 	}
 
 	subscript(dynamicMember className: String) -> NSObjectWrapper? {
-		guard available ?? true else { return nil }
+		guard loaded else { return nil }
 		return (NSClassFromString(className) as AnyObject as? NSObject).map(NSObjectWrapper.init)
 	}
 }
