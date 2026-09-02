@@ -12,16 +12,21 @@ extension Recommendation where ValueWrapper == SyncValueWrapper<Value> {
 
 	@MainActor var uiRepresentation: Symbol? {
 		if !?available ?? false {
-			Defaults[.developmentMode] ? Symbol(.minus, color: .primary, label: .unavailable) : nil
+			if Defaults[.developmentMode] {
+				Symbol(.minus, color: .primary, label: .unavailable)
+			} else { nil }
 		} else if let value = value.optional {
 			if value >= requirement {
-				Defaults[.showResolvedRecommendations] ? Symbol(.checkmark, color: .green, label: .resolved) : nil
+				if Defaults[.showResolvedRecommendations] {
+					Symbol(.checkmark, color: .green, label: .resolved)
+				} else { nil }
 			} else {
 				Symbol(.xmark, color: .red, label: .pending)
 			}
 		} else {
-			Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ?
-				Symbol(.questionmark, color: .red, label: .unknown) : nil
+			if Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced {
+				Symbol(.questionmark, color: .red, label: .unknown)
+			} else { nil }
 		}
 	}
 }

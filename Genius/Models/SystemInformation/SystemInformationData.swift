@@ -16,12 +16,16 @@ struct SystemInformationData<
 
 	var syncUIRepresentation: String?? {
 		if !?available ?? false {
-			Defaults[.developmentMode] ? String(localized: .unavailable) : .none
+			if Defaults[.developmentMode] {
+				String(localized: .unavailable)
+			} else { .none }
 		} else if let syncValue {
 			if let syncValueUIRepresentation = syncValue.uiRepresentation {
 				syncValueUIRepresentation
 			} else {
-				Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ? String(localized: .unknown) : .none
+				if Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced {
+					String(localized: .unknown)
+				} else { .none }
 			}
 		} else {
 			.some(nil)
@@ -30,11 +34,15 @@ struct SystemInformationData<
 
 	var uiRepresentation: String? { get async {
 		if !?available ?? false {
-			Defaults[.developmentMode] ? String(localized: .unavailable) : nil
+			if Defaults[.developmentMode] {
+				String(localized: .unavailable)
+			} else { nil }
 		} else if let valueUIRepresentation = await value.uiRepresentation {
 			valueUIRepresentation
 		} else {
-			Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ? String(localized: .unknown) : nil
+			if Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced {
+				String(localized: .unknown)
+			} else { nil }
 		}
 	} }
 }

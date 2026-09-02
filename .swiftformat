@@ -10,6 +10,7 @@
 	acronyms, \
 	blockComments, \
 	emptyExtensions, \
+	ifExpressions, \
 	isEmpty, \
 	noExplicitOwnership, \
 	noGuardInTests, \
@@ -19,9 +20,11 @@
 	preferFinalClasses, \
 	preferFirstWhere, \
 	preferFlatMap, \
+	preferLazyMap, \
 	preferMinOverSorted, \
 	preferSwiftStringAPI, \
 	preferSwiftTesting, \
+	redundantExtendedLifetime, \
 	redundantSendable, \
 	singlePropertyPerLine, \
 	sortSwitchCases, \
@@ -52,6 +55,7 @@
 --property-types explicit
 --ranges no-space
 --redundant-async always
+--redundant-optional-binding always
 --redundant-throws always
 --self init-only
 --self-required error
@@ -61,4 +65,5 @@
 --tab-width 4
 --test-case-name-format preserve
 --type-blank-lines start-only
+--wrap-string-interpolation true
 --xcode-indentation enabled

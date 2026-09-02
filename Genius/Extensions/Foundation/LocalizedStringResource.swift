@@ -47,7 +47,13 @@ extension LocalizedStringResource: @retroactive View, VaryingLocalizationTable {
 	static var updateInProgressMessage: Self { localizationTable.updateInProgressMessage }
 	static var updateInProgressTitle: Self { localizationTable.updateInProgressTitle }
 
-	static var user: Self { supportsInflection ? .userWithInflection : .userWithoutInflection }
+	static var user: Self {
+		if supportsInflection {
+			.userWithInflection
+		} else {
+			.userWithoutInflection
+		}
+	}
 
 	public var body: some View {
 		Text(self)
