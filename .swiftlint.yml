@@ -57,8 +57,7 @@ nesting:
     function_level: 0
     type_level: 3
 no_empty_block:
-    disabled_block_types:
-        - closure_blocks
+    allow_compact_empty_blocks: true
 non_optional_string_data_conversion:
     include_variables: true
 number_separator:
