@@ -41,6 +41,7 @@
 --allow-partial-wrapping false
 --cond-assignment always
 --fraction-grouping enabled
+--guard-like-if-statements convert
 --header "\n© {created.year} F1248 <f1248@mailbox.org>\nSee LICENSE.txt for license information.\n"
 --import-grouping alpha
 --indent tab
@@ -54,7 +55,6 @@
 --redundant-throws always
 --self init-only
 --self-required error
---guard-like-if-statements convert
 --semicolons never
 --short-optionals always
 --suite-name-format raw-identifiers
