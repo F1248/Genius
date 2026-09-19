@@ -7,9 +7,15 @@ import Foundation
 
 struct SystemSetting: Openable {
 
-	static let iCloud = Self(
+	static let findMyMac = Self(
 		pane: "com.apple.systempreferences.AppleIDSettings",
-		anchor: "iCloud",
+		anchor: {
+			if #available(macOS 26, *) {
+				"email/prefs/storage?root=APPLE_ACCOUNT&path=ICLOUD_SERVICE&dataclassId=com.apple.Dataclass.DeviceLocator"
+			} else {
+				"iCloud"
+			}
+		}(),
 	)
 	static let firewall = Self(
 		pane: "com.apple.Network-Settings.extension",

@@ -20,7 +20,7 @@ struct RecommendationsFormView: View {
 					RecommendationLabel(
 						.activationLock,
 						help: URL(appleSupportArticle: 102_541),
-						setting: SystemSetting.iCloud,
+						setting: SystemSetting.findMyMac,
 					): SystemInformation.Recommendations.TheftProtection.activationLock,
 					RecommendationLabel(
 						.firmwarePassword,
