@@ -13,9 +13,9 @@ struct VersionNumber: UIStringRepresentable {
 
 	init?(_ versionNumber: String) {
 		guard
-			let createdVersions = [Int](versionNumber.split(separator: ".")),
-			!createdVersions.isEmpty
+			let newVersions = [Int](versionNumber.split(separator: ".")),
+			!newVersions.isEmpty
 		else { return nil }
-		self.versions = createdVersions
+		self.versions = newVersions
 	}
 }

@@ -25,9 +25,9 @@ struct Application: Openable {
 	) {
 		guard
 			available ?? true,
-			let createdURL = URL(filePath: path)
+			let newURL = URL(filePath: path)
 		else { return nil }
-		self.url = createdURL
+		self.url = newURL
 		self.arguments = arguments
 	}
 
