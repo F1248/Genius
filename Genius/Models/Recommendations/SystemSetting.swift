@@ -17,7 +17,7 @@ struct SystemSetting: Openable {
 	)
 	static let softwareUpdate = Self(
 		pane: "com.apple.Software-Update-Settings.extension",
-		anchor: { if #unavailable(macOS 15) { nil } else { "action=showAdvancedOptions" } }(),
+		anchor: { if #available(macOS 15, *) { "action=showAdvancedOptions" } else { nil } }(),
 	)
 	static let security = Self(
 		pane: "com.apple.settings.PrivacySecurity.extension",
@@ -25,11 +25,11 @@ struct SystemSetting: Openable {
 	)
 	static let fileVault = Self(
 		pane: "com.apple.settings.PrivacySecurity.extension",
-		anchor: { if #unavailable(macOS 14) { "Security" } else { "FileVault" } }(),
+		anchor: { if #available(macOS 14, *) { "FileVault" } else { "Security" } }(),
 	)
 	static let accessories = Self(
 		pane: "com.apple.settings.PrivacySecurity.extension",
-		anchor: { if #unavailable(macOS 15.4) { "Security" } else { "Accessories" } }(),
+		anchor: { if #available(macOS 15.4, *) { "Accessories" } else { "Security" } }(),
 	)
 	static let backgroundSecurityImprovements = Self(
 		pane: "com.apple.settings.PrivacySecurity.extension",
