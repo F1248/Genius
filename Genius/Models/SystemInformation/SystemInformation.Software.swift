@@ -50,6 +50,8 @@ extension SystemInformation {
 						nil
 					} else if #unavailable(macOS 27) {
 						"macOS Tahoe"
+					} else if #unavailable(macOS 28) {
+						"macOS Golden Gate"
 					} else { nil }
 				}(),
 			)
