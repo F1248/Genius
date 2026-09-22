@@ -92,10 +92,14 @@ struct RecommendationsFormView: View {
 						help: URL(appleSupportArticle: 102_629),
 						setting: {
 							if #available(macOS 26, *) {
-								URL(
-									string: "macappstore:showSettingsPage",
-									available: SystemInformation.Software.OS.bootMode.value !=? .recovery,
-								)
+								if #unavailable(macOS 27) {
+									URL(
+										string: "macappstore:showSettingsPage",
+										available: SystemInformation.Software.OS.bootMode.value !=? .recovery,
+									)
+								} else {
+									Application.appStore
+								}
 							} else {
 								SystemSetting.softwareUpdate
 							}

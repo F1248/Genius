@@ -9,6 +9,10 @@ import ObjectiveC
 
 struct Application: Openable {
 
+	static let appStore = Self(
+		path: "/System/Applications/App Store.app",
+		available: SystemInformation.Software.OS.bootMode.value !=? .recovery,
+	)
 	static let startupSecurityUtility = Self(
 		path: "/System/Applications/Utilities/Startup Disk.app",
 		arguments: "-ssu",
