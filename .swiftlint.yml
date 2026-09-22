@@ -38,6 +38,7 @@ explicit_type_interface:
 file_name:
     excluded:
         - Array.swift
+        - Dictionary.swift
     require_fully_qualified_names: true
 force_unwrapping:
     ignored_literal_argument_functions: []

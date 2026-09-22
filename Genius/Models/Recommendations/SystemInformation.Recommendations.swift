@@ -57,6 +57,40 @@ extension SystemInformation {
 				{ await Bool(spctlOutput: Process("/usr/sbin/spctl", "--status")?.runSafe()) },
 				available: Software.OS.bootMode.value !=? .recovery,
 			)
+			static let protectSystemWideSettings = Recommendation<Bool?, _>(
+				{
+					let valuesShared: [Bool?] = await [
+						"system.preferences",
+						"system.preferences.accessibility",
+						"system.preferences.accounts",
+						"system.preferences.datetime",
+						"system.preferences.energysaver",
+						"system.preferences.network",
+						"system.preferences.parental-controls",
+						"system.preferences.printing",
+						"system.preferences.security",
+						"system.preferences.sharing",
+						"system.preferences.softwareupdate",
+						"system.preferences.startupdisk",
+						"system.preferences.timemachine",
+					].concurrentMap { right -> Bool? in
+						guard
+							let processOutput = await Process(
+								"/usr/bin/security",
+								"authorizationdb",
+								"read",
+								right,
+							)?.runSafe(expectedErrorPipeDate: "YES (0)"),
+							let dictionary = [String: Any](plist: processOutput),
+							let valueShared = dictionary["shared"] as? Bool
+						else { return nil }
+						return valueShared
+					}
+					guard !valuesShared.contains(nil) else { return nil }
+					return !valuesShared.contains(true)
+				},
+				available: Software.OS.bootMode.value !=? .recovery,
+			)
 			static let allowAccessoriesToConnect = Recommendation<AllowAccessoriesToConnectSetting?, _>(
 				{
 					switch IORegistry(class: "AppleCredentialManager").read("TRM_ConfigProfile") as Int? {

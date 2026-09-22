@@ -51,6 +51,11 @@ struct RecommendationsFormView: View {
 						setting: SystemSetting.security,
 					): SystemInformation.Recommendations.MalwareProtection.gatekeeper,
 					RecommendationLabel(
+						.requireAdministratorPasswordForSystemWideSettings,
+						help: URL(appleUserGuideArticle: "mh40595"),
+						setting: SystemSetting.securityAdvanced,
+					): SystemInformation.Recommendations.MalwareProtection.protectSystemWideSettings,
+					RecommendationLabel(
 						.askToAllowAccessoriesToConnect,
 						help: URL(appleSupportArticle: 102_282),
 						setting: SystemSetting.accessories ?? Application.startupSecurityUtility,

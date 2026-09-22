@@ -9,6 +9,8 @@ See LICENSE.txt for license information.
 
 ### Added
 
+- Add Recommendations → Require administrator password for system-wide settings
+
 ### Improved
 
 - Reduce number of interface modes to three by removing “power user” interface mode

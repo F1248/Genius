@@ -41,6 +41,10 @@ struct SystemSetting: Openable {
 		pane: "com.apple.settings.PrivacySecurity.extension",
 		anchor: "SecurityImprovements",
 	)
+	static let securityAdvanced = Self(
+		pane: "com.apple.settings.PrivacySecurity.extension",
+		anchor: "Advanced",
+	)
 
 	let url: URL
 

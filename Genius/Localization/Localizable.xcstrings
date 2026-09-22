@@ -1042,6 +1042,23 @@
         }
       }
     },
+    "requireAdministratorPasswordForSystemWideSettings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adminpasswort für systemweite Einstellungen verlangen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Require administrator password for system-wide settings"
+          }
+        }
+      }
+    },
     "resetSetting" : {
       "extractionState" : "manual",
       "localizations" : {

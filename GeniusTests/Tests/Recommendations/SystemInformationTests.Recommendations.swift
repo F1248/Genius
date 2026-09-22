@@ -49,6 +49,11 @@ extension SystemInformationTests {
 			}
 
 			@Test
+			func protectSystemWideSettings() async {
+				#expect(await SystemInformation.Recommendations.MalwareProtection.protectSystemWideSettings.testCondition)
+			}
+
+			@Test
 			func allowAccessoriesToConnect() {
 				#expect(SystemInformation.Recommendations.MalwareProtection.allowAccessoriesToConnect.testCondition)
 			}
