@@ -49,7 +49,7 @@ extension SystemInformationTests {
 			}
 
 			@Test
-			func askToAllowAccessoriesToConnect() {
+			func allowAccessoriesToConnect() {
 				#expect(SystemInformation.Recommendations.MalwareProtection.allowAccessoriesToConnect.testCondition)
 			}
 		}
@@ -79,6 +79,11 @@ extension SystemInformationTests {
 			@Test
 			func installConfigurationData() {
 				#expect(SystemInformation.Recommendations.AutomaticUpdates.installConfigurationData.testCondition)
+			}
+
+			@Test
+			func backgroundSecurityImprovements() {
+				#expect(SystemInformation.Recommendations.AutomaticUpdates.backgroundSecurityImprovements.testCondition)
 			}
 
 			@Test
