@@ -50,6 +50,9 @@ lint: swiftformat swiftlint-lint periphery swiftlint-analyze
 periphery:
 	$(command_prefix)periphery scan --strict $(periphery_arguments) -- -configuration Test-Debug PERIPHERY=true $(periphery_build_arguments)
 
+periphery-skip-build:
+	$(command_prefix)periphery scan --strict $(periphery_arguments) --skip-build --index-store-path ~/Library/Developer/Xcode/DerivedData/Genius-*/Index.noindex/DataStore
+
 swiftformat:
 	$(command_prefix)swiftformat --lint . $(swiftformat_arguments)
 
