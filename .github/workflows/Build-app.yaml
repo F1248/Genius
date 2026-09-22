@@ -74,9 +74,9 @@ jobs:
 
             - name: Install Periphery
               run: |
-                tag=$(gh release --repo https://github.com/peripheryapp/periphery list --json tagName --jq ".[0].tagName")
+                tag=$(gh release --repo https://github.com/periphery-pro/cli-releases list --json tagName --jq ".[0].tagName")
                 curl \
-                    https://github.com/peripheryapp/periphery/releases/download/"$tag"/periphery-"$tag".zip \
+                    https://github.com/periphery-pro/cli-releases/releases/download/"$tag"/periphery-cli_"$tag"_macos_arm64.zip \
                     --location \
                     --output periphery.zip
                 unzip periphery.zip
@@ -151,6 +151,8 @@ jobs:
                 echo "$(xcodebuild -version | tr "\n" " ")selected"
 
             - name: Run Periphery
+              env:
+                PERIPHERY_TOKEN: ${{ secrets.PERIPHERY_TOKEN }}
               run: make periphery
 
             - name: Build for testing
