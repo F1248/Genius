@@ -33,7 +33,7 @@ See LICENSE.txt for license information.
 
 ### Supported macOS Versions
 
-- macOS Ventura 13 and later, including macOS Tahoe 26
+- macOS Ventura 13 and later, including macOS Golden Gate 27
 - Also supports recoveryOS on macOS Sonoma 14 and later
 
 ### Supported Models
