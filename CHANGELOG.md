@@ -9,6 +9,7 @@ See LICENSE.txt for license information.
 
 ### Added
 
+- Add support for macOS Golden Gate 27
 - Add Recommendations → Require administrator password for system-wide settings
 
 ### Improved
