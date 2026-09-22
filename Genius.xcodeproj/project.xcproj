@@ -1,0 +1,176 @@
+//
+// © 2026 F1248 <f1248@mailbox.org>
+// See LICENSE.txt for license information.
+//
+
+{
+  "default-configuration": "Release",
+  "configurations": [
+    { "name": "Debug", "file": "Genius.xcconfig" },
+    { "name": "Release", "file": "Genius.xcconfig" },
+    { "name": "Test-Debug", "file": "Genius.xcconfig" },
+    { "name": "Test-Release", "file": "Genius.xcconfig" },
+  ],
+  "localizations": {
+    "development": "en",
+    "supported": [
+      "de",
+    ],
+  },
+  "packages": [
+    {
+      "kind": "remote",
+      "repository": "https://github.com/sindresorhus/Defaults",
+      "version": {
+        "branch": "main",
+      },
+    }, {
+      "kind": "remote",
+      "repository": "https://github.com/SFSafeSymbols/SFSafeSymbols",
+      "version": {
+        "branch": "stable",
+      },
+    }, {
+      "kind": "remote",
+      "repository": "https://github.com/sparkle-project/Sparkle",
+      "version": {
+        "branch": "2.x",
+      },
+    },
+  ],
+  "files": [
+    { "kind": "folder", "path": ".forgejo" },
+    { "kind": "folder", "path": ".github" },
+    {
+      "kind": "folder",
+      "path": "Genius",
+      "target-membership": [
+        "Genius",
+      ],
+      "membership-exceptions": [
+        {
+          "target": "Genius",
+          "exclusions": [
+            "Info.plist",
+          ],
+        },
+      ],
+    }, {
+      "kind": "folder",
+      "path": "GeniusTests",
+      "target-membership": [
+        "GeniusTests",
+      ],
+      "membership-exceptions": [
+        {
+          "target": "GeniusTests",
+          "exclusions": [
+            "Genius.xctestplan",
+            "GeniusTests.xcconfig",
+          ],
+        },
+      ],
+    },
+    { "kind": "folder", "path": "Images" },
+    { "path": ".gitignore" },
+    { "path": ".periphery.yaml" },
+    { "path": ".swiftformat" },
+    { "path": ".swiftlint.yml" },
+    { "path": "CHANGELOG.md" },
+    { "path": "Genius.xcconfig" },
+    { "path": "Install" },
+    { "path": "LICENSE.txt" },
+    { "path": "Makefile" },
+    { "path": "README_DE.md" },
+    { "path": "README.md" },
+    {
+      "kind": "group",
+      "name": "Products",
+      "children": [
+        { "path": "<PRODUCTS>/Genius.app", "id": "A42B353D2BA2185B009E81AD", "type": "wrapper.application", "index": false },
+        { "path": "<PRODUCTS>/GeniusTests.xctest", "id": "A4D9A1AA2D257055008D91E7", "type": "wrapper.cfbundle", "index": false },
+      ],
+    },
+  ],
+  "targets": [
+    {
+      "name": "Genius",
+      "id": "A42B353C2BA2185B009E81AD",
+      "product": "Products/Genius.app",
+      "product-type": "application",
+      "build-phases": [
+        {
+          "kind": "script",
+          "name": "SwiftFormat",
+          "log-environment-variables": true,
+          "run-on-every-build": true,
+          "shell": "/bin/zsh",
+          "script": [
+            "if [[ ${CONFIGURATION} == *Debug && ! ${PERIPHERY} ]]; then",
+            "\tif which -s swiftformat; then",
+            "\t\tswiftformat --lint --lenient .",
+            "\telse",
+            "\t\techo \"warning: SwiftFormat is not installed, see https://swiftformat.info#command-line-tool for installation instructions\"",
+            "\tfi",
+            "fi",
+            "",
+          ],
+        }, {
+          "kind": "script",
+          "name": "SwiftLint",
+          "log-environment-variables": true,
+          "run-on-every-build": true,
+          "shell": "/bin/zsh",
+          "script": [
+            "if [[ ${CONFIGURATION} == *Debug && ! ${PERIPHERY} ]]; then",
+            "\tif which -s swiftlint; then",
+            "\t\tswiftlint lint",
+            "\telse",
+            "\t\techo \"warning: SwiftLint is not installed, see https://realm.github.io/SwiftLint#installation for installation instructions\"",
+            "\tfi",
+            "fi",
+            "",
+          ],
+        },
+        "compile-sources",
+        "frameworks",
+        "resources",
+      ],
+      "package-product-members": [
+        {
+          "package": "Defaults",
+          "product-name": "Defaults",
+          "build-phase": { "build-phase": "frameworks" },
+        }, {
+          "package": "SFSafeSymbols",
+          "product-name": "SFSafeSymbols",
+          "build-phase": { "build-phase": "frameworks" },
+        }, {
+          "package": "Sparkle",
+          "product-name": "Sparkle",
+          "build-phase": { "build-phase": "frameworks" },
+        },
+      ],
+    }, {
+      "name": "GeniusTests",
+      "id": "A4D9A1A92D257055008D91E7",
+      "product": "Products/GeniusTests.xctest",
+      "product-type": "bundle.unit-test",
+      "test-host-target": "Genius",
+      "specialized-configurations": [
+        { "name": "Test-Debug", "file": { "anchor": "GeniusTests", "relative-path": "GeniusTests.xcconfig" } },
+        { "name": "Test-Release", "file": { "anchor": "GeniusTests", "relative-path": "GeniusTests.xcconfig" } },
+      ],
+      "dependencies": [
+        "Genius",
+      ],
+      "build-phases": [
+        "compile-sources",
+        "frameworks",
+        "resources",
+      ],
+    },
+  ],
+  "last-upgrade": "27.2",
+  "last-swift-update": "27.2",
+}
