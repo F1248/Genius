@@ -13,7 +13,7 @@ struct VersionNumber: UIStringRepresentable {
 
 	init?(_ versionNumber: String) {
 		guard
-			let newVersions = [Int](versionNumber.split(separator: ".")),
+			let newVersions = versionNumber.split(separator: ".").strictMap({ Int($0) }),
 			!newVersions.isEmpty
 		else { return nil }
 		self.versions = newVersions

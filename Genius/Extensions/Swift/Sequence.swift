@@ -5,6 +5,17 @@
 
 extension Sequence {
 
+	func strictMap<ElementOfResult>(
+		_ transform: (Element) -> ElementOfResult?,
+	) -> [ElementOfResult]? {
+		var result: [ElementOfResult] = []
+		for element in self {
+			guard let newElement = transform(element) else { return nil }
+			result.append(newElement)
+		}
+		return result
+	}
+
 	func asyncMap<ElementOfResult>(
 		_ transform: (Element) async -> ElementOfResult,
 	) async -> [ElementOfResult] {
