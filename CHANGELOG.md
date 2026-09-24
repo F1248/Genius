@@ -26,6 +26,7 @@ See LICENSE.txt for license information.
 - Fix `SettingPicker` on macOS 27
 - Fix Maintenance → Install app updates from the App Store if setting was never changed
 - Fix App Store crash on macOS 27
+- Fix Disable Liquid Glass setting on macOS 27
 
 ### Security
 
