@@ -5,19 +5,19 @@
 
 extension Sequence {
 
-	func asyncMap<Result>(
-		_ transform: (Element) async -> Result,
-	) async -> [Result] {
-		var results: [Result] = []
+	func asyncMap<ElementOfResult>(
+		_ transform: (Element) async -> ElementOfResult,
+	) async -> [ElementOfResult] {
+		var result: [ElementOfResult] = []
 		for element in self {
-			await results.append(transform(element))
+			await result.append(transform(element))
 		}
-		return results
+		return result
 	}
 
-	func concurrentMap<Result: Sendable>(
-		_ transform: @escaping @Sendable (Element) async -> Result,
-	) async -> [Result] where Self: Sendable, Element: Sendable {
+	func concurrentMap<ElementOfResult: Sendable>(
+		_ transform: @escaping @Sendable (Element) async -> ElementOfResult,
+	) async -> [ElementOfResult] where Self: Sendable, Element: Sendable {
 		await map { element in
 			Task {
 				await transform(element)
