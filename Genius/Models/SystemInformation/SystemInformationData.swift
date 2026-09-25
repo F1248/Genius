@@ -50,12 +50,12 @@ struct SystemInformationData<
 extension SystemInformationData where ValueWrapper == SyncValueWrapper<Value> {
 
 	init(_ value: Value) {
-		self.valueWrapper = SyncValueWrapper(wrappedValue: value)
+		self.valueWrapper = SyncValueWrapper(value)
 		self.available = true
 	}
 
 	init<Wrapped>(_ value: @autoclosure () -> Value, available: Bool?) where Value == Wrapped? {
-		self.valueWrapper = SyncValueWrapper(wrappedValue: (available ?? true) ? value() : nil)
+		self.valueWrapper = SyncValueWrapper((available ?? true) ? value() : nil)
 		self.available = available
 	}
 }
@@ -69,9 +69,7 @@ extension SystemInformationData where ValueWrapper == AsyncValueWrapper<Value> {
 	}
 
 	init<Wrapped>(_ valueClosure: @escaping @Sendable () async -> Value, available: Bool?) where Value == Wrapped? {
-		self.valueWrapper = AsyncValueWrapper(
-			(available ?? true) ? valueClosure : { @Sendable in nil },
-		)
+		self.valueWrapper = AsyncValueWrapper((available ?? true) ? valueClosure : { @Sendable in nil })
 		self.available = available
 	}
 }

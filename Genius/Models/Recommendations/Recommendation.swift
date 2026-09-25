@@ -67,7 +67,7 @@ extension Recommendation where ValueWrapper == SyncValueWrapper<Value> {
 
 	// periphery:ignore
 	init(_ value: Value, requirement: Wrapped = .max) {
-		self.valueWrapper = SyncValueWrapper(wrappedValue: value)
+		self.valueWrapper = SyncValueWrapper(value)
 		self.requirement = requirement
 		self.available = true
 	}
@@ -77,7 +77,7 @@ extension Recommendation where ValueWrapper == SyncValueWrapper<Value> {
 		requirement: Wrapped = .max,
 		available: Bool?,
 	) where Value == Wrapped? {
-		self.valueWrapper = SyncValueWrapper(wrappedValue: (available ?? true) ? value() : nil)
+		self.valueWrapper = SyncValueWrapper((available ?? true) ? value() : nil)
 		self.available = available
 		self.requirement = requirement
 	}
@@ -88,7 +88,7 @@ extension Recommendation where ValueWrapper == SyncValueWrapper<Value> {
 		available: Bool? = true,
 	) where Value == Wrapped? {
 		self.available = SystemInformation.Software.OS.bootMode.value !=? .recovery &&? available
-		self.valueWrapper = SyncValueWrapper(wrappedValue: (self.available ?? true) ? Defaults[defaultsKey] : nil)
+		self.valueWrapper = SyncValueWrapper((self.available ?? true) ? Defaults[defaultsKey] : nil)
 		self.requirement = requirement
 	}
 }
@@ -107,9 +107,7 @@ extension Recommendation where ValueWrapper == AsyncValueWrapper<Value> {
 		requirement: Wrapped = .max,
 		available: Bool?,
 	) where Value == Wrapped? {
-		self.valueWrapper = AsyncValueWrapper(
-			(available ?? true) ? valueClosure : { @Sendable in nil },
-		)
+		self.valueWrapper = AsyncValueWrapper((available ?? true) ? valueClosure : { @Sendable in nil })
 		self.requirement = requirement
 		self.available = available
 	}
