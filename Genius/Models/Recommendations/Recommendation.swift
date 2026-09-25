@@ -10,7 +10,7 @@ import SwiftUI
 struct Recommendation<
 	Value: PossiblyOptional & Sendable,
 	ValueWrapper: ValueWrapperProtocol<Value>,
->: SystemInformationProtocol where Value.Wrapped: Comparable & Maximizable & Sendable {
+>: SystemInformationProtocol where Value.Wrapped: Comparable & Sendable {
 
 	let valueWrapper: ValueWrapper
 	let requirement: Value.Wrapped
@@ -67,7 +67,7 @@ extension Recommendation where ValueWrapper == SyncValueWrapper<Value> {
 		_ value: @autoclosure () -> Value,
 		requirement: Wrapped = .max,
 		available: Bool?,
-	) where Value == Wrapped? {
+	) where Value == Wrapped?, Wrapped: Maximizable {
 		self.valueWrapper = SyncValueWrapper((available ?? true) ? value() : nil)
 		self.available = available
 		self.requirement = requirement
@@ -77,7 +77,7 @@ extension Recommendation where ValueWrapper == SyncValueWrapper<Value> {
 		defaultsKey: Defaults.Key<Wrapped>,
 		requirement: Wrapped = .max,
 		available: Bool? = true,
-	) where Value == Wrapped? {
+	) where Value == Wrapped?, Wrapped: Maximizable {
 		self.available = SystemInformation.Software.OS.bootMode.value !=? .recovery &&? available
 		self.valueWrapper = SyncValueWrapper((self.available ?? true) ? Defaults[defaultsKey] : nil)
 		self.requirement = requirement
@@ -90,7 +90,7 @@ extension Recommendation where ValueWrapper == AsyncValueWrapper<Value> {
 		_ valueClosure: @escaping @Sendable () async -> Value,
 		requirement: Wrapped = .max,
 		available: Bool?,
-	) where Value == Wrapped? {
+	) where Value == Wrapped?, Wrapped: Maximizable {
 		self.valueWrapper = AsyncValueWrapper((available ?? true) ? valueClosure : { @Sendable in nil })
 		self.requirement = requirement
 		self.available = available
