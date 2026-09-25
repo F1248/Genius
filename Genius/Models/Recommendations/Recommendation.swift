@@ -13,6 +13,7 @@ struct Recommendation<
 >: SystemInformationProtocol where Value.Wrapped: Comparable & Sendable {
 
 	let valueWrapper: ValueWrapper
+	let higherIsBetter: Bool
 	let requirement: Value.Wrapped
 	let available: Bool?
 
@@ -23,7 +24,7 @@ struct Recommendation<
 			} else { .none }
 		} else if let syncValue {
 			if let value = syncValue.optional {
-				if value >= requirement {
+				if higherIsBetter ? (value >= requirement) : (value <= requirement) {
 					if Defaults[.showResolvedRecommendations] {
 						Symbol(.checkmark, color: .green, label: .resolved)
 					} else { nil }
@@ -46,7 +47,7 @@ struct Recommendation<
 				Symbol(.minus, color: .primary, label: .unavailable)
 			} else { nil }
 		} else if let value = await value.optional {
-			if value >= requirement {
+			if higherIsBetter ? (value >= requirement) : (value <= requirement) {
 				if Defaults[.showResolvedRecommendations] {
 					Symbol(.checkmark, color: .green, label: .resolved)
 				} else { nil }
@@ -65,20 +66,24 @@ extension Recommendation where ValueWrapper == SyncValueWrapper<Value> {
 
 	init<Wrapped>(
 		_ value: @autoclosure () -> Value,
+		higherIsBetter: Bool = true,
 		requirement: Wrapped = .max,
 		available: Bool?,
 	) where Value == Wrapped?, Wrapped: Maximizable {
 		self.valueWrapper = SyncValueWrapper((available ?? true) ? value() : nil)
+		self.higherIsBetter = higherIsBetter
 		self.available = available
 		self.requirement = requirement
 	}
 
 	init<Wrapped>(
 		defaultsKey: Defaults.Key<Wrapped>,
+		higherIsBetter: Bool = true,
 		requirement: Wrapped = .max,
 		available: Bool? = true,
 	) where Value == Wrapped?, Wrapped: Maximizable {
 		self.available = SystemInformation.Software.OS.bootMode.value !=? .recovery &&? available
+		self.higherIsBetter = higherIsBetter
 		self.valueWrapper = SyncValueWrapper((self.available ?? true) ? Defaults[defaultsKey] : nil)
 		self.requirement = requirement
 	}
@@ -88,10 +93,12 @@ extension Recommendation where ValueWrapper == AsyncValueWrapper<Value> {
 
 	init<Wrapped>(
 		_ valueClosure: @escaping @Sendable () async -> Value,
+		higherIsBetter: Bool = true,
 		requirement: Wrapped = .max,
 		available: Bool?,
 	) where Value == Wrapped?, Wrapped: Maximizable {
 		self.valueWrapper = AsyncValueWrapper((available ?? true) ? valueClosure : { @Sendable in nil })
+		self.higherIsBetter = higherIsBetter
 		self.requirement = requirement
 		self.available = available
 	}
