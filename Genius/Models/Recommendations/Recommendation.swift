@@ -12,10 +12,8 @@ struct Recommendation<
 	ValueWrapper: ValueWrapperProtocol<Value>,
 >: SystemInformationProtocol where Value.Wrapped: Comparable & Maximizable & Sendable {
 
-	typealias Wrapped = Value.Wrapped
-
 	let valueWrapper: ValueWrapper
-	let requirement: Wrapped
+	let requirement: Value.Wrapped
 	let available: Bool?
 
 	var syncUIRepresentation: Symbol?? {
