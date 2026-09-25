@@ -65,13 +65,6 @@ struct Recommendation<
 
 extension Recommendation where ValueWrapper == SyncValueWrapper<Value> {
 
-	// periphery:ignore
-	init(_ value: Value, requirement: Wrapped = .max) {
-		self.valueWrapper = SyncValueWrapper(value)
-		self.requirement = requirement
-		self.available = true
-	}
-
 	init<Wrapped>(
 		_ value: @autoclosure () -> Value,
 		requirement: Wrapped = .max,
@@ -94,13 +87,6 @@ extension Recommendation where ValueWrapper == SyncValueWrapper<Value> {
 }
 
 extension Recommendation where ValueWrapper == AsyncValueWrapper<Value> {
-
-	// periphery:ignore
-	init(_ valueClosure: @escaping @Sendable () async -> Value, requirement: Wrapped = .max) {
-		self.valueWrapper = AsyncValueWrapper(valueClosure)
-		self.requirement = requirement
-		self.available = true
-	}
 
 	init<Wrapped>(
 		_ valueClosure: @escaping @Sendable () async -> Value,
