@@ -37,7 +37,7 @@ endef
 
 .DEFAULT_GOAL = build-app
 
-all: lint test-without-building build zip-app create-dmg zip-debug-symbols appcast
+all: lint test-skip-build build zip-app create-dmg zip-debug-symbols appcast
 	rm -R _site
 	rm Debug-Symbols.zip
 	rm -R Genius.app
@@ -58,16 +58,16 @@ swiftlint: swiftlint-lint swiftlint-analyze
 swiftlint-lint:
 	$(command_prefix)swiftlint lint --strict $(swiftlint_arguments)
 
-swiftlint-analyze: clean-test-build build-for-testing-keep-log swiftlint-analyze-log-exists
+swiftlint-analyze: clean-test-build build-for-testing-keep-log swiftlint-analyze-skip-build
 
 clean-test-build:
 	rm -R -f ~/Library/Developer/Xcode/DerivedData/Genius-*/Build/Intermediates.noindex/Genius.build/Test-Release
 
-swiftlint-analyze-log-exists:
+swiftlint-analyze-skip-build:
 	$(command_prefix)swiftlint analyze --strict --compiler-log-path xcodebuild.log $(swiftlint_arguments)
 	$(remove-log)
 
-test: build-for-testing test-without-building
+test: build-for-testing test-skip-build
 
 build-for-testing: build-for-testing-keep-log
 	$(remove-log)
@@ -82,7 +82,7 @@ build-for-testing-keep-log:
 		$(xcodebuild_pipe)
 	$(evaluate-log)
 
-test-without-building:
+test-skip-build:
 	xcodebuild test-without-building \
 		$(xcodebuild_arguments) \
 		-destination platform=macOS,arch=arm64 \

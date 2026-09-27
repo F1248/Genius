@@ -159,10 +159,10 @@ jobs:
               run: make build-for-testing-keep-log
 
             - name: Run SwiftLint analyzer rules
-              run: make swiftlint-analyze-log-exists
+              run: make swiftlint-analyze-skip-build
 
             - name: Run tests
-              run: make test-without-building
+              run: make test-skip-build
 
             - name: Build app
               run: make build
