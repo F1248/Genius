@@ -31,15 +31,17 @@ struct Symbol: View, FormValue {
 	var formView: some View { self }
 
 	var body: some View {
-		if useTextInsteadOfSymbols {
-			Text(label)
-		} else {
-			Image(systemSymbol: symbol)
-				.apply { if let color { $0.foregroundStyle(color) } else { $0 } }
-				.frame(width: 14)
-				.accessibilityLabel(label)
-				.help(label)
+		Group {
+			if useTextInsteadOfSymbols {
+				Text(label)
+			} else {
+				Image(systemSymbol: symbol)
+					.frame(width: 14)
+					.accessibilityLabel(label)
+					.help(label)
+			}
 		}
+		.apply { if let color { $0.foregroundStyle(color) } else { $0 } }
 	}
 }
 
