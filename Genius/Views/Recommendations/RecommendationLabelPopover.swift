@@ -32,7 +32,7 @@ struct RecommendationLabelPopover: View {
 					.buttonStyle(.plain)
 				}
 			}
-			.foregroundColor(.secondary)
+			.foregroundStyle(.secondary)
 		}
 		.padding()
 	}

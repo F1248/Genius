@@ -35,7 +35,7 @@ struct Symbol: View, FormValue {
 			Text(label)
 		} else {
 			Image(systemSymbol: symbol)
-				.apply { if let color { $0.foregroundColor(color) } else { $0 } }
+				.apply { if let color { $0.foregroundStyle(color) } else { $0 } }
 				.frame(width: 14)
 				.accessibilityLabel(label)
 				.help(label)
