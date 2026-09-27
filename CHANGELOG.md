@@ -21,6 +21,7 @@ See LICENSE.txt for license information.
 - Make Recommendations the primary tab
 - Improve readability of tab symbols in menu bar
 - Link directly to setting in Recommendations → Activation Lock
+- Add icon for Settings… menu bar item on macOS 27
 
 ### Fixed
 
