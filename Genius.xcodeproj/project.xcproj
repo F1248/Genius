@@ -106,7 +106,7 @@
           "run-on-every-build": true,
           "shell": "/bin/zsh",
           "script": [
-            "if [[ ${CONFIGURATION} == *Debug && ! ${PERIPHERY} ]]; then",
+            "if [[ ${CONFIGURATION} == *Debug ]]; then",
             "\tif which -s swiftformat; then",
             "\t\tswiftformat --lint --lenient .",
             "\telse",
@@ -122,7 +122,7 @@
           "run-on-every-build": true,
           "shell": "/bin/zsh",
           "script": [
-            "if [[ ${CONFIGURATION} == *Debug && ! ${PERIPHERY} ]]; then",
+            "if [[ ${CONFIGURATION} == *Debug ]]; then",
             "\tif which -s swiftlint; then",
             "\t\tswiftlint lint",
             "\telse",

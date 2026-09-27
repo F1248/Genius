@@ -19,7 +19,6 @@ xcodebuild_pipe = \
 ifeq ($(GITHUB_ACTIONS), true)
 	command_prefix = ./
 	periphery_arguments = --format github-actions
-	periphery_build_arguments = -skipPackagePluginValidation
 	sparkle_arguments += --ed-key-file -
 	swiftformat_arguments = --reporter github-actions-log
 	swiftlint_arguments = --reporter github-actions-logging
@@ -45,10 +44,12 @@ all: lint test-skip-build build zip-app create-dmg zip-debug-symbols appcast
 	rm Genius.dmg
 	rm Genius.zip
 
-lint: swiftformat swiftlint-lint periphery swiftlint-analyze
+lint: swiftformat swiftlint-lint clean-test-build build-for-testing-keep-log periphery-skip-build swiftlint-analyze-skip-build
 
-periphery:
-	$(command_prefix)periphery scan --strict $(periphery_arguments) -- -configuration Test-Debug PERIPHERY=true $(periphery_build_arguments)
+periphery: build-for-testing periphery-skip-build
+
+periphery-skip-build:
+	$(command_prefix)periphery scan --strict $(periphery_arguments) --skip-build --index-store-path ~/Library/Developer/Xcode/DerivedData/Genius-*/Index.noindex/DataStore
 
 swiftformat:
 	$(command_prefix)swiftformat --lint . $(swiftformat_arguments)
