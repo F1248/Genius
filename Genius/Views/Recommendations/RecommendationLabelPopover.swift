@@ -22,7 +22,6 @@ struct RecommendationLabelPopover: View {
 					Link(destination: help) {
 						Symbol(.questionmarkCircle, label: .help)
 					}
-					.foregroundColor(.secondary)
 				}
 				if let setting {
 					Button {
@@ -31,9 +30,9 @@ struct RecommendationLabelPopover: View {
 						Symbol(.gear, label: .openSetting)
 					}
 					.buttonStyle(.plain)
-					.foregroundColor(.secondary)
 				}
 			}
+			.foregroundColor(.secondary)
 		}
 		.padding()
 	}
