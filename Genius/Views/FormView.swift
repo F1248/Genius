@@ -29,7 +29,7 @@ struct FormView<ValueLabel: View, Value: FormValue>: View {
 	}
 
 	var body: some View {
-		Group {
+		Group { // swiftlint:disable:this closure_body_length
 			if content.contains(where: { $0.value.contains(where: { $0.value != nil }) }) {
 				Form {
 					ForEach(enumeratingID: content) { sectionTitle, sectionEntries in
@@ -38,14 +38,18 @@ struct FormView<ValueLabel: View, Value: FormValue>: View {
 								ForEach(enumeratingID: sectionEntries) { valueLabel, value in
 									if let value {
 										LabeledContent {
-											if let value {
-												value.formView
-											} else {
-												ProgressView()
-													.controlSize(.small)
+											Group {
+												if let value {
+													value.formView
+												} else {
+													ProgressView()
+														.controlSize(.small)
+												}
 											}
+											.alignmentGuide(.firstTextBaseline) { $0[VerticalAlignment.center] }
 										} label: {
 											valueLabel
+												.alignmentGuide(.firstTextBaseline) { $0[VerticalAlignment.center] }
 										}
 									}
 								}

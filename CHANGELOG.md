@@ -23,6 +23,7 @@ See LICENSE.txt for license information.
 - Link directly to setting in Recommendations → Activation Lock
 - Add icon for Settings… menu bar item on macOS 27
 - Apply icon color to text too when Use text instead of symbols is enabled
+- Align content in `FormView` vertically centered
 
 ### Fixed
 
