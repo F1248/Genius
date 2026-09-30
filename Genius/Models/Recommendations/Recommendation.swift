@@ -94,6 +94,18 @@ extension Recommendation where ValueWrapper == AsyncValueWrapper<Value> {
 	init<Wrapped>(
 		_ valueClosure: @escaping @Sendable () async -> Value,
 		higherIsBetter: Bool = true,
+		requirement: Wrapped,
+		available: Bool?,
+	) where Value == Wrapped? {
+		self.valueWrapper = AsyncValueWrapper((available ?? true) ? valueClosure : { @Sendable in nil })
+		self.higherIsBetter = higherIsBetter
+		self.requirement = requirement
+		self.available = available
+	}
+
+	init<Wrapped>(
+		_ valueClosure: @escaping @Sendable () async -> Value,
+		higherIsBetter: Bool = true,
 		requirement: Wrapped = .max,
 		available: Bool?,
 	) where Value == Wrapped?, Wrapped: Maximizable {

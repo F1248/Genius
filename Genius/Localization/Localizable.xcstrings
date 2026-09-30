@@ -940,6 +940,23 @@
         }
       }
     },
+    "performance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leistung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Performance"
+          }
+        }
+      }
+    },
     "performanceCores" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1089,6 +1106,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Resolved"
+          }
+        }
+      }
+    },
+    "restartedWithinLastSevenDays" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neustart innerhalb der letzten sieben Tage"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restarted within last seven days"
           }
         }
       }

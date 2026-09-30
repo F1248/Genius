@@ -11,6 +11,7 @@ See LICENSE.txt for license information.
 
 - Add support for macOS Golden Gate 27
 - Add Recommendations → Require administrator password for system-wide settings
+- Add Recommendations → Restarted within last seven days
 
 ### Improved
 

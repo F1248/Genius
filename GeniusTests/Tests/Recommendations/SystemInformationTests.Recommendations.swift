@@ -10,6 +10,14 @@ extension SystemInformationTests {
 
 	enum Recommendations {
 
+		struct Performance {
+
+			@Test
+			func uptime() async {
+				#expect(await SystemInformation.Recommendations.Performance.uptime.testCondition)
+			}
+		}
+
 		struct TheftProtection {
 
 			@Test

@@ -16,6 +16,12 @@ struct RecommendationsFormView: View {
 		FormView(
 			textWhenEmpty: showResolvedRecommendations ? .noRecommendationsAvailable : .allRecommendationsResolved,
 			content: [
+				.performance: [
+					RecommendationLabel(
+						.restartedWithinLastSevenDays,
+						help: URL(appleUserGuideArticle: "mchlp2522"),
+					): SystemInformation.Recommendations.Performance.uptime,
+				],
 				.theftProtection: [
 					RecommendationLabel(
 						.activationLock,

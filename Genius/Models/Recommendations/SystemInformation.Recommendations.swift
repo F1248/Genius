@@ -10,6 +10,29 @@ extension SystemInformation {
 
 	enum Recommendations {
 
+		enum Performance {
+
+			static let uptime = Recommendation<Duration?, _>(
+				{
+					guard
+						let values = await (SystemProfiler.software?["uptime"] as? String)?
+							.betweenAnchored(start: "up ")?
+							.split(separator: ":")
+							.strictMap(Double.init),
+						values.count == 4 // swiftformat:disable:this indent
+					else { return nil }
+					return // safe as `values` is guaranteed to have exactly 4 elements
+						Duration.days(values[0]) +
+						Duration.hours(values[1]) +
+						Duration.minutes(values[2]) +
+						Duration.seconds(values[3])
+				},
+				higherIsBetter: false,
+				requirement: .weeks(1),
+				available: SystemProfiler.available,
+			)
+		}
+
 		enum TheftProtection {
 
 			static let activationLock = Recommendation<Bool?, _>(
