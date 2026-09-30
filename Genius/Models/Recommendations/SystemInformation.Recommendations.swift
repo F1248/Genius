@@ -16,7 +16,7 @@ extension SystemInformation {
 				{ await Bool(systemProfilerActivationLockStatusOutput: SystemProfiler.hardware?["activation_lock_status"]) },
 				available: Hardware.securityChip.value >=? .t2 &&?
 					!?Hardware.Model.isVirtualMachine &&?
-					Software.OS.bootMode.value !=? .recovery,
+					SystemProfiler.available,
 			)
 			static let firmwarePassword = Recommendation<Bool?, _>(
 				{ await Bool(firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check")?.runSafe(asRoot: true)) },
