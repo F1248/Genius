@@ -102,15 +102,13 @@ struct RecommendationsFormView: View {
 						.installAppStoreAppUpdates,
 						help: URL(appleSupportArticle: 102_629),
 						setting: {
-							if #available(macOS 26, *) {
-								if #unavailable(macOS 27) {
-									URL(
-										string: "macappstore:showSettingsPage",
-										available: SystemInformation.Software.OS.bootMode.value !=? .recovery,
-									)
-								} else {
-									Application.appStore
-								}
+							if #available(macOS 27, *) {
+								Application.appStore
+							} else if #available(macOS 26, *) {
+								URL(
+									string: "macappstore:showSettingsPage",
+									available: SystemInformation.Software.OS.bootMode.value !=? .recovery,
+								)
 							} else {
 								SystemSetting.softwareUpdate
 							}
