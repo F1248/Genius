@@ -3,6 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
+import Darwin
 import Foundation
 import ObjectiveC
 
@@ -16,6 +17,10 @@ struct PrivateFramework {
 		}(),
 	)
 	static let iconServices = Self(name: "IconServices")
+	static let powerPreferences = Self(
+		executable: "/System/Library/ExtensionKit/Extensions/PowerPreferences.appex/Contents/MacOS/PowerPreferences",
+		available: SystemInformation.Software.OS.bootMode.value !=? .recovery,
+	)
 
 	let available: Bool?
 	let loaded: Bool
@@ -26,6 +31,18 @@ struct PrivateFramework {
 			available ?? true,
 			let bundle = Bundle(path: "/System/Library/PrivateFrameworks/\(name).framework"),
 			bundle.load()
+		else {
+			self.loaded = false
+			return
+		}
+		self.loaded = true
+	}
+
+	init(executable executablePath: String, available: Bool? = true) {
+		self.available = available
+		guard
+			available ?? true,
+			unsafe dlopen(executablePath, 0) != nil
 		else {
 			self.loaded = false
 			return

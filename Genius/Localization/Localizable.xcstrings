@@ -124,6 +124,23 @@
         }
       }
     },
+    "batteryChargeLimit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%(percentage)@ Batterie-Ladelimit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%(percentage)@ battery charge limit"
+          }
+        }
+      }
+    },
     "betaUpdates" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -511,6 +528,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hardware"
+          }
+        }
+      }
+    },
+    "hardwareCare" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hardwarepflege"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hardware Care"
           }
         }
       }

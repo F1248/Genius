@@ -67,6 +67,18 @@ extension Recommendation where ValueWrapper == SyncValueWrapper<Value> {
 	init<Wrapped>(
 		_ value: @autoclosure () -> Value,
 		higherIsBetter: Bool = true,
+		requirement: Wrapped,
+		available: Bool?,
+	) where Value == Wrapped? {
+		self.valueWrapper = SyncValueWrapper((available ?? true) ? value() : nil)
+		self.higherIsBetter = higherIsBetter
+		self.available = available
+		self.requirement = requirement
+	}
+
+	init<Wrapped>(
+		_ value: @autoclosure () -> Value,
+		higherIsBetter: Bool = true,
 		requirement: Wrapped = .max,
 		available: Bool?,
 	) where Value == Wrapped?, Wrapped: Maximizable {

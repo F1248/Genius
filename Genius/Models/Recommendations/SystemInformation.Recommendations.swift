@@ -33,6 +33,24 @@ extension SystemInformation {
 			)
 		}
 
+		enum HardwareCare {
+
+			static let batteryChargeLimit = Recommendation<Int?, _>(
+				PrivateFramework.powerPreferences.SmartChargingUIStateProvider?.initialize()?.value("chargeLimit"),
+				higherIsBetter: false,
+				requirement: 80,
+				available: {
+					#if arch(arm64)
+						if #available(macOS 26.4, *) {
+							Hardware.Model.isLaptop &&? PrivateFramework.aboutSettings.available
+						} else { false }
+					#elseif arch(x86_64)
+						false
+					#endif
+				}(),
+			)
+		}
+
 		enum TheftProtection {
 
 			static let activationLock = Recommendation<Bool?, _>(

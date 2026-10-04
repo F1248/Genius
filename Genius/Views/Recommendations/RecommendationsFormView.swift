@@ -22,6 +22,14 @@ struct RecommendationsFormView: View {
 						help: URL(appleUserGuideArticle: "mchlp2522"),
 					): SystemInformation.Recommendations.Performance.uptime,
 				],
+				.hardwareCare: [
+					RecommendationLabel(
+						// work around `Not all languages format percentages in the same way.`
+						.batteryChargeLimit(percentage: 80.formatted(.percent)),
+						help: URL(appleSupportArticle: 102_338),
+						setting: SystemSetting.batteryCharging,
+					): SystemInformation.Recommendations.HardwareCare.batteryChargeLimit,
+				],
 				.theftProtection: [
 					RecommendationLabel(
 						.activationLock,
