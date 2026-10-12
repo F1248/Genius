@@ -9,18 +9,16 @@ import SwiftUI
 
 enum ContentViewTab: @MainActor TabData {
 
-	case home
+	case recommendations
 	case systemInformation
-	case maintenance
 	case settings
 
 	static let entireWindow: Bool = true
 	static let keyboardShortcutModifiers: EventModifiers = .command
 
 	var title: LocalizedStringResource { switch self {
-		case .home: .home
+		case .recommendations: .recommendations
 		case .systemInformation: .systemInformation
-		case .maintenance: .maintenance
 		case .settings: .settings
 	} }
 
@@ -39,22 +37,21 @@ enum ContentViewTab: @MainActor TabData {
 		default: true
 	} }
 
-	var displayTitleInBody: Bool { switch self {
-		case .home: false
-		default: true
-	} }
-
 	var symbol: SFSymbol { switch self {
-		case .home: .house
-		case .systemInformation: if #available(macOS 15.4, *) { .infoCircleTextPage } else { .docTextBelowEcg }
-		case .maintenance: .stethoscope
+		case .recommendations: .docTextBelowEcg
+		case .systemInformation: if #available(macOS 15.4, *) { .infoCircleTextPage } else { .infoCircle }
 		case .settings: .gear
 	} }
 
+	var largeSymbol: SFSymbol { switch self {
+		case .recommendations: .waveformPathEcg
+		case .systemInformation: .info
+		default: symbol
+	} }
+
 	var content: some View { switch self {
-		case .home: HomeView()
+		case .recommendations: RecommendationsView()
 		case .systemInformation: SystemInformationView()
-		case .maintenance: MaintenanceView()
 		case .settings: SettingsView()
 	} }
 }

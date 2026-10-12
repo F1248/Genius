@@ -19,13 +19,13 @@ struct SystemProfiler {
 
 	init(dataType: String) {
 		self.valueWrapper = AsyncValueWrapper {
-			let dataType: String = "SP\(dataType)DataType"
+			let fullDataType: String = "SP\(dataType)DataType"
 			guard
-				let systemProfilerOutput = await Process("/usr/sbin/system_profiler", "-json", dataType)?.runSafe()
+				let systemProfilerOutput = await Process("/usr/sbin/system_profiler", "-json", fullDataType)?.runSafe()
 			else { return nil }
 			return (
 				JSONSerialization.jsonObject(from: systemProfilerOutput) as? [String: [[String: any Sendable]]],
-			)?[dataType]?.first
+			)?[fullDataType]?.first
 		}
 	}
 }

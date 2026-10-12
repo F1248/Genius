@@ -10,6 +10,10 @@ import Sparkle
 final class UpdaterDelegate: NSObject, SPUUpdaterDelegate {
 
 	func allowedChannels(for _: SPUUpdater) -> Set<String> {
-		Defaults[.betaUpdates] ? ["beta"] : []
+		if Defaults[.betaUpdates] {
+			["beta"]
+		} else {
+			[]
+		}
 	}
 }

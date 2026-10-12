@@ -9,4 +9,8 @@ struct SyncValueWrapper<Value: Sendable>: ValueWrapperProtocol {
 	let wrappedValue: Value
 
 	var syncWrappedValue: Value? { wrappedValue }
+
+	init(_ wrappedValue: Value) {
+		self.wrappedValue = wrappedValue
+	}
 }

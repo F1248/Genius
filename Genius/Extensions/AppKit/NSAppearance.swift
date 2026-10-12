@@ -14,12 +14,14 @@ extension NSAppearance {
 
 	static func disableLiquidGlass() {
 		guard
-			let nsSolariumClass = object_getClass(NSClassFromString("_NSSolarium")),
+			let featureFlagsClass = object_getClass(NSClassFromString(
+				{ if #available(macOS 27, *) { "_NSSwiftUICoreFeatureFlags" } else { "_NSSolarium" } }(),
+			)),
 			let hasLiquidGlassImplementation = unsafe class_getMethodImplementation(self, #selector(getter: hasLiquidGlass))
 		else { return }
 		unsafe class_replaceMethod(
-			nsSolariumClass,
-			Selector(private: "isEnabled"),
+			featureFlagsClass,
+			Selector(private: { if #available(macOS 27, *) { "isSolariumEnabled" } else { "isEnabled" } }()),
 			hasLiquidGlassImplementation,
 			nil,
 		)

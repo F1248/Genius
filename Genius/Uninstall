@@ -17,22 +17,19 @@ fi
 
 cd "$(dirname "$0")/../../.."
 
-while ps aux -c | grep -w Genius > /dev/null; do
+while ps aux -c | grep --word-regexp --fixed-strings Genius > /dev/null; do
 	sleep 0.1
 done
 
 set +o errexit
 
-rm -r -f Genius.app
-rm -f ~/Library/Application\ Support/CrashReporter/Genius_*.plist
-rm -f /Users/*/Library/Application\ Support/CrashReporter/Genius_*.plist
-rm -r -f ~/Library/Caches/dev.F1248.Genius
-rm -r -f /Users/*/Library/Caches/dev.F1248.Genius
-rm -r -f ~/Library/HTTPStorages/dev.F1248.Genius
-rm -r -f /Users/*/Library/HTTPStorages/dev.F1248.Genius
-rm -f ~/Library/Logs/DiagnosticReports/Genius-*-*-*-*.ips
-rm -f /Users/*/Library/Logs/DiagnosticReports/Genius-*-*-*-*.ips
-defaults delete ~/Library/Preferences/dev.F1248.Genius.plist
-defaults delete /Users/*/Library/Preferences/dev.F1248.Genius.plist
-rm -f ~/Library/Preferences/dev.F1248.Genius.plist
-rm -f /Users/*/Library/Preferences/dev.F1248.Genius.plist
+rm -R -f Genius.app
+
+for home_directory in /Users/*/; do
+	rm -f "$home_directory"Library/Application\ Support/CrashReporter/Genius_*.plist
+	rm -R -f "$home_directory"Library/Caches/dev.F1248.Genius
+	rm -R -f "$home_directory"Library/HTTPStorages/dev.F1248.Genius
+	rm -f "$home_directory"Library/Logs/DiagnosticReports/Genius-*-*-*-*.ips
+	defaults delete "$home_directory"Library/Preferences/dev.F1248.Genius.plist
+	rm -f "$home_directory"Library/Preferences/dev.F1248.Genius.plist
+done

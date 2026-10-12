@@ -17,9 +17,46 @@ See LICENSE.txt for license information.
 
 ### Dependencies
 
-### [Commit History](https://github.com/F1248/Genius/compare/v1.1.0...HEAD)
+### [Commit History](../../../../../F1248/Genius/compare/v1.2.0...HEAD)
 
-## [1.1.0](https://github.com/F1248/Genius/releases/tag/v1.1.0)
+## [1.2.0](../../../../../F1248/Genius/releases/tag/v1.2.0)
+
+### Added
+
+- Add support for macOS Golden Gate 27
+- Add Recommendations → Require administrator password for system-wide settings
+- Add Recommendations → Restarted within last seven days
+- Add Recommendations → 80% battery charge limit
+
+### Improved
+
+- Reduce number of interface modes to three by removing “power user” interface mode
+- Disable Maintenance → Show passed checks by default
+- Rename Maintenance to Recommendations
+- Remove Home tab
+- Make Recommendations the primary tab
+- Improve readability of tab symbols in menu bar
+- Link directly to setting in Recommendations → Activation Lock
+- Add icon for Settings… menu bar item on macOS 27
+- Apply icon color to text too when Use text instead of symbols is enabled
+- Align content in `FormView` vertically centered
+
+### Fixed
+
+- Fix `SettingPicker` on macOS 27
+- Fix Maintenance → Install app updates from the App Store if setting was never changed
+- Fix App Store crash on macOS 27
+- Fix Disable Liquid Glass setting on macOS 27
+
+### Dependencies
+
+- Update [Sparkle](https://github.com/sparkle-project/Sparkle) from [2.9.0](https://github.com/sparkle-project/Sparkle/releases/tag/2.9.0) to [2.10.0](https://github.com/sparkle-project/Sparkle/releases/tag/2.10.0)
+- Update [Defaults](https://github.com/sindresorhus/Defaults) from [9.0.7](https://github.com/sindresorhus/Defaults/releases/tag/9.0.7) to [9.0.9](https://github.com/sindresorhus/Defaults/releases/tag/9.0.9)
+- Update [Xcode](https://developer.apple.com/xcode) from [26.4.0](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_4-release-notes) to [27.0.0](https://developer.apple.com/documentation/xcode-release-notes/xcode-27-release-notes)
+
+### [Commit History](../../../../../F1248/Genius/compare/v1.1.0...v1.2.0)
+
+## [1.1.0](../../../../../F1248/Genius/releases/tag/v1.1.0)
 
 ### Added
 
@@ -47,9 +84,9 @@ See LICENSE.txt for license information.
 - Update [Defaults](https://github.com/sindresorhus/Defaults) from [9.0.6](https://github.com/sindresorhus/Defaults/releases/tag/9.0.6) to [9.0.7](https://github.com/sindresorhus/Defaults/releases/tag/9.0.7)
 - Update [Xcode](https://developer.apple.com/xcode) from [26.2.0](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_2-release-notes) to [26.4.0](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_4-release-notes)
 
-### [Commit History](https://github.com/F1248/Genius/compare/v1.0.0...v1.1.0)
+### [Commit History](../../../../../F1248/Genius/compare/v1.0.0...v1.1.0)
 
-## [1.0.0](https://github.com/F1248/Genius/releases/tag/v1.0.0)
+## [1.0.0](../../../../../F1248/Genius/releases/tag/v1.0.0)
 
 ### Added
 
@@ -72,9 +109,9 @@ See LICENSE.txt for license information.
 
 - Update [Xcode](https://developer.apple.com/xcode) from [26.1.1](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_1-release-notes) to [26.2.0](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_2-release-notes)
 
-### [Commit History](https://github.com/F1248/Genius/compare/v0.4.0...v1.0.0)
+### [Commit History](../../../../../F1248/Genius/compare/v0.4.0...v1.0.0)
 
-## [0.4.0](https://github.com/F1248/Genius/releases/tag/v0.4.0)
+## [0.4.0](../../../../../F1248/Genius/releases/tag/v0.4.0)
 
 ### Added
 
@@ -104,9 +141,9 @@ See LICENSE.txt for license information.
 - Update [Xcode](https://developer.apple.com/xcode) from [26.0.1](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_0_1-release-notes) to [26.1.1](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_1-release-notes)
 - Update [Sparkle](https://github.com/sparkle-project/Sparkle) from [2.8.0](https://github.com/sparkle-project/Sparkle/releases/tag/2.8.0) to [2.8.1](https://github.com/sparkle-project/Sparkle/releases/tag/2.8.1)
 
-### [Commit History](https://github.com/F1248/Genius/compare/v0.3.0...v0.4.0)
+### [Commit History](../../../../../F1248/Genius/compare/v0.3.0...v0.4.0)
 
-## [0.3.0](https://github.com/F1248/Genius/releases/tag/v0.3.0)
+## [0.3.0](../../../../../F1248/Genius/releases/tag/v0.3.0)
 
 ### Added
 
@@ -118,9 +155,9 @@ See LICENSE.txt for license information.
 - Align `content` in `TabData.body` to the top
 - Use `Form`s instead of `GroupBox`es
 
-### [Commit History](https://github.com/F1248/Genius/compare/v0.2.0...v0.3.0)
+### [Commit History](../../../../../F1248/Genius/compare/v0.2.0...v0.3.0)
 
-## [0.2.0](https://github.com/F1248/Genius/releases/tag/v0.2.0)
+## [0.2.0](../../../../../F1248/Genius/releases/tag/v0.2.0)
 
 ### Added
 
@@ -143,8 +180,8 @@ See LICENSE.txt for license information.
 - Update [Xcode](https://developer.apple.com/xcode) from [26.0.0](https://developer.apple.com/documentation/xcode-release-notes/xcode-26-release-notes) to [26.0.1](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_0_1-release-notes)
 - Update [Defaults](https://github.com/sindresorhus/Defaults) from [9.0.5](https://github.com/sindresorhus/Defaults/releases/tag/9.0.5) to [9.0.6](https://github.com/sindresorhus/Defaults/releases/tag/9.0.6)
 
-### [Commit History](https://github.com/F1248/Genius/compare/v0.1.0...v0.2.0)
+### [Commit History](../../../../../F1248/Genius/compare/v0.1.0...v0.2.0)
 
-## [0.1.0](https://github.com/F1248/Genius/releases/tag/v0.1.0)
+## [0.1.0](../../../../../F1248/Genius/releases/tag/v0.1.0)
 
-### [Commit History](https://github.com/F1248/Genius/commits/v0.1.0)
+### [Commit History](../../../../../F1248/Genius/commits/v0.1.0)

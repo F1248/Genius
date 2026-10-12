@@ -28,11 +28,10 @@ extension SystemInformation {
 			)
 			static let localizedName = SystemInformationData<String?, _>(
 				{
-					guard let configCode = configCode.value else { return nil }
-					// swiftlint:disable:next explicit_type_interface
-					let url = """
+					guard let configCodeValue = configCode.value else { return nil }
+					let url: String = """
 					https://support-sp.apple.com/sp/product?\
-					cc=\(configCode)&\
+					cc=\(configCodeValue)&\
 					lang=\(Locale.autoupdatingCurrent.identifier.split(separator: "@", maxSplits: 1).first ?? "")
 					"""
 					return await Network.string(from: url)?

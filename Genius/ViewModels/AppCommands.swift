@@ -36,6 +36,7 @@ struct AppCommands: Commands {
 		}
 		CommandGroup(replacing: .appSettings) {
 			ContentViewTab.settings.command
+				.apply { if #available(macOS 27, *) { $0.labelStyle(.titleAndIcon) } else { $0 } }
 		}
 		CommandGroup(replacing: .newItem, addition: {})
 		CommandGroup(before: .toolbar) {

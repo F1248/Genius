@@ -20,7 +20,7 @@ struct UninstallationDialog: PresentableDialog {
 				isPresented: isPresented,
 			) {
 				Button(.uninstallApp, role: .destructive) {
-					guard let uninstallPath = Bundle.main.path(forResource: "Uninstall", ofType: nil) else { return }
+					guard let uninstallPath = Bundle.main.path(forResource: "Uninstall", ofType: "") else { return }
 					try? Process(uninstallPath)?.run()
 					NSApp.terminate(nil)
 				}

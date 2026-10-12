@@ -1,0 +1,215 @@
+//
+// © 2024 F1248 <f1248@mailbox.org>
+// See LICENSE.txt for license information.
+//
+
+import Defaults
+import Foundation
+
+extension SystemInformation {
+
+	enum Recommendations {
+
+		enum Performance {
+
+			static let uptime = Recommendation<Duration?, _>(
+				{
+					guard
+						let values = await (SystemProfiler.software?["uptime"] as? String)?
+							.betweenAnchored(start: "up ")?
+							.split(separator: ":")
+							.strictMap(Double.init),
+						values.count == 4 // swiftformat:disable:this indent
+					else { return nil }
+					return // safe as `values` is guaranteed to have exactly 4 elements
+						Duration.days(values[0]) +
+						Duration.hours(values[1]) +
+						Duration.minutes(values[2]) +
+						Duration.seconds(values[3])
+				},
+				higherIsBetter: false,
+				requirement: .weeks(1),
+				available: SystemProfiler.available,
+			)
+		}
+
+		enum HardwareCare {
+
+			static let batteryChargeLimit = Recommendation<Int?, _>(
+				PrivateFramework.powerPreferences.SmartChargingUIStateProvider?.initialize()?.value("chargeLimit"),
+				higherIsBetter: false,
+				requirement: 80,
+				available: {
+					#if arch(arm64)
+						if #available(macOS 26.4, *) {
+							Hardware.Model.isLaptop &&? PrivateFramework.aboutSettings.available
+						} else { false }
+					#elseif arch(x86_64)
+						false
+					#endif
+				}(),
+			)
+		}
+
+		enum TheftProtection {
+
+			static let activationLock = Recommendation<Bool?, _>(
+				{ await Bool(systemProfilerActivationLockStatusOutput: SystemProfiler.hardware?["activation_lock_status"]) },
+				available: Hardware.securityChip.value >=? .t2 &&?
+					!?Hardware.Model.isVirtualMachine &&?
+					SystemProfiler.available,
+			)
+			static let firmwarePassword = Recommendation<Bool?, _>(
+				{ await Bool(firmwarepasswdOutput: Process("/usr/sbin/firmwarepasswd", "-check")?.runSafe(asRoot: true)) },
+				available: {
+					#if arch(arm64)
+						false
+					#elseif arch(x86_64)
+						!?Hardware.Model.isVirtualMachine
+					#endif
+				}(),
+			)
+		}
+
+		enum DataSecurity {
+
+			static let fileVault = Recommendation<Bool?, _>(
+				{ await Bool(fdesetupOutput: Process("/usr/bin/fdesetup", "status")?.runSafe()) },
+				available: Software.OS.bootMode.value !=? .recovery,
+			)
+		}
+
+		enum MalwareProtection {
+
+			static let systemIntegrityProtection = Recommendation<Bool?, _>(
+				{ await Bool(csrutilOutput: Process("/usr/bin/csrutil", "status")?.runSafe()) },
+				available: Software.OS.bootMode.value !=? .recovery,
+			)
+			static let firewall = Recommendation<Bool?, _>(
+				{
+					await Bool(
+						socketfilterfwOutput: Process("/usr/libexec/ApplicationFirewall/socketfilterfw", "--getglobalstate")?
+							.runSafe(),
+					)
+				},
+				available: Software.OS.bootMode.value !=? .recovery,
+			)
+			static let gatekeeper = Recommendation<Bool?, _>(
+				{ await Bool(spctlOutput: Process("/usr/sbin/spctl", "--status")?.runSafe()) },
+				available: Software.OS.bootMode.value !=? .recovery,
+			)
+			static let protectSystemWideSettings = Recommendation<Bool?, _>(
+				{
+					let valuesShared: [Bool?] = await [
+						"system.preferences",
+						"system.preferences.accessibility",
+						"system.preferences.accounts",
+						"system.preferences.datetime",
+						"system.preferences.energysaver",
+						"system.preferences.network",
+						"system.preferences.parental-controls",
+						"system.preferences.printing",
+						"system.preferences.security",
+						"system.preferences.sharing",
+						"system.preferences.softwareupdate",
+						"system.preferences.startupdisk",
+						"system.preferences.timemachine",
+					].concurrentMap { right -> Bool? in
+						guard
+							let processOutput = await Process(
+								"/usr/bin/security",
+								"authorizationdb",
+								"read",
+								right,
+							)?.runSafe(expectedErrorPipeDate: "YES (0)"),
+							let dictionary = [String: Any](plist: processOutput),
+							let valueShared = dictionary["shared"] as? Bool
+						else { return nil }
+						return valueShared
+					}
+					guard !valuesShared.contains(nil) else { return nil }
+					return !valuesShared.contains(true)
+				},
+				available: Software.OS.bootMode.value !=? .recovery,
+			)
+			static let allowAccessoriesToConnect = Recommendation<AllowAccessoriesToConnectSetting?, _>(
+				{
+					switch IORegistry(class: "AppleCredentialManager").read("TRM_ConfigProfile") as Int? {
+						case 1: .alwaysAsk
+						case 2: .askForNewAccessories
+						case 3: .automaticallyAllowWhenUnlocked
+						case 4: .alwaysAllow
+						default: nil
+					}
+				}(),
+				available: {
+					#if arch(arm64)
+						Hardware.Model.isLaptop &&?
+							{ if #available(macOS 26, *) { true } else { Software.OS.bootMode.value !=? .recovery } }()
+					#elseif arch(x86_64)
+						false
+					#endif
+				}(),
+			)
+		}
+
+		enum AutomaticUpdates {
+
+			// safe as `suiteName` is neither the globalDomain nor the app’s bundle identifier:
+			// https://developer.apple.com/documentation/foundation/userdefaults/init(suitename:)
+			// swiftlint:disable force_unwrapping
+			static let checkMacOS = Recommendation<Bool?, _>(
+				defaultsKey: Defaults.Key(
+					"AutomaticCheckEnabled",
+					default: true,
+					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")!,
+				),
+				available: { if #available(macOS 15, *) { false } else { true } }(),
+			)
+			static let downloadMacOS = Recommendation<Bool?, _>(
+				defaultsKey: Defaults.Key(
+					"AutomaticDownload",
+					default: true,
+					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")!,
+				),
+			)
+			static let installMacOS = Recommendation<Bool?, _>(
+				defaultsKey: Defaults.Key(
+					"AutomaticallyInstallMacOSUpdates",
+					default: false,
+					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")!,
+				),
+			)
+			static let installCritical = Recommendation<Bool?, _>(
+				defaultsKey: Defaults.Key(
+					"CriticalUpdateInstall",
+					default: true,
+					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")!,
+				),
+			)
+			static let installConfigurationData = Recommendation<Bool?, _>(
+				defaultsKey: Defaults.Key(
+					"ConfigDataInstall",
+					default: true,
+					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")!,
+				),
+			)
+			static let backgroundSecurityImprovements = Recommendation<Bool?, _>(
+				defaultsKey: Defaults.Key(
+					"SplatEnabled",
+					default: true,
+					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.SoftwareUpdate")!,
+				),
+				available: { if #available(macOS 26.1, *) { true } else { false } }(),
+			)
+			static let installAppStoreApps = Recommendation<Bool?, _>(
+				defaultsKey: Defaults.Key(
+					"AutoUpdate",
+					default: { if #available(macOS 26, *) { true } else { false } }(),
+					suite: UserDefaults(suiteName: "/Library/Preferences/com.apple.commerce")!,
+				),
+			)
+			// swiftlint:enable force_unwrapping
+		}
+	}
+}

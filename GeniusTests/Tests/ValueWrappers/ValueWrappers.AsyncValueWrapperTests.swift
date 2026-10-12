@@ -22,9 +22,9 @@ extension `Value wrappers` {
 			).value
 		}
 
-		@Test("MaintenanceCheck")
-		func maintenanceCheck() async {
-			_ = await MaintenanceCheck<Bool?, AsyncValueWrapper>(
+		@Test("Recommendation")
+		func recommendation() async {
+			_ = await Recommendation<Bool?, AsyncValueWrapper>(
 				{
 					#expect(Bool(false))
 					return nil

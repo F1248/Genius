@@ -6,26 +6,26 @@
 import Defaults
 import SwiftUI
 
-struct MaintenanceView: View {
+struct RecommendationsView: View {
 
-	@Default(.showPassedMaintenanceChecks)
-	var showPassedChecks: Bool
+	@Default(.showResolvedRecommendations)
+	var showResolvedRecommendations: Bool
 
 	var body: some View {
 		VStack {
 			SettingToggle(
-				.showPassedChecks,
-				value: $showPassedChecks,
-				key: .showPassedMaintenanceChecks,
+				.showResolvedRecommendations,
+				value: $showResolvedRecommendations,
+				key: .showResolvedRecommendations,
 				if: Defaults[.interfaceMode] >= .normal,
 			)
 			.toggleStyle(.switch)
-			MaintenanceFormView()
+			RecommendationsFormView()
 		}
 	}
 }
 
 #Preview {
-	MaintenanceView()
+	RecommendationsView()
 		.frame(width: 712, height: 256)
 }

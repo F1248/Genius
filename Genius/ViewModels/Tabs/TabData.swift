@@ -19,8 +19,8 @@ protocol TabData: View, CaseIterable, Equatable, SelfIdentifiable where AllCases
 	var commandTitle: LocalizedStringResource { get }
 	var keyEquivalent: KeyEquivalent { get }
 	var includeInCommands: Bool { get }
-	var displayTitleInBody: Bool { get }
 	var symbol: SFSymbol { get }
+	var largeSymbol: SFSymbol { get }
 
 	@ViewBuilder var content: ContentViewType { get }
 }
@@ -37,23 +37,21 @@ extension TabData {
 	var commandTitle: LocalizedStringResource { title }
 	var keyEquivalent: KeyEquivalent { KeyEquivalent(Character(String(index + 1))) }
 	var includeInCommands: Bool { true }
-	var displayTitleInBody: Bool { true }
+	var largeSymbol: SFSymbol { symbol }
 
 	// swiftlint:disable:next unused_declaration
 	var body: some View {
 		VStack {
-			if displayTitleInBody {
-				Label(title, systemImage: symbol.rawValue)
-					.font(.title)
-					.padding()
-			}
+			Label(title, systemImage: symbol.rawValue)
+				.font(.title)
+				.padding()
 			content
 				.frame(maxHeight: .infinity, alignment: .top)
 		}
 	}
 
 	var command: some View {
-		Button(commandTitle, systemImage: symbol.rawValue) {
+		Button(commandTitle, systemImage: largeSymbol.rawValue) {
 			SharedData.shared.selectedTabsIndices[Self.id] = index
 		}
 		.keyboardShortcut(keyEquivalent, modifiers: Self.keyboardShortcutModifiers)

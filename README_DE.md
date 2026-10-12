@@ -31,7 +31,7 @@ See LICENSE.txt for license information.
 
 ### Unterstützte macOS-Versionen
 
-- macOS Ventura 13 und neuer, inklusive macOS Tahoe 26
+- macOS Ventura 13 und neuer, inklusive macOS Golden Gate 27
 - Unterstützt auch recoveryOS unter macOS Sonoma 14 und neuer
 
 ### Unterstützte Modelle
@@ -42,13 +42,13 @@ See LICENSE.txt for license information.
 
 ### Manuelle Installation (in recoveryOS nicht möglich)
 
-1. Lade [die neuste Version](https://github.com/F1248/Genius/releases/latest/download/Genius.dmg) herunter und installiere sie.
+1. Lade [die neuste Version](https://codeberg.org/F1248/Genius/releases/download/latest/Genius.dmg) herunter und installiere sie.
 2. Doppelklicke auf die App in `/Programme`, um sie zu öffnen.
 
 In macOS Sequoia 15 oder neuer:
 
 3. Klicke auf `Fertig`.
-4. Öffne [`Datenschutz & Sicherheit` in den Systemeinstellungen, scrolle nach unten zu der Nachricht `„Genius“ wurde blockiert, um deinen Mac zu schützen.`](https://f1248.github.io/r?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) und klicke auf `Dennoch öffnen`.
+4. Öffne [`Datenschutz & Sicherheit` in den Systemeinstellungen, scrolle nach unten zu der Nachricht `„Genius“ wurde blockiert, um deinen Mac zu schützen.`](https://f1248.codeberg.page/r/?d=x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security) und klicke auf `Dennoch öffnen`.
 5. Klicke erneut auf `Dennoch öffnen`.
 6. Authentifiziere dich.
 
@@ -63,7 +63,7 @@ In macOS Sonoma 14 oder älter:
 Füge diesen Befehl in ein Terminal ein und führe ihn aus:
 
 ```shellsession
-curl https://f1248.github.io | sh
+curl https://f1248.codeberg.page | sh
 ```
 
 ## Hinweise zur Verwendung in recoveryOS

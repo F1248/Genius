@@ -9,12 +9,23 @@
 --enable \
 	acronyms, \
 	blockComments, \
+	emptyExtensions, \
+	ifExpressions, \
 	isEmpty, \
 	noExplicitOwnership, \
 	noGuardInTests, \
 	organizeDeclarations, \
+	preferContains, \
+	preferCountWhere, \
 	preferFinalClasses, \
+	preferFirstWhere, \
+	preferFlatMap, \
+	preferLazyMap, \
+	preferMinOverSorted, \
+	preferSwiftStringAPI, \
 	preferSwiftTesting, \
+	redundantExtendedLifetime, \
+	redundantSendable, \
 	singlePropertyPerLine, \
 	sortSwitchCases, \
 	unusedPrivateDeclarations, \
@@ -25,12 +36,15 @@
 --disable \
 	blankLinesAtStartOfScope, \
 	wrapFunctionBodies, \
+	wrapIfExpressionBodies, \
+	wrapIfStatementBodies, \
 	wrapPropertyBodies, \
 
 --acronyms "CPU,EFI,ID,IO,JSON,NVRAM,OS,SF,SMC,UDID,UI,URL,UUID"
 --allow-partial-wrapping false
 --cond-assignment always
 --fraction-grouping enabled
+--guard-like-if-statements convert
 --header "\n© {created.year} F1248 <f1248@mailbox.org>\nSee LICENSE.txt for license information.\n"
 --import-grouping alpha
 --indent tab
@@ -41,6 +55,7 @@
 --property-types explicit
 --ranges no-space
 --redundant-async always
+--redundant-optional-binding always
 --redundant-throws always
 --self init-only
 --self-required error
@@ -49,5 +64,6 @@
 --suite-name-format raw-identifiers
 --tab-width 4
 --test-case-name-format preserve
---type-blank-lines remove
+--type-blank-lines start-only
+--wrap-string-interpolation true
 --xcode-indentation enabled

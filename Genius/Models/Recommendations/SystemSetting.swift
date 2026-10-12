@@ -7,17 +7,27 @@ import Foundation
 
 struct SystemSetting: Openable {
 
-	static let iCloud = Self(
+	static let findMyMac = Self(
 		pane: "com.apple.systempreferences.AppleIDSettings",
-		anchor: "iCloud",
+		anchor: {
+			if #available(macOS 26, *) {
+				"email/prefs/storage?root=APPLE_ACCOUNT&path=ICLOUD_SERVICE&dataclassId=com.apple.Dataclass.DeviceLocator"
+			} else {
+				"iCloud"
+			}
+		}(),
 	)
 	static let firewall = Self(
 		pane: "com.apple.Network-Settings.extension",
 		anchor: "Firewall", // does not work
 	)
+	static let batteryCharging = Self(
+		pane: "com.apple.Battery-Settings.extension",
+		anchor: "charging",
+	)
 	static let softwareUpdate = Self(
 		pane: "com.apple.Software-Update-Settings.extension",
-		anchor: { if #unavailable(macOS 15) { nil } else { "action=showAdvancedOptions" } }(),
+		anchor: { if #available(macOS 15, *) { "action=showAdvancedOptions" } else { nil } }(),
 	)
 	static let security = Self(
 		pane: "com.apple.settings.PrivacySecurity.extension",
@@ -25,15 +35,19 @@ struct SystemSetting: Openable {
 	)
 	static let fileVault = Self(
 		pane: "com.apple.settings.PrivacySecurity.extension",
-		anchor: { if #unavailable(macOS 14) { "Security" } else { "FileVault" } }(),
+		anchor: { if #available(macOS 14, *) { "FileVault" } else { "Security" } }(),
 	)
 	static let accessories = Self(
 		pane: "com.apple.settings.PrivacySecurity.extension",
-		anchor: { if #unavailable(macOS 15.4) { "Security" } else { "Accessories" } }(),
+		anchor: { if #available(macOS 15.4, *) { "Accessories" } else { "Security" } }(),
 	)
 	static let backgroundSecurityImprovements = Self(
 		pane: "com.apple.settings.PrivacySecurity.extension",
 		anchor: "SecurityImprovements",
+	)
+	static let securityAdvanced = Self(
+		pane: "com.apple.settings.PrivacySecurity.extension",
+		anchor: "Advanced",
 	)
 
 	let url: URL
@@ -41,9 +55,9 @@ struct SystemSetting: Openable {
 	init?(pane: String, anchor: String?) {
 		guard
 			(SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true,
-			let url = URL(string: "x-apple.systempreferences:\(pane)\(anchor.map { "?\($0)" } ?? "")")
+			let newURL = URL(string: "x-apple.systempreferences:\(pane)\(anchor.map { "?\($0)" } ?? "")")
 		else { return nil }
-		self.url = url
+		self.url = newURL
 	}
 
 	func open() {

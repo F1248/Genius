@@ -26,10 +26,10 @@ struct UpdatesSection: View {
 	var betaUpdates: Bool
 
 	var body: some View {
-		if let automaticUpdates = Binding($automaticUpdates) {
+		if let automaticUpdatesBinding = Binding($automaticUpdates) {
 			Section(.appUpdates) {
-				SettingPicker(.automaticAppUpdates, value: automaticUpdates, defaultValue: .enabled)
-					.onChange(of: self.automaticUpdates) { newValue in
+				SettingPicker(.automaticAppUpdates, value: automaticUpdatesBinding, defaultValue: .enabled)
+					.onChange(of: automaticUpdates) { newValue in
 						updater.automaticallyChecksForUpdates = newValue != .disabled
 						updater.automaticallyDownloadsUpdates = newValue == .enabled
 					}

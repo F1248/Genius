@@ -76,7 +76,7 @@ echo "Downloading..."
 curl --no-progress-meter download-url --location --remote-name
 
 echo "Installing..."
-rm -r -f Genius.app
+rm -R -f Genius.app
 unzip -q -o Genius.zip
 if [[ ! -d Genius.app ]]; then
 	unzip -q Genius.zip

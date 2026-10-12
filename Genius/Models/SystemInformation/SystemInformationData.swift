@@ -16,12 +16,16 @@ struct SystemInformationData<
 
 	var syncUIRepresentation: String?? {
 		if !?available ?? false {
-			Defaults[.developmentMode] ? String(localized: .unavailable) : .none
+			if Defaults[.developmentMode] {
+				String(localized: .unavailable)
+			} else { .none }
 		} else if let syncValue {
-			if let uiRepresentation = syncValue.uiRepresentation {
-				uiRepresentation
+			if let syncValueUIRepresentation = syncValue.uiRepresentation {
+				syncValueUIRepresentation
 			} else {
-				Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ? String(localized: .unknown) : .none
+				if Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced {
+					String(localized: .unknown)
+				} else { .none }
 			}
 		} else {
 			.some(nil)
@@ -30,11 +34,15 @@ struct SystemInformationData<
 
 	var uiRepresentation: String? { get async {
 		if !?available ?? false {
-			Defaults[.developmentMode] ? String(localized: .unavailable) : nil
-		} else if let uiRepresentation = await value.uiRepresentation {
-			uiRepresentation
+			if Defaults[.developmentMode] {
+				String(localized: .unavailable)
+			} else { nil }
+		} else if let valueUIRepresentation = await value.uiRepresentation {
+			valueUIRepresentation
 		} else {
-			Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced ? String(localized: .unknown) : nil
+			if Defaults[.developmentMode] || Defaults[.interfaceMode] >= .advanced {
+				String(localized: .unknown)
+			} else { nil }
 		}
 	} }
 }
@@ -42,28 +50,20 @@ struct SystemInformationData<
 extension SystemInformationData where ValueWrapper == SyncValueWrapper<Value> {
 
 	init(_ value: Value) {
-		self.valueWrapper = SyncValueWrapper(wrappedValue: value)
+		self.valueWrapper = SyncValueWrapper(value)
 		self.available = true
 	}
 
 	init<Wrapped>(_ value: @autoclosure () -> Value, available: Bool?) where Value == Wrapped? {
-		self.valueWrapper = SyncValueWrapper(wrappedValue: available ?? true ? value() : nil)
+		self.valueWrapper = SyncValueWrapper((available ?? true) ? value() : nil)
 		self.available = available
 	}
 }
 
 extension SystemInformationData where ValueWrapper == AsyncValueWrapper<Value> {
 
-	// periphery:ignore
-	init(_ valueClosure: @escaping @Sendable () async -> Value) {
-		self.valueWrapper = AsyncValueWrapper(valueClosure)
-		self.available = true
-	}
-
 	init<Wrapped>(_ valueClosure: @escaping @Sendable () async -> Value, available: Bool?) where Value == Wrapped? {
-		self.valueWrapper = AsyncValueWrapper(
-			available ?? true ? valueClosure : { @Sendable in nil },
-		)
+		self.valueWrapper = AsyncValueWrapper((available ?? true) ? valueClosure : { @Sendable in nil })
 		self.available = available
 	}
 }
