@@ -20,7 +20,7 @@ ifeq ($(GITHUB_ACTIONS), true)
 	command_prefix = ./
 	periphery_arguments = --format github-actions
 	sparkle_arguments += --ed-key-file -
-	swiftformat_arguments = --reporter github-actions-log
+	swiftformat_arguments = --disable fileHeader --reporter github-actions-log
 	swiftlint_arguments = --reporter github-actions-logging
 	xcbeautify_arguments = --renderer github-actions
 	xcodebuild_arguments += -skipPackagePluginValidation
