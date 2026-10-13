@@ -18,6 +18,14 @@ extension SystemInformationTests {
 			}
 		}
 
+		struct HardwareCare {
+
+			@Test
+			func batteryChargeLimit() {
+				#expect(SystemInformation.Recommendations.HardwareCare.batteryChargeLimit.testCondition)
+			}
+		}
+
 		struct TheftProtection {
 
 			@Test
