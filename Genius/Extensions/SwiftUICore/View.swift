@@ -7,7 +7,7 @@ import SwiftUI
 
 extension View {
 
-	func apply(@ViewBuilder modifier: (Self) -> some View) -> some View {
+	func apply(@ContentBuilder modifier: (Self) -> some View) -> some View {
 		modifier(self)
 	}
 }

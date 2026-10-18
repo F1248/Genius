@@ -22,14 +22,14 @@ protocol TabData: View, CaseIterable, Equatable, SelfIdentifiable where AllCases
 	var symbol: SFSymbol { get }
 	var largeSymbol: SFSymbol { get }
 
-	@ViewBuilder var content: ContentViewType { get }
+	@ContentBuilder var content: ContentViewType { get }
 }
 
 extension TabData {
 
 	static var id: ObjectIdentifier { ObjectIdentifier(self) }
 
-	@ViewBuilder static var commands: some View {
+	@ContentBuilder static var commands: some View {
 		ForEach(allCases.filter(\.includeInCommands), content: \.command)
 		Divider()
 	}

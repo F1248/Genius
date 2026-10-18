@@ -9,5 +9,5 @@ protocol FormValue: Sendable {
 
 	associatedtype ViewType: View
 
-	@MainActor @ViewBuilder var formView: ViewType { get }
+	@MainActor @ContentBuilder var formView: ViewType { get }
 }

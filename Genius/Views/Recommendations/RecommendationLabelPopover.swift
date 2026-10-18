@@ -11,7 +11,7 @@ struct RecommendationLabelPopover: View {
 
 	let name: LocalizedStringResource
 	let help: URL?
-	let setting: (any Openable)?
+	let setting: any Openable?
 
 	var body: some View {
 		VStack(alignment: .leading) {

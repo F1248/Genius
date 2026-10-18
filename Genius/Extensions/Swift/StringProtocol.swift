@@ -15,7 +15,7 @@ extension StringProtocol {
 		self.init(decoding: data, as: UTF8.self)
 	}
 
-	func betweenAnchored(start: some StringProtocol, end: (some StringProtocol)? = nil as String?) -> SubSequence? {
+	func betweenAnchored(start: some StringProtocol, end: some StringProtocol? = nil as String?) -> SubSequence? {
 		guard
 			let startIndex = range(of: start, options: .anchored)?.upperBound,
 			let endIndex = end.map({ range(of: $0, options: [.anchored, .backwards])?.lowerBound }) ?? endIndex

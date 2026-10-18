@@ -8,8 +8,11 @@
 
 --enable \
 	acronyms, \
+	blankLineAfterSwitchCase, \
 	blockComments, \
+	commonTypos, \
 	emptyExtensions, \
+	forWhere, \
 	ifExpressions, \
 	isEmpty, \
 	noExplicitOwnership, \
@@ -22,19 +25,24 @@
 	preferFlatMap, \
 	preferLazyMap, \
 	preferMinOverSorted, \
+	preferStructSwiftTestingSuites, \
 	preferSwiftStringAPI, \
 	preferSwiftTesting, \
 	redundantExtendedLifetime, \
+	redundantOverload, \
 	redundantSendable, \
 	singlePropertyPerLine, \
 	sortSwitchCases, \
 	unusedPrivateDeclarations, \
 	validateTestCases, \
+	wrapDoBodies, \
 	wrapEnumCases, \
 	wrapMultilineConditionalAssignment, \
+	wrapSingleLineStrings, \
 
 --disable \
 	blankLinesAtStartOfScope, \
+	extensionAttributes, \
 	wrapFunctionBodies, \
 	wrapIfExpressionBodies, \
 	wrapIfStatementBodies, \
@@ -42,6 +50,7 @@
 
 --acronyms "CPU,EFI,ID,IO,JSON,NVRAM,OS,SF,SMC,UDID,UI,URL,UUID"
 --allow-partial-wrapping false
+--blank-line-after-switch-case never
 --cond-assignment always
 --fraction-grouping enabled
 --guard-like-if-statements convert
@@ -52,6 +61,7 @@
 --mark-categories false
 --max-width 128
 --organization-mode type
+--prefer-content-builder true
 --property-types explicit
 --ranges no-space
 --redundant-async always
@@ -65,5 +75,6 @@
 --tab-width 4
 --test-case-name-format preserve
 --type-blank-lines start-only
+--wrap-single-line-enum-cases true
 --wrap-string-interpolation true
 --xcode-indentation enabled

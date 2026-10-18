@@ -6,4 +6,4 @@
 import Testing
 
 @Suite("Recommendation")
-enum RecommendationTests {} // swiftformat:disable:this swiftTestingTestCaseNames
+struct RecommendationTests {} // swiftformat:disable:this swiftTestingTestCaseNames

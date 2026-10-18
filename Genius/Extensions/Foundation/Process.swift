@@ -36,7 +36,9 @@ extension Process {
 			do shell script \"\(executableURL.path()) \(arguments.joined(separator: " "))\" \
 			with prompt \"\(String(localized: .administratorPrivilegesRequest))\" \
 			with administrator privileges
-			""")?.executeAndReturnError(nil).stringValue
+			""")?
+				.executeAndReturnError(nil)
+				.stringValue
 		}
 
 		let outputPipe = Pipe()

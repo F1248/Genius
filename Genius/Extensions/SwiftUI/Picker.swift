@@ -7,7 +7,7 @@ import SwiftUI
 
 extension Picker {
 
-	init(selection: Binding<SelectionValue>, @ViewBuilder content: () -> Content) where Label == EmptyView {
+	init(selection: Binding<SelectionValue>, @ContentBuilder content: () -> Content) where Label == EmptyView {
 		self.init(selection: selection, content: content, label: {})
 	}
 }

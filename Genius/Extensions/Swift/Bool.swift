@@ -17,7 +17,7 @@ extension Bool: @retroactive Comparable, Maximizable, PossiblyOptional, DataInit
 		}
 	}
 
-	init?(systemProfilerActivationLockStatusOutput: (any Sendable)?) {
+	init?(systemProfilerActivationLockStatusOutput: any Sendable?) {
 		switch (systemProfilerActivationLockStatusOutput as? String)?.betweenAnchored(start: "activation_lock_") {
 			case "enabled": self = true
 			case "disabled": self = false

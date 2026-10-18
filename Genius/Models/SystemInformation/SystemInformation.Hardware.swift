@@ -95,7 +95,8 @@ extension SystemInformation {
 				if isVirtualMachine ?? false {
 					if #available(macOS 14, *) { .macwindowAndCursorarrow } else { .macwindow }
 				} else {
-					PrivateFramework.iconServices.ISCurrentDeviceIcon?.sharedInstance?.symbol?.name.map(SFSymbol.init)
+					PrivateFramework.iconServices.ISCurrentDeviceIcon?.sharedInstance?.symbol?.name
+						.map(SFSymbol.init)
 						.flatMap { $0 == .display ? nil : $0 } ??
 						{ if #available(macOS 15, *) { .desktopcomputerAndMacbook } else { .desktopcomputer } }()
 				}

@@ -9,7 +9,7 @@ extension ForEach where Content == AnyView {
 
 	init<OuterData: Sequence>(
 		enumeratingID data: OuterData,
-		@ViewBuilder content: @escaping (OuterData.Element) -> some View,
+		@ContentBuilder content: @escaping (OuterData.Element) -> some View,
 	) where Data == [(offset: Int, element: OuterData.Element)], ID == Int {
 		self.init(
 			Array(data.enumerated()),

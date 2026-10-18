@@ -13,13 +13,13 @@ struct RecommendationLabel: View {
 
 	let name: LocalizedStringResource
 	let help: URL?
-	let setting: (any Openable)?
+	let setting: any Openable?
 
 	// swiftlint:disable:next type_contents_order
 	init(
 		_ name: LocalizedStringResource,
 		help: URL?,
-		setting: (any Openable)? = nil,
+		setting: any Openable? = nil,
 	) {
 		self.name = name
 		self.help = help

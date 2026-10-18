@@ -6,4 +6,4 @@
 import Testing
 
 @Suite("SystemInformation")
-enum SystemInformationTests {} // swiftformat:disable:this swiftTestingTestCaseNames
+struct SystemInformationTests {} // swiftformat:disable:this swiftTestingTestCaseNames
