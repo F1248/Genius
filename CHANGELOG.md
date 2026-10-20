@@ -10,6 +10,7 @@ See LICENSE.txt for license information.
 ### Added
 
 ### Improved
+- Sort Recommendations → Malware Protection by importance
 
 ### Fixed
 

@@ -55,11 +55,6 @@ extension SystemInformationTests {
 			}
 
 			@Test
-			func firewall() async {
-				#expect(await SystemInformation.Recommendations.MalwareProtection.firewall.testCondition)
-			}
-
-			@Test
 			func gatekeeper() async {
 				#expect(await SystemInformation.Recommendations.MalwareProtection.gatekeeper.testCondition)
 			}
@@ -67,6 +62,11 @@ extension SystemInformationTests {
 			@Test
 			func protectSystemWideSettings() async {
 				#expect(await SystemInformation.Recommendations.MalwareProtection.protectSystemWideSettings.testCondition)
+			}
+
+			@Test
+			func firewall() async {
+				#expect(await SystemInformation.Recommendations.MalwareProtection.firewall.testCondition)
 			}
 
 			@Test

@@ -55,11 +55,6 @@ struct RecommendationsFormView: View {
 						help: URL(appleSupportArticle: 102_149),
 					): SystemInformation.Recommendations.MalwareProtection.systemIntegrityProtection,
 					RecommendationLabel(
-						.firewall,
-						help: URL(appleUserGuideArticle: "mh34041"),
-						setting: SystemSetting.firewall,
-					): SystemInformation.Recommendations.MalwareProtection.firewall,
-					RecommendationLabel(
 						.gatekeeper,
 						help: URL(appleSupportArticle: 102_445),
 						setting: SystemSetting.security,
@@ -69,6 +64,11 @@ struct RecommendationsFormView: View {
 						help: URL(appleUserGuideArticle: "mh40595"),
 						setting: SystemSetting.securityAdvanced,
 					): SystemInformation.Recommendations.MalwareProtection.protectSystemWideSettings,
+					RecommendationLabel(
+						.firewall,
+						help: URL(appleUserGuideArticle: "mh34041"),
+						setting: SystemSetting.firewall,
+					): SystemInformation.Recommendations.MalwareProtection.firewall,
 					RecommendationLabel(
 						.askToAllowAccessoriesToConnect,
 						help: URL(appleSupportArticle: 102_282),

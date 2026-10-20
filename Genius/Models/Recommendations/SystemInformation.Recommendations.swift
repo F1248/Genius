@@ -87,15 +87,6 @@ extension SystemInformation {
 				{ await Bool(csrutilOutput: Process("/usr/bin/csrutil", "status")?.runSafe()) },
 				available: Software.OS.bootMode.value !=? .recovery,
 			)
-			static let firewall = Recommendation<Bool?, _>(
-				{
-					await Bool(
-						socketfilterfwOutput: Process("/usr/libexec/ApplicationFirewall/socketfilterfw", "--getglobalstate")?
-							.runSafe(),
-					)
-				},
-				available: Software.OS.bootMode.value !=? .recovery,
-			)
 			static let gatekeeper = Recommendation<Bool?, _>(
 				{ await Bool(spctlOutput: Process("/usr/sbin/spctl", "--status")?.runSafe()) },
 				available: Software.OS.bootMode.value !=? .recovery,
@@ -131,6 +122,15 @@ extension SystemInformation {
 					}
 					guard !valuesShared.contains(nil) else { return nil }
 					return !valuesShared.contains(true)
+				},
+				available: Software.OS.bootMode.value !=? .recovery,
+			)
+			static let firewall = Recommendation<Bool?, _>(
+				{
+					await Bool(
+						socketfilterfwOutput: Process("/usr/libexec/ApplicationFirewall/socketfilterfw", "--getglobalstate")?
+							.runSafe(),
+					)
 				},
 				available: Software.OS.bootMode.value !=? .recovery,
 			)
