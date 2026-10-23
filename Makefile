@@ -11,7 +11,7 @@ xcodebuild_arguments = -scheme Genius
 xcodebuild_test_arguments = -configuration Test-Release
 # work around FB23632856 (https://developer.apple.com/forums/thread/837162)
 xcodebuild_pipe = \
-	| grep --invert-match --line-regexp ".*/Genius/Genius\.xcodeproj: Genius: ld: warning: address=0x[0-9A-F]* points before section\(.*\) start and the target atom is ambiguous" \
+	| grep --invert-match --line-regexp ".*/Genius/Genius\.xcodeproj: Genius: ld: warning: address=0x[0-9A-F]* points before section\(.*\) start and the target atom is ambiguous.*" \
 	| sed "s/warning:/error:/g" \
 	| tee xcodebuild.log \
 	| $(command_prefix)xcbeautify --disable-logging $(xcbeautify_arguments)
