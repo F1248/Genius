@@ -15,12 +15,10 @@ extension SystemInformation {
 			static let uptime = Recommendation<Duration?, _>(
 				{
 					guard
-						// swiftformat:disable indent
 						let values = await (SystemProfiler.software?["uptime"] as? String)?
 							.betweenAnchored(start: "up ")?
 							.split(separator: ":")
 							.strictMap(Double.init),
-						// swiftformat:enable indent
 						values.count == 4
 					else { return nil }
 					return // safe as `values` is guaranteed to have exactly 4 elements

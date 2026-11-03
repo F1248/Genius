@@ -77,4 +77,3 @@
 --type-blank-lines start-only
 --wrap-single-line-enum-cases true
 --wrap-string-interpolation true
---xcode-indentation enabled
