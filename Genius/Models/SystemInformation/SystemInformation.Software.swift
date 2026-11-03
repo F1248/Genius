@@ -29,14 +29,14 @@ extension SystemInformation {
 
 			static let name = SystemInformationData<String?, _>(Sysctl.read("kern.ostype"))
 			static let version = SystemInformationData<VersionNumber?, _>(
-				Sysctl.read("kern.osrelease").flatMap(VersionNumber.init),
+				(Sysctl.read("kern.osrelease") as String?).flatMap(VersionNumber.init),
 			)
 		}
 
 		enum OS {
 
 			static let version = SystemInformationData<VersionNumber?, _>(
-				Sysctl.read("kern.osproductversion").flatMap(VersionNumber.init),
+				(Sysctl.read("kern.osproductversion") as String?).flatMap(VersionNumber.init),
 			)
 			static let codeName = SystemInformationData<String?, _>(
 				PrivateFramework.aboutSettings.ASPlatformInfo?.shared?.osTitleString ?? {

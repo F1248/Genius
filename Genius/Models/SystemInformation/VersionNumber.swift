@@ -11,7 +11,7 @@ struct VersionNumber: UIStringRepresentable {
 		versions.map(String.init).joined(separator: ".")
 	}
 
-	init?(_ versionNumber: String) {
+	init?(_ versionNumber: any StringProtocol) {
 		guard
 			let newVersions = versionNumber.split(separator: ".").strictMap({ Int($0) }),
 			!newVersions.isEmpty
