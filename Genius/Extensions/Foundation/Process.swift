@@ -29,7 +29,7 @@ extension Process {
 	}
 
 	@discardableResult
-	func runSafe(asRoot runAsRoot: Bool = false, expectedErrorPipeDate: String? = nil) async -> String? {
+	func runSafe(asRoot runAsRoot: Bool = false, possibleErrorPipeData: String? = nil) async -> String? {
 		if runAsRoot, SystemInformation.Software.OS.bootMode.value != .recovery {
 			guard let executableURL, let arguments else { return nil }
 			return unsafe NSAppleScript(source: """
@@ -54,7 +54,11 @@ extension Process {
 		await waitUntilExit()
 		let errorPipeData = errorPipe.read()
 		let outputPipeData = outputPipe.read()
-		guard terminationStatus == 0, terminationReason == .exit, errorPipeData == expectedErrorPipeDate else {
+		guard
+			terminationStatus == 0,
+			terminationReason == .exit,
+			errorPipeData == nil || errorPipeData == possibleErrorPipeData
+		else {
 			logError(outputPipeData: outputPipeData, errorPipeData: errorPipeData)
 			return nil
 		}

@@ -112,7 +112,7 @@ extension SystemInformation {
 								"authorizationdb",
 								"read",
 								right,
-							)?.runSafe(expectedErrorPipeDate: "YES (0)"),
+							)?.runSafe(possibleErrorPipeData: "YES (0)"),
 							let dictionary = [String: Any](plist: processOutput),
 							let valueShared = dictionary["shared"] as? Bool
 						else { return nil }
