@@ -111,7 +111,7 @@ struct RecommendationsFormView: View {
 						help: URL(appleSupportArticle: 102_629),
 						setting: {
 							if #available(macOS 27, *) {
-								Application.appStore
+								Application.appStore // FB24891582 (https://github.com/feedback-assistant/reports/issues/845)
 							} else if #available(macOS 26, *) {
 								URL(
 									string: "macappstore:showSettingsPage",
