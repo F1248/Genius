@@ -11,12 +11,12 @@ struct FormView<ValueLabel: View, Value: FormValue>: View {
 	@State var content: CustomKeyValuePairs<LocalizedStringResource, CustomKeyValuePairs<ValueLabel, Value??>>
 
 	let textWhenEmpty: LocalizedStringResource
-	let contentData: KeyValuePairs<LocalizedStringResource, KeyValuePairs<ValueLabel, any SystemInformationProtocol<Value>>>
+	let contentData: KeyValuePairs<LocalizedStringResource, KeyValuePairs<ValueLabel, any UISystemInformation<Value>>>
 
 	// swiftlint:disable:next type_contents_order
 	init(
 		textWhenEmpty: LocalizedStringResource,
-		content: KeyValuePairs<LocalizedStringResource, KeyValuePairs<ValueLabel, any SystemInformationProtocol<Value>>>,
+		content: KeyValuePairs<LocalizedStringResource, KeyValuePairs<ValueLabel, any UISystemInformation<Value>>>,
 	) {
 		self.textWhenEmpty = textWhenEmpty
 		self.contentData = content

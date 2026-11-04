@@ -7,12 +7,15 @@ import Defaults
 import Foundation
 
 struct SystemInformationData<
-	Value: UIStringRepresentable,
+	Value,
 	ValueWrapper: ValueWrapperProtocol<Value>,
 >: SystemInformationProtocol {
 
 	let valueWrapper: ValueWrapper
 	let available: Bool?
+}
+
+extension SystemInformationData: UISystemInformation where Value: UIStringRepresentable {
 
 	var syncUIRepresentation: String?? {
 		if !?available ?? false {

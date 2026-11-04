@@ -10,7 +10,7 @@ import SwiftUI
 struct Recommendation<
 	Value: PossiblyOptional & Sendable,
 	ValueWrapper: ValueWrapperProtocol<Value>,
->: SystemInformationProtocol where Value.Wrapped: Comparable & Sendable {
+>: UISystemInformation where Value.Wrapped: Comparable & Sendable {
 
 	let valueWrapper: ValueWrapper
 	let higherIsBetter: Bool
