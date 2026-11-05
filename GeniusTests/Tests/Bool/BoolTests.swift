@@ -7,7 +7,7 @@
 import Testing
 
 @Suite("Bool")
-struct BoolTests { // swiftformat:disable:this swiftTestingTestCaseNames
+struct BoolTests {
 
 	@Test
 	func Comparable() {

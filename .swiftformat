@@ -41,8 +41,8 @@
 	wrapSingleLineStrings, \
 
 --disable \
-	blankLinesAtStartOfScope, \
 	extensionAttributes, \
+	swiftTestingTestCaseNames, \
 	wrapFunctionBodies, \
 	wrapIfExpressionBodies, \
 	wrapIfStatementBodies, \

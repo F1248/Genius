@@ -8,7 +8,7 @@ import Testing
 
 extension `Optional operators` {
 
-	struct Comparison { // swiftformat:disable:this swiftTestingTestCaseNames
+	struct Comparison {
 
 		@Test(">?")
 		func optionalGreaterThan() {

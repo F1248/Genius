@@ -8,7 +8,7 @@ import Testing
 
 extension `Optional operators` {
 
-	struct Logical { // swiftformat:disable:this swiftTestingTestCaseNames
+	struct Logical {
 
 		@Test("!?")
 		func optionalNegation() {

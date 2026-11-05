@@ -8,7 +8,7 @@ import Testing
 
 extension `Optional operators` {
 
-	struct Equation { // swiftformat:disable:this swiftTestingTestCaseNames
+	struct Equation {
 
 		@Test("==?")
 		func optionalEqualTo() {

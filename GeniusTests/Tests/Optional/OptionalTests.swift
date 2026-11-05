@@ -6,10 +6,10 @@
 import Testing
 
 @Suite("Optional")
-struct OptionalTests { // swiftformat:disable:this swiftTestingTestCaseNames
+struct OptionalTests {
 
 	@Test
-	func testCondition() { // swiftformat:disable:this swiftTestingTestCaseNames
+	func testCondition() {
 		#expect((() as Void?).testCondition == true)
 		#expect((nil as Void?).testCondition == false)
 	}

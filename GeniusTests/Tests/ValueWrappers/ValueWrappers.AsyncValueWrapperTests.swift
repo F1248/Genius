@@ -9,7 +9,7 @@ import Testing
 extension `Value wrappers` {
 
 	@Suite("AsyncValueWrapper")
-	struct AsyncValueWrapperTests { // swiftformat:disable:this swiftTestingTestCaseNames
+	struct AsyncValueWrapperTests {
 
 		@Test("SystemInformationData")
 		func systemInformationData() async {

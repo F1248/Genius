@@ -7,10 +7,10 @@
 import Testing
 
 @Suite("SystemInformationProtocol")
-struct SystemInformationProtocolTests { // swiftformat:disable:this swiftTestingTestCaseNames
+struct SystemInformationProtocolTests {
 
 	@Test
-	func testCondition() { // swiftformat:disable:this swiftTestingTestCaseNames
+	func testCondition() {
 		#expect(SystemInformationData<Int, _>(0 as Int).testCondition == true)
 		#expect(SystemInformationData<Int?, _>(0, available: true).testCondition == true)
 		#expect(SystemInformationData<Int?, _>(nil, available: true).testCondition == false)
