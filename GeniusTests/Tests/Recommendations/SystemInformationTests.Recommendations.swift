@@ -76,6 +76,11 @@ extension SystemInformationTests {
 		}
 
 		struct SecurityUpdates {
+
+			@Test
+			func availableUpdates() async {
+				#expect(await SystemInformation.Recommendations.SecurityUpdates.availableUpdates.test)
+			}
 		}
 
 		struct AutomaticUpdates {

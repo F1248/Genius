@@ -154,6 +154,23 @@ extension SystemInformation {
 		}
 
 		enum SecurityUpdates {
+
+			static let availableUpdates = SystemInformationData<[SoftwareUpdate]?, _>(
+				{
+					guard
+						let output = await Process("/usr/sbin/softwareupdate", "--list")?
+							.runSafe(possibleErrorPipeData: "No new software available.")?
+							.betweenAnchored(start: "Software Update Tool\n\nFinding available software")
+					else { return nil }
+					if output.isEmpty { return [] }
+					return output
+						.betweenAnchored(start: "\nSoftware Update found the following new or updated software:")?
+						.replacing("\n\t", with: ", ")
+						.split(separator: "\n")
+						.map(SoftwareUpdate.init)
+				},
+				available: SystemInformation.Software.OS.bootMode.value !=? .recovery,
+			)
 		}
 
 		enum AutomaticUpdates {
