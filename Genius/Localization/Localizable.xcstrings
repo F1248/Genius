@@ -1178,6 +1178,23 @@
         }
       }
     },
+    "securityUpdates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicherheitsupdates"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Security Updates"
+          }
+        }
+      }
+    },
     "serialNumber" : {
       "extractionState" : "manual",
       "localizations" : {

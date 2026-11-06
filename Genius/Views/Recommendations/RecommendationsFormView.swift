@@ -75,6 +75,8 @@ struct RecommendationsFormView: View {
 						setting: SystemSetting.accessories ?? Application.startupSecurityUtility,
 					): SystemInformation.Recommendations.MalwareProtection.allowAccessoriesToConnect,
 				],
+				.securityUpdates: [
+				],
 				.automaticUpdates: [
 					RecommendationLabel(
 						.checkForMacOSUpdates,

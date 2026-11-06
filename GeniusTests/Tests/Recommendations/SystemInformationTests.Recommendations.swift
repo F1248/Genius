@@ -75,6 +75,9 @@ extension SystemInformationTests {
 			}
 		}
 
+		struct SecurityUpdates {
+		}
+
 		struct AutomaticUpdates {
 
 			@Test

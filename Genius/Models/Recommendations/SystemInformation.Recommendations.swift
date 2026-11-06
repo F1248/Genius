@@ -153,6 +153,9 @@ extension SystemInformation {
 			)
 		}
 
+		enum SecurityUpdates {
+		}
+
 		enum AutomaticUpdates {
 
 			// safe as `suiteName` is neither the globalDomain nor the app’s bundle identifier:

@@ -25,6 +25,9 @@ struct SystemSetting: Openable {
 		pane: "com.apple.Battery-Settings.extension",
 		anchor: "charging",
 	)
+	static let softwareUpdate = Self(
+		pane: "com.apple.Software-Update-Settings.extension",
+	)
 	static let automaticSoftwareUpdates = Self(
 		pane: "com.apple.Software-Update-Settings.extension",
 		anchor: { if #available(macOS 15, *) { "action=showAdvancedOptions" } else { nil } }(),
@@ -52,7 +55,7 @@ struct SystemSetting: Openable {
 
 	let url: URL
 
-	init?(pane: String, anchor: String?) {
+	init?(pane: String, anchor: String? = nil) {
 		guard
 			(SystemInformation.Software.OS.bootMode.value !=? .recovery) ?? true,
 			let newURL = URL(string: "x-apple.systempreferences:\(pane)\(anchor.map { "?\($0)" } ?? "")")
