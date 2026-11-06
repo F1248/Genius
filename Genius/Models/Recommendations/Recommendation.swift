@@ -68,7 +68,7 @@ extension Recommendation where ValueWrapper == SyncValueWrapper<Value> {
 		_ value: @autoclosure () -> Value,
 		higherIsBetter: Bool = true,
 		requirement: Wrapped,
-		available: Bool?,
+		available: Bool? = true,
 	) where Value == Wrapped? {
 		self.valueWrapper = SyncValueWrapper((available ?? true) ? value() : nil)
 		self.higherIsBetter = higherIsBetter
@@ -80,7 +80,7 @@ extension Recommendation where ValueWrapper == SyncValueWrapper<Value> {
 		_ value: @autoclosure () -> Value,
 		higherIsBetter: Bool = true,
 		requirement: Wrapped = .max,
-		available: Bool?,
+		available: Bool? = true,
 	) where Value == Wrapped?, Wrapped: Maximizable {
 		self.valueWrapper = SyncValueWrapper((available ?? true) ? value() : nil)
 		self.higherIsBetter = higherIsBetter
@@ -107,7 +107,7 @@ extension Recommendation where ValueWrapper == AsyncValueWrapper<Value> {
 		_ valueClosure: @escaping @Sendable () async -> Value,
 		higherIsBetter: Bool = true,
 		requirement: Wrapped,
-		available: Bool?,
+		available: Bool? = true,
 	) where Value == Wrapped? {
 		self.valueWrapper = AsyncValueWrapper((available ?? true) ? valueClosure : { @Sendable in nil })
 		self.higherIsBetter = higherIsBetter
@@ -119,7 +119,7 @@ extension Recommendation where ValueWrapper == AsyncValueWrapper<Value> {
 		_ valueClosure: @escaping @Sendable () async -> Value,
 		higherIsBetter: Bool = true,
 		requirement: Wrapped = .max,
-		available: Bool?,
+		available: Bool? = true,
 	) where Value == Wrapped?, Wrapped: Maximizable {
 		self.valueWrapper = AsyncValueWrapper((available ?? true) ? valueClosure : { @Sendable in nil })
 		self.higherIsBetter = higherIsBetter
