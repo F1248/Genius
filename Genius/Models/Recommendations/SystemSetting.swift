@@ -25,7 +25,7 @@ struct SystemSetting: Openable {
 		pane: "com.apple.Battery-Settings.extension",
 		anchor: "charging",
 	)
-	static let softwareUpdate = Self(
+	static let automaticSoftwareUpdates = Self(
 		pane: "com.apple.Software-Update-Settings.extension",
 		anchor: { if #available(macOS 15, *) { "action=showAdvancedOptions" } else { nil } }(),
 	)

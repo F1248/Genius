@@ -79,27 +79,27 @@ struct RecommendationsFormView: View {
 					RecommendationLabel(
 						.checkForMacOSUpdates,
 						help: URL(appleSupportArticle: 108_382),
-						setting: SystemSetting.softwareUpdate,
+						setting: SystemSetting.automaticSoftwareUpdates,
 					): SystemInformation.Recommendations.AutomaticUpdates.checkMacOS,
 					RecommendationLabel(
 						.downloadMacOSUpdates,
 						help: URL(appleSupportArticle: 108_382),
-						setting: SystemSetting.softwareUpdate,
+						setting: SystemSetting.automaticSoftwareUpdates,
 					): SystemInformation.Recommendations.AutomaticUpdates.downloadMacOS,
 					RecommendationLabel(
 						.installMacOSUpdates,
 						help: URL(appleSupportArticle: 108_382),
-						setting: SystemSetting.softwareUpdate,
+						setting: SystemSetting.automaticSoftwareUpdates,
 					): SystemInformation.Recommendations.AutomaticUpdates.installMacOS,
 					RecommendationLabel(
 						.installCriticalUpdates,
 						help: URL(appleSupportArticle: 101_591),
-						setting: SystemSetting.softwareUpdate,
+						setting: SystemSetting.automaticSoftwareUpdates,
 					): SystemInformation.Recommendations.AutomaticUpdates.installCritical,
 					RecommendationLabel(
 						.installConfigurationDataUpdates,
 						help: URL(appleSupportArticle: 101_591),
-						setting: SystemSetting.softwareUpdate,
+						setting: SystemSetting.automaticSoftwareUpdates,
 					): SystemInformation.Recommendations.AutomaticUpdates.installConfigurationData,
 					RecommendationLabel(
 						.backgroundSecurityImprovements,
@@ -118,7 +118,7 @@ struct RecommendationsFormView: View {
 									available: SystemInformation.Software.OS.bootMode.value !=? .recovery,
 								)
 							} else {
-								SystemSetting.softwareUpdate
+								SystemSetting.automaticSoftwareUpdates
 							}
 						}(),
 					): SystemInformation.Recommendations.AutomaticUpdates.installAppStoreApps,
