@@ -10,13 +10,13 @@ import Testing
 struct SystemInformationProtocolTests {
 
 	@Test
-	func testCondition() {
-		#expect(SystemInformationData<Int, _>(0 as Int).testCondition == true)
-		#expect(SystemInformationData<Int?, _>(0, available: true).testCondition == true)
-		#expect(SystemInformationData<Int?, _>(nil, available: true).testCondition == false)
-		#expect(SystemInformationData<Int?, _>(0, available: false).testCondition == true)
-		#expect(SystemInformationData<Int?, _>(nil, available: false).testCondition == true)
-		#expect(SystemInformationData<Int?, _>(0, available: nil).testCondition == false)
-		#expect(SystemInformationData<Int?, _>(nil, available: nil).testCondition == false)
+	func test() {
+		#expect(SystemInformationData<Int, _>(0 as Int).test == true)
+		#expect(SystemInformationData<Int?, _>(0, available: true).test == true)
+		#expect(SystemInformationData<Int?, _>(nil, available: true).test == false)
+		#expect(SystemInformationData<Int?, _>(0, available: false).test == true)
+		#expect(SystemInformationData<Int?, _>(nil, available: false).test == true)
+		#expect(SystemInformationData<Int?, _>(0, available: nil).test == false)
+		#expect(SystemInformationData<Int?, _>(nil, available: nil).test == false)
 	}
 }

@@ -17,52 +17,52 @@ extension SystemInformationTests {
 
 			@Test
 			func isVirtualMachine() {
-				#expect(SystemInformation.Hardware.Model.isVirtualMachine.testCondition)
+				#expect(SystemInformation.Hardware.Model.isVirtualMachine.test)
 			}
 
 			@Test
 			func isLaptop() {
-				#expect(SystemInformation.Hardware.Model.isLaptop.testCondition)
+				#expect(SystemInformation.Hardware.Model.isLaptop.test)
 			}
 
 			@Test
 			func name() {
-				#expect(SystemInformation.Hardware.Model.name.testCondition)
+				#expect(SystemInformation.Hardware.Model.name.test)
 			}
 
 			@Test
 			func localizedName() async {
-				#expect(await SystemInformation.Hardware.Model.localizedName.testCondition)
+				#expect(await SystemInformation.Hardware.Model.localizedName.test)
 			}
 
 			@Test
 			func displayName() async {
-				#expect(await SystemInformation.Hardware.Model.displayName.testCondition)
+				#expect(await SystemInformation.Hardware.Model.displayName.test)
 			}
 
 			@Test
 			func identifier() {
-				#expect(SystemInformation.Hardware.Model.identifier.testCondition)
+				#expect(SystemInformation.Hardware.Model.identifier.test)
 			}
 
 			@Test
 			func board() {
-				#expect(SystemInformation.Hardware.Model.board.testCondition)
+				#expect(SystemInformation.Hardware.Model.board.test)
 			}
 
 			@Test
 			func number() {
-				#expect(SystemInformation.Hardware.Model.number.testCondition)
+				#expect(SystemInformation.Hardware.Model.number.test)
 			}
 
 			@Test
 			func configCode() {
-				#expect(SystemInformation.Hardware.Model.configCode.testCondition)
+				#expect(SystemInformation.Hardware.Model.configCode.test)
 			}
 
 			@Test
 			func regulatoryNumber() {
-				#expect(SystemInformation.Hardware.Model.regulatoryNumber.testCondition)
+				#expect(SystemInformation.Hardware.Model.regulatoryNumber.test)
 			}
 
 			@Test
@@ -73,7 +73,7 @@ extension SystemInformationTests {
 
 		@Test
 		func securityChip() {
-			#expect(SystemInformation.Hardware.securityChip.testCondition)
+			#expect(SystemInformation.Hardware.securityChip.test)
 		}
 
 		struct CPU {
@@ -82,66 +82,66 @@ extension SystemInformationTests {
 
 				@Test
 				func differentTypes() {
-					#expect(SystemInformation.Hardware.CPU.Cores.differentTypes.testCondition)
+					#expect(SystemInformation.Hardware.CPU.Cores.differentTypes.test)
 				}
 
 				@Test
 				func total() {
-					#expect(SystemInformation.Hardware.CPU.Cores.total.testCondition)
+					#expect(SystemInformation.Hardware.CPU.Cores.total.test)
 				}
 
 				@Test
 				func performance() {
-					#expect(SystemInformation.Hardware.CPU.Cores.performance.testCondition)
+					#expect(SystemInformation.Hardware.CPU.Cores.performance.test)
 				}
 
 				@Test
 				func efficiency() {
-					#expect(SystemInformation.Hardware.CPU.Cores.efficiency.testCondition)
+					#expect(SystemInformation.Hardware.CPU.Cores.efficiency.test)
 				}
 			}
 
 			@Test
 			func type() {
-				#expect(SystemInformation.Hardware.CPU.type.testCondition)
+				#expect(SystemInformation.Hardware.CPU.type.test)
 			}
 
 			@Test
 			func name() {
-				#expect(SystemInformation.Hardware.CPU.name.testCondition)
+				#expect(SystemInformation.Hardware.CPU.name.test)
 			}
 
 			@Test
 			func identifier() {
-				#expect(SystemInformation.Hardware.CPU.identifier.testCondition)
+				#expect(SystemInformation.Hardware.CPU.identifier.test)
 			}
 
 			@Test
 			func frequency() {
-				#expect(SystemInformation.Hardware.CPU.frequency.testCondition)
+				#expect(SystemInformation.Hardware.CPU.frequency.test)
 			}
 		}
 
 		@Test
 		func memory() {
-			#expect(SystemInformation.Hardware.memory.testCondition)
+			#expect(SystemInformation.Hardware.memory.test)
 		}
 
 		struct Machine {
 
 			@Test
 			func serialNumber() {
-				#expect(SystemInformation.Hardware.Machine.serialNumber.testCondition)
+				#expect(SystemInformation.Hardware.Machine.serialNumber.test)
 			}
 
 			@Test
 			func hardwareUUID() {
-				#expect(SystemInformation.Hardware.Machine.hardwareUUID.testCondition)
+				#expect(SystemInformation.Hardware.Machine.hardwareUUID.test)
 			}
 
 			@Test
 			func provisioningUDID() async {
-				#expect(await SystemInformation.Hardware.Machine.provisioningUDID.testCondition)
+				#expect(await SystemInformation.Hardware.Machine.provisioningUDID.test)
 			}
 		}
 	}

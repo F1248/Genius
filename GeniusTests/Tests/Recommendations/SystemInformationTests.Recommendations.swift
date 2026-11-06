@@ -14,7 +14,7 @@ extension SystemInformationTests {
 
 			@Test
 			func uptime() async {
-				#expect(await SystemInformation.Recommendations.Performance.uptime.testCondition)
+				#expect(await SystemInformation.Recommendations.Performance.uptime.test)
 			}
 		}
 
@@ -22,7 +22,7 @@ extension SystemInformationTests {
 
 			@Test
 			func batteryChargeLimit() {
-				#expect(SystemInformation.Recommendations.HardwareCare.batteryChargeLimit.testCondition)
+				#expect(SystemInformation.Recommendations.HardwareCare.batteryChargeLimit.test)
 			}
 		}
 
@@ -30,12 +30,12 @@ extension SystemInformationTests {
 
 			@Test
 			func activationLock() async {
-				#expect(await SystemInformation.Recommendations.TheftProtection.activationLock.testCondition)
+				#expect(await SystemInformation.Recommendations.TheftProtection.activationLock.test)
 			}
 
 			@Test
 			func firmwarePassword() async {
-				#expect(await SystemInformation.Recommendations.TheftProtection.firmwarePassword.testCondition)
+				#expect(await SystemInformation.Recommendations.TheftProtection.firmwarePassword.test)
 			}
 		}
 
@@ -43,7 +43,7 @@ extension SystemInformationTests {
 
 			@Test
 			func fileVault() async {
-				#expect(await SystemInformation.Recommendations.DataSecurity.fileVault.testCondition)
+				#expect(await SystemInformation.Recommendations.DataSecurity.fileVault.test)
 			}
 		}
 
@@ -51,27 +51,27 @@ extension SystemInformationTests {
 
 			@Test
 			func systemIntegrityProtection() async {
-				#expect(await SystemInformation.Recommendations.MalwareProtection.systemIntegrityProtection.testCondition)
+				#expect(await SystemInformation.Recommendations.MalwareProtection.systemIntegrityProtection.test)
 			}
 
 			@Test
 			func gatekeeper() async {
-				#expect(await SystemInformation.Recommendations.MalwareProtection.gatekeeper.testCondition)
+				#expect(await SystemInformation.Recommendations.MalwareProtection.gatekeeper.test)
 			}
 
 			@Test
 			func protectSystemWideSettings() async {
-				#expect(await SystemInformation.Recommendations.MalwareProtection.protectSystemWideSettings.testCondition)
+				#expect(await SystemInformation.Recommendations.MalwareProtection.protectSystemWideSettings.test)
 			}
 
 			@Test
 			func firewall() async {
-				#expect(await SystemInformation.Recommendations.MalwareProtection.firewall.testCondition)
+				#expect(await SystemInformation.Recommendations.MalwareProtection.firewall.test)
 			}
 
 			@Test
 			func allowAccessoriesToConnect() {
-				#expect(SystemInformation.Recommendations.MalwareProtection.allowAccessoriesToConnect.testCondition)
+				#expect(SystemInformation.Recommendations.MalwareProtection.allowAccessoriesToConnect.test)
 			}
 		}
 
@@ -79,37 +79,37 @@ extension SystemInformationTests {
 
 			@Test
 			func checkMacOS() {
-				#expect(SystemInformation.Recommendations.AutomaticUpdates.checkMacOS.testCondition)
+				#expect(SystemInformation.Recommendations.AutomaticUpdates.checkMacOS.test)
 			}
 
 			@Test
 			func downloadMacOS() {
-				#expect(SystemInformation.Recommendations.AutomaticUpdates.downloadMacOS.testCondition)
+				#expect(SystemInformation.Recommendations.AutomaticUpdates.downloadMacOS.test)
 			}
 
 			@Test
 			func installMacOS() {
-				#expect(SystemInformation.Recommendations.AutomaticUpdates.installMacOS.testCondition)
+				#expect(SystemInformation.Recommendations.AutomaticUpdates.installMacOS.test)
 			}
 
 			@Test
 			func installCritical() {
-				#expect(SystemInformation.Recommendations.AutomaticUpdates.installCritical.testCondition)
+				#expect(SystemInformation.Recommendations.AutomaticUpdates.installCritical.test)
 			}
 
 			@Test
 			func installConfigurationData() {
-				#expect(SystemInformation.Recommendations.AutomaticUpdates.installConfigurationData.testCondition)
+				#expect(SystemInformation.Recommendations.AutomaticUpdates.installConfigurationData.test)
 			}
 
 			@Test
 			func backgroundSecurityImprovements() {
-				#expect(SystemInformation.Recommendations.AutomaticUpdates.backgroundSecurityImprovements.testCondition)
+				#expect(SystemInformation.Recommendations.AutomaticUpdates.backgroundSecurityImprovements.test)
 			}
 
 			@Test
 			func installAppStoreApps() {
-				#expect(SystemInformation.Recommendations.AutomaticUpdates.installAppStoreApps.testCondition)
+				#expect(SystemInformation.Recommendations.AutomaticUpdates.installAppStoreApps.test)
 			}
 		}
 	}

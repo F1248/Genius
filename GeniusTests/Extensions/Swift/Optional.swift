@@ -5,7 +5,7 @@
 
 extension Optional {
 
-	var testCondition: Bool {
+	var test: Bool {
 		self != nil
 	}
 }

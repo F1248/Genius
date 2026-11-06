@@ -9,8 +9,8 @@ import Testing
 struct OptionalTests {
 
 	@Test
-	func testCondition() {
-		#expect((() as Void?).testCondition == true)
-		#expect((nil as Void?).testCondition == false)
+	func test() {
+		#expect((() as Void?).test == true)
+		#expect((nil as Void?).test == false)
 	}
 }

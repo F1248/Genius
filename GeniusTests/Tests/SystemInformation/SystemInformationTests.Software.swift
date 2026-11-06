@@ -14,7 +14,7 @@ extension SystemInformationTests {
 
 			@Test
 			func version() async {
-				#expect(await SystemInformation.Software.SMC.version.testCondition)
+				#expect(await SystemInformation.Software.SMC.version.test)
 			}
 		}
 
@@ -22,7 +22,7 @@ extension SystemInformationTests {
 
 			@Test
 			func version() async {
-				#expect(await SystemInformation.Software.Firmware.version.testCondition)
+				#expect(await SystemInformation.Software.Firmware.version.test)
 			}
 		}
 
@@ -30,12 +30,12 @@ extension SystemInformationTests {
 
 			@Test
 			func name() {
-				#expect(SystemInformation.Software.Kernel.name.testCondition)
+				#expect(SystemInformation.Software.Kernel.name.test)
 			}
 
 			@Test
 			func version() {
-				#expect(SystemInformation.Software.Kernel.version.testCondition)
+				#expect(SystemInformation.Software.Kernel.version.test)
 			}
 		}
 
@@ -43,32 +43,32 @@ extension SystemInformationTests {
 
 			@Test
 			func version() {
-				#expect(SystemInformation.Software.OS.version.testCondition)
+				#expect(SystemInformation.Software.OS.version.test)
 			}
 
 			@Test
 			func codeName() {
-				#expect(SystemInformation.Software.OS.codeName.testCondition)
+				#expect(SystemInformation.Software.OS.codeName.test)
 			}
 
 			@Test
 			func buildNumber() {
-				#expect(SystemInformation.Software.OS.buildNumber.testCondition)
+				#expect(SystemInformation.Software.OS.buildNumber.test)
 			}
 
 			@Test
 			func bootMode() {
-				#expect(SystemInformation.Software.OS.bootMode.testCondition)
+				#expect(SystemInformation.Software.OS.bootMode.test)
 			}
 
 			@Test
 			func bootVolume() async {
-				#expect(await SystemInformation.Software.OS.bootVolume.testCondition)
+				#expect(await SystemInformation.Software.OS.bootVolume.test)
 			}
 
 			@Test
 			func loaderVersion() async {
-				#expect(await SystemInformation.Software.OS.loaderVersion.testCondition)
+				#expect(await SystemInformation.Software.OS.loaderVersion.test)
 			}
 		}
 
@@ -76,12 +76,12 @@ extension SystemInformationTests {
 
 			@Test
 			func name() {
-				#expect(SystemInformation.Software.Computer.name.testCondition)
+				#expect(SystemInformation.Software.Computer.name.test)
 			}
 
 			@Test
 			func hostName() {
-				#expect(SystemInformation.Software.Computer.hostName.testCondition)
+				#expect(SystemInformation.Software.Computer.hostName.test)
 			}
 		}
 
@@ -89,12 +89,12 @@ extension SystemInformationTests {
 
 			@Test
 			func name() {
-				#expect(SystemInformation.Software.User.name.testCondition)
+				#expect(SystemInformation.Software.User.name.test)
 			}
 
 			@Test
 			func accountName() {
-				#expect(SystemInformation.Software.User.accountName.testCondition)
+				#expect(SystemInformation.Software.User.accountName.test)
 			}
 		}
 	}

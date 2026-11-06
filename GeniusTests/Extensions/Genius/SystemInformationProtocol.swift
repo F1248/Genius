@@ -7,7 +7,7 @@
 
 extension SystemInformationProtocol {
 
-	var testCondition: Bool { get async {
+	var test: Bool { get async {
 		guard let available else { return false }
 		guard available else { return true }
 		if case Optional<Any>.none = await value as Any { return false }
@@ -17,7 +17,7 @@ extension SystemInformationProtocol {
 
 extension SystemInformationProtocol where ValueWrapper == SyncValueWrapper<Value> {
 
-	var testCondition: Bool {
+	var test: Bool {
 		guard let available else { return false }
 		guard available else { return true }
 		if case Optional<Any>.none = value as Any { return false }
