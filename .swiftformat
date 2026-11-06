@@ -68,7 +68,6 @@
 --redundant-optional-binding always
 --redundant-throws always
 --self init-only
---self-required error
 --semicolons never
 --short-optionals always
 --suite-name-format raw-identifiers
