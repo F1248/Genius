@@ -177,6 +177,14 @@ extension SystemInformation {
 				},
 				available: availableUpdates.available,
 			)
+			static let latestSecurityUpdate = Recommendation<Bool?, _>(
+				{
+					await !?availableUpdates.value?.containsOptional { update in
+						update.type == .macOS &&? update.version?.major ==? Software.OS.version.value?.major
+					}
+				},
+				available: availableUpdates.available,
+			)
 		}
 
 		enum AutomaticUpdates {

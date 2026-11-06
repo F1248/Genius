@@ -35,4 +35,18 @@ extension Sequence {
 			}
 		}.asyncMap { await $0.value }
 	}
+
+	func containsOptional(
+		where predicate: (Element) -> Bool?,
+	) -> Bool? {
+		var containsNil: Bool = false
+		for element in self {
+			switch predicate(element) {
+				case true: return true
+				case nil: containsNil = true
+				default: break
+			}
+		}
+		return containsNil ? nil : false
+	}
 }

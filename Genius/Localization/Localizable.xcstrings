@@ -787,6 +787,23 @@
         }
       }
     },
+    "latestSecurityUpdate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuestes macOS-Sicherheitsupdate installiert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latest macOS security update installed"
+          }
+        }
+      }
+    },
     "loaderVersion" : {
       "extractionState" : "manual",
       "localizations" : {

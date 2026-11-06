@@ -29,6 +29,7 @@ See LICENSE.txt for license information.
 - Add Recommendations → Restarted within last seven days
 - Add Recommendations → 80% battery charge limit
 - Add Recommendations → Latest Safari version
+- Add Recommendations → Latest macOS security update installed
 
 ### Improved
 
