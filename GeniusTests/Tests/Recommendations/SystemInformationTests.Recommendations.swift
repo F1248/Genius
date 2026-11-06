@@ -91,6 +91,11 @@ extension SystemInformationTests {
 			func latestSecurityUpdate() async {
 				#expect(await SystemInformation.Recommendations.SecurityUpdates.latestSecurityUpdate.test)
 			}
+
+			@Test
+			func majorVersionReceivesSecurityUpdates() async {
+				#expect(await SystemInformation.Recommendations.SecurityUpdates.majorVersionReceivesSecurityUpdates.test)
+			}
 		}
 
 		struct AutomaticUpdates {

@@ -855,6 +855,23 @@
         }
       }
     },
+    "majorVersionReceivesSecurityUpdates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS-Hauptversion erhält Sicherheitsupdates"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS major version receives security updates"
+          }
+        }
+      }
+    },
     "memory" : {
       "extractionState" : "manual",
       "localizations" : {

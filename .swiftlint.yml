@@ -24,6 +24,7 @@ disabled_rules:
     - required_deinit
     - sorted_enum_cases
     - switch_case_on_newline
+    - trailing_closure
     - vertical_whitespace_opening_braces
 
 closure_body_length: 32
@@ -76,8 +77,6 @@ redundant_self:
     only_in_closures: false
 switch_case_alignment:
     indented_cases: true
-trailing_closure:
-    only_single_muted_parameter: true
 trailing_comma:
     mandatory_comma: true
 trailing_whitespace:

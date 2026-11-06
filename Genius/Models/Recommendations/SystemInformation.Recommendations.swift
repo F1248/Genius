@@ -185,6 +185,12 @@ extension SystemInformation {
 				},
 				available: availableUpdates.available,
 			)
+			static let majorVersionReceivesSecurityUpdates = Recommendation<Bool?, _>(
+				{
+					await Software.OS.version.value?.major >=?
+						GDMF()?.PublicAssetSets.macOS.compactMap(\.ProductVersion.major).max().map { $0 == 27 ? 15 : $0 - 2 }
+				},
+			)
 		}
 
 		enum AutomaticUpdates {

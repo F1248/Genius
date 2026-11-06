@@ -86,6 +86,11 @@ struct RecommendationsFormView: View {
 						help: URL(appleSupportArticle: 108_382),
 						setting: SystemSetting.softwareUpdate,
 					): SystemInformation.Recommendations.SecurityUpdates.latestSecurityUpdate,
+					RecommendationLabel(
+						.majorVersionReceivesSecurityUpdates,
+						help: URL(appleSupportArticle: 108_382),
+						setting: SystemSetting.softwareUpdate,
+					): SystemInformation.Recommendations.SecurityUpdates.majorVersionReceivesSecurityUpdates,
 				],
 				.automaticUpdates: [
 					RecommendationLabel(

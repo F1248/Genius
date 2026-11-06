@@ -3,7 +3,7 @@
 // See LICENSE.txt for license information.
 //
 
-struct VersionNumber: UIStringRepresentable {
+struct VersionNumber: UIStringRepresentable, Decodable {
 
 	let versions: [Int]
 
@@ -19,5 +19,13 @@ struct VersionNumber: UIStringRepresentable {
 			!newVersions.isEmpty
 		else { return nil }
 		self.versions = newVersions
+	}
+
+	init(from decoder: any Decoder) throws {
+		let container = try decoder.singleValueContainer()
+		guard let newSelf = try Self(container.decode(String.self)) else {
+			throw DecodingError.dataCorruptedError(in: container, debugDescription: "")
+		}
+		self = newSelf
 	}
 }

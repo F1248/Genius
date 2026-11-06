@@ -30,6 +30,7 @@ See LICENSE.txt for license information.
 - Add Recommendations → 80% battery charge limit
 - Add Recommendations → Latest Safari version
 - Add Recommendations → Latest macOS security update installed
+- Add Recommendations → macOS major version receives security updates
 
 ### Improved
 
