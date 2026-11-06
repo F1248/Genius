@@ -11,10 +11,6 @@ extension StringProtocol {
 		split(separator: "\n", maxSplits: 1).first
 	}
 
-	init(data: Data) {
-		self.init(decoding: data, as: UTF8.self)
-	}
-
 	func betweenAnchored(start: some StringProtocol, end: some StringProtocol? = nil as String?) -> SubSequence? {
 		guard
 			let startIndex = range(of: start, options: .anchored)?.upperBound,

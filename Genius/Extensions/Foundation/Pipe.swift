@@ -8,6 +8,6 @@ import Foundation
 extension Pipe {
 
 	func read() -> String? {
-		try? fileHandleForReading.readToEnd().map(String.init)?.trimmingCharacters(in: .whitespacesAndNewlines)
+		try? fileHandleForReading.readToEnd().flatMap(String.init)?.trimmingCharacters(in: .whitespacesAndNewlines)
 	}
 }

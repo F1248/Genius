@@ -4,6 +4,7 @@
 //
 
 import AppKit
+import Foundation
 import SwiftUI
 
 extension String: DataInitializable, UIStringRepresentable, FormValue {
@@ -17,5 +18,9 @@ extension String: DataInitializable, UIStringRepresentable, FormValue {
 			NSPasteboard.set(self)
 		}
 		.buttonStyle(.borderless)
+	}
+
+	init?(data: Data) {
+		self.init(data: data, encoding: .utf8)
 	}
 }
