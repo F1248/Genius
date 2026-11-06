@@ -171,6 +171,12 @@ extension SystemInformation {
 				},
 				available: SystemInformation.Software.OS.bootMode.value !=? .recovery,
 			)
+			static let latestSafariVersion = Recommendation<Bool?, _>(
+				{
+					await !?availableUpdates.value?.contains { $0.type == .safari }
+				},
+				available: availableUpdates.available,
+			)
 		}
 
 		enum AutomaticUpdates {

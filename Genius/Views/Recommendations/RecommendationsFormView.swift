@@ -76,6 +76,11 @@ struct RecommendationsFormView: View {
 					): SystemInformation.Recommendations.MalwareProtection.allowAccessoriesToConnect,
 				],
 				.securityUpdates: [
+					RecommendationLabel(
+						.latestSafariVersion,
+						help: URL(appleSupportArticle: 102_665),
+						setting: SystemSetting.softwareUpdate,
+					): SystemInformation.Recommendations.SecurityUpdates.latestSafariVersion,
 				],
 				.automaticUpdates: [
 					RecommendationLabel(

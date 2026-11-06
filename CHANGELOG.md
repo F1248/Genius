@@ -28,6 +28,7 @@ See LICENSE.txt for license information.
 - Add Recommendations → Require administrator password for system-wide settings
 - Add Recommendations → Restarted within last seven days
 - Add Recommendations → 80% battery charge limit
+- Add Recommendations → Latest Safari version
 
 ### Improved
 

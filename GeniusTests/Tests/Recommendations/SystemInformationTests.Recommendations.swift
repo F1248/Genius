@@ -81,6 +81,11 @@ extension SystemInformationTests {
 			func availableUpdates() async {
 				#expect(await SystemInformation.Recommendations.SecurityUpdates.availableUpdates.test)
 			}
+
+			@Test
+			func latestSafariVersion() async {
+				#expect(await SystemInformation.Recommendations.SecurityUpdates.latestSafariVersion.test)
+			}
 		}
 
 		struct AutomaticUpdates {

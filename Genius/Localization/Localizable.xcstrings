@@ -770,6 +770,23 @@
         }
       }
     },
+    "latestSafariVersion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuste Safari-Version"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latest Safari version"
+          }
+        }
+      }
+    },
     "loaderVersion" : {
       "extractionState" : "manual",
       "localizations" : {
