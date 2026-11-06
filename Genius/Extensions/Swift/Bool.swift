@@ -9,7 +9,7 @@ extension Bool: @retroactive Comparable, Maximizable, PossiblyOptional, DataInit
 
 	static var max: Self { true }
 
-	init?(_ data: Data) {
+	init?(data: Data) {
 		switch data.first {
 			case 0: self = false
 			case 1: self = true

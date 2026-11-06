@@ -7,5 +7,5 @@ import Foundation
 
 protocol DataInitializable {
 
-	init?(_ data: Data)
+	init?(data: Data)
 }

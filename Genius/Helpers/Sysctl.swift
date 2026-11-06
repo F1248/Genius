@@ -25,6 +25,6 @@ enum Sysctl {
 			nil,
 			0,
 		) == 0 else { return nil }
-		return unsafe Wrapped(Data(bytes: result, count: result.lastIndex { $0 != 0 }.map(result.index(after:)) ?? 1))
+		return unsafe Wrapped(data: Data(bytes: result, count: result.lastIndex { $0 != 0 }.map(result.index(after:)) ?? 1))
 	}
 }

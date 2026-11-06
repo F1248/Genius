@@ -11,7 +11,7 @@ extension StringProtocol {
 		split(separator: "\n", maxSplits: 1).first
 	}
 
-	init(_ data: Data) {
+	init(data: Data) {
 		self.init(decoding: data, as: UTF8.self)
 	}
 

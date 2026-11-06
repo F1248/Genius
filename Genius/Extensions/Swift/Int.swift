@@ -11,7 +11,7 @@ extension Int: DataInitializable, UIStringRepresentable {
 		String(self)
 	}
 
-	init(_ data: Data) {
+	init(data: Data) {
 		self = data.reversed().reduce(0) { $0 << 8 | Int($1) }
 	}
 }

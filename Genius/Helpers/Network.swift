@@ -13,6 +13,6 @@ enum Network {
 			let (data, response) = try? await URLSession.shared.data(from: url),
 			(response as? HTTPURLResponse)?.statusCode == 200
 		else { return nil }
-		return String(data)
+		return String(data: data)
 	}
 }
