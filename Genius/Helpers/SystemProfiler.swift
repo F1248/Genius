@@ -24,7 +24,7 @@ struct SystemProfiler {
 				let systemProfilerOutput = await Process("/usr/sbin/system_profiler", "-json", fullDataType)?.runSafe()
 			else { return nil }
 			return (
-				JSONSerialization.jsonObject(from: systemProfilerOutput) as? [String: [[String: any Sendable]]],
+				try? JSONSerialization.jsonObject(with: Data(systemProfilerOutput.utf8)) as? [String: [[String: any Sendable]]],
 			)?[fullDataType]?.first
 		}
 	}
