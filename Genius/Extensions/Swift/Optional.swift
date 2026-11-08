@@ -3,35 +3,10 @@
 // See LICENSE.txt for license information.
 //
 
-import os
-
 extension Optional: UIStringRepresentable where Wrapped: UIStringRepresentable {
 
 	var uiRepresentation: String? {
 		self?.uiRepresentation
-	}
-}
-
-extension Optional {
-
-	func safeForceUnwrapped(
-		fallback: @autoclosure () -> Wrapped,
-		file: String = #file,
-		line: Int = #line,
-		column: Int = #column,
-		function: String = #function,
-	) -> Wrapped {
-		guard let self else {
-			Logger().error(
-				"Unexpectedly found nil while unwrapping an Optional value",
-				file: file,
-				line: line,
-				column: column,
-				function: function,
-			)
-			return fallback()
-		}
-		return self
 	}
 }
 

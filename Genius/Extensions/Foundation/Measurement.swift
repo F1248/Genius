@@ -20,8 +20,9 @@ extension Measurement: UIStringRepresentable {
 					from: { () -> Measurement<UnitFrequency> in
 						if value.isZero { return self.converted(to: .baseUnit()) } // swiftlint:disable:this redundant_self
 						let convertedMeasurements = units.lazy.map(self.converted) // swiftlint:disable:this redundant_self
-						return convertedMeasurements.first { $0.value >= 1 } ?? convertedMeasurements.last
-							.safeForceUnwrapped(fallback: self)
+						// safe as `convertedMeasurements` is guaranteed to be non-empty
+						// swiftlint:disable:next force_unwrapping
+						return convertedMeasurements.first { $0.value >= 1 } ?? convertedMeasurements.last!
 					}(),
 				)
 			case let self as InformationStorage:
