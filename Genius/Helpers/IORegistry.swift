@@ -9,30 +9,32 @@ import IOKit
 
 struct IORegistry: ~Copyable {
 
-	let matchingDictionary: CFMutableDictionary?
+	let service: io_service_t
 
-	var service: io_service_t? {
-		matchingDictionary.map { IOServiceGetMatchingService(kIOMainPortDefault, $0) }
+	var exists: Bool {
+		service > 0
 	}
 
-	var exists: Bool? {
-		service >? 0
+	init?(class: String) {
+		self.init(matchingDictionary: unsafe IOServiceMatching(`class`))
 	}
 
-	init(class: String) {
-		self.matchingDictionary = unsafe IOServiceMatching(`class`)
+	init?(name: String) {
+		self.init(matchingDictionary: unsafe IOServiceNameMatching(name))
 	}
 
-	init(name: String) {
-		self.matchingDictionary = unsafe IOServiceNameMatching(name)
+	// swiftformat:disable:next organizeDeclarations
+	private init?(matchingDictionary: CFMutableDictionary?) {
+		guard let matchingDictionary else { return nil }
+		self.service = IOServiceGetMatchingService(kIOMainPortDefault, matchingDictionary)
 	}
 
 	deinit {
-		if let service { IOObjectRelease(service) }
+		if exists { IOObjectRelease(service) }
 	}
 
 	func read<Wrapped: DataInitializable>(_ key: String) -> Wrapped? {
-		guard exists ?? false, let service else { return nil }
+		guard exists else { return nil }
 		let property: CFTypeRef? = unsafe IORegistryEntryCreateCFProperty(
 			service,
 			key as CFString,
@@ -45,7 +47,7 @@ struct IORegistry: ~Copyable {
 	// periphery:ignore
 	// swiftlint:disable:next unused_declaration
 	func contains(_ key: String) -> Bool? {
-		guard exists ?? false, let service else { return nil }
+		guard exists else { return nil }
 		return unsafe IORegistryEntryCreateCFProperty(
 			service,
 			key as CFString,

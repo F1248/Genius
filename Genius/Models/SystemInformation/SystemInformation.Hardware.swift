@@ -17,7 +17,7 @@ extension SystemInformation {
 			static let isVirtualMachine: Bool? = Sysctl.read("kern.hv_vmm_present")
 			static let isLaptop: Bool? = (name.value ?? identifier.value)?.hasPrefix("MacBook")
 			static let name = SystemInformationData<String?, _>(
-				IORegistry(name: "product").read("product-name"),
+				IORegistry(name: "product")?.read("product-name"),
 				available: {
 					#if arch(arm64)
 						true
@@ -44,8 +44,9 @@ extension SystemInformation {
 				{ await localizedName.value ?? name.value },
 				available: localizedName.available ||? name.available,
 			)
-			static let identifier = SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read("model"))
-			static let board = SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice").read({
+			static let identifier =
+				SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice")?.read("model"))
+			static let board = SystemInformationData<String?, _>(IORegistry(class: "IOPlatformExpertDevice")?.read({
 				#if arch(arm64)
 					"target-sub-type"
 				#elseif arch(x86_64)
@@ -55,8 +56,8 @@ extension SystemInformation {
 			static let number = SystemInformationData<String?, _>(
 				{
 					guard
-						let modelNumber = IORegistry(class: "IOPlatformExpertDevice").read("model-number") as String?,
-						let regionInfo = IORegistry(class: "IOPlatformExpertDevice").read("region-info") as String?
+						let modelNumber = IORegistry(class: "IOPlatformExpertDevice")?.read("model-number") as String?,
+						let regionInfo = IORegistry(class: "IOPlatformExpertDevice")?.read("region-info") as String?
 					else { return nil }
 					return modelNumber + regionInfo
 				}(),
@@ -82,7 +83,7 @@ extension SystemInformation {
 				),
 			)
 			static let regulatoryNumber = SystemInformationData<String?, _>(
-				IORegistry(class: "IOPlatformExpertDevice").read("regulatory-model-number"),
+				IORegistry(class: "IOPlatformExpertDevice")?.read("regulatory-model-number"),
 				available: {
 					#if arch(arm64)
 						!?isVirtualMachine
@@ -106,9 +107,9 @@ extension SystemInformation {
 			#if arch(arm64)
 				.mSeries
 			#elseif arch(x86_64)
-				let t2: Bool? = IORegistry(name: "Apple T2 Controller").exists
+				let t2: Bool? = IORegistry(name: "Apple T2 Controller")?.exists
 				if t2 ?? false { return .t2 }
-				let t1: Bool? = IORegistry(name: "Apple T1 Controller").exists
+				let t1: Bool? = IORegistry(name: "Apple T1 Controller")?.exists
 				if t1 ?? false { return .t1 }
 				if t2 == false, t1 == false { return .absent }
 				return nil
@@ -146,7 +147,7 @@ extension SystemInformation {
 			}())
 			static let name = SystemInformationData<String?, _>(Sysctl.read("machdep.cpu.brand_string"))
 			static let identifier = SystemInformationData<String?, _>(
-				IORegistry(class: "IOPlatformExpertDevice").read("platform-name"),
+				IORegistry(class: "IOPlatformExpertDevice")?.read("platform-name"),
 				available: {
 					#if arch(arm64)
 						true
@@ -174,10 +175,10 @@ extension SystemInformation {
 		enum Machine {
 
 			static let serialNumber = SystemInformationData<String?, _>(
-				IORegistry(class: "IOPlatformExpertDevice").read(kIOPlatformSerialNumberKey),
+				IORegistry(class: "IOPlatformExpertDevice")?.read(kIOPlatformSerialNumberKey),
 			)
 			static let hardwareUUID = SystemInformationData<String?, _>(
-				IORegistry(class: "IOPlatformExpertDevice").read(kIOPlatformUUIDKey),
+				IORegistry(class: "IOPlatformExpertDevice")?.read(kIOPlatformUUIDKey),
 			)
 			static let provisioningUDID = SystemInformationData<String?, _>(
 				{

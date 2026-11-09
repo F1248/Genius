@@ -134,7 +134,7 @@ extension SystemInformation {
 			)
 			static let allowAccessoriesToConnect = Recommendation<AllowAccessoriesToConnectSetting?, _>(
 				{
-					switch IORegistry(class: "AppleCredentialManager").read("TRM_ConfigProfile") as Int? {
+					switch IORegistry(class: "AppleCredentialManager")?.read("TRM_ConfigProfile") as Int? {
 						case 1: .alwaysAsk
 						case 2: .askForNewAccessories
 						case 3: .automaticallyAllowWhenUnlocked
