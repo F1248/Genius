@@ -67,7 +67,7 @@ extension Process {
 
 	func logError(outputPipeData: String?, errorPipeData: String?) {
 		// swiftlint:disable redundant_self
-		Logger().error("""
+		Logger.shared.error("""
 		Process failed:
 			Executable: \(self.executableURL.debugDescription)
 			Arguments: \(self.arguments.debugDescription)
