@@ -61,6 +61,7 @@
 --mark-categories false
 --max-width 128
 --organization-mode type
+--organize-types actor,class,enum,extension,protocol,struct
 --prefer-content-builder true
 --property-types explicit
 --ranges no-space

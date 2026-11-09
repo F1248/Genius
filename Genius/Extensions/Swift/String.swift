@@ -13,14 +13,15 @@ extension String: DataInitializable, UIStringRepresentable, FormValue {
 		self
 	}
 
+	// swiftlint:disable:next type_contents_order
+	init?(data: Data) {
+		self.init(data: data, encoding: .utf8)
+	}
+
 	var formView: some View {
 		Button(self) {
 			NSPasteboard.set(self)
 		}
 		.buttonStyle(.borderless)
-	}
-
-	init?(data: Data) {
-		self.init(data: data, encoding: .utf8)
 	}
 }
