@@ -43,16 +43,4 @@ struct IORegistry: ~Copyable {
 		)?.takeRetainedValue()
 		return property as? Wrapped ?? ((property as? Data)?.trimmingTrailingZeros).flatMap(Wrapped.init)
 	}
-
-	// periphery:ignore
-	// swiftlint:disable:next unused_declaration
-	func contains(_ key: String) -> Bool? {
-		guard exists else { return nil }
-		return unsafe IORegistryEntryCreateCFProperty(
-			service,
-			key as CFString,
-			kCFAllocatorDefault,
-			0,
-		) != nil
-	}
 }
