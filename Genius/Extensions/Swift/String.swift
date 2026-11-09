@@ -15,7 +15,7 @@ extension String: DataInitializable, UIStringRepresentable, FormValue {
 
 	// swiftlint:disable:next type_contents_order
 	init?(data: Data) {
-		self.init(data: data, encoding: .utf8)
+		self.init(data: data.prefix { $0 != 0 }, encoding: .utf8)
 	}
 
 	var formView: some View {

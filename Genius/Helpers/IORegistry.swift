@@ -41,6 +41,6 @@ struct IORegistry: ~Copyable {
 			kCFAllocatorDefault,
 			0,
 		)?.takeRetainedValue()
-		return property as? Wrapped ?? ((property as? Data)?.trimmingTrailingZeros).flatMap(Wrapped.init)
+		return property as? Wrapped ?? (property as? Data).flatMap(Wrapped.init)
 	}
 }
