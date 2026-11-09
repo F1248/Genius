@@ -24,9 +24,9 @@ struct GDMF: Decodable {
 
 	init?() async {
 		guard
-			let newGDMF: Self = await Network.data(from: "https://gdmf.apple.com/v2/pmv")
+			let newSelf: Self = await Network.data(from: "https://gdmf.apple.com/v2/pmv")
 				.flatMap({ try? JSONDecoder().decode(Self.self, from: $0) })
 		else { return nil }
-		self = newGDMF
+		self = newSelf
 	}
 }
