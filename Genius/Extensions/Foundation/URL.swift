@@ -8,9 +8,9 @@ import Foundation
 
 extension URL: Openable {
 
-	init?(filePath: String) {
-		guard FileManager.default.fileExists(atPath: filePath) else { return nil }
-		self.init(fileURLWithPath: filePath)
+	init?(existingFilePath path: String) {
+		guard FileManager.default.fileExists(atPath: path) else { return nil }
+		self.init(filePath: path)
 	}
 
 	init?(appleSupportArticle: Int) {

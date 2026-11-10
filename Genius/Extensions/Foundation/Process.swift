@@ -11,7 +11,7 @@ extension Process {
 
 	convenience init?(_ executable: String, _ arguments: String...) {
 		self.init()
-		guard let executableURL = URL(filePath: executable) else { return nil }
+		guard let executableURL = URL(existingFilePath: executable) else { return nil }
 		self.executableURL = executableURL
 		self.arguments = arguments
 		self.qualityOfService = .userInitiated
