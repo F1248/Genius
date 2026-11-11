@@ -112,7 +112,7 @@ extension SystemInformation {
 								"authorizationdb",
 								"read",
 								right,
-							)?.runSafe(possibleErrorPipeData: "YES (0)"),
+							)?.runSafe(possibleErrorData: "YES (0)"),
 							let dictionary = [String: Any](plist: processOutput),
 							let valueShared = dictionary["shared"] as? Bool
 						else { return nil }
@@ -159,7 +159,7 @@ extension SystemInformation {
 				{
 					guard
 						let output = await Process("/usr/sbin/softwareupdate", "--list")?
-							.runSafe(possibleErrorPipeData: "No new software available.")?
+							.runSafe(possibleErrorData: "No new software available.")?
 							.betweenAnchored(start: "Software Update Tool\n\nFinding available software")
 					else { return nil }
 					if output.isEmpty { return [] }

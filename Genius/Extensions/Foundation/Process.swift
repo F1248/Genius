@@ -29,7 +29,7 @@ extension Process {
 	}
 
 	@discardableResult
-	func runSafe(asRoot runAsRoot: Bool = false, possibleErrorPipeData: String? = nil) async -> String? {
+	func runSafe(asRoot runAsRoot: Bool = false, possibleErrorData: String? = nil) async -> String? {
 		if runAsRoot, SystemInformation.Software.OS.bootMode.value != .recovery {
 			guard let executableURL, let arguments else { return nil }
 			return unsafe NSAppleScript(source: """
@@ -48,24 +48,24 @@ extension Process {
 		do {
 			try run()
 		} catch {
-			logError(outputPipeData: outputPipe.read(), errorPipeData: errorPipe.read())
+			logError(outputData: outputPipe.read(), errorData: errorPipe.read())
 			return nil
 		}
 		await waitUntilExit()
-		let errorPipeData = errorPipe.read()
-		let outputPipeData = outputPipe.read()
+		let errorData = errorPipe.read()
+		let outputData = outputPipe.read()
 		guard
 			terminationStatus == 0,
 			terminationReason == .exit,
-			errorPipeData == nil || errorPipeData == possibleErrorPipeData
+			errorData == nil || errorData == possibleErrorData
 		else {
-			logError(outputPipeData: outputPipeData, errorPipeData: errorPipeData)
+			logError(outputData: outputData, errorData: errorData)
 			return nil
 		}
-		return outputPipeData
+		return outputData
 	}
 
-	func logError(outputPipeData: String?, errorPipeData: String?) {
+	func logError(outputData: String?, errorData: String?) {
 		// swiftlint:disable redundant_self
 		Logger.shared.error("""
 		Process failed:
@@ -74,9 +74,9 @@ extension Process {
 			Termination status: \(self.terminationStatus)
 			Termination reason: \(self.terminationReason.rawValue)
 			Standard output:
-		\(outputPipeData.debugDescription)
+		\(outputData.debugDescription)
 			Standard error:
-		\(errorPipeData.debugDescription)
+		\(errorData.debugDescription)
 		""")
 		// swiftlint:enable redundant_self
 	}
