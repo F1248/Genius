@@ -4,21 +4,13 @@
 //
 
 import AppKit
-import Foundation
 import ObjectiveC
 
 @available(macOS 26, *)
 extension NSMenuItem {
 
-	@objc var none: NSImage? { nil }
-
 	static func hideIconsInMenuBar() {
-		guard let noneImplementation = unsafe class_getMethodImplementation(self, #selector(getter: none)) else { return }
-		unsafe class_replaceMethod(
-			self,
-			#selector(getter: image),
-			noneImplementation,
-			nil,
-		)
+		guard let method = unsafe class_getInstanceMethod(self, #selector(getter: image)) else { return }
+		unsafe method_setImplementation(method, imp_implementationWithBlock({ nil } as @convention(block) () -> NSImage?))
 	}
 }

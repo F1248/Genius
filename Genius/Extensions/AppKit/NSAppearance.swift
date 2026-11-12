@@ -10,26 +10,17 @@ import ObjectiveC
 @available(macOS 26, *)
 extension NSAppearance {
 
-	@objc var hasLiquidGlass: Bool { false }
-
 	static func disableLiquidGlass() {
 		guard
-			let featureFlagsClass = object_getClass(NSClassFromString(
+			let featureFlagsClass = NSClassFromString(
 				{ if #available(macOS 27, *) { "_NSSwiftUICoreFeatureFlags" } else { "_NSSolarium" } }(),
+			),
+			let method1 = unsafe class_getClassMethod(featureFlagsClass, Selector(
+				private: { if #available(macOS 27, *) { "isSolariumEnabled" } else { "isEnabled" } }(),
 			)),
-			let hasLiquidGlassImplementation = unsafe class_getMethodImplementation(self, #selector(getter: hasLiquidGlass))
+			let method2 = unsafe class_getInstanceMethod(self, Selector(private: "_wantsSolarium"))
 		else { return }
-		unsafe class_replaceMethod(
-			featureFlagsClass,
-			Selector(private: { if #available(macOS 27, *) { "isSolariumEnabled" } else { "isEnabled" } }()),
-			hasLiquidGlassImplementation,
-			nil,
-		)
-		unsafe class_replaceMethod(
-			self,
-			Selector(private: "_wantsSolarium"),
-			hasLiquidGlassImplementation,
-			nil,
-		)
+		unsafe method_setImplementation(method1, imp_implementationWithBlock({ false } as @convention(block) () -> Bool))
+		unsafe method_setImplementation(method2, imp_implementationWithBlock({ false } as @convention(block) () -> Bool))
 	}
 }
