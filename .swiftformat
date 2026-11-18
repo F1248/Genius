@@ -63,6 +63,7 @@
 --organization-mode type
 --organize-types actor,class,enum,extension,protocol,struct
 --prefer-content-builder true
+--prefer-us-spelling true
 --property-types explicit
 --ranges no-space
 --redundant-async always
