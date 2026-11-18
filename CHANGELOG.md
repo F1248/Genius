@@ -15,6 +15,7 @@ See LICENSE.txt for license information.
 ### Fixed
 
 ### Security
+- Require bundle identifier in Sparkle appcast feed
 
 ### Dependencies
 
