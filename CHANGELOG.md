@@ -13,6 +13,7 @@ See LICENSE.txt for license information.
 - Sort Recommendations → Malware Protection by importance
 
 ### Fixed
+- Fix uninstallation when app has different name than Genius.app
 
 ### Security
 - Require bundle identifier in Sparkle appcast feed

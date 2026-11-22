@@ -11,11 +11,14 @@ set -o nounset
 set -o pipefail
 set -o privileged
 
-if [[ $0 != */Genius.app/Contents/Resources/Uninstall ]]; then
+if [[ $0 != */*.app/Contents/Resources/Uninstall ]]; then
 	exit 1
 fi
 
-cd "$(dirname "$0")/../../.."
+application_path="$(realpath "$(dirname "$0")/../..")"
+if [[ $application_path != */*.app ]]; then
+	exit 2
+fi
 
 while ps aux -c | grep --word-regexp --fixed-strings Genius > /dev/null; do
 	sleep 0.1
@@ -23,7 +26,7 @@ done
 
 set +o errexit
 
-rm -R -f Genius.app
+rm -R -f "$application_path"
 
 for home_directory in /Users/*/; do
 	rm -f "$home_directory"Library/Application\ Support/CrashReporter/Genius_*.plist
